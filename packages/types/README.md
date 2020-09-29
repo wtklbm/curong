@@ -1,0 +1,99 @@
+# `@curong/types`
+
+`@curong/types` 是一个功能全面的检测 `JavaScript` 类型的依赖，可以很方便的检测变量的类型。它们会接收一个参数并返回一个 `boolean` 值。有关详细的用法，请参照 `文档注释`。
+
+
+`@curong/types` 主要包含以下的方法:
+
+- `getTag`: 获取原型上的类型标记
+- `isAnyError`: 是不是一个任意的 `Error` 对象
+- `isArguments`: 是不是函数的参数
+- `isArray`: 是不是一个数组
+- `isArrayBuffer`: 是不是一个 `ArrayBuffer`
+- `isArrayBufferView`: 是不是一个 `ArrayBufferView`
+- `isArrayHave`: 是不是一个长度大于 `0` 的数组
+- `isArrayIndex`: 是不是一个数组的下标索引，它是一个大于或等于 `0` 并且小于或等于数组的最大长度的整数
+- `isAsyncFunction`: 是不是一个异步函数
+- `isBigInt`: 是不是一个 `BigInt` (大数)
+- `isBigInt64Array`: 是不是一个 `BigInt64Array`
+- `isBigUint64Array`: 是不是一个 `BigUint64Array`
+- `isBlob`: 是不是一个 `Blob`
+- `isBoolean`: 是不是一个布尔值或被包装后的布尔值对象
+- `isBooleanObject`: 是不是一个被包装后的布尔值对象，即 `new Boolean`
+- `isBooleanPrimitive`: 是不是一个基本的布尔值，即 `boolean`
+- `isBuffer`: 是不是一个 `Buffer`
+- `isBufferHave`: 是不是一个长度大于 `0` 的 `Buffer`
+- `isClass`: 是不是一个类
+- `isDataView`: 是不是一个 `DataView`
+- `isDate`: 是不是一个有效的 `Date`
+- `isDouble`: 是不是一个浮点数
+- `isDuplex`: 是不是一个 `Duplex`
+- `isEqual`: `简单` 的判断多个的值是否相等
+- `isError`: 是不是一个 `Error` 对象
+- `isEvalError`: 是不是一个 `EvalError` 对象
+- `isFalse`: 是不是 `false`
+- `isFile`: 是不是一个 `File` 对象
+- `isFileReader`: 是不是一个 `FileReader` 对象
+- `isFloat32Array`: 是不是一个 `Float32Array`，每一项的值为 `1.2×10-38 - 3.4×1038`
+- `isFloat64Array`: 是不是一个 `Float64Array`，每一项的值为 `5.0×10-324 - 1.8×10308`
+- `isFunction`: 是不是一个函数(包含同步函数、异步函数和 `Generator` 函数)
+- `isFunctionHave`: 是不是一个参数个数大于 `0` 的函数
+- `isInt`: 是不是一个整数
+- `isGeneratorFunction`: 是不是一个 `Generator` 函数
+- `isInt16Array`: 是不是一个 `Int8Array`，每一项的值为 `-128 - 127`
+- `isInt32Array`: 是不是一个 `Int16Array`，每一项的值为 `-32768 - 32767`
+- `isInt8Array`: 是不是一个 `Int32Array`，每一项的值为 `-2147483648 - 2147483647`
+- `isIntHave`: 是不是一个大于 `0` 的整数，即无符号整数
+- `isIntSafe`: 是不是一个安全的整数
+- `isMap`: 是不是一个 `Map`
+- `isMapHave`: 是不是一个长度大于 `0` 的 `Map`
+- `isNaN`: 一个数字是不是 `NaN`
+- `isNotEqual`: `简单` 的判断多个的值是否不相等
+- `isNotZero`: 不是 `0`
+- `isNull`: 是不是 `null`
+- `isNullOrUndefined`: 是不是 `undefined` 或者 `null`
+- `isNumber`: 是不是一个数字或被包装后的数字对象
+- `isNumberHave`: 是不是一个大于 `0` 并且小于或等于 `Number.MAX_VALUE` 的数字
+- `isNumberObject`: 是不是一个被包装后的数字对象，即 `new Number()`
+- `isNumberPrimitive`: 是不是一个基本的数字，即 `number`
+- `isNumberSafe`: 是不是一个安全的数字，该数字不能为 `NaN` ，并且介于 `MAX_VALUE` 和 `-MAX_VALUE` 之间
+- `isObject`: 是不是一个 `[object Object]` 的对象
+- `isObjectHave`: 是不是一个属性个数大于 `0` 的对象
+- `isObjectLike`: 是不是 `T` 类型的任意对象
+- `isPlainObject`: 是不是一个普通对象，即 `{}`，该对象的原型指向 `Object.prototype`
+- `isPlainObjectHave`: 是不是一个属性个数大于 `0` 的普通对象，即 `{}`
+- `isPrimitive`: 是不是一个基本类型的值
+- `isPromise`: 是不是一个 `Promise`
+- `isRangeError`: 是不是一个 `RangeError` 对象
+- `isReactElement`: 是不是一个 `React` 元素
+- `isReadable`: 是不是一个 `Readable`
+- `isReferenceError`: 是不是一个 `ReferenceError` 对象
+- `isRegExp`: 是不是一个正则表达式
+- `isSet`: 是不是一个 `Set`
+- `isSetHave`: 是不是一个长度大于 `0` 的 `Set`
+- `isStream`: 是不是一个 `Stream`
+- `isString`: 是不是一个字符串或被包装后的字符串对象
+- `isStringHave`: 是不是一个长度大于 `0` 的字符串
+- `isStringObject`: 是不是一个被包装后的字符串对象，即 `new String()`
+- `isStringPrimitive`: 是不是一个基本的字符串，即 `string`
+- `isSymbol`: 是不是一个 `Symbol`
+- `isSyncFunction`: 是不是一个同步函数
+- `isSyntaxError`: 是不是一个 `SyntaxError` 对象
+- `isTransform`: 是不是一个 `Transform`
+- `isTrue`: 是不是 `true`
+- `isTypeError`: 是不是一个 `TypeError` 对象
+- `isTypeofObject`: 使用 `typeof` 判断是不是一个不是 `null` 的任意对象
+- `isUDouble`: 是不是一个无符号浮点数，即大于 `0` 的浮点数
+- `isUint`: 是不是一个无符号整数，即大于或等于 `0` 的整数
+- `isUint16Array`: 是不是一个 `Uint16Array`，每一项的值为 ` 0 - 65535`
+- `isUint32Array`: 是不是一个 `Uint32Array`，每一项的值为 `0 - 4294967295`
+- `isUint8Array`:  是不是一个 `Uint8Array`，每一项的值为 `0 - 255`
+- `isUint8ClampedArray`: 是不是一个 `Uint8ClampedArray`，每一项的值为 `0 - 255`
+- `isUintSafe`: 是不是一个安全的无符号整数
+- `isUndefined`: 是不是 `undefined`
+- `isVarName`: 是不是可以把值当做 `JavaScript` 的变量名
+- `isWeakMap`: 是不是一个 `WeakMap`
+- `isWeakSet`: 是不是一个 `WeakSet`
+- `isWritable`: 是不是一个 `Writable`
+- `isZero`: 是不是 `0`
+- `MAX_ARRAY_LENGTH`: 获取数组最大索引下标的数字。最大为 `2` 的 `32` 次方减一，即 `4294967295`

@@ -1,0 +1,34 @@
+{
+    "name": "@curong/string",
+    "version": "0.0.0-alpha.0",
+    "license": "MIT",
+    "author": {
+        "name": "wtklbm",
+        "email": "wtklbm@gmail.com",
+        "url": "https://github.com/wtklbm/"
+    },
+    "homepage": "https://github.com/wtklbm/curong/tree/master/packages/string#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wtklbm/curong.git"
+    },
+    "bugs": {
+        "url": "https://github.com/wtklbm/curong/issues/"
+    },
+    "main": "dist/index.js",
+    "module": "dist/index.es.js",
+    "types": "dist/index.d.ts",
+    "unpkg": "dist/index.umd.min.js",
+    "jsdelivr": "dist/index.umd.min.js",
+    "files": [
+        "dist"
+    ],
+    "publishConfig": {
+        "access": "public",
+        "registry": "http://registry.npmjs.org/"
+    },
+    "dependencies": {
+        "@curong/types": "^0.0.0-alpha.0"
+    },
+    "sideEffects": false
+}

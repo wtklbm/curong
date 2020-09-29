@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+        // "module": "commonjs",
+        // "outDir": "dist",
+        "target": "esnext",
+        "lib": ["esnext", "DOM"],
+        "strict": true,
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "isolatedModules": false,
+        "sourceMap": true,
+        "allowJs": true,
+        "baseUrl": ".",
+        "removeComments": true,
+        "importHelpers": true,
+        "downlevelIteration": true,
+        "moduleResolution": "node",
+        "paths": {
+            "@curong/*": ["packages/*/src"]
+        },
+        "resolveJsonModule": true
+    },
+    "include": [
+        "src",
+        "types",
+        "packages/*/src",
+        "packages/*/types",
+        "dist/**/*.d.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "test",
+        "__tests__",
+        "packages/server",
+        "packages/*/test",
+        "packages/*/__tests__"
+    ]
+}

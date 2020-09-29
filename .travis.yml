@@ -1,0 +1,25 @@
+sudo: false
+language: node_js
+node_js:
+  - "13"
+
+# 仅克隆最新的提交
+git:
+  depth: 1
+
+# 指定仅当 master 分支上有新的提交时才执行构建
+branches:
+  only:
+    - master
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+install:
+  npm run bootstrap
+
+script:
+  - npm run prettier
+  - npm run test

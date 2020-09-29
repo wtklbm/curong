@@ -1,0 +1,17 @@
+{
+    "version": "0.0.0-alpha.0",
+    "packages": [
+        "packages/*"
+    ],
+    "npmClient": "yarn",
+    "useWorkspaces": true,
+    "command": {
+        "publish": {
+            "ignoreChanges": [
+                "ignored-file"
+            ],
+            "message": "发布新版本：%v",
+            "registry": "https://registry.npmjs.org"
+        }
+    }
+}
