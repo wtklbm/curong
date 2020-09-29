@@ -1,3 +1,6 @@
 # 计划
 - isUtf8String
 - isIE
+
+# @curong/fs
+- sortBy 根据文件的创建日期或最后的修改日期来对文件或文件夹进行排序
