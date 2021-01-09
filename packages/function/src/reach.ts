@@ -5,10 +5,30 @@ import { isIntSafe } from '@curong/types';
  *
  * @param count 要等待的总次数 (必须大于 `0`)
  * @param callback 当次数到达时所要执行的回调函数
- * @example
+ * @example ````
+ *
+ * ### 常规示例
+ *
  * ```javascript
  * let r = reach(3, () => 10);
  * console.log(r()()()); // 10
+ * ```
+ *
+ * ### 异步读取文件，并等待所有文件读取完毕，然后打印出数据
+ *
+ * ```javascript
+ * const data = {};
+ * const ready = after(2, () => console.log(data));
+ *
+ * readFile('./a.txt', 'utf8', (_err, data) => {
+ *     data['a'] = data;
+ *     ready();
+ * });
+ *
+ * readFile('./b.txt', 'utf8', (_err, data) => {
+ *     data['b'] = data;
+ *     ready();
+ * });
  * ```
  *
  * # 柯里化函数
