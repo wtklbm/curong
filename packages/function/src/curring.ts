@@ -6,9 +6,13 @@
  * @example
  * ```javascript
  * let c = curring((a: number, b: number): number => a + b);
- * let ret = c(1)(2);
- * console.log(ret); // 3
+ * console.log(c(1)(2)); // 3
  * ```
+ *
+ * # 柯里化函数
+ *
+ * 该函数是柯里化函数，柯里化函数就是把一个大函数拆分成很多的具体的功能的小函数。
+ * 高阶函数中包含柯里化，柯理化的好处是可以保留参数，它非常像 `bind` 方法。
  */
 export default function curring<T, U>(
     fn: (...args: T[]) => U,
