@@ -10,13 +10,7 @@
  * ```
  */
 export default function reach<T>(count: number, callback: () => T): () => any {
-    const reachCall = () => {
-        if (--count <= 0) {
-            return callback();
-        }
-
-        return reachCall;
-    };
+    const reachCall = () => (--count <= 0 ? callback() : reachCall);
 
     return reachCall;
 }
