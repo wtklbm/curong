@@ -20,4 +20,3 @@ export default function curring<T, U>(
         return store.length < fn.length ? curring(fn, store) : fn(...store);
     };
 }
-
