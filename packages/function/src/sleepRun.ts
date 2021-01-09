@@ -60,7 +60,7 @@ export default function sleepRun<T>(
     }
 
     return new Promise(resolve => {
-        const timer: NodeJS.Timeout = setTimeout(() => {
+        const timer = setTimeout(() => {
             clearTimeout(timer);
             return resolve(handler());
         }, timeout);
