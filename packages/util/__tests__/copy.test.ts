@@ -4,8 +4,6 @@ import { isPlainObject } from '@curong/types';
 
 describe('@curong/util/copy', () => {
     test('测试1', () => {
-        // @ts-ignore
-        expect(copy()).toEqual(undefined);
         expect(() => copy(new Promise(() => {}))).toThrow();
     });
 
