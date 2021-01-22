@@ -2,11 +2,6 @@ import { colorNameCode8bit } from '../src';
 
 describe('@curong/term/colorNameCode8bit', () => {
     test('测试1', () => {
-        // @ts-ignore
-        expect(() => colorNameCode8bit('xxx')).toThrow();
-    });
-
-    test('测试2', () => {
         let ret = colorNameCode8bit('red');
 
         expect(Object.keys(ret).length).toBe(2);
