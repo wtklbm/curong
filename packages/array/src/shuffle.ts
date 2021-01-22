@@ -1,4 +1,4 @@
-import { isArray, isZero } from '@curong/types';
+import { isZero } from '@curong/types';
 
 /**
  * 将一个数组随机打乱
@@ -6,6 +6,14 @@ import { isArray, isZero } from '@curong/types';
  * @param value 要打乱的数组
  * @returns 返回被打乱的数组
  * @throw 如果传递的参数不是则会抛出异常
+ * @example
+ *
+ * ```javascript
+ * const arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+ * const ret = shuffle(arr);
+ * console.log(ret); // ['b', 'a', 'd', 'f', 'g', 'e', 'c'];
+ * ```
+ *
  * @info
  *
  * ### 使用 `Fisher–Yates` 算法生成随机数
@@ -20,10 +28,6 @@ import { isArray, isZero } from '@curong/types';
  * `Fisher–Yates` 算法满足随机数的要求，它可以保证每个元素在数组中出现的概率是等同的。
  */
 export default function shuffle<T extends Array<any>>(value: T): T {
-    if (!isArray(value)) {
-        throw new TypeError(`value不是一个数组: "${value}"`);
-    }
-
     if (isZero(value.length)) {
         return value;
     }
