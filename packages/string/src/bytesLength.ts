@@ -1,4 +1,4 @@
-import { isString, isZero } from '@curong/types';
+import { isZero } from '@curong/types';
 
 import codePointAt from './codePointAt';
 
@@ -10,12 +10,8 @@ import codePointAt from './codePointAt';
  * 则返回计算好的编码长度，否则返回 `null`。
  */
 export default function bytesLength(value: string): number | null {
-    if (isString(value)) {
-        if (isZero(value.length)) {
-            return 0;
-        }
-    } else {
-        return null;
+    if (isZero(value.length)) {
+        return 0;
     }
 
     let length: number = 0;
