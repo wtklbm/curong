@@ -4,6 +4,7 @@
  * @param fn 要接受多个参数的函数
  * @returns 返回 fn 函数的返回结果
  * @example
+ *
  * ```javascript
  * let c = curring((a: number, b: number): number => a + b);
  * console.log(c(1)(2)); // 3
