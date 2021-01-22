@@ -1,9 +1,8 @@
-// @ts-nocheck
+
 import { isEqual } from '../src';
 
 describe('@curong/types/isEqual', () => {
     test('测试1', () => {
-        expect(isEqual()).toBe(false);
         expect(isEqual(null)).toBe(false);
     });
 
