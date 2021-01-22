@@ -1,9 +1,8 @@
-// @ts-nocheck
+
 import { isEmail } from '../src';
 
 describe('@curong/regexp/isEmail', () => {
     test('测试1', () => {
-        expect(isEmail()).toBe(false);
         expect(isEmail('xx@xx@xx.com')).toBe(false);
         expect(isEmail('xx.\\xx@xx.com')).toBe(false);
         expect(isEmail('xx. \\xx@xx.com')).toBe(false);
