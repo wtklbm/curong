@@ -30,10 +30,6 @@ export default function fontColor(
     value: string,
     options?: FontColorOptions
 ): string {
-    if (!isString(value)) {
-        throw new TypeError(`[fontColor]: value不是一个字符串, "${value}"`);
-    }
-
     if (isZero(value.length)) {
         return '';
     }
