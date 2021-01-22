@@ -1,5 +1,3 @@
-import { isString } from '@curong/types';
-
 import { unifiedIdeograph, hiragana, katakana } from './source';
 
 /**
@@ -10,10 +8,6 @@ import { unifiedIdeograph, hiragana, katakana } from './source';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function inChinese(str: string, vhk: boolean = false): boolean {
-    if (!isString(str)) {
-        throw new TypeError(`[inChinese]: str不是一个字符串, "${str}"`);
-    }
-
     if (vhk && new RegExp(`(${hiragana}|${katakana})+`).test(str)) {
         return false;
     }
