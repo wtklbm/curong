@@ -2,8 +2,6 @@ import { fontColor } from '../src';
 
 describe('@curong/term/colorNameCode24bit', () => {
     test('测试1', () => {
-        // @ts-ignore
-        expect(() => fontColor(123)).toThrow();
         expect(fontColor('xx')).toBe('\u001B[0mxx');
     });
 
