@@ -1,5 +1,3 @@
-import { isString } from '@curong/types';
-
 import { japanese } from './source';
 
 /**
@@ -10,9 +8,5 @@ import { japanese } from './source';
  * @info 日文中包含汉字，所以用该方法验证汉字也返回 `true`
  */
 export default function inJapanese(str: string) {
-    if (!isString(str)) {
-        throw new TypeError(`[inChinese]: str不是一个字符串, "${str}"`);
-    }
-
     return new RegExp(`${japanese}+`).test(str);
 }
