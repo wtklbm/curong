@@ -1,4 +1,4 @@
-import { isStringHave } from '@curong/types';
+import { isZero } from '@curong/types';
 
 import { trimRegSource } from './trimRegSource';
 import { SpecialCharNames, TrimOption } from './types';
@@ -21,7 +21,7 @@ export default function trim(
     options?: TrimOption,
     chars?: SpecialCharNames[]
 ): string {
-    if (!isStringHave(value)) {
+    if (isZero(value.length)) {
         return value;
     }
 
