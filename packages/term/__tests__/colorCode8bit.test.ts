@@ -2,8 +2,6 @@ import { colorCode8bit } from '../src';
 
 describe('@curong/term/colorCode8bit', () => {
     test('测试1', () => {
-        // @ts-ignore
-        expect(() => colorCode8bit('xxx')).toThrow();
         expect(() => colorCode8bit(-1)).toThrow();
         expect(() => colorCode8bit(1.1)).toThrow();
         expect(() => colorCode8bit(256)).toThrow();
