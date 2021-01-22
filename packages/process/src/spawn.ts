@@ -1,6 +1,6 @@
 import { spawn as _spawn, SpawnOptions, ChildProcess } from 'child_process';
 
-import { isArrayHave, isStringHave } from '@curong/types';
+import { isStringHave } from '@curong/types';
 
 import { SpawnResult } from './types/spawn';
 
@@ -19,10 +19,6 @@ export default function spawn(
 ): Promise<SpawnResult> {
     if (isStringHave(args)) {
         args = args.split(/ +/g);
-    }
-
-    if (!isArrayHave(args)) {
-        throw new Error(`[spawn]: args不是一个有效的命令参数, "${args}"`);
     }
 
     const child: ChildProcess = _spawn(command, args, options);
