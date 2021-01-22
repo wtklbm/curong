@@ -1,4 +1,4 @@
-import { isString, isArrayHave, isNull, isEqual } from '@curong/types';
+import { isString, isNull, isEqual } from '@curong/types';
 
 import request from './request';
 
@@ -19,11 +19,6 @@ export default async function queryDNS(
     }
 
     const address: QueryDNSResult = {};
-
-    if (!isArrayHave(hostname)) {
-        return address;
-    }
-
     const requestOptions: RequestOptions = {
         // 使用腾讯
         hostname: '119.29.29.29',
