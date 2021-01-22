@@ -1,5 +1,3 @@
-import { isStringHave } from '@curong/types';
-
 import { email as sourceEmail } from './source';
 
 /**
@@ -11,7 +9,7 @@ import { email as sourceEmail } from './source';
 export default function isEmail(email: string): boolean {
     const emailReg = new RegExp(`^${sourceEmail}$`);
 
-    if (!isStringHave(email) || email.length > 320 || !emailReg.test(email)) {
+    if (email.length > 320 || !emailReg.test(email)) {
         return false;
     }
 
