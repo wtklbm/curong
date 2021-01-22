@@ -3,10 +3,6 @@ import { frontOf } from '../src';
 describe('@curong/string/frontOf', () => {
     test('测试1', () => {
         expect(frontOf).toThrowError();
-        // @ts-ignore
-        expect(() => frontOf('xxx', 'x')).toThrowError();
-        // @ts-ignore
-        expect(() => frontOf('xxx', [12, 'x', /\d/])).toThrowError();
     });
 
     test('测试2', () => {
