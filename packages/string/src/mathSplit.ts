@@ -17,7 +17,7 @@ export default function matchSplit(str: string, reg: RegExp): string[] {
     const res: string[] = [];
     let match: RegExpMatchArray | null = null;
 
-    if (!isZero(str.length) || !isRegExp(reg)) {
+    if (isZero(str.length) || !isRegExp(reg)) {
         return res;
     }
 
