@@ -1,4 +1,4 @@
-import { isUint, isFalse, isArray, isZero } from '@curong/types';
+import { isUint, isFalse, isZero } from '@curong/types';
 
 import toRegExp from './toRegExp';
 import { GenericOptions } from './types/generic';
@@ -21,16 +21,6 @@ export default function behindOf(
     chunks: string[],
     options?: GenericOptions
 ): boolean {
-    if (typeof str !== 'string') {
-        throw new TypeError(`[behindOf]: str不是一个字符串, "${str}"`);
-    }
-
-    if (!isArray(chunks)) {
-        throw new TypeError(
-            `[behindOf]: chunks不是有效字符串数组，"${chunks}"`
-        );
-    }
-
     if (isZero(str.length) || isZero(chunks.length)) {
         return false;
     }
@@ -46,13 +36,7 @@ export default function behindOf(
     }
 
     for (let i = 0, len = chunks.length; i < len; i++) {
-        const chunk = chunks[i];
-
-        if (typeof chunk !== 'string') {
-            throw new TypeError(`[behindOf]: chunk不是一个字符串, "${chunk}"`);
-        }
-
-        if (fn(str, chunk)) {
+        if (fn(str, chunks[i])) {
             return true;
         }
     }
