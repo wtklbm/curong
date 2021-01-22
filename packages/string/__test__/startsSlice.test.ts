@@ -1,11 +1,8 @@
-// @ts-nocheck
 import { startsSlice } from '../src';
 
 describe('@curong/string/startsSlice', () => {
     test('测试1', () => {
         expect(startsSlice).toThrowError();
-        expect(() => startsSlice(null)).toThrowError();
-        expect(() => startsSlice('xxx', 11, { position: 1.1 })).toThrowError();
         expect(() => startsSlice('xxx', 'x', { position: 1.1 })).toThrowError();
         expect(() => startsSlice('', 'x', { position: 1 })).toThrowError();
     });
