@@ -2,10 +2,6 @@ import { colorCode24bit } from '../src';
 
 describe('@curong/term/colorCode24bit', () => {
     test('测试1', () => {
-        // @ts-ignore
-        expect(() => colorCode24bit('xxx')).toThrow();
-        // @ts-ignore
-        expect(() => colorCode24bit(['xxx', 0, 0])).toThrow();
         expect(() => colorCode24bit([-1, 0, 0])).toThrow();
         expect(() => colorCode24bit([0, 0, 1.1])).toThrow();
         expect(() => colorCode24bit([0, 256, 0])).toThrow();
