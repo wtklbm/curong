@@ -1,4 +1,4 @@
-import { isString, isStringHave, isUint } from '@curong/types';
+import { isUint, isNotZero } from '@curong/types';
 
 /**
  * 从字符串中按照从右向左的顺序找到不为空的字符的索引位置
@@ -12,10 +12,6 @@ export default function wordRight(
     str: string,
     position: number = 0
 ): number | null {
-    if (!isString(str)) {
-        throw new TypeError(`[wordRight]: str不是一个字符串, "${str}"`);
-    }
-
     if (!isUint(position)) {
         throw new TypeError(`[wordRight]: position不是索引, "${position}"`);
     }
@@ -25,7 +21,7 @@ export default function wordRight(
 
     let ret = null;
 
-    if (isStringHave(str) && str.length > position) {
+    if (isNotZero(str.length) && str.length > position) {
         if ((ret = str.match(rightSpaceReg))) {
             const value = (ret.index as number) - 1;
 
