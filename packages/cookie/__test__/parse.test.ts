@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { parse } from '../src';
 
 const cookie =
@@ -58,6 +57,7 @@ describe('@curong/cookie/parse', () => {
             return null;
         };
 
+        // @ts-ignore
         expect(() => parse(cookie, decode)).toThrowError();
     });
 
