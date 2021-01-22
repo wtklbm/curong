@@ -1,5 +1,3 @@
-import { isString } from '@curong/types';
-
 import { chkPunctuation } from './source';
 
 /**
@@ -9,9 +7,5 @@ import { chkPunctuation } from './source';
  * @returns 返回验证的结果
  */
 export default function inChkPunctuation(str: string): boolean {
-    if (!isString(str)) {
-        throw new TypeError(`[inChkPunctuation]: str不是一个字符串, "${str}"`);
-    }
-
     return new RegExp(chkPunctuation).test(str);
 }
