@@ -2,8 +2,6 @@ import { shuffle } from '../src';
 
 describe('@curong/array/shuffle', () => {
     test('测试1', () => {
-        // @ts-ignore
-        expect(() => shuffle()).toThrow();
         expect(shuffle([]).length).toBe(0);
     });
 
