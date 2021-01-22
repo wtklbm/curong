@@ -1,4 +1,4 @@
-import { isArray, isUint, isFalse, isZero } from '@curong/types';
+import { isUint, isFalse, isZero } from '@curong/types';
 
 import toRegExpSource from './toRegExpSource';
 import { GenericOptions } from './types/generic';
@@ -20,16 +20,6 @@ export default function notStarts(
     chunks: string[],
     options?: GenericOptions
 ) {
-    if (typeof str !== 'string') {
-        throw new TypeError(`[notStarts]: str不是一个字符串, "${str}"`);
-    }
-
-    if (!isArray(chunks)) {
-        throw new TypeError(
-            `[notStarts]: chunks不是有效字符串数组, "${chunks}"`
-        );
-    }
-
     if (isZero(str.length) || isZero(chunks.length)) {
         return true;
     }
@@ -49,13 +39,7 @@ export default function notStarts(
     }
 
     for (let i = 0, len = chunks.length; i < len; i++) {
-        const chunk = chunks[i];
-
-        if (typeof chunk !== 'string') {
-            throw new TypeError(`[notStarts]: chunk不是一个字符串, "${chunk}"`);
-        }
-
-        if (fn(str, chunk)) {
+        if (fn(str, chunks[i])) {
             return false;
         }
     }
