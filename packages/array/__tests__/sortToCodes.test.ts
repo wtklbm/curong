@@ -2,8 +2,6 @@ import { sortToCodes } from '../src';
 
 describe('@curong/array/sortToCodes', () => {
     test('测试1', () => {
-        // @ts-ignore
-        expect(() => sortToCodes()).toThrow();
         expect(sortToCodes([]).length).toBe(0);
     });
 
