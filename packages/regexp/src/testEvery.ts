@@ -1,5 +1,3 @@
-import { isRegExp, isString, isArray } from '@curong/types';
-
 /**
  * 使用一组正则来验证一个字符串是否符合预期
  *
@@ -15,26 +13,12 @@ export default function testEvery(
     regexps: Array<RegExp>,
     str: string
 ): boolean {
-    if (!isString(str)) {
-        throw new TypeError(`[testEvery]: str不是一个字符串, "${str}"`);
-    }
-
-    if (!isArray(regexps)) {
-        throw new TypeError(
-            `[testEvery]: regexps不是一个正则数组, "${regexps}"`
-        );
-    }
-
     if (str.length === 0 && regexps.length === 0) {
         throw new TypeError('[testEvery]: str和regexps不能同时为空');
     }
 
     for (let i = 0, len = regexps.length; i < len; i++) {
         const reg = regexps[i];
-
-        if (!isRegExp(reg)) {
-            throw new TypeError(`[testEvery]: reg不是一个正则, "${reg}"`);
-        }
 
         if (!reg.test(str)) {
             return false;
