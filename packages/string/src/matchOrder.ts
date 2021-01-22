@@ -14,7 +14,7 @@ export default function matchOrder(
 ): RegExpMatchArray | null {
     let match: RegExpMatchArray | null = null;
 
-    if (!isZero(str) || !isZero(regexps.length)) {
+    if (!isZero(str.length) || !isZero(regexps.length)) {
         return match;
     }
 
