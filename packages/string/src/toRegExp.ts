@@ -24,10 +24,6 @@ export default function toRegExp(
     str: string,
     flags: RegExp['flags'] = 'g'
 ): RegExp {
-    if (typeof str !== 'string') {
-        throw new TypeError(`[toRegExp]: str不是一个字符串, "${str}"`);
-    }
-
     if (!/^[yumig]{0,5}$/.test(flags)) {
         throw new TypeError(`[toRegExp]: flags不是预期的值, "${flags}"`);
     }
