@@ -1,9 +1,4 @@
-import {
-    isRegExp,
-    isString,
-    isFunctionHave,
-    isStringHave
-} from '@curong/types';
+import { isFunctionHave, isStringHave } from '@curong/types';
 
 import { ExecAllCallBack, ExecAllResult, ExecMatch } from './types/matchAll';
 
@@ -84,14 +79,6 @@ export default function execAll(
     let match: RegExpExecArray | null = null;
     let push: ExecAllCallBack;
     let data: ExecMatch | void;
-
-    if (!isRegExp(reg)) {
-        throw new TypeError(`[execAll]: reg不是一个正则, "${reg}"`);
-    }
-
-    if (!isString(str)) {
-        throw new TypeError(`[execAll]: str不是一个字符串, "${str}"`);
-    }
 
     do {
         if (isStringHave(keyOrCallback)) {
