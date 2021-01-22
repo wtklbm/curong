@@ -2,11 +2,6 @@ import { colorNameCode24bit } from '../src';
 
 describe('@curong/term/colorNameCode24bit', () => {
     test('测试1', () => {
-        // @ts-ignore
-        expect(() => colorNameCode24bit('xxx')).toThrow();
-    });
-
-    test('测试2', () => {
         let ret = colorNameCode24bit('red');
 
         expect(Object.keys(ret).length).toBe(2);
