@@ -1,7 +1,7 @@
 import { promisify } from 'util';
 import { exec as _exec, PromiseWithChild } from 'child_process';
 
-import { isArrayHave } from '@curong/types';
+import { isArray } from '@curong/types';
 
 import { ExecOptions } from './types/exec';
 
@@ -19,7 +19,7 @@ export default function exec(
     stdout: string | Buffer;
     stderr: string | Buffer;
 }> {
-    if (isArrayHave(command)) {
+    if (isArray(command)) {
         command = command.join(' ');
     }
 
