@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { quotePair } from '../src';
 
 describe('@curong/string/quotePair', () => {
@@ -39,7 +38,6 @@ describe('@curong/string/quotePair', () => {
     });
 
     test('测试9', () => {
-        expect(() => quotePair(12)).toThrow();
         expect(quotePair('xxx;"')).toBe('"');
         expect(quotePair(`xx 'xx \\ xx'`)).toBe('');
         expect(quotePair(`xxx\\';"`)).toBe("'");
