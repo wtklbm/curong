@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { quoteClosed } from '../src';
 
 describe('@curong/string/quoteClosed', () => {
