@@ -21,14 +21,6 @@ export default function startsSlice(
     chunk: string,
     options?: StartsSlice
 ): string {
-    if (typeof str !== 'string') {
-        throw new TypeError(`[startsSlice]: str不是一个字符串, "${str}"`);
-    }
-
-    if (typeof chunk !== 'string') {
-        throw new TypeError(`[startsSlice]: chunk不是一个字符串, "${chunk}"`);
-    }
-
     const { position: pos = 0, preserve = false, caseSensitivity = true } =
         options || {};
 
