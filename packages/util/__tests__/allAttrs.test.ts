@@ -4,8 +4,6 @@ describe('@curong/util/allAttrs', () => {
     test('测试1', () => {
         expect(allAttrs(null)).toEqual([]);
         expect(allAttrs(undefined)).toEqual([]);
-        // @ts-ignore
-        expect(allAttrs()).toEqual([]);
     });
 
     test('测试2', () => {
