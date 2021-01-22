@@ -1,4 +1,4 @@
-import { isStringHave, isArrayHave } from '@curong/types';
+import { isZero } from '@curong/types';
 
 /**
  * 遍历一组正则表达式来验证一个字符串，当任意一个正则表达式符合字符串时，
@@ -14,7 +14,7 @@ export default function matchOrder(
 ): RegExpMatchArray | null {
     let match: RegExpMatchArray | null = null;
 
-    if (!isStringHave(str) || !isArrayHave(regexps)) {
+    if (!isZero(str) || !isZero(regexps.length)) {
         return match;
     }
 
