@@ -2,8 +2,6 @@ import { copyAttrs } from '../src';
 
 describe('@curong/util/copyAttrs', () => {
     test('测试1', () => {
-        // @ts-ignore
-        expect(copyAttrs()).toBe(undefined);
         expect(copyAttrs(undefined, undefined)).toBe(undefined);
         expect(copyAttrs(null, undefined)).toBe(undefined);
     });
