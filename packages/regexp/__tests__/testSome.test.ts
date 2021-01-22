@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { testSome } from '../src';
 
 describe('@curong/regexp/testSome', () => {
@@ -7,8 +6,7 @@ describe('@curong/regexp/testSome', () => {
     });
 
     test('测试2', () => {
-        // @ts-ignore
-        expect(() => testSome([/\d+/])).toThrowError();
+        expect(testSome([], 'xxx')).toBe(false);
     });
 
     test('测试3', () => {
@@ -36,22 +34,6 @@ describe('@curong/regexp/testSome', () => {
     });
 
     test('测试6', () => {
-        // @ts-ignore
-        expect(() => testSome(123, 'xxx')).toThrowError();
-    });
-
-    test('测试7', () => {
-        const regexps = [/\d+/, 0, /^[\w ]+$/];
-        const str = 'hello 123 world';
-
-        expect(testSome(regexps, str)).toBe(true);
-    });
-
-    test('测试8', () => {
         expect(testSome([/\d+/], '')).toBe(false);
-    });
-
-    test('测试9', () => {
-        expect(testSome([], 'xxx')).toBe(false);
     });
 });
