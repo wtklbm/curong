@@ -1,11 +1,8 @@
-// @ts-nocheck
 import { matchOrder } from '../src';
 
 describe('@curong/string/matchOrder', () => {
     test('测试1', () => {
-        expect(matchOrder()).toBe(null);
         expect(matchOrder('xxx', [])).toBe(null);
-        expect(matchOrder(null, [/\d+/])).toBe(null);
     });
 
     test('测试2', () => {
