@@ -1,6 +1,6 @@
 import { spawn as _spawn, SpawnOptions, ChildProcess } from 'child_process';
 
-import { isStringHave } from '@curong/types';
+import { isString } from '@curong/types';
 
 import { SpawnResult } from './types/spawn';
 
@@ -17,7 +17,7 @@ export default function spawn(
     args: string | string[],
     options: SpawnOptions = {}
 ): Promise<SpawnResult> {
-    if (isStringHave(args)) {
+    if (isString(args)) {
         args = args.split(/ +/g);
     }
 
