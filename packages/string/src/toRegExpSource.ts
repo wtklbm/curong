@@ -5,9 +5,5 @@
  * @returns 返回转义后的字符串
  */
 export default function toRegExpSource(str: string): string {
-    if (typeof str !== 'string') {
-        throw new TypeError(`[toRegExpSource]: str不是一个字符串, "${str}"`);
-    }
-
     return str.replace(/(?=[[\](){}^$.?*+|\\/-])/g, '\\');
 }
