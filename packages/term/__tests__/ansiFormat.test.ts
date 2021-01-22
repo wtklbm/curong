@@ -2,7 +2,6 @@ import { ansiFormat } from '../src';
 
 describe('@curong/term/ansiFormat', () => {
     test('测试1', () => {
-        // @ts-ignore
         expect(ansiFormat()).toEqual({
             set: '',
             reset: ''
