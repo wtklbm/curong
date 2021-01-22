@@ -18,9 +18,7 @@ export default function testEvery(
     }
 
     for (let i = 0, len = regexps.length; i < len; i++) {
-        const reg = regexps[i];
-
-        if (!reg.test(str)) {
+        if (!regexps[i].test(str)) {
             return false;
         }
     }
