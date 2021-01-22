@@ -1,10 +1,9 @@
-// @ts-nocheck
+
 import { wordRight } from '../src';
 
-describe('wtool-string/wordRight', () => {
+describe('@curong/string/wordRight', () => {
     test('测试1', () => {
         expect(wordRight).toThrowError();
-        expect(() => wordRight(null)).toThrowError();
         expect(() => wordRight('xxx', 1.1)).toThrowError();
     });
 
