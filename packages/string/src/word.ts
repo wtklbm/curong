@@ -1,4 +1,4 @@
-import { isStringHave, isUint } from '@curong/types';
+import { isUint, isNotZero } from '@curong/types';
 
 import wordLeft from './wordLeft';
 import wordRight from './wordRight';
@@ -19,10 +19,6 @@ export default function word(
     str: string,
     position: number = 0
 ): WordResult | null {
-    if (typeof str !== 'string') {
-        throw new TypeError(`[word]: str不是一个字符串, "${str}"`);
-    }
-
     if (!isUint(position)) {
         throw new TypeError(`[word]: position不是索引, "${position}"`);
     }
@@ -30,7 +26,7 @@ export default function word(
     const ret: WordResult = { left: null, right: null };
 
     if (
-        isStringHave(str) &&
+        isNotZero(str.length) &&
         str.length > position &&
         isUint((ret.right = wordRight(str, position))) &&
         isUint((ret.left = wordLeft(str, position)))
