@@ -1,7 +1,7 @@
 import { promisify } from 'util';
 import { exec as _exec, PromiseWithChild } from 'child_process';
 
-import { isArrayHave, isStringHave } from '@curong/types';
+import { isArrayHave } from '@curong/types';
 
 import { ExecOptions } from './types/exec';
 
@@ -21,10 +21,6 @@ export default function exec(
 }> {
     if (isArrayHave(command)) {
         command = command.join(' ');
-    }
-
-    if (!isStringHave(command)) {
-        throw new Error(`[exec]: command不是一个有效的命令, "${command}"`);
     }
 
     return promisify(_exec)(command, options!);
