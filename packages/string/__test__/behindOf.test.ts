@@ -3,10 +3,6 @@ import { behindOf } from '../src';
 describe('@curong/string/behindOf', () => {
     test('测试1', () => {
         expect(behindOf).toThrowError();
-        // @ts-ignore
-        expect(() => behindOf('xxx', 'x')).toThrowError();
-        // @ts-ignore
-        expect(() => behindOf('xxx', [12, 'x', /\d/])).toThrowError();
     });
 
     test('测试2', () => {
