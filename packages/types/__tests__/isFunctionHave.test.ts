@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { isFunctionHave } from '../src';
 
 describe('@curong/types/isFunctionHave', () => {
