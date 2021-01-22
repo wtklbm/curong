@@ -2,13 +2,6 @@ import { colorNameCode3bit } from '../src';
 
 describe('@curong/term/colorNameCode3bit', () => {
     test('测试1', () => {
-        // @ts-ignore
-        expect(() => colorNameCode3bit()).toThrow();
-        // @ts-ignore
-        expect(() => colorNameCode3bit('xxx')).toThrow();
-    });
-
-    test('测试2', () => {
         let ret = colorNameCode3bit('red');
 
         expect(Object.keys(ret).length).toBe(2);
