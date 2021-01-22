@@ -1,4 +1,4 @@
-import { isStringHave, isRegExp, isUint } from '@curong/types';
+import { isRegExp, isUint, isZero } from '@curong/types';
 
 /**
  * 使用正则表达式来拆分一个字符串，最后返回拆分后的结果
@@ -17,7 +17,7 @@ export default function matchSplit(str: string, reg: RegExp): string[] {
     const res: string[] = [];
     let match: RegExpMatchArray | null = null;
 
-    if (!isStringHave(str) || !isRegExp(reg)) {
+    if (!isZero(str.length) || !isRegExp(reg)) {
         return res;
     }
 
