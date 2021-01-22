@@ -1,5 +1,3 @@
-import { isString } from '@curong/types';
-
 /**
  * 从一个字符串中获取未闭合的引号
  *
@@ -15,10 +13,6 @@ import { isString } from '@curong/types';
  */
 export default function quotePair(str: string): string {
     let token: string = '';
-
-    if (!isString(str)) {
-        throw new TypeError(`[quotePair]: 参数不是一个字符串, "${str}"`);
-    }
 
     // 判断是不是英文单词后面的 `'`
     const word = /^[a-zA-Z]'[a-zA-Z]{1,2}[^a-zA-Z]/;
