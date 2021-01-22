@@ -15,9 +15,7 @@ export default function testSome(regexps: RegExp[], str: string): boolean {
     }
 
     for (let i = 0, len = regexps.length; i < len; i++) {
-        const reg = regexps[i];
-
-        if (reg.test(str)) {
+        if (regexps[i].test(str)) {
             return true;
         }
     }
