@@ -21,6 +21,7 @@ import rmZeroWidthLeft from './rmZeroWidthLeft';
 import rmZeroWidthRight from './rmZeroWidthRight';
 import startSpacesLength from './startSpacesLength';
 import startsSlice from './startsSlice';
+import startTabsLength from './startTabsLength';
 import toRegExp from './toRegExp';
 import toRegExpSource from './toRegExpSource';
 import trim from './trim';
@@ -64,6 +65,7 @@ export {
     rmZeroWidthRight,
     startSpacesLength,
     startsSlice,
+    startTabsLength,
     toRegExp,
     toRegExpSource,
     trim,
