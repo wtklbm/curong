@@ -8,12 +8,12 @@
  - `bytesLength`: 计算 `UTF-8`、`UTF16` 的字符串编码长度，计算的长度值与 `Buffer.from(str).length` 等同
  - `chars`: 将字符串转换为字符数组
  - `codePointAt`: 计算 `UTF-8`、`UTF16` 的代码点
- - `fromBytes`: 将字符数组转换为字符串
  - `decodeEntity`: 解码包含 `HTML` 实体名称 (`&name;`) 和实体编号 (`&#point;`) 的字符串
  - `decodeEntityByName`: 解码包含 `HTML` 实体名称 (`&name;`) 的字符串
  - `decodeEntityByPoint`: 解码包含 `HTML` 实体编号 (`&#point;`) 的字符串
  - `encodeEntityToName`: 将字符串中的特殊字符编码为 `HTML` 实体名称 (`&name;`)
  - `encodeEntityToPoint`: 将字符串中的特殊字符编码为 `HTML` 实体编号 (`&#point;`)
+ - `fromBytes`: 将字符数组转换为字符串
  - `frontOf`: 从一个字符串的指定索引的前面查找是否包含某个字符串
  - `matchOrder`: 遍历一组正则表达式来验证一个字符串，当任意一个正则表达式符合字符串时，则返回该正则捕获到的结果
  - `matchSplit`: 使用正则表达式来拆分一个字符串，最后返回拆分后的结果
@@ -29,6 +29,7 @@
  - `rmZeroWidth`: 删除字符串中所有的零宽字符
  - `rmZeroWidthLeft`: 删除字符串开头的零宽字符
  - `rmZeroWidthRight`: 删除字符串结尾的零宽字符
+ - `startSpacesLength`: 获取字符串开头所包含的空格的数量
  - `startsSlice`: 判断一个字符串是不是以某个字符串开头，如果是则截取该字符串
  - `toRegExp`: 将一个字符串转换为一个正则表达式，用于在 `str.replace` 中使用
  - `toRegExpSource`: 转义一个字符串，并让这个字符串通过 `new RegExp()` 方法来创建正则表达式
@@ -38,7 +39,6 @@
  - `word`: 从字符串中找到不为空的字符的索引位置
  - `wordLeft`: 从字符串中按照从左向右的顺序找到不为空的字符的索引位置
  - `wordRight`: 从字符串中按照从右向左的顺序找到不为空的字符的索引位置
-
 
 `@curong/string` 主要包含以下的属性:
 
