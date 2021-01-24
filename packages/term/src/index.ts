@@ -10,6 +10,7 @@ import printError from './printError';
 import printInfo from './printInfo';
 import printWarn from './printWarn';
 import ProgressBar from './progressBar';
+import readByQuestion from './readByQuestion';
 
 export * from './sequence';
 export * from './constants';
@@ -30,5 +31,6 @@ export {
     printError,
     printInfo,
     printWarn,
-    ProgressBar
+    ProgressBar,
+    readByQuestion
 };
