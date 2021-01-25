@@ -5,13 +5,7 @@ import { format } from '@curong/term';
 
 import readLnk from './readLnk';
 
-/**
- * @param depthOnce 只获取一层深度的数据
- *   仅仅读取当前的文件夹下的所有内容，相当于readdir方法，不进行文件夹的深度遍历
- */
-export type FileListOptions = {
-    depthOnce: boolean;
-};
+import { FileListOptions } from './types/fileList';
 
 /**
  * 获取一个文件夹的所有文件名的列表
