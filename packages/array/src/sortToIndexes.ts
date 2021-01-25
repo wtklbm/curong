@@ -1,7 +1,7 @@
 import { isZero } from '@curong/types';
 
 /**
- * 以行的长度进行排列，并以升序的排列方式返回行号数组
+ * 以行的长度进行排列，并以升序的排列方式返回索引数组
  *
  * @param lines 要进行排列的行数组
  * @returns 返回排列好的行号数组
@@ -9,11 +9,11 @@ import { isZero } from '@curong/types';
  *
  * ```javascript
  * const lines = ['this is a test.', 'omg', 'hello world.', 'very good'];
- * const codes = sortToCodes(lines);
- * console.log(codes); // [1, 3, 2, 0]
+ * const indexes = sortToIndexes(lines);
+ * console.log(indexes); // [1, 3, 2, 0]
  * ```
  */
-export default function sortToCodes(lines: string[]): number[] {
+export default function sortToIndexes(lines: string[]): number[] {
     if (isZero(lines.length)) {
         return [];
     }

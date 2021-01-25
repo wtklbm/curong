@@ -1,6 +1,6 @@
 import maxLengthIndex from './maxLengthIndex';
 import minLengthIndex from './minLengthIndex';
 import shuffle from './shuffle';
-import sortToCodes from './sortToCodes';
+import sortToIndexes from './sortToIndexes';
 
-export { maxLengthIndex, minLengthIndex, shuffle, sortToCodes };
+export { maxLengthIndex, minLengthIndex, shuffle, sortToIndexes };
