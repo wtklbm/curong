@@ -6,10 +6,11 @@
  * @example
  *
  * ```javascript
- * let b = before(() => console.log('两数相加的结果为：'));
+ * const b = before(() => console.log('两数相加的结果为：'));
  *
- * assert(b(() => 1 + 2) === 3);
- * assert(b(() => 2 + 2) === 4);
+ * // 两数相加的结果为：
+ * // 3
+ * console.log(b(() => 1 + 2));
  * ```
  */
 export default function before(beforeFn: Function) {
