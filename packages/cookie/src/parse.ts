@@ -39,6 +39,21 @@ function getDecode(value: string, decode?: ParseOptions['decode']): string {
  * @param decode 解析字符串的值的函数，回调函数有一个参数。
  * @returns 返回解析好的 `cookie` 对象
  * @throws 如果要解析的字符串不是 `cookie` 字符串，则会抛出异常
+ * @example
+ *
+ * ```javascript
+ * const cookie =
+ *     'htVD_2132_saltkey=UrzaeSMmA; htVD_2132_lastvisit=15797202730; htVD_2132_connect_is_bind=0; htVD_2132_smile=1D1';
+ * const cookieObj = parse(cookie);
+ *
+ * // {
+ * //     htVD_2132_saltkey: 'UrzaeSMmA',
+ * //     htVD_2132_lastvisit: '15797202730',
+ * //     htVD_2132_connect_is_bind: '0',
+ * //     htVD_2132_smile: '1D1'
+ * // }
+ * console.log(cookieObj);
+ * ```
  */
 export default function parse(
     cookie: string,
@@ -84,3 +99,4 @@ export default function parse(
 
     return result;
 }
+
