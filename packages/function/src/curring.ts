@@ -6,7 +6,7 @@
  * @example
  *
  * ```javascript
- * let c = curring((a: number, b: number): number => a + b);
+ * const c = curring((a: number, b: number): number => a + b);
  * console.log(c(1)(2)); // 3
  * ```
  *
