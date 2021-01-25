@@ -17,6 +17,25 @@ import { CreateOptions } from './types/create';
  * @param options `cookie` 的属性的配置对象
  * @returns 返回生成好的 `cookie` 字符串
  * @throw 如果参数不是预期的，则会抛出异常
+ * @example
+ *
+ * ```javascript
+ * const cookie = create('wtklbm', 'value', {
+ *     encode(value) {
+ *         return value;
+ *     },
+ *     maxAge: 10,
+ *     domain: '/',
+ *     path: '/xxx',
+ *     expires: new Date('2020-01-01'),
+ *     httpOnly: true,
+ *     secure: true,
+ *     sameSite: true
+ * });
+ *
+ * // 'wtklbm=value; Max-Age=10; Domain=/; Path=/xxx; Expires=Wed, 01 Jan 2020 00:00:00 GMT; HttpOnly; Secure; SameSite=Strict'
+ * console.log(cookie);
+ * ```
  */
 export default function create(
     name: string,
