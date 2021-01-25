@@ -4,7 +4,7 @@ import { range } from '@curong/number';
 import { SleepRunOptions } from './types/sleepRun';
 
 const padZero = (num: number | string) => num.toString().padStart(2, '0');
-const initDateTime = new Date('2000-01-01 00:00:00').getTime();
+const initTime = new Date('2000-01-01 00:00:00').getTime();
 
 /**
  * 等待一段时间后执行一个同步或异步的函数
@@ -19,6 +19,29 @@ const initDateTime = new Date('2000-01-01 00:00:00').getTime();
  * - `show` 是否显示等待时间，默认为 `false`
  *
  * @returns 返回一个Promise对象的成功态
+ * @example ````
+ *
+ * ### 传递一个数字
+ *
+ * ``` javascript
+ * const f = () => console.log('hello');
+ *
+ * // 等待 `10ms` 后执行函数
+ * sleepRun(f, 10);
+ * ```
+ *
+ * ### 传递一个对象
+ *
+ * ```javascript
+ * const f = () => console.log('hello');
+ *
+ * // 从 3s 或 8s 间生成一个随机时间，等待并执行函数
+ * sleepRun(f, {
+ *     start: 3e3,
+ *     end: 8e3,
+ *     show: true
+ * });
+ * ```
  */
 export default function sleepRun<T>(
     handler: () => T,
@@ -43,7 +66,7 @@ export default function sleepRun<T>(
     }
 
     if (isTrue(show) && timeout > 0) {
-        const date = new Date(initDateTime + timeout);
+        const date = new Date(initTime + timeout);
 
         if (timeout < 1e3) {
             console.log(`等待 ${date.getMilliseconds()} 毫秒`);
