@@ -7,7 +7,7 @@ import {
     specialChars
 } from './characters';
 
-import { SpecialCharNames, TrimOption } from './types';
+import { SpecialCharNames, TrimOptions } from './types';
 
 /**
  * 根据选项生成可以删除字符串特定字符串的正则表达式字符串
@@ -22,7 +22,7 @@ import { SpecialCharNames, TrimOption } from './types';
  * @returns 返回处理好的正则表达式字符串
  */
 export const trimRegSource = (
-    options: TrimOption = {},
+    options: TrimOptions = {},
     chars?: SpecialCharNames[]
 ): string => {
     const {

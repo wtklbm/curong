@@ -1,7 +1,7 @@
 import { isZero } from '@curong/types';
 
 import { trimRegSource } from './trimRegSource';
-import { SpecialCharNames, TrimOption } from './types';
+import { SpecialCharNames, TrimOptions } from './types';
 
 /**
  * 删除字符串开头的特定字符
@@ -18,7 +18,7 @@ import { SpecialCharNames, TrimOption } from './types';
  */
 export default function trimLeft(
     value: string,
-    options?: TrimOption,
+    options?: TrimOptions,
     chars?: SpecialCharNames[]
 ): string {
     if (isZero(value.length)) {

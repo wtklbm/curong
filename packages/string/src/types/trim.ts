@@ -1,4 +1,4 @@
-export type TrimOption = {
+export type TrimOptions = {
     /** 是否删除空格 */
     space?: boolean;
 
