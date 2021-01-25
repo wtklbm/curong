@@ -10,7 +10,7 @@ import { isIntSafe } from '@curong/types';
  * ### 常规示例
  *
  * ```javascript
- * let r = reach(3, () => 10);
+ * const r = reach(3, () => 10);
  * console.log(r()()()); // 10
  * ```
  *
