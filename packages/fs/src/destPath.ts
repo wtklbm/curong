@@ -18,7 +18,7 @@ import isDir from './isDir';
  * @param {string} desDir 目标文件夹(不包含文件名和后缀)
  * @param options  配置参数
  *
- *  - `isMakeDir` 是否自动创建目标文件夹
+ *  - `isMakeDir` 是否自动创建目标文件夹，默认为 `false`
  *
  * @return 返回该文件的相当于目标文件夹的路径
  */
