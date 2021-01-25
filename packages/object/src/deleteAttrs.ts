@@ -8,6 +8,14 @@ import { ObjectType } from './types/objectType';
  * @param obj 对象
  * @param keys 要从对象中的删除的属性字符串数组
  * @returns 返回处理好的对象
+ * @example
+ *
+ * ```javascript
+ * let obj = { a: 1, b: 2, c: 3 };
+ * // 请在删除属性时接受该函数的返回值
+ * obj = deleteAttrs(obj, ['b']);
+ * console.log(obj); // { a: 1, c: 3 }
+ * ```
  */
 export default function deleteAttrs<T extends ObjectType>(
     obj: T,
