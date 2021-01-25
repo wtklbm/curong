@@ -5,6 +5,12 @@ import { isZero, isEqual } from '@curong/types';
  *
  * @param lines 字符串数组
  * @returns 如果数组不为空则返回找到的最小长度的索引，否则返回 `null`
+ * @example
+ *
+ * ```javascript
+ * const lines = ['hello.', 'this is a test.', 'very match.'];
+ * console.log(maxLengthIndex(lines)); // 0
+ * ```
  */
 export default function minLengthIndex(lines: string[]): number | null {
     const linesLength = lines.length;
