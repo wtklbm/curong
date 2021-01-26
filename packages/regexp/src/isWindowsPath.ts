@@ -8,8 +8,15 @@ import { windowsPath } from './source';
  * - 扩展的路径具有 `32767 - 12` 的路径长度。默认为 `false`
  * - 普通的路径长度为 `260 - 12` 个
  * @returns 是则返回 `true`，否则为 `false`
+ * @example
  *
- * 路径解析规则：
+ * ```javascript
+ * const ret = isWindowsPath('C:\\Program Files\\Common Files\\system');
+ * console.log(ret); // true
+ * ```
+ *
+ * # 路径解析规则
+ *
  * - 格式：可选的长路径前缀(4)，驱动器号(1)，冒号(2)，反斜杠(1)，由反斜杠分隔的名称组件(255), 终止的空字符(1)
  * - 最大总路径长度为 `32767` 个字符
  * - 不能包含保留字 `[<>:"/\\|?*]|CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9]`
