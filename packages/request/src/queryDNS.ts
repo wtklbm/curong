@@ -10,6 +10,14 @@ import { QueryDNSResult } from './types/queryDNS';
  *
  * @param hostname 要查询的主机地址
  * @returns 返回查询到的主机地址所对应的 `DNS` 对象
+ * @example
+ *
+ * ```javascript
+ * const ret = await queryDNS('github.com');
+ *
+ * // { 'github.com': ['13.250.177.223'] };
+ * console.log(ret);
+ * ```
  */
 export default async function queryDNS(
     hostname: string | string[]
