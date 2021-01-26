@@ -12,6 +12,29 @@ import { ExecAllCallBack, ExecAllResult, ExecMatch } from './types/matchAll';
  * @param str 原始字符串，如果需要全局捕获则增加 `g` 选项
  * @param keyOrCallback 捕获到的对象中的属性名或者包含一个参数的回调函数
  * @return 返回经过处理的捕获到的内容
+ * @example ````
+ *
+ * # 将捕获到的值放入数组中
+ *
+ * ```javascript
+ * const str = '123abc123';
+ * const ret = execAll(/\d+/g, str, '0');
+ *
+ * console.log(ret); // [ '123', '123' ];
+ * ```
+ *
+ * # 自定义处理逻辑
+ *
+ * ```javascript
+ * const str = '123abc123';
+ * const numbers = [];
+ *
+ * execAll(/\d+/g, str, match => {
+ *     numbers.push(parseInt(match[0]));
+ * });
+ *
+ * console.log(numbers); // [ 123, 123 ];
+ * ```
  *
  * ### 1. 如果只想保留捕获到的某一个属性，那么属性名可能为以下的值:
  *
