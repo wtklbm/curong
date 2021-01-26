@@ -16,6 +16,21 @@ import { WindowsTaskListResult } from './types/windowsTaskList';
  * - `session` 会话
  *   - `name` 会话名称
  *   - `id` 会话编号
+ *
+ * @example
+ *
+ * ```javascript
+ * const task = await findWindowsTask('node.exe');
+ * // [
+ * //     {
+ * //         imageName: 'node.exe',
+ * //         pid: '7444',
+ * //         memusage: '28732',
+ * //         session: { name: 'Console', id: '1' }
+ * //     }
+ * // ]
+ * console.log(task);
+ * ```
  */
 export default async function findWindowsTask(
     imageName: string
