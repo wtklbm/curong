@@ -12,6 +12,13 @@ import { isRegExp, isUint, isZero } from '@curong/types';
  * @param reg 要使用的正则表达式
  * @returns 如果成功匹配则返回字符串拆分后的结果，否则返回空数组。
  *          如果返回的是空数组，那么在解构值的时候就需要判断值是否是 `undefined` 了。
+ *
+ * @example
+ *
+ * ```javascript
+ * const ret = matchSplit('wtklbm123abc', /\d+/);
+ * console.log(ret); // [ 'wtklbm', '123', 'abc' ]
+ * ```
  */
 export default function matchSplit(str: string, reg: RegExp): string[] {
     const res: string[] = [];
