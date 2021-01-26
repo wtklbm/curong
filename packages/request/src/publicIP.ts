@@ -12,6 +12,14 @@ import { publicIpResult } from './types/publicIP';
  *
  * @returns 返回获取到的公共 `IP` 地址和城市信息对象
  * @throws 如果请求失败或者请求的数据格式不正确会抛出异常
+ * @example
+ *
+ * ```javascript
+ * const ret = await publicIP();
+ *
+ * // { cip: '89.163.224.142', cid: 'DE', cname: 'GERMANY' }
+ * console.log(ret);
+ * ```
  */
 export default async function publicIP(): Promise<publicIpResult> {
     const hostname = 'pv.sohu.com';
