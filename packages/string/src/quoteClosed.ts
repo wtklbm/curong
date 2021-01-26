@@ -12,6 +12,12 @@
  * @param str 要检查的字符串
  *
  * @returns 如果引号完全闭合则返回空字符串，否则返回从后向前找到的第一个未闭合的单个引号
+ * @example
+ *
+ * ```javascript
+ * const ret = quoteClosed('"xxx"}"');
+ * console.log(ret); // '"'
+ * ```
  */
 export default function quoteClosed(str: string) {
     let token: string = '';
