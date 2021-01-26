@@ -8,6 +8,16 @@
  * - 如果 `regexps` 为空并且 `str` 不为空，则返回 `false`
  * - 如果 `regexps` 不为空并且 `str` 为空，则返回 `false`
  * - 如果 `regexps` 为空并且 `str` 为空，则报错
+ *
+ * @example
+ *
+ * ```javascript
+ * const regexps = [/\d+/, /^[abc]+$/];
+ * const str = 'hello 123 world';
+ * const ret = testSome(regexps, str);
+ *
+ * console.log(ret); // true
+ * ```
  */
 export default function testSome(regexps: RegExp[], str: string): boolean {
     if (str.length === 0 && regexps.length === 0) {
