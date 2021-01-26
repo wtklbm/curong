@@ -7,6 +7,12 @@ import { isWindows } from './platform';
  *
  * @param command 要执行的命令的名字
  * @returns 返回命令的可执行字符串
+ * @example
+ *
+ * ```javascript
+ * const cmd = appendCmd('npm');
+ * console.log(cmd); // "npm.cmd"
+ * ```
  */
 export default function appendCmd(command: string) {
     return isWindows ? command + '.cmd' : command;
