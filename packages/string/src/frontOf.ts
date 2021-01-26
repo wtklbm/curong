@@ -14,7 +14,18 @@ import { GenericOptions } from './types/generic';
  * - `caseSensitivity` 是否区分大小写
  *
  * @returns 如果在截取的从索引 `0` 到索引 `position` 的位置的字符串中找到的某个字符串，
- * 只要有一个结果返回 `true`，那么结果就是 `true`，否则返回 `false`。
+ *   只要有一个结果返回 `true`，那么结果就是 `true`，否则返回 `false`。
+ *
+ * @example
+ *
+ * ```javascript
+ * const ret = frontOf('this X ABC is xxx aaa bbb', ['a', 'b', 'c', 'x'], {
+ *     position: 5,
+ *     caseSensitivity: false
+ * });
+ *
+ * console.log(ret); // true
+ * ```
  */
 export default function frontOf(
     str: string,
