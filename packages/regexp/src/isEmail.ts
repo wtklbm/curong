@@ -5,6 +5,12 @@ import { email as sourceEmail } from './source';
  *
  * @param email 要判断的邮箱字符串
  * @returns 是则返回 `true`，否则为 `false`
+ * @example
+ *
+ * ```javascript
+ * const ret = isEmail('wtklbm@gmail.com');
+ * console.log(ret); // true
+ * ```
  */
 export default function isEmail(email: string): boolean {
     const emailReg = new RegExp(`^${sourceEmail}$`);
