@@ -7,7 +7,14 @@ import codePointAt from './codePointAt';
  *
  * @param value 要计算编码长度的字符串
  * @returns 如果该字符串符合 `UTF16` 编码的代码点的计算规则，
- * 则返回计算好的编码长度，否则返回 `null`。
+ *   则返回计算好的编码长度，否则返回 `null`。
+ *
+ * @example
+ *
+ * ```javascript
+ * const ret = bytesLength('中国');
+ * console.log(ret); // 6
+ * ```
  */
 export default function bytesLength(value: string): number | null {
     if (isZero(value.length)) {
