@@ -6,6 +6,12 @@ const startSpacesReg = /^ +/;
  *
  * @param str 查找哪个字符串中的空格
  * @returns 返回字符串开头所找到的空格数
+ * @example
+ *
+ * ```javascript
+ * const ret = startSpacesLength(' +');
+ * console.log(ret); // 1
+ * ```
  */
 export default function startSpacesLength(str: string): number {
     const match = str.match(startSpacesReg);
