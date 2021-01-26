@@ -7,6 +7,14 @@ import { isZero } from '@curong/types';
  * @param str 要查找的字符串
  * @param regexps 正则数组
  * @returns 返回捕获到的结果或者是 `null`
+ * @example
+ *
+ * ```javascript
+ * const ret = matchOrder('wtklbm123abc', [/\d+/, /\w+/]);
+ *
+ * // [ '123', index: 6, input: 'wtklbm123abc', groups: undefined ]
+ * console.log(ret);
+ * ```
  */
 export default function matchOrder(
     str: string,
