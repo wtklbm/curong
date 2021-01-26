@@ -8,6 +8,12 @@ import { isUint } from '@curong/types';
  * @param value 字符串
  * @param index 计算字符串中的哪个位置的代码点
  * @returns 如果有代码点则返回代码点，否则返回 `null`
+ * @example
+ *
+ * ```javascript
+ * const ret = codePointAt('中国', 1);
+ * console.log(ret); // 22269
+ * ```
  */
 export default function codePointAt(
     value: string = '',
