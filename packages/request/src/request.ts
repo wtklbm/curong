@@ -40,11 +40,54 @@ import { RequestOptions, RequestHandler, RequestResult } from './types/request';
  * - `data` 接收到响应体之后的回调函数，方法签名为:
  *   `( chunk: any, res: IncomingMessage, options: RequestOptions ) => true | void;`
  *
+ * @example
+ *
+ * ```javascript
+ * const requestOpts: RequestOptions = {
+ *     hostname: 'baidu.com',
+ *     path: '/',
+ *     method: 'GET',
+ *     https: true,
+ *     query: {
+ *         s: 'node.js'
+ *     },
+ *     headers: {
+ *         'Cache-Control': 'no-cache'
+ *     },
+ *     timeout: 1e3
+ * };
+ * const ret = await request(requestOpts, {
+ *     header(res, _options) {
+ *         // 打开网页错误了
+ *         if (!/^(2\d{2})|(30[24])$/.test(res.statusCode!.toString())) {
+ *             // 返回 `true` 时会关闭连接
+ *             return true;
+ *         }
+ *     },
+ *     data(chunk, _res, _options) {
+ *         console.log(chunk);
+ *     }
+ * });
+ *
+ * // {
+ * //     config: {},
+ * //     data: Buffer,
+ * //     error: null,
+ * //     response: IncomingMessage
+ * // }
+ * console.log(ret);
+ * ```
+ *
  * @todo
+ *
  * - 支持跨域
  * - 支持 `Ajax` 和 `fetch`
  * - 删除 `querystring`，支持 `body` 参数嵌套
  * - 处理响应头，避免连接的状态挂起
+ *
+ * @bug
+ *
+ *  - 响应头属性的大小写问题，避免同时出现大写和小写的情况发生
  */
 export default function request(
     options: RequestOptions,
