@@ -5,6 +5,12 @@ import { likeSpaceRightReg } from './characters';
  *
  * @param value 要删除字符的字符串
  * @returns 返回处理好的字符串
+ * @example
+ *
+ * ```javascript
+ * const ret = rmLikeSpaceRight(`\u3000\u3000x\u3000xx\u3000\u3000`);
+ * console.log(ret); // '\u3000\u3000x\u3000xx'
+ * ```
  */
 export default function rmLikeSpaceRight(value: string): string {
     return value.replace(likeSpaceRightReg, '');
