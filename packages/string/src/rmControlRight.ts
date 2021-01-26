@@ -5,6 +5,12 @@ import { controlRightReg } from './characters';
  *
  * @param value 要删除字符的字符串
  * @returns 返回处理好的字符串
+ * @example
+ *
+ * ```javascript
+ * const ret = rmControlRight(`\r\r\nxx\vx\t\n`);
+ * console.log(ret); // '\r\r\nxx\vx'
+ * ```
  */
 export default function rmControlRight(value: string): string {
     return value.replace(controlRightReg, '');
