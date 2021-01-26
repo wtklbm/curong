@@ -5,6 +5,12 @@ import { uri as sourceURI } from './source';
  *
  * @param uri 要判断的连接地址
  * @returns 是则返回 `true`，否则为 `false`
+ * @example
+ *
+ * ```javascript
+ * const ret = isURI('https://www.wtklbm.com?name=wtklbm&age=29#good');
+ * console.log(ret); // true
+ * ```
  *
  * @info 各个浏览器对 `HTTP` 连接的长度都有所限制，其中最小的是两千多个，
  * 为了兼容所有的浏览器，所以这里规定两千之内的长度为有效的长度。
