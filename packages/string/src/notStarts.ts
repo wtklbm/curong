@@ -14,6 +14,16 @@ import { GenericOptions } from './types/generic';
  * - `caseSensitivity` 是否区分大小写
  *
  * @returns 如果不是以某些字符串开头则返回 `true`， 否则返回 `false`
+ * @example
+ *
+ * ```javascript
+ * const ret = notStarts('x x x', ['X', 'a', 'b'], {
+ *     position: 2,
+ *     caseSensitivity: false
+ * });
+ *
+ * console.log(ret); // false
+ * ```
  */
 export default function notStarts(
     str: string,
