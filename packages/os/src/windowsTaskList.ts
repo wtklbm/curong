@@ -15,6 +15,23 @@ import { WindowsTaskListResult } from './types/windowsTaskList';
  * - `session` 会话
  *   - `name` 会话名称
  *   - `id` 会话编号
+ *
+ * @example
+ *
+ * ```javascript
+ * const tasks = await windowsTaskList();
+ * // [
+ * //     {
+ * //         imageName: 'System Idle Process',
+ * //         pid: '0',
+ * //         memusage: '8',
+ * //         session: { name: 'Services', id: '0' }
+ * //     },
+ * //
+ * //     // ...
+ * // ]
+ * console.log(tasks);
+ * ```
  */
 export default async function windowsTaskList(): Promise<
     WindowsTaskListResult
