@@ -10,6 +10,12 @@
  *
  * @param str 要验证的字符串
  * @returns 如果引号闭合则返回空字符串，否则返回从前向后找到的第一个未闭合的单个引号
+ * @example
+ *
+ * ```javascript
+ * const ret = quotePair(`"this is a i\\"m for ok."/**`);
+ * console.log(ret); ''
+ * ```
  */
 export default function quotePair(str: string): string {
     let token: string = '';
