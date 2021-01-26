@@ -7,6 +7,12 @@ import rmLikeSpaceRight from './rmLikeSpaceRight';
  *
  * @param value 要删除字符的字符串
  * @returns 返回处理好的字符串
+ * @example
+ *
+ * ```javascript
+ * const ret = rmLikeSpace(`\u00A0\u00A0x\u00A0xx\u00A0\u00A0`);
+ * console.log(ret); // 'x xx'
+ * ```
  */
 export default function rmLikeSpace(value: string): string {
     return rmLikeSpaceLeft(rmLikeSpaceRight(value)).replace(likeSpaceReg, ' ');
