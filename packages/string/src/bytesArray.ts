@@ -7,6 +7,12 @@ import { codePointAt } from '.';
  *
  * @param value 要转换的字符串
  * @returns 返回转换好的字节数组
+ * @example
+ *
+ * ```javascript
+ * const ret = bytesArray('中国');
+ * console.log(ret); // [ 228, 184, 173, 229, 155, 189 ]
+ * ```
  */
 export default function bytesArray(value: string): number[] {
     const buffers = [];
