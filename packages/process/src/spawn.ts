@@ -11,6 +11,20 @@ import { SpawnResult } from './types/spawn';
  * @param args 执行命令时传递的参数列表
  * @param  options 配置对象
  * @bug 目前还不支持在控制台输出颜色，也就是会产生颜色丢失的问题
+ * @example
+ *
+ * ```javascript
+ * const ret = await spawn('node', ['-v']);
+ *
+ * // {
+ * //     pid: 3484,
+ * //     output: [ /* ... *​/ ],
+ * //     stdout: { /* ... *​/ },
+ * //     stderr: { /* ... *​/ },
+ * //     status: 0
+ * // }
+ * console.log(ret);
+ * ```
  */
 export default function spawn(
     command: string,
