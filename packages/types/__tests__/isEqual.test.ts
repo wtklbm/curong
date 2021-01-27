@@ -1,4 +1,3 @@
-
 import { isEqual } from '../src';
 
 describe('@curong/types/isEqual', () => {
