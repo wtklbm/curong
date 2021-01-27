@@ -5,7 +5,7 @@ import { AnsiFormatOptions, AnsiFormatResult } from './types/ansiFormat';
 /**
  * 使用 `ANSI` 转义序列来格式化一段在终端使用的文本字符串
  *
- * @param options 格式化选项
+ * @param options 格式化选项，默认为 `{}`
  *
  * - `bold`: 文字是否加粗或高亮。有的终端是实现加粗效果，有的终端是实现高亮效果(即浅色显示前景色)
  * - `dim`: 文字是否弱化(变暗变灰)。未广泛支持
