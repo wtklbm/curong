@@ -6,6 +6,10 @@ import { isUint, isNotZero } from '@curong/types';
  * @param str 字符串
  * @param position 偏移位置索引
  * @returns 返回右侧的字符的索引位置，如果没有找到字符，则返回 `null`
+ * @throws
+ *
+ * - 如果 `position` 不是索引，则会抛出异常
+ *
  * @info 依据 `含头不含尾` 规则，在使用该索引调用 `slice` 方法时，需要进行加一操作
  * @example
  *
