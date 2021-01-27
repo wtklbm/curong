@@ -18,6 +18,22 @@ import { AnsiFormatOptions, AnsiFormatResult } from './types/ansiFormat';
  * - `crossedOut`:  文字是否划除。字符清晰，但标记为删除。未广泛支持
  *
  * @returns 返回格式化代码，包含设置代码和恢复设置代码
+ * @example
+ *
+ * ```javascript
+ * const ret = ansiFormat({
+ *     bold: true,
+ *     italic: true,
+ *     blink: true,
+ *     reverse: true
+ * });
+ *
+ * // {
+ * //     set: '1;3;5;7',
+ * //     reset: '22;23;25;27'
+ * // }
+ * console.log(ret);
+ * ```
  */
 export default function ansiFormat(
     options: AnsiFormatOptions = {}
