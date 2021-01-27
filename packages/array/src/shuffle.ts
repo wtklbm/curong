@@ -5,7 +5,6 @@ import { isZero } from '@curong/types';
  *
  * @param value 要打乱的数组
  * @returns 返回被打乱的数组
- * @throw 如果传递的参数不是则会抛出异常
  * @example
  *
  * ```javascript
