@@ -13,4 +13,3 @@
 export default function toRegExpSource(str: string): string {
     return str.replace(/(?=[[\](){}^$.?*+|\\/-])/g, '\\');
 }
-
