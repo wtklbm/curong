@@ -15,6 +15,10 @@ import { WordResult } from './types/word';
  * - `left` 左侧的索引位置
  * - `right` 右侧的索引位置
  *
+ * @throws
+ *
+ * - 如果 `position` 不是索引，则会抛出异常
+ *
  * @example
  *
  * ```javascript
