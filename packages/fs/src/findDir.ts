@@ -72,6 +72,9 @@ async function findDirCall(
  *
  * @param pathString 当前的文件夹
  * @param folders 要查找的文件夹的名字的数组
+ * @throws
+ *
+ * - 如果 `pathString` 为空字符串，则会抛出异常
  */
 export default async function findDir(
     pathString: string,
@@ -89,14 +92,6 @@ export default async function findDir(
 
     if (isStringHave(folders)) {
         folders = [folders];
-    }
-
-    if (!isArrayHave(folders)) {
-        throw format({
-            name: 'findDir',
-            message: 'folders不是一个有效的字符串数组',
-            data: { folders }
-        });
     }
 
     await findDirCall(pathString, folders, pathStrings);
