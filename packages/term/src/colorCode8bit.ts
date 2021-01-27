@@ -7,6 +7,10 @@ import { ColorCodeResult } from './types/color';
  *
  * @param colorCode 从0到255的任意数字
  * @returns 返回生成好的前景色和背景色终端代码
+ * @throws
+ *
+ * - 如果 `colorCode` 不是有效数字则会抛出异常
+ *
  * @example
  *
  * ```javascript
