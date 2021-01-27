@@ -8,6 +8,10 @@ import { COLORS_CODE, TERMINAL_COLOR_MAP } from './constants';
  *
  * @param colorName 颜色名
  * @returns 返回生成好的终端代码，包含前景色代码和背景色代码
+ * @throws
+ *
+ * - 如果 `colorName` 不是有效颜色值，则会抛出异常
+ *
  * @example
  *
  * ```javascript
