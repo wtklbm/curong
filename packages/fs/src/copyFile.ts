@@ -15,6 +15,10 @@ import { CopyFileOptions } from './types/copyFile';
  * @param filePath 当前文件的路径，这个是绝对路径(有文件名和后缀)
  * @param srcDir 源文件夹，为了实现多级复制，所以传递了来源(不包含文件名和后缀)
  * @param desDir 目标文件夹(不包含文件名和后缀)
+ * @param options
+ *
+ * - `forcibly` 是否强制写入，默认为 `true`
+ *
  * @return 如果出错，则控制台返回一个错误消息，否则返回复制好后的该文件的绝对路径
  * @throws
  *
