@@ -8,6 +8,18 @@ import { COLORS_CODE, TERMINAL_COLOR_MAP } from './constants';
  *
  * @param colorName 颜色名
  * @returns 返回生成好的终端代码，包含前景色代码和背景色代码
+ * @example
+ *
+ * ```javascript
+ * const ret = colorNameCode24bit('red');
+ *
+ * // {
+ * //     foreground: '38;2;222;56;43',
+ * //     background: '48;2;222;56;43'
+ * // }
+ * console.log(ret);
+ * ```
+ *
  * @info
  *
  * ### 并不是所有的系统平台都支持终端颜色代码
