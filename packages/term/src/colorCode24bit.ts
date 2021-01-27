@@ -7,6 +7,11 @@ import { ColorCodeResult } from './types/color';
  *
  * @param colorCodes 长度为3的 `RGB` 数组，数组的每一项依次表示为 `red`, `green`, `blue`，值是从0到255的任意数字
  * @returns 返回生成好的前景色和背景色终端代码
+ * @throws
+ *
+ * - 如果 `colorCodes` 不是一个有效RGB数组，则会抛出异常
+ * - 如果 `colorCode` 不是一个有效数字，则会抛出异常
+ *
  * @example
  *
  * ```javascript
