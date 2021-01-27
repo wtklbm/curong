@@ -7,6 +7,7 @@ import { COLORS_CODE, TERMINAL_COLOR_MAP } from './constants';
  * 通过颜色名生成24位的终端颜色代码
  *
  * @param colorName 颜色名
+ * @param terminalType 终端的类型，默认为 `Ubuntu`
  * @returns 返回生成好的终端代码，包含前景色代码和背景色代码
  * @throws
  *
