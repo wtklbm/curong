@@ -1,4 +1,4 @@
-import { isIntSafe } from '@curong/types';
+import { isUintSafe } from '@curong/types';
 
 /**
  * 当函数执行到达指定次数后执行回调函数
@@ -41,7 +41,7 @@ import { isIntSafe } from '@curong/types';
  * 高阶函数中包含柯里化，柯理化的好处是可以保留参数，它非常像 `bind` 方法。
  */
 export default function reach<T>(count: number, callback: () => T): () => any {
-    if (!isIntSafe(count)) {
+    if (!isUintSafe(count)) {
         throw new TypeError('[reach]: count 不是大于或等于0的安全整数');
     }
 
