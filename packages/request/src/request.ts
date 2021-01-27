@@ -40,6 +40,10 @@ import { RequestOptions, RequestHandler, RequestResult } from './types/request';
  * - `data` 接收到响应体之后的回调函数，方法签名为:
  *   `( chunk: any, res: IncomingMessage, options: RequestOptions ) => true | void;`
  *
+ * @throws
+ *
+ * - 如果 `hostname` 为空，则会抛出异常
+ *
  * @example
  *
  * ```javascript
