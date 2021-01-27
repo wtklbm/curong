@@ -16,7 +16,12 @@ import { CreateOptions } from './types/create';
  * @param value 值
  * @param options `cookie` 的属性的配置对象
  * @returns 返回生成好的 `cookie` 字符串
- * @throw 如果参数不是预期的，则会抛出异常
+ * @throws
+ *
+ * - 如果 `name` 的值不是预期的，则会抛出异常
+ * - 如果 `value` 的值不是预期的，则会抛出异常
+ * - 如果 `encode` 不是带参数的函数，则会抛出异常
+ *
  * @example
  *
  * ```javascript
