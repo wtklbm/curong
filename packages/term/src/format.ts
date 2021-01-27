@@ -171,6 +171,44 @@ function makeInfo(info: ForMatInfo) {
  *   - `dividers` 是否显示分割线
  *
  * @returns 返回格式化好的字符串文本
+ * @example
+ *
+ * ```javascript
+ * const ret = format({
+ *     type: 'info',
+ *     title: '这是标题',
+ *     message: '这是信息',
+ *     code: 500,
+ *     data: {
+ *         a: 1,
+ *         b: {
+ *             c: 'xxx'
+ *         },
+ *         d: ['xxx'],
+ *         e: new Date('2020-01-01')
+ *     },
+ *     date: false,
+ *     stack: false
+ * });
+ *
+ * // \u001B[38;5;15;48;5;2m INFO \u001B[39;49m \u001B[38;5;2m这是标题\u001B[39m
+ * // --------------------------------------------------------------------------------
+ * // \u001B[38;5;15;48;5;6m 消息 \u001B[39;49m 这是信息
+ * // \u001B[38;5;15;48;5;6m 代码 \u001B[39;49m \u001B[33m500\u001B[39m
+ * // \u001B[38;5;15;48;5;6m 数据 \u001B[39;49m {
+ * //     a: \u001B[33m1\u001B[39m,
+ * //     b: {
+ * //         c: \u001B[32m'xxx'\u001B[39m
+ * //     },
+ * //     d: [
+ * //         \u001B[32m'xxx'\u001B[39m,
+ * //         [length]: \u001B[33m1\u001B[39m
+ * //     ],
+ * //     e: \u001B[35m2020-01-01T00:00:00.000Z\u001B[39m
+ * // }
+ * // --------------------------------------------------------------------------------
+ * console.log(ret);
+ * ```
  */
 export default function format(info: ForMatInfo, options?: ForMatOptions) {
     if (!isObjectHave(info)) {
