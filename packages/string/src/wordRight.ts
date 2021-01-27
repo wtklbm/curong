@@ -4,7 +4,7 @@ import { isUint, isNotZero } from '@curong/types';
  * 从字符串中按照从右向左的顺序找到不为空的字符的索引位置
  *
  * @param str 字符串
- * @param position 偏移位置索引
+ * @param position 偏移位置索引，默认为 0
  * @returns 返回右侧的字符的索引位置，如果没有找到字符，则返回 `null`
  * @throws
  *
