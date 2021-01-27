@@ -10,8 +10,8 @@ import { GenericOptions } from './types/generic';
  * @param chunks 要检测哪些字符串
  * @param options 配置参数
  *
- * - `position` 偏移位置索引，从该索引的前面找
- * - `caseSensitivity` 是否区分大小写
+ * - `position` 偏移位置索引，从该索引的前面找，没有默认值
+ * - `caseSensitivity` 是否区分大小写，默认为 `true`
  *
  * @returns 如果在截取的从索引 `0` 到索引 `position` 的位置的字符串中找到的某个字符串，
  *   只要有一个结果返回 `true`，那么结果就是 `true`，否则返回 `false`。
