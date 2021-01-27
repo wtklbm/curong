@@ -1,7 +1,7 @@
 import { promises } from 'fs';
 import { dirname } from 'path';
 
-import { isStringHave, isObjectHave, isArrayHave } from '@curong/types';
+import { isObjectHave, isArrayHave } from '@curong/types';
 import { format } from '@curong/term';
 
 import mkdir from './mkdir';
@@ -20,21 +20,17 @@ import { WriteFileOptions } from './types/writeFile';
  * - `isMkdir` 当目录不存在时，是否自动创建目录，然后在从该目录下写文件, 默认为 `true`
  * - `isFormat` 是否把对象和数组进行序列化，序列化之后会将数据转换为 `JSON` 格式，默认为 `true`
  *
- * @return 没有返回值
+ * @throws
+ *
+ * - 如果将 `data` 转换为 `JSON` 时失败，则会抛出异常
+ * - 如果创建文件夹失败，则会抛出异常
+ * - 如果写入文件失败，则会抛出异常
  */
 export default async function writeFile(
     filePath: string,
     data: any,
     options?: WriteFileOptions
 ): Promise<void> {
-    if (!isStringHave(filePath)) {
-        throw format({
-            name: 'writeFile',
-            message: '参数错误',
-            data: { filePath, data, options }
-        });
-    }
-
     options = {
         encoding: 'utf8',
         flag: 'w+',
@@ -45,7 +41,7 @@ export default async function writeFile(
     };
 
     if (options.isFormat) {
-        // 如果data是对象，就把对象转换为JSON格式
+        // 如果 `data` 是对象，就把对象转换为 `JSON` 格式
         if (isObjectHave(data) || isArrayHave(data)) {
             try {
                 data = JSON.stringify(data);
