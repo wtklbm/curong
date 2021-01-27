@@ -11,7 +11,7 @@ import { ReadlineStreamCallback } from './types/readlineStream';
  * 基于流的形式一行一行的读取文件的内容
  *
  * @param pathString 文件的路径
- * @param encoding 文件编码
+ * @param encoding 文件编码，默认为 `utf8`
  * @param callback 回调函数
  *
  * 回调函数参数:
