@@ -1,4 +1,3 @@
-
 import { wordRight } from '../src';
 
 describe('@curong/string/wordRight', () => {
