@@ -21,6 +21,11 @@ import isDir from './isDir';
  *  - `isMakeDir` 是否自动创建目标文件夹，默认为 `false`
  *
  * @return 返回该文件的相当于目标文件夹的路径
+ * @throws
+ *
+ * - 如果 `filePath` 为空字符串，则会抛出异常
+ * - 如果 `srcDir` 为空字符串，则会抛出异常
+ * - 如果 `desDir` 为空字符串，则会抛出异常
  */
 export default async function destPath(
     filePath: string,
