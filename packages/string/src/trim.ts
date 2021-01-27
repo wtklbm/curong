@@ -15,6 +15,12 @@ import { SpecialCharNames, TrimOptions } from './types';
  *
  * @param chars 自定义要删除的字符
  * @returns 返回处理好的字符串
+ * @example
+ *
+ * ```javascript
+ * const ret = trim(` \u3000xxx \u200B`, { space: false });
+ * console.log(ret); // ' \u3000xxx '
+ * ```
  */
 export default function trim(
     value: string,
