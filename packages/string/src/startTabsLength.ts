@@ -6,6 +6,13 @@ const startTabsReg = /^\t+/;
  *
  * @param str 查找哪个字符串中的 `Tab`
  * @returns 返回字符串开头所找到的 `Tab` 数
+ *
+ * @example
+ *
+ * ```javascript
+ * const ret = startTabsLength('\t+');
+ * console.log(ret); // 1
+ * ```
  */
 export default function startTabsLength(str: string): number {
     const match = str.match(startTabsReg);
