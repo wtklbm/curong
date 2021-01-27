@@ -11,6 +11,7 @@ import { format } from '@curong/term';
  * 包括:
  * - `recursive` 指示是否应创建父文件夹，默认为 `true`
  * - `mode` 权限，默认为 `0o777`
+ *
  * @throws
  *
  * - 如果 `dirPath` 不是有效路径，则会抛出异常
