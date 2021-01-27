@@ -15,6 +15,10 @@ import toRegExpSource from './toRegExpSource';
  * - `caseSensitivity` 是否区分大小写
  *
  * @returns 如果是以某个字符串开头则截取后返回新的字符串，否则返回原始字符串
+ * @throws
+ *
+ * - 如果 `position` 不是索引，则会抛出异常
+ *
  * @example
  *
  * ```javascript
