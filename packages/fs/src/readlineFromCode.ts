@@ -6,7 +6,7 @@ import { ReadlineCallback } from './types/readline';
  * 一行一行地读取编程语言文件中的文本内容
  *
  * @param chunk 要读取的文本内容
- * @param encoding 转换 `Buffer` 用到的编码
+ * @param encoding 转换 `Buffer` 用到的编码，默认为 `utf8`
  * @param callback 回调函数
  * @throws
  *
