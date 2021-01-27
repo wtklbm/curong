@@ -1,4 +1,3 @@
-
 import { matchSplit } from '../src';
 
 describe('@curong/string/matchSplit', () => {
