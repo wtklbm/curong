@@ -11,7 +11,9 @@ import { publicIpResult } from './types/publicIP';
  * 获取本地公共的 `IP` 地址和城市信息
  *
  * @returns 返回获取到的公共 `IP` 地址和城市信息对象
- * @throws 如果请求失败或者请求的数据格式不正确会抛出异常
+ * @throws
+ * - 如果请求失败，则会抛出异常
+ * - 如果响应的数据格式不正确，则会抛出异常
  * @example
  *
  * ```javascript
