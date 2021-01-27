@@ -8,7 +8,9 @@ import { ParseOptions } from './types/parse';
  * @param value 要解码的值
  * @param decode 要使用的 `decode` 回调函数
  * @returns 返回解码后的值或者 `null`
- * @throws 如果返回的值不符合预期则会抛出异常
+ * @throws
+ *
+ * - 如果 `decode` 函数返回的值不是字符串，则会抛出异常
  */
 function getDecode(value: string, decode?: ParseOptions['decode']): string {
     value = value.trim();
@@ -38,7 +40,10 @@ function getDecode(value: string, decode?: ParseOptions['decode']): string {
  * @param cookie `cookie` 字符串
  * @param decode 解析字符串的值的函数，回调函数有一个参数。
  * @returns 返回解析好的 `cookie` 对象
- * @throws 如果要解析的字符串不是 `cookie` 字符串，则会抛出异常
+ * @throws
+ *
+ * - 如果要解析的字符串不是 `cookie` 字符串，则会抛出异常
+ *
  * @example
  *
  * ```javascript
@@ -99,4 +104,3 @@ export default function parse(
 
     return result;
 }
-
