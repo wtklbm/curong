@@ -31,4 +31,3 @@ export default function isPrototypeProperty(object: any, key: string): boolean {
         isTypeofObject(object) && !object.hasOwnProperty(key) && key in object
     );
 }
-
