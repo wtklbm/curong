@@ -9,6 +9,10 @@
  * - 如果 `regexps` 不为空并且 `str` 为空，则返回 `false`
  * - 如果 `regexps` 为空并且 `str` 为空，则报错
  *
+ * @throws
+ *
+ * - 如果 `regexps` 和 `str` 同时为空，则抛出异常
+ *
  * @example
  *
  * ```javascript
