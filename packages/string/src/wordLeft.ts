@@ -6,6 +6,9 @@ import { isUint, isNotZero } from '@curong/types';
  * @param str 字符串
  * @param position 偏移位置索引
  * @returns 返回左侧的索引位置，如果没有找到字符，则返回 `null`
+ * @throws
+ *
+ * - 如果 `position` 不是索引，则会抛出异常
  *
  * @example
  *
