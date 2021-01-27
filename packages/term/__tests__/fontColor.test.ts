@@ -20,7 +20,9 @@ describe('@curong/term/colorNameCode24bit', () => {
             background: 'yellow'
         });
 
-        expect(text).toBe('\u001B[38;5;1;48;5;3m正在加载进度条...\u001B[39;49m');
+        expect(text).toBe(
+            '\u001B[38;5;1;48;5;3m正在加载进度条...\u001B[39;49m'
+        );
         console.log(text, '完成了！');
 
         text = fontColor('正在加载进度条...', {
@@ -29,7 +31,9 @@ describe('@curong/term/colorNameCode24bit', () => {
             underlined: true
         });
 
-        expect(text).toBe('\u001B[38;5;1;48;5;3;4m正在加载进度条...\u001B[39;49;24m');
+        expect(text).toBe(
+            '\u001B[38;5;1;48;5;3;4m正在加载进度条...\u001B[39;49;24m'
+        );
 
         text = fontColor('正在加载进度条...', {
             foreground: 'red',
@@ -38,6 +42,8 @@ describe('@curong/term/colorNameCode24bit', () => {
             bold: true
         });
 
-        expect(text).toBe('\u001B[38;5;1;48;5;3;1;4m正在加载进度条...\u001B[39;49;22;24m');
+        expect(text).toBe(
+            '\u001B[38;5;1;48;5;3;1;4m正在加载进度条...\u001B[39;49;22;24m'
+        );
     });
 });
