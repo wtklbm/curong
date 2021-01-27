@@ -1,5 +1,6 @@
+// @ts-nocheck
+
 import { copy } from '../src';
-// @ts-ignore
 import { isPlainObject } from '@curong/types';
 
 describe('@curong/util/copy', () => {
@@ -33,7 +34,6 @@ describe('@curong/util/copy', () => {
             arrayBuffer: ab,
             dataView: view,
             newView,
-            // @ts-ignore
             bigInt: BigInt(1n),
             o: {
                 a: {
@@ -125,7 +125,6 @@ describe('@curong/util/copy', () => {
             const error = new Error();
             error.name = 'test';
             error.message = 'test message';
-            // @ts-ignore
             error.info = 'test info';
 
             return error;
@@ -142,7 +141,6 @@ describe('@curong/util/copy', () => {
 
         const ret = copy(obj);
         expect(obj.e === ret.e).toBe(false);
-        // @ts-ignore
         expect(obj.e.info === ret.e.info).toBe(true);
         expect(obj.e.stack === ret.e.stack).toBe(true);
         expect(obj.e.name === ret.e.name).toBe(true);
@@ -226,83 +224,62 @@ describe('@curong/util/copy', () => {
 
     test('测试9', () => {
         const value = Buffer.from('xx');
-        // @ts-ignore
         value.state = { name: 'Buffer', id: 0 };
 
         const clonedValue = copy(value);
 
         expect(value === clonedValue).toBe(false);
         expect(value.toString() === clonedValue.toString()).toBe(true);
-        // @ts-ignore
         expect(isPlainObject(clonedValue.state)).toBe(true);
-        // @ts-ignore
         expect(value.state === clonedValue.state).toBe(false);
-        // @ts-ignore
         expect(value.state.name === clonedValue.state.name).toBe(true);
-        // @ts-ignore
         expect(value.state.id === clonedValue.state.id).toBe(true);
     });
 
     test('测试10', () => {
         const value = new String('xx');
-        // @ts-ignore
         value.state = { name: 'String', id: 0 };
 
         const clonedValue = copy(value);
 
         expect(value === clonedValue).toBe(false);
         expect(value.toString() === clonedValue.toString()).toBe(true);
-        // @ts-ignore
         expect(isPlainObject(clonedValue.state)).toBe(true);
-        // @ts-ignore
         expect(value.state === clonedValue.state).toBe(false);
-        // @ts-ignore
         expect(value.state.name === clonedValue.state.name).toBe(true);
-        // @ts-ignore
         expect(value.state.id === clonedValue.state.id).toBe(true);
     });
 
     test('测试11', () => {
         const value = new Number(0.01);
-        // @ts-ignore
         value.state = { name: 'Number', id: 0 };
 
         const clonedValue = copy(value);
 
         expect(value === clonedValue).toBe(false);
         expect(value.toString() === clonedValue.toString()).toBe(true);
-        // @ts-ignore
         expect(isPlainObject(clonedValue.state)).toBe(true);
-        // @ts-ignore
         expect(value.state === clonedValue.state).toBe(false);
-        // @ts-ignore
         expect(value.state.name === clonedValue.state.name).toBe(true);
-        // @ts-ignore
         expect(value.state.id === clonedValue.state.id).toBe(true);
     });
 
     test('测试12', () => {
         const value = new Boolean(true);
-        // @ts-ignore
         value.state = { name: 'Boolean', id: 0 };
 
         const clonedValue = copy(value);
 
         expect(value === clonedValue).toBe(false);
         expect(value.toString() === clonedValue.toString()).toBe(true);
-        // @ts-ignore
         expect(isPlainObject(clonedValue.state)).toBe(true);
-        // @ts-ignore
         expect(value.state === clonedValue.state).toBe(false);
-        // @ts-ignore
         expect(value.state.name === clonedValue.state.name).toBe(true);
-        // @ts-ignore
         expect(value.state.id === clonedValue.state.id).toBe(true);
     });
 
     test('测试13', () => {
         const value = new RegExp(/\d+/gi);
-        // @ts-ignore
         value.state = { name: 'RegExp', id: 0 };
 
         const clonedValue = copy(value);
@@ -311,20 +288,15 @@ describe('@curong/util/copy', () => {
         expect(value.flags === clonedValue.flags).toBe(true);
         expect(value.source === clonedValue.source).toBe(true);
         expect(value.toString() === clonedValue.toString()).toBe(true);
-        // @ts-ignore
         expect(isPlainObject(clonedValue.state)).toBe(true);
         expect(value.lastIndex === clonedValue.lastIndex).toBe(true);
-        // @ts-ignore
         expect(value.state === clonedValue.state).toBe(false);
-        // @ts-ignore
         expect(value.state.name === clonedValue.state.name).toBe(true);
-        // @ts-ignore
         expect(value.state.id === clonedValue.state.id).toBe(true);
     });
 
     test('测试14', () => {
         const value = new Date('2020-01-01');
-        // @ts-ignore
         value.state = { name: 'Date', id: 0 };
 
         const clonedValue = copy(value);
@@ -332,32 +304,23 @@ describe('@curong/util/copy', () => {
         expect(value === clonedValue).toBe(false);
         expect(value.getTime() === clonedValue.getTime()).toBe(true);
         expect(value.toString() === clonedValue.toString()).toBe(true);
-        // @ts-ignore
         expect(isPlainObject(clonedValue.state)).toBe(true);
-        // @ts-ignore
         expect(value.state === clonedValue.state).toBe(false);
-        // @ts-ignore
         expect(value.state.name === clonedValue.state.name).toBe(true);
-        // @ts-ignore
         expect(value.state.id === clonedValue.state.id).toBe(true);
     });
 
     test('测试15', () => {
         const value = new Set([1, 2, 3, 2, 2, 4]);
-        // @ts-ignore
         value.state = { name: 'Set', id: 0 };
 
         const clonedValue = copy(value);
 
         expect(value === clonedValue).toBe(false);
         expect([...value].join(',') === [...clonedValue].join(',')).toBe(true);
-        // @ts-ignore
         expect(isPlainObject(clonedValue.state)).toBe(true);
-        // @ts-ignore
         expect(value.state === clonedValue.state).toBe(false);
-        // @ts-ignore
         expect(value.state.name === clonedValue.state.name).toBe(true);
-        // @ts-ignore
         expect(value.state.id === clonedValue.state.id).toBe(true);
     });
 
@@ -370,7 +333,6 @@ describe('@curong/util/copy', () => {
             [2, 44],
             [4, 55]
         ]);
-        // @ts-ignore
         value.state = { name: 'Map', id: 0 };
 
         const clonedValue = copy(value);
@@ -379,19 +341,14 @@ describe('@curong/util/copy', () => {
         expect(JSON.stringify(value) === JSON.stringify(clonedValue)).toBe(
             true
         );
-        // @ts-ignore
         expect(isPlainObject(clonedValue.state)).toBe(true);
-        // @ts-ignore
         expect(value.state === clonedValue.state).toBe(false);
-        // @ts-ignore
         expect(value.state.name === clonedValue.state.name).toBe(true);
-        // @ts-ignore
         expect(value.state.id === clonedValue.state.id).toBe(true);
     });
 
     test('测试17', () => {
         const value = new ArrayBuffer(6);
-        // @ts-ignore
         value.state = { name: 'ArrayBuffer', id: 0 };
         const view = new DataView(value);
         view.setUint8(0, 7);
@@ -424,13 +381,9 @@ describe('@curong/util/copy', () => {
             true
         );
 
-        // @ts-ignore
         expect(isPlainObject(cloned.state)).toBe(true);
-        // @ts-ignore
         expect(value.state === cloned.state).toBe(false);
-        // @ts-ignore
         expect(value.state.name === cloned.state.name).toBe(true);
-        // @ts-ignore
         expect(value.state.id === cloned.state.id).toBe(true);
     });
 
@@ -443,7 +396,6 @@ describe('@curong/util/copy', () => {
         view.setUint8(4, 5);
         view.setUint8(5, 6);
 
-        // @ts-ignore
         view.state = { name: 'DataView', id: 0 };
 
         const clonedValue = copy(view);
@@ -457,31 +409,20 @@ describe('@curong/util/copy', () => {
         expect(view.getUint8(4) === clonedValue.getUint8(4)).toBe(true);
         expect(view.getUint8(5) === clonedValue.getUint8(5)).toBe(true);
 
-        // @ts-ignore
         expect(isPlainObject(clonedValue.state)).toBe(true);
-        // @ts-ignore
         expect(view.state === clonedValue.state).toBe(false);
-        // @ts-ignore
         expect(view.state.name === clonedValue.state.name).toBe(true);
-        // @ts-ignore
         expect(view.state.id === clonedValue.state.id).toBe(true);
     });
 
     test('测试19', () => {
         const value = new BigInt64Array(6);
-        // @ts-ignore
         value.state = { name: 'BigInt64Array', id: 0 };
-        // @ts-ignore
         value[0] = 7n;
-        // @ts-ignore
         value[1] = 1n;
-        // @ts-ignore
         value[2] = 3n;
-        // @ts-ignore
         value[3] = 2n;
-        // @ts-ignore
         value[4] = 5n;
-        // @ts-ignore
         value[5] = 6n;
 
         const cloned = copy(value);
@@ -495,31 +436,20 @@ describe('@curong/util/copy', () => {
         expect(value[4] === cloned[4]).toBe(true);
         expect(value[5] === cloned[5]).toBe(true);
 
-        // @ts-ignore
         expect(isPlainObject(cloned.state)).toBe(true);
-        // @ts-ignore
         expect(value.state === cloned.state).toBe(false);
-        // @ts-ignore
         expect(value.state.name === cloned.state.name).toBe(true);
-        // @ts-ignore
         expect(value.state.id === cloned.state.id).toBe(true);
     });
 
     test('测试20', () => {
         function test(value: any) {
-            // @ts-ignore
             value.state = { name: 'Arguments', id: 0 };
-            // @ts-ignore
             value[0] = 7n;
-            // @ts-ignore
             value[1] = 1n;
-            // @ts-ignore
             value[2] = 3n;
-            // @ts-ignore
             value[3] = 2n;
-            // @ts-ignore
             value[4] = 5n;
-            // @ts-ignore
             value[5] = 6n;
 
             const cloned = copy(value);
@@ -532,13 +462,9 @@ describe('@curong/util/copy', () => {
             expect(value[4] === cloned[4]).toBe(true);
             expect(value[5] === cloned[5]).toBe(true);
 
-            // @ts-ignore
             expect(isPlainObject(cloned.state)).toBe(true);
-            // @ts-ignore
             expect(value.state === cloned.state).toBe(false);
-            // @ts-ignore
             expect(value.state.name === cloned.state.name).toBe(true);
-            // @ts-ignore
             expect(value.state.id === cloned.state.id).toBe(true);
         }
 
@@ -561,7 +487,6 @@ describe('@curong/util/copy', () => {
             arrayBuffer: ab,
             dataView: view,
             newView,
-            // @ts-ignore
             bigInt: BigInt(1n),
             o: {
                 a: {
@@ -586,7 +511,6 @@ describe('@curong/util/copy', () => {
 
     test('测试21', () => {
         const value = new File(['this is test'], 'test');
-        // @ts-ignore
         value.state = { name: 'File', id: 0 };
 
         const cloned = copy(value);
@@ -594,24 +518,18 @@ describe('@curong/util/copy', () => {
         expect(value === cloned).toBe(false);
         expect(value.lastModified === cloned.lastModified).toBe(true);
         expect(value.type === cloned.type).toBe(true);
-        // @ts-ignore
         expect(value.lastModifiedDate === cloned.lastModifiedDate).toBe(true);
         expect(value.name === cloned.name).toBe(true);
         expect(value.size === cloned.size).toBe(true);
 
-        // @ts-ignore
         expect(isPlainObject(cloned.state)).toBe(true);
-        // @ts-ignore
         expect(value.state === cloned.state).toBe(false);
-        // @ts-ignore
         expect(value.state.name === cloned.state.name).toBe(true);
-        // @ts-ignore
         expect(value.state.id === cloned.state.id).toBe(true);
     });
 
     test('测试22', () => {
         const value = new Blob(['this is test']);
-        // @ts-ignore
         value.state = { name: 'Blob', id: 0 };
 
         const cloned = copy(value);
@@ -620,69 +538,48 @@ describe('@curong/util/copy', () => {
         expect(value.type === cloned.type).toBe(true);
         expect(value.size === cloned.size).toBe(true);
 
-        // @ts-ignore
         expect(isPlainObject(cloned.state)).toBe(true);
-        // @ts-ignore
         expect(value.state === cloned.state).toBe(false);
-        // @ts-ignore
         expect(value.state.name === cloned.state.name).toBe(true);
-        // @ts-ignore
         expect(value.state.id === cloned.state.id).toBe(true);
     });
 
     test('测试23', () => {
         const value = new FileReader();
-        // @ts-ignore
         value.state = { name: 'FileReader', id: 0 };
 
         const cloned = copy(value);
 
         expect(value === cloned).toBe(false);
 
-        // @ts-ignore
         expect(isPlainObject(cloned.state)).toBe(true);
-        // @ts-ignore
         expect(value.state === cloned.state).toBe(false);
-        // @ts-ignore
         expect(value.state.name === cloned.state.name).toBe(true);
-        // @ts-ignore
         expect(value.state.id === cloned.state.id).toBe(true);
     });
 
     test('测试24', () => {
         const value = Object.create(null);
-        // @ts-ignore
         value.state = { name: 'Object', id: 0 };
 
         const cloned = copy(value);
 
         expect(value === cloned).toBe(false);
 
-        // @ts-ignore
         expect(isPlainObject(cloned.state)).toBe(true);
-        // @ts-ignore
         expect(value.state === cloned.state).toBe(false);
-        // @ts-ignore
         expect(value.state.name === cloned.state.name).toBe(true);
-        // @ts-ignore
         expect(value.state.id === cloned.state.id).toBe(true);
     });
 
     test('测试25', () => {
         const value = new BigUint64Array(6);
-        // @ts-ignore
         value.state = { name: 'BigUint64Array', id: 0 };
-        // @ts-ignore
         value[0] = 7n;
-        // @ts-ignore
         value[1] = 1n;
-        // @ts-ignore
         value[2] = 3n;
-        // @ts-ignore
         value[3] = 2n;
-        // @ts-ignore
         value[4] = 5n;
-        // @ts-ignore
         value[5] = 6n;
 
         const cloned = copy(value);
@@ -696,13 +593,9 @@ describe('@curong/util/copy', () => {
         expect(value[4] === cloned[4]).toBe(true);
         expect(value[5] === cloned[5]).toBe(true);
 
-        // @ts-ignore
         expect(isPlainObject(cloned.state)).toBe(true);
-        // @ts-ignore
         expect(value.state === cloned.state).toBe(false);
-        // @ts-ignore
         expect(value.state.name === cloned.state.name).toBe(true);
-        // @ts-ignore
         expect(value.state.id === cloned.state.id).toBe(true);
     });
 });
