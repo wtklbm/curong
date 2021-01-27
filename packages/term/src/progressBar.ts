@@ -19,6 +19,29 @@ const clearLine = () => cursorOnLineBegin + eraseLine();
  *
  * 创建一个用于终端的进度条用于显示进度操作，进度条使用了终端上的光标操作，
  * 因为光标的唯一性，所以目前只能同时创建一个进度条。
+ *
+ * @example
+ *
+ * ```javascript
+ * const delay = () => new Promise(resolve => {
+ *     setTimeout(() => resolve(), 200);
+ * });
+ *
+ * const bar1 = new ProgressBar();
+ * console.log('正在加载进度条...');
+ *
+ * for (let i = 0, len = 30; i < len; i++) {
+ *     bar1.pushWrite(`进度: ${1}`);
+ *     if (i === 2) {
+ *         bar1.end();
+ *         break;
+ *     }
+ *
+ *     await delay();
+ * }
+ *
+ * console.log('进度条执行完成');
+ * ```
  */
 export default class ProgressBar {
     options: ProgressBarOptions;
