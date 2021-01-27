@@ -1,4 +1,3 @@
-
 import { isEmail } from '../src';
 
 describe('@curong/regexp/isEmail', () => {
