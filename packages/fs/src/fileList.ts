@@ -9,11 +9,14 @@ import { FileListOptions } from './types/fileList';
 
 /**
  * 获取一个文件夹的所有文件名的列表
- * 支持从Windows快捷方式(lnk)中读取目录或文件
+ * 支持从 Windows 快捷方式(`lnk`) 中读取目录或文件
  *
  * @todo 将参数变为一个 `options`： { ignored = '', depth = 0 }
  * @param {string} dirName 文件夹目录
  * @return 返回一个包含文件名的列表
+ * @throws
+ *
+ * - 如果读取文件夹失败，则会抛出异常
  */
 export default async function fileList(
     dirName: string,
