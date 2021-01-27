@@ -95,7 +95,9 @@ const copyByTag = (value: any) => {
  *
  * @param value 要克隆的数据
  * @returns 返回克隆好的新的值
- * @throw 如果存在不支持深度克隆的数据类型，该方法会抛出异常
+ * @throw
+ *
+ * - 如果存在不支持深度克隆的数据类型，则会抛出异常
  *
  * ### 支持的类型
  *
