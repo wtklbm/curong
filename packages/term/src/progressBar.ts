@@ -48,6 +48,17 @@ export default class ProgressBar {
     private index: number;
     private record: string[];
 
+    /**
+     * 初始化进度条
+     *
+     * @param options 配置选项
+     *
+     * - `total`: 总数，默认为 `NaN`
+     * - `percentage`: 是否显示百分比，默认为 `true`
+     * - `count`: 是否显示计数，默认为 `true`
+     * - `picture`: 是否显示动态进度条图像，默认为 `true`
+     * - `hiddenCursor`: 是否隐藏光标，默认为 `true`
+     */
     constructor(options?: ProgressBarOptions) {
         options = {
             total: NaN,
