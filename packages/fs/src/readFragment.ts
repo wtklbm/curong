@@ -10,6 +10,11 @@ import { ReadFragmentOptions } from './types/readFragment';
  *
  * @param filePath 路径字符串，必须是绝对路径
  * @param options 配置对象
+ *
+ * - `start` 开始索引，默认为 0
+ * - `end` 结束索引，默认为 0
+ * - `firstLine` 是否只读取第一行，默认为 `false`
+ *
  * @error 如果在读取文件夹时失败，则返回一个文件读取的错误
  * @returns 如果获取到文件的内容，则返回截取的文件内容，否则返回 `undefined`
  * @throws
