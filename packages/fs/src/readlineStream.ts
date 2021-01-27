@@ -21,6 +21,10 @@ import { ReadlineStreamCallback } from './types/readlineStream';
  *
  * - 如果传递了回调函数，那么文件读完后该函数会返回 `true` 表示读取完毕
  * - 如果没有传递回调函数，那么文件读完后该函数会返回一个包含每一行数据的字符串数组
+ *
+ * @throws
+ *
+ * - 如果 `pathString` 不是文件路径，则会抛出异常
  */
 export default function readlineStream(
     pathString: string,
