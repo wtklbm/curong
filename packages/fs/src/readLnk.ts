@@ -21,7 +21,9 @@ function getCommand(pathString: string): string {
  *
  * @param pathString 路径字符串
  * @returns 返回解析好的原始地址字符串
- * @throws 如果解析失败，或者参数错误会抛出异常
+ * @throws
+ *
+ * - 如果解析文件失败，则会抛出异常
  */
 export default async function readLnk(pathString: string): Promise<string> {
     pathString = normalize(pathString);
