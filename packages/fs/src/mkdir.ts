@@ -1,6 +1,5 @@
 import { promises, MakeDirectoryOptions } from 'fs';
 
-import { isStringHave } from '@curong/types';
 import { format } from '@curong/term';
 
 /**
@@ -12,7 +11,10 @@ import { format } from '@curong/term';
  * 包括:
  * - `recursive` 指示是否应创建父文件夹，默认为 `true`
  * - `mode` 权限，默认为 `0o777`
- * @throws 如果参数错误或创建失败会触发 `throw`
+ * @throws
+ *
+ * - 如果 `dirPath` 不是有效路径，则会抛出异常
+ * - 如果根据 `dirPath` 创建文件夹失败，则会爬出异常
  */
 export default async function mkdir(
     dirPath: string,
@@ -23,14 +25,6 @@ export default async function mkdir(
         mode: 0o777,
         ...options
     };
-
-    if (!isStringHave(dirPath)) {
-        throw format({
-            name: 'mkdir',
-            message: '参数错误',
-            data: { dirPath, options }
-        });
-    }
 
     return await promises.mkdir(dirPath, options).catch(error => {
         throw format({
