@@ -10,9 +10,9 @@ import toRegExpSource from './toRegExpSource';
  * @param chunk 以什么字符串开头
  * @param options 配置对象
  *
- * - `position` 偏移索引位置，从该索引的后面找
- * - `preserve` 是否保留从索引 `0` 到偏移索引之间的值
- * - `caseSensitivity` 是否区分大小写
+ * - `position` 偏移索引位置，从该索引的后面找，默认为 0
+ * - `preserve` 是否保留从索引 `0` 到偏移索引之间的值，默认为 `false`
+ * - `caseSensitivity` 是否区分大小写，默认为 `true`
  *
  * @returns 如果是以某个字符串开头则截取后返回新的字符串，否则返回原始字符串
  * @throws
