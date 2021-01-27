@@ -71,7 +71,7 @@ async function findDirCall(
  * 从一个文件夹中查找指定的文件夹
  *
  * @param pathString 当前的文件夹
- * @param folders 要查找的文件夹的名字的数组
+ * @param folders 要查找的文件夹的名字的数组，默认为 `[]`
  * @throws
  *
  * - 如果 `pathString` 为空字符串，则会抛出异常
