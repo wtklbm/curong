@@ -3,7 +3,14 @@
  *
  * @param str 要转义的字符串
  * @returns 返回转义后的字符串
+ * @example
+ *
+ * ```javascript
+ * const ret = toRegExpSource('+');
+ * console.log(ret); // '\\+'
+ * ```
  */
 export default function toRegExpSource(str: string): string {
     return str.replace(/(?=[[\](){}^$.?*+|\\/-])/g, '\\');
 }
+
