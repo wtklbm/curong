@@ -10,8 +10,8 @@ import { GenericOptions } from './types/generic';
  * @param chunks 字符串数组
  * @param options 配置参数
  *
- * - `position` 偏移位置索引，从该索引的后面找
- * - `caseSensitivity` 是否区分大小写
+ * - `position` 偏移位置索引，从该索引的后面找，默认为 0
+ * - `caseSensitivity` 是否区分大小写，默认为 `true`
  *
  * @returns 如果不是以某些字符串开头则返回 `true`， 否则返回 `false`
  * @throws
