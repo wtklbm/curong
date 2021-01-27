@@ -5,8 +5,8 @@ import { isUint } from '@curong/types';
  *
  * 该方法与 `String.codePointAt` 方法的作用相同，只是做了兼容性处理而已。
  *
- * @param value 字符串
- * @param index 计算字符串中的哪个位置的代码点
+ * @param value 字符串，默认为 `''`
+ * @param index 计算字符串中的哪个位置的代码点，默认为 0
  * @returns 如果有代码点则返回代码点，否则返回 `null`
  * @example
  *
