@@ -2,7 +2,7 @@ const { join } = require('path');
 
 const TS = require('typescript');
 const commonjs = require('@rollup/plugin-commonjs');
-const resolve = require('@rollup/plugin-node-resolve');
+const resolve = require('@rollup/plugin-node-resolve').default;
 const replace = require('@rollup/plugin-replace');
 const json = require('@rollup/plugin-json');
 const typescript = require('rollup-plugin-typescript2');
