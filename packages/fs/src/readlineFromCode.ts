@@ -8,6 +8,9 @@ import { ReadlineCallback } from './types/readline';
  * @param chunk 要读取的文本内容
  * @param encoding 转换 `Buffer` 用到的编码
  * @param callback 回调函数
+ * @throws
+ *
+ * - 如果 `chunk` 不是 `Buffer` 或 `string`，则会抛出异常
  *
  * ### 终止符对照表
  *
@@ -100,7 +103,7 @@ export default function readlineFromCode(
             break;
         }
 
-        throw new Error(`[readline] 数据必须是 Buffer 或 string`);
+        throw new TypeError(`[readline] 数据必须是 Buffer 或 string`);
     } while (false);
 
     for (let i = 0, len = chunk.length; i < len; i++) {
