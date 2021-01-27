@@ -1,6 +1,6 @@
 import { createReadStream } from 'fs';
 
-import { isUintSafe, isBoolean } from '@curong/types';
+import { isUintSafe } from '@curong/types';
 import { format } from '@curong/term';
 
 import { ReadFragmentOptions } from './types/readFragment';
@@ -11,7 +11,11 @@ import { ReadFragmentOptions } from './types/readFragment';
  * @param filePath 路径字符串，必须是绝对路径
  * @param options 配置对象
  * @error 如果在读取文件夹时失败，则返回一个文件读取的错误
- * @returns 如果获取到文件的内容，则返回截取的文件内容，否则返回undefined
+ * @returns 如果获取到文件的内容，则返回截取的文件内容，否则返回 `undefined`
+ * @throws
+ *
+ * - 如果 `start` 不是安全数字，则会抛出异常
+ * - 如果 `end` 不是安全数字，则会抛出异常
  */
 export default function readFragment(
     filePath: string,
@@ -19,7 +23,7 @@ export default function readFragment(
 ): Promise<string | void> {
     const { start = 0, end = 0, firstLine = false } = options;
 
-    if (!isUintSafe(start) || !isUintSafe(end) || !isBoolean(firstLine)) {
+    if (!isUintSafe(start) || !isUintSafe(end)) {
         throw format({
             name: 'readFragment',
             message: '参数错误',
