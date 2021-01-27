@@ -15,6 +15,12 @@ import { SpecialCharNames, TrimOptions } from './types';
  *
  * @param chars 自定义要删除的字符
  * @returns 返回处理好的字符串
+ * @example
+ *
+ * ```javascript
+ * const ret = trimRight(`xxx\t \u3000`, { control: false });
+ * console.log(ret); // 'xxx\t'
+ * ```
  */
 export default function trimRight(
     value: string,
