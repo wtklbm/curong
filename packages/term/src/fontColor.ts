@@ -1,4 +1,4 @@
-import { isString, isUndefined, isZero } from '@curong/types';
+import { isUndefined, isZero } from '@curong/types';
 
 import { CSI } from './sequence';
 import ansiFormat from './ansiFormat';
@@ -25,6 +25,19 @@ import { FontColorOptions } from './types/color';
  * - `crossedOut`:  文字是否划除。字符清晰，但标记为删除。未广泛支持
  *
  * @returns 返回带有样式的终端字符串
+ * @example
+ *
+ * ```javascript
+ * const text = fontColor('正在加载进度条...', {
+ *     foreground: 'red',
+ *     background: 'yellow',
+ *     underlined: true,
+ *     bold: true
+ * });
+ *
+ * // '\u001B[38;5;1;48;5;3;1;4m正在加载进度条...\u001B[39;49;22;24m'
+ * console.log(text);
+ * ```
  */
 export default function fontColor(
     value: string,
