@@ -16,6 +16,10 @@ import toRegExpSource from './toRegExpSource';
  *
  * @return 返回该字符串生成的正则表达式
  *
+ * @throws
+ *
+ * - 如果 `flags` 不是预期的值，则会抛出异常
+ *
  * @info
  * 默认情况下，字符串中包含正则使用的特殊字符，则替换不生效。
  * 此方法解决这个问题。
