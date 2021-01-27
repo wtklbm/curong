@@ -15,6 +15,17 @@ import toRegExpSource from './toRegExpSource';
  * - `caseSensitivity` 是否区分大小写
  *
  * @returns 如果是以某个字符串开头则截取后返回新的字符串，否则返回原始字符串
+ * @example
+ *
+ * ```javascript
+ * const ret = startsSlice('xxx', 'X', {
+ *     position: 1,
+ *     preserve: true,
+ *     caseSensitivity: false
+ * });
+ *
+ * console.log(ret); // 'xx'
+ * ```
  */
 export default function startsSlice(
     str: string,
