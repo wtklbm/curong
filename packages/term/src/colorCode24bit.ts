@@ -7,6 +7,17 @@ import { ColorCodeResult } from './types/color';
  *
  * @param colorCodes 长度为3的 `RGB` 数组，数组的每一项依次表示为 `red`, `green`, `blue`，值是从0到255的任意数字
  * @returns 返回生成好的前景色和背景色终端代码
+ * @example
+ *
+ * ```javascript
+ * const ret = colorCode24bit([128, 136, 255]);
+ *
+ * // {
+ * //     foreground: '38;2;128;136;255',
+ * //     background: '48;2;128;136;255'
+ * // }
+ * console.log(ret);
+ * ```
  */
 export default function colorCode24bit(colorCodes: number[]): ColorCodeResult {
     if (!isArray(colorCodes) || colorCodes.length !== 3) {
