@@ -1,6 +1,5 @@
 import { promises, PathLike } from 'fs';
 
-import { isStringHave } from '@curong/types';
 import { format } from '@curong/term';
 
 import { ReadFileOptions } from './types/readFile';
@@ -16,20 +15,15 @@ import { ReadFileOptions } from './types/readFile';
  * - `mode` 模式，默认为 `0o777`
  *
  * @returns 返回读取到的文件的内容字符串
+ * @throws
+ *
+ * - 如果根据 `filePath` 读取文件失败，则会抛出异常
  */
 
 export default async function readFile(
     filePath: PathLike,
     options?: ReadFileOptions
 ): Promise<string> {
-    if (!isStringHave(filePath)) {
-        throw format({
-            name: 'readFile',
-            message: '参数错误',
-            data: { filePath, options }
-        });
-    }
-
     options = { encoding: 'utf8', flag: 'r+', mode: 0o777, ...options };
 
     return ((await promises.readFile(filePath, options).then(
