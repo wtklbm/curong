@@ -16,7 +16,10 @@ import { CopyFileOptions } from './types/copyFile';
  * @param srcDir 源文件夹，为了实现多级复制，所以传递了来源(不包含文件名和后缀)
  * @param desDir 目标文件夹(不包含文件名和后缀)
  * @return 如果出错，则控制台返回一个错误消息，否则返回复制好后的该文件的绝对路径
- * @throws 如果参数错误或没有找到绝对路径会抛出异常
+ * @throws
+ *
+ * - 如果没有找到当前路径所对应的绝对路径，则会抛出异常
+ * - 如果拷贝文件失败，则会抛出异常
  */
 export default async function copyFile(
     filePath: string,
