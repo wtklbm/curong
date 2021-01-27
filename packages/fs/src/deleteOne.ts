@@ -1,8 +1,9 @@
 import { promises } from 'fs';
 
+import { format } from '@curong/term';
+
 import isDir from './isDir';
 import isFile from './isFile';
-import { format } from '@curong/term';
 
 const { unlink, rmdir } = promises;
 
@@ -10,6 +11,9 @@ const { unlink, rmdir } = promises;
  * 删除一个文件或一个文件夹
  *
  * @param pathString 要删除的文件或文件夹路径
+ * @throws
+ *
+ * - 如果 `pathString` 不是一个有效路径，则会抛出异常
  */
 export default async function deleteOne(pathString: string): Promise<void> {
     if (await isDir(pathString)) {
