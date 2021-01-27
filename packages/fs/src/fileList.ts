@@ -13,6 +13,10 @@ import { FileListOptions } from './types/fileList';
  *
  * @todo 将参数变为一个 `options`： { ignored = '', depth = 0 }
  * @param {string} dirName 文件夹目录
+ * @param options
+ *
+ * - `depthOnce` 是否只获取一层深度的数据，默认为 `false`
+ *
  * @return 返回一个包含文件名的列表
  * @throws
  *
