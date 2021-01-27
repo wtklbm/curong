@@ -157,6 +157,26 @@ const copyByTag = (value: any) => {
  *   1. `Promise` 是不支持的类型，它没有相关的 `toString` 方法。
  *   2. `WeakSet` 和 `WeakMap` 是不支持的类型，因为他们都不支持迭代器模式。
  *   3. 自定义数据类型是不支持的类型，目前还没有办法将它们一一实现。
+ *
+ * @example
+ *
+ * ```javascript
+ * const obj = {
+ *     str: '',
+ *     num: 0,
+ *     bool: true
+ * };
+ *
+ * const ret = copy(obj);
+ *
+ * // {
+ * //     str: '',
+ * //     num: 0,
+ * //     bool: true
+ * // }
+ * console.log(ret);
+ * console.log(ret === obj); // false
+ * ```
  */
 export default function copy<T extends any>(value: T): T {
     // 首先判断是不是基本类型的值
