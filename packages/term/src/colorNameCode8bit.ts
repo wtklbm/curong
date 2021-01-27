@@ -7,6 +7,18 @@ import colorCode8bit from './colorCode8bit';
  *
  * @param colorName 颜色名
  * @returns 返回生成好的终端代码，包含前景色代码和背景色代码
+ * @example
+ *
+ * ```javascript
+ * const ret = colorNameCode8bit('red');
+ *
+ * // {
+ * //     foreground: '38;5;1',
+ * //     background: '48;5;1'
+ * // }
+ * console.log(ret);
+ * ```
+ *
  * @info
  *
  * ### 并不是所有的系统平台都支持终端颜色代码
