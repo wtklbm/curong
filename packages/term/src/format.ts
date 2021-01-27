@@ -16,7 +16,7 @@ const LF = '\n';
 /**
  * 制作大标题
  *
- * @param type 标题的类型
+ * @param type 标题的类型，默认为 `error`
  * @param title 标题的名称
  * @returns 返回制作好的大标题文本
  */
