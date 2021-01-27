@@ -211,10 +211,6 @@ function makeInfo(info: ForMatInfo) {
  * ```
  */
 export default function format(info: ForMatInfo, options?: ForMatOptions) {
-    if (!isObjectHave(info)) {
-        throw new TypeError(`[format]: info不是预期的值，"${info}"`);
-    }
-
     options = {
         showHidden: true,
         depth: null,
