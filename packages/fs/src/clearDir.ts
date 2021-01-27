@@ -10,6 +10,9 @@ import deleteOne from './deleteOne';
  * 清空一个文件夹
  *
  * @param pathString 要清空的文件夹的路径
+ * @throws
+ *
+ * - 如果 `pathString` 不是一个有效的文件夹路径，则会抛出异常
  */
 export default async function clearDir(pathString: string): Promise<void> {
     if (!(await isDir(pathString))) {
