@@ -14,6 +14,13 @@ import { WordResult } from './types/word';
  *
  * - `left` 左侧的索引位置
  * - `right` 右侧的索引位置
+ *
+ * @example
+ *
+ * ```javascript
+ * const ret = word('xx    xx    ', 2);
+ * console.log(ret); // { left: 6, right: 7 }
+ * ```
  */
 export default function word(
     str: string,
