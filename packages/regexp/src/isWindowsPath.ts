@@ -4,9 +4,11 @@ import { windowsPath } from './source';
  * 是否为合法的 `Windows` 路径地址
  *
  * @param path 要验证的路径
- * @param extend 是否是扩展的路径，
+ * @param extend 是否是扩展的路径
+ *
  * - 扩展的路径具有 `32767 - 12` 的路径长度。默认为 `false`
  * - 普通的路径长度为 `260 - 12` 个
+ *
  * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
