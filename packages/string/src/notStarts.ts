@@ -14,6 +14,10 @@ import { GenericOptions } from './types/generic';
  * - `caseSensitivity` 是否区分大小写
  *
  * @returns 如果不是以某些字符串开头则返回 `true`， 否则返回 `false`
+ * @throws
+ *
+ * - 如果 `position` 不是索引，则会抛出异常
+ *
  * @example
  *
  * ```javascript
