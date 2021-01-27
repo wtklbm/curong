@@ -7,6 +7,12 @@ import { isUint, isNotZero } from '@curong/types';
  * @param position 偏移位置索引
  * @returns 返回右侧的字符的索引位置，如果没有找到字符，则返回 `null`
  * @info 依据 `含头不含尾` 规则，在使用该索引调用 `slice` 方法时，需要进行加一操作
+ * @example
+ *
+ * ```javascript
+ * const ret = wordRight('xx    xx    ', 2);
+ * console.log(ret); // 7
+ * ```
  */
 export default function wordRight(
     str: string,
