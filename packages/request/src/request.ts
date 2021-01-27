@@ -17,11 +17,12 @@ import { RequestOptions, RequestHandler, RequestResult } from './types/request';
 /**
  * 从远程连接获取响应的内容并返回 `Buffer`
  *
- * @param options 参数列表
+ * @param options 参数列表，默认为 `{}`
  *
  * - `hostname` 远程主机名(不包括 `https://`)，比如 `www.xxx.com`
  * - `path` 路径地址，比如 `/xxx/xxx?xx=xx&xx=xx#xx`
  * - `method` 请求方式
+ * - `https` 是否使用更加安全的 `https` 发送请求
  * - `port` 端口号
  * - `query` 当前请求的查询字符串对象，会被转换为 `a=b&b=c` 的格式
  * - `body` 当前请求的请求体对象，会被转换为 `a=b&b=c` 的格式
