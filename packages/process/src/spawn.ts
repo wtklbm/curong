@@ -9,7 +9,7 @@ import { SpawnResult } from './types/spawn';
  *
  * @param command 要执行的命令
  * @param args 执行命令时传递的参数列表
- * @param  options 配置对象
+ * @param  options 配置对象，默认为 `{}`
  * @bug 目前还不支持在控制台输出颜色，也就是会产生颜色丢失的问题
  * @example
  *
