@@ -19,6 +19,13 @@ import toRegExpSource from './toRegExpSource';
  * @info
  * 默认情况下，字符串中包含正则使用的特殊字符，则替换不生效。
  * 此方法解决这个问题。
+ *
+ * @example
+ *
+ * ```javascript
+ * const ret = toRegExp('\\d+', 'g');
+ * console.log(ret); // /\\d\+/g
+ * ```
  */
 export default function toRegExp(
     str: string,
