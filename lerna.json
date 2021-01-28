@@ -10,7 +10,7 @@
             "ignoreChanges": [
                 "ignored-file"
             ],
-            "message": "发布新版本：%v",
+            "message": "🎉chore(release): %v",
             "registry": "https://registry.npmjs.org"
         }
     }
