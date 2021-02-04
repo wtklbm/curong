@@ -17,15 +17,17 @@ import { isNullOrUndefined } from '@curong/types';
  *
  *  console.log(attrs); // [ 'a', 's', 'Symbol(x)' ]
  * ```
+ *
+ *
+ * # `Reflect.ownKeys` 方法
+ *
+ * `Reflect.ownKeys` 方法是用来获取一个值上包含 `Symbol` 的所有的属性的方法，它等价于
+ * `Object.getOwnPropertyNames(value)` 和 `Object.getOwnPropertySymbols(value)` 结果的集合。
  */
-export default function allAttrs(value: any): Array<string | symbol> {
-    const ret: Array<string | symbol> = [];
-
+export default function allAttrs(value: any): Array<string | number | symbol> {
     if (isNullOrUndefined(value)) {
-        return ret;
+        return [];
     }
 
-    return ret
-        .concat(Object.getOwnPropertyNames(value))
-        .concat(Object.getOwnPropertySymbols(value));
+    return Reflect.ownKeys(value);
 }
