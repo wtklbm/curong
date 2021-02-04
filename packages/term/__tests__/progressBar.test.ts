@@ -5,7 +5,7 @@ describe('@curong/term/progressBar', () => {
         jest.setTimeout(30e3);
         function delay() {
             return new Promise(resolve => {
-                setTimeout(() => resolve(), 200);
+                setTimeout(() => resolve(null), 200);
             });
         }
 
@@ -29,7 +29,7 @@ describe('@curong/term/progressBar', () => {
         jest.setTimeout(30e3);
         function delay() {
             return new Promise(resolve => {
-                setTimeout(() => resolve(), 200);
+                setTimeout(() => resolve(null), 200);
             });
         }
 
@@ -56,7 +56,7 @@ describe('@curong/term/progressBar', () => {
         jest.setTimeout(30e3);
         function delay() {
             return new Promise(resolve => {
-                setTimeout(() => resolve(), 200);
+                setTimeout(() => resolve(null), 200);
             });
         }
 
