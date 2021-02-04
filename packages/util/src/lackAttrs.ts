@@ -22,13 +22,13 @@ import allAttrs from './allAttrs';
  */
 export default function lackAttrs(
     value: any,
-    attributes: Array<string | symbol>
-): Array<string | symbol> {
+    attributes: Array<string | number | symbol>
+): Array<string | number | symbol> {
     if (isNullOrUndefined(value) || !isArrayHave(attributes)) {
         return [];
     }
 
     const attrSet = new Set(allAttrs(value));
 
-    return attributes.filter((v: string | symbol) => !attrSet.has(v));
+    return attributes.filter(v => !attrSet.has(v));
 }
