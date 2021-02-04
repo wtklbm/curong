@@ -32,10 +32,6 @@ function config(options = {}) {
                 browser: true,
                 // 加载 `node` 模块
                 preferBuiltins: true,
-                // 将自定义选项传递给解析插件
-                customResolveOptions: {
-                    moduleDirectory: 'node_modules'
-                },
                 jail: join(__dirname, '../..')
             }),
 
