@@ -30,4 +30,14 @@ describe('@curong/object/derive', () => {
             c: 3
         });
     });
+
+    test('测试3', () => {
+        const obj = { a: 1, b: 2, c: 3, d: { e: true } };
+        const ret = derive(obj);
+
+        expect(ret).toEqual({ a: 1, b: 2, c: 3, d: { e: true } });
+        expect(obj.d).toEqual({ e: true });
+        expect(ret.d).toEqual({ e: true });
+        expect(obj.d === ret.d).toBe(true);
+    });
 });
