@@ -12,6 +12,16 @@ import { ObjectType } from './types/objectType';
  * @param obj 基于哪个对象派生
  * @param deleteKeys 要从对象中删除哪个属性，删除的属性将不在派生的对象中存在
  * @returns 返回派生好的对象
+ * @example
+ *
+ * ```javascript
+ * const obj = { a: 1, b: 2, c: 3, d: { e: true } };
+ * const ret = derive(obj);
+ *
+ * // { a: 1, b: 2, c: 3, d: { e: true } }
+ * console.log(ret);
+ * console.log(ret.d === obj.d); // true
+ * ```
  */
 export default function derive<T extends ObjectType>(
     obj: T,
