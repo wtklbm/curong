@@ -1,5 +1,11 @@
-import isPrototypeProperty from './isPrototypeProperty';
-import deleteAttrs from './deleteAttrs';
 import createWithNull from './createWithNull';
+import deleteAttrs from './deleteAttrs';
+import derive from './derive';
+import isPrototypeProperty from './isPrototypeProperty';
 
-export { isPrototypeProperty, deleteAttrs, createWithNull };
+export {
+    createWithNull,
+    deleteAttrs,
+    derive,
+    isPrototypeProperty,
+};
