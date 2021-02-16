@@ -14,6 +14,7 @@ import readline from './readline';
 import readlineFromCode from './readlineFromCode';
 import readlineStream from './readlineStream';
 import readLnk from './readLnk';
+import stripBOM from './stripBOM';
 import writeFile from './writeFile';
 
 export * from './types/destPath';
@@ -40,5 +41,6 @@ export {
     readlineFromCode,
     readlineStream,
     readLnk,
+    stripBOM,
     writeFile
 };
