@@ -18,4 +18,5 @@
 - `readlineFromCode`: 一行一行地读取编程语言文件中的文本内容
 - `readlineStream`: 基于流的形式一行一行的读取文件的内容
 - `readLnk`: 解析 `lnk` 文件的原始地址
+- `stripBOM`: 删除字节顺序标记 (BOM)，编码为 `0xFEFF`
 - `writeFile`: 将数据写入到文件
