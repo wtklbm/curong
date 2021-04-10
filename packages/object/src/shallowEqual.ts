@@ -58,6 +58,8 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  *
  * console.log(shallowEqual(o1, o2)); // false
  * ```
+ *
+ * @see https://github.com/facebook/react/blob/2c9fef32db5c9a342a1a60c34217ffc9ae087fbb/packages/shared/shallowEqual.js
  */
 export default function shallowEqual(
     objA: ObjectType | null,
