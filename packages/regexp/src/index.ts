@@ -5,6 +5,7 @@ import inJapanese from './inJapanese';
 import isEmail from './isEmail';
 import isURI from './isURI';
 import isWindowsPath from './isWindowsPath';
+import mapReplace from './mapReplace';
 import testEvery from './testEvery';
 import testSome from './testSome';
 
@@ -53,6 +54,7 @@ export {
     isURI,
     isWindowsPath,
     source,
+    mapReplace,
     testEvery,
     testSome
 };
