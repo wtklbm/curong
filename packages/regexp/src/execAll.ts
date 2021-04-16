@@ -1,6 +1,13 @@
-import { isFunctionHave, isStringHave } from '@curong/types';
+import {
+    isFunctionHave,
+    isNull,
+    isStringHave,
+    isUndefined
+} from '@curong/types';
 
-import { ExecAllCallBack, ExecAllResult, ExecMatch } from './types/matchAll';
+import { RegExpExecOrigin } from './types/execAll';
+
+const matchKeysReg = /^(0|index|input|groups|length)$/;
 
 /**
  * 循环遍历 `RegExp.exec` 方法捕获到的内容
@@ -96,50 +103,101 @@ import { ExecAllCallBack, ExecAllResult, ExecMatch } from './types/matchAll';
  * - 可以进行分组捕获
  * - 不兼容 `IE`、`Safari` 和 `IOS`
  */
+
 export default function execAll(
     reg: RegExp,
     str: string,
-    keyOrCallback?: string | ExecAllCallBack
-): ExecAllResult | void {
-    const res: ExecAllResult = [];
+    keyOrCallback: '0' | 0
+): string[];
+
+export default function execAll(
+    reg: RegExp,
+    str: string,
+    keyOrCallback: 'index'
+): number[];
+
+export default function execAll(
+    reg: RegExp,
+    str: string,
+    keyOrCallback: 'input'
+): string[];
+
+export default function execAll(
+    reg: RegExp,
+    str: string,
+    keyOrCallback: 'groups'
+): Record<string, string>[];
+
+export default function execAll(
+    reg: RegExp,
+    str: string,
+    keyOrCallback: 'length'
+): number[];
+
+export default function execAll(
+    reg: RegExp,
+    str: string,
+    keyOrCallback?: (m: RegExpExecOrigin) => RegExpExecOrigin
+): RegExpExecOrigin[];
+
+export default function execAll<
+    T extends RegExpExecOrigin[keyof RegExpExecOrigin]
+>(reg: RegExp, str: string, keyOrCallback: (m: RegExpExecOrigin) => T): T[];
+
+export default function execAll(
+    reg: RegExp,
+    str: string,
+    keyOrCallback?: (m: RegExpExecOrigin) => void
+): void;
+
+export default function execAll(
+    reg: RegExp,
+    str: string,
+    keyOrCallback?: (m: RegExpExecOrigin) => any
+): any[];
+
+export default function execAll(
+    reg: RegExp,
+    str: string,
+    keyOrCallback?: any
+): any {
+    const res = [];
     // match： [0, index, input, groups, length]
-    let match: RegExpExecArray | null = null;
-    let push: ExecAllCallBack;
-    let data: ExecMatch | void;
+    let match: RegExpExecOrigin | null = null;
 
     do {
         if (isStringHave(keyOrCallback)) {
-            keyOrCallback = keyOrCallback.toLocaleLowerCase();
-            const reg = /^(0|index|input|groups|length)$/;
+            const id = keyOrCallback.toLocaleLowerCase();
 
-            if (!reg.test(keyOrCallback)) {
-                throw new TypeError(
-                    `[execAll]: id不是预期的值, "${keyOrCallback}"`
-                );
+            if (!matchKeysReg.test(id)) {
+                throw new TypeError(`[execAll]: id不是预期的值, "${id}"`);
             }
 
-            push = match => {
-                res.push(match[keyOrCallback as any]);
+            keyOrCallback = (match: RegExpExecOrigin) => {
+                res.push(match[id as any]);
             };
 
             break;
         }
 
         if (isFunctionHave(keyOrCallback)) {
-            push = keyOrCallback;
             break;
         }
 
-        push = match => {
-            res.push(match as ExecMatch);
-        };
+        keyOrCallback = (match: RegExpExecOrigin) => match;
     } while (false);
 
     do {
-        (match = reg.exec(str)) && (data = push(match)) && res.push(data);
+        match = reg.exec(str) as RegExpExecOrigin;
+        match && res.push(keyOrCallback(match));
     } while (reg.global && match);
 
-    if (res.length) {
-        return res;
+    if (
+        res.length &&
+        (res.every(v => isUndefined(v)) || res.every(v => isNull(v)))
+    ) {
+        return;
     }
+
+    return res;
 }
