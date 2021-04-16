@@ -7,11 +7,3 @@ export interface RegExpExecOrigin extends RegExpExecArray {
     };
     length: number;
 }
-
-export type ExecMatch = string | RegExpExecOrigin;
-
-export type ExecAllCallBack = (
-    match: RegExpExecArray | string
-) => ExecMatch | void;
-
-export type ExecAllResult = ExecMatch[];
