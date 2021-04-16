@@ -10,6 +10,7 @@
  - `isEmail`: 是否为合法的邮箱地址
  - `isURI`: 是否为合法的链接地址
  - `isWindowsPath`: 是否为合法的 `Windows` 路径地址
+ - `mapReplace`: 使用一组正则表达式来替换字符串中的内容
  - `testEvery`: 使用一组正则来验证一个字符串是否符合预期
  - `testSome`: 使用一组正则来验证一个字符串是否符合预期
 
