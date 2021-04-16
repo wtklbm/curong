@@ -10,7 +10,7 @@ import testEvery from './testEvery';
 import testSome from './testSome';
 
 import * as _source from './source';
-export * from './types/matchAll';
+export * from './types/execAll';
 
 /**
  * 一组可以生成正则表达式的正则字符串
