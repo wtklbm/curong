@@ -5,6 +5,13 @@
  * @param value 原始字符串值
  * @param replacer 一个字符串，可以直接替换为一个值，或使用小分组(`$1`、`$2`)来替换
  * @returns 返回替换好的值
+ * @example
+ *
+ * ```javascript
+ * const regexps = [/b/g, /a/g];
+ * console.log(mapReplace(regexps, 'Aa', 'x')); // 'Ax'
+ * console.log(mapReplace(regexps, 'ab', 'x')); // 'xx'
+ * ```
  */
 export default function mapReplace(
     regexps: RegExp[],
@@ -20,6 +27,13 @@ export default function mapReplace(
  * @param replacer 一个替换函数，第一个参数是捕获到的值，后面的参数是一个或多个小分组，
  *   然后是匹配到的值的索引，最后一个参数是原始字符串
  * @returns 返回替换好的值
+ * @example
+ *
+ * ```javascript
+ * const regexps = [/b/g, /a/g];
+ * console.log(mapReplace(regexps, 'Aa', v => v + 'x')); //'Aax'
+ * console.log(mapReplace(regexps, 'ab', v => v + 'X')); //'aXbX'
+ * ```
  */
 export default function mapReplace(
     regexps: RegExp[],
