@@ -6,6 +6,7 @@ import isEmail from './isEmail';
 import isURI from './isURI';
 import isWindowsPath from './isWindowsPath';
 import mapReplace from './mapReplace';
+import matchNextIndex from './matchNextIndex';
 import testEvery from './testEvery';
 import testSome from './testSome';
 
@@ -55,6 +56,7 @@ export {
     isWindowsPath,
     source,
     mapReplace,
+    matchNextIndex,
     testEvery,
     testSome
 };
