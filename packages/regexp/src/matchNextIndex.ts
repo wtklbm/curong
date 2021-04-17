@@ -14,7 +14,7 @@ import { RegExpExecOrigin } from './types/execAll';
  * ```
  */
 export default function matchNextIndex(
-    match: RegExpExecArray | RegExpExecOrigin
+    match: RegExpExecArray | RegExpMatchArray | RegExpExecOrigin
 ): number {
-    return match[0].length + match.index;
+    return match[0].length + match.index!;
 }
