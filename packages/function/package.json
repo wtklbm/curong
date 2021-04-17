@@ -1,6 +1,6 @@
 {
     "name": "@curong/function",
-    "version": "0.0.0-alpha.1",
+    "version": "0.0.0-alpha.2",
     "license": "MIT",
     "author": {
         "name": "wtklbm",
@@ -28,8 +28,8 @@
         "registry": "http://registry.npmjs.org/"
     },
     "dependencies": {
-        "@curong/number": "^0.0.0-alpha.1",
-        "@curong/types": "^0.0.0-alpha.1"
+        "@curong/number": "^0.0.0-alpha.2",
+        "@curong/types": "^0.0.0-alpha.2"
     },
     "sideEffects": false
 }
