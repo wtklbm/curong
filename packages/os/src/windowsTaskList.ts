@@ -33,9 +33,7 @@ import { WindowsTaskListResult } from './types/windowsTaskList';
  * console.log(tasks);
  * ```
  */
-export default async function windowsTaskList(): Promise<
-    WindowsTaskListResult
-> {
+export default async function windowsTaskList(): Promise<WindowsTaskListResult> {
     const { stdout } = await exec('tasklist /NH');
     const taskSplit = stdout.toString().trim().split('\n');
 
