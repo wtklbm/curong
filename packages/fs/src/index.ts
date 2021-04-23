@@ -1,4 +1,5 @@
 import clearDir from './clearDir';
+import copy from './copy';
 import copyFile from './copyFile';
 import copySymbolicLink from './copySymbolicLink';
 import deleteOne from './deleteOne';
@@ -24,6 +25,7 @@ export * from './types';
 
 export {
     clearDir,
+    copy,
     copyFile,
     copySymbolicLink,
     deleteOne,
