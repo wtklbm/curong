@@ -9,6 +9,8 @@ import isFile from './isFile';
 import symbolicLink from './symbolicLink';
 import copySymbolicLink from './copySymbolicLink';
 
+import { CopyFileOptions } from './types';
+
 const _copyFile = async (from: string, to: string, forcibly = false) => {
     // 如果目标文件已经存在，并且我们不想强制写入
     if ((await isFile(to)) && !forcibly) {
@@ -44,7 +46,7 @@ const _copyFile = async (from: string, to: string, forcibly = false) => {
 export default async function copy(
     fromPath: string,
     toPath: string,
-    options?: any
+    options?: CopyFileOptions
 ): Promise<void> {
     const name = 'copy';
     const { forcibly = true } = options ?? {};
