@@ -20,4 +20,5 @@
 - `readlineStream`: 基于流的形式一行一行的读取文件的内容
 - `readLnk`: 解析 `lnk` 文件的原始地址
 - `stripBOM`: 删除字节顺序标记 (BOM)，编码为 `0xFEFF`
+- `symbolicLink`: 获取符号链接所指向的原始路径
 - `writeFile`: 将数据写入到文件
