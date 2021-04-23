@@ -11,7 +11,7 @@ import testEvery from './testEvery';
 import testSome from './testSome';
 
 import * as _source from './source';
-export * from './types/execAll';
+export * from './types';
 
 /**
  * 一组可以生成正则表达式的正则字符串
