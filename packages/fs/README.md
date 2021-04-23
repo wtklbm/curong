@@ -3,6 +3,7 @@
 `@curong/fs` 包含以下方法：
 
 - `clearDir`: 清空一个文件夹
+- `copy`: 将内容从 `fromPath` 拷贝到 `toPath`
 - `copyFile`: 把一个文件，从一个目录拷贝到另一个目录中
 - `copySymbolicLink`: 将一个符号链接拷贝到另一个路径
 - `deleteOne`: 删除一个文件或一个文件夹
