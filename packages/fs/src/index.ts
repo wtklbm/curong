@@ -18,12 +18,7 @@ import readLnk from './readLnk';
 import stripBOM from './stripBOM';
 import writeFile from './writeFile';
 
-export * from './types/destPath';
-export * from './types/readFile';
-export * from './types/readFragment';
-export * from './types/readline';
-export * from './types/readlineStream';
-export * from './types/writeFile';
+export * from './types';
 
 export {
     clearDir,
