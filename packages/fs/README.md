@@ -4,6 +4,7 @@
 
 - `clearDir`: 清空一个文件夹
 - `copyFile`: 把一个文件，从一个目录拷贝到另一个目录中
+- `copySymbolicLink`: 将一个符号链接拷贝到另一个路径
 - `deleteOne`: 删除一个文件或一个文件夹
 - `destPath`: 获取目标路径和目标文件夹
 - `diffFile`: 比较两个文件的内容是否相等
