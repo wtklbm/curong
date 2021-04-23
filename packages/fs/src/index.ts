@@ -16,6 +16,7 @@ import readlineFromCode from './readlineFromCode';
 import readlineStream from './readlineStream';
 import readLnk from './readLnk';
 import stripBOM from './stripBOM';
+import symbolicLink from './symbolicLink';
 import writeFile from './writeFile';
 
 export * from './types';
@@ -39,5 +40,6 @@ export {
     readlineStream,
     readLnk,
     stripBOM,
+    symbolicLink,
     writeFile
 };
