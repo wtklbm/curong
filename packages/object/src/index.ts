@@ -4,6 +4,8 @@ import derive from './derive';
 import isPrototypeProperty from './isPrototypeProperty';
 import shallowEqual from './shallowEqual';
 
+export * from './types';
+
 export {
     createWithNull,
     deleteAttrs,
