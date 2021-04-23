@@ -14,11 +14,7 @@ import readByQuestion from './readByQuestion';
 
 export * from './sequence';
 export * from './constants';
-export * from './types/ansiFormat';
-export * from './types/color';
-export * from './types/format';
-export * from './types/progressBar';
-
+export * from './types';
 export {
     ansiFormat,
     colorCode8bit,
