@@ -1,5 +1,6 @@
 import clearDir from './clearDir';
 import copyFile from './copyFile';
+import copySymbolicLink from './copySymbolicLink';
 import deleteOne from './deleteOne';
 import destPath from './destPath';
 import diffFile from './diffFile';
@@ -24,6 +25,7 @@ export * from './types';
 export {
     clearDir,
     copyFile,
+    copySymbolicLink,
     deleteOne,
     destPath,
     diffFile,
