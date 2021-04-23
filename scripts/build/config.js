@@ -53,6 +53,7 @@ function config(options = {}) {
 
             // @ts-ignore
             replace({
+                preventAssignment: true,
                 __VERSION__: version
             }),
 
