@@ -4,6 +4,8 @@ import shuffle from './shuffle';
 import sortToIndexes from './sortToIndexes';
 import uniqueFromPrimitive from './uniqueFromPrimitive';
 
+export * from './types';
+
 export {
     maxLengthIndex,
     minLengthIndex,
