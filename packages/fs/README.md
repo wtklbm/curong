@@ -11,6 +11,7 @@
 - `findDir`: 从一个文件夹中查找指定的文件夹
 - `isDir`: 是不是一个文件夹
 - `isFile`: 是不是一个文件
+- `isSymbolicLink`: 是不是一个符号链接
 - `mkdir`: 创建一个文件夹
 - `readFile`: 将文件的内容读取为指定格式的字符串
 - `readFragment`: 从一个文件中读取一段长度的内容
