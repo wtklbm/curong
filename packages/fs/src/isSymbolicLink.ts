@@ -9,7 +9,7 @@ import { promises } from 'fs';
 export default async function isSymbolicLink(
     pathString: string
 ): Promise<boolean> {
-    return await promises.stat(pathString).then(
+    return await promises.lstat(pathString).then(
         stat => stat.isSymbolicLink(),
         () => false
     );
