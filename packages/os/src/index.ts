@@ -5,7 +5,7 @@ import windowsLocal from './windowsLocal';
 import windowsTaskList from './windowsTaskList';
 
 export * from './platform';
-export * from './types/windowsTaskList';
+export * from './types';
 
 export {
     appendCmd,
