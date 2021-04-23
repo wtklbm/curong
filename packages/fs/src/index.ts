@@ -7,6 +7,7 @@ import fileList from './fileList';
 import findDir from './findDir';
 import isDir from './isDir';
 import isFile from './isFile';
+import isSymbolicLink from './isSymbolicLink';
 import mkdir from './mkdir';
 import readFile from './readFile';
 import readFragment from './readFragment';
@@ -34,6 +35,7 @@ export {
     findDir,
     isDir,
     isFile,
+    isSymbolicLink,
     mkdir,
     readFile,
     readFragment,
