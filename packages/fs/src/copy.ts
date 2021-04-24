@@ -17,7 +17,7 @@ const _copyFile = async (from: string, to: string, forcibly = false) => {
         return;
     }
 
-    const toDir = dirname(from);
+    const toDir = dirname(to);
 
     // 在拷贝文件之前，先判断父文件夹存不存在
     if (!(await isDir(toDir))) {
