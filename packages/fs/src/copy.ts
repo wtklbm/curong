@@ -1,4 +1,4 @@
-import { join } from 'path';
+import { join, dirname } from 'path';
 import { readdir, copyFile, lstat } from 'fs/promises';
 
 import { format } from '@curong/term';
@@ -15,6 +15,13 @@ const _copyFile = async (from: string, to: string, forcibly = false) => {
     // 如果目标文件已经存在，并且我们不想强制写入
     if ((await isFile(to)) && !forcibly) {
         return;
+    }
+
+    const toDir = dirname(from);
+
+    // 在拷贝文件之前，先判断父文件夹存不存在
+    if (!(await isDir(toDir))) {
+        await mkdir(toDir);
     }
 
     return await copyFile(from, to).catch(error => {
@@ -107,7 +114,7 @@ export default async function copy(
         to = join(toPath, path);
 
         if ((link = await symbolicLink(fromPath))) {
-            await copySymbolicLink(link, toPath);
+            await copySymbolicLink(link, to);
         } else if (await isFile(from)) {
             await _copyFile(from, to, forcibly);
         } else if (await isDir(from)) {
