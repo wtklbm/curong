@@ -2,7 +2,7 @@
  * 给单词数组排序，中文按照音序排序，英文按照整个单词排序 (全量排序)
  *
  * @param value 要排序的字符串数组
- * @param reverseOrder 是否倒序排列
+ * @param reverseOrder 是否倒序排列，默认为 `false`
  * @returns 返回排序好的字符串数组
  * @example
  *
