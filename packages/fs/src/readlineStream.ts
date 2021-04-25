@@ -26,12 +26,12 @@ import { ReadlineStreamCallback } from './types/readlineStream';
  *
  * - 如果 `pathString` 不是文件路径，则会抛出异常
  */
-export default function readlineStream(
+export default async function readlineStream(
     pathString: string,
     encoding?: BufferEncoding | ReadlineStreamCallback,
     callback?: ReadlineStreamCallback
 ): Promise<string[] | boolean> {
-    if (!isFile(pathString)) {
+    if (!(await isFile(pathString))) {
         throw format({
             name: 'readlineStream',
             message: 'pathString不是一个文件的路径，该文件不存在',
