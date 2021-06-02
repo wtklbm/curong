@@ -4,7 +4,7 @@ import { ObjectType } from './types';
  * 将一个对象中的键全部转换为小写，并返回一个新的对象
  *
  * @param object 要处理的对象
- * @param isCover 是否覆盖新对象中之前所存储的值，默认为 `true`
+ * @param isCover 当遇到重复对象名时是否覆盖之前的属性，默认为 `true`
  *
  *  - 如果为 `true`，则会将新对象中之前所存储的属性中的值替换掉
  *  - 如果为 `false`，则不会对新对象中的属性重复赋值
