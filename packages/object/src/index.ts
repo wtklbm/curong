@@ -3,6 +3,7 @@ import deleteAttrs from './deleteAttrs';
 import derive from './derive';
 import isPrototypeProperty from './isPrototypeProperty';
 import shallowEqual from './shallowEqual';
+import toLowerCaseKey from './toLowerCaseKey';
 
 export * from './types';
 
@@ -11,5 +12,6 @@ export {
     deleteAttrs,
     derive,
     isPrototypeProperty,
-    shallowEqual
+    shallowEqual,
+    toLowerCaseKey
 };
