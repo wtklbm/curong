@@ -8,6 +8,7 @@ import frontOf from './frontOf';
 import matchOrder from './matchOrder';
 import matchSplit from './mathSplit';
 import notStarts from './notStarts';
+import parseJson from './parseJson';
 import quoteClosed from './quoteClosed';
 import quotePair from './quotePair';
 import rmControl from './rmControl';
@@ -52,6 +53,7 @@ export {
     matchOrder,
     matchSplit,
     notStarts,
+    parseJson,
     quoteClosed,
     quotePair,
     rmControl,
