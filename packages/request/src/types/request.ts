@@ -26,22 +26,31 @@ export type Methods =
 export type RequestOptions = _RequestOptions & {
     /** 是否使用更加安全的 `https` 发送请求 */
     https?: boolean;
+
     /** 主机地址 */
     hostname: string;
+
     /** 主机路径 */
     path?: string;
+
     /** 响应超时时间，单位 `毫秒` */
     timeout?: number;
+
     /** 请求头 */
     headers?: _RequestOptions['headers'];
+
     /** 请求方式 */
     method?: Methods;
+
     /** 端口号 */
     port?: number;
+
     /** 当前请求的查询字符串对象，会被转换为 `a=b&b=c` 的格式 */
     query?: ParsedUrlQueryInput;
+
     /** 当前请求的请求体对象，会被转换为 `a=b&b=c` 的格式 */
     body?: ParsedUrlQueryInput | string;
+
     /** 延迟请求时间，单位 `毫秒` */
     delay?: number;
 };
@@ -50,10 +59,13 @@ export type RequestOptions = _RequestOptions & {
 export type RequestResult = {
     /** 响应的数据 */
     data: Buffer;
+
     /** 响应对象实例 */
     response: IncomingMessage;
+
     /** 当前响应的配置对象 */
     config: RequestOptions;
+
     /** 响应失败的原因 */
     error: Error | null;
 };
