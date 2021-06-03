@@ -1,3 +1,5 @@
+import { isSymbol, isNumber } from '@curong/types';
+
 import { ObjectType } from './types';
 
 /**
@@ -25,8 +27,17 @@ export default function toLowerCaseKey(
 ): ObjectType {
     const set = new Set();
 
-    return Object.keys(object).reduce((memo, key) => {
+    return Reflect.ownKeys(object).reduce((memo, key) => {
+        // @ts-ignore
         const value = object[key];
+
+        // 如果属性名是数字或者 `symbol`，就直接赋值
+        if (isSymbol(key) || isNumber(key)) {
+            // @ts-ignore
+            memo[key] = value;
+            return memo;
+        }
+
         key = key.toLocaleLowerCase();
 
         if (isCover) {
