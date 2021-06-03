@@ -30,7 +30,8 @@
     "dependencies": {
         "@curong/function": "^0.0.0-alpha.3",
         "@curong/term": "^0.0.0-alpha.3",
-        "@curong/types": "^0.0.0-alpha.3"
+        "@curong/types": "^0.0.0-alpha.3",
+        "@curong/object": "^0.0.0-alpha.3"
     },
     "sideEffects": false
 }
