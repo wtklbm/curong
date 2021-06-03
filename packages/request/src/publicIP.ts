@@ -3,7 +3,7 @@ import { TextDecoder } from 'util';
 import { format } from '@curong/term';
 import { isNotEqual, isNull } from '@curong/types';
 
-import request from './request';
+import { request } from './request';
 
 import { publicIpResult } from './types/publicIP';
 
