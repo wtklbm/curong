@@ -1,3 +1,5 @@
+import { format } from '@curong/term';
+
 /**
  * 将一个值转换为一个字符串
  *
@@ -14,11 +16,15 @@
  * ```
  */
 export default function stringify(value: any): Promise<string> {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
         try {
             resolve(JSON.stringify(value));
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            throw format({
+                name: 'stringify',
+                message: '转换字符串失败',
+                data: { value, error }
+            });
         }
     });
 }
