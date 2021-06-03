@@ -5,6 +5,7 @@ import sortByEng from './sortByEng';
 import sortByEngInitials from './sortByEngInitials';
 import sortToIndexes from './sortToIndexes';
 import sortWords from './sortWords';
+import splitByStep from './splitByStep';
 import uniqueFromPrimitive from './uniqueFromPrimitive';
 
 export * from './types';
@@ -17,5 +18,6 @@ export {
     sortByEngInitials,
     sortToIndexes,
     sortWords,
+    splitByStep,
     uniqueFromPrimitive
 };
