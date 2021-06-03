@@ -26,6 +26,7 @@ import startsSlice from './startsSlice';
 import startTabsLength from './startTabsLength';
 import toRegExp from './toRegExp';
 import toRegExpSource from './toRegExpSource';
+import toSentences from './toSentences';
 import trim from './trim';
 import trimLeft from './trimLeft';
 import trimRight from './trimRight';
@@ -72,6 +73,7 @@ export {
     startTabsLength,
     toRegExp,
     toRegExpSource,
+    toSentences,
     trim,
     trimLeft,
     trimRight,
