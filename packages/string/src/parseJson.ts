@@ -13,7 +13,7 @@
  * console.log(ret); // { value: '', number: 0, bool: false }
  * ```
  */
-export default function parseJson(value: string): Promise<Record<string, any>> {
+export default function parseJson(value: string): Promise<any> {
     return new Promise((resolve, reject) => {
         try {
             resolve(JSON.parse(value));
