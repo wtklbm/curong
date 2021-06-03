@@ -1,4 +1,5 @@
 import behindOf from './behindOf';
+import bindOutside from './bindOutside';
 import bytesArray from './bytesArray';
 import bytesLength from './bytesLength';
 import chars from './chars';
@@ -44,6 +45,7 @@ export * from './types';
 
 export {
     behindOf,
+    bindOutside,
     bytesArray,
     bytesLength,
     chars,
