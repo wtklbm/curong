@@ -4,6 +4,7 @@ import { stringify, ParsedUrlQueryInput } from 'querystring';
 
 import { format } from '@curong/term';
 import { sleepRun } from '@curong/function';
+import { toLowerCaseKey } from '@curong/object';
 import {
     isFunctionHave,
     isStringHave,
@@ -12,7 +13,13 @@ import {
     isNull
 } from '@curong/types';
 
-import { RequestOptions, RequestHandler, RequestResult } from './types/request';
+import { isGzipContent, unzipContent, contentTypeCallback } from './content';
+
+import {
+    RequestOptions,
+    RequestHandler,
+    RequestResult
+} from '../types/request';
 
 /**
  * 从远程连接获取响应的内容并返回 `Buffer`
@@ -25,7 +32,7 @@ import { RequestOptions, RequestHandler, RequestResult } from './types/request';
  * - `https` 是否使用更加安全的 `https` 发送请求
  * - `port` 端口号
  * - `query` 当前请求的查询字符串对象，会被转换为 `a=b&b=c` 的格式
- * - `body` 当前请求的请求体对象，会被转换为 `a=b&b=c` 的格式
+ * - `body` 当前请求的请求体对象
  * - `delay` 延迟请求时间，单位 `毫秒`
  * - `timeout` 响应超时时间，单位 `毫秒`
  * - `headers` 请求头对象
@@ -89,10 +96,6 @@ import { RequestOptions, RequestHandler, RequestResult } from './types/request';
  * - 支持 `Ajax` 和 `fetch`
  * - 删除 `querystring`，支持 `body` 参数嵌套
  * - 处理响应头，避免连接的状态挂起
- *
- * @bug
- *
- *  - 响应头属性的大小写问题，避免同时出现大写和小写的情况发生
  */
 export default function request(
     options: RequestOptions,
@@ -111,6 +114,27 @@ export default function request(
         });
     }
 
+    const headers = toLowerCaseKey({
+        dnt: 1,
+        host: hostname,
+        connection: 'keep-alive',
+        cookie: '',
+        referer: `${https ? 'https' : 'http'}://${hostname}`,
+        xsrfCookieName: 'XSRF-TOKEN',
+        xsrfHeaderName: 'X-XSRF-TOKEN',
+        'cache-control': 'max-age=0',
+        'upgrade-insecure-requests': 1,
+        'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8',
+        'transfer-encoding': 'chunked',
+        'x-requested-with': 'XMLHttpRequest',
+        'user-agent':
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36',
+        accept:
+            'application/json,text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        ...options.headers
+    });
+
     /** 配置参数 */
     options = {
         // @ts-ignore
@@ -121,26 +145,7 @@ export default function request(
         // 如果 `https` 的安全证书不是合法的，则忽略证书验证
         rejectUnauthorized: false,
         ...options,
-        headers: {
-            dnt: 1,
-            host: hostname,
-            connection: 'keep-alive',
-            cookie: '',
-            referer: `${https ? 'https' : 'http'}://${hostname}`,
-            xsrfCookieName: 'XSRF-TOKEN',
-            xsrfHeaderName: 'X-XSRF-TOKEN',
-            'cache-control': 'max-age=0',
-            'upgrade-insecure-requests': 1,
-            'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8',
-            'transfer-encoding': 'chunked',
-            'x-requested-with': 'XMLHttpRequest',
-            'user-agent':
-                'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36',
-            accept:
-                'application/json,text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-            'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-            ...options.headers
-        }
+        headers
     };
 
     if (isObjectHave(options.query)) {
@@ -151,6 +156,7 @@ export default function request(
     const isHeaderFn = isFunctionHave(handlers.header);
     const isDataFn = isFunctionHave(handlers.data);
     const requestFn = https ? HttpsRequest : HttpRequest;
+    const ht = contentTypeCallback(options);
     const getF = (resolve: any, reject: any) => {
         /** 发起网络请求 */
         const req = requestFn(options, (res: IncomingMessage) => {
@@ -163,11 +169,23 @@ export default function request(
             };
 
             /** 创建返回的数据对象 */
-            const returns = (error?: Error) => {
+            const returns = async (error?: Error) => {
                 removeListeners();
 
+                let data = Buffer.concat(buffers);
+
+                if (isGzipContent(res)) {
+                    data = await unzipContent(data).catch(error => {
+                        throw format({
+                            name: 'request',
+                            message: 'gzip 解压失败',
+                            data: { data, error }
+                        });
+                    });
+                }
+
                 const responseData: RequestResult = {
-                    data: Buffer.concat(buffers),
+                    data,
                     response: res,
                     config: options,
                     error: error || null
@@ -212,7 +230,7 @@ export default function request(
             let buffer = null;
 
             if (isObjectHave(body)) {
-                buffer = Buffer.from(stringify(body as ParsedUrlQueryInput));
+                buffer = Buffer.from(ht(body as ParsedUrlQueryInput));
             } else if (isStringHave(body)) {
                 buffer = Buffer.from(body);
             }
@@ -225,7 +243,7 @@ export default function request(
                 options.headers = {};
             }
 
-            options.headers['Content-Length'] = buffer.length;
+            options.headers['content-length'] = buffer.length;
             req.write(buffer);
         } while (false);
 
