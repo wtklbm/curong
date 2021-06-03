@@ -1,6 +1,6 @@
 import { isString, isNull, isEqual, isZero } from '@curong/types';
 
-import request from './request';
+import { request } from './request';
 
 import { RequestOptions } from './types/request';
 import { QueryDNSResult } from './types/queryDNS';
