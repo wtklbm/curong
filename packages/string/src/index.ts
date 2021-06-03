@@ -4,6 +4,7 @@ import bytesArray from './bytesArray';
 import bytesLength from './bytesLength';
 import chars from './chars';
 import codePointAt from './codePointAt';
+import corrector from './corrector';
 import fromChars from './fromChars';
 import frontOf from './frontOf';
 import matchOrder from './matchOrder';
@@ -44,6 +45,7 @@ export {
 } from './characters';
 
 export * from './types';
+export * from './corrector';
 
 export {
     behindOf,
@@ -52,6 +54,7 @@ export {
     bytesLength,
     chars,
     codePointAt,
+    corrector,
     fromChars,
     frontOf,
     matchOrder,
