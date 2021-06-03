@@ -4,6 +4,7 @@
 `@curong/string` 主要包含以下的方法:
 
  - `behindOf`: 从一个字符串的指定索引的后面查找是否包含某个字符串
+ - `bindOutside`: 在被包裹的值的外面处理字符串中的内容
  - `bytesArray`: 将 `UTF-8` 字符串转换为字节数组
  - `bytesLength`: 计算 `UTF-8`、`UTF16` 的字符串编码长度，计算的长度值与 `Buffer.from(str).length` 等同
  - `chars`: 将字符串转换为字符数组
