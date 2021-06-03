@@ -1,3 +1,5 @@
+import { format } from '@curong/term';
+
 /**
  * 将 `JSON` 格式的字符串转换为一个 `JavaScript` 对象
  *
@@ -14,11 +16,15 @@
  * ```
  */
 export default function parseJson(value: string): Promise<any> {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
         try {
             resolve(JSON.parse(value));
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            throw format({
+                name: 'parseJson',
+                message: '解析JSON对象失败',
+                data: { value, error }
+            });
         }
     });
 }
