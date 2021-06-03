@@ -9,6 +9,7 @@
  - `bytesLength`: 计算 `UTF-8`、`UTF16` 的字符串编码长度，计算的长度值与 `Buffer.from(str).length` 等同
  - `chars`: 将字符串转换为字符数组
  - `codePointAt`: 计算 `UTF-8`、`UTF16` 的代码点
+ - `corrector`: 在指定的位置处来添加一些空格，美化中文语句的排版
  - `decodeEntity`: 解码包含 `HTML` 实体名称 (`&name;`) 和实体编号 (`&#point;`) 的字符串
  - `decodeEntityByName`: 解码包含 `HTML` 实体名称 (`&name;`) 的字符串
  - `decodeEntityByPoint`: 解码包含 `HTML` 实体编号 (`&#point;`) 的字符串
