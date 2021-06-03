@@ -7,4 +7,5 @@
 - `deleteAttrs`: 从一个对象中删除一些属性
 - `isPrototypeProperty`: 是不是当前对象的原型上的属性
 - `shallowEqual`: 通过浅比较的方式比较两个对象中的属性。(仅比较对象中的一层属性)
+- `stringify`: 将一个值转换为一个字符串
 - `toLowerCaseKey`: 将一个对象中的键全部转换为小写，并返回一个新的对象
