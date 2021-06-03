@@ -34,6 +34,7 @@
  - `startSpacesLength`: 获取字符串开头所包含的空格的数量
  - `startsSlice`: 判断一个字符串是不是以某个字符串开头，如果是则截取该字符串
  - `startTabsLength`: 获取字符串开头所包含的 `Tab` 的数量
+ - `subSpaces`: 基于正则所匹配到的结果添加适当的空格
  - `toRegExp`: 将一个字符串转换为一个正则表达式，用于在 `str.replace` 中使用
  - `toRegExpSource`: 转义一个字符串，并让这个字符串通过 `new RegExp()` 方法来创建正则表达式
  - `toSentences`: 将一个字符串拆分为句子数组
