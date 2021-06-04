@@ -32,6 +32,7 @@
  - `rmZeroWidth`: 删除字符串中所有的零宽字符
  - `rmZeroWidthLeft`: 删除字符串开头的零宽字符
  - `rmZeroWidthRight`: 删除字符串结尾的零宽字符
+ - `splitByBytes`: 将一个字符串根据字节拆分为一个字符串数组
  - `startSpacesLength`: 获取字符串开头所包含的空格的数量
  - `startsSlice`: 判断一个字符串是不是以某个字符串开头，如果是则截取该字符串
  - `startTabsLength`: 获取字符串开头所包含的 `Tab` 的数量
