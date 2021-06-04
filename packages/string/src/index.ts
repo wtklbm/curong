@@ -22,6 +22,7 @@ import rmLikeSpaceRight from './rmLikeSpaceRight';
 import rmZeroWidth from './rmZeroWidth';
 import rmZeroWidthLeft from './rmZeroWidthLeft';
 import rmZeroWidthRight from './rmZeroWidthRight';
+import splitByBytes from './splitByBytes';
 import startSpacesLength from './startSpacesLength';
 import startsSlice from './startsSlice';
 import startTabsLength from './startTabsLength';
@@ -72,6 +73,7 @@ export {
     rmZeroWidth,
     rmZeroWidthLeft,
     rmZeroWidthRight,
+    splitByBytes,
     startSpacesLength,
     startsSlice,
     startTabsLength,
