@@ -115,23 +115,21 @@ export default function request(
     }
 
     const headers = toLowerCaseKey({
-        dnt: 1,
-        host: hostname,
-        connection: 'keep-alive',
-        cookie: '',
-        referer: `${https ? 'https' : 'http'}://${hostname}`,
+        Accept: 'application/json,text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+        'Cache-Control': 'max-age=0',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        Connection: 'keep-alive',
+        DNT: 1,
+        Host: hostname,
+        Pragma: 'no-cache',
+        Referer: `${https ? 'https' : 'http'}://${hostname}`,
         xsrfCookieName: 'XSRF-TOKEN',
         xsrfHeaderName: 'X-XSRF-TOKEN',
-        'cache-control': 'max-age=0',
-        'upgrade-insecure-requests': 1,
-        'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8',
-        'transfer-encoding': 'chunked',
-        'x-requested-with': 'XMLHttpRequest',
-        'user-agent':
-            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36',
-        accept:
-            'application/json,text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'Upgrade-Insecure-Requests': 1,
+        'Transfer-Encoding': 'chunked',
+        'X-Requested-With': 'XMLHttpRequest',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
         ...options.headers
     });
 
