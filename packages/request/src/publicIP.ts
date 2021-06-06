@@ -47,7 +47,7 @@ export default async function publicIP(): Promise<publicIpResult> {
         });
     }
 
-    const citySN = new Function(`${data}; return returnCitySN || {};`);
+    const citySN = new Function(`${data}; return returnCitySN ?? {};`);
     const { cip: ip, cid: id, cname: name } = citySN();
 
     return { ip, city: { id, name } };
