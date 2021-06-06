@@ -33,7 +33,7 @@ export default async function destPath(
     desDir: string,
     options?: destPathOptions
 ): Promise<string> {
-    const { isMakeDir = false } = options || {};
+    const { isMakeDir = false } = options ?? {};
 
     if (
         !isStringHave(filePath) ||
