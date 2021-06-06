@@ -9,10 +9,11 @@ import {
     isFunctionHave,
     isStringHave,
     isObjectHave,
-    isNumberHave,
-    isNull
+    isNull,
+    isZero
 } from '@curong/types';
 
+import { commonHeaders } from './headers';
 import { isGzipContent, unzipContent, contentTypeCallback } from './content';
 
 import {
@@ -101,37 +102,15 @@ export default function request(
     options: RequestOptions,
     handlers: RequestHandler = {}
 ): Promise<RequestResult> {
-    const { https = true, hostname, delay } = options || {};
+    const { https = true, hostname, delay } = options ?? {};
 
     if (!isStringHave(hostname)) {
         throw format({
             name: 'request',
             message: '主机名错误',
-            data: {
-                options,
-                handlers
-            }
+            data: { options, handlers }
         });
     }
-
-    const headers = toLowerCaseKey({
-        Accept: 'application/json,text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
-        'Cache-Control': 'max-age=0',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        Connection: 'keep-alive',
-        DNT: 1,
-        Host: hostname,
-        Pragma: 'no-cache',
-        Referer: `${https ? 'https' : 'http'}://${hostname}`,
-        xsrfCookieName: 'XSRF-TOKEN',
-        xsrfHeaderName: 'X-XSRF-TOKEN',
-        'Upgrade-Insecure-Requests': 1,
-        'Transfer-Encoding': 'chunked',
-        'X-Requested-With': 'XMLHttpRequest',
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
-        ...options.headers
-    });
 
     /** 配置参数 */
     options = {
@@ -143,7 +122,12 @@ export default function request(
         // 如果 `https` 的安全证书不是合法的，则忽略证书验证
         rejectUnauthorized: false,
         ...options,
-        headers
+        headers: toLowerCaseKey({
+            Host: hostname,
+            Referer: `${https ? 'https' : 'http'}://${hostname}`,
+            ...commonHeaders,
+            ...options.headers
+        })
     };
 
     if (isObjectHave(options.query)) {
@@ -186,7 +170,7 @@ export default function request(
                     data,
                     response: res,
                     config: options,
-                    error: error || null
+                    error: error ?? null
                 };
 
                 // 清空缓存
@@ -233,7 +217,7 @@ export default function request(
                 buffer = Buffer.from(body);
             }
 
-            if (isNull(buffer) || buffer.length === 0) {
+            if (isNull(buffer) || isZero(buffer.length)) {
                 break;
             }
 
@@ -250,9 +234,6 @@ export default function request(
     };
 
     return new Promise(async (resolve, reject) => {
-        return await sleepRun(
-            () => getF(resolve, reject),
-            isNumberHave(delay) ? delay : 750
-        );
+        return await sleepRun(() => getF(resolve, reject), delay ?? 0);
     });
 }
