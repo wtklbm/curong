@@ -91,6 +91,7 @@
 - `isUint8ClampedArray`: 是不是一个 `Uint8ClampedArray`，每一项的值为 `0 - 255`
 - `isUintHave`: 是不是一个大于 0 的无符号整数
 - `isUintSafe`: 是不是一个安全的无符号整数
+- `isUintSafeHave`: 是不是一个大于 0 的安全的无符号整数
 - `isUndefined`: 是不是 `undefined`
 - `isVarName`: 是不是可以把值当做 `JavaScript` 的变量名
 - `isWeakMap`: 是不是一个 `WeakMap`
