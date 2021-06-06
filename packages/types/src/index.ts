@@ -82,6 +82,7 @@ import isUint16Array from './isUint16Array';
 import isUint32Array from './isUint32Array';
 import isUint8Array from './isUint8Array';
 import isUint8ClampedArray from './isUint8ClampedArray';
+import isUintHave from './isUintHave';
 import isUintSafe from './isUintSafe';
 import isUndefined from './isUndefined';
 import isVarName from './isVarName';
@@ -176,6 +177,7 @@ export {
     isUint32Array,
     isUint8Array,
     isUint8ClampedArray,
+    isUintHave,
     isUintSafe,
     isUndefined,
     isVarName,
