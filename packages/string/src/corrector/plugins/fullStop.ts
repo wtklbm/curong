@@ -10,7 +10,7 @@ const lsReg = new RegExp(`(${g}) *([,;!?~]+)( +|$)`, 'g');
 const colonReg = new RegExp(`(${g}): *([()a-zA-Z0-9])`, 'g');
 
 /** 转换标点 */
-const convert = (symbols: string): string => symbolMap.get(symbols) || symbols;
+const convert = (symbols: string): string => symbolMap.get(symbols) ?? symbols;
 
 /**
  * 转换标点符号
