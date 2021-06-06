@@ -221,7 +221,7 @@ export default function format(info: ForMatInfo, options?: ForMatOptions) {
         ...options
     };
 
-    const { dividers = true, title = true } = options.display || {};
+    const { dividers = true, title = true } = options.display ?? {};
     const splitChars: string = '-'.repeat(80);
     const styleText: string[] = [];
     const styleMsg = makeInfo(info);
