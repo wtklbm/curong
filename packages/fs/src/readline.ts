@@ -29,7 +29,7 @@ export default function readline(
                 encoding = 'utf8';
             } else {
                 callback = (value, _done) => contents.push(value);
-                encoding = encoding || 'utf8';
+                encoding = encoding ?? 'utf8';
             }
         }
 
