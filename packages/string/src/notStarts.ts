@@ -38,7 +38,7 @@ export default function notStarts(
         return true;
     }
 
-    const { position: pos = 0, caseSensitivity = true } = options || {};
+    const { position: pos = 0, caseSensitivity = true } = options ?? {};
 
     if (!isUint(pos) || str.length < pos) {
         throw new TypeError(`[notStarts]: position不是有效索引, "${pos}"`);
