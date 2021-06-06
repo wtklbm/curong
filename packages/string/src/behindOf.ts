@@ -36,7 +36,7 @@ export default function behindOf(
         return false;
     }
 
-    const { position: pos, caseSensitivity = true } = options || {};
+    const { position: pos, caseSensitivity = true } = options ?? {};
 
     let fn = (str: string, chunk: string) => str.includes(chunk, pos);
 
