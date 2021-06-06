@@ -36,7 +36,7 @@ export default function frontOf(
         return false;
     }
 
-    const { position: pos, caseSensitivity = true } = options || {};
+    const { position: pos, caseSensitivity = true } = options ?? {};
 
     const l = str.length;
     str = str.slice(0, isUint(pos) && pos < l ? pos + 1 : l);
