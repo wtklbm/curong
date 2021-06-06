@@ -33,16 +33,19 @@ export const isJson = (type: string) => {
  * @returns 返回处理 `content-type` 的函数
  */
 export function contentTypeCallback(options: RequestOptions) {
-    const contentType = (options.headers!['content-type'] ?? '') as string;
+    const headers = options.headers;
+    let handleFn: (v: any) => any = v => v;
 
-    let handleFn: (v: any) => any;
+    if (headers) {
+        const contentType = (headers['content-type'] ??
+            headers['Content-Type'] ??
+            '') as string;
 
-    if (isFormUrlencoded(contentType)) {
-        handleFn = stringify;
-    } else if (isJson(contentType)) {
-        handleFn = JSON.stringify;
-    } else {
-        handleFn = v => v;
+        if (isFormUrlencoded(contentType)) {
+            handleFn = stringify;
+        } else if (isJson(contentType)) {
+            handleFn = JSON.stringify;
+        }
     }
 
     return handleFn;
