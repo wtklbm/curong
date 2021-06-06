@@ -84,6 +84,7 @@ import isUint8Array from './isUint8Array';
 import isUint8ClampedArray from './isUint8ClampedArray';
 import isUintHave from './isUintHave';
 import isUintSafe from './isUintSafe';
+import isUintSafeHave from './isUintSafeHave';
 import isUndefined from './isUndefined';
 import isVarName from './isVarName';
 import isWeakMap from './isWeakMap';
@@ -179,6 +180,7 @@ export {
     isUint8ClampedArray,
     isUintHave,
     isUintSafe,
+    isUintSafeHave,
     isUndefined,
     isVarName,
     isWeakMap,
