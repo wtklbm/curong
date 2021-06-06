@@ -26,7 +26,7 @@ export default async function fileList(
     dirName: string,
     options?: FileListOptions
 ): Promise<Array<string>> {
-    const { depthOnce = false } = options || {};
+    const { depthOnce = false } = options ?? {};
 
     const files: Array<string> = [];
     const dirents: Array<Dirent> | void = await promises
