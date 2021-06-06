@@ -53,7 +53,7 @@ export default function create(
         throw new TypeError(`[create]: name的值不是预期的: "${name}"`);
     }
 
-    const { encode = encodeURIComponent } = options || {};
+    const { encode = encodeURIComponent } = options ?? {};
 
     if (!isFunctionHave(encode)) {
         throw new TypeError(`[create]: encode不是一个带参的函数: "${encode}"`);
