@@ -47,7 +47,7 @@ export default async function readlineStream(
             encoding = 'utf8';
         } else {
             callback = (input: string) => ret.push(input);
-            encoding = encoding || 'utf8';
+            encoding = encoding ?? 'utf8';
         }
     }
 
