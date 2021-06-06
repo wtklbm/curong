@@ -110,7 +110,7 @@ export default class ProgressBar {
         }
 
         if (hiddenCursor) {
-            bars[0] = cursorHidden + (bars[0] || '');
+            bars[0] = cursorHidden + (bars[0] ?? '');
         }
 
         this.record = bars;
