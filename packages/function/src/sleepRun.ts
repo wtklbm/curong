@@ -1,5 +1,6 @@
-import { isTrue, isObject, isUint } from '@curong/types';
 import { range } from '@curong/number';
+import { format, printWarn } from '@curong/term';
+import { isTrue, isObject, isNumber, isUintHave } from '@curong/types';
 
 import { SleepRunOptions } from './types/sleepRun';
 
@@ -19,6 +20,7 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
  * - `show` 是否显示等待时间，默认为 `false`
  *
  * @returns 返回一个Promise对象的成功态
+ * @throw 如果 anyTimeout 传递的是一个数字，但是这个数字不是无符号整数，则会抛出异常
  * @example ````
  *
  * ### 传递一个数字
@@ -50,8 +52,16 @@ export default function sleepRun<T>(
     let show: boolean = false;
     let timeout: number = 0;
 
-    if (isUint(anyTimeout)) {
-        timeout = anyTimeout;
+    if (isNumber(anyTimeout)) {
+        if (isUintHave(anyTimeout)) {
+            timeout = anyTimeout;
+        } else {
+            throw format({
+                name: 'sleepRun',
+                message: 'anyTimeout不是一个无符号整数',
+                data: { anyTimeout }
+            });
+        }
     } else if (isObject(anyTimeout)) {
         const { start = 0, end = 0 } = anyTimeout;
         anyTimeout.show && (show = anyTimeout.show);
@@ -69,16 +79,16 @@ export default function sleepRun<T>(
         const date = new Date(initTime + timeout);
 
         if (timeout < 1e3) {
-            console.log(`等待 ${date.getMilliseconds()} 毫秒`);
+            printWarn(`等待 ${date.getMilliseconds()} 毫秒`);
         } else if (timeout < 864e5) {
             const minutes = padZero(date.getMinutes());
             const seconds = padZero(date.getSeconds());
             const hours = padZero(date.getHours());
-            console.log(`等待 ${hours}:${minutes}:${seconds}`);
+            printWarn(`等待 ${hours}:${minutes}:${seconds}`);
         } else if (timeout < 26784e5) {
-            console.log(`等待 ${date.getDate() - 1} 天`);
+            printWarn(`等待 ${date.getDate() - 1} 天`);
         } else {
-            console.log('等待 31 天以上');
+            printWarn('等待 31 天以上');
         }
     }
 
