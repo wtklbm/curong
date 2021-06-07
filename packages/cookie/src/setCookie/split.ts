@@ -58,7 +58,7 @@ export default function splitSetCookie(cookie: string): string[] {
 
         while (skipSpace(cookie, index)) {
             char = cookie.charAt(index);
-            if (char === ',') {
+            if (char === COMMA) {
                 last = index;
                 index += 1;
 
