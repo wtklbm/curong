@@ -1,6 +1,6 @@
 import { isStringHave } from '@curong/types';
 
-import { equalReg, semicolonReg } from './constants';
+import { EQUAL, equalReg, semicolonReg } from './constants';
 
 import {
     ParseSetCookieOptions,
@@ -64,7 +64,7 @@ function parseChunk(cookie: string, isDecode: boolean = true) {
 
     const nameValue = parts.shift()!.split(equalReg);
     const name = nameValue.shift();
-    let value = nameValue.join('=');
+    let value = nameValue.join(EQUAL);
 
     if (isDecode) {
         try {
@@ -89,7 +89,7 @@ function parseChunk(cookie: string, isDecode: boolean = true) {
 
         const key = sides.shift()!.toLowerCase();
 
-        return setCookieValue(cookie, key, sides.join('='));
+        return setCookieValue(cookie, key, sides.join(EQUAL));
     }, result);
 }
 
