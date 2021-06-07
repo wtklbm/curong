@@ -15,7 +15,7 @@ import { format } from '@curong/term';
  * console.log(ret); // { value: '', number: 0, bool: false }
  * ```
  */
-export default function parseJson(value: string): Promise<any> {
+export default function parseJson<T = any>(value: string): Promise<T> {
     return new Promise(resolve => {
         try {
             resolve(JSON.parse(value));
