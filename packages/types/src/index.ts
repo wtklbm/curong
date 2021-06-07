@@ -69,6 +69,7 @@ import isString from './isString';
 import isStringHave from './isStringHave';
 import isStringObject from './isStringObject';
 import isStringPrimitive from './isStringPrimitive';
+import isStringTrim from './isStringTrim';
 import isSymbol from './isSymbol';
 import isSyncFunction from './isSyncFunction';
 import isSyntaxError from './isSyntaxError';
@@ -165,6 +166,7 @@ export {
     isStringHave,
     isStringObject,
     isStringPrimitive,
+    isStringTrim,
     isSymbol,
     isSyncFunction,
     isSyntaxError,
