@@ -1,8 +1,8 @@
-import { create } from '../src';
+import { createCookie } from '../src';
 
-describe('@curong/cookie/create', () => {
+describe('@curong/cookie/createCookie', () => {
     test('测试1', () => {
-        const cookie = create('wtklbm', 'value', {
+        const cookie = createCookie('wtklbm', 'value', {
             encode(value) {
                 return value;
             },
