@@ -1,6 +1,6 @@
 import { range } from '@curong/number';
 import { format, printWarn } from '@curong/term';
-import { isTrue, isObject, isNumber, isUintHave } from '@curong/types';
+import { isTrue, isObject, isNumber, isUint } from '@curong/types';
 
 import { SleepRunOptions } from './types/sleepRun';
 
@@ -53,7 +53,7 @@ export default function sleepRun<T>(
     let timeout: number = 0;
 
     if (isNumber(anyTimeout)) {
-        if (isUintHave(anyTimeout)) {
+        if (isUint(anyTimeout)) {
             timeout = anyTimeout;
         } else {
             throw format({
