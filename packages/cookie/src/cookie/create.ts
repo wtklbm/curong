@@ -7,7 +7,7 @@ import {
     isTrue
 } from '@curong/types';
 
-import { CreateOptions } from './types/create';
+import { CreateCookieOptions } from './types/create';
 
 /**
  * 通过设置 `name`、`value` 和 `options` 属性配置，生成一个 `cookie` 字符串
@@ -25,7 +25,7 @@ import { CreateOptions } from './types/create';
  * @example
  *
  * ```javascript
- * const cookie = create('wtklbm', 'value', {
+ * const cookie = createCookie('wtklbm', 'value', {
  *     encode(value) {
  *         return value;
  *     },
@@ -42,10 +42,10 @@ import { CreateOptions } from './types/create';
  * console.log(cookie);
  * ```
  */
-export default function create(
+export default function createCookie(
     name: string,
     value: string,
-    options: CreateOptions
+    options: CreateCookieOptions
 ): string {
     const verifyReg = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
 
@@ -100,7 +100,7 @@ export default function create(
 
         sameSite(v: any, chunk: string[]) {
             if (isString(v)) {
-                v = v.toLowerCase() as CreateOptions['sameSite'];
+                v = v.toLowerCase() as CreateCookieOptions['sameSite'];
             }
 
             switch (v) {
@@ -125,7 +125,10 @@ export default function create(
     return Object.keys(compiler)
         .reduce(
             (memo: string[], v: string) => {
-                return compiler[v](options[v as keyof CreateOptions], memo);
+                return compiler[v](
+                    options[v as keyof CreateCookieOptions],
+                    memo
+                );
             },
             [`${name}=${value}`]
         )

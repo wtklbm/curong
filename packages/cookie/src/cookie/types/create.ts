@@ -1,4 +1,4 @@
-export type CreateOptions = {
+export type CreateCookieOptions = {
     /**
      * @param encode 给一个值进行编码的回调函数，默认为 `encodeURIComponent`
      */

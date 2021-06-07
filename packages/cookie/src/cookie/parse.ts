@@ -1,6 +1,6 @@
 import { isFunctionHave, isString, isStringHave } from '@curong/types';
 
-import { ParseOptions } from './types/parse';
+import { ParseCookieOptions } from './types/parse';
 
 /**
  * 解码一个值
@@ -12,7 +12,7 @@ import { ParseOptions } from './types/parse';
  *
  * - 如果 `decode` 函数返回的值不是字符串，则会抛出异常
  */
-function getDecode(value: string, decode?: ParseOptions['decode']): string {
+function getDecode(value: string, decode?: ParseCookieOptions['decode']): string {
     value = value.trim();
 
     // 如果值包含双引号
@@ -49,7 +49,7 @@ function getDecode(value: string, decode?: ParseOptions['decode']): string {
  * ```javascript
  * const cookie =
  *     'htVD_2132_saltkey=UrzaeSMmA; htVD_2132_lastvisit=15797202730; htVD_2132_connect_is_bind=0; htVD_2132_smile=1D1';
- * const cookieObj = parse(cookie);
+ * const cookieObj = parseCookie(cookie);
  *
  * // {
  * //     htVD_2132_saltkey: 'UrzaeSMmA',
@@ -60,9 +60,9 @@ function getDecode(value: string, decode?: ParseOptions['decode']): string {
  * console.log(cookieObj);
  * ```
  */
-export default function parse(
+export default function parseCookie(
     cookie: string,
-    decode?: ParseOptions['decode']
+    decode?: ParseCookieOptions['decode']
 ): { [key: string]: string } {
     const result: { [key: string]: string } = {};
 
