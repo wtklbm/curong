@@ -15,4 +15,9 @@ describe('@curong/types/isStringTrim', () => {
     test('测试3', () => {
         expect(isStringTrim(null)).toBe(false);
     });
+
+    test('测试4', () => {
+        expect(isStringTrim('   xx  ', 3)).toBe(false);
+        expect(isStringTrim('   xxx  ', 2)).toBe(true);
+    });
 });
