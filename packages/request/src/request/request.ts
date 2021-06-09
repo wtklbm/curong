@@ -112,6 +112,9 @@ export default function request(
         });
     }
 
+    // 获取请求地址
+    const address = `${https ? 'https' : 'http'}://${hostname}`;
+
     /** 配置参数 */
     options = {
         // @ts-ignore
@@ -124,7 +127,8 @@ export default function request(
         ...options,
         headers: toLowerCaseKey({
             Host: hostname,
-            Referer: `${https ? 'https' : 'http'}://${hostname}`,
+            Referer: address,
+            Origin: address,
             ...commonHeaders,
             ...options.headers
         })
