@@ -4,6 +4,8 @@ import { BindOutsideCallback, BindOutsideOptions } from './types/bindOutside';
 
 /**
  * 被包裹的值的映射对象
+ *
+ * @see https://zh.wikipedia.org/wiki/标点符号
  */
 const quoteMap = {
     // 英文
@@ -13,13 +15,21 @@ const quoteMap = {
     '(': ')',
     '[': ']',
     '{': '}',
+    '⟨': '⟩',
+    '‹': '›',
+    '«': '»',
 
     // 中文
     '‘': '’',
     '“': '”',
     '（': '）',
+    '［': '］',
+    '〔': '〕',
     '【': '】',
-    '《': '》'
+    '〈': '〉',
+    '《': '》',
+    '「': '」',
+    '『': '』'
 };
 
 type QuoteMapType = keyof typeof quoteMap;
