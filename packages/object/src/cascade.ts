@@ -17,6 +17,13 @@ import { ObjectType } from './types';
  *
  *  - 如果 `cascadeKey` 不是一个有效的级联属性字符串，则会抛出异常
  *  - 如果从源对象中访问属性失败了，则可能会抛出异常，需要用户自己捕获处理
+ * @example
+ *
+ * ```javascript
+ * const o = { key: [{ value: 'this is a test.' }] };
+ * const ret = cascade(o, 'key[0].value');
+ * console.log(ret); //'this is a test.'
+ * ```
  */
 export default function cascade<T = any>(
     obj: ObjectType,
