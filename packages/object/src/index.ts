@@ -1,3 +1,4 @@
+import cascade from './cascade';
 import createWithNull from './createWithNull';
 import deleteAttrs from './deleteAttrs';
 import derive from './derive';
@@ -11,6 +12,7 @@ import toLowerCaseKey from './toLowerCaseKey';
 export * from './types';
 
 export {
+    cascade,
     createWithNull,
     deleteAttrs,
     derive,
