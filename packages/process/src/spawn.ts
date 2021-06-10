@@ -18,9 +18,9 @@ import { SpawnResult } from './types/spawn';
  *
  * // {
  * //     pid: 3484,
- * //     output: [ /* ... *​/ ],
- * //     stdout: { /* ... *​/ },
- * //     stderr: { /* ... *​/ },
+ * //     output: [ ... ],
+ * //     stdout: { ... },
+ * //     stderr: { ... },
  * //     status: 0
  * // }
  * console.log(ret);
