@@ -1,6 +1,7 @@
 import createWithNull from './createWithNull';
 import deleteAttrs from './deleteAttrs';
 import derive from './derive';
+import fromCascadeKeys from './fromCascadeKeys';
 import isPrototypeProperty from './isPrototypeProperty';
 import shallowEqual from './shallowEqual';
 import stringify from './stringify';
@@ -13,6 +14,7 @@ export {
     createWithNull,
     deleteAttrs,
     derive,
+    fromCascadeKeys,
     isPrototypeProperty,
     shallowEqual,
     stringify,
