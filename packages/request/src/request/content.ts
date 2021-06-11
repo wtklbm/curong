@@ -6,7 +6,15 @@ import { RequestOptions } from '../types';
 
 /** 是不是 `gzip` 格式的内容 */
 export function isGzipContent(res: IncomingMessage) {
-    return (res.headers['content-encoding'] ?? '').toLowerCase() === 'gzip';
+    switch ((res.headers['content-encoding'] ?? '').toLowerCase()) {
+        case 'gzip':
+        case 'compress':
+        case 'deflate':
+            return true;
+
+        default:
+            return false;
+    }
 }
 
 /** 对 `gzip` 格式的内容进行解压 */
