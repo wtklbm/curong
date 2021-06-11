@@ -4,7 +4,7 @@ import { stringify, ParsedUrlQueryInput } from 'querystring';
 
 import { format } from '@curong/term';
 import { sleepRun } from '@curong/function';
-import { toLowerCaseKey } from '@curong/object';
+import { deleteAttrs, toLowerCaseKey } from '@curong/object';
 import {
     isFunctionHave,
     isStringHave,
@@ -168,6 +168,11 @@ export default function request(
                             data: { data, error }
                         });
                     });
+
+                    try {
+                        // 删除内容编码以避免混淆下游操作
+                        delete res.headers['content-encoding'];
+                    } catch {}
                 }
 
                 const responseData: RequestResult = {
