@@ -132,4 +132,10 @@ describe('toSentences', () => {
             'Otherwise if the broadcast mask bit is zero then the return component will be zero.'
         ]);
     });
+
+    test('测试11', () => {
+        let v = 'this is a :: and very match.';
+
+        expect(toSentences(v)).toEqual(['this is a :: and very match.']);
+    });
 });
