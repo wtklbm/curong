@@ -7,11 +7,11 @@ export type BindOutsideOptions = {
 /** 处理未包裹的值的回调函数 */
 export type BindOutsideCallback = (
     /** 没有被包裹的值的截取字符串 */
-    value: string,
+    chunk: string,
 
     /** 当前的索引 */
     index: number,
 
     /** 原始字符串 */
-    source: string
+    value: string
 ) => string;
