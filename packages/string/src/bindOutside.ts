@@ -53,7 +53,7 @@ const wordReg = /^[a-zA-Z]'[a-zA-Z]{1,2}[^a-zA-Z]/;
  */
 export default function bindOutside(
     value: string,
-    callback: (value: string) => string
+    callback: BindOutsideCallback
 ): string;
 
 /**
