@@ -15,6 +15,7 @@ const quoteMap = {
     '(': ')',
     '[': ']',
     '{': '}',
+    '<': '>',
     '⟨': '⟩',
     '‹': '›',
     '«': '»',
@@ -112,6 +113,11 @@ export default function bindOutside(
 
         // 如果支持转义字符
         if (escape && char === '\\') {
+            if (!token) {
+                i++;
+                continue;
+            }
+
             value[i + 1] === token && i++;
             continue;
         }
