@@ -128,8 +128,14 @@ export default function bindOutside(
             continue;
         }
 
-        // 如果括号已经解析完成
+        // 如果括号或引号已经解析完成
         if (isToken && j-- <= 0) {
+            // 如果紧挨着的仍然是括号或引号
+            if ((token = quoteMap[value[i + 1] as QuoteMapType])) {
+                headToken = value[i + 1];
+                continue;
+            }
+
             ret.push(value.slice(idleStart, (idleStart = i + 1)));
             token = '';
             j = 0;
@@ -139,7 +145,7 @@ export default function bindOutside(
 
         qc = quoteMap[char as QuoteMapType];
 
-        // 如果是括号或引号的开始位置
+        // 如果当前位置是括号或引号的开始位置
         if ((!headToken && qc) || qc === token) {
             // 保存括号或引号前面的内容
             ret.push(callback(value.slice(idleStart, i), i, value));
