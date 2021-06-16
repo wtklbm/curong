@@ -96,7 +96,7 @@ export default function bindOutside(
 
     const ret: string[] = [];
     const { escape = false } = options ?? {};
-    const len = (value = value.trim()).length;
+    const len = value.length;
 
     // 设置 `token` 的值
     const setToken = (char: QuoteMapType, equal: boolean) => {
@@ -154,7 +154,9 @@ export default function bindOutside(
         // 如果当前位置是括号或引号的开始位置
         if ((!headToken && qc) || qc === token) {
             // 保存括号或引号前面的内容
-            ret.push(callback(value.slice(idleStart, i), i, value));
+            if (idleStart !== i) {
+                ret.push(callback(value.slice(idleStart, i), i, value));
+            }
 
             // 保存开始的括号字符
             headToken = char;
@@ -167,5 +169,9 @@ export default function bindOutside(
         }
     }
 
-    return ret.concat(callback(value.slice(idleStart), i, value)).join('');
+    if (idleStart !== len) {
+        ret.push(callback(value.slice(idleStart), i, value));
+    }
+
+    return ret.join('');
 }
