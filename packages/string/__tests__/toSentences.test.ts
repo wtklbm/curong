@@ -138,4 +138,23 @@ describe('toSentences', () => {
 
         expect(toSentences(v)).toEqual(['this is a :: and very match.']);
     });
+
+    test('测试12', () => {
+        const o = { ellipsis: false };
+        let v = 'this is a any, and more... and very more...... and good.';
+
+        expect(toSentences(v, o)).toEqual([
+            'this is a any, and more... and very more...... and good.'
+        ]);
+
+        v = '这里。。。有很多人。。。很多人。。。';
+
+        expect(toSentences(v, o)).toEqual([
+            '这里。。。有很多人。。。很多人。。。'
+        ]);
+
+        v = '这里... 有很多人... 很多人...';
+
+        expect(toSentences(v, o)).toEqual(['这里... 有很多人... 很多人...']);
+    });
 });
