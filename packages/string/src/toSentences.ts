@@ -1,7 +1,7 @@
 import bindOutside from './bindOutside';
 import toRegExpSource from './toRegExpSource';
 
-import { BindOutsideOptions } from './types';
+import { ToSentencesOptions } from './types';
 
 // 拉丁文缩写列表
 // @see https://zh.wikipedia.org/wiki/拉丁文缩写列表
@@ -38,7 +38,10 @@ const abbreviationReg = new RegExp(
  * 验证是不是句点(结束语句标志)的正则。
  * 该正则使用了 2 个小分组: `$1` 和 `$2`。
  */
-const period = /(^| (\S+))([.!?;] |。|！|？|；) */gi;
+const periodReg = /(^| (\S+))([.!?;] |。|！|？|；) */gi;
+
+/** 验证末尾省略号的正则表达式 */
+const ellipsisReg = /[.。]{2,}$/;
 
 /**
  * 将一个字符串拆分为句子数组
@@ -59,17 +62,19 @@ const period = /(^| (\S+))([.!?;] |。|！|？|；) */gi;
  */
 export default function toSentences(
     value: string,
-    options?: BindOutsideOptions
+    options?: ToSentencesOptions
 ): string[] {
+    const { ellipsis = true } = options ?? {};
+
     return bindOutside(value, options, (value: string) => {
-        return value.replace(period, v => {
+        return value.replace(periodReg, v => {
             let w = v.trim();
 
-            return abbreviationReg.test(w)
-                ? v
-                : w.length > 1
-                ? ` ${w}\n`
-                : `${w}\n`;
+            if (abbreviationReg.test(w) || (!ellipsis && ellipsisReg.test(w))) {
+                return v;
+            }
+
+            return w.length > 1 ? ` ${w}\n` : `${w}\n`;
         });
     }).split('\n');
 }
