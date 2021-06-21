@@ -174,13 +174,13 @@ describe('Corrector', () => {
 
     test('测试 @ #', () => {
         expect(corrector('中@xxx中')).toEqual('中 @xxx 中');
-        expect(corrector('中@中 中')).toEqual('中 @中 中');
+        expect(corrector('中@中 中')).toEqual('中 @中，中');
         expect(corrector('中#中')).toEqual('中 #中');
         expect(corrector('中C#中')).toEqual('中 C# 中');
         expect(corrector('中#H0G0中')).toEqual('中 #H0G0 中');
-        expect(corrector('中 #中 中')).toEqual('中 #中 中');
-        expect(corrector('中#中 中')).toEqual('中 #中 中');
-        expect(corrector('中#中 #中 中')).toEqual('中 #中 #中 中');
+        expect(corrector('中 #中 中')).toEqual('中 #中，中');
+        expect(corrector('中#中 中')).toEqual('中 #中，中');
+        expect(corrector('中#中 #中 中')).toEqual('中 #中 #中，中');
     });
 
     test('测试 ...', () => {
@@ -240,7 +240,7 @@ describe('Corrector', () => {
         expect(corrector('中 ? 中')).toEqual('中？中');
         expect(corrector('中? 中')).toEqual('中？中');
         expect(corrector('中 ?中')).toEqual('中？中');
-        expect(corrector('中，中xxx中?0.0中')).toEqual('中，中 xxx 中?0.0 中');
+        expect(corrector('中，中xxx中?0.0中')).toEqual('中，中 xxx 中？0.0 中');
         expect(corrector('中，中xxx中? 0.0中')).toEqual(
             '中，中 xxx 中？0.0 中'
         );
@@ -346,5 +346,14 @@ describe('Corrector', () => {
     test('测试 %', () => {
         expect(corrector('100%中')).toEqual('100% 中');
         expect(corrector('中66.32%中')).toEqual('中 66.32% 中');
+    });
+
+    test('测试逗号', () => {
+        expect(corrector('中,中')).toEqual('中，中');
+        expect(corrector('中, 中')).toEqual('中，中');
+        expect(corrector('中,  中')).toEqual('中，中');
+        expect(corrector('中 中')).toEqual('中，中');
+        expect(corrector('中  中')).toEqual('中，中');
+        expect(corrector('中   中')).toEqual('中，中');
     });
 });
