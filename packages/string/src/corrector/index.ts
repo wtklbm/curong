@@ -11,6 +11,7 @@ export * from './types';
  *
  * @param value 要处理的字符串
  * @returns 返回处理好的字符串
+ * @todo 支持 `Markdown` 语法
  * @example
  *
  * ```javascript
