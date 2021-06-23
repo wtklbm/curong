@@ -160,6 +160,14 @@ const copyByTag = (value: any) => {
  *   2. `WeakSet` 和 `WeakMap` 是不支持的类型，因为他们都不支持迭代器模式。
  *   3. 自定义数据类型是不支持的类型，目前还没有办法将它们一一实现。
  *
+ * # 常见的拷贝方法
+ *
+ *  1. `Object.assign({}, value)`，这是一种浅克隆
+ *  2. `JSON.parse(JSON.stringify(value))`
+ *     1. 它不支持函数等特殊类型
+ *     2. 可能造成循环引用和内存泄漏
+ *     3. 所有对象的构造函数都会执行 `Object.prototype`
+ *
  * @example
  *
  * ```javascript
