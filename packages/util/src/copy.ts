@@ -3,10 +3,13 @@ import {
     isBuffer,
     isFunction,
     isNull,
-    isPrimitive
+    isPrimitive,
+    isSymbol
 } from '@curong/types';
 
 import copyAttrs from './copyAttrs';
+
+const weak = new WeakMap();
 
 /** 拷贝基本类型的值 */
 const copyBaseType = (value: any) => {
@@ -24,12 +27,14 @@ const copyArrayBuffer = (value: any) => {
 /** 根据 `toStringTag` 拷贝类型 */
 const copyByTag = (value: any) => {
     switch (getTag(value)) {
+        case 'BigInt':
+            return BigInt(value);
+
         case 'RegExp':
             const reg = new RegExp(value);
             reg.lastIndex = (value as RegExp).lastIndex;
             return reg;
 
-        case 'Array':
         case 'BigInt64Array':
         case 'BigUint64Array':
             return (value as Array<any>).map((v: any) => copy(v));
@@ -67,6 +72,7 @@ const copyByTag = (value: any) => {
             return copyArrayBuffer(value);
 
         case 'Arguments':
+        case 'Array':
         case 'Object':
         case 'Error':
         case 'EvalError':
@@ -83,6 +89,9 @@ const copyByTag = (value: any) => {
             const instance = isNull(proto)
                 ? Object.create(null)
                 : new proto.constructor();
+
+            weak.set(value, instance);
+
             return copyAttrs(value, instance);
 
         default:
@@ -189,6 +198,10 @@ const copyByTag = (value: any) => {
  * ```
  */
 export default function copy<T extends any>(value: T): T {
+    if (isSymbol(value)) {
+        return Object(Symbol.prototype.valueOf.call(value));
+    }
+
     // 首先判断是不是基本类型的值
     if (isPrimitive(value)) {
         return value;
@@ -210,6 +223,10 @@ export default function copy<T extends any>(value: T): T {
     // 是不是 `Buffer`
     if (isBuffer(value)) {
         return copyAttrs(value, Buffer.from(value), true);
+    }
+
+    if (weak.has(value as object)) {
+        return weak.get(value as object);
     }
 
     return copyAttrs(value, copyByTag(value), true);
