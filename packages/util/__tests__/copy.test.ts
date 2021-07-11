@@ -598,4 +598,90 @@ describe('@curong/util/copy', () => {
         expect(value.state.name === cloned.state.name).toBe(true);
         expect(value.state.id === cloned.state.id).toBe(true);
     });
+
+    test('测试26', () => {
+        let value = {
+            married: true,
+            age: 1,
+            name: 'xxx',
+            girlfriend: null,
+            boyfriend: undefined,
+            flag: Symbol('man'),
+            home: { name: '北京' },
+            set: new Set(),
+            map: new Map(),
+            getName: function () {},
+            hobbies: ['1', '2', '3'],
+            error: new Error('我错了'),
+            pattern: /^reg$/gi,
+            arr: [],
+            b: BigInt(2)
+        };
+
+        value.set.add(1);
+        value.map.set('name', 'xxx');
+        value.obj = value;
+        value.arr[0] = value;
+        value.arr[1] = value.arr;
+
+        const cloned = copy(value);
+
+        expect(cloned.married === value.married).toBe(true);
+        expect(cloned.age === value.age).toBe(true);
+        expect(cloned.name === value.name).toBe(true);
+        expect(cloned.girlfriend === value.girlfriend).toBe(true);
+        expect(cloned.b === value.b).toBe(true);
+        expect(cloned.boyfriend === value.boyfriend).toBe(true);
+
+        expect(cloned.flag.valueOf() === value.flag.valueOf()).toBe(true);
+        expect(cloned.flag === value.flag).toBe(false);
+
+        expect(cloned.home === value.home).toBe(false);
+        expect(
+            Object.keys(cloned.home).length === Object.keys(value.home).length
+        ).toBe(true);
+        expect(cloned.home.name === value.home.name).toBe(true);
+
+        expect(cloned.set === value.set).toBe(false);
+        expect(cloned.set.size === value.set.size).toBe(true);
+        expect(cloned.set.has(1) === value.set.has(1)).toBe(true);
+
+        expect(cloned.map === value.map).toBe(false);
+        expect(cloned.map.size === value.map.size).toBe(true);
+        expect(cloned.map.get('name') === value.map.get('name')).toBe(true);
+
+        expect(cloned.getName === value.getName).toBe(false);
+        expect(cloned.getName.toString() === value.getName.toString()).toBe(
+            true
+        );
+
+        expect(cloned.hobbies === value.hobbies).toBe(false);
+        expect(cloned.hobbies.length === value.hobbies.length).toBe(true);
+        expect(cloned.hobbies[0] === value.hobbies[0]).toBe(true);
+        expect(cloned.hobbies[1] === value.hobbies[1]).toBe(true);
+        expect(cloned.hobbies[2] === value.hobbies[2]).toBe(true);
+
+        expect(cloned.error === value.error).toBe(false);
+        expect(cloned.error.message === value.error.message).toBe(true);
+        expect(cloned.error.name === value.error.name).toBe(true);
+        expect(cloned.error.stack === value.error.stack).toBe(true);
+
+        expect(cloned.pattern === value.pattern).toBe(false);
+        expect(cloned.pattern.lastIndex === value.pattern.lastIndex).toBe(true);
+        expect(cloned.pattern.flags === value.pattern.flags).toBe(true);
+        expect(cloned.pattern.source === value.pattern.source).toBe(true);
+
+        expect(cloned.arr === value.arr).toBe(false);
+        expect(cloned.arr[0] === value.arr[0]).toBe(false);
+        expect(cloned.arr[0] === cloned).toBe(true);
+        expect(cloned.arr[1] === value.arr).toBe(false);
+
+        expect(cloned.obj === value.obj).toBe(false);
+        expect(cloned.obj === value).toBe(false);
+        expect(cloned.obj === cloned).toBe(true);
+
+        expect(Object.keys(cloned).length === Object.keys(value).length).toBe(
+            true
+        );
+    });
 });
