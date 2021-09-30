@@ -97,6 +97,7 @@
 - `isVarName`: 是不是可以把值当做 `JavaScript` 的变量名
 - `isWeakMap`: 是不是一个 `WeakMap`
 - `isWeakSet`: 是不是一个 `WeakSet`
+- `isWindow`: 是不是 `Window` 对象
 - `isWritable`: 是不是一个 `Writable`
 - `isZero`: 是不是 `0`
 - `MAX_ARRAY_LENGTH`: 获取数组最大索引下标的数字。最大为 `2` 的 `32` 次方减一，即 `4294967295`
