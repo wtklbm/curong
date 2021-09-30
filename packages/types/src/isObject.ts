@@ -9,6 +9,8 @@ import getTag from './getTag';
  * 如果想验证普通对象，请使用 `isPlainObject` 方法。
  * 如果想使用 `typeof` 验证一个对象，请使用 `isTypeofObject` 方法。
  */
-export default function isObject(value: any): value is { [key: string]: any } {
+export default function isObject<K extends keyof any, T = any>(
+    value: any
+): value is Record<K, T> {
     return getTag(value) === 'Object';
 }
