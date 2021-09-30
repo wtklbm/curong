@@ -13,6 +13,7 @@
 - `isArrayBufferView`: 是不是一个 `ArrayBufferView`
 - `isArrayHave`: 是不是一个长度大于 `0` 的数组
 - `isArrayIndex`: 是不是一个数组的下标索引，它是一个大于或等于 `0` 并且小于或等于数组的最大长度的整数
+- `isArrayLike`: 是不是一个类数组
 - `isAsyncFunction`: 是不是一个异步函数
 - `isBigInt`: 是不是一个 `BigInt` (大数)
 - `isBigInt64Array`: 是不是一个 `BigInt64Array`
