@@ -16,8 +16,8 @@ import isNull from './isNull';
  * - `typeof null === 'object'` 的结果为 `true`。`null` 是空指针对象。
  * - `null instanceof Object === false` 的结果为 `true`
  */
-export default function isTypeofObject(
+export default function isTypeofObject<T extends object>(
     value: any
-): value is { [key: string]: any } {
+): value is T {
     return typeof value === 'object' && !isNull(value);
 }
