@@ -61,7 +61,6 @@
 - `isNumberSafe`: 是不是一个安全的数字，该数字不能为 `NaN` ，并且介于 `MAX_VALUE` 和 `-MAX_VALUE` 之间
 - `isObject`: 是不是一个 `[object Object]` 的对象
 - `isObjectHave`: 是不是一个属性个数大于 `0` 的对象
-- `isObjectLike`: 是不是 `T` 类型的任意对象
 - `isPlainObject`: 是不是一个普通对象，即 `{}`，该对象的原型指向 `Object.prototype`
 - `isPlainObjectHave`: 是不是一个属性个数大于 `0` 的普通对象，即 `{}`
 - `isPrimitive`: 是不是一个基本类型的值
