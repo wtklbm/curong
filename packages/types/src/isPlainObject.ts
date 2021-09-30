@@ -8,9 +8,9 @@ import isObject from './isObject';
  * @info 如果想验证任意的对象，请使用 `isObject` 方法。
  * 如果想使用 `typeof` 验证一个对象，请使用 `isTypeofObject` 方法。
  */
-export default function isPlainObject(
+export default function isPlainObject<K extends keyof any, T = any>(
     value: any
-): value is { [key: string]: any } {
+): value is Record<K, T> {
     return (
         isObject(value) &&
         value.constructor === Object &&
