@@ -90,6 +90,7 @@ import isUndefined from './isUndefined';
 import isVarName from './isVarName';
 import isWeakMap from './isWeakMap';
 import isWeakSet from './isWeakSet';
+import isWindow from './isWindow';
 import isWritable from './isWritable';
 import isZero from './isZero';
 import MAX_ARRAY_LENGTH from './MAX_ARRAY_LENGTH';
@@ -187,6 +188,7 @@ export {
     isVarName,
     isWeakMap,
     isWeakSet,
+    isWindow,
     isWritable,
     isZero,
     MAX_ARRAY_LENGTH
