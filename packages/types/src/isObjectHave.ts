@@ -6,8 +6,8 @@ import isObject from './isObject';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isObjectHave(
+export default function isObjectHave<K extends keyof any, T = any>(
     value: any
-): value is { [key: string]: any } {
+): value is Record<K, T> {
     return isObject(value) && Object.keys(value).length > 0;
 }
