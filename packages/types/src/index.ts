@@ -7,6 +7,7 @@ import isArrayBufferView from './isArrayBufferView';
 import isArrayHave from './isArrayHave';
 import isArrayIndex from './isArrayIndex';
 import isArrayLike from './isArrayLike';
+import isArrayLikeHave from './isArrayLikeHave';
 import isAsyncFunction from './isAsyncFunction';
 import isBigInt from './isBigInt';
 import isBigInt64Array from './isBigInt64Array';
@@ -106,6 +107,7 @@ export {
     isArrayHave,
     isArrayIndex,
     isArrayLike,
+    isArrayLikeHave,
     isAsyncFunction,
     isBigInt,
     isBigInt64Array,
