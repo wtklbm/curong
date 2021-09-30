@@ -54,7 +54,6 @@ import isNumberPrimitive from './isNumberPrimitive';
 import isNumberSafe from './isNumberSafe';
 import isObject from './isObject';
 import isObjectHave from './isObjectHave';
-import isObjectLike from './isObjectLike';
 import isPlainObject from './isPlainObject';
 import isPlainObjectHave from './isPlainObjectHave';
 import isPrimitive from './isPrimitive';
@@ -154,7 +153,6 @@ export {
     isNumberSafe,
     isObject,
     isObjectHave,
-    isObjectLike,
     isPlainObject,
     isPlainObjectHave,
     isPrimitive,
