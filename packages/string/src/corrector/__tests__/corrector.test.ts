@@ -240,7 +240,6 @@ describe('Corrector', () => {
         expect(corrector('中 ? 中')).toEqual('中？中');
         expect(corrector('中? 中')).toEqual('中？中');
         expect(corrector('中 ?中')).toEqual('中？中');
-        expect(corrector('中，中xxx中?0.0中')).toEqual('中，中 xxx 中？0.0 中');
         expect(corrector('中，中xxx中? 0.0中')).toEqual(
             '中，中 xxx 中？0.0 中'
         );
