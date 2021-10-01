@@ -14,6 +14,6 @@
  * ```
  */
 export default function isArray(value: any): value is Array<any> {
-    // Note: 数组、函数、对象、`Buffer` 等都有 `length` 属性
+    // Note: 数组/类数组、字符串、函数、对象、`Window`、`Buffer`/`ArrayBuffer` 等都有 `length` 属性
     return Array.isArray(value);
 }
