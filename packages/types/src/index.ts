@@ -33,6 +33,7 @@ import isFloat32Array from './isFloat32Array';
 import isFloat64Array from './isFloat64Array';
 import isFunction from './isFunction';
 import isFunctionHave from './isFunctionHave';
+import isGenerator from './isGenerator';
 import isGeneratorFunction from './isGeneratorFunction';
 import isInt from './isInt';
 import isInt16Array from './isInt16Array';
@@ -132,6 +133,7 @@ export {
     isFloat64Array,
     isFunction,
     isFunctionHave,
+    isGenerator,
     isGeneratorFunction,
     isInt,
     isInt16Array,
