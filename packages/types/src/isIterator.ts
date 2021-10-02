@@ -1,4 +1,4 @@
-import { isFunction } from '.';
+import isFunction from './isFunction';
 
 /**
  * 是不是一个 `Iterator`
