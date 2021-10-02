@@ -48,6 +48,7 @@
 - `isInt8Array`: 是不是一个 `Int32Array`，每一项的值为 `-2147483648 - 2147483647`
 - `isIntHave`: 是不是一个大于 `0` 的整数，即无符号整数
 - `isIntSafe`: 是不是一个安全的整数
+- `isIterator`: 是不是一个 `Iterator`
 - `isMap`: 是不是一个 `Map`
 - `isMapHave`: 是不是一个长度大于 `0` 的 `Map`
 - `isNaN`: 一个数字是不是 `NaN`
