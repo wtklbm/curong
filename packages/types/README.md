@@ -41,6 +41,7 @@
 - `isFunction`: 是不是一个函数(包含同步函数、异步函数和 `Generator` 函数)
 - `isFunctionHave`: 是不是一个参数个数大于 `0` 的函数
 - `isInt`: 是不是一个整数
+- `isGenerator`: 是不是一个 `Generator`
 - `isGeneratorFunction`: 是不是一个 `Generator` 函数
 - `isInt16Array`: 是不是一个 `Int8Array`，每一项的值为 `-128 - 127`
 - `isInt32Array`: 是不是一个 `Int16Array`，每一项的值为 `-32768 - 32767`
