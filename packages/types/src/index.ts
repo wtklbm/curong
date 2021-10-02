@@ -41,6 +41,7 @@ import isInt32Array from './isInt32Array';
 import isInt8Array from './isInt8Array';
 import isIntHave from './isIntHave';
 import isIntSafe from './isIntSafe';
+import isIterator from './isIterator';
 import isMap from './isMap';
 import isMapHave from './isMapHave';
 import isNaN from './isNaN';
@@ -141,6 +142,7 @@ export {
     isInt8Array,
     isIntHave,
     isIntSafe,
+    isIterator,
     isMap,
     isMapHave,
     isNaN,
