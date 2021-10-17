@@ -1,5 +1,5 @@
 import { source } from '@curong/regexp';
-import { isFunctionHave } from '@curong/types';
+import { isFunction } from '@curong/types';
 
 /** 验证所有标点符号和一个空格 */
 const punctuationReg = new RegExp(`${source.punctuation}| `);
@@ -52,7 +52,7 @@ export default function subSpaces(
 ): string {
     let repair = fillingSpaces;
 
-    if (isFunctionHave(handleMatch)) {
+    if (isFunction(handleMatch)) {
         repair = (s, m, l, r) => fillingSpaces(handleMatch(s, m), m, l, r);
     }
 
