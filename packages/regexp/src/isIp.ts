@@ -5,6 +5,8 @@ const ipReg =
 /**
  * 是不是一个 `IP` 地址
  *
+ * @param value 要验证的 `IP` 地址字符串
+ * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
  * ```javascript
