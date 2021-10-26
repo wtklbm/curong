@@ -3,6 +3,7 @@ import inChinese from './inChinese';
 import inChkPunctuation from './inChkPunctuation';
 import inJapanese from './inJapanese';
 import isEmail from './isEmail';
+import isIp from './isIp';
 import isURI from './isURI';
 import isWindowsPath from './isWindowsPath';
 import mapReplace from './mapReplace';
@@ -52,6 +53,7 @@ export {
     inChkPunctuation,
     inJapanese,
     isEmail,
+    isIp,
     isURI,
     isWindowsPath,
     source,
