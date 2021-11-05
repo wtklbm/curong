@@ -31,7 +31,8 @@ const abbreviationReg = new RegExp(
     `^(${latinAbbreviations
         .filter(v => v.endsWith('.'))
         .map(v => toRegExpSource(v))
-        .join('|')})$`
+        .join('|')})$`,
+    'i'
 );
 
 /**
