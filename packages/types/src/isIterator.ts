@@ -1,4 +1,5 @@
 import isFunction from './isFunction';
+import isNullOrUndefined from './isNullOrUndefined';
 
 /**
  * 是不是一个 `Iterator`
@@ -10,5 +11,5 @@ import isFunction from './isFunction';
 export default function isIterator<T = any, R = any, N = undefined>(
     value: any
 ): value is Iterator<T, R, N> {
-    return value && isFunction(value.next);
+    return !isNullOrUndefined(value) && isFunction(value.next);
 }
