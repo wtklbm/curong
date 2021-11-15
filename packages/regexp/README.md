@@ -3,17 +3,17 @@
 
 `@curong/regexp` 主要包含以下的方法：
 
- - `execAll`: 循环遍历 `RegExp.exec` 方法捕获到的内容
- - `inChinese`: 是否包含中文汉字
- - `inChkPunctuation`: 是否包含中日韩标点符号
- - `inJapanese`: 是否包含日文
- - `isEmail`: 是否为合法的邮箱地址
- - `isIp`: 是不是一个 `IP` 地址
- - `isURI`: 是否为合法的链接地址
- - `mapReplace`: 使用一组正则表达式来替换字符串中的内容
- - `matchRightIndex`: 获取正则匹配对象的当前项的下一个字符的开始索引位置
- - `testEvery`: 使用一组正则来验证一个字符串是否符合预期
- - `testSome`: 使用一组正则来验证一个字符串是否符合预期
+- `execAll`: 循环遍历 `RegExp.exec` 方法捕获到的内容
+- `inChinese`: 是否包含中文汉字
+- `inChkPunctuation`: 是否包含中日韩标点符号
+- `inJapanese`: 是否包含日文
+- `isEmail`: 是否为合法的邮箱地址
+- `isIp`: 是不是一个 `IP` 地址
+- `isURI`: 是否为合法的链接地址
+- `mapReplace`: 使用一组正则表达式来替换字符串中的内容
+- `matchRightIndex`: 获取正则匹配对象的当前项的下一个字符的开始索引位置
+- `testEvery`: 使用一组正则来验证一个字符串是否符合预期
+- `testSome`: 使用一组正则来验证一个字符串是否符合预期
 
 
 `@curong/regexp` 主要包含以下的属性：
