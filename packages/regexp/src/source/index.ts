@@ -11,7 +11,6 @@ import korean from './korean';
 import punctuation from './punctuation';
 import unifiedIdeograph from './unifiedIdeograph';
 import uri from './uri';
-import windowsPath from './windowsPath';
 
 export {
     ascii,
@@ -26,6 +25,5 @@ export {
     korean,
     punctuation,
     unifiedIdeograph,
-    uri,
-    windowsPath
+    uri
 };
