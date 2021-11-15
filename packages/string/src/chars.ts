@@ -13,5 +13,5 @@
  * ```
  */
 export default function chars(value: string): string[] {
-    return value.split('');
+    return Array.from(value);
 }
