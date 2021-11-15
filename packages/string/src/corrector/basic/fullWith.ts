@@ -43,5 +43,5 @@ const mapBytes = (item: string, index: number): string => {
  * @returns 返回转换好的字符串
  */
 export default function halfWidth(value: string): string {
-    return value.split('').map(mapBytes).join('');
+    return Array.from(value).map(mapBytes).join('');
 }
