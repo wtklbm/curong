@@ -1,13 +1,13 @@
 import { isWindowsPath } from '../src';
 
-describe('@curong/regexp/source/pathWin', () => {
+describe('@curong/path/isWindowsPath', () => {
     test('测试1', () => {
         expect(isWindowsPath('/__test__/fsd')).toBe(false);
         expect(isWindowsPath('/test/xxx')).toBe(false);
         expect(isWindowsPath('c:\\x')).toBe(true);
         expect(isWindowsPath('\\\\?\\c:\\d.x.fds\\x\\COM1x\\xx')).toBe(true);
         expect(isWindowsPath('c:\\\\x', true)).toBe(false);
-        expect(isWindowsPath('abcc:\\\\x', true)).toBe(false);
+        expect(isWindowsPath('abc:\\\\x', true)).toBe(false);
         expect(isWindowsPath('c:\\\\d.x.fds\\x\\xxCOM0/sdf/x/f\\sd/f')).toBe(
             false
         );

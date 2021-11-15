@@ -10,7 +10,6 @@
  - `isEmail`: 是否为合法的邮箱地址
  - `isIp`: 是不是一个 `IP` 地址
  - `isURI`: 是否为合法的链接地址
- - `isWindowsPath`: 是否为合法的 `Windows` 路径地址
  - `mapReplace`: 使用一组正则表达式来替换字符串中的内容
  - `matchRightIndex`: 获取正则匹配对象的当前项的下一个字符的开始索引位置
  - `testEvery`: 使用一组正则来验证一个字符串是否符合预期
@@ -32,4 +31,3 @@
 - `punctuation`: 验证所有的标点符号的正则字符串
 - `unifiedIdeograph`: 验证中文汉字的正则字符串
 - `uri`: 验证 `URI` 连接的正则字符串
-- `windowsPath`: 验证 `Windows` 路径的正则字符串

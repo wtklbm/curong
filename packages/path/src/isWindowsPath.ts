@@ -1,4 +1,4 @@
-import { windowsPath } from './source';
+import windowsPathSource from './windowsPathSource';
 
 /**
  * 是否为合法的 `Windows` 路径地址
@@ -27,8 +27,8 @@ import { windowsPath } from './source';
  * - 最大单个文件名为最大路径长度减 `12`
  */
 export default function isWindowsPath(path: string, extend: boolean = false) {
-    const reg = new RegExp(`^${windowsPath}$`);
-    const size = extend ? 32767 : 260;
+    const reg = new RegExp(`^${windowsPathSource}$`);
+    const size = extend ? 32_767 : 260;
     const dirNoReg = /^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])$/;
     const dirSearchReg = /[<>:"/\\|?*]/g;
 

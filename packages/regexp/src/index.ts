@@ -5,7 +5,6 @@ import inJapanese from './inJapanese';
 import isEmail from './isEmail';
 import isIp from './isIp';
 import isURI from './isURI';
-import isWindowsPath from './isWindowsPath';
 import mapReplace from './mapReplace';
 import matchNextIndex from './matchNextIndex';
 import testEvery from './testEvery';
@@ -55,7 +54,6 @@ export {
     isEmail,
     isIp,
     isURI,
-    isWindowsPath,
     source,
     mapReplace,
     matchNextIndex,
