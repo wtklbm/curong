@@ -12,6 +12,11 @@ describe('@curong/types/isPlainObject', () => {
         const B = Object.create(A);
         expect(isPlainObject(A)).toBe(false);
         expect(isPlainObject(B)).toBe(false);
+
+        class Fn {}
+
+        // `constructor` 是 `Fn`
+        expect(isPlainObject(new Fn())).toBe(false);
     });
 
     test('测试2', () => {
