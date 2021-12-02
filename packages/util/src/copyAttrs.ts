@@ -1,7 +1,7 @@
-import { isNullOrUndefined, isSymbol } from '@curong/types';
+import { isNullOrUndefined } from '@curong/types';
 
-import allAttrs from './allAttrs';
 import copy from './copy';
+import allAttrs from './allAttrs';
 import lackAttrs from './lackAttrs';
 
 /**
@@ -10,7 +10,7 @@ import lackAttrs from './lackAttrs';
  * @param src 源对象
  * @param dest 目标对象
  * @param lacked 是否仅仅深度拷贝当前值中没有的一些自身属性，默认为 `false`。
- *   如果 `lacked` 的值为true，则仅仅克隆源对象有但目标对象中没有的那些自身属性。
+ *   如果 `lacked` 的值为 `true`，则仅仅克隆源对象有但目标对象中没有的那些自身属性。
  *   否则会将源对象中的所有属性拷贝到目标对象上。
  * @returns 返回拷贝好属性的值
  * @example
@@ -18,9 +18,11 @@ import lackAttrs from './lackAttrs';
  * ```javascript
  *  import { copyAttrs } from '@curong/util';
  *
- *  const obj = copyAttrs({a: 1, s: 'str'}, { x: 'x' }, true);
+ *  const obj1 = copyAttrs({a: 1, s: 'str'}, { a: 2, x: 'x' }, true);
+ *  console.log(obj1); // {a: 2, x: 'x', s: 'str'}
  *
- *  console.log(obj); // {x: 'x', a: 1, s: 'str'}
+ *  const obj2 = copyAttrs({a: 1, s: 'str'}, { a: 2, x: 'x' }, false);
+ *  console.log(obj2); // {a: 1, x: 'x', s: 'str'}
  * ```
  */
 export default function copyAttrs(
@@ -35,14 +37,7 @@ export default function copyAttrs(
     const attrs = allAttrs(src);
 
     return (lacked ? lackAttrs(dest, attrs) : attrs).reduce((memo, key) => {
-        if (isSymbol(key)) {
-            memo[key] = src[key];
-        } else {
-            const des = Object.getOwnPropertyDescriptor(src, key)!;
-            des.value = copy(des.value);
-            Object.defineProperty(memo, key, des);
-        }
-
+        memo[key] = copy(src[key]);
         return memo;
     }, dest);
 }
