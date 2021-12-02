@@ -17,11 +17,17 @@ describe('@curong/util/copyAttrs', () => {
     });
 
     test('测试5', () => {
-        const obj = copyAttrs(
+        expect(copyAttrs(
             { a: 1, s: 'str' },
-            { a: 2, s: 'sss', x: 'x' },
+            { a: 2, s: 'xxx', x: 'x' },
             false
-        );
-        expect(obj).toEqual({ x: 'x', a: 1, s: 'str' });
+        )).toEqual({ x: 'x', a: 1, s: 'str' });
+
+
+        expect(copyAttrs(
+            { a: 1, s: 'str' },
+            { a: 2, s: 'xxx', x: 'x' },
+            true
+        )).toEqual({ x: 'x', a: 2, s: 'xxx' });
     });
 });
