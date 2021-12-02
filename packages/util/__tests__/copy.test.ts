@@ -9,6 +9,9 @@ describe('@curong/util/copy', () => {
     });
 
     test('测试2', () => {
+        expect(copy(null)).toEqual(null);
+        expect(copy(undefined)).toEqual(undefined);
+
         class A {
             constructor() {}
         }
@@ -63,6 +66,9 @@ describe('@curong/util/copy', () => {
         expect(obj.regexp === ret.regexp).toBe(false);
         expect(obj.typeError === ret.typeError).toBe(false);
         expect(obj.error === ret.error).toBe(false);
+        expect(obj.error.name === ret.error.name).toBe(true);
+        expect(obj.error.stack === ret.error.stack).toBe(true);
+        expect(obj.error.message === ret.error.message).toBe(true);
         expect(obj.classF === ret.classF).toBe(false);
         expect(obj.arrayBuffer === ret.arrayBuffer).toBe(false);
         expect(obj.dataView === ret.dataView).toBe(false);
