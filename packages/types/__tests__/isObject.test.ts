@@ -8,6 +8,12 @@ describe('@curong/types/isObject', () => {
 
     test('测试2', () => {
         expect(isObject({})).toBe(true);
+
+        class Fn { }
+
+        // 类的实例是 `[object Object]`
+        expect(isObject(new Fn())).toBe(true);
+
         expect(isObject(null)).toBe(false);
     });
 
