@@ -36,13 +36,26 @@ const abbreviationReg = new RegExp(
 );
 
 /**
- * 验证是不是句点(结束语句标志)的正则。
- * 该正则使用了 2 个小分组: `$1` 和 `$2`。
+ * 验证是不是句点(结束语句标志)的正则
+ *
+ *
+ * ### 测试数据
+ *
+ * ```txt
+ * 我爱中国，中国强大。非常强大！这是 a. 哈哈。
+ * 我爱中国，中国强大。。。 特别强大... 理解不了的强大。。。
+ * 中. 中的.
+ * zero, a value of `0.0`. is one, the result.
+ * very e.g. good i.e. very q. 去。中文，句号.
+ * ```
  */
-const periodReg = /(^| (\S+))([.!?;] |。|！|？|；) */gi;
+const periodReg = /(?:(?:^| \S+|[\u4e00-\u9fff])[.!?;]+ |[。！？；]+(?!$)) */gi;
 
 /** 验证末尾省略号的正则表达式 */
 const ellipsisReg = /[.。]{2,}$/;
+
+/** 验证中文的正则表达式 */
+const zhReg = /[\u4e00-\u9fff]/;
 
 /**
  * 将一个字符串拆分为句子数组
@@ -67,15 +80,19 @@ export default function toSentences(
 ): string[] {
     const { ellipsis = true } = options ?? {};
 
-    return bindOutside(value, options, (value: string) => {
-        return value.replace(periodReg, v => {
-            let w = v.trim();
+    return bindOutside(value, options, (value: string) =>
+        value.replace(periodReg, (v, $1) => {
+            const w = v.trim();
 
             if (abbreviationReg.test(w) || (!ellipsis && ellipsisReg.test(w))) {
                 return v;
             }
 
-            return w.length > 1 ? ` ${w}\n` : `${w}\n`;
-        });
-    }).split('\n');
+            if (w.length > 1 && !zhReg.test($1)) {
+                return ` ${w}\n`;
+            }
+
+            return `${w}\n`;
+        })
+    ).split('\n');
 }
