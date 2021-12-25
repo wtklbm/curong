@@ -157,4 +157,14 @@ describe('toSentences', () => {
 
         expect(toSentences(v, o)).toEqual(['这里... 有很多人... 很多人...']);
     });
+
+    test('测试13', () => {
+        const v =
+            'This is only used to make thread locals with `const { .. }` initialization expressions unstable. If and/or when that syntax is stabilized with thread locals this will simply be removed.';
+
+        expect(toSentences(v)).toEqual([
+            'This is only used to make thread locals with `const { .. }` initialization expressions unstable.',
+            'If and/or when that syntax is stabilized with thread locals this will simply be removed.'
+        ]);
+    });
 });
