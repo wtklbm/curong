@@ -167,4 +167,10 @@ describe('toSentences', () => {
             'If and/or when that syntax is stabilized with thread locals this will simply be removed.'
         ]);
     });
+
+    test('测试14', () => {
+        const v = '我爱中国，中国强大。非常强大！';
+
+        expect(toSentences(v)).toEqual(['我爱中国，中国强大。', '非常强大！']);
+    });
 });
