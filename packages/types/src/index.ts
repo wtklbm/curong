@@ -76,6 +76,7 @@ import isReactElement from './isReactElement';
 import isReadable from './isReadable';
 import isReferenceError from './isReferenceError';
 import isRegExp from './isRegExp';
+import isSameError from './isSameError';
 import isSet from './isSet';
 import isSetHave from './isSetHave';
 import isSizey from './isSizey';
@@ -192,6 +193,7 @@ export {
     isReadable,
     isReferenceError,
     isRegExp,
+    isSameError,
     isSet,
     isSetHave,
     isSizey,
