@@ -11,7 +11,7 @@ export type Falsy = false | 0 | -0 | 0n | '' | null | undefined | typeof NaN;
  *
  *  - `false`     `false` 关键字
  *  - `0`         数值 0
- *  - `-0`         数值负 0
+ *  - `-0`        数值负 0
  *  - `0n`        数值 0n
  *  - `""`        空字符串 (字符串的长度为零)
  *  - `null`      null - 缺少值
