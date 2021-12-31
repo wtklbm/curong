@@ -34,6 +34,7 @@ import isFile from './isFile';
 import isFileReader from './isFileReader';
 import isFloat32Array from './isFloat32Array';
 import isFloat64Array from './isFloat64Array';
+import isFormData from './isFormData';
 import isFunction from './isFunction';
 import isFunctionHave from './isFunctionHave';
 import isGenerator from './isGenerator';
@@ -139,6 +140,7 @@ export {
     isFileReader,
     isFloat32Array,
     isFloat64Array,
+    isFormData,
     isFunction,
     isFunctionHave,
     isGenerator,
