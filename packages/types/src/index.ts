@@ -87,6 +87,7 @@ import isSyncFunction from './isSyncFunction';
 import isSyntaxError from './isSyntaxError';
 import isTransform from './isTransform';
 import isTrue from './isTrue';
+import isTruthy from './isTruthy';
 import isTypeError from './isTypeError';
 import isTypeofObject from './isTypeofObject';
 import isUDouble from './isUDouble';
@@ -197,6 +198,7 @@ export {
     isSyntaxError,
     isTransform,
     isTrue,
+    isTruthy,
     isTypeError,
     isTypeofObject,
     isUDouble,
