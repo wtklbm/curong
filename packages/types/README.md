@@ -94,11 +94,12 @@
 - `isSyntaxError`: 是不是一个 `SyntaxError` 对象
 - `isTransform`: 是不是一个 `Transform`
 - `isTrue`: 是不是 `true`
+- `isTruthy`: 是不是一个非虚值 (强制转换为 `Boolean` 后为 `true` 的值)
 - `isTypeError`: 是不是一个 `TypeError` 对象
 - `isTypeofObject`: 使用 `typeof` 判断是不是一个不是 `null` 的任意对象
 - `isUDouble`: 是不是一个无符号浮点数，即大于 `0` 的浮点数
 - `isUint`: 是不是一个无符号整数，即大于或等于 `0` 的整数
-- `isUint16Array`: 是不是一个 `Uint16Array`，每一项的值为 ` 0 - 65535`
+- `isUint16Array`: 是不是一个 `Uint16Array`，每一项的值为 `0 - 65535`
 - `isUint32Array`: 是不是一个 `Uint32Array`，每一项的值为 `0 - 4294967295`
 - `isUint8Array`:  是不是一个 `Uint8Array`，每一项的值为 `0 - 255`
 - `isUint8ClampedArray`: 是不是一个 `Uint8ClampedArray`，每一项的值为 `0 - 255`
