@@ -4,6 +4,11 @@ describe('@curong/types/isNumberHave', () => {
     test('测试1', () => {
         expect(isNumberHave(Infinity)).toBe(false);
         expect(isNumberHave(0)).toBe(false);
+        expect(isBigIntHave(1)).toBe(false);
+        expect(isBigIntHave(-1)).toBe(false);
+        expect(isBigIntHave(0n)).toBe(false);
+        expect(isBigIntHave(1n)).toBe(false);
+        expect(isBigIntHave(-1n)).toBe(false);
     });
 
     test('测试2', () => {
