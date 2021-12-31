@@ -1,6 +1,6 @@
 # `@curong/types`
 
-`@curong/types` 是一个功能全面的检测 `JavaScript` 类型的依赖，可以很方便的检测变量的类型。它们会接收一个参数并返回一个 `boolean` 值。有关详细的用法，请参照 `文档注释`。
+`@curong/types` 是一个功能全面的检测 `JavaScript` 类型的依赖，可以很方便的检测变量的类型。它们会接收一个参数并返回一个 `boolean` 值。有关详细的用法，请查看 `文档注释`。
 
 
 `@curong/types` 主要包含以下的方法:
