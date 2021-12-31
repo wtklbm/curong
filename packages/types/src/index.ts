@@ -11,6 +11,7 @@ import isArrayLikeHave from './isArrayLikeHave';
 import isAsyncFunction from './isAsyncFunction';
 import isBigInt from './isBigInt';
 import isBigInt64Array from './isBigInt64Array';
+import isBigIntHave from './isBigIntHave';
 import isBigUint64Array from './isBigUint64Array';
 import isBlob from './isBlob';
 import isBoolean from './isBoolean';
@@ -126,6 +127,7 @@ export {
     isAsyncFunction,
     isBigInt,
     isBigInt64Array,
+    isBigIntHave,
     isBigUint64Array,
     isBlob,
     isBoolean,
