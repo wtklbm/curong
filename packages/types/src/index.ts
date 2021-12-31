@@ -100,6 +100,7 @@ import isUintHave from './isUintHave';
 import isUintSafe from './isUintSafe';
 import isUintSafeHave from './isUintSafeHave';
 import isUndefined from './isUndefined';
+import isUrlSearchParams from './isURLSearchParams';
 import isVarName from './isVarName';
 import isWeakMap from './isWeakMap';
 import isWeakSet from './isWeakSet';
@@ -211,6 +212,7 @@ export {
     isUintSafe,
     isUintSafeHave,
     isUndefined,
+    isUrlSearchParams,
     isVarName,
     isWeakMap,
     isWeakSet,
