@@ -29,6 +29,7 @@ import isError from './isError';
 import isEvalError from './isEvalError';
 import isEvent from './isEvent';
 import isFalse from './isFalse';
+import isFalsy from './isFalsy';
 import isFile from './isFile';
 import isFileReader from './isFileReader';
 import isFloat32Array from './isFloat32Array';
@@ -133,6 +134,7 @@ export {
     isEvalError,
     isEvent,
     isFalse,
+    isFalsy,
     isFile,
     isFileReader,
     isFloat32Array,
