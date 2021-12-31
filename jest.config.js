@@ -21,5 +21,8 @@ module.exports = {
         '/coverage/'
     ],
     // 模块文件扩展名
-    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'mjs', 'node']
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'mjs', 'node'],
+
+    // 加载启动配置文件
+    setupFilesAfterEnv: ['./jest.setup.js']
 };
