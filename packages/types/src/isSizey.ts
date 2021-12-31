@@ -1,0 +1,13 @@
+import isUint from './isUint';
+
+export type Sizey<T extends {} = {}> = T & { size: number };
+
+/**
+ * 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于或等于 0 的整数
+ *
+ * @param value 要验证的值
+ * @returns 是则返回 `true`，否则为 `false`
+ */
+export default function isSizey<T>(value: unknown): value is Sizey<T> {
+    return isUint((value as any)?.size);
+}
