@@ -75,6 +75,7 @@ import isReferenceError from './isReferenceError';
 import isRegExp from './isRegExp';
 import isSet from './isSet';
 import isSetHave from './isSetHave';
+import isSizey from './isSizey';
 import isStream from './isStream';
 import isString from './isString';
 import isStringHave from './isStringHave';
@@ -184,6 +185,7 @@ export {
     isRegExp,
     isSet,
     isSetHave,
+    isSizey,
     isStream,
     isString,
     isStringHave,
