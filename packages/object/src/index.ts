@@ -1,4 +1,5 @@
 import cascade from './cascade';
+import constructor from './constructor';
 import createWithNull from './createWithNull';
 import deleteAttrs from './deleteAttrs';
 import derive from './derive';
@@ -13,6 +14,7 @@ export * from './types';
 
 export {
     cascade,
+    constructor,
     createWithNull,
     deleteAttrs,
     derive,
