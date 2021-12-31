@@ -54,6 +54,6 @@ import getTag from './getTag';
  * return false;
  * ```
  */
-export default function isRegExp(value: any): value is RegExp {
+export default function isRegExp(value: unknown): value is RegExp {
     return getTag(value) === 'RegExp';
 }

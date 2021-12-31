@@ -16,6 +16,6 @@ import getTag from './getTag';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isAnyError(value: any): value is Error {
+export default function isAnyError(value: unknown): value is Error {
     return getTag(value) === 'Error' || value instanceof Error;
 }

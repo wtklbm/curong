@@ -9,7 +9,7 @@ import isFunction from './isFunction';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isStream(value: any): value is Stream {
+export default function isStream(value: unknown): value is Stream {
     return (
         isObject(value) &&
         value instanceof Stream &&

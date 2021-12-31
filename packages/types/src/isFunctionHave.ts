@@ -6,6 +6,6 @@ import isFunction from './isFunction';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isFunctionHave(value: any): value is Function {
+export default function isFunctionHave(value: unknown): value is Function {
     return isFunction(value) && value.length > 0;
 }

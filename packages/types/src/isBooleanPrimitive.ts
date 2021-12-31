@@ -4,6 +4,6 @@
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isBooleanPrimitive(value: any): value is boolean {
+export default function isBooleanPrimitive(value: unknown): value is boolean {
     return typeof value === 'boolean';
 }

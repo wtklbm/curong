@@ -6,6 +6,6 @@ import isBuffer from './isBuffer';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isBufferHave(value: any): value is Buffer {
+export default function isBufferHave(value: unknown): value is Buffer {
     return isBuffer(value) && value.length > 0;
 }

@@ -12,7 +12,7 @@ import isTrue from './isTrue';
  * @returns 是则返回 `true`，否则为 `false`
  * @info 因为双工流包括可读流所以 `new Duplex()` 的结果返回 `true`
  */
-export default function isReadable(value: any): value is Readable {
+export default function isReadable(value: unknown): value is Readable {
     return (
         isStream(value) &&
         // 所有可读流的实现必须提供 `readable._read()` 方法从底层资源获取数据。

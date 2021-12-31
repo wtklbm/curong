@@ -20,6 +20,6 @@ import isNumberObject from './isNumberObject';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isNumber(value: any): value is number {
+export default function isNumber(value: unknown): value is number {
     return isNumberPrimitive(value) || isNumberObject(value);
 }

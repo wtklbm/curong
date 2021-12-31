@@ -14,7 +14,7 @@ import isFunctionHave from './isFunctionHave';
  * };
  * ```
  */
-export default function isBuffer(value: any): value is Buffer {
+export default function isBuffer(value: unknown): value is Buffer {
     return (
         !isNullOrUndefined(Buffer) &&
         isFunctionHave(Buffer.isBuffer) &&

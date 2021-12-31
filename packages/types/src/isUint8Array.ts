@@ -6,6 +6,6 @@ import getTag from './getTag';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isUint8Array(value: any): value is Uint8Array {
+export default function isUint8Array(value: unknown): value is Uint8Array {
     return getTag(value) === 'Uint8Array';
 }

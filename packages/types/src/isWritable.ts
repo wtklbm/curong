@@ -12,7 +12,7 @@ import isTrue from './isTrue';
  * @returns 是则返回 `true`，否则为 `false`
  * @info 因为双工流包括可写流所以 `new Duplex()` 的结果返回 `true`
  */
-export default function isWritable(value: any): value is Writable {
+export default function isWritable(value: unknown): value is Writable {
     return (
         isStream(value) &&
         // 所有可写流的实现必须提供 `writable._write()` 方法将数据发送到底层资源

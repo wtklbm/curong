@@ -6,6 +6,6 @@ import getTag from './getTag';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isFloat32Array(value: any): value is Float32Array {
+export default function isFloat32Array(value: unknown): value is Float32Array {
     return getTag(value) === 'Float32Array';
 }

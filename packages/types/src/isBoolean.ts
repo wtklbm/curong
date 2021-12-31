@@ -7,6 +7,6 @@ import isBooleanObject from './isBooleanObject';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isBoolean(value: any): value is boolean {
+export default function isBoolean(value: unknown): value is boolean {
     return isBooleanPrimitive(value) || isBooleanObject(value);
 }

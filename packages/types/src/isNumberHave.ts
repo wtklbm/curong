@@ -6,6 +6,6 @@ import isNumber from './isNumber';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isNumberHave(value: any): value is number {
+export default function isNumberHave(value: unknown): value is number {
     return isNumber(value) && value > 0 && value <= Number.MAX_VALUE;
 }

@@ -6,6 +6,6 @@ import getTag from './getTag';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isSet(value: any): value is Set<any> {
+export default function isSet(value: unknown): value is Set<any> {
     return getTag(value) === 'Set';
 }

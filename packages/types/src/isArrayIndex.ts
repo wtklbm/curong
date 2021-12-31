@@ -7,6 +7,6 @@ import MAX_ARRAY_LENGTH from './MAX_ARRAY_LENGTH';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isArrayIndex(value: any): value is number {
+export default function isArrayIndex(value: unknown): value is number {
     return isUint(value) && value <= MAX_ARRAY_LENGTH;
 }

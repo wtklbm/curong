@@ -6,6 +6,6 @@ import getTag from './getTag';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isNumberObject(value: any): value is Number {
+export default function isNumberObject(value: unknown): value is Number {
     return typeof value === 'object' && getTag(value) === 'Number';
 }

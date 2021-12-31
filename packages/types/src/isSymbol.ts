@@ -21,6 +21,6 @@
  * return false;
  * ```
  */
-export default function isSymbol(value: any): value is symbol {
+export default function isSymbol(value: unknown): value is symbol {
     return typeof value === 'symbol';
 }

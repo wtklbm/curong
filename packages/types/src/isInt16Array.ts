@@ -6,6 +6,6 @@ import getTag from './getTag';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isInt16Array(value: any): value is Int16Array {
+export default function isInt16Array(value: unknown): value is Int16Array {
     return getTag(value) === 'Int16Array';
 }

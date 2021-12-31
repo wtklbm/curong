@@ -6,6 +6,6 @@ import getTag from './getTag';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isInt32Array(value: any): value is Int32Array {
+export default function isInt32Array(value: unknown): value is Int32Array {
     return getTag(value) === 'Int32Array';
 }

@@ -6,7 +6,7 @@ import isNumber from './isNumber';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isNumberSafe(value: any): value is number {
+export default function isNumberSafe(value: unknown): value is number {
     return (
         isNumber(value) &&
         !isNaN(value) &&

@@ -6,6 +6,6 @@ import getTag from './getTag';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isBigInt64Array(value: any): value is BigInt64Array {
+export default function isBigInt64Array(value: unknown): value is BigInt64Array {
     return getTag(value) === 'BigInt64Array';
 }

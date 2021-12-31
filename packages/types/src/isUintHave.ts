@@ -6,6 +6,6 @@ import isInt from './isInt';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isUintHave(value: any): value is number {
+export default function isUintHave(value: unknown): value is number {
     return isInt(value) && value > 0;
 }

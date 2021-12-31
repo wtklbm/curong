@@ -10,6 +10,6 @@ import isReadable from './isReadable';
  * @returns 是则返回 `true`，否则为 `false`
  * @info `Transform` 也是双工流，所以 `new Transform()` 返回 `true`
  */
-export default function isDuplex(value: any): value is Duplex {
+export default function isDuplex(value: unknown): value is Duplex {
     return isWritable(value) && isReadable(value);
 }

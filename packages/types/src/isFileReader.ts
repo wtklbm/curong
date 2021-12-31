@@ -6,6 +6,6 @@ import getTag from './getTag';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isFileReader(value: any): value is FileReader {
+export default function isFileReader(value: unknown): value is FileReader {
     return getTag(value) === 'FileReader';
 }

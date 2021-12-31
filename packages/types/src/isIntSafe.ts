@@ -25,6 +25,6 @@
  * };
  * ```
  */
-export default function isIntSafe(value: any): value is number {
+export default function isIntSafe(value: unknown): value is number {
     return Number.isSafeInteger(value);
 }

@@ -17,6 +17,6 @@
  * };
  * ```
  */
-export default function isInt(value: any): value is number {
+export default function isInt(value: unknown): value is number {
     return Number.isInteger(value);
 }

@@ -6,6 +6,6 @@ import isSet from './isSet';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isSetHave(value: any): value is Set<any> {
+export default function isSetHave(value: unknown): value is Set<any> {
     return isSet(value) && value.size > 0;
 }

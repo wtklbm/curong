@@ -6,6 +6,6 @@ import getTag from './getTag';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isUint16Array(value: any): value is Uint16Array {
+export default function isUint16Array(value: unknown): value is Uint16Array {
     return getTag(value) === 'Uint16Array';
 }

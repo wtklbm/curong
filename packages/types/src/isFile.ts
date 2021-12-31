@@ -15,6 +15,6 @@ import getTag from './getTag';
  * `File` 对象是特殊类型的 `Blob`，且可以用在任意的 `Blob` 类型的 `context` 中。
  * 比如说， `FileReader`, `URL.createObjectURL()`, `createImageBitmap()`, 及 `XMLHttpRequest.send()` 都能处理 `Blob` 和 `File`。
  */
-export default function isFile(value: any): value is File {
+export default function isFile(value: unknown): value is File {
     return getTag(value) === 'File';
 }
