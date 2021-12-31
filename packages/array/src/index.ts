@@ -1,3 +1,4 @@
+import flat from './flat';
 import fromArrayLike from './fromArrayLike';
 import maxLengthIndex from './maxLengthIndex';
 import minLengthIndex from './minLengthIndex';
@@ -12,6 +13,7 @@ import uniqueFromPrimitive from './uniqueFromPrimitive';
 export * from './types';
 
 export {
+    flat,
     fromArrayLike,
     maxLengthIndex,
     minLengthIndex,
