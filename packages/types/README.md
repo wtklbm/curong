@@ -34,6 +34,7 @@
 - `isEqual`: `简单` 的判断多个的值是否相等
 - `isError`: 是不是一个 `Error` 对象
 - `isEvalError`: 是不是一个 `EvalError` 对象
+- `isEvent`: 是不是一个 `Event` 事件
 - `isFalse`: 是不是 `false`
 - `isFile`: 是不是一个 `File` 对象
 - `isFileReader`: 是不是一个 `FileReader` 对象
@@ -41,9 +42,9 @@
 - `isFloat64Array`: 是不是一个 `Float64Array`，每一项的值为 `5.0×10-324 - 1.8×10308`
 - `isFunction`: 是不是一个函数(包含同步函数、异步函数和 `Generator` 函数)
 - `isFunctionHave`: 是不是一个参数个数大于 `0` 的函数
-- `isInt`: 是不是一个整数
 - `isGenerator`: 是不是一个 `Generator`
 - `isGeneratorFunction`: 是不是一个 `Generator` 函数
+- `isInt`: 是不是一个整数
 - `isInt16Array`: 是不是一个 `Int8Array`，每一项的值为 `-128 - 127`
 - `isInt32Array`: 是不是一个 `Int16Array`，每一项的值为 `-32768 - 32767`
 - `isInt8Array`: 是不是一个 `Int32Array`，每一项的值为 `-2147483648 - 2147483647`
