@@ -30,6 +30,7 @@
 - `isDate`: 是不是一个有效的 `Date`
 - `isDouble`: 是不是一个浮点数
 - `isDuplex`: 是不是一个 `Duplex`
+- `isElement`: 是不是一个 `Element`
 - `isEqual`: `简单` 的判断多个的值是否相等
 - `isError`: 是不是一个 `Error` 对象
 - `isEvalError`: 是不是一个 `EvalError` 对象
