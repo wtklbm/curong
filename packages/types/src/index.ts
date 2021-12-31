@@ -27,6 +27,7 @@ import isElement from './isElement';
 import isEqual from './isEqual';
 import isError from './isError';
 import isEvalError from './isEvalError';
+import isEvent from './isEvent';
 import isFalse from './isFalse';
 import isFile from './isFile';
 import isFileReader from './isFileReader';
@@ -130,6 +131,7 @@ export {
     isEqual,
     isError,
     isEvalError,
+    isEvent,
     isFalse,
     isFile,
     isFileReader,
