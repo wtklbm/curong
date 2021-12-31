@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { isBlob } from '../src';
 
 describe('@curong/types/isBlob', () => {
