@@ -63,6 +63,7 @@ import isNumberHave from './isNumberHave';
 import isNumberObject from './isNumberObject';
 import isNumberPrimitive from './isNumberPrimitive';
 import isNumberSafe from './isNumberSafe';
+import isNumeric from './isNumeric';
 import isObject from './isObject';
 import isObjectHave from './isObjectHave';
 import isPlainObject from './isPlainObject';
@@ -177,6 +178,7 @@ export {
     isNumberObject,
     isNumberPrimitive,
     isNumberSafe,
+    isNumeric,
     isObject,
     isObjectHave,
     isPlainObject,
