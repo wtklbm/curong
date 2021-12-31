@@ -82,6 +82,7 @@
 - `isRegExp`: 是不是一个正则表达式
 - `isSet`: 是不是一个 `Set`
 - `isSetHave`: 是不是一个长度大于 `0` 的 `Set`
+- `isSizey`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于或等于 0 的整数
 - `isStream`: 是不是一个 `Stream`
 - `isString`: 是不是一个字符串或被包装后的字符串对象
 - `isStringHave`: 是不是一个长度大于 `0` 的字符串
