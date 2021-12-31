@@ -9,7 +9,7 @@ describe('@curong/types/isObject', () => {
     test('测试2', () => {
         expect(isObject({})).toBe(true);
 
-        class Fn { }
+        class Fn {}
 
         // 类的实例是 `[object Object]`
         expect(isObject(new Fn())).toBe(true);
@@ -20,7 +20,9 @@ describe('@curong/types/isObject', () => {
     test('测试3', () => {
         const A = Object.create(Object);
         const B = Object.create(A);
+        const C = Object.create(null);
         expect(isObject(A)).toBe(true);
         expect(isObject(B)).toBe(true);
+        expect(isObject(C)).toBe(true);
     });
 });
