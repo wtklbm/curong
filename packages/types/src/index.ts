@@ -39,6 +39,7 @@ import isFunction from './isFunction';
 import isFunctionHave from './isFunctionHave';
 import isGenerator from './isGenerator';
 import isGeneratorFunction from './isGeneratorFunction';
+import isInfinity from './isInfinity';
 import isInt from './isInt';
 import isInt16Array from './isInt16Array';
 import isInt32Array from './isInt32Array';
@@ -145,6 +146,7 @@ export {
     isFunctionHave,
     isGenerator,
     isGeneratorFunction,
+    isInfinity,
     isInt,
     isInt16Array,
     isInt32Array,
