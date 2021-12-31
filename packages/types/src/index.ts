@@ -51,6 +51,7 @@ import isIterator from './isIterator';
 import isMap from './isMap';
 import isMapHave from './isMapHave';
 import isNaN from './isNaN';
+import isNegativeInfinity from './isNegativeInfinity';
 import isNotEqual from './isNotEqual';
 import isNotZero from './isNotZero';
 import isNull from './isNull';
@@ -158,6 +159,7 @@ export {
     isMap,
     isMapHave,
     isNaN,
+    isNegativeInfinity,
     isNotEqual,
     isNotZero,
     isNull,
