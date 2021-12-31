@@ -58,6 +58,7 @@
 - `isMap`: 是不是一个 `Map`
 - `isMapHave`: 是不是一个长度大于 `0` 的 `Map`
 - `isNaN`: 一个数字是不是 `NaN`
+- `isNegativeInfinity`: 是不是一个 `-Infinity`，即小于 `-1.7976931348623157E+103088` 的数值
 - `isNotEqual`: `简单` 的判断多个的值是否不相等
 - `isNotZero`: 不是 `0`
 - `isNull`: 是不是 `null`
