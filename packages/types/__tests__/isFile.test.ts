@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { isFile } from '../src';
 
 describe('@curong/types/isFile', () => {
