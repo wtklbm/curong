@@ -18,6 +18,7 @@
 - `isAsyncFunction`: 是不是一个异步函数
 - `isBigInt`: 是不是一个 `BigInt` (大数)
 - `isBigInt64Array`: 是不是一个 `BigInt64Array`
+- `isBigIntHave`: 是不是一个大于 `0n` 的 `BigInt` (大数)
 - `isBigUint64Array`: 是不是一个 `BigUint64Array`
 - `isBlob`: 是不是一个 `Blob`
 - `isBoolean`: 是不是一个布尔值或被包装后的布尔值对象
