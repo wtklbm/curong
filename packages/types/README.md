@@ -55,6 +55,7 @@
 - `isIntSafe`: 是不是一个安全的整数
 - `isIterable`: 是不是一个可迭代的对象
 - `isIterator`: 是不是一个 `Iterator`
+- `isLengthy`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于或等于 0 的整数
 - `isMap`: 是不是一个 `Map`
 - `isMapHave`: 是不是一个长度大于 `0` 的 `Map`
 - `isNaN`: 一个数字是不是 `NaN`
