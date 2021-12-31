@@ -2,7 +2,6 @@ import { ProgressBar } from '../src';
 
 describe('@curong/term/progressBar', () => {
     test('测试1', async () => {
-        jest.setTimeout(30e3);
         function delay() {
             return new Promise(resolve => {
                 setTimeout(() => resolve(null), 200);
@@ -26,7 +25,6 @@ describe('@curong/term/progressBar', () => {
     });
 
     test('测试2', async () => {
-        jest.setTimeout(30e3);
         function delay() {
             return new Promise(resolve => {
                 setTimeout(() => resolve(null), 200);
@@ -53,7 +51,6 @@ describe('@curong/term/progressBar', () => {
     });
 
     test('测试3', async () => {
-        jest.setTimeout(30e3);
         function delay() {
             return new Promise(resolve => {
                 setTimeout(() => resolve(null), 200);
