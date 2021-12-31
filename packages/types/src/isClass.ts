@@ -9,5 +9,8 @@ import isFunction from './isFunction';
 export default function isClass(value: any): value is Function {
     // 类不能直接执行，必须使用 `new` 关键字，
     // 类中无法访问 `caller`，`callee` 和 `arguments` 属性
-    return isFunction(value) && value.toString().trim().startsWith('class ');
+    return (
+        isFunction(value) &&
+        Function.prototype.toString.call(value).trimStart().startsWith('class ')
+    );
 }
