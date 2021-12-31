@@ -53,6 +53,7 @@ import isMap from './isMap';
 import isMapHave from './isMapHave';
 import isNaN from './isNaN';
 import isNegativeInfinity from './isNegativeInfinity';
+import isNodeList from './isNodeList';
 import isNotEqual from './isNotEqual';
 import isNotZero from './isNotZero';
 import isNull from './isNull';
@@ -166,6 +167,7 @@ export {
     isMapHave,
     isNaN,
     isNegativeInfinity,
+    isNodeList,
     isNotEqual,
     isNotZero,
     isNull,
