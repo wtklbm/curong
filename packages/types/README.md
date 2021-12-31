@@ -81,7 +81,6 @@
 - `isReferenceError`: 是不是一个 `ReferenceError` 对象
 - `isRegExp`: 是不是一个正则表达式
 - `isSet`: 是不是一个 `Set`
-- `isUrlSearchParams`: 是不是一个 `URLSearchParams`
 - `isSetHave`: 是不是一个长度大于 `0` 的 `Set`
 - `isSizey`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于或等于 0 的整数
 - `isStream`: 是不是一个 `Stream`
@@ -93,6 +92,7 @@
 - `isSymbol`: 是不是一个 `Symbol`
 - `isSyncFunction`: 是不是一个同步函数
 - `isSyntaxError`: 是不是一个 `SyntaxError` 对象
+- `isTextNode`: 是不是一个 `TextNode`
 - `isTransform`: 是不是一个 `Transform`
 - `isTrue`: 是不是 `true`
 - `isTruthy`: 是不是一个非虚值 (强制转换为 `Boolean` 后为 `true` 的值)
@@ -108,6 +108,7 @@
 - `isUintSafe`: 是不是一个安全的无符号整数
 - `isUintSafeHave`: 是不是一个大于 0 的安全的无符号整数
 - `isUndefined`: 是不是 `undefined`
+- `isUrlSearchParams`: 是不是一个 `URLSearchParams`
 - `isVarName`: 是不是可以把值当做 `JavaScript` 的变量名
 - `isWeakMap`: 是不是一个 `WeakMap`
 - `isWeakSet`: 是不是一个 `WeakSet`
