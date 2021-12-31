@@ -1,0 +1,9 @@
+/**
+ * 是不是一个 `Infinity`，即超出 `1.7976931348623157E+103088` 的数值
+ *
+ * @param value 要验证的值
+ * @returns 是则返回 `true`，否则为 `false`
+ */
+export default function isInfinity(value: unknown): value is typeof Infinity {
+    return value === Infinity;
+}
