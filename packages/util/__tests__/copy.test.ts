@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 // @ts-nocheck
 
 import { copy } from '../src';
