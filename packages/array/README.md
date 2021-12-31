@@ -2,7 +2,7 @@
 
 `@curong/array` 包含以下的方法:
 
-- `flat`:
+- `flat`: 展平一个多维数组
 - `fromArrayLike`: 将一个类数组转换为数组
 - `maxLengthIndex`: 获取字符串数组中最大长度的项的索引位置
 - `minLengthIndex`: 获取字符串数组中最小长度的项的索引位置
