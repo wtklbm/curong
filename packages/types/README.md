@@ -83,6 +83,7 @@
 - `isReadable`: 是不是一个 `Readable`
 - `isReferenceError`: 是不是一个 `ReferenceError` 对象
 - `isRegExp`: 是不是一个正则表达式
+- `isSameError`: 是不是一个 `name` 和 `message` 相同的 `Error` 对象
 - `isSet`: 是不是一个 `Set`
 - `isSetHave`: 是不是一个长度大于 `0` 的 `Set`
 - `isSizey`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于或等于 0 的整数
