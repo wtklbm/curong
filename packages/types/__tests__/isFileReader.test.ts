@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { isFileReader } from '../src';
 
 describe('@curong/types/isFileReader', () => {
