@@ -23,6 +23,7 @@ import isDataView from './isDataView';
 import isDate from './isDate';
 import isDouble from './isDouble';
 import isDuplex from './isDuplex';
+import isElement from './isElement';
 import isEqual from './isEqual';
 import isError from './isError';
 import isEvalError from './isEvalError';
@@ -125,6 +126,7 @@ export {
     isDate,
     isDouble,
     isDuplex,
+    isElement,
     isEqual,
     isError,
     isEvalError,
