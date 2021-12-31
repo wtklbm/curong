@@ -70,6 +70,7 @@
 - `isNumberObject`: 是不是一个被包装后的数字对象，即 `new Number()`
 - `isNumberPrimitive`: 是不是一个基本的数字，即 `number`
 - `isNumberSafe`: 是不是一个安全的数字，该数字不能为 `NaN` ，并且介于 `MAX_VALUE` 和 `-MAX_VALUE` 之间
+- `isNumeric`: 是不是一个不是 `NaN` 的数字或数字字符串
 - `isObject`: 是不是一个 `[object Object]` 的对象
 - `isObjectHave`: 是不是一个属性个数大于 `0` 的对象
 - `isPlainObject`: 是不是一个普通对象，即 `{}`，该对象的原型指向 `Object.prototype`
