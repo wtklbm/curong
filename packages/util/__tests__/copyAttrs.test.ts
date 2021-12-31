@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { copyAttrs } from '../src';
 
 describe('@curong/util/copyAttrs', () => {
