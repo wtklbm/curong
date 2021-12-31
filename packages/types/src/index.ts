@@ -85,6 +85,7 @@ import isStringTrim from './isStringTrim';
 import isSymbol from './isSymbol';
 import isSyncFunction from './isSyncFunction';
 import isSyntaxError from './isSyntaxError';
+import isTextNode from './isTextNode';
 import isTransform from './isTransform';
 import isTrue from './isTrue';
 import isTruthy from './isTruthy';
@@ -197,6 +198,7 @@ export {
     isSymbol,
     isSyncFunction,
     isSyntaxError,
+    isTextNode,
     isTransform,
     isTrue,
     isTruthy,
