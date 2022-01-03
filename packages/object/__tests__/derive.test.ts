@@ -22,7 +22,6 @@ describe('@curong/object/derive', () => {
 
         // @ts-ignore
         const newObj = derive(obj, ['del']);
-        // @ts-ignore
         expect(newObj.nod).toBe('not delete');
         expect(newObj).toEqual({
             a: 1,
