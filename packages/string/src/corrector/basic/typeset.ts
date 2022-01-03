@@ -45,7 +45,6 @@ export default function typeset(value: string): TypesetResult {
             break;
         }
 
-        // @ts-ignore
         const nextText = value.slice(nextStart, matches[j].index).trim();
         nextText && matchResult.push({ match: false, data: nextText });
     }
