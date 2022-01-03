@@ -28,12 +28,10 @@ export default function toLowerCaseKey(
     const set = new Set();
 
     return Reflect.ownKeys(object).reduce((memo, key) => {
-        // @ts-ignore
         const value = object[key];
 
         // 如果属性名是数字或者 `symbol`，就直接赋值
         if (isSymbol(key) || isNumber(key)) {
-            // @ts-ignore
             memo[key] = value;
             return memo;
         }
