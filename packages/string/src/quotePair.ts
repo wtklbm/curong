@@ -37,12 +37,12 @@ export default function quotePair(str: string): string {
                 str[i + 1] === token && i++;
                 break;
 
-            // @ts-ignore
             case "'":
                 if (equal && str.slice(i - 1, i + 3).match(word)) {
                     i++;
                     break;
                 }
+
             case '"':
             case '`':
                 setToken(char, equal);
