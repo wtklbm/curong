@@ -1,4 +1,5 @@
 import isUint from './isUint';
+import isNullOrUndefined from './isNullOrUndefined';
 
 export type Sizey<T extends {} = {}> = T & { size: number };
 
@@ -10,5 +11,5 @@ export type Sizey<T extends {} = {}> = T & { size: number };
  * @info 一些 `HTML` 元素也有 `size` 属性，比如 `input` 元素
  */
 export default function isSizey<T>(value: unknown): value is Sizey<T> {
-    return isUint((value as any)?.size);
+    return !isNullOrUndefined(value) && isUint((value as any).size);
 }
