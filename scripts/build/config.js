@@ -6,8 +6,6 @@ const resolve = require('@rollup/plugin-node-resolve').default;
 const replace = require('@rollup/plugin-replace');
 const json = require('@rollup/plugin-json');
 const typescript = require('rollup-plugin-typescript2');
-
-// @ts-ignore
 const { version } = require('../../lerna.json');
 const banner = require('./banner');
 
@@ -24,10 +22,8 @@ function config(options = {}) {
 
         plugins: [
             // 转换 `commonjs` 模块为 `es6` 模块，该插件必须放在最上面执行
-            // @ts-ignore
             commonjs(),
 
-            // @ts-ignore
             resolve({
                 browser: true,
                 // 加载 `node` 模块
@@ -35,7 +31,6 @@ function config(options = {}) {
                 jail: join(__dirname, '../..')
             }),
 
-            // @ts-ignore
             typescript({
                 typescript: TS,
                 tsconfigDefaults: {
@@ -51,14 +46,12 @@ function config(options = {}) {
                 clean: true
             }),
 
-            // @ts-ignore
             replace({
                 preventAssignment: true,
                 __VERSION__: version
             }),
 
             // 处理 `json` 格式的模块
-            // @ts-ignore
             json(),
 
             terser
