@@ -244,6 +244,5 @@ export default function format(info: ForMatInfo, options?: ForMatOptions) {
         styleText.push(LF);
     }
 
-    // @ts-ignore
     return formatWithOptions({ ...options }, ...styleText);
 }
