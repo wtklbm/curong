@@ -1,4 +1,5 @@
 import isUint from './isUint';
+import isNullOrUndefined from './isNullOrUndefined';
 
 export type Lengthy<T extends {} = {}> = T & { length: number };
 
@@ -9,5 +10,5 @@ export type Lengthy<T extends {} = {}> = T & { length: number };
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isLengthy<T>(value: unknown): value is Lengthy<T> {
-    return isUint((value as any)?.length);
+    return !isNullOrUndefined(value) && isUint((value as any).length);
 }
