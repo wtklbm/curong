@@ -21,6 +21,6 @@ import { Constructor } from './types/constructor';
  */
 export default function constructor<T>(value: unknown): Constructor<T> | null {
     return !isNullOrUndefined(value)
-        ? Object.getPrototypeOf(value)?.constructor ?? null
+        ? Object.getPrototypeOf(value).constructor ?? null
         : null;
 }
