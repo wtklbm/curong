@@ -114,6 +114,9 @@ import isWritable from './isWritable';
 import isZero from './isZero';
 import MAX_ARRAY_LENGTH from './MAX_ARRAY_LENGTH';
 
+export type { Lengthy } from './isLengthy';
+export type { Sizey } from './isSizey';
+
 export {
     getTag,
     isAnyError,
