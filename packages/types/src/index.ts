@@ -50,6 +50,7 @@ import isIntSafe from './isIntSafe';
 import isIterable from './isIterable';
 import isIterator from './isIterator';
 import isLengthy from './isLengthy';
+import isLengthyHave from './isLengthyHave';
 import isMap from './isMap';
 import isMapHave from './isMapHave';
 import isNaN from './isNaN';
@@ -170,6 +171,7 @@ export {
     isIterable,
     isIterator,
     isLengthy,
+    isLengthyHave,
     isMap,
     isMapHave,
     isNaN,
