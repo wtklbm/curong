@@ -81,6 +81,7 @@ import isSameError from './isSameError';
 import isSet from './isSet';
 import isSetHave from './isSetHave';
 import isSizey from './isSizey';
+import isSizeyHave from './isSizeyHave';
 import isStream from './isStream';
 import isString from './isString';
 import isStringHave from './isStringHave';
@@ -202,6 +203,7 @@ export {
     isSet,
     isSetHave,
     isSizey,
+    isSizeyHave,
     isStream,
     isString,
     isStringHave,
