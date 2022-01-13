@@ -32,7 +32,7 @@ export const trimRegSource = (
         control = true
     } = options;
 
-    let regexpSources = [];
+    const regexpSources = [];
 
     if (isTrue(space)) {
         regexpSources.push(' ');
