@@ -1,27 +1,13 @@
-import cascade from './cascade';
-import constructor from './constructor';
-import createWithNull from './createWithNull';
-import deleteAttrs from './deleteAttrs';
-import derive from './derive';
-import fromCascadeKeys from './fromCascadeKeys';
-import isPrototypeProperty from './isPrototypeProperty';
-import shallowEqual from './shallowEqual';
-import stringify from './stringify';
-import toCascadeKeys from './toCascadeKeys';
-import toLowerCaseKey from './toLowerCaseKey';
+export { default as cascade } from './cascade';
+export { default as constructor } from './constructor';
+export { default as createWithNull } from './createWithNull';
+export { default as deleteAttrs } from './deleteAttrs';
+export { default as derive } from './derive';
+export { default as fromCascadeKeys } from './fromCascadeKeys';
+export { default as isPrototypeProperty } from './isPrototypeProperty';
+export { default as shallowEqual } from './shallowEqual';
+export { default as stringify } from './stringify';
+export { default as toCascadeKeys } from './toCascadeKeys';
+export { default as toLowerCaseKey } from './toLowerCaseKey';
 
 export * from './types';
-
-export {
-    cascade,
-    constructor,
-    createWithNull,
-    deleteAttrs,
-    derive,
-    fromCascadeKeys,
-    isPrototypeProperty,
-    shallowEqual,
-    stringify,
-    toCascadeKeys,
-    toLowerCaseKey
-};
