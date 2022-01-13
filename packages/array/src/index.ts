@@ -1,27 +1,13 @@
-import flat from './flat';
-import fromArrayLike from './fromArrayLike';
-import maxLengthIndex from './maxLengthIndex';
-import minLengthIndex from './minLengthIndex';
-import shuffle from './shuffle';
-import sortByEng from './sortByEng';
-import sortByEngInitials from './sortByEngInitials';
-import sortToIndexes from './sortToIndexes';
-import sortWords from './sortWords';
-import splitByStep from './splitByStep';
-import uniqueFromPrimitive from './uniqueFromPrimitive';
+export { default as flat } from './flat';
+export { default as fromArrayLike } from './fromArrayLike';
+export { default as maxLengthIndex } from './maxLengthIndex';
+export { default as minLengthIndex } from './minLengthIndex';
+export { default as shuffle } from './shuffle';
+export { default as sortByEng } from './sortByEng';
+export { default as sortByEngInitials } from './sortByEngInitials';
+export { default as sortToIndexes } from './sortToIndexes';
+export { default as sortWords } from './sortWords';
+export { default as splitByStep } from './splitByStep';
+export { default as uniqueFromPrimitive } from './uniqueFromPrimitive';
 
 export * from './types';
-
-export {
-    flat,
-    fromArrayLike,
-    maxLengthIndex,
-    minLengthIndex,
-    shuffle,
-    sortByEng,
-    sortByEngInitials,
-    sortToIndexes,
-    sortWords,
-    splitByStep,
-    uniqueFromPrimitive
-};
