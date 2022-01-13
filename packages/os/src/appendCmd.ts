@@ -15,5 +15,5 @@ import { isWindows } from './platform';
  * ```
  */
 export default function appendCmd(command: string) {
-    return isWindows ? command + '.cmd' : command;
+    return isWindows ? `${command}.cmd` : command;
 }
