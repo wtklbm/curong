@@ -1,29 +1,13 @@
-import ascii from './ascii';
-import blank from './blank';
-import chkPunctuation from './chkPunctuation';
-import control from './control';
-import email from './email';
-import han from './han';
-import hiragana from './hiragana';
-import japanese from './japanese';
-import katakana from './katakana';
-import korean from './korean';
-import punctuation from './punctuation';
-import unifiedIdeograph from './unifiedIdeograph';
-import uri from './uri';
-
-export {
-    ascii,
-    blank,
-    chkPunctuation,
-    control,
-    email,
-    han,
-    hiragana,
-    japanese,
-    katakana,
-    korean,
-    punctuation,
-    unifiedIdeograph,
-    uri
-};
+export { default as ascii } from './ascii';
+export { default as blank } from './blank';
+export { default as chkPunctuation } from './chkPunctuation';
+export { default as control } from './control';
+export { default as email } from './email';
+export { default as han } from './han';
+export { default as hiragana } from './hiragana';
+export { default as japanese } from './japanese';
+export { default as katakana } from './katakana';
+export { default as korean } from './korean';
+export { default as punctuation } from './punctuation';
+export { default as unifiedIdeograph } from './unifiedIdeograph';
+export { default as uri } from './uri';
