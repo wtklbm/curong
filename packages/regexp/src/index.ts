@@ -1,16 +1,17 @@
-import execAll from './execAll';
-import inChinese from './inChinese';
-import inChkPunctuation from './inChkPunctuation';
-import inJapanese from './inJapanese';
-import isEmail from './isEmail';
-import isIp from './isIp';
-import isURI from './isURI';
-import mapReplace from './mapReplace';
-import matchNextIndex from './matchNextIndex';
-import testEvery from './testEvery';
-import testSome from './testSome';
-
 import * as _source from './source';
+
+export { default as execAll } from './execAll';
+export { default as inChinese } from './inChinese';
+export { default as inChkPunctuation } from './inChkPunctuation';
+export { default as inJapanese } from './inJapanese';
+export { default as isEmail } from './isEmail';
+export { default as isIp } from './isIp';
+export { default as isURI } from './isURI';
+export { default as mapReplace } from './mapReplace';
+export { default as matchNextIndex } from './matchNextIndex';
+export { default as testEvery } from './testEvery';
+export { default as testSome } from './testSome';
+
 export * from './types';
 
 /**
@@ -44,19 +45,4 @@ export * from './types';
  *  console.log(regexp);
  * ```
  */
-const source = _source;
-
-export {
-    execAll,
-    inChinese,
-    inChkPunctuation,
-    inJapanese,
-    isEmail,
-    isIp,
-    isURI,
-    source,
-    mapReplace,
-    matchNextIndex,
-    testEvery,
-    testSome
-};
+export const source = _source;
