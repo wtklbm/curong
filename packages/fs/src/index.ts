@@ -1,49 +1,24 @@
-import clearDir from './clearDir';
-import copy from './copy';
-import copyFile from './copyFile';
-import copySymbolicLink from './copySymbolicLink';
-import deleteOne from './deleteOne';
-import destPath from './destPath';
-import diffFile from './diffFile';
-import fileList from './fileList';
-import findDir from './findDir';
-import isDir from './isDir';
-import isFile from './isFile';
-import isSymbolicLink from './isSymbolicLink';
-import mkdir from './mkdir';
-import readFile from './readFile';
-import readFragment from './readFragment';
-import readline from './readline';
-import readlineFromCode from './readlineFromCode';
-import readlineStream from './readlineStream';
-import readLnk from './readLnk';
-import stripBOM from './stripBOM';
-import symbolicLink from './symbolicLink';
-import writeFile from './writeFile';
+export { default as clearDir } from './clearDir';
+export { default as copy } from './copy';
+export { default as copyFile } from './copyFile';
+export { default as copySymbolicLink } from './copySymbolicLink';
+export { default as deleteOne } from './deleteOne';
+export { default as destPath } from './destPath';
+export { default as diffFile } from './diffFile';
+export { default as fileList } from './fileList';
+export { default as findDir } from './findDir';
+export { default as isDir } from './isDir';
+export { default as isFile } from './isFile';
+export { default as isSymbolicLink } from './isSymbolicLink';
+export { default as mkdir } from './mkdir';
+export { default as readFile } from './readFile';
+export { default as readFragment } from './readFragment';
+export { default as readline } from './readline';
+export { default as readlineFromCode } from './readlineFromCode';
+export { default as readlineStream } from './readlineStream';
+export { default as readLnk } from './readLnk';
+export { default as stripBOM } from './stripBOM';
+export { default as symbolicLink } from './symbolicLink';
+export { default as writeFile } from './writeFile';
 
 export * from './types';
-
-export {
-    clearDir,
-    copy,
-    copyFile,
-    copySymbolicLink,
-    deleteOne,
-    destPath,
-    diffFile,
-    fileList,
-    findDir,
-    isDir,
-    isFile,
-    isSymbolicLink,
-    mkdir,
-    readFile,
-    readFragment,
-    readline,
-    readlineFromCode,
-    readlineStream,
-    readLnk,
-    stripBOM,
-    symbolicLink,
-    writeFile
-};
