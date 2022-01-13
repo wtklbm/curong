@@ -25,7 +25,6 @@ export function convertFullStop(value: string): string {
     value = value.replace(bscReg, '$1，$2');
     value = value.replace(colonReg, '$1：$2');
     value = value.replace(bssReg, (_, l, s, r) => `${l}${convert(s)}${r}`);
-    value = value.replace(lsReg, (_, v, s) => `${v}${convert(s)}`);
 
-    return value;
+    return value.replace(lsReg, (_, v, s) => `${v}${convert(s)}`);
 }
