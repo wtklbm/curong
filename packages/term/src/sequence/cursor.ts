@@ -54,16 +54,16 @@ export const cursorPosition = (row: number = 1, column: number = 1) => {
 };
 
 /** 保存光标的当前位置 */
-export const cursorSave = CSI + 's';
+export const cursorSave = `${CSI}s`;
 
 /** 恢复保存的光标位置 */
-export const cursorRestore = CSI + 'u';
+export const cursorRestore = `${CSI}u`;
 
 /** 隐藏光标 */
-export const cursorHidden = CSI + '?25l';
+export const cursorHidden = `${CSI}?25l`;
 
 /** 显示光标 */
-export const cursorShow = CSI + '?25h';
+export const cursorShow = `${CSI}?25h`;
 
 /** 跳转到当前行的开头 */
-export const cursorOnLineBegin = CSI + 'A' + CSI + 'E';
+export const cursorOnLineBegin = `${CSI}A${CSI}E`;
