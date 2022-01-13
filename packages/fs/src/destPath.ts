@@ -69,20 +69,18 @@ export default async function destPath(
             if (!targetPath) continue;
 
             // 目标文件夹 + 当前快捷方式的名字 + 相对路径 = 最终的路径(包含文件名和后缀)
-            destPath = join(
+            return join(
                 desDir,
                 // 快捷方式的名字(已经删除了".lnk")
                 p.slice(0, p.lastIndexOf('.')),
                 // 获取相对路径
                 relative(targetPath, filePath)
             );
-
-            return destPath;
         }
     }
 
     // 拼接相对路径，如果拼接失败则会返回绝对路径(filePath)
-    let resolvePath = relative(srcDir, filePath);
+    const resolvePath = relative(srcDir, filePath);
 
     // 如果是绝对路径
     if (isAbsolute(resolvePath)) {
