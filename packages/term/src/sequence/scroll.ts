@@ -5,14 +5,14 @@ import { CSI } from './base';
  *
  * @param line 要移动几行
  */
-export const scrollUp = (line: number = 1) => CSI + line + 'S';
+export const scrollUp = (line: number = 1) => `${CSI + line}S`;
 
 /**
  * 整页向下滚动几行，默认 `1`。新行添加到底部
  *
  * @param line 要移动几行
  */
-export const scrollDown = (line: number = 1) => CSI + line + 'T';
+export const scrollDown = (line: number = 1) => `${CSI + line}T`;
 
 /**
  * 移动屏幕位置
