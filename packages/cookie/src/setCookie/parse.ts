@@ -76,7 +76,7 @@ function parseChunk(cookie: string, isDecode: boolean = true) {
         }
     }
 
-    const result = { name: name, value: value } as SetCookieItem;
+    const result = { name, value } as SetCookieItem;
 
     return parts.reduce((cookie: SetCookieItem, part: string) => {
         const sides = part.split(equalReg);
