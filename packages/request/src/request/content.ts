@@ -42,7 +42,6 @@ export const isJson = (type: string) => {
  */
 export function contentTypeCallback(options: RequestOptions) {
     const headers = options.headers;
-    let handleFn: (v: any) => any = v => v;
 
     if (headers) {
         const contentType = (headers['content-type'] ??
@@ -50,11 +49,13 @@ export function contentTypeCallback(options: RequestOptions) {
             '') as string;
 
         if (isFormUrlencoded(contentType)) {
-            handleFn = stringify;
-        } else if (isJson(contentType)) {
-            handleFn = JSON.stringify;
+            return stringify;
+        }
+
+        if (isJson(contentType)) {
+            return JSON.stringify;
         }
     }
 
-    return handleFn;
+    return (v: any) => v;
 }
