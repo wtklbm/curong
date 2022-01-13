@@ -20,7 +20,7 @@ const fillingSpaces = (
     rightChar: string
 ): string => {
     if (leftChar && !punctuationReg.test(leftChar)) {
-        substring = ' ' + substring;
+        substring = ` ${substring}`;
     }
 
     if (rightChar && !punctuationReg.test(rightChar)) {
@@ -57,7 +57,7 @@ export default function subSpaces(
     }
 
     return value.replace(regexp, (...matches) => {
-        let substring = matches[0];
+        const substring = matches[0];
         const value = matches[matches.length - 1];
         const index = matches[matches.length - 2];
         const leftChar = value[index - 1];
