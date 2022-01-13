@@ -1,4 +1,1 @@
-import request from './request';
-
-export { request };
-
+export { default as request } from './request';
