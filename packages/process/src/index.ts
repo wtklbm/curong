@@ -1,7 +1,5 @@
-import exec from './exec';
-import sleep from './sleep';
-import spawn from './spawn';
+export { default as exec } from './exec';
+export { default as sleep } from './sleep';
+export { default as spawn } from './spawn';
 
 export * from './types';
-
-export { exec, sleep, spawn };
