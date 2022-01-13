@@ -32,7 +32,7 @@ export default function toCascadeKeys(
     value: string,
     dependencies: ObjectType = {}
 ): Array<string | number> {
-    let ret = [];
+    const ret = [];
     let tmpKey = '';
 
     const name = 'toCascadeKeys';
