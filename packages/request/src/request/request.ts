@@ -4,7 +4,7 @@ import { stringify, ParsedUrlQueryInput } from 'querystring';
 
 import { format } from '@curong/term';
 import { sleepRun } from '@curong/function';
-import { deleteAttrs, toLowerCaseKey } from '@curong/object';
+import { toLowerCaseKey } from '@curong/object';
 import {
     isFunctionHave,
     isStringHave,
