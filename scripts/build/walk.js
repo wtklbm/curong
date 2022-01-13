@@ -20,10 +20,7 @@ async function walk(callback) {
                 throw new Error(e);
             });
 
-        state &&
-            state.isDirectory() &&
-            typeof callback === 'function' &&
-            callback(dir);
+        state?.isDirectory() && typeof callback === 'function' && callback(dir);
     }
 }
 
