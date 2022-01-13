@@ -40,18 +40,15 @@ export default async function writeFile(
         ...options
     };
 
-    if (options.isFormat) {
-        // 如果 `data` 是对象，就把对象转换为 `JSON` 格式
-        if (isObjectHave(data) || isArrayHave(data)) {
-            try {
-                data = JSON.stringify(data);
-            } catch (error) {
-                throw format({
-                    name: 'writeFile',
-                    message: '数据序列化失败，无法转换为 `JSON` 格式',
-                    data: { data, error }
-                });
-            }
+    if (options.isFormat && (isObjectHave(data) || isArrayHave(data))) {
+        try {
+            data = JSON.stringify(data);
+        } catch (error) {
+            throw format({
+                name: 'writeFile',
+                message: '数据序列化失败，无法转换为 `JSON` 格式',
+                data: { data, error }
+            });
         }
     }
 
