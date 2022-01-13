@@ -10,7 +10,7 @@ import { CSI } from './base';
  *
  * @param line 要擦除几行，默认为 `0`
  */
-export const eraseScreen = (line: number = 0) => CSI + line + 'J';
+export const eraseScreen = (line: number = 0) => `${CSI + line}J`;
 
 /**
  * 擦除行内的部分区域并保留擦除后的空白部分
@@ -21,4 +21,4 @@ export const eraseScreen = (line: number = 0) => CSI + line + 'J';
  *
  * @param line 要擦除几行，默认为 `0`
  */
-export const eraseLine = (line: number = 0) => CSI + line + 'K';
+export const eraseLine = (line: number = 0) => `${CSI + line}K`;
