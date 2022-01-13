@@ -12,7 +12,10 @@ import { ParseCookieOptions } from './types/parse';
  *
  * - 如果 `decode` 函数返回的值不是字符串，则会抛出异常
  */
-function getDecode(value: string, decode?: ParseCookieOptions['decode']): string {
+function getDecode(
+    value: string,
+    decode?: ParseCookieOptions['decode']
+): string {
     value = value.trim();
 
     // 如果值包含双引号
@@ -28,7 +31,7 @@ function getDecode(value: string, decode?: ParseCookieOptions['decode']): string
             throw new TypeError(`[getDecode]: 返回值不是字符串, "${newValue}"`);
         }
 
-        value = newValue;
+        return newValue;
     }
 
     return value;
