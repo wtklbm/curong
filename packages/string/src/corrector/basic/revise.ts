@@ -27,7 +27,7 @@ export default function revise(
             !(preItem && inChkPunctuation(preItem[preItem.length - 1])) &&
             !inChkPunctuation(value[0])
         ) {
-            value = ' ' + value;
+            value = ` ${value}`;
         }
 
         // 如果下一项的第一个字符不是中文标点并且当前项的最后一个字符不是中文标点
