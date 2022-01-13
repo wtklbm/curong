@@ -39,7 +39,7 @@ export default async function readlineStream(
         });
     }
 
-    let ret: string[] = [];
+    const ret: string[] = [];
 
     if (!isFunctionHave(callback)) {
         if (isFunctionHave(encoding)) {
