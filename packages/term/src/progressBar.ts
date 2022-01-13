@@ -77,15 +77,10 @@ export default class ProgressBar {
 
     /** 重置进度条 */
     private reset(): void {
-        const {
-            total,
-            percentage,
-            count,
-            picture,
-            hiddenCursor
-        } = this.options;
+        const { total, percentage, count, picture, hiddenCursor } =
+            this.options;
 
-        let bars = [];
+        const bars = [];
         const lastIndex = this.index + 1;
 
         if (isUintSafe(total)) {
