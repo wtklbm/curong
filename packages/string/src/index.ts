@@ -1,41 +1,41 @@
-import behindOf from './behindOf';
-import bindOutside from './bindOutside';
-import bytesArray from './bytesArray';
-import bytesLength from './bytesLength';
-import chars from './chars';
-import codePointAt from './codePointAt';
-import corrector from './corrector';
-import fromChars from './fromChars';
-import frontOf from './frontOf';
-import matchOrder from './matchOrder';
-import matchSplit from './mathSplit';
-import notStarts from './notStarts';
-import parseJson from './parseJson';
-import quoteClosed from './quoteClosed';
-import quotePair from './quotePair';
-import rmControl from './rmControl';
-import rmControlLeft from './rmControlLeft';
-import rmControlRight from './rmControlRight';
-import rmLikeSpace from './rmLikeSpace';
-import rmLikeSpaceLeft from './rmLikeSpaceLeft';
-import rmLikeSpaceRight from './rmLikeSpaceRight';
-import rmZeroWidth from './rmZeroWidth';
-import rmZeroWidthLeft from './rmZeroWidthLeft';
-import rmZeroWidthRight from './rmZeroWidthRight';
-import splitByBytes from './splitByBytes';
-import startSpacesLength from './startSpacesLength';
-import startsSlice from './startsSlice';
-import startTabsLength from './startTabsLength';
-import subSpaces from './subSpaces';
-import toRegExp from './toRegExp';
-import toRegExpSource from './toRegExpSource';
-import toSentences from './toSentences';
-import trim from './trim';
-import trimLeft from './trimLeft';
-import trimRight from './trimRight';
-import word from './word';
-import wordLeft from './wordLeft';
-import wordRight from './wordRight';
+export { default as behindOf } from './behindOf';
+export { default as bindOutside } from './bindOutside';
+export { default as bytesArray } from './bytesArray';
+export { default as bytesLength } from './bytesLength';
+export { default as chars } from './chars';
+export { default as codePointAt } from './codePointAt';
+export { default as corrector } from './corrector';
+export { default as fromChars } from './fromChars';
+export { default as frontOf } from './frontOf';
+export { default as matchOrder } from './matchOrder';
+export { default as matchSplit } from './mathSplit';
+export { default as notStarts } from './notStarts';
+export { default as parseJson } from './parseJson';
+export { default as quoteClosed } from './quoteClosed';
+export { default as quotePair } from './quotePair';
+export { default as rmControl } from './rmControl';
+export { default as rmControlLeft } from './rmControlLeft';
+export { default as rmControlRight } from './rmControlRight';
+export { default as rmLikeSpace } from './rmLikeSpace';
+export { default as rmLikeSpaceLeft } from './rmLikeSpaceLeft';
+export { default as rmLikeSpaceRight } from './rmLikeSpaceRight';
+export { default as rmZeroWidth } from './rmZeroWidth';
+export { default as rmZeroWidthLeft } from './rmZeroWidthLeft';
+export { default as rmZeroWidthRight } from './rmZeroWidthRight';
+export { default as splitByBytes } from './splitByBytes';
+export { default as startSpacesLength } from './startSpacesLength';
+export { default as startsSlice } from './startsSlice';
+export { default as startTabsLength } from './startTabsLength';
+export { default as subSpaces } from './subSpaces';
+export { default as toRegExp } from './toRegExp';
+export { default as toRegExpSource } from './toRegExpSource';
+export { default as toSentences } from './toSentences';
+export { default as trim } from './trim';
+export { default as trimLeft } from './trimLeft';
+export { default as trimRight } from './trimRight';
+export { default as word } from './word';
+export { default as wordLeft } from './wordLeft';
+export { default as wordRight } from './wordRight';
 
 export * from './htmlEntities';
 export {
@@ -47,44 +47,3 @@ export {
 
 export * from './types';
 export * from './corrector';
-
-export {
-    behindOf,
-    bindOutside,
-    bytesArray,
-    bytesLength,
-    chars,
-    codePointAt,
-    corrector,
-    fromChars,
-    frontOf,
-    matchOrder,
-    matchSplit,
-    notStarts,
-    parseJson,
-    quoteClosed,
-    quotePair,
-    rmControl,
-    rmControlLeft,
-    rmControlRight,
-    rmLikeSpace,
-    rmLikeSpaceLeft,
-    rmLikeSpaceRight,
-    rmZeroWidth,
-    rmZeroWidthLeft,
-    rmZeroWidthRight,
-    splitByBytes,
-    startSpacesLength,
-    startsSlice,
-    startTabsLength,
-    subSpaces,
-    toRegExp,
-    toRegExpSource,
-    toSentences,
-    trim,
-    trimLeft,
-    trimRight,
-    word,
-    wordLeft,
-    wordRight
-};
