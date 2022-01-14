@@ -26,7 +26,7 @@ import { isZero } from '@curong/types';
  *
  * `Fisher-Yates` 算法满足随机数的要求，它可以保证每个元素在数组中出现的概率是等同的。
  */
-export default function shuffle<T extends Array<any>>(value: T): T {
+export default function shuffle<T extends any[]>(value: T): T {
     if (isZero(value.length)) {
         return value;
     }
