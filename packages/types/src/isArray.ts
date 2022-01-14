@@ -1,3 +1,6 @@
+import getTag from './getTag';
+import isFunction from './isFunction';
+
 /**
  * 是不是一个数组
  *
@@ -15,5 +18,8 @@
  */
 export default function isArray<T extends any[]>(value: unknown): value is T {
     // Note: 数组/类数组、字符串、函数、对象、`Window`、`Buffer`/`ArrayBuffer` 等都有 `length` 属性
-    return Array.isArray(value);
+    return (
+        (isFunction(Array.isArray) && Array.isArray(value)) ||
+        getTag(value) === 'Array'
+    );
 }
