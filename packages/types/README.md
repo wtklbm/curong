@@ -61,7 +61,7 @@
 - `isLengthyHave`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于 0 的整数
 - `isMap`: 是不是一个 `Map`
 - `isMapHave`: 是不是一个长度大于 `0` 的 `Map`
-- `isNaN`: 一个数字是不是 `NaN`
+- `isNaN`: 是不是一个 `NaN`
 - `isNegativeInfinity`: 是不是一个 `-Infinity`，即小于 `-1.7976931348623157E+103088` 的数值
 - `isNodeList`: 是不是一个 `NodeList`
 - `isNotEqual`: `简单` 的判断多个的值是否不相等
