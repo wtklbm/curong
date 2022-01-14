@@ -12,11 +12,9 @@ describe('@curong/types/isNumber', () => {
         expect(isNumber(1)).toBe(true);
         expect(isNumber(1.1)).toBe(true);
         expect(isNumber(0xff)).toBe(true);
-
-        // @ts-ignore
-        expect(isNumber(0644)).toBe(true);
+        expect(isNumber(0o644)).toBe(true);
         expect(isNumber(6.2e5)).toBe(true);
-        expect(isNumber(NaN)).toBe(false);
+        expect(isNumber(NaN)).toBe(true);
         expect(isNumber(Infinity)).toBe(true);
     });
 });
