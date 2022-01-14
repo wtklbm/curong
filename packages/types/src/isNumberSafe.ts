@@ -9,7 +9,7 @@ import isNumber from './isNumber';
 export default function isNumberSafe(value: unknown): value is number {
     return (
         isNumber(value) &&
-        !isNaN(value) &&
+        !Number.isNaN(value) &&
         value <= Number.MAX_VALUE &&
         value >= -Number.MAX_VALUE
     );
