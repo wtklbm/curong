@@ -24,6 +24,8 @@ import getTag from './getTag';
  * o = null;
  * ```
  */
-export default function isWeakMap(value: unknown): value is WeakMap<any, any> {
+export default function isWeakMap<K extends object, V = any>(
+    value: unknown
+): value is WeakMap<K, V> {
     return getTag(value) === 'WeakMap';
 }
