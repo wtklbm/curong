@@ -160,7 +160,7 @@ function makeInfo(info: ForMatInfo) {
  * - `name` 名称
  * - `code` 代码
  * - `message` 消息
- * - `error` 错误
+ * - `data` 数据
  * - `date` 日期
  * - `stack` 堆栈
  *
