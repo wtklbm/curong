@@ -33,34 +33,9 @@ describe('@curong/function/noCatch', () => {
     });
 
     test('测试4', async () => {
-        expect(await noCatch({ name: 'xxx' })).toEqual({ name: 'xxx' });
-        expect(await noCatch([0, 1])).toEqual([0, 1]);
-        expect(await noCatch(null)).toBe(null);
-        expect(await noCatch(undefined)).toBe(undefined);
-        expect(await noCatch(0)).toBe(0);
-        expect(await noCatch(NaN)).toBe(NaN);
-        expect(await noCatch('x')).toBe('x');
-
         const c = {};
 
         // @ts-ignore
         expect(await noCatch(() => c.xx.xx.xx)).toBe(undefined);
-    });
-
-    test('测试5', async () => {
-        function* gen1() {
-            return 'succeed';
-        }
-
-        function* gen2() {
-            yield 1;
-            return 'succeed';
-        }
-
-        const gen3 = gen2();
-
-        expect(await noCatch(gen1)).toBe('succeed');
-        expect(await noCatch(gen2)).toBe(1);
-        expect(await noCatch(gen3)).toBe(1);
     });
 });
