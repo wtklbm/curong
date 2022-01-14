@@ -37,7 +37,7 @@ const copyByTag = (value: any) => {
 
         case 'BigInt64Array':
         case 'BigUint64Array':
-            return (value as Array<any>).map((v: any) => copy(v));
+            return (value as any[]).map((v: any) => copy(v));
 
         case 'DataView':
             const buffer = copyArrayBuffer(value.buffer);
