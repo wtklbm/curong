@@ -1,4 +1,3 @@
-import isNaN from './isNaN';
 import isNumber from './isNumber';
 import isString from './isString';
 
@@ -11,7 +10,7 @@ import isString from './isString';
  */
 export default function isNumeric(value: unknown): value is string | number {
     return (
-        (isNumber(value) && !isNaN(value)) ||
-        (isString(value) && !isNaN(Number(value)))
+        (isNumber(value) && !Number.isNaN(value)) ||
+        (isString(value) && !isNaN(value as any))
     );
 }
