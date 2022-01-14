@@ -19,6 +19,8 @@ import getTag from './getTag';
  * o = null;
  * ```
  */
-export default function isMap(value: unknown): value is Map<any, any> {
+export default function isMap<K = any, V = any>(
+    value: unknown
+): value is Map<K, V> {
     return getTag(value) === 'Map';
 }
