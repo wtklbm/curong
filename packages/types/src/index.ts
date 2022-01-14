@@ -118,3 +118,4 @@ export { default as MAX_ARRAY_LENGTH } from './MAX_ARRAY_LENGTH';
 
 export type { Lengthy } from './isLengthy';
 export type { Sizey } from './isSizey';
+export type { Primitive } from './isPrimitive';
