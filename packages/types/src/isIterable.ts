@@ -47,5 +47,9 @@ import isNullOrUndefined from './isNullOrUndefined';
  *  - 展开和解构赋值
  */
 export default function isIterable(value: any): boolean {
-    return !isNullOrUndefined(value) && isFunction(value[Symbol.iterator]);
+    return (
+        !isNullOrUndefined(value) &&
+        (isFunction(value[Symbol.iterator]) ||
+            isFunction(value[Symbol.asyncIterator]))
+    );
 }
