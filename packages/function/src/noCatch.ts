@@ -1,7 +1,7 @@
 /**
  * 获取函数返回的值，并忽略抛出的错误
  *
- * @param fn 要执行的函数 (包括同步函数和异步函数，不包括 `Generator` 函数)
+ * @param fn 要执行的函数 (包括同步函数和异步函数)
  * @returns 返回函数的执行结果
  * @example
  *
@@ -14,7 +14,7 @@
 export default async function noCatch<T = any>(
     fn: (...args: any[]) => Promise<T> | T,
     ...args: any[]
-) {
+): Promise<void | T> {
     try {
         return Promise.resolve(fn(...args)).catch(() => {});
     } catch (_) {}
