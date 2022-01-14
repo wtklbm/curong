@@ -1,4 +1,4 @@
-import isFunction from './isFunction';
+import isFunction, { Function } from './isFunction';
 
 /**
  * 是不是一个参数个数大于 `0` 的函数
@@ -6,6 +6,8 @@ import isFunction from './isFunction';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isFunctionHave(value: unknown): value is Function {
+export default function isFunctionHave<T = any>(
+    value: unknown
+): value is Function<T> {
     return isFunction(value) && value.length > 0;
 }
