@@ -16,6 +16,7 @@
 - `isArrayLike`: 是不是一个类数组 (不包含数组)
 - `isArrayLikeHave`: 是不是一个长度大于 `0` 的类数组 (不包含数组)
 - `isAsyncFunction`: 是不是一个异步函数
+- `isAsyncFunctionHave`: 是不是一个参数个数大于 `0` 的异步函数
 - `isBigInt`: 是不是一个 `BigInt` (大数)
 - `isBigInt64Array`: 是不是一个 `BigInt64Array`
 - `isBigIntHave`: 是不是一个大于 `0n` 的 `BigInt` (大数)
