@@ -83,10 +83,10 @@ export const controlReg = new RegExp(controlRegSource, 'g');
 export const zeroWidthReg = new RegExp(zeroWidthRegSource, 'g');
 export const likeSpaceReg = new RegExp(likeSpaceRegSource, 'g');
 
-export const controlLeftReg = new RegExp(`^${controlRegSource}+`);
-export const zeroWidthLeftReg = new RegExp(`^${zeroWidthRegSource}+`);
-export const likeSpaceLeftReg = new RegExp(`^${likeSpaceRegSource}+`);
+export const controlStartReg = new RegExp(`^${controlRegSource}+`);
+export const zeroWidthStartReg = new RegExp(`^${zeroWidthRegSource}+`);
+export const likeSpaceStartReg = new RegExp(`^${likeSpaceRegSource}+`);
 
-export const controlRightReg = new RegExp(`${controlRegSource}+$`);
-export const zeroWidthRightReg = new RegExp(`${zeroWidthRegSource}+$`);
-export const likeSpaceRightReg = new RegExp(`${likeSpaceRegSource}+$`);
+export const controlEndReg = new RegExp(`${controlRegSource}+$`);
+export const zeroWidthEndReg = new RegExp(`${zeroWidthRegSource}+$`);
+export const likeSpaceEndReg = new RegExp(`${likeSpaceRegSource}+$`);

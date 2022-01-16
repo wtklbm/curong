@@ -1,4 +1,4 @@
-import { controlLeftReg } from './characters';
+import { controlStartReg } from './characters';
 
 /**
  * 删除字符串开头的控制字符(包含回车、换行、制表符等)
@@ -8,10 +8,10 @@ import { controlLeftReg } from './characters';
  * @example
  *
  * ```javascript
- * const ret = rmControlLeft(`\b\r\nxx\vx\t\n`);
+ * const ret = rmControlStart(`\b\r\nxx\vx\t\n`);
  * console.log(ret); // 'xx\vx\t\n'
  * ```
  */
-export default function rmControlLeft(value: string): string {
-    return value.replace(controlLeftReg, '');
+export default function rmControlStart(value: string): string {
+    return value.replace(controlStartReg, '');
 }

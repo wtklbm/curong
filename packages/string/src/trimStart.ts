@@ -18,11 +18,11 @@ import { SpecialCharNames, TrimOptions } from './types';
  * @example
  *
  * ```javascript
- * const ret = trimLeft(`\t \u3000xxx`, { control: false });
+ * const ret = trimStart(`\t \u3000xxx`, { control: false });
  * console.log(ret); // '\t \u3000xxx'
  * ```
  */
-export default function trimLeft(
+export default function trimStart(
     value: string,
     options?: TrimOptions,
     chars?: SpecialCharNames[]

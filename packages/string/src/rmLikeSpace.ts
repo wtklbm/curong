@@ -1,6 +1,6 @@
 import { likeSpaceReg } from './characters';
-import rmLikeSpaceLeft from './rmLikeSpaceLeft';
-import rmLikeSpaceRight from './rmLikeSpaceRight';
+import rmLikeSpaceStart from './rmLikeSpaceStart';
+import rmLikeSpaceEnd from './rmLikeSpaceEnd';
 
 /**
  * 将字符串中开头和结尾的像空格的字符删除，并将其余所有的像空格的字符替换为空格
@@ -15,5 +15,5 @@ import rmLikeSpaceRight from './rmLikeSpaceRight';
  * ```
  */
 export default function rmLikeSpace(value: string): string {
-    return rmLikeSpaceLeft(rmLikeSpaceRight(value)).replace(likeSpaceReg, ' ');
+    return rmLikeSpaceStart(rmLikeSpaceEnd(value)).replace(likeSpaceReg, ' ');
 }

@@ -14,16 +14,16 @@ import { isUint, isNotZero } from '@curong/types';
  * @example
  *
  * ```javascript
- * const ret = wordRight('xx    xx    ', 2);
+ * const ret = wordEnd('xx    xx    ', 2);
  * console.log(ret); // 7
  * ```
  */
-export default function wordRight(
+export default function wordEnd(
     str: string,
     position: number = 0
 ): number | null {
     if (!isUint(position)) {
-        throw new TypeError(`[wordRight]: position不是索引, "${position}"`);
+        throw new TypeError(`[wordEnd]: position不是索引, "${position}"`);
     }
 
     /** 验证右侧的空字符的正则表达式 */

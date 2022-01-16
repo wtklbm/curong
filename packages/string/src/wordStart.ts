@@ -13,16 +13,16 @@ import { isUint, isNotZero } from '@curong/types';
  * @example
  *
  * ```javascript
- * const ret = wordLeft('xx    xx    ', 2);
+ * const ret = wordStart('xx    xx    ', 2);
  * console.log(ret); // 6
  * ```
  */
-export default function wordLeft(
+export default function wordStart(
     str: string,
     position: number = 0
 ): number | null {
     if (!isUint(position)) {
-        throw new TypeError(`[wordLeft]: position不是索引，"${position}"`);
+        throw new TypeError(`[wordStart]: position不是索引，"${position}"`);
     }
 
     let ret = null;

@@ -1,7 +1,7 @@
 import { isUint, isNotZero } from '@curong/types';
 
-import wordLeft from './wordLeft';
-import wordRight from './wordRight';
+import wordStart from './wordStart';
+import wordEnd from './wordEnd';
 
 import { WordResult } from './types/word';
 
@@ -39,8 +39,8 @@ export default function word(
     if (
         isNotZero(str.length) &&
         str.length > position &&
-        isUint((ret.right = wordRight(str, position))) &&
-        isUint((ret.left = wordLeft(str, position)))
+        isUint((ret.right = wordEnd(str, position))) &&
+        isUint((ret.left = wordStart(str, position)))
     ) {
         return ret;
     }

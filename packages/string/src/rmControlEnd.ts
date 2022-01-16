@@ -1,4 +1,4 @@
-import { controlRightReg } from './characters';
+import { controlEndReg } from './characters';
 
 /**
  * 删除字符串结尾的控制字符(包含回车、换行、制表符等)
@@ -8,10 +8,10 @@ import { controlRightReg } from './characters';
  * @example
  *
  * ```javascript
- * const ret = rmControlRight(`\r\r\nxx\vx\t\n`);
+ * const ret = rmControlEnd(`\r\r\nxx\vx\t\n`);
  * console.log(ret); // '\r\r\nxx\vx'
  * ```
  */
-export default function rmControlRight(value: string): string {
-    return value.replace(controlRightReg, '');
+export default function rmControlEnd(value: string): string {
+    return value.replace(controlEndReg, '');
 }
