@@ -1,6 +1,7 @@
 import isUint from './isUint';
 import isNullOrUndefined from './isNullOrUndefined';
 
+/** 具有 `length` 属性的值的类型定义 */
 export type Lengthy<T extends {} = {}> = T & { length: number };
 
 /**
