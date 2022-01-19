@@ -10,15 +10,15 @@
  * console.log(ret); // 10
  * ```
  */
-export default function tryCatch<T = any>(
+export default async function tryCatch<T = any>(
     fn: (...args: any[]) => Promise<T> | T,
     ...args: any[]
 ): Promise<T> {
-    return new Promise((resolve, reject) => {
-        try {
-            resolve(fn(...args));
-        } catch (e) {
-            reject(e);
-        }
-    });
+    try {
+        return Promise.resolve(fn(...args)).catch(error => {
+            throw error;
+        });
+    } catch (error) {
+        throw error;
+    }
 }
