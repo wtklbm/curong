@@ -1,16 +1,12 @@
 import { isUint } from '@curong/types';
 
-const delayFn = <R = any>(duration: number): Promise<R> =>
-    new Promise((_, reject) => {
-        const timer = setTimeout(() => {
-            clearTimeout(timer);
-            reject(
-                new Error(
-                    `[timeoutThrow]: 该方法执行的时间已超时: "${duration}ms"`
-                )
-            );
-        }, duration);
-    });
+/** 超时时错误 */
+export class TimeoutThrowError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = 'TimeoutError';
+    }
+}
 
 /**
  * 执行一个函数，并获取函数的返回值。如果函数的执行时间超过 `duration` 时，就会抛出异常
@@ -38,7 +34,19 @@ export default async function timeoutThrow<
     }
 
     try {
-        return Promise.race([Promise.resolve(fn(...args)), delayFn(duration)]);
+        return Promise.race([
+            Promise.resolve(fn(...args)),
+            new Promise((_, reject) => {
+                const timer = setTimeout(() => {
+                    clearTimeout(timer);
+                    reject(
+                        new TimeoutThrowError(
+                            `[timeoutThrow]: 该方法执行的时间已超时: "${duration}ms"`
+                        )
+                    );
+                }, duration);
+            }) as Promise<R>
+        ]);
     } catch (error) {
         throw error;
     }
