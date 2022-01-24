@@ -1,4 +1,5 @@
 export { default as before } from './before';
+export { default as cancelExec } from './cancelExec';
 export { default as curring } from './curring';
 export { default as noCatch } from './noCatch';
 export { default as reach } from './reach';
