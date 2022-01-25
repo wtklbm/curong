@@ -25,7 +25,7 @@ export class TimeoutThrowError extends Error {
  */
 export default async function timeoutThrow<
     A extends readonly unknown[],
-    R = any
+    R = unknown
 >(duration: number, fn: (...args: A) => R, ...args: A): Promise<R> {
     if (!isUint(duration)) {
         throw new TypeError(
