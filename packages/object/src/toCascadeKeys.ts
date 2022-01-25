@@ -30,7 +30,7 @@ import { ObjectType } from './types';
  */
 export default function toCascadeKeys(
     value: string,
-    dependencies: ObjectType = {}
+    dependencies: ObjectType<string | number> = {}
 ): Array<string | number> {
     const ret = [];
     let tmpKey = '';
