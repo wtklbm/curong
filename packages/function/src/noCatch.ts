@@ -11,7 +11,7 @@
  * console.log(ret); // 完成了
  * ```
  */
-export default async function noCatch<T = any>(
+export default async function noCatch<T = unknown>(
     fn: (...args: any[]) => Promise<T> | T,
     ...args: any[]
 ): Promise<void | T> {
