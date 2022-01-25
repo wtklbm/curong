@@ -24,7 +24,7 @@ import isWindow from './isWindow';
  * }(0);
  * ```
  */
-export default function isArrayLike<T = any>(
+export default function isArrayLike<T = unknown>(
     value: any,
     similarity: 0 | 1 | 2 = 0
 ): value is ArrayLike<T> {
