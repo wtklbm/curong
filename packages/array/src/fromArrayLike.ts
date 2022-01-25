@@ -15,6 +15,6 @@
  * print(1, 32, 43, 54, 2, 32);
  * ```
  */
-export default function fromArrayLike<T = any>(value: ArrayLike<T>): T[] {
+export default function fromArrayLike<T = unknown>(value: ArrayLike<T>): T[] {
     return Array.prototype.slice.call(value);
 }
