@@ -16,7 +16,7 @@ import { format } from '@curong/term';
  * console.log(ret); // { value: '', number: 0, bool: false }
  * ```
  */
-export default function parseJson<T = any>(
+export default function parseJson<T = unknown>(
     value: string,
     reviver?: (this: any, key: string, value: any) => any
 ): Promise<T> {
