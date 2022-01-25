@@ -6,7 +6,7 @@ import isMap from './isMap';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isMapHave<K = any, V = any>(
+export default function isMapHave<K = unknown, V = unknown>(
     value: unknown
 ): value is Map<K, V> {
     return isMap(value) && value.size > 0;
