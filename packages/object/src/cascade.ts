@@ -25,7 +25,7 @@ import { ObjectType } from './types';
  * console.log(ret); //'this is a test.'
  * ```
  */
-export default function cascade<T = any>(
+export default function cascade<T = unknown>(
     obj: ObjectType,
     cascadeKey: string,
     dependencies?: ObjectType
