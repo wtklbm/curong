@@ -1,10 +1,10 @@
-import { isFunction } from '@curong/types';
+import { isFunction, isPromise } from '@curong/types';
 
 /**
- * 随时取消对 `Promise` 的执行
+ * 随时取消对 `Promise`、同步函数或异步函数的执行
  *
- * @param promise 要执行的 `Promise`
- * @param isThrow 是否在取消 `Promise` 后抛出一个错误，默认为 `false`
+ * @param callable 一个 `Promise`、同步函数或异步函数
+ * @param isThrow 是否在取消 `callable` 的执行后抛出一个错误，默认为 `false`
  * @returns 返回一个数组，数组的第一项是一个新的 `Promise`，第二项是中止新的 `Promise` 的函数
  * @example
  *
@@ -30,15 +30,17 @@ import { isFunction } from '@curong/types';
  * }, 2e3);
  * ```
  */
-export default function cancelExec<T extends unknown>(
-    promise: Promise<T>,
+export default function cancelExec<T = unknown>(
+    callable: (() => Promise<T>) | (() => T) | Promise<T>,
     isThrow: boolean = false
 ): [Promise<T>, (payload?: unknown) => void] {
     let abort: (payload?: unknown) => void;
 
     return [
         Promise.race([
-            promise,
+            isPromise(callable)
+                ? callable
+                : Promise.resolve(isFunction(callable) ? callable() : callable),
             new Promise(
                 (resolve, reject) =>
                     (abort = payload => {
