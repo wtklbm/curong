@@ -11,7 +11,7 @@ import getTag from './getTag';
  *  - 如果想使用 `typeof` 验证一个对象，请使用 `isTypeofObject` 方法
  *  - 判断一个类的实例 (`class xxx {}`)，所得到的结果是 `true`
  */
-export default function isObject<K extends keyof any, T = any>(
+export default function isObject<K extends keyof any, T = unknown>(
     value: any
 ): value is Record<K, T> {
     return getTag(value) === 'Object';
