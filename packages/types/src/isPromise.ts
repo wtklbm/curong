@@ -19,7 +19,7 @@ import getTag from './getTag';
  * };
  * ```
  */
-export default function isPromise<T = any>(
+export default function isPromise<T = unknown>(
     value: unknown
 ): value is Promise<T> {
     return getTag(value) === 'Promise';
