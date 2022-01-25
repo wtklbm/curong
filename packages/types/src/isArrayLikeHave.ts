@@ -6,7 +6,7 @@ import isArrayLike from './isArrayLike';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isArrayLikeHave<T = any>(
+export default function isArrayLikeHave<T = unknown>(
     value: any
 ): value is ArrayLike<T> {
     return isArrayLike(value) && value.length > 0;
