@@ -8,4 +8,4 @@ export type PropertyKey = string | number | symbol;
  *
  * @note `Record<PropertyKey, any>` 相当于 `{ [key in PropertyKey]: any }`
  */
-export type ObjectType<T = unknown> = Record<PropertyKey, T>;
+export type ObjectType<T = any> = Record<PropertyKey, T>;
