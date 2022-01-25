@@ -12,7 +12,7 @@ import isObject from './isObject';
  *
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isObjectHave<K extends keyof any, T = any>(
+export default function isObjectHave<K extends keyof any, T = unknown>(
     value: any,
     methodLevel: 0 | 1 | 2 | 3 = 0
 ): value is Record<K, T> {
