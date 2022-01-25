@@ -10,7 +10,7 @@
  * console.log(ret); // 10
  * ```
  */
-export default async function tryCatch<T = any>(
+export default async function tryCatch<T = unknown>(
     fn: (...args: any[]) => Promise<T> | T,
     ...args: any[]
 ): Promise<T> {
