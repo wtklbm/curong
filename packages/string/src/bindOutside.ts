@@ -30,7 +30,9 @@ const quoteMap = {
     '〈': '〉',
     '《': '》',
     '「': '」',
-    '『': '』'
+    '『': '』',
+    '〖': '〗',
+    '｛': '｝'
 };
 
 type QuoteMapType = keyof typeof quoteMap;
