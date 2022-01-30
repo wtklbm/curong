@@ -33,21 +33,17 @@ export default async function timeoutThrow<
         );
     }
 
-    try {
-        return Promise.race([
-            Promise.resolve(fn(...args)),
-            new Promise((_, reject) => {
-                const timer = setTimeout(() => {
-                    clearTimeout(timer);
-                    reject(
-                        new TimeoutThrowError(
-                            `[timeoutThrow]: 该方法执行的时间已超时: "${duration}ms"`
-                        )
-                    );
-                }, duration);
-            }) as Promise<R>
-        ]);
-    } catch (error) {
-        throw error;
-    }
+    return Promise.race([
+        Promise.resolve(fn(...args)),
+        new Promise((_, reject) => {
+            const timer = setTimeout(() => {
+                clearTimeout(timer);
+                reject(
+                    new TimeoutThrowError(
+                        `[timeoutThrow]: 该方法执行的时间已超时: "${duration}ms"`
+                    )
+                );
+            }, duration);
+        }) as Promise<R>
+    ]);
 }
