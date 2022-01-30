@@ -28,30 +28,24 @@ export default function timeoutCallback<T = unknown>(
         );
     }
 
-    try {
-        return Promise.race([
-            isPromise(callable)
-                ? callable
-                : Promise.resolve(isFunction(callable) ? callable() : callable),
-            new Promise((resolve, reject) => {
-                const timer = setTimeout(() => {
-                    clearTimeout(timer);
+    return Promise.race([
+        isPromise(callable)
+            ? callable
+            : Promise.resolve(isFunction(callable) ? callable() : callable),
+        new Promise((resolve, reject) => {
+            const timer = setTimeout(() => {
+                clearTimeout(timer);
 
-                    try {
-                        if (isFunction(returnable)) {
-                            returnable = returnable();
-                        }
-
-                        return isThrow
-                            ? reject(returnable)
-                            : resolve(returnable);
-                    } catch (e) {
-                        reject(e);
+                try {
+                    if (isFunction(returnable)) {
+                        returnable = returnable();
                     }
-                }, duration);
-            })
-        ]) as Promise<T>;
-    } catch (error) {
-        throw error;
-    }
+
+                    return isThrow ? reject(returnable) : resolve(returnable);
+                } catch (e) {
+                    reject(e);
+                }
+            }, duration);
+        })
+    ]) as Promise<T>;
 }
