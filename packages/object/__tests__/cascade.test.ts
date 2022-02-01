@@ -29,4 +29,11 @@ describe('@curong/object/cascade', () => {
             expect(e).toThrowError();
         }
     });
+
+    test('测试3', () => {
+        const o = void 0;
+
+        // @ts-ignore
+        expect(cascade(o, 'key[1].value', null, false)).toBe(undefined);
+    });
 });
