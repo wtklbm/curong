@@ -12,6 +12,7 @@ import { ObjectType } from './types';
  * @param obj 源对象
  * @param cascadeKey 级联属性字符串
  * @param dependencies 级联属性字符串中所依赖的外部变量
+ * @param isThrow 是否在访问属性失败时抛出异常，默认为 `true`
  * @returns 返回从源对象中依据级联属性字符串获取到的内容
  * @throws
  *
@@ -28,8 +29,9 @@ import { ObjectType } from './types';
 export default function cascade<T = unknown>(
     obj: ObjectType,
     cascadeKey: string,
-    dependencies?: ObjectType
-): T {
+    dependencies?: ObjectType,
+    isThrow: boolean = true
+): T | undefined {
     if (!isStringHave(cascadeKey)) {
         throw format({
             name: 'cascade',
@@ -42,6 +44,11 @@ export default function cascade<T = unknown>(
     const key = fromCascadeKeys(keys, { optional: true, startDot: true });
     const f = new Function('o', `return o${key};`);
 
-    // NOTE: 这里并没有捕获异常，需用户手动捕获
-    return f(obj);
+    if (isThrow) {
+        return f(obj);
+    }
+
+    try {
+        return f(obj);
+    } catch (_) {}
 }
