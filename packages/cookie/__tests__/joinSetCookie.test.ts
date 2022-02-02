@@ -20,6 +20,8 @@ describe('@curong/cookie/joinSetCookie', () => {
 
         // @ts-ignore
         const ret = joinSetCookie(parsedCookie);
-        expect(ret).toBe(`SNUID=CB4C700A7277B659D1A8F4FB73E8A03C; FUV=998fcca98f0de2afb3fcef727102dbf7`)
+        expect(ret).toBe(
+            `SNUID=CB4C700A7277B659D1A8F4FB73E8A03C; FUV=998fcca98f0de2afb3fcef727102dbf7`
+        );
     });
 });
