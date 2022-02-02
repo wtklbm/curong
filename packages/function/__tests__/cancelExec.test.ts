@@ -2,8 +2,9 @@ import { cancelExec } from '../src';
 
 const fn = (a: number, b: string, bool: boolean) => {
     return new Promise(resolve => {
-        const timer = setTimeout(() => {
+        let timer: any = setTimeout(() => {
             clearTimeout(timer);
+            timer = null;
             resolve(a + +b * 2 - +bool);
         }, 50);
     });
