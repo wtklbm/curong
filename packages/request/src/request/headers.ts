@@ -5,8 +5,7 @@ export const commonHeaders = {
     Pragma: 'no-cache',
     xsrfCookieName: 'XSRF-TOKEN',
     xsrfHeaderName: 'X-XSRF-TOKEN',
-    Accept:
-        'application/json,text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+    Accept: 'application/json,text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
     'Cache-Control': 'max-age=0',
     'Upgrade-Insecure-Requests': 1,
     'Transfer-Encoding': 'chunked',
