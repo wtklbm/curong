@@ -14,7 +14,5 @@ export default async function tryCatch<T = unknown>(
     fn: (...args: any[]) => Promise<T> | T,
     ...args: any[]
 ): Promise<T> {
-    return Promise.resolve(fn(...args)).catch(error => {
-        throw error;
-    });
+    return Promise.resolve(fn(...args));
 }
