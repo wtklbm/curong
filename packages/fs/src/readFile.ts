@@ -26,7 +26,7 @@ export default async function readFile(
 ): Promise<string> {
     options = { encoding: 'utf8', flag: 'r+', mode: 0o777, ...options };
 
-    return ((await promises.readFile(filePath, options).then(
+    return (await promises.readFile(filePath, options).then(
         buffer => buffer,
         error => {
             throw format({
@@ -35,5 +35,5 @@ export default async function readFile(
                 data: { filePath, options }
             });
         }
-    )) as unknown) as string;
+    )) as unknown as string;
 }
