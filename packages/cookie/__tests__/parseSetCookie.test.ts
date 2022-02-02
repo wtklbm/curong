@@ -21,7 +21,7 @@ describe('@curong/cookie/parseSetCookie', () => {
                 name: 'FUV',
                 value: '998fcca98f0de2afb3fcef727102dbf7',
                 path: '/',
-                expires: new Date('2022-06-07T11:49:38.000Z'),
+                expires: new Date('2022-06-07T11:49:38.000Z')
             }
         ]);
     });
@@ -46,7 +46,7 @@ describe('@curong/cookie/parseSetCookie', () => {
                 name: 'FUV',
                 value: '998fcca98f0de2afb3fcef727102dbf7',
                 path: '/',
-                expires: new Date('2022-06-07T11:49:38.000Z'),
+                expires: new Date('2022-06-07T11:49:38.000Z')
             }
         });
     });
