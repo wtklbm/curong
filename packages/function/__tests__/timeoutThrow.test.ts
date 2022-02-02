@@ -11,8 +11,9 @@ describe('@curong/function/timeoutThrow', () => {
     test('测试2', async () => {
         const fn = (a: number, b: string, bool: boolean) =>
             new Promise(resolve => {
-                const timer = setTimeout(() => {
+                let timer: any = setTimeout(() => {
                     clearTimeout(timer);
+                    timer = null;
                     resolve(a + +b * 2 - +bool);
                 }, 999);
             });
