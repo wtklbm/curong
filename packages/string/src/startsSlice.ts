@@ -36,8 +36,11 @@ export default function startsSlice(
     chunk: string,
     options?: StartsSlice
 ): string {
-    const { position: pos = 0, preserve = false, caseSensitivity = true } =
-        options ?? {};
+    const {
+        position: pos = 0,
+        preserve = false,
+        caseSensitivity = true
+    } = options ?? {};
 
     if (!isUint(pos) || str.length < pos) {
         throw new TypeError(`[startsSlice]: position不是有效索引, "${pos}"`);
