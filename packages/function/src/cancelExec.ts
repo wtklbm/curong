@@ -11,8 +11,9 @@ import { isFunction, isPromise } from '@curong/types';
  * ```javascript
  * const fn = (a: number, b: string, bool: boolean) => {
  *     return new Promise(resolve => {
- *         const timer = setTimeout(() => {
+ *         let timer = setTimeout(() => {
  *             clearTimeout(timer);
+ *             timer = null;
  *             resolve(a + +b * 2 - +bool);
  *         }, 3e3);
  *     });
