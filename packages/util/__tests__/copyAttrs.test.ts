@@ -21,17 +21,12 @@ describe('@curong/util/copyAttrs', () => {
     });
 
     test('测试5', () => {
-        expect(copyAttrs(
-            { a: 1, s: 'str' },
-            { a: 2, s: 'xxx', x: 'x' },
-            false
-        )).toEqual({ x: 'x', a: 1, s: 'str' });
+        expect(
+            copyAttrs({ a: 1, s: 'str' }, { a: 2, s: 'xxx', x: 'x' }, false)
+        ).toEqual({ x: 'x', a: 1, s: 'str' });
 
-
-        expect(copyAttrs(
-            { a: 1, s: 'str' },
-            { a: 2, s: 'xxx', x: 'x' },
-            true
-        )).toEqual({ x: 'x', a: 2, s: 'xxx' });
+        expect(
+            copyAttrs({ a: 1, s: 'str' }, { a: 2, s: 'xxx', x: 'x' }, true)
+        ).toEqual({ x: 'x', a: 2, s: 'xxx' });
     });
 });
