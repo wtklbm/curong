@@ -1,6 +1,6 @@
 import { range } from '@curong/number';
-import { format, printWarn } from '@curong/term';
-import { isTrue, isObject, isNumber, isUint } from '@curong/types';
+import { printWarn } from '@curong/term';
+import { isTrue, isObject, isNumber } from '@curong/types';
 
 import { SleepRunOptions } from './types/sleepRun';
 
@@ -13,14 +13,16 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
  * @param handler 要执行的函数，如果函数是异步函数，则使用 `await syncRun(()=>{})` 执行
  * @param anyTimeout 参数对象或者一个超时数字，单位 `毫秒`
  *
- * 参数对象包括的属性:
+ * 如果参数是对象:
+ *  - `start` 开始的毫秒数，默认为 `0`
+ *  - `end` 结束时的毫秒数
+ *  - `show` 是否显示等待时间，默认为 `false`
  *
- * - `start` 开始的毫秒数，默认为 `0`
- * - `end` 结束时的毫秒数
- * - `show` 是否显示等待时间，默认为 `false`
+ * 如果参数是数字:
+ *  - 如果 `duration` 为小于或等于 0 的数字，则表示定时器应尽快执行
+ *  - 如果 `duration` 为一个大于 0 的数字，则表示至少应等待 `duration` 毫秒后执行
  *
- * @returns 返回一个Promise对象的成功态
- * @throw 如果 anyTimeout 传递的是一个数字，但是这个数字不是无符号整数，则会抛出异常
+ * @returns 返回一个 `Promise` 对象的成功态
  * @example ````
  *
  * ### 传递一个数字
@@ -53,15 +55,7 @@ export default function sleepRun<T>(
     let timeout: number = 0;
 
     if (isNumber(anyTimeout)) {
-        if (isUint(anyTimeout)) {
-            timeout = anyTimeout;
-        } else {
-            throw format({
-                name: 'sleepRun',
-                message: 'anyTimeout不是一个无符号整数',
-                data: { anyTimeout }
-            });
-        }
+        timeout = anyTimeout;
     } else if (isObject(anyTimeout)) {
         const { start = 0, end = 0 } = anyTimeout;
         anyTimeout.show && (show = anyTimeout.show);
@@ -93,8 +87,9 @@ export default function sleepRun<T>(
     }
 
     return new Promise(resolve => {
-        const timer = setTimeout(() => {
+        let timer: any = setTimeout(() => {
             clearTimeout(timer);
+            timer = null;
             return resolve(handler());
         }, timeout);
     });
