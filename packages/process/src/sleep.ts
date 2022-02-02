@@ -5,9 +5,10 @@
  */
 export default function sleep(duration: number): Promise<void> {
     return new Promise(resolve => {
-        const timer = setTimeout(() => {
-            resolve();
+        let timer: any = setTimeout(() => {
             clearTimeout(timer);
+            timer = null;
+            resolve();
         }, duration);
     });
 }
