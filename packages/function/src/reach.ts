@@ -5,10 +5,7 @@ import { isUintSafe } from '@curong/types';
  *
  * @param count 要等待的总次数 (必须大于 `0`)
  * @param callback 当次数到达时所要执行的回调函数
- * @throws
- *
- *  - 如果 `count` 不是大于或等于 0 的安全整数，则会抛出异常
- *
+ * @throws 如果 `count` 不是大于或等于 0 的安全整数，则会抛出异常
  * @example ````
  *
  * ### 常规示例
