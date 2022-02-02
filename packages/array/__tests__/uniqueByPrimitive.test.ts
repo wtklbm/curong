@@ -11,15 +11,7 @@ describe('@curong/array/uniqueFromPrimitive', () => {
         const a3 = [4, 5, 6, 7, 8, 9];
 
         expect(uniqueFromPrimitive(a1, a2, a3)).toEqual([
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9
+            1, 2, 3, 4, 5, 6, 7, 8, 9
         ]);
     });
 
