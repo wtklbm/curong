@@ -20,7 +20,7 @@ import isNullOrUndefined from './isNullOrUndefined';
  *
  * ### 可迭代对象
  *
- * 只要对象（或者它原型链上的某个对象）有一个为 `[Symbol.iterator]` 的属性，
+ * 只要对象（或者它原型链上的某个对象）有一个为 `[Symbol.iterator]` 或 `[Symbol.asyncIterator]` 的属性，
  * 那么它就是一个可迭代的对象。`[Symbol.iterator]` 是一个不接收任何参数的函数，
  * 它的返回值是一个符合迭代器协议的对象。当一个对象被迭代的时候，
  * 会调用它的 `[Symbol.iterator]` 方法，然后会返回一个迭代器，
@@ -29,6 +29,7 @@ import isNullOrUndefined from './isNullOrUndefined';
  * ### 常见的可迭代对象
  *
  * `String、Array、TypedArray、Map` 和 `Set`，它们的原型对象都实现了 `[Symbol.iterator]` 方法。
+ * 但并没有实现 `[Symbol.asyncIterator]`。
  *
  * ### 接受可迭代对象的类和方法
  *
@@ -42,7 +43,8 @@ import isNullOrUndefined from './isNullOrUndefined';
  *
  * ### 需要可迭代对象的语法
  *
- *  - `for...of` 循环
+ *  - `for...of` 循环 (Symbol.iterator)
+ *  - `for await...of` 循环 (Symbol.asyncIterator)
  *  - `yield*`
  *  - 展开和解构赋值
  */
