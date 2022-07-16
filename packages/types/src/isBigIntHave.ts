@@ -5,6 +5,8 @@ import isBigInt from './isBigInt';
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
+ * @note
+ *  - `BigInt` 和 `Number` 是不兼容的，不能相互赋值，也不能直接做加法运算
  */
 export default function isBigIntHave(value: unknown): value is BigInt {
     return isBigInt(value) && (value as BigInt) > 0n;
