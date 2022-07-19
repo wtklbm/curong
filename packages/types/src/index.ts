@@ -69,6 +69,7 @@ export { default as isNumberSafe } from './isNumberSafe';
 export { default as isNumeric } from './isNumeric';
 export { default as isObject } from './isObject';
 export { default as isObjectHave } from './isObjectHave';
+export { default as isOwnProperty } from './isOwnProperty';
 export { default as isPlainObject } from './isPlainObject';
 export { default as isPlainObjectHave } from './isPlainObjectHave';
 export { default as isPrimitive } from './isPrimitive';
