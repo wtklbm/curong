@@ -6,9 +6,9 @@ import isOwnProperty from './isOwnProperty';
 /**
  * 是不是一个属性描述器
  *
- * @param value
+ * @param value 要验证的值
  * @param allowExtraProperties 是否允许除 `configurable`、`enumerable`、`writable`、`get`、`set`、`value` 之外的其他属性，默认为 `true`
- * @returns
+ * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isPropertyDescriptor(
     value: unknown,
