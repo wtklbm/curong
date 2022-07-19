@@ -75,6 +75,7 @@ export { default as isPlainObjectHave } from './isPlainObjectHave';
 export { default as isPrimitive } from './isPrimitive';
 export { default as isPromise } from './isPromise';
 export { default as isProperty } from './isProperty';
+export { default as isPropertyKey } from './isPropertyKey';
 export { default as isRangeError } from './isRangeError';
 export { default as isReactElement } from './isReactElement';
 export { default as isReadable } from './isReadable';
@@ -117,6 +118,7 @@ export { default as isWeakSet } from './isWeakSet';
 export { default as isWindow } from './isWindow';
 export { default as isWritable } from './isWritable';
 export { default as isZero } from './isZero';
+
 export { default as MAX_ARRAY_LENGTH } from './MAX_ARRAY_LENGTH';
 
 export type { AsyncFunction } from './isAsyncFunction';
