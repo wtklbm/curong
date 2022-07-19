@@ -82,6 +82,7 @@
 - `isPrimitive`: 是不是一个基本类型的值
 - `isPromise`: 是不是一个 `Promise`
 - `isProperty`: 确定一个值上是否具有具有指定名称的属性，该属性可以是私有属性，也可以是原型上的属性
+- `isPropertyKey`: 是不是一个可以作为属性的值
 - `isRangeError`: 是不是一个 `RangeError` 对象
 - `isReactElement`: 是不是一个 `React` 元素
 - `isReadable`: 是不是一个 `Readable`
