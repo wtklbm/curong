@@ -76,6 +76,7 @@
 - `isNumeric`: 是不是一个不是 `NaN` 的数字或数字字符串
 - `isObject`: 是不是一个 `[object Object]` 的对象
 - `isObjectHave`: 是不是一个属性个数大于 `0` 的对象
+- `isOwnProperty`: 确定一个值上是否具有具有指定名称的私有属性
 - `isPlainObject`: 是不是一个普通对象，即 `{}`，该对象的原型指向 `Object.prototype`
 - `isPlainObjectHave`: 是不是一个属性个数大于 `0` 的普通对象，即 `{}`
 - `isPrimitive`: 是不是一个基本类型的值
