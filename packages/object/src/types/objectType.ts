@@ -1,5 +1,5 @@
 /** 属性名的类型，属性名是 `string`、`number` 和 `symbol` 类型中的某一个类型 */
-export type PropertyKey = string | number | symbol;
+export type PropertyKey = keyof any;
 
 /**
  * 对象的默认类型
