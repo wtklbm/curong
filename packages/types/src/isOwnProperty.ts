@@ -1,7 +1,7 @@
 import isNullOrUndefined from './isNullOrUndefined';
 
 /**
- * 确定一个值上是否具有具有指定名称的私有属性
+ * 确定一个值上是否具有指定名称的私有属性
  *
  * @param value 值
  * @param key 属性名称
