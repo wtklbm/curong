@@ -76,12 +76,12 @@
 - `isNumeric`: 是不是一个不是 `NaN` 的数字或数字字符串
 - `isObject`: 是不是一个 `[object Object]` 的对象
 - `isObjectHave`: 是不是一个属性个数大于 `0` 的对象
-- `isOwnProperty`: 确定一个值上是否具有具有指定名称的私有属性
+- `isOwnProperty`: 确定一个值上是否具有指定名称的私有属性
 - `isPlainObject`: 是不是一个普通对象，即 `{}`，该对象的原型指向 `Object.prototype`
 - `isPlainObjectHave`: 是不是一个属性个数大于 `0` 的普通对象，即 `{}`
 - `isPrimitive`: 是不是一个基本类型的值
 - `isPromise`: 是不是一个 `Promise`
-- `isProperty`: 确定一个值上是否具有具有指定名称的属性，该属性可以是私有属性，也可以是原型上的属性
+- `isProperty`: 确定一个值上是否具有指定名称的属性，该属性可以是私有属性，也可以是原型上的属性
 - `isPropertyDescriptor`: 是不是一个属性描述器
 - `isPropertyKey`: 是不是一个可以作为属性的值
 - `isRangeError`: 是不是一个 `RangeError` 对象
