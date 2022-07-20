@@ -1,4 +1,4 @@
-import isNumber from './isnumber';
+import isNumber from './isNumber';
 import isString from './isString';
 import isSymbol from './isSymbol';
 
