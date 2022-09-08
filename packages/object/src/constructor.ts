@@ -19,7 +19,9 @@ import { Constructor } from './types/constructor';
  * 还可以使用 `Reflect.getPrototypeOf`。`Reflect.getPrototypeOf` 接受一个目标对象，
  * 如果传递的参数不是一个对象的话，就会抛出异常。
  */
-export default function constructor<T>(value: unknown): Constructor<T> | null {
+export default function constructor<T extends {}>(
+    value: unknown
+): Constructor<T> | null {
     return !isNullOrUndefined(value)
         ? Object.getPrototypeOf(value).constructor ?? null
         : null;
