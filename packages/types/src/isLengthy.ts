@@ -10,6 +10,8 @@ export type Lengthy<T extends {} = {}> = T & { length: number };
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isLengthy<T extends {}>(value: unknown): value is Lengthy<T> {
+export default function isLengthy<T extends {}>(
+    value: unknown
+): value is Lengthy<T> {
     return !isNullOrUndefined(value) && isUint((value as any).length);
 }
