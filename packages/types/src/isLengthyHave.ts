@@ -6,6 +6,6 @@ import isLengthy, { Lengthy } from './isLengthy';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isLengthyHave<T>(value: unknown): value is Lengthy<T> {
+export default function isLengthyHave<T extends {}>(value: unknown): value is Lengthy<T> {
     return isLengthy(value) && value.length > 0;
 }
