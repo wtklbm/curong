@@ -7,6 +7,8 @@ import isSizey, { Sizey } from './isSizey';
  * @returns 是则返回 `true`，否则为 `false`
  * @info 一些 `HTML` 元素也有 `size` 属性，比如 `input` 元素
  */
-export default function isSizeyHave<T extends {}>(value: unknown): value is Sizey<T> {
+export default function isSizeyHave<T extends {}>(
+    value: unknown
+): value is Sizey<T> {
     return isSizey(value) && value.size > 0;
 }
