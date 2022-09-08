@@ -86,4 +86,3 @@ describe('@curong/types/isOwnProperty', () => {
         expect(isOwnProperty(c, 'toString')).toBe(false);
     });
 });
-
