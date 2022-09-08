@@ -174,7 +174,7 @@ describe('toSentences', () => {
         expect(toSentences(v)).toEqual(['我爱中国，中国强大。', '非常强大！']);
     });
 
-    test('测试14', () => {
+    test('测试15', () => {
         const v =
             '[`thread`](https://doc.rust-lang.org/nightly/std/thread/index.html) 模块包含了 Rust 的线程抽象。[`sync`](https://doc.rust-lang.org/nightly/std/sync/index.html) 包含更多的原始共享内存类型，包括 [`atomic`] 和 [`mpsc`]，其中包含用于消息传递的通道类型。';
 
@@ -182,5 +182,17 @@ describe('toSentences', () => {
             '[`thread`](https://doc.rust-lang.org/nightly/std/thread/index.html) 模块包含了 Rust 的线程抽象。',
             '[`sync`](https://doc.rust-lang.org/nightly/std/sync/index.html) 包含更多的原始共享内存类型，包括 [`atomic`] 和 [`mpsc`]，其中包含用于消息传递的通道类型。'
         ]);
+    });
+
+    test('测试16', () => {
+        const v = '1. 测试序号。';
+
+        expect(toSentences(v)).toEqual(['1. 测试序号。']);
+    });
+
+    test('测试17', () => {
+        const v = '测试序号。1.';
+
+        expect(toSentences(v)).toEqual(['测试序号。', '1.']);
     });
 });
