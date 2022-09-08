@@ -49,7 +49,7 @@ const abbreviationReg = new RegExp(
  * very e.g. good i.e. very q. 去。中文，句号.
  * ```
  */
-const periodReg = /(?:(?:^| \S+|[\u4e00-\u9fff])[.!?;]+ |[。！？；]+(?!$)) */gi;
+const periodReg = /(?:(?:^| \S+|[\u4e00-\u9fff])[.!?;]+ |[。！？；]+) */gi;
 
 /** 验证末尾省略号的正则表达式 */
 const ellipsisReg = /[.。]{2,}$/;
@@ -80,19 +80,26 @@ export default function toSentences(
 ): string[] {
     const { ellipsis = true } = options ?? {};
 
-    return bindOutside(value, options, (value: string) =>
-        value.replace(periodReg, (v, $1) => {
-            const w = v.trim();
+    return bindOutside(
+        value,
+        options,
+        (value: string, index: number, origin: string) =>
+            value.replace(periodReg, (v, $1) => {
+                const w = v.trim();
 
-            if (abbreviationReg.test(w) || (!ellipsis && ellipsisReg.test(w))) {
-                return v;
-            }
+                if (
+                    abbreviationReg.test(w) ||
+                    (!ellipsis && ellipsisReg.test(w)) ||
+                    (index === origin.length && origin.endsWith(v))
+                ) {
+                    return v;
+                }
 
-            if (w.length > 1 && !zhReg.test($1)) {
-                return ` ${w}\n`;
-            }
+                if (w.length > 1 && !zhReg.test($1)) {
+                    return ` ${w}\n`;
+                }
 
-            return `${w}\n`;
-        })
+                return `${w}\n`;
+            })
     ).split('\n');
 }
