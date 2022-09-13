@@ -19,14 +19,25 @@ describe('@curong/types/isIterable', () => {
     test('测试2', () => {
         function* test() {}
         expect(isIterable(test())).toBe(true);
-        expect(isIterable('')).toBe(true);
 
-        expect(isIterable([])).toBe(true);
         expect(isIterable('')).toBe(true);
+        expect(isIterable([])).toBe(true);
         expect(isIterable(new Set())).toBe(true);
         expect(isIterable(new WeakSet())).toBe(false);
         expect(isIterable(new Map())).toBe(true);
         expect(isIterable(new WeakMap())).toBe(false);
         expect(isIterable((function* () {})())).toBe(true);
+    });
+
+    test('测试3', () => {
+        const syncIter = {
+            [Symbol.iterator]() {}
+        };
+        expect(isIterable(syncIter)).toBe(true);
+
+        const asyncIter = {
+            async *[Symbol.asyncIterator]() {}
+        };
+        expect(isIterable(asyncIter)).toBe(true);
     });
 });
