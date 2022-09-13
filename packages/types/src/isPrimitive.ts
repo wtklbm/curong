@@ -19,7 +19,7 @@ export type Primitive =
  * 除了 `null` 和 `undefined` 之外，所有基本类型都有其对应的包装对象。
  * 这个包裹对象的 `valueOf()` 方法返回基本类型值。
  */
-export default function isPrimitive(value: any): value is Primitive {
+export default function isPrimitive(value: unknown): value is Primitive {
     return typeof value === 'object'
         ? value === null
         : typeof value !== 'function';
