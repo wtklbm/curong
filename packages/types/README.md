@@ -102,6 +102,7 @@
 - `isStringTrim`: 是不是一个经过 `trim` 后长度大于 `0` 的字符串
 - `isSymbol`: 是不是一个 `Symbol`
 - `isSyncFunction`: 是不是一个同步函数
+- `isSyncIterable`: 是不是一个同步可迭代的对象
 - `isSyntaxError`: 是不是一个 `SyntaxError` 对象
 - `isTextNode`: 是不是一个 `TextNode`
 - `isTransform`: 是不是一个 `Transform`
