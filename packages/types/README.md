@@ -17,6 +17,7 @@
 - `isArrayLikeHave`: 是不是一个长度大于 `0` 的类数组 (不包含数组)
 - `isAsyncFunction`: 是不是一个异步函数
 - `isAsyncFunctionHave`: 是不是一个参数个数大于 `0` 的异步函数
+- `isAsyncIterable`: 是不是一个异步可迭代的对象
 - `isBigInt`: 是不是一个 `BigInt` (大数)
 - `isBigInt64Array`: 是不是一个 `BigInt64Array`
 - `isBigIntHave`: 是不是一个大于 `0n` 的 `BigInt` (大数)
@@ -55,7 +56,7 @@
 - `isInt8Array`: 是不是一个 `Int32Array`，每一项的值为 `-2147483648 - 2147483647`
 - `isIntHave`: 是不是一个大于 `0` 的整数，即无符号整数
 - `isIntSafe`: 是不是一个安全的整数
-- `isIterable`: 是不是一个可迭代的对象
+- `isIterable`: 是不是一个同步或异步的可迭代的对象
 - `isIterator`: 是不是一个 `Iterator`
 - `isLengthy`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于或等于 0 的整数
 - `isLengthyHave`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于 0 的整数
