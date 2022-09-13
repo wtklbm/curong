@@ -10,6 +10,7 @@ export { default as isArrayLike } from './isArrayLike';
 export { default as isArrayLikeHave } from './isArrayLikeHave';
 export { default as isAsyncFunction } from './isAsyncFunction';
 export { default as isAsyncFunctionHave } from './isAsyncFunctionHave';
+export { default as isAsyncIterable } from './isAsyncIterable';
 export { default as isBigInt } from './isBigInt';
 export { default as isBigInt64Array } from './isBigInt64Array';
 export { default as isBigIntHave } from './isBigIntHave';
@@ -124,6 +125,7 @@ export { default as isZero } from './isZero';
 export { default as MAX_ARRAY_LENGTH } from './MAX_ARRAY_LENGTH';
 
 export type { AsyncFunction } from './isAsyncFunction';
+export type { AsyncIterable } from './isAsyncIterable';
 export type { Class } from './isClass';
 export type { Function } from './isFunction';
 export type { Lengthy } from './isLengthy';
