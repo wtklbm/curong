@@ -1,8 +1,8 @@
-import isFunction from './isFunction';
-import isNullOrUndefined from './isNullOrUndefined';
+import isAsyncIterable from './isAsyncIterable';
+import isSyncIterable from './isSyncIterable';
 
 /**
- * 是不是一个可迭代的对象
+ * 是不是一个同步或异步的可迭代的对象
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
@@ -41,17 +41,27 @@ import isNullOrUndefined from './isNullOrUndefined';
  *  - `Promise.race(iterable)`
  *  - `Array.from(iterable)`
  *
- * ### 需要可迭代对象的语法
+ * ### 迭代对象的语法
  *
  *  - `for...of` 循环 (Symbol.iterator)
  *  - `for await...of` 循环 (Symbol.asyncIterator)
  *  - `yield*`
  *  - 展开和解构赋值
+ *
+ * ### 自实现 `Symbol.asyncIterator`
+ *
+ * ```js
+ * const asyncIter = {
+ *     async *[Symbol.asyncIterator]() {
+ *         yield '1';
+ *         yield '2';
+ *         yield '3';
+ *     }
+ * };
+ * ```
  */
-export default function isIterable(value: any): boolean {
-    return (
-        !isNullOrUndefined(value) &&
-        (isFunction(value[Symbol.iterator]) ||
-            isFunction(value[Symbol.asyncIterator]))
-    );
+export default function isIterable<T = unknown>(
+    value: unknown
+): value is Iterable<T> | AsyncIterable<T> {
+    return isSyncIterable(value) || isAsyncIterable(value);
 }
