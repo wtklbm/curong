@@ -1,5 +1,8 @@
+import isSymbolObject from './isSymbolObject';
+import isSymbolPrimitive from './isSymbolPrimitive';
+
 /**
- * 是不是一个 `Symbol`
+ * 是不是一个 `symbol` 或被包装后的 `Symbol` 对象
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
@@ -22,5 +25,5 @@
  * ```
  */
 export default function isSymbol(value: unknown): value is symbol {
-    return typeof value === 'symbol';
+    return isSymbolPrimitive(value) || isSymbolObject(value);
 }
