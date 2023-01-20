@@ -125,6 +125,7 @@ export { default as isUrlSearchParams } from './isURLSearchParams';
 export { default as isVarName } from './isVarName';
 export { default as isWeakMap } from './isWeakMap';
 export { default as isWeakSet } from './isWeakSet';
+export { default as isWebWorker } from './isWebWorker';
 export { default as isWindow } from './isWindow';
 export { default as isWritable } from './isWritable';
 export { default as isZero } from './isZero';
