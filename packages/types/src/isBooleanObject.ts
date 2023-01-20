@@ -1,7 +1,7 @@
 import getTag from './getTag';
 
 /**
- * 是不是一个被包装后的布尔值对象，即 `new Boolean`
+ * 是不是一个被包装后的布尔值对象，即 `new Boolean` || `Object(true)`
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
