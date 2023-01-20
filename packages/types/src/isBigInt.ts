@@ -9,6 +9,6 @@ import isBigIntPrimitive from './isBigIntPrimitive';
  * @note
  *  - `BigInt` 和 `Number` 是不兼容的，不能相互赋值，也不能直接做加法运算
  */
-export default function isBigInt(value: unknown): value is BigInt {
+export default function isBigInt(value: unknown): value is bigint {
     return isBigIntPrimitive(value) || isBigIntObject(value);
 }
