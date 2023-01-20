@@ -8,6 +8,7 @@ import getTag from './getTag';
 export default function isNodejs(): boolean {
     return (
         typeof global === 'object' &&
+        global !== null &&
         typeof setImmediate === 'function' &&
         typeof clearImmediate === 'function' &&
         typeof Buffer === 'function' &&
