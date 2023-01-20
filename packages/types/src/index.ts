@@ -101,6 +101,7 @@ export { default as isStringPrimitive } from './isStringPrimitive';
 export { default as isStringTrim } from './isStringTrim';
 export { default as isSymbol } from './isSymbol';
 export { default as isSymbolObject } from './isSymbolObject';
+export { default as isSymbolPrimitive } from './isSymbolPrimitive';
 export { default as isSyncFunction } from './isSyncFunction';
 export { default as isSyncIterable } from './isSyncIterable';
 export { default as isSyntaxError } from './isSyntaxError';
