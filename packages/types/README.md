@@ -28,12 +28,10 @@
 - `isBoolean`: 是不是一个布尔值或被包装后的布尔值对象
 - `isBooleanObject`: 是不是一个被包装后的布尔值对象，即 `new Boolean`
 - `isBooleanPrimitive`: 是不是一个基本的布尔值，即 `boolean`
-- `isBrowser`: 当前的执行环境是不是浏览器
 - `isBuffer`: 是不是一个 `Buffer`
 - `isBufferHave`: 是不是一个长度大于 `0` 的 `Buffer`
 - `isClass`: 是不是一个类
 - `isDataView`: 是不是一个 `DataView`
-- `isDeno`: 当前的执行环境是不是 `Deno`
 - `isDate`: 是不是一个有效的 `Date`
 - `isDouble`: 是不是一个浮点数
 - `isDuplex`: 是不是一个 `Duplex`
@@ -68,7 +66,6 @@
 - `isMapHave`: 是不是一个长度大于 `0` 的 `Map`
 - `isNaN`: 是不是一个 `NaN`
 - `isNegativeInfinity`: 是不是一个 `-Infinity`，即小于 `-1.7976931348623157E+103088` 的数值
-- `isNodejs`: 当前的执行环境是不是 `Node.js`
 - `isNodeList`: 是不是一个 `NodeList`
 - `isNotEqual`: `简单` 的判断多个的值是否不相等
 - `isNotZero`: 不是 `0`
@@ -135,3 +132,11 @@
 - `isWritable`: 是不是一个 `Writable`
 - `isZero`: 是不是 `0`
 - `MAX_ARRAY_LENGTH`: 获取数组最大索引下标的数字。最大为 `2` 的 `32` 次方减一，即 `4294967295`
+
+
+以下函数用于判断执行环境：
+
+- `isBrowser`: 当前的执行环境是不是浏览器
+- `isDeno`: 当前的执行环境是不是 `Deno`
+- `isNodejs`: 当前的执行环境是不是 `Node.js`
+- `isWebWorker`: 当前的执行环境是不是 `Web Worker`
