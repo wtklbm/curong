@@ -19,6 +19,7 @@
 - `isAsyncFunctionHave`: 是不是一个参数个数大于 `0` 的异步函数
 - `isAsyncIterable`: 是不是一个异步可迭代的对象
 - `isBigInt`: 是不是一个 `BigInt` (大数)
+- `isBigIntObject`: 是不是一个被包装后的 `BigInt` 对象，即 `Object(0n)`
 - `isBigInt64Array`: 是不是一个 `BigInt64Array`
 - `isBigIntHave`: 是不是一个大于 `0n` 的 `BigInt` (大数)
 - `isBigUint64Array`: 是不是一个 `BigUint64Array`
