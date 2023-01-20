@@ -26,6 +26,7 @@
 - `isBoolean`: 是不是一个布尔值或被包装后的布尔值对象
 - `isBooleanObject`: 是不是一个被包装后的布尔值对象，即 `new Boolean`
 - `isBooleanPrimitive`: 是不是一个基本的布尔值，即 `boolean`
+- `isBrowser`: 当前的执行环境是不是浏览器
 - `isBuffer`: 是不是一个 `Buffer`
 - `isBufferHave`: 是不是一个长度大于 `0` 的 `Buffer`
 - `isClass`: 是不是一个类
