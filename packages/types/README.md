@@ -106,6 +106,7 @@
 - `isStringPrimitive`: 是不是一个基本的字符串，即 `string`
 - `isStringTrim`: 是不是一个经过 `trim` 后长度大于 `0` 的字符串
 - `isSymbol`: 是不是一个 `Symbol`
+- `isSymbolObject`: 是不是一个被包装后的 `Symbol` 对象，即 `Object(Symbol())`
 - `isSyncFunction`: 是不是一个同步函数
 - `isSyncIterable`: 是不是一个同步可迭代的对象
 - `isSyntaxError`: 是不是一个 `SyntaxError` 对象
