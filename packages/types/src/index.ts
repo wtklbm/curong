@@ -12,6 +12,7 @@ export { default as isAsyncFunction } from './isAsyncFunction';
 export { default as isAsyncFunctionHave } from './isAsyncFunctionHave';
 export { default as isAsyncIterable } from './isAsyncIterable';
 export { default as isBigInt } from './isBigInt';
+export { default as isBigIntObject } from './isBigIntObject';
 export { default as isBigInt64Array } from './isBigInt64Array';
 export { default as isBigIntHave } from './isBigIntHave';
 export { default as isBigUint64Array } from './isBigUint64Array';
