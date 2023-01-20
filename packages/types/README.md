@@ -31,6 +31,7 @@
 - `isBufferHave`: 是不是一个长度大于 `0` 的 `Buffer`
 - `isClass`: 是不是一个类
 - `isDataView`: 是不是一个 `DataView`
+- `isDeno`: 当前的执行环境是不是 `Deno`
 - `isDate`: 是不是一个有效的 `Date`
 - `isDouble`: 是不是一个浮点数
 - `isDuplex`: 是不是一个 `Duplex`
