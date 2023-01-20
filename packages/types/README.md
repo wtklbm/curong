@@ -18,7 +18,7 @@
 - `isAsyncFunction`: 是不是一个异步函数
 - `isAsyncFunctionHave`: 是不是一个参数个数大于 `0` 的异步函数
 - `isAsyncIterable`: 是不是一个异步可迭代的对象
-- `isBigInt`: 是不是一个 `BigInt` (大数)
+- `isBigInt`: 是不是一个 `bigInt` (大数) 或被包装后的 `BigInt` 对象
 - `isBigIntObject`: 是不是一个被包装后的 `BigInt` 对象，即 `Object(0n)`
 - `isBigInt64Array`: 是不是一个 `BigInt64Array`
 - `isBigIntHave`: 是不是一个大于 `0n` 的 `BigInt` (大数)
@@ -106,7 +106,6 @@
 - `isStringObject`: 是不是一个被包装后的字符串对象，即 `new String()`
 - `isStringPrimitive`: 是不是一个基本的字符串，即 `string`
 - `isStringTrim`: 是不是一个经过 `trim` 后长度大于 `0` 的字符串
-- `isSymbol`: 是不是一个 `Symbol`
 - `isSymbolObject`: 是不是一个被包装后的 `Symbol` 对象，即 `Object(Symbol())`
 - `isSyncFunction`: 是不是一个同步函数
 - `isSyncIterable`: 是不是一个同步可迭代的对象
