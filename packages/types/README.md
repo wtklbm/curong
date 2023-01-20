@@ -23,6 +23,7 @@
 - `isBigInt64Array`: 是不是一个 `BigInt64Array`
 - `isBigIntHave`: 是不是一个大于 `0n` 的 `BigInt` (大数)
 - `isBigUint64Array`: 是不是一个 `BigUint64Array`
+- `isBigIntPrimitive`: 是不是一个基本的大数，即 `bigint`
 - `isBlob`: 是不是一个 `Blob`
 - `isBoolean`: 是不是一个布尔值或被包装后的布尔值对象
 - `isBooleanObject`: 是不是一个被包装后的布尔值对象，即 `new Boolean`
