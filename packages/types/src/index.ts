@@ -57,6 +57,7 @@ export { default as isMap } from './isMap';
 export { default as isMapHave } from './isMapHave';
 export { default as isNaN } from './isNaN';
 export { default as isNegativeInfinity } from './isNegativeInfinity';
+export { default as isNodejs } from './isNodejs';
 export { default as isNodeList } from './isNodeList';
 export { default as isNotEqual } from './isNotEqual';
 export { default as isNotZero } from './isNotZero';
