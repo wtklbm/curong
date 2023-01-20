@@ -19,6 +19,7 @@ export { default as isBlob } from './isBlob';
 export { default as isBoolean } from './isBoolean';
 export { default as isBooleanObject } from './isBooleanObject';
 export { default as isBooleanPrimitive } from './isBooleanPrimitive';
+export { default as isBrowser } from './isBrowser';
 export { default as isBuffer } from './isBuffer';
 export { default as isBufferHave } from './isBufferHave';
 export { default as isClass } from './isClass';
