@@ -140,3 +140,11 @@
 - `isDeno`: 当前的执行环境是不是 `Deno`
 - `isNodejs`: 当前的执行环境是不是 `Node.js`
 - `isWebWorker`: 当前的执行环境是不是 `Web Worker`
+
+
+一些 TypeScript 类型:
+
+- `IsAny`: 是不是一个 `any` 类型的值
+- `IsNever`: 是不是一个 `never` 类型的值
+- `IsUnknown`: 是不是一个 `unknown` 类型的值
+- `IsNullable`: 是不是一个 `null` 或 `undefined` 类型的值
