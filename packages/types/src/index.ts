@@ -140,3 +140,5 @@ export type { Lengthy } from './isLengthy';
 export type { Primitive } from './isPrimitive';
 export type { Sizey } from './isSizey';
 export type { SyncIterable } from './isSyncIterable';
+
+export type { IsAny } from './IsAny';
