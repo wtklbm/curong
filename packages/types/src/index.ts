@@ -142,3 +142,4 @@ export type { Sizey } from './isSizey';
 export type { SyncIterable } from './isSyncIterable';
 
 export type { IsAny } from './IsAny';
+export type { IsNever } from './IsNever';
