@@ -1,41 +1,52 @@
 import { isUndefined } from '@curong/types';
 
-import { BindOutsideCallback, BindOutsideOptions } from './types/bindOutside';
+import { BindSideCallback, BindSideOptions } from './types/bindSide';
 
 /**
  * 被包裹的值的映射对象
  *
  * @see https://zh.wikipedia.org/wiki/标点符号
  */
-const quoteMap = {
-    // 英文
+export const defaultMarks = {
+    // 半角
     "'": "'",
     '"': '"',
     '`': '`',
+    '‹': '›',
+    '«': '»',
     '(': ')',
     '[': ']',
     '{': '}',
-    '<': '>',
+    '⦅': '⦆',
+    '⦗': '⦘',
+    '⟦': '⟧',
     '⟨': '⟩',
-    '‹': '›',
-    '«': '»',
+    '⟪': '⟫',
+    '⟬': '⟭',
+    '⟮': '⟯',
+    '〘': '〙',
+    '〚': '〛',
+    '<': '>',
 
-    // 中文
+    // 全角
     '‘': '’',
     '“': '”',
+    '〝': '〞',
     '（': '）',
     '［': '］',
-    '〔': '〕',
-    '【': '】',
+    '｛': '｝',
+    '｟': '｠',
     '〈': '〉',
     '《': '》',
     '「': '」',
     '『': '』',
+    '【': '】',
+    '〔': '〕',
     '〖': '〗',
-    '｛': '｝'
+    '＜': '＞',
 };
 
-type QuoteMapType = keyof typeof quoteMap;
+export type DefaultMarksType = keyof typeof defaultMarks;
 
 /** 判断是不是英文单词后面的 `'` 的正则表达式 */
 const wordReg = /^[a-zA-Z]'[a-zA-Z]{1,2}[^a-zA-Z]/;
@@ -56,7 +67,7 @@ const wordReg = /^[a-zA-Z]'[a-zA-Z]{1,2}[^a-zA-Z]/;
  */
 export default function bindOutside(
     value: string,
-    callback: BindOutsideCallback
+    callback: BindSideCallback
 ): string;
 
 /**
@@ -83,8 +94,8 @@ export default function bindOutside(
  */
 export default function bindOutside(
     value: string,
-    options: BindOutsideOptions | undefined,
-    callback: BindOutsideCallback
+    options: BindSideOptions | undefined,
+    callback: BindSideCallback
 ): string;
 export default function bindOutside(
     value: string,
@@ -97,12 +108,12 @@ export default function bindOutside(
     }
 
     const ret: string[] = [];
-    const { escape = false } = options ?? {};
+    const { escape = false, marks = defaultMarks } = options ?? {};
     const len = value.length;
 
     // 设置 `token` 的值
-    const setToken = (char: QuoteMapType, equal: boolean) => {
-        (!token && (token = quoteMap[char])) || (equal && (token = ''));
+    const setToken = (char: DefaultMarksType, equal: boolean) => {
+        (!token && (token = marks[char])) || (equal && (token = ''));
     };
 
     let token: string = '';
@@ -137,9 +148,9 @@ export default function bindOutside(
         }
 
         // 如果括号或引号已经解析完成
-        if (isToken && j-- <= 0) {
+        if (isToken && --j <= 0) {
             // 如果紧挨着的仍然是括号或引号
-            if ((token = quoteMap[value[i + 1] as QuoteMapType])) {
+            if ((token = marks[value[i + 1] as DefaultMarksType])) {
                 headToken = value[i + 1];
                 continue;
             }
@@ -151,7 +162,7 @@ export default function bindOutside(
             continue;
         }
 
-        qc = quoteMap[char as QuoteMapType];
+        qc = marks[char as DefaultMarksType];
 
         // 如果当前位置是括号或引号的开始位置
         if ((!headToken && qc) || qc === token) {
