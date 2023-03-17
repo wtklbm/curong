@@ -1,4 +1,4 @@
-export * from './bindOutside';
+export * from './bindSide';
 export * from './characters';
 export * from './generic';
 export * from './startsSlice';
