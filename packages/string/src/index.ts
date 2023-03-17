@@ -1,4 +1,5 @@
 export { default as behindOf } from './behindOf';
+export { default as bindInside } from './bindInside';
 export { default as bindOutside } from './bindOutside';
 export { default as bytesArray } from './bytesArray';
 export { default as bytesLength } from './bytesLength';
