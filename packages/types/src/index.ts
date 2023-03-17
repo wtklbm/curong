@@ -141,7 +141,4 @@ export type { Primitive } from './isPrimitive';
 export type { Sizey } from './isSizey';
 export type { SyncIterable } from './isSyncIterable';
 
-export type { IsAny } from './IsAny';
-export type { IsNever } from './IsNever';
-export type { IsUnknown } from './IsUnknown';
-export type { IsNullable } from './IsNullable';
+export * from './types';
