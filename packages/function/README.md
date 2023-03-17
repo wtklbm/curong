@@ -14,3 +14,8 @@
 - `timeoutCallback`: 执行一个函数，并获取函数的返回值，如果函数的执行时间超过 `duration` 时，就执行回调函数
 - `timeoutThrow`: 执行一个函数，并获取函数的返回值。如果函数的执行时间超过 `duration` 时，就会抛出异常
 - `tryCatch`: `try...catch...` 语法的 `Promise` 包装
+
+
+包括以下类型：
+
+- `ClassInstanceKeys`: 类的实例方法名的类型数组
