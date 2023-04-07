@@ -148,7 +148,7 @@ export default function bindOutside(
         }
 
         // 如果括号或引号已经解析完成
-        if (isToken && --j <= 0) {
+        if (isToken && j-- <= 0) {
             // 如果紧挨着的仍然是括号或引号
             if ((token = marks[value[i + 1] as DefaultMarksType])) {
                 headToken = value[i + 1];
