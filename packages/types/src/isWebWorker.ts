@@ -7,6 +7,7 @@ export default function isWebWorker(): boolean {
     return (
         typeof self === 'object' &&
         self !== null &&
-        self.constructor?.name === 'DedicatedWorkerGlobalScope'
+        self.constructor &&
+        self.constructor.name === 'DedicatedWorkerGlobalScope'
     );
 }
