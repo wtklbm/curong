@@ -1,22 +1,27 @@
 import { RequestOptions as _RequestOptions } from 'https';
-import { IncomingMessage } from 'http';
+import { ClientRequest, IncomingMessage } from 'http';
 import { ParsedUrlQueryInput } from 'querystring';
 
+/** 请求方法 */
 export type Methods =
     | 'get'
     | 'GET'
-    | 'delete'
-    | 'DELETE'
-    | 'head'
-    | 'HEAD'
-    | 'options'
-    | 'OPTIONS'
     | 'post'
     | 'POST'
     | 'put'
     | 'PUT'
+    | 'delete'
+    | 'DELETE'
+    | 'head'
+    | 'HEAD'
     | 'patch'
     | 'PATCH'
+    | 'options'
+    | 'OPTIONS'
+    | 'trace'
+    | 'TRACE'
+    | 'connect'
+    | 'CONNECT'
     | 'link'
     | 'LINK'
     | 'unlink'
@@ -28,7 +33,7 @@ export type RequestOptions = _RequestOptions & {
     https?: boolean;
 
     /** 主机地址 */
-    hostname: string;
+    hostname?: string;
 
     /** 主机路径 */
     path?: string;
@@ -36,19 +41,19 @@ export type RequestOptions = _RequestOptions & {
     /** 响应超时时间，单位 `毫秒` */
     timeout?: number;
 
-    /** 请求头 */
+    /** 请求头字段 */
     headers?: _RequestOptions['headers'];
 
-    /** 请求方式 */
+    /** 请求方法 */
     method?: Methods;
 
     /** 端口号 */
     port?: number;
 
-    /** 当前请求的查询字符串对象，会被转换为 `a=b&b=c` 的格式 */
+    /** 当前请求的查询字符串对象，会被追加到 URL 的末尾 */
     query?: ParsedUrlQueryInput;
 
-    /** 当前请求的请求体对象，会被转换为 `a=b&b=c` 的格式 */
+    /** 当前请求的请求体对象 */
     body?: ParsedUrlQueryInput | string;
 
     /** 延迟请求时间，单位 `毫秒` */
@@ -57,8 +62,17 @@ export type RequestOptions = _RequestOptions & {
 
 /** 返回结果 */
 export type RequestResult = {
+    /* 服务器响应的 HTTP 状态代码 */
+    status?: number;
+
+    /* 服务器响应的 HTTP 状态消息 */
+    statusText?: string;
+
     /** 响应的数据 */
     data: Buffer;
+
+    /** 请求对象实例 */
+    request: ClientRequest;
 
     /** 响应对象实例 */
     response: IncomingMessage;
