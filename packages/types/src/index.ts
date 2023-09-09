@@ -2,6 +2,7 @@ export { default as getTag } from './getTag';
 export { default as isAnyError } from './isAnyError';
 export { default as isArguments } from './isArguments';
 export { default as isArray } from './isArray';
+export { default as isArrayDimensional } from './isArrayDimensional';
 export { default as isArrayBuffer } from './isArrayBuffer';
 export { default as isArrayBufferView } from './isArrayBufferView';
 export { default as isArrayHave } from './isArrayHave';
