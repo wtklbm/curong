@@ -9,9 +9,9 @@
 - `isAnyError`: 是不是一个任意的 `Error` 对象
 - `isArguments`: 是不是函数的参数
 - `isArray`: 是不是一个数组
-- `isArrayDimensional`: 是不是一个多维数组 (至少是二维)
 - `isArrayBuffer`: 是不是一个 `ArrayBuffer`
 - `isArrayBufferView`: 是不是一个 `ArrayBufferView`
+- `isArrayDimensional`: 是不是一个多维数组 (至少是二维)
 - `isArrayHave`: 是不是一个长度大于 `0` 的数组
 - `isArrayIndex`: 是不是一个数组的下标索引，它是一个大于或等于 `0` 并且小于或等于数组的最大长度的整数
 - `isArrayLike`: 是不是一个类数组 (不包含数组)
@@ -20,11 +20,11 @@
 - `isAsyncFunctionHave`: 是不是一个参数个数大于 `0` 的异步函数
 - `isAsyncIterable`: 是不是一个异步可迭代的对象
 - `isBigInt`: 是不是一个 `bigInt` (大数) 或被包装后的 `BigInt` 对象
-- `isBigIntObject`: 是不是一个被包装后的 `BigInt` 对象，即 `Object(0n)`
 - `isBigInt64Array`: 是不是一个 `BigInt64Array`
 - `isBigIntHave`: 是不是一个大于 `0n` 的 `BigInt` (大数)
-- `isBigUint64Array`: 是不是一个 `BigUint64Array`
+- `isBigIntObject`: 是不是一个被包装后的 `BigInt` 对象，即 `Object(0n)`
 - `isBigIntPrimitive`: 是不是一个基本的大数，即 `bigint`
+- `isBigUint64Array`: 是不是一个 `BigUint64Array`
 - `isBlob`: 是不是一个 `Blob`
 - `isBoolean`: 是不是一个布尔值或被包装后的布尔值对象
 - `isBooleanObject`: 是不是一个被包装后的布尔值对象，即 `new Boolean`
@@ -125,6 +125,7 @@
 - `isUintSafe`: 是不是一个安全的无符号整数
 - `isUintSafeHave`: 是不是一个大于 0 的安全的无符号整数
 - `isUndefined`: 是不是 `undefined`
+- `isURL`: 是不是一个 `URL`
 - `isUrlSearchParams`: 是不是一个 `URLSearchParams`
 - `isVarName`: 是不是可以把值当做 `JavaScript` 的变量名
 - `isWeakMap`: 是不是一个 `WeakMap`
