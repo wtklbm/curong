@@ -68,29 +68,29 @@ const joinUrlQuery = (url: string, params: Record<string | number, any>) => {
         }
     };
 
-    const encode = (val: string | number) => {
-        return encodeURIComponent(val)
-            .replace(/%40/gi, '@')
-            .replace(/%3A/gi, ':')
-            .replace(/%24/g, '$')
-            .replace(/%2C/gi, ',')
-            .replace(/%20/g, '+')
-            .replace(/%5B/gi, '[')
-            .replace(/%5D/gi, ']');
-    };
-
     forEach(params, function (val, key) {
-        if (val === null || typeof val === 'undefined') {
+        if (isNullOrUndefined(val)) {
             return;
         }
 
         if (isArray(val)) {
-            key = key + '[]';
+            key += '[]';
         }
 
         if (!isArray(val)) {
             val = [val];
         }
+
+        const encode = (val: string | number) => {
+            return encodeURIComponent(val)
+                .replace(/%20/g, '+')
+                .replace(/%24/g, '$')
+                .replace(/%2C/gi, ',')
+                .replace(/%3A/gi, ':')
+                .replace(/%40/gi, '@')
+                .replace(/%5B/gi, '[')
+                .replace(/%5D/gi, ']');
+        };
 
         forEach(val, function (v) {
             if (isDate(v)) {
@@ -98,6 +98,7 @@ const joinUrlQuery = (url: string, params: Record<string | number, any>) => {
             } else if (isObject(v)) {
                 v = JSON.stringify(v);
             }
+
             parts.push(encode(key) + '=' + encode(v));
         });
     });
