@@ -15,6 +15,7 @@ export { default as parseJson } from './parseJson';
 export { default as quoteClosed } from './quoteClosed';
 export { default as quotePair } from './quotePair';
 export { default as random } from './random';
+export { default as multiReplace } from './multiReplace';
 export { default as rmControl } from './rmControl';
 export { default as rmControlEnd } from './rmControlEnd';
 export { default as rmControlStart } from './rmControlStart';
