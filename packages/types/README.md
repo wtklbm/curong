@@ -9,6 +9,7 @@
 - `isAnyError`: 是不是一个任意的 `Error` 对象
 - `isArguments`: 是不是函数的参数
 - `isArray`: 是不是一个数组
+- `isArrayDimensional`: 是不是一个多维数组 (至少是二维)
 - `isArrayBuffer`: 是不是一个 `ArrayBuffer`
 - `isArrayBufferView`: 是不是一个 `ArrayBufferView`
 - `isArrayHave`: 是不是一个长度大于 `0` 的数组
