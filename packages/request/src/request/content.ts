@@ -1,27 +1,92 @@
-import { unzip as _unzip } from 'zlib';
 import { IncomingMessage } from 'http';
+import { constants, createBrotliDecompress, createUnzip } from 'zlib';
+import { finished, pipeline, Transform, TransformCallback } from 'stream';
 import { stringify } from 'querystring';
+import { isStringHave } from '@curong/types';
 
 import { RequestOptions } from '../types';
 
-/** 是不是 `gzip` 格式的内容 */
-export function isGzipContent(res: IncomingMessage) {
-    switch ((res.headers['content-encoding'] ?? '').toLowerCase()) {
-        case 'gzip':
-        case 'compress':
-        case 'deflate':
-            return true;
+export function pipeDecompressStream(res: IncomingMessage): IncomingMessage {
+    const encoding = (res.headers['content-encoding'] ?? '').toLowerCase();
 
-        default:
-            return false;
+    if (!isStringHave(encoding)) {
+        return res;
     }
-}
 
-/** 对 `gzip` 格式的内容进行解压 */
-export function unzipContent(buffer: Buffer) {
-    return new Promise<Buffer>((resolve, reject) => {
-        _unzip(buffer, (e, data) => (e ? reject(e) : resolve(data)));
-    });
+    // 删除不必要的头
+    if (res.method === 'HEAD' || res.statusCode === 204) {
+        delete res.headers['content-encoding'];
+    }
+
+    const streams: NodeJS.ReadableStream[] = [res];
+    const zlibOptions = {
+        flush: constants.Z_SYNC_FLUSH,
+        finishFlush: constants.Z_SYNC_FLUSH
+    };
+    const AddDeflateHeaderStream = class extends Transform {
+        __transform(
+            chunk: any,
+            _encoding: BufferEncoding,
+            callback: TransformCallback
+        ) {
+            this.push(chunk);
+            callback();
+        }
+
+        _transform(
+            chunk: any,
+            encoding: BufferEncoding,
+            callback: TransformCallback
+        ) {
+            if (chunk.length !== 0) {
+                this._transform = this.__transform;
+
+                if (chunk[0] !== 0x78) {
+                    const header = Buffer.alloc(2);
+                    header[0] = 0x78;
+                    header[1] = 0x9c;
+                    this.push(header, encoding);
+                }
+            }
+
+            this.__transform(chunk, encoding, callback);
+        }
+    };
+
+    switch (encoding) {
+        case 'gzip':
+        case 'x-gzip':
+        case 'compress':
+        case 'x-compress':
+            // 内容已经被完全解压，所以删除它
+            delete res.headers['content-encoding'];
+            streams.push(createUnzip(zlibOptions));
+            break;
+
+        case 'deflate':
+            streams.push(new AddDeflateHeaderStream());
+            streams.push(createUnzip(zlibOptions));
+            delete res.headers['content-encoding'];
+            break;
+
+        case 'br':
+            streams.push(
+                createBrotliDecompress({
+                    flush: constants.BROTLI_OPERATION_FLUSH,
+                    finishFlush: constants.BROTLI_OPERATION_FLUSH
+                })
+            );
+            delete res.headers['content-encoding'];
+            break;
+    }
+
+    const responseStream =
+        streams.length > 1 ? pipeline(streams, () => {}) : streams[0];
+    const offListeners: () => void = finished(responseStream, () =>
+        offListeners()
+    );
+
+    return responseStream as IncomingMessage;
 }
 
 /** 是不是表单类型的内容 */
