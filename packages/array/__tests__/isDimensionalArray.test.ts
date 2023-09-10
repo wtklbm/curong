@@ -1,16 +1,16 @@
-import { isArrayDimensional } from '../src';
+import { isDimensionalArray } from '../src';
 
-describe('@curong/types/isArrayDimensional', () => {
+describe('@curong/types/isDimensionalArray', () => {
     test('测试1', () => {
-        expect(isArrayDimensional([])).toBe(false);
-        expect(isArrayDimensional([12])).toBe(false);
-        expect(isArrayDimensional([12, 34])).toBe(false);
+        expect(isDimensionalArray([])).toBe(false);
+        expect(isDimensionalArray([12])).toBe(false);
+        expect(isDimensionalArray([12, 34])).toBe(false);
     });
 
     test('测试2', () => {
-        expect(isArrayDimensional([[]])).toBe(true);
-        expect(isArrayDimensional([[2]])).toBe(true);
-        expect(isArrayDimensional([[2, 3]])).toBe(true);
+        expect(isDimensionalArray([[]])).toBe(true);
+        expect(isDimensionalArray([[2]])).toBe(true);
+        expect(isDimensionalArray([[2, 3]])).toBe(true);
     });
 
     test('should return true for 2D array', () => {
@@ -18,12 +18,12 @@ describe('@curong/types/isArrayDimensional', () => {
             [1, 2],
             [3, 4]
         ];
-        expect(isArrayDimensional(arr)).toBe(true);
+        expect(isDimensionalArray(arr)).toBe(true);
     });
 
     test('should return false for 1D array', () => {
         const arr: number[] = [1, 2, 3, 4];
-        expect(isArrayDimensional(arr)).toBe(false);
+        expect(isDimensionalArray(arr)).toBe(false);
     });
 
     test('should return true for 3D array when depth is set to 3', () => {
@@ -31,7 +31,7 @@ describe('@curong/types/isArrayDimensional', () => {
             [[1], [2]],
             [[3], [4]]
         ];
-        expect(isArrayDimensional(arr, 3)).toBe(true);
+        expect(isDimensionalArray(arr, 3)).toBe(true);
     });
 
     test('should return false for 3D array when depth is set to 2', () => {
@@ -39,7 +39,7 @@ describe('@curong/types/isArrayDimensional', () => {
             [[1], [2]],
             [[3], [4]]
         ];
-        expect(isArrayDimensional(arr, 2)).toBe(false);
+        expect(isDimensionalArray(arr, 2)).toBe(false);
     });
 
     test('should throw an error for negative depth', () => {
@@ -48,7 +48,7 @@ describe('@curong/types/isArrayDimensional', () => {
             [3, 4]
         ];
         expect(() => {
-            isArrayDimensional(arr, -1);
+            isDimensionalArray(arr, -1);
         }).toThrow();
     });
 });
