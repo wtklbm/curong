@@ -4,7 +4,6 @@ import { request as HttpsRequest } from 'https';
 
 import { format, printInfo } from '@curong/term';
 import { toLowerCaseKey } from '@curong/object';
-import { multiReplace } from '@curong/string';
 import {
     isObjectHave,
     isStringHave,
@@ -75,15 +74,14 @@ const joinUrlQuery = (url: string, params: Record<string | number, any>) => {
         if (!isArray(val)) val = [val];
 
         const encode = (val: string | number) => {
-            return multiReplace(encodeURIComponent(val), [
-                [/%20/g, '+'],
-                [/%24/g, '$'],
-                [/%2C/gi, ','],
-                [/%3A/gi, ':'],
-                [/%40/gi, '@'],
-                [/%5B/gi, '['],
-                [/%5D/gi, ']']
-            ]);
+            return encodeURIComponent(val)
+                .replace(/%20/g, '+')
+                .replace(/%24/g, '$')
+                .replace(/%2C/gi, ',')
+                .replace(/%3A/gi, ':')
+                .replace(/%40/gi, '@')
+                .replace(/%5B/gi, '[')
+                .replace(/%5D/gi, ']');
         };
 
         forEach(val, function (v) {
