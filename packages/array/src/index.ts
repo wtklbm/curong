@@ -1,5 +1,6 @@
 export { default as flat } from './flat';
 export { default as fromArrayLike } from './fromArrayLike';
+export { default as maxRecursionDepth } from './maxRecursionDepth';
 export { default as maxLengthIndex } from './maxLengthIndex';
 export { default as minLengthIndex } from './minLengthIndex';
 export { default as shuffle } from './shuffle';
