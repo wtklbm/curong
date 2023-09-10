@@ -94,4 +94,34 @@ describe('maxRecursionDepth', () => {
         expect(maxRecursionDepth([[[]], [[]]])).toBe(3);
         expect(maxRecursionDepth([[[[]]]])).toBe(4);
     });
+
+    test('handles empty array', () => {
+        expect(maxRecursionDepth([], false)).toBe(0);
+    });
+
+    test('handles nested empty arrays', () => {
+        expect(maxRecursionDepth([[], [[[]]], [[]]], false)).toBe(0);
+    });
+
+    test('handles basic array', () => {
+        expect(maxRecursionDepth([5, 4, 3, 2, 1], false)).toBe(1);
+    });
+
+    test('handles basic with one nested empty array', () => {
+        expect(maxRecursionDepth([5, [], 4, 3, [], 1, []], false)).toBe(1);
+    });
+
+    test('handles numbers and strings with strings deeper', () => {
+        expect(maxRecursionDepth([5, [], 4, 3, ['hello'], 1], false)).toBe(2);
+    });
+
+    test('handles numbers and strings with numbers deeper', () => {
+        expect(maxRecursionDepth(['hello', [2, []]], false)).toBe(2);
+    });
+
+    test('handles very deep arrays', () => {
+        expect(
+            maxRecursionDepth([2, [3, [], [4]], [[4, [8, ['15']], 5]]], false)
+        ).toBe(5);
+    });
 });
