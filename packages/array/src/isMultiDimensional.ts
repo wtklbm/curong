@@ -37,8 +37,7 @@ export default function isMultiDimensional<T>(
             const item = arr[i];
 
             if (isArray(item) && item.every(isArray)) {
-                const s = item.length === 0 ? depth : depth + 1;
-                return nestedLoop(item, s);
+                return nestedLoop(item, item.length === 0 ? depth : depth + 1);
             }
         }
 
