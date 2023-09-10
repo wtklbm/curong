@@ -4,7 +4,6 @@ export { default as isArguments } from './isArguments';
 export { default as isArray } from './isArray';
 export { default as isArrayBuffer } from './isArrayBuffer';
 export { default as isArrayBufferView } from './isArrayBufferView';
-export { default as isArrayDimensional } from './isArrayDimensional';
 export { default as isArrayHave } from './isArrayHave';
 export { default as isArrayIndex } from './isArrayIndex';
 export { default as isArrayLike } from './isArrayLike';
