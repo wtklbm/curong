@@ -1,6 +1,6 @@
 export { default as flat } from './flat';
 export { default as fromArrayLike } from './fromArrayLike';
-export { default as isDimensionalArray } from './isDimensionalArray';
+export { default as isMultiDimensional } from './isMultiDimensional';
 export { default as maxLengthIndex } from './maxLengthIndex';
 export { default as maxRecursionDepth } from './maxRecursionDepth';
 export { default as minLengthIndex } from './minLengthIndex';
