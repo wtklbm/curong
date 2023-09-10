@@ -261,11 +261,8 @@ export default function request(
         } else if (isArrayBuffer(body)) {
             bodyBuffer = Buffer.from(new Uint8Array(body));
         } else {
-            return reject({
-                message: '[request]: 当前传递的 body 的格式是不受支持的',
-                request: req,
-                config: options
-            });
+            req.end();
+            return;
         }
 
         // 默认情况下，`Content-Length` 的值的计算必须正确
