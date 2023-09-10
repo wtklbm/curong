@@ -11,7 +11,6 @@
 - `isArray`: 是不是一个数组
 - `isArrayBuffer`: 是不是一个 `ArrayBuffer`
 - `isArrayBufferView`: 是不是一个 `ArrayBufferView`
-- `isArrayDimensional`: 是不是一个多维数组 (至少是二维)
 - `isArrayHave`: 是不是一个长度大于 `0` 的数组
 - `isArrayIndex`: 是不是一个数组的下标索引，它是一个大于或等于 `0` 并且小于或等于数组的最大长度的整数
 - `isArrayLike`: 是不是一个类数组 (不包含数组)
