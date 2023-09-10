@@ -169,7 +169,7 @@ export const optionsHandler = (
         return protocol === 'https:' ? HttpsRequest : HttpRequest;
     }
 
-    const { hostname, path, https = true, query } = options;
+    const { hostname, path = '/', https = true, query } = options;
     const origin = `${https ? 'https' : 'http'}://${hostname}`;
 
     deleteOptionsAttr(options, ['https', 'query']);
