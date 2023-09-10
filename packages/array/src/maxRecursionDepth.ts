@@ -17,6 +17,17 @@ const _depth = (arr: any[], level: number) => {
  * @param value 要计算的数组
  * @param empty 是否将空数组计算在内，默认为 `true`
  * @returns 返回数组的最大递归深度
+ *
+ * @note 该方法并不严格上判断是不是特定维度的数组，即，如果一个数组的某一项包含一个数组，
+ *   而其他项不是数组，那么返回的最大递归深度是 2，而不是 1。
+ *   如果您想严格来判断是不是特定维度的数组，请使用 `isMultiDimensional` 方法。
+ *
+ * @example
+ *
+ * ```javascript
+ * isMultiDimensional([0, [], 1]); // 2
+ * isMultiDimensional([[], [], []]); // 2
+ * ```
  */
 export default function maxRecursionDepth<T extends any[]>(
     value: T,
