@@ -1,5 +1,6 @@
 import { IncomingMessage } from 'http';
 
+import { copy } from '@curong/util';
 import { sleepRun } from '@curong/function';
 import { isStringHave, isObjectHave, isArrayBuffer } from '@curong/types';
 
@@ -172,6 +173,8 @@ export default function request(
         options = url;
         url = undefined;
     }
+
+    options = copy(options);
 
     const requestFn = optionsHandler(url, options);
     const { body, delay, timeout } = options;
