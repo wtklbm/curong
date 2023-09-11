@@ -238,7 +238,8 @@ export default function request(
             req.abort();
 
             reject({
-                message: 'request timeout abort.',
+                name: 'request',
+                message: `当前请求已超时 ${timeout} ms`,
                 request: req,
                 config: options
             });
@@ -254,27 +255,35 @@ export default function request(
         //# 发送请求体
         let bodyBuffer;
 
-        if (isObjectHave(body)) {
-            bodyBuffer = Buffer.from(contentTypeCallback(options)(body));
-        } else if (isStringHave(body)) {
-            bodyBuffer = Buffer.from(body);
-        } else if (isArrayBuffer(body)) {
-            bodyBuffer = Buffer.from(new Uint8Array(body));
+        if (body) {
+            if (isObjectHave(body)) {
+                bodyBuffer = Buffer.from(contentTypeCallback(options)(body));
+            } else if (isStringHave(body)) {
+                bodyBuffer = Buffer.from(body);
+            } else if (isArrayBuffer(body)) {
+                bodyBuffer = Buffer.from(new Uint8Array(body));
+            } else {
+                return reject({
+                    name: 'request',
+                    message: '当前传递的 body 的格式是不受支持的',
+                    request: req,
+                    config: options
+                });
+            }
+
+            // 默认情况下，`Content-Length` 的值的计算必须正确
+            // 如果不想计算，可以使用 `Transfer-Encoding: “chunk”` 并修改请求逻辑来创建分块压缩的请求
+            options.headers['content-length'] = bodyBuffer.length;
+
+            // 结束请求
+            //
+            // @note 这里不要用 `req.write()` 来发送请求体
+            //  `req.write()` 异步的，有可能请求体还没有发送完，就走了 `req.end()`
+            //  从而造成请求失败，或返回的结果非预期的值
+            req.end(bodyBuffer);
         } else {
             req.end();
-            return;
         }
-
-        // 默认情况下，`Content-Length` 的值的计算必须正确
-        // 如果不想计算，可以使用 `Transfer-Encoding: “chunk”` 并修改请求逻辑来创建分块压缩的请求
-        options.headers['content-length'] = bodyBuffer.length;
-
-        // 结束请求
-        //
-        // @note 这里不要用 `req.write()` 来发送请求体
-        //  `req.write()` 异步的，有可能请求体还没有发送完，就走了 `req.end()`
-        //  从而造成请求失败，或返回的结果非预期的值
-        req.end(bodyBuffer);
     };
 
     return new Promise(async (resolve, reject) => {
