@@ -25,7 +25,7 @@ function main() {
                  * @param {string} id 模块名
                  */
                 external(id) {
-                    return ['tslib'].includes(id) || /^@curong?-/i.test(id);
+                    return ['tslib'].includes(id) || /^@curong-/i.test(id);
                 },
                 tsConfig: {
                     target: 'es5',
