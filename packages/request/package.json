@@ -31,7 +31,8 @@
         "@curong/function": "^0.4.0",
         "@curong/object": "^0.4.0",
         "@curong/term": "^0.4.0",
-        "@curong/types": "^0.4.0"
+        "@curong/types": "^0.4.0",
+        "@curong/util": "^0.4.0"
     },
     "sideEffects": false
 }
