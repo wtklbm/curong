@@ -1,6 +1,6 @@
 {
     "name": "@curong/path",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "license": "MIT",
     "author": {
         "name": "wtklbm",
@@ -28,7 +28,7 @@
         "registry": "https://registry.npmjs.org/"
     },
     "dependencies": {
-        "@curong/types": "^0.4.0"
+        "@curong/types": "^0.5.0"
     },
     "sideEffects": false
 }
