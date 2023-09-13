@@ -10,6 +10,10 @@ import { isPlainObject } from '@curong/types';
 describe('@curong/util/copy', () => {
     test('测试1', () => {
         expect(() => copy(new Promise(() => {}))).toThrow();
+        expect(copy(1)).toBe(1);
+        expect(copy(null)).toBe(null);
+        expect(copy(undefined)).toBe(undefined);
+        expect(copy({})).toEqual({});
     });
 
     test('测试2', () => {
@@ -41,6 +45,8 @@ describe('@curong/util/copy', () => {
             arrayBuffer: ab,
             dataView: view,
             newView,
+            nua: null,
+            v: undefined,
             bigInt: BigInt(1n),
             o: {
                 a: {
@@ -693,5 +699,97 @@ describe('@curong/util/copy', () => {
         expect(Object.keys(cloned).length === Object.keys(value).length).toBe(
             true
         );
+    });
+
+    test('测试27', () => {
+        const config: any = {
+            a: {
+                t: ''
+            }
+        };
+
+        config.a.b = config;
+        const cfg = copy(config);
+
+        expect(cfg !== config).toBe(true);
+        expect(cfg.a !== config.a).toBe(true);
+        expect(cfg.a.t === config.a.t).toBe(true);
+
+        for (let i = 0; i < 10; i++) {
+            let cfg = copy(config);
+            expect(cfg.a.t === config.a.t).toBe(true);
+            cfg.a.t = i;
+            expect(cfg !== config).toBe(true);
+            expect(cfg.a !== config.a).toBe(true);
+            expect(cfg.a.t !== config.a.t).toBe(true);
+            expect(cfg.a.t === i).toBe(true);
+        }
+    });
+
+    test('测试28', () => {
+        const obj = {
+            a: 1,
+            b: {
+                c: 2,
+                d: [3, 4, 5]
+            }
+        };
+
+        const cfg = copy(obj);
+
+        expect(cfg).toEqual(obj); // 包含了相同的属性和值
+        expect(cfg).not.toBe(obj); // 不是同一个引用
+
+        // 修改原始对象不会影响副本
+        obj.a = 100;
+        obj.b.c = 200;
+
+        expect(cfg.a).toBe(1);
+        expect(cfg.b.c).toBe(2);
+
+        // 修改副本不会影响原始对象
+        cfg.a = 1000;
+        cfg.b.c = 2000;
+
+        expect(obj.a).toBe(100);
+        expect(obj.b.c).toBe(200);
+    });
+
+    test('测试29', () => {
+        const obj1 = { value: 1 };
+        const obj2 = { value: 2 };
+        const obj3 = { value: 3 };
+
+        obj1.obj2 = obj2;
+        obj2.obj3 = obj3;
+        obj3.obj1 = obj1;
+
+        const cfg = copy(obj1);
+
+        expect(cfg.obj2.obj3.obj1).toEqual(cfg);
+        expect(cfg.obj2.obj3.obj1).not.toBe(obj1);
+    });
+
+    test('测试30', () => {
+        const arr = [1, 2, [3, 4, [5, 6]]];
+
+        const cfg = copy(arr);
+
+        expect(cfg).toEqual(arr);
+        expect(cfg).not.toBe(arr);
+
+        // 修改原始数组不会影响副本
+        arr[0] = 100;
+        arr[2][0] = 300;
+
+        expect(cfg[0]).toBe(1);
+        expect(cfg[2][0]).toBe(3);
+
+        // 修改副本不会影响原始数组
+        cfg[0] = 1000;
+        cfg[2][0] = 3000;
+
+        expect(arr[0]).toBe(100);
+        expect(arr[2][0]).toBe(300);
     });
 });
