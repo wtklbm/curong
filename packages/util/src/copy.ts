@@ -6,10 +6,8 @@ import {
     isPrimitive,
     isSymbol
 } from '@curong/types';
-
-import copyAttrs from './copyAttrs';
-
-const weak = new WeakMap();
+import allAttrs from './allAttrs';
+import lackAttrs from './lackAttrs';
 
 /** 拷贝基本类型的值 */
 const copyBaseType = (value: any) => {
@@ -24,8 +22,19 @@ const copyArrayBuffer = (value: any) => {
     return newArrayBuffer;
 };
 
+const copyAttrs = <T extends object>(
+    src: any,
+    dest: any,
+    hash: WeakMap<T, T>
+) => {
+    return lackAttrs(dest, allAttrs(src)).reduce((memo, key) => {
+        memo[key] = recursiveCopy(src[key], hash);
+        return memo;
+    }, dest);
+};
+
 /** 根据 `toStringTag` 拷贝类型 */
-const copyByTag = (value: any) => {
+const copyByTag = <T extends object>(value: any, weak: WeakMap<T, T>) => {
     switch (getTag(value)) {
         case 'BigInt':
             return BigInt(value);
@@ -74,12 +83,6 @@ const copyByTag = (value: any) => {
         case 'Arguments':
         case 'Array':
         case 'Object':
-        case 'Error':
-        case 'EvalError':
-        case 'RangeError':
-        case 'ReferenceError':
-        case 'SyntaxError':
-        case 'TypeError':
         case 'Duplex':
         case 'Readable':
         case 'Stream':
@@ -89,15 +92,63 @@ const copyByTag = (value: any) => {
             const instance = isNull(proto)
                 ? Object.create(null)
                 : new proto.constructor();
-
             weak.set(value, instance);
+            return copyAttrs(value, instance, weak);
 
-            return copyAttrs(value, instance);
+        case 'Error':
+        case 'EvalError':
+        case 'RangeError':
+        case 'ReferenceError':
+        case 'SyntaxError':
+        case 'TypeError':
+            const ins = new (Object.getPrototypeOf(value).constructor)();
+            weak.set(value, ins);
+            const o = copyAttrs(value, ins, weak);
+            o.stack = value.stack; // 堆栈也要一样
+            return o;
 
         default:
             throw new Error('[copy]: 无法进行深度拷贝，对象中包含不支持类型');
     }
 };
+
+function recursiveCopy<T extends object>(
+    value: any,
+    weak: WeakMap<T, T> = new WeakMap()
+) {
+    if (isSymbol(value)) {
+        return Object(Symbol.prototype.valueOf.call(value));
+    }
+
+    // 首先判断是不是基本类型的值
+    if (isPrimitive(value)) {
+        return value;
+    }
+
+    // 是不是函数
+    // 拷贝同步函数，异步函数，箭头函数，`Generator` 函数，但是不能拷贝 `Promise`。
+    if (isFunction(value)) {
+        const { name } = value;
+
+        // 区分箭头函数和普通函数
+        const source = value.toString().startsWith('(')
+            ? `const ${name} = ${value}; return ${name};`
+            : `return ${value};`;
+
+        return copyAttrs(value, new Function(source)(), weak);
+    }
+
+    // 是不是 `Buffer`
+    if (isBuffer(value)) {
+        return copyAttrs(value, Buffer.from(value), weak);
+    }
+
+    if (weak.has(value)) {
+        return weak.get(value);
+    }
+
+    return copyAttrs(value, copyByTag(value, weak), weak);
+}
 
 /**
  * 将一个值完整的克隆一份
@@ -198,36 +249,5 @@ const copyByTag = (value: any) => {
  * ```
  */
 export default function copy<T extends any>(value: T): T {
-    if (isSymbol(value)) {
-        return Object(Symbol.prototype.valueOf.call(value));
-    }
-
-    // 首先判断是不是基本类型的值
-    if (isPrimitive(value)) {
-        return value;
-    }
-
-    // 是不是函数
-    // 拷贝同步函数，异步函数，箭头函数，`Generator` 函数，但是不能拷贝 `Promise`。
-    if (isFunction(value)) {
-        const { name } = value;
-
-        // 区分箭头函数和普通函数
-        const source = value.toString().startsWith('(')
-            ? `const ${name} = ${value}; return ${name};`
-            : `return ${value};`;
-
-        return copyAttrs(value, new Function(source)(), true);
-    }
-
-    // 是不是 `Buffer`
-    if (isBuffer(value)) {
-        return copyAttrs(value, Buffer.from(value), true);
-    }
-
-    if (weak.has(value as object)) {
-        return weak.get(value as object);
-    }
-
-    return copyAttrs(value, copyByTag(value), true);
+    return recursiveCopy(value);
 }
