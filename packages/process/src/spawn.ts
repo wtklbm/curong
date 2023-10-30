@@ -1,82 +1,253 @@
-import { spawn as _spawn, SpawnOptions, ChildProcess } from 'child_process';
+import {
+    ChildProcess,
+    spawn as _spawn,
+    StdioOptions,
+    spawnSync
+} from 'child_process';
 
-import { isString } from '@curong/types';
+import { isTrue, isArray } from '@curong/types';
 
-import { SpawnResult } from './types/spawn';
+import { SpawnOptions, SpawnResult } from './types';
+
+// https://blogs.msdn.microsoft.com/twistylittlepassagesallalike/2011/04/23/everyone-quotes-command-line-arguments-the-wrong-way
+const escapeCmd = (input: string, doubleEscape: boolean): string => {
+    if (!input.length) {
+        return '""';
+    }
+
+    let result;
+    if (!/[ \v\t\n"]/.test(input)) {
+        result = input;
+    } else {
+        result = '"';
+        for (let i = 0; i <= input.length; ++i) {
+            let slashCount = 0;
+            while (input[i] === '\\') {
+                ++i;
+                ++slashCount;
+            }
+
+            if (i === input.length) {
+                result += '\\'.repeat(slashCount * 2);
+                break;
+            }
+
+            if (input[i] === '"') {
+                result += '\\'.repeat(slashCount * 2 + 1);
+                result += input[i];
+            } else {
+                result += '\\'.repeat(slashCount);
+                result += input[i];
+            }
+        }
+        result += '"';
+    }
+
+    // 在 shell 元字符前加上前缀 ^
+    result = result.replace(/[ |!%^&()<>"]/g, '^$&');
+    if (doubleEscape) {
+        result = result.replace(/[ |!%^&()<>"]/g, '^$&');
+    }
+
+    return result;
+};
+
+const escapeSh = (input: string): string => {
+    if (!input.length) {
+        return `''`;
+    }
+
+    if (!/[\t\n\r "#$&'*;?`|~()<>\\]/.test(input)) {
+        return input;
+    }
+
+    // 转义单引号，并用新的引号包裹起来
+    const result = `'${input.replace(/'/g, `'\\''`)}'`
+        // 如果输入字符串周围已经有单引号，则清除它们
+        .replace(/^(?:'')+(?!$)/, '')
+        .replace(/\\'''/g, `\\'`);
+
+    return result;
+};
+
+const getStdio = (
+    stdout: readonly Uint8Array[],
+    stderr: readonly Uint8Array[],
+    opts: SpawnOptions
+) => {
+    const { stdio, isToString = true } = opts;
+
+    const isPipe = (stdio: StdioOptions = 'pipe', fd: number): boolean => {
+        if (stdio === 'pipe' || stdio === null) {
+            return true;
+        }
+
+        if (isArray(stdio)) {
+            return isPipe(stdio[fd] as StdioOptions, fd);
+        }
+
+        return false;
+    };
+
+    const buf = (std: readonly Uint8Array[], isToString: boolean) => {
+        const r = Buffer.concat(std);
+        return isToString ? r.toString().trim() : r;
+    };
+
+    return {
+        stdout: isPipe(stdio, 1) ? buf(stdout, isToString) : null,
+        stderr: isPipe(stdio, 2) ? buf(stderr, isToString) : null
+    };
+};
 
 /**
  * `Promise` 版本的 `spawn` 方法
  *
- * @param command 要执行的命令
+ * @param cmd 要执行的命令
  * @param args 执行命令时传递的参数列表
- * @param  options 配置对象，默认为 `{}`
- * @bug 目前还不支持在控制台输出颜色，也就是会产生颜色丢失的问题
+ * @param  opts 配置对象，默认为 `{}`
+ *
+ *  - `isToString`: 是否要将结果转换为字符串，默认为 `true`
+ *  - 其他选项请参考 {@link import('child_process').SpawnOptions}
+ *
  * @example
  *
  * ```javascript
  * const ret = await spawn('node', ['-v']);
  *
  * // {
- * //     pid: 3484,
- * //     output: [ ... ],
+ * //     cmd: 'node',
+ * //     args: ['-v'],
  * //     stdout: { ... },
  * //     stderr: { ... },
+ * //     signal: null,
  * //     status: 0
  * // }
  * console.log(ret);
  * ```
  */
 export default function spawn(
-    command: string,
-    args: string | string[],
-    options: SpawnOptions = {}
-): Promise<SpawnResult> {
-    if (isString(args)) {
-        args = args.split(/ +/g);
+    cmd: string,
+    args: string[] = [],
+    opts: SpawnOptions = {}
+): SpawnResult {
+    if (opts.shell) {
+        let script = cmd;
+
+        // @ts-ignore
+        cmd = opts.shell;
+
+        // 如果为 `true`，则使用操作系统自带的 `shell`
+        if (isTrue(cmd)) {
+            cmd = process.platform === 'win32' ? process.env.ComSpec! : 'sh';
+        }
+
+        opts = { ...opts, shell: false };
+        const shellArgs: string[] = [];
+
+        if (/(?:^|\\)cmd(?:\.exe)?$/i.test(cmd)) {
+            let command = '';
+
+            for (let i = 0, is = false; i < script.length; ++i) {
+                const char = script.charAt(i);
+
+                if (char === ' ' && !is) {
+                    break;
+                }
+
+                command += char;
+
+                if (/^['"]$/.test(char)) {
+                    is = !is;
+                }
+            }
+
+            let envPath: string = command;
+
+            try {
+                const { env } = opts;
+                const { PATH, PATHEXT } = process.env;
+                const r = spawnSync(
+                    process.platform === 'win32' ? 'where' : 'which',
+                    [command],
+                    {
+                        env: {
+                            PATH: (env && env.PATH) || PATH,
+                            PATHEXT: (env && env.PATHEXT) || PATHEXT
+                        },
+                        shell: true,
+                        encoding: 'utf8'
+                    }
+                );
+
+                if (r.status == 0) {
+                    envPath = r.stdout.trim();
+                }
+            } catch {}
+
+            const isDouble = /\.(cmd|bat)$/.test(envPath.toLowerCase());
+            script += args.reduce(
+                (m, v) => m + ' ' + escapeCmd(v, isDouble),
+                ''
+            );
+            shellArgs.push('/d', '/s', '/c', script);
+            opts.windowsVerbatimArguments = true;
+        } else {
+            script += args.reduce((m, v) => m + ' ' + escapeSh(v), '');
+            shellArgs.push('-c', script);
+        }
+
+        args = shellArgs;
     }
 
-    const child: ChildProcess = _spawn(command, args, options);
-    const { stdout = Buffer.from([]), stderr = Buffer.from([]) } = child;
+    let handler: ChildProcess;
 
-    if (stdout && child.stdout) {
-        child.stdout.on('data', data => {
-            console.log(data.toString());
-        });
-    }
+    const child = new Promise((res, rej) => {
+        handler = _spawn(cmd, args, opts);
 
-    if (stderr && child.stderr) {
-        child.stderr.on('data', data => {
-            console.error(data.toString());
-        });
-    }
-
-    const promise: Promise<SpawnResult> = new Promise((resolve, reject) => {
-        child.on('error', error => {
-            Object.assign(error, {
-                pid: child.pid,
-                output: [stdout, stderr],
-                stdout,
-                stderr,
-                status: null
-            });
-
-            reject(error);
-        });
-
-        child.on('exit', code => {
-            return resolve(
-                Object.assign({} as SpawnResult, {
-                    pid: child.pid,
-                    output: [stdout, stderr],
-                    stdout,
-                    stderr,
-                    status: code
+        const stdout: Buffer[] = [];
+        const stderr: Buffer[] = [];
+        const { stdout: so, stderr: se } = handler;
+        const reject = (error: Error) =>
+            rej(
+                Object.assign(error, {
+                    cmd,
+                    args,
+                    ...getStdio(stdout, stderr, opts)
                 })
             );
+
+        if (so) {
+            so.on('data', data => stdout.push(data)).on('error', reject);
+            so.on('error', error => reject(error));
+        }
+
+        if (se) {
+            se.on('data', data => stderr.push(data)).on('error', reject);
+            se.on('error', error => reject(error));
+        }
+
+        handler.on('close', (status, signal) => {
+            const result = {
+                cmd,
+                args,
+                status,
+                signal,
+                ...getStdio(stdout, stderr, opts)
+            };
+
+            if (status || signal) {
+                rej(Object.assign(new Error('command failed'), result));
+            } else {
+                res(result);
+            }
         });
-    });
 
-    Object.defineProperty(promise, 'child', { value: child });
+        handler.on('error', reject);
+    }) as SpawnResult;
 
-    return promise;
+    child.stdin = handler!.stdin;
+    child.process = handler!;
+
+    return child;
 }
