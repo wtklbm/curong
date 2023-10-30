@@ -1,6 +1,6 @@
-import windowsTaskList from './windowsTaskList';
+import windowsTaskList from './taskList';
 
-import { WindowsTaskListResult } from './types/windowsTaskList';
+import { WindowsTaskListResult } from './types/taskList';
 
 /**
  * 查找正在运行的 `Windows` 系统平台上的映像进程

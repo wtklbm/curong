@@ -2,7 +2,7 @@ import { basename, join } from 'path';
 import { existsSync, lstatSync } from 'fs';
 import { spawn } from '@curong/process';
 
-import { isWindows } from './platform';
+import { isWindows } from '../platform';
 import { ShortcutOptions } from './types';
 
 const buildArgs = (pathString: string, options?: ShortcutOptions): string[] => {

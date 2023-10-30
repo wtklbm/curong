@@ -1,6 +1,6 @@
 import { exec } from '@curong/process';
 
-import { isWindows } from './platform';
+import { isWindows } from '../platform';
 
 /**
  * 获取 `Windows` 系统的区域语言设置

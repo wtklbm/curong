@@ -1,4 +1,4 @@
-import { isWindows } from './platform';
+import { isWindows } from '../platform';
 
 /**
  * 获取执行的命令名称(名字 + 后缀)，进行命令的跨平台兼容处理
