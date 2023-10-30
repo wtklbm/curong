@@ -21,7 +21,8 @@
     "unpkg": "dist/index.umd.min.js",
     "jsdelivr": "dist/index.umd.min.js",
     "files": [
-        "dist"
+        "dist",
+        "scripts"
     ],
     "publishConfig": {
         "access": "public",
