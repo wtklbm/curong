@@ -124,7 +124,16 @@ const getStdio = (
  * //     status: 0
  * // }
  * console.log(ret);
+ *
+ * // 当命令以非 0 状态码退出时，则表示该命令报错了，需用户自行处理
+ * if (ret.status !== 0 || signal !== null) {
+ *     console.log(ret);
+ * }
  * ```
+ *
+ * @throws
+ * - 如果在执行命令的过程中出现了异常，则会抛出异常
+ * - 有时候命令执行完成之后的状态码不为 0，但这不是该方法所导致的错误，需用户自行处理
  */
 export default function spawn(
     cmd: string,
@@ -209,13 +218,12 @@ export default function spawn(
         const stderr: Buffer[] = [];
         const { stdout: so, stderr: se } = handler;
         const reject = (error: Error) =>
-            rej(
-                Object.assign(error, {
-                    cmd,
-                    args,
-                    ...getStdio(stdout, stderr, opts)
-                })
-            );
+            rej({
+                cmd,
+                args,
+                ...getStdio(stdout, stderr, opts),
+                error
+            });
 
         if (so) {
             so.on('data', data => stdout.push(data)).on('error', reject);
@@ -236,11 +244,11 @@ export default function spawn(
                 ...getStdio(stdout, stderr, opts)
             };
 
-            if (status || signal) {
-                rej(Object.assign(new Error('command failed'), result));
-            } else {
-                res(result);
-            }
+            // if (status || signal) {
+            //     rej({ ...result, error: 'command failed' });
+            // } else {
+            res(result);
+            // }
         });
 
         handler.on('error', reject);
