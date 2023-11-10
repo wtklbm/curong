@@ -1,11 +1,9 @@
-import { promises } from 'fs';
+import { unlink, rmdir } from 'fs/promises';
 
 import { format } from '@curong/term';
 
 import isDir from './isDir';
 import isFile from './isFile';
-
-const { unlink, rmdir } = promises;
 
 /**
  * 删除一个文件或一个文件夹
