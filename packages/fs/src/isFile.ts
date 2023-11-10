@@ -1,4 +1,4 @@
-import { promises } from 'fs';
+import { stat } from 'fs/promises';
 
 /**
  * 是不是一个文件
@@ -7,7 +7,7 @@ import { promises } from 'fs';
  * @returns 如果是文件则返回 `true`，否则为 `false`
  */
 export default async function isFile(pathString: string): Promise<boolean> {
-    return await promises.stat(pathString).then(
+    return await stat(pathString).then(
         stat => stat.isFile(),
         () => false
     );
