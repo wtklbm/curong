@@ -13,9 +13,9 @@ import allAttrs from './allAttrs';
  * @example
  *
  * ```javascript
- *  import { missingAttrs } from '@curong/util';
+ *  import { lackAttrs } from '@curong/util';
  *
- *  const attrs = missingAttrs({ a: 1, s: 's' }, ['a', 'b', 'c']);
+ *  const attrs = lackAttrs({ a: 1, s: 's' }, ['a', 'b', 'c']);
  *
  *  console.log(attrs); // [ 'b', 'c' ]
  * ```
