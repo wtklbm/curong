@@ -792,4 +792,32 @@ describe('@curong/util/copy', () => {
         expect(arr[0]).toBe(100);
         expect(arr[2][0]).toBe(300);
     });
+
+    test('测试31', () => {
+        const obj = {
+            arr: [],
+            get value() {
+                return 'hello';
+            },
+            set arrVal(val) {
+                this.arr.push(val);
+            }
+        };
+
+        const cfg = copy(obj);
+
+        expect(cfg).toEqual(obj);
+        expect(cfg).not.toBe(obj);
+
+        expect(cfg.arr).not.toBe(obj.arr);
+        expect(cfg.value).toBe(obj.value);
+
+        obj.arrVal = 1;
+        cfg.arrVal = 2;
+
+        expect(obj.arr[0]).toBe(1);
+        expect(cfg.arr[0]).toBe(2);
+        expect(obj.arr.length).toBe(cfg.arr.length);
+        expect(obj.arr[0]).not.toBe(cfg.arr[0]);
+    });
 });
