@@ -28,6 +28,27 @@ const copyAttrs = <T extends object>(
     hash: WeakMap<T, T>
 ) => {
     return lackAttrs(dest, allAttrs(src)).reduce((memo, key) => {
+        // 有可能是 `getter` 和 `setter`
+        const descriptor = Object.getOwnPropertyDescriptor(src, key);
+
+        if (descriptor) {
+            let get;
+            let set;
+
+            if (isFunction(descriptor.get)) {
+                get = copyFunction(descriptor.get, hash);
+            }
+
+            if (isFunction(descriptor.set)) {
+                set = copyFunction(descriptor.set, hash);
+            }
+
+            if (get || set) {
+                Object.defineProperty(memo, key, { ...descriptor, get, set });
+                return memo;
+            }
+        }
+
         memo[key] = recursiveCopy(src[key], hash);
         return memo;
     }, dest);
@@ -112,6 +133,29 @@ const copyByTag = <T extends object>(value: any, weak: WeakMap<T, T>) => {
     }
 };
 
+const getDescriptorSource = (src: string, name: string, flag: string) => `
+  const o = { ${src} }; return Object.getOwnPropertyDescriptor(o, '${name}').${flag};
+`;
+
+const copyFunction = (value: any, weak: any) => {
+    const { name } = value;
+    const src = value.toString();
+    let source: string;
+    let m: any;
+
+    // 区分 `getter`、`setter`、箭头函数和普通函数，生成不同的函数源代码
+    if ((m = /^(get|set) (\S+)$/.exec(name))) {
+        const [, flag, name] = m;
+        source = getDescriptorSource(src, name, flag);
+    } else if (src.startsWith('(')) {
+        source = `const ${name} = ${src}; return ${name};`;
+    } else {
+        source = `return ${src};`;
+    }
+
+    return copyAttrs(value, new Function(source!)(), weak);
+};
+
 function recursiveCopy<T extends object>(
     value: any,
     weak: WeakMap<T, T> = new WeakMap()
@@ -128,14 +172,7 @@ function recursiveCopy<T extends object>(
     // 是不是函数
     // 拷贝同步函数，异步函数，箭头函数，`Generator` 函数，但是不能拷贝 `Promise`。
     if (isFunction(value)) {
-        const { name } = value;
-
-        // 区分箭头函数和普通函数
-        const source = value.toString().startsWith('(')
-            ? `const ${name} = ${value}; return ${name};`
-            : `return ${value};`;
-
-        return copyAttrs(value, new Function(source)(), weak);
+        return copyFunction(value, weak);
     }
 
     // 是不是 `Buffer`
