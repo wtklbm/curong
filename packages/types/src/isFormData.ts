@@ -1,3 +1,8 @@
+import getTag from './getTag';
+import isFunction from './isFunction';
+import isTypeofObject from './isTypeofObject';
+import isNullOrUndefined from './isNullOrUndefined';
+
 /**
  * 是不是一个 `isFormData`
  *
@@ -5,5 +10,13 @@
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isFormData(value: unknown): value is FormData {
-    return value instanceof FormData;
+    return (
+        (isFunction(FormData) && value instanceof FormData) ||
+        (!isNullOrUndefined(value) &&
+            isFunction((value as FormData).append) &&
+            (getTag(value) === 'FormData' ||
+                (isTypeofObject(value) &&
+                    isFunction(value.toString) &&
+                    value.toString() === '[object FormData]')))
+    );
 }
