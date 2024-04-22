@@ -2,7 +2,13 @@ import { IncomingMessage } from 'http';
 
 import { copy } from '@curong/util';
 import { sleepRun } from '@curong/function';
-import { isStringHave, isObjectHave, isArrayBuffer } from '@curong/types';
+import {
+    isObjectHave,
+    isArrayBuffer,
+    isBuffer,
+    isUint8Array,
+    isTypeofObject
+} from '@curong/types';
 
 import { deleteOptionsAttr, optionsHandler } from './options';
 import { contentTypeCallback, pipeDecompressStream } from './content';
@@ -163,7 +169,7 @@ export default function request(
     handlers?: RequestHandler
 ): Promise<RequestResult>;
 
-export default function request(
+export default async function request(
     url: any,
     options: any = {},
     handlers: any = {}
@@ -179,6 +185,28 @@ export default function request(
     const requestFn = optionsHandler(url, options);
     const { body, delay, timeout } = options;
     deleteOptionsAttr(options, ['body', 'delay']);
+
+    //# 发送请求体
+    let bodyBuffer: any;
+
+    if (body) {
+        if (isArrayBuffer(body)) {
+            bodyBuffer = new Uint8Array(body);
+        } else if (isBuffer(body) || isUint8Array(body)) {
+            bodyBuffer = body;
+        } else if (isTypeofObject(body)) {
+            bodyBuffer = await contentTypeCallback(options)(body);
+        } else {
+            bodyBuffer = String(body);
+        }
+
+        // 转换为 `Buffer`
+        bodyBuffer = Buffer.from(bodyBuffer);
+
+        // 默认情况下，`Content-Length` 的值的计算必须正确
+        // 如果不想计算，可以使用 `Transfer-Encoding: “chunk”` 并修改请求逻辑来创建分块压缩的请求
+        options.headers['content-length'] = bodyBuffer.length;
+    }
 
     const getF = (resolve: any, reject: any) => {
         /** 发起网络请求 */
@@ -255,38 +283,12 @@ export default function request(
             reject({ request: req, config: options, error });
         });
 
-        //# 发送请求体
-        let bodyBuffer;
-
-        if (body) {
-            if (isObjectHave(body)) {
-                bodyBuffer = Buffer.from(contentTypeCallback(options)(body));
-            } else if (isStringHave(body)) {
-                bodyBuffer = Buffer.from(body);
-            } else if (isArrayBuffer(body)) {
-                bodyBuffer = Buffer.from(new Uint8Array(body));
-            } else {
-                return reject({
-                    name: 'request',
-                    message: '当前传递的 body 的格式是不受支持的',
-                    request: req,
-                    config: options
-                });
-            }
-
-            // 默认情况下，`Content-Length` 的值的计算必须正确
-            // 如果不想计算，可以使用 `Transfer-Encoding: “chunk”` 并修改请求逻辑来创建分块压缩的请求
-            options.headers['content-length'] = bodyBuffer.length;
-
-            // 结束请求
-            //
-            // @note 这里不要用 `req.write()` 来发送请求体
-            //  `req.write()` 异步的，有可能请求体还没有发送完，就走了 `req.end()`
-            //  从而造成请求失败，或返回的结果非预期的值
-            req.end(bodyBuffer);
-        } else {
-            req.end();
-        }
+        // 结束请求
+        //
+        // @note 这里不要用 `req.write()` 来发送请求体
+        //  `req.write()` 异步的，有可能请求体还没有发送完，就走了 `req.end()`
+        //  从而造成请求失败，或返回的结果非预期的值
+        req.end(body ? bodyBuffer : void 0);
     };
 
     return new Promise(async (resolve, reject) => {
