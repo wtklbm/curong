@@ -27,6 +27,13 @@ export type Methods =
     | 'unlink'
     | 'UNLINK';
 
+export type NestedObject = {
+    [key: PropertyKey]:
+        | NestedObject
+        | NestedObject[]
+        | (object | string | boolean | number | null);
+};
+
 /** 配置参数 */
 export type RequestOptions = _RequestOptions & {
     /** 是否使用更加安全的 `https` 发送请求 */
@@ -54,7 +61,7 @@ export type RequestOptions = _RequestOptions & {
     query?: ParsedUrlQueryInput;
 
     /** 当前请求的请求体对象 */
-    body?: ParsedUrlQueryInput | string;
+    body?: ParsedUrlQueryInput | NestedObject | FormData | Buffer | Uint8Array | ArrayBuffer;
 
     /** 延迟请求时间，单位 `毫秒` */
     delay?: number;
