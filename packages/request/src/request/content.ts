@@ -1,8 +1,10 @@
 import { IncomingMessage } from 'http';
+import { stringify } from 'querystring';
 import { constants, createBrotliDecompress, createUnzip } from 'zlib';
 import { finished, pipeline, Transform, TransformCallback } from 'stream';
-import { stringify } from 'querystring';
-import { isStringHave } from '@curong/types';
+import { isStringHave, isFormData } from '@curong/types';
+
+import { objectToFormData, formDataToBuffer } from './formData';
 
 import { RequestOptions } from '../types';
 
@@ -90,13 +92,18 @@ export function pipeDecompressStream(res: IncomingMessage): IncomingMessage {
 }
 
 /** 是不是表单类型的内容 */
-export const isFormUrlencoded = (type: string) => {
+const isFormUrlencodedType = (type: string) => {
     return type.includes('application/x-www-form-urlencoded');
 };
 
 /** 是不是 `json` 类型的内容 */
-export const isJson = (type: string) => {
+const isJsonType = (type: string) => {
     return type.includes('application/json');
+};
+
+/** 是不是 `formData` 类型的内容 */
+const isFormDataType = (type: string) => {
+    return type.includes('multipart/form-data');
 };
 
 /**
@@ -113,12 +120,24 @@ export function contentTypeCallback(options: RequestOptions) {
             headers['Content-Type'] ??
             '') as string;
 
-        if (isFormUrlencoded(contentType)) {
+        if (isFormUrlencodedType(contentType)) {
             return stringify;
         }
 
-        if (isJson(contentType)) {
+        if (isJsonType(contentType)) {
             return JSON.stringify;
+        }
+
+        if (isFormDataType(contentType)) {
+            return async (body: Record<PropertyKey, any> | FormData) => {
+                if (!isFormData(body)) {
+                    body = objectToFormData(body);
+                }
+
+                return await formDataToBuffer(body as FormData, headers => {
+                    options.headers = { ...options.headers, ...headers };
+                });
+            };
         }
     }
 
