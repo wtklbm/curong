@@ -820,4 +820,29 @@ describe('@curong/util/copy', () => {
         expect(obj.arr.length).toBe(cfg.arr.length);
         expect(obj.arr[0]).not.toBe(cfg.arr[0]);
     });
+
+    test('测试32', () => {
+        const obj = new FormData();
+        obj.append('name', 'John');
+        obj.append('age', '30');
+        obj.test = 1;
+        obj.isOk = true;
+
+        const cfg = copy(obj);
+
+        for (const [key, value] of cfg) {
+            expect(value).toBe(obj[key]);
+        }
+
+        expect(cfg.test).toBe(1);
+        expect(cfg.isOk).toBe(true);
+        expect(cfg.test).toBe(obj.test);
+        expect(cfg.isOk).toBe(obj.isOk);
+
+        obj.arrVal = 1;
+        cfg.arrVal = 2;
+
+        expect(obj.arrVal).toBe(1);
+        expect(cfg.arrVal).toBe(2);
+    });
 });
