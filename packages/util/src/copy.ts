@@ -79,6 +79,13 @@ const copyByTag = <T extends object>(value: any, weak: WeakMap<T, T>) => {
             const { lastModified, type } = value as File;
             return new File([value], value.name, { lastModified, type });
 
+        case 'FormData':
+            const formData = new value.constructor();
+            for (const [k, v] of value) {
+                formData.append(k, v);
+            }
+            return formData;
+
         // `String` 为 `string` 的包装的形式
         case 'Boolean':
         case 'Date':
@@ -216,6 +223,7 @@ function recursiveCopy<T extends object>(
  *   - `Date`
  *   - `File`
  *   - `FileReader`
+ *   - `FormData`
  *   - `Function`
  *   - `Number`
  *   - `Object`
