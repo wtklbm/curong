@@ -56,7 +56,7 @@ export default async function readlineStream(
             input: createReadStream(pathString, {
                 encoding: encoding as BufferEncoding,
                 flags: 'r+',
-                mode: 0o777,
+                mode: 0o755,
                 autoClose: true,
                 highWaterMark: 64 * 1024
             })
