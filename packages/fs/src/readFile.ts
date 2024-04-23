@@ -12,7 +12,7 @@ import { ReadFileOptions } from './types/readFile';
  *
  * - `encoding` 文件的编码，默认 `utf8`
  * - `flag` 标识，默认 `r+`
- * - `mode` 模式，默认为 `0o777`
+ * - `mode` 模式，默认为 `0o755`
  *
  * @returns 返回读取到的文件的内容字符串
  * @throws
@@ -24,7 +24,7 @@ export default async function readFile(
     filePath: PathLike,
     options?: ReadFileOptions
 ): Promise<string> {
-    options = { encoding: 'utf8', flag: 'r+', mode: 0o777, ...options };
+    options = { encoding: 'utf8', flag: 'r+', mode: 0o755, ...options };
 
     return (await promises.readFile(filePath, options).then(
         buffer => buffer,
