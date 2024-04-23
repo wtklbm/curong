@@ -61,7 +61,7 @@ export type RequestOptions = _RequestOptions & {
     query?: ParsedUrlQueryInput;
 
     /** 当前请求的请求体对象 */
-    body?: ParsedUrlQueryInput | NestedObject | FormData | Buffer | Uint8Array | ArrayBuffer;
+    body?: ParsedUrlQueryInput | string | NestedObject | FormData | Buffer | Uint8Array | ArrayBuffer;
 
     /** 延迟请求时间，单位 `毫秒` */
     delay?: number;
