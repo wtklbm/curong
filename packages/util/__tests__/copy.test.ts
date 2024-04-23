@@ -830,8 +830,8 @@ describe('@curong/util/copy', () => {
 
         const cfg = copy(obj);
 
-        for (const [key, value] of cfg) {
-            expect(value).toBe(obj[key]);
+        for (const [key, value] of cfg.entries()) {
+            expect(value).toBe(obj.get(key));
         }
 
         expect(cfg.test).toBe(1);
