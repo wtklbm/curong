@@ -5,6 +5,6 @@ export type ReadFileOptions = {
     /** 标识，默认 `r+` */
     flag?: string;
 
-    /** 权限，默认为 `0o777` */
+    /** 权限，默认为 `0o755` */
     mode?: number;
 };
