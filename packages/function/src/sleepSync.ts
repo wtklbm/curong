@@ -20,5 +20,5 @@ export default function sleepSync(duration: number): void {
         );
     }
 
-    for (const start = Date.now(); Date.now() - start <= duration; ) {}
+    for (const start = Date.now(); Date.now() - start < duration; ) {}
 }
