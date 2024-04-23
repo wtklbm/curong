@@ -20,6 +20,9 @@ function config(options = {}) {
     return {
         input,
 
+        // 禁止树摇晃，防止自己写的某些死代码莫名的被优化掉
+        treeshake: false,
+
         plugins: [
             // 转换 `commonjs` 模块为 `es6` 模块，该插件必须放在最上面执行
             commonjs(),
