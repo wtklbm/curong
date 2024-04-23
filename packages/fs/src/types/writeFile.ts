@@ -8,7 +8,7 @@ export type WriteFileOptions = {
     /** 文件的编码，默认为 `utf8` */
     encoding?: BufferEncoding;
 
-    /** 权限，默认为 `0o777` */
+    /** 权限，默认为 `0o755` */
     mode?: number;
 
     /** 读写文件标识符，默认为 `w+` */
