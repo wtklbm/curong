@@ -10,7 +10,7 @@ import { format } from '@curong/term';
  *
  * 包括:
  * - `recursive` 指示是否应创建父文件夹，默认为 `true`
- * - `mode` 权限，默认为 `0o777`
+ * - `mode` 权限，默认为 `0o644`
  *
  * @throws
  *
@@ -23,7 +23,7 @@ export default async function mkdir(
 ): Promise<string | undefined> {
     options = {
         recursive: true,
-        mode: 0o777,
+        mode: 0o644,
         ...options
     };
 
