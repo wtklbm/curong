@@ -1,5 +1,12 @@
+import isFunction from './isFunction';
 import isNullOrUndefined from './isNullOrUndefined';
-import isFunctionHave from './isFunctionHave';
+
+const r = (t: any) => {
+    try {
+        return t.constructor.isBuffer(t);
+    } catch {}
+    return false;
+};
 
 /**
  * 是不是一个 `Buffer`
@@ -14,10 +21,12 @@ import isFunctionHave from './isFunctionHave';
  * };
  * ```
  */
-export default function isBuffer(value: unknown): value is Buffer {
+export default function isBuffer(value: any): value is Buffer {
     return (
-        !isNullOrUndefined(Buffer) &&
-        isFunctionHave(Buffer.isBuffer) &&
-        Buffer.isBuffer(value)
+        !isNullOrUndefined(value) &&
+        (r(value) ||
+            (isFunction(value.readFloatLE) &&
+                isFunction(value.slice) &&
+                r(value.slice(0, 0))))
     );
 }
