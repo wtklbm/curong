@@ -18,7 +18,7 @@ import { WriteFileOptions } from './types/writeFile';
  * - `flag` 读写文件标识符，默认为 `w+`
  * - `isFormat` 是否把对象和数组进行序列化，序列化之后会将数据转换为 `JSON` 格式，默认为 `true`
  * - `isMkdir` 当目录不存在时，是否自动创建目录，然后在从该目录下写文件, 默认为 `true`
- * - `mode` 权限，默认为 `0o777`
+ * - `mode` 权限，默认为 `0o755`
  *
  * @throws
  *
@@ -34,7 +34,7 @@ export default async function writeFile(
     options = {
         encoding: 'utf8',
         flag: 'w+',
-        mode: 0o777,
+        mode: 0o755,
         isMkdir: false,
         isFormat: true,
         ...options
