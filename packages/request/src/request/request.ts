@@ -2,16 +2,11 @@ import { IncomingMessage } from 'http';
 
 import { copy } from '@curong/util';
 import { sleepRun } from '@curong/function';
-import {
-    isObjectHave,
-    isArrayBuffer,
-    isBuffer,
-    isUint8Array,
-    isTypeofObject
-} from '@curong/types';
+import { isObjectHave } from '@curong/types';
 
+import { handleBody } from './body';
+import { pipeDecompressStream } from './content';
 import { deleteOptionsAttr, optionsHandler } from './options';
-import { contentTypeCallback, pipeDecompressStream } from './content';
 
 import { RequestOptions, RequestHandler, RequestResult } from '../types';
 
@@ -184,29 +179,8 @@ export default async function request(
 
     const requestFn = optionsHandler(url, options);
     const { body, delay, timeout } = options;
+    const bodyBuffer: any = await handleBody(body, options);
     deleteOptionsAttr(options, ['body', 'delay']);
-
-    //# 发送请求体
-    let bodyBuffer: any;
-
-    if (body) {
-        if (isArrayBuffer(body)) {
-            bodyBuffer = new Uint8Array(body);
-        } else if (isBuffer(body) || isUint8Array(body)) {
-            bodyBuffer = body;
-        } else if (isTypeofObject(body)) {
-            bodyBuffer = await contentTypeCallback(options)(body);
-        } else {
-            bodyBuffer = String(body);
-        }
-
-        // 转换为 `Buffer`
-        bodyBuffer = Buffer.from(bodyBuffer);
-
-        // 默认情况下，`Content-Length` 的值的计算必须正确
-        // 如果不想计算，可以使用 `Transfer-Encoding: “chunk”` 并修改请求逻辑来创建分块压缩的请求
-        options.headers['content-length'] = bodyBuffer.length;
-    }
 
     const getF = (resolve: any, reject: any) => {
         /** 发起网络请求 */
