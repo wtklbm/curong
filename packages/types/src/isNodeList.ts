@@ -1,3 +1,5 @@
+import getTag from './getTag';
+
 /**
  * 是不是一个 `NodeList`
  *
@@ -5,5 +7,5 @@
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isNodeList(value: unknown): value is NodeList {
-    return value instanceof NodeList;
+    return getTag(value) === 'NodeList';
 }
