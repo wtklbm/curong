@@ -87,6 +87,7 @@
 - `isProperty`: 确定一个值上是否具有指定名称的属性，该属性可以是私有属性，也可以是原型上的属性
 - `isPropertyDescriptor`: 是不是一个属性描述器
 - `isPropertyKey`: 是不是一个可以作为属性的值
+- `isPureObject`: 是不是一个纯对象，即通过 `Object.create(null)` 创建的对象，该对象的原型就是 `null`
 - `isRangeError`: 是不是一个 `RangeError` 对象
 - `isReactElement`: 是不是一个 `React` 元素
 - `isReadable`: 是不是一个 `Readable`
