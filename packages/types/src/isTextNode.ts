@@ -1,3 +1,5 @@
+import getTag from './getTag';
+
 /**
  * 是不是一个 `TextNode`
  *
@@ -5,5 +7,5 @@
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isTextNode(value: unknown): value is Text {
-    return value instanceof Text;
+    return getTag(value) === 'Text';
 }
