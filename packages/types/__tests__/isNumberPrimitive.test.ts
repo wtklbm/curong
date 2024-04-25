@@ -7,5 +7,6 @@ describe('@curong/types/isNumberPrimitive', () => {
 
     test('测试2', () => {
         expect(isNumberPrimitive(1)).toBe(true);
+        expect(isNumberPrimitive(Number(1))).toBe(true);
     });
 });
