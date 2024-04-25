@@ -38,6 +38,7 @@ export { default as isEvent } from './isEvent';
 export { default as isFalse } from './isFalse';
 export { default as isFalsy } from './isFalsy';
 export { default as isFile } from './isFile';
+export { default as isFileList } from './isFileList';
 export { default as isFileReader } from './isFileReader';
 export { default as isFloat32Array } from './isFloat32Array';
 export { default as isFloat64Array } from './isFloat64Array';
