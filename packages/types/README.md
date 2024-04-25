@@ -43,6 +43,7 @@
 - `isFalse`: 是不是 `false`
 - `isFalsy`: 是不是一个虚值 (强制转换为 `Boolean` 后为 `false` 的值)
 - `isFile`: 是不是一个 `File` 对象
+- `isFileList`: 是不是一个 `FileList` 对象
 - `isFileReader`: 是不是一个 `FileReader` 对象
 - `isFloat32Array`: 是不是一个 `Float32Array`，每一项的值为 `1.2×10-38 - 3.4×1038`
 - `isFloat64Array`: 是不是一个 `Float64Array`，每一项的值为 `5.0×10-324 - 1.8×10308`
