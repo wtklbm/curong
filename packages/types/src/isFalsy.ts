@@ -1,4 +1,4 @@
-export type Falsy = false | 0 | -0 | 0n | '' | null | undefined | typeof NaN;
+import { Falsy } from './types/Falsy';
 
 /**
  * 是不是一个虚值 (强制转换为 `Boolean` 后为 `false` 的值)
