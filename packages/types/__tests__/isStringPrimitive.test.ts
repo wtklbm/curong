@@ -7,5 +7,6 @@ describe('@curong/types/isStringPrimitive', () => {
 
     test('测试2', () => {
         expect(isStringPrimitive('')).toBe(true);
+        expect(isStringPrimitive(String(''))).toBe(true);
     });
 });
