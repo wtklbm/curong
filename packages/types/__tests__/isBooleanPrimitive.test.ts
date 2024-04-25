@@ -7,5 +7,6 @@ describe('@curong/types/isBooleanPrimitive', () => {
 
     test('测试2', () => {
         expect(isBooleanPrimitive(true)).toBe(true);
+        expect(isBooleanPrimitive(Boolean(true))).toBe(true);
     });
 });
