@@ -145,7 +145,12 @@
 
 一些 TypeScript 类型:
 
+- `Falsy`: 一个虚值 (强制转换为 `Boolean` 后为 `true` 的值) 的类型
 - `IsAny`: 是不是一个 `any` 类型的值
 - `IsNever`: 是不是一个 `never` 类型的值
-- `IsUnknown`: 是不是一个 `unknown` 类型的值
 - `IsNullable`: 是不是一个 `null` 或 `undefined` 类型的值
+- `IsUnknown`: 是不是一个 `unknown` 类型的值
+- `NonNull`: 从给定类型中排除 `null` 类型
+- `NonNullOrUndefined`: 从给定类型中排除 `null` 和 `undefined` 类型 (`NonNullable` 的别名)
+- `NonUndefined`: 从给定类型中排除 `undefined` 类型
+- `Truthy`: 一个非虚值 (强制转换为 `Boolean` 后为 `true` 的值) 的类型
