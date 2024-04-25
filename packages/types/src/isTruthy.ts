@@ -1,6 +1,4 @@
-import { Falsy } from './isFalsy';
-
-export type Truthy<T> = Exclude<T, Falsy>;
+import { Truthy } from './types/Truthy';
 
 /**
  * 是不是一个非虚值 (强制转换为 `Boolean` 后为 `true` 的值)
