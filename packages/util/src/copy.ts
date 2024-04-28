@@ -49,10 +49,7 @@ const copyAttrs = <T extends object>(
             }
         }
 
-        // 能赋值的就赋值，赋值不了的就算了
-        try {
-            memo[key] = recursiveCopy(src[key], hash);
-        } catch {}
+        memo[key] = recursiveCopy(src[key], hash);
 
         return memo;
     }, dest);
