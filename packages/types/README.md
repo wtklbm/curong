@@ -20,12 +20,14 @@
 - `isAsyncIterable`: 是不是一个异步可迭代的对象
 - `isBigInt`: 是不是一个 `bigInt` (大数) 或被包装后的 `BigInt` 对象
 - `isBigInt64Array`: 是不是一个 `BigInt64Array`
+- `isBigIntArray`: 是不是一个数组，且每一项的值都是 `bigInt` (大数) 或被包装后的 `BigInt` 对象
 - `isBigIntHave`: 是不是一个大于 `0n` 的 `BigInt` (大数)
 - `isBigIntObject`: 是不是一个被包装后的 `BigInt` 对象，即 `Object(0n)`
 - `isBigIntPrimitive`: 是不是一个基本的大数，即 `bigint`
 - `isBigUint64Array`: 是不是一个 `BigUint64Array`
 - `isBlob`: 是不是一个 `Blob`
 - `isBoolean`: 是不是一个布尔值或被包装后的布尔值对象
+- `isBooleanArray`: 是不是一个数组，且每一项的值都是布尔值或被包装后的布尔值对象
 - `isBooleanObject`: 是不是一个被包装后的布尔值对象，即 `new Boolean`
 - `isBooleanPrimitive`: 是不是一个基本的布尔值，即 `boolean`
 - `isBuffer`: 是不是一个 `Buffer`
@@ -71,8 +73,11 @@
 - `isNotEqual`: `简单` 的判断多个的值是否不相等
 - `isNotZero`: 不是 `0`
 - `isNull`: 是不是 `null`
+- `isNullArray`: 是不是一个数组，且每一项的值都是 `null`
 - `isNullOrUndefined`: 是不是 `undefined` 或者 `null`
+- `isNullOrUndefinedArray`: 是不是一个数组，且每一项的值都是 `null` 或 `undefined`
 - `isNumber`: 是不是一个数字或被包装后的数字对象
+- `isNumberArray`: 是不是一个数组，且每一项的值都是数字或被包装后的数字对象
 - `isNumberHave`: 是不是一个大于 `0` 并且小于或等于 `Number.MAX_VALUE` 的数字
 - `isNumberObject`: 是不是一个被包装后的数字对象，即 `new Number()`
 - `isNumberPrimitive`: 是不是一个基本的数字，即 `number`
@@ -101,11 +106,13 @@
 - `isSizeyHave`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于 0 的整数
 - `isStream`: 是不是一个 `Stream`
 - `isString`: 是不是一个字符串或被包装后的字符串对象
+- `isStringArray`: 是不是一个数组，且每一项的值都是字符串或被包装后的字符串对象
 - `isStringHave`: 是不是一个长度大于 `0` 的字符串
 - `isStringObject`: 是不是一个被包装后的字符串对象，即 `new String()`
 - `isStringPrimitive`: 是不是一个基本的字符串，即 `string`
 - `isStringTrim`: 是不是一个经过 `trim` 后长度大于 `0` 的字符串
 - `isSymbol`: 是不是一个 `symbol` 或被包装后的 `Symbol` 对象
+- `isSymbolArray`: 是不是一个数组，且每一项的值都是 `symbol` 或被包装后的 `Symbol` 对象
 - `isSymbolObject`: 是不是一个被包装后的 `Symbol` 对象，即 `Object(Symbol())`
 - `isSyncFunction`: 是不是一个同步函数
 - `isSyncIterable`: 是不是一个同步可迭代的对象
@@ -126,6 +133,7 @@
 - `isUintSafe`: 是不是一个安全的无符号整数
 - `isUintSafeHave`: 是不是一个大于 0 的安全的无符号整数
 - `isUndefined`: 是不是 `undefined`
+- `isUndefinedArray`: 是不是一个数组，且每一项的值都是 `undefined`
 - `isURL`: 是不是一个 `URL`
 - `isUrlSearchParams`: 是不是一个 `URLSearchParams`
 - `isVarName`: 是不是可以把值当做 `JavaScript` 的变量名
