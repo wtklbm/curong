@@ -44,6 +44,7 @@
 - `isEvent`: 是不是一个 `Event` 事件
 - `isFalse`: 是不是 `false`
 - `isFalsy`: 是不是一个虚值 (强制转换为 `Boolean` 后为 `false` 的值)
+- `isFalsyArray`: 是不是一个数组，且每一项的值都是虚值 (强制转换为 `Boolean` 后为 `false` 的值)
 - `isFile`: 是不是一个 `File` 对象
 - `isFileList`: 是不是一个 `FileList` 对象
 - `isFileReader`: 是不是一个 `FileReader` 对象
@@ -121,6 +122,7 @@
 - `isTransform`: 是不是一个 `Transform`
 - `isTrue`: 是不是 `true`
 - `isTruthy`: 是不是一个非虚值 (强制转换为 `Boolean` 后为 `true` 的值)
+- `isTruthyArray`: 是不是一个数组，且每一项的值都是非虚值 (强制转换为 `Boolean` 后为 `true` 的值)
 - `isTypeError`: 是不是一个 `TypeError` 对象
 - `isTypeofObject`: 使用 `typeof` 判断是不是一个不是 `null` 的任意对象
 - `isUDouble`: 是不是一个无符号浮点数，即大于 `0` 的浮点数
