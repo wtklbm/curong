@@ -1,6 +1,6 @@
-import { isDuplex } from '../src';
-
 import { Duplex, Stream, Transform } from 'stream';
+
+import { isDuplex } from '../src';
 
 describe('@curong/types/isDuplex', () => {
     test('测试1', () => {
