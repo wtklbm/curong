@@ -9,5 +9,5 @@ import isBigInt from './isBigInt';
  *  - `BigInt` 和 `Number` 是不兼容的，不能相互赋值，也不能直接做加法运算
  */
 export default function isBigIntHave(value: unknown): value is bigint {
-    return isBigInt(value) && (value as BigInt) > 0n;
+    return isBigInt(value) && value > 0n;
 }
