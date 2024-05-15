@@ -1,6 +1,6 @@
-import { isReadable } from '../src';
+import { Duplex, Readable, Stream } from 'stream';
 
-import { Readable, Stream, Duplex } from 'stream';
+import { isReadable } from '../src';
 
 describe('@curong/types/isReadable', () => {
     test('测试1', () => {
