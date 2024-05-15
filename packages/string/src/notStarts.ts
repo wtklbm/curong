@@ -1,4 +1,4 @@
-import { isUint, isFalse, isZero } from '@curong/types';
+import { isFalse, isUint, isZero } from '@curong/types';
 
 import toRegExpSource from './toRegExpSource';
 import type { GenericOptions } from './types';

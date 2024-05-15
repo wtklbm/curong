@@ -1,7 +1,7 @@
-import { isUint, isFalse } from '@curong/types';
+import { isFalse, isUint } from '@curong/types';
 
-import type { StartsSlice } from './types';
 import toRegExpSource from './toRegExpSource';
+import type { StartsSlice } from './types';
 
 /**
  * 判断一个字符串是不是以某个字符串开头，如果是则截取该字符串

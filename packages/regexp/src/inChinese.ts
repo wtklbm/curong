@@ -1,4 +1,4 @@
-import { unifiedIdeograph, hiragana, katakana } from './source';
+import { hiragana, katakana, unifiedIdeograph } from './source';
 
 /**
  * 是否包含中文汉字

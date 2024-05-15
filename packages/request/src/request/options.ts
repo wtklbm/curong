@@ -1,23 +1,23 @@
-import { ParsedUrlQueryInput } from 'querystring';
 import { request as HttpRequest } from 'http';
 import { request as HttpsRequest } from 'https';
+import { ParsedUrlQueryInput } from 'querystring';
 
-import { format, printInfo } from '@curong/term';
 import { toLowerCaseKey } from '@curong/object';
+import { format, printInfo } from '@curong/term';
 import {
-    isObjectHave,
-    isStringHave,
-    isNullOrUndefined,
     isArguments,
-    isTypeofObject,
     isArray,
     isDate,
-    isObject
+    isNullOrUndefined,
+    isObject,
+    isObjectHave,
+    isStringHave,
+    isTypeofObject
 } from '@curong/types';
 
-import { commonHeaders } from './headers';
-
 import type { Methods, RequestOptions } from '../types';
+
+import { commonHeaders } from './headers';
 
 const validationParameters = (args: Record<PropertyKey, any>) => {
     for (const [k, v] of Object.entries(args)) {

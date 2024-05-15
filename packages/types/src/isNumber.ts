@@ -1,5 +1,5 @@
-import isNumberPrimitive from './isNumberPrimitive';
 import isNumberObject from './isNumberObject';
+import isNumberPrimitive from './isNumberPrimitive';
 
 /**
  * 是不是一个数字或被包装后的数字对象

@@ -1,5 +1,5 @@
-import { promisify } from 'util';
 import { exec as _exec, PromiseWithChild } from 'child_process';
+import { promisify } from 'util';
 
 import { isArray } from '@curong/types';
 

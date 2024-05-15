@@ -1,12 +1,12 @@
-import { dirname } from 'path';
 import { symlink } from 'fs/promises';
+import { dirname } from 'path';
 
 import { format } from '@curong/term';
 
 import isDir from './isDir';
-import mkdir from './mkdir';
 import isFile from './isFile';
 import isSymbolicLink from './isSymbolicLink';
+import mkdir from './mkdir';
 
 const name = 'copySymbolicLink';
 

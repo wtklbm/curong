@@ -1,14 +1,13 @@
-import { join, dirname } from 'path';
-import { readdir, copyFile, lstat } from 'fs/promises';
+import { copyFile, lstat, readdir } from 'fs/promises';
+import { dirname, join } from 'path';
 
 import { format } from '@curong/term';
 
-import isDir from './isDir';
-import mkdir from './mkdir';
-import isFile from './isFile';
-import symbolicLink from './symbolicLink';
 import copySymbolicLink from './copySymbolicLink';
-
+import isDir from './isDir';
+import isFile from './isFile';
+import mkdir from './mkdir';
+import symbolicLink from './symbolicLink';
 import type { CopyFileOptions } from './types';
 
 const _copyFile = async (from: string, to: string, forcibly = false) => {

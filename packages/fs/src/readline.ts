@@ -1,4 +1,4 @@
-import { isFunctionHave, isString, isBuffer } from '@curong/types';
+import { isBuffer, isFunctionHave, isString } from '@curong/types';
 
 import type { ReadlineCallback } from './types';
 

@@ -1,4 +1,4 @@
-import { type, release } from 'os';
+import { release, type } from 'os';
 
 /** 是不是 `Windows` 系统平台 */
 export const isWindows = type() === 'Windows_NT';

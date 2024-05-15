@@ -1,10 +1,10 @@
 import { exec } from 'child_process';
+import { normalize } from 'path';
 import { platform } from 'process';
 import { promisify } from 'util';
-import { normalize } from 'path';
 
-import { isNull } from '@curong/types';
 import { format } from '@curong/term';
+import { isNull } from '@curong/types';
 
 /**
  * 拼接适用于 `Windows` 的命令

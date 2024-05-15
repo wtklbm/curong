@@ -1,7 +1,7 @@
 import { Duplex } from 'stream';
 
-import isWritable from './isWritable';
 import isReadable from './isReadable';
+import isWritable from './isWritable';
 
 /**
  * 是不是一个 `Duplex`

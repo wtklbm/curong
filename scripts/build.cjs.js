@@ -41,7 +41,7 @@ const genRollupConfig = (dirname, env = 'dev') => ({
 
     tsConfig: {
         target: 'es5',
-        module: "commonjs"
+        module: 'commonjs'
     },
 
     terser: terser({

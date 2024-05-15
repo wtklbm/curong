@@ -1,8 +1,8 @@
-import { createInterface } from 'readline';
 import { createReadStream } from 'fs';
+import { createInterface } from 'readline';
 
-import { isFunctionHave } from '@curong/types';
 import { format } from '@curong/term';
+import { isFunctionHave } from '@curong/types';
 
 import isFile from './isFile';
 import type { ReadlineStreamCallback } from './types';

@@ -1,5 +1,5 @@
+import { SpawnOptions as _SpawnOptions, ChildProcess } from 'child_process';
 import { Writable } from 'stream';
-import { ChildProcess, SpawnOptions as _SpawnOptions } from 'child_process';
 
 export interface SpawnProcess {
     /** 当前所执行的命令 */

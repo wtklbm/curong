@@ -1,4 +1,4 @@
-import { promises, MakeDirectoryOptions } from 'fs';
+import { MakeDirectoryOptions, promises } from 'fs';
 
 import { format } from '@curong/term';
 

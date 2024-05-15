@@ -1,12 +1,13 @@
 import { IncomingMessage } from 'http';
 import { stringify } from 'querystring';
-import { constants, createBrotliDecompress, createUnzip } from 'zlib';
 import { finished, pipeline, Transform, TransformCallback } from 'stream';
-import { isStringHave, isFormData } from '@curong/types';
+import { constants, createBrotliDecompress, createUnzip } from 'zlib';
 
-import { objectToFormData, formDataToBuffer } from './formData';
+import { isFormData, isStringHave } from '@curong/types';
 
 import type { RequestOptions } from '../types';
+
+import { formDataToBuffer, objectToFormData } from './formData';
 
 export function pipeDecompressStream(res: IncomingMessage): IncomingMessage {
     const encoding = (res.headers['content-encoding'] ?? '').toLowerCase();

@@ -4,7 +4,6 @@ import { format } from '@curong/term';
 import { isNotEqual, isNull } from '@curong/types';
 
 import { request } from './request';
-
 import type { publicIpResult } from './types';
 
 /**

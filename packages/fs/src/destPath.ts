@@ -1,13 +1,13 @@
 import { promises } from 'fs';
 import { dirname, isAbsolute, join, normalize, relative } from 'path';
 
-import { isStringHave } from '@curong/types';
 import { format } from '@curong/term';
+import { isStringHave } from '@curong/types';
 
-import type { DestPathOptions } from './types';
+import isDir from './isDir';
 import mkdir from './mkdir';
 import readLnk from './readLnk';
-import isDir from './isDir';
+import type { DestPathOptions } from './types';
 
 /**
  * 获取目标路径和目标文件夹

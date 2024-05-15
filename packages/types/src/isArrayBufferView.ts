@@ -1,14 +1,14 @@
-import isInt8Array from './isInt8Array';
-import isUint8Array from './isUint8Array';
-import isUint8ClampedArray from './isUint8ClampedArray';
-import isInt16Array from './isInt16Array';
-import isUint16Array from './isUint16Array';
-import isInt32Array from './isInt32Array';
-import isUint32Array from './isUint32Array';
+import isBuffer from './isBuffer';
+import isDataView from './isDataView';
 import isFloat32Array from './isFloat32Array';
 import isFloat64Array from './isFloat64Array';
-import isDataView from './isDataView';
-import isBuffer from './isBuffer';
+import isInt8Array from './isInt8Array';
+import isInt16Array from './isInt16Array';
+import isInt32Array from './isInt32Array';
+import isUint8Array from './isUint8Array';
+import isUint8ClampedArray from './isUint8ClampedArray';
+import isUint16Array from './isUint16Array';
+import isUint32Array from './isUint32Array';
 
 /** `ArrayBufferView` 是任何 `TypedArray` 类型(二进制缓冲区)的帮助程序类型 */
 export type ArrayBufferView =

@@ -1,14 +1,15 @@
 import { formatWithOptions } from 'util';
 
-import type { ForMatOptions, ForMatInfo, ColorName } from './types';
-import fontColor from './fontColor';
 import {
-    isStringHave,
-    isObjectHave,
     isEqual,
     isNotZero,
-    isNumber
+    isNumber,
+    isObjectHave,
+    isStringHave
 } from '@curong/types';
+
+import fontColor from './fontColor';
+import type { ColorName, ForMatInfo, ForMatOptions } from './types';
 
 const LF = '\n';
 

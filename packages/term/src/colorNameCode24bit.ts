@@ -1,7 +1,7 @@
-import { isUndefined, isEqual } from '@curong/types';
+import { isEqual, isUndefined } from '@curong/types';
 
-import type { ColorName, TerminalType, ColorCodeResult } from './types';
 import { COLORS_CODE, TERMINAL_COLOR_MAP } from './constants';
+import type { ColorCodeResult, ColorName, TerminalType } from './types';
 
 /**
  * 通过颜色名生成24位的终端颜色代码

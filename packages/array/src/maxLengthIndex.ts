@@ -1,4 +1,4 @@
-import { isZero, isEqual } from '@curong/types';
+import { isEqual, isZero } from '@curong/types';
 
 /**
  * 获取字符串数组中最大长度的项的索引位置

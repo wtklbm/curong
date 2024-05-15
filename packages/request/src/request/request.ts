@@ -1,14 +1,14 @@
 import { IncomingMessage } from 'http';
 
-import { copy } from '@curong/util';
 import { sleepRun } from '@curong/function';
 import { isObjectHave } from '@curong/types';
+import { copy } from '@curong/util';
+
+import type { RequestHandler, RequestOptions, RequestResult } from '../types';
 
 import { handleBody } from './body';
 import { pipeDecompressStream } from './content';
 import { deleteOptionsAttr, optionsHandler } from './options';
-
-import type { RequestOptions, RequestHandler, RequestResult } from '../types';
 
 /**
  * 从远程连接获取响应的内容并返回 `Buffer`

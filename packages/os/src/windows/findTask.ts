@@ -1,5 +1,4 @@
 import windowsTaskList from './taskList';
-
 import type { WindowsTaskListResult } from './types';
 
 /**

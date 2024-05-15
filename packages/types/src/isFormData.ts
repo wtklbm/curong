@@ -1,7 +1,7 @@
 import getTag from './getTag';
 import isFunction from './isFunction';
-import isTypeofObject from './isTypeofObject';
 import isNullOrUndefined from './isNullOrUndefined';
+import isTypeofObject from './isTypeofObject';
 
 /**
  * 是不是一个 `isFormData`

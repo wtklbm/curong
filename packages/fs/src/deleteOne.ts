@@ -1,4 +1,4 @@
-import { unlink, rmdir } from 'fs/promises';
+import { rmdir, unlink } from 'fs/promises';
 
 import { format } from '@curong/term';
 

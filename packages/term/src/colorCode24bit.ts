@@ -1,4 +1,4 @@
-import { isUintSafe, isArray } from '@curong/types';
+import { isArray, isUintSafe } from '@curong/types';
 
 import type { ColorCodeResult } from './types';
 

@@ -1,6 +1,6 @@
-import { readSync, promises } from 'fs';
+import { promises, readSync } from 'fs';
 
-import { isNull, isZero, isNotZero } from '@curong/types';
+import { isNotZero, isNull, isZero } from '@curong/types';
 
 const { open } = promises;
 

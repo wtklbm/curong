@@ -1,8 +1,10 @@
-import { basename, join } from 'path';
 import { existsSync, lstatSync } from 'fs';
+import { basename, join } from 'path';
+
 import { spawn } from '@curong/process';
 
 import { isWindows } from '../platform';
+
 import type { ShortcutOptions } from './types';
 
 const buildArgs = (pathString: string, options?: ShortcutOptions): string[] => {

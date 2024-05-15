@@ -2,9 +2,9 @@ import { join } from 'path';
 
 import { format } from '@curong/term';
 
-import isDir from './isDir';
-import fileList from './fileList';
 import deleteOne from './deleteOne';
+import fileList from './fileList';
+import isDir from './isDir';
 
 /**
  * 清空一个文件夹

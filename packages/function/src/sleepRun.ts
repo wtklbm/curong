@@ -1,6 +1,6 @@
 import { range } from '@curong/number';
 import { printWarn } from '@curong/term';
-import { isTrue, isObject, isNumber } from '@curong/types';
+import { isNumber, isObject, isTrue } from '@curong/types';
 
 import type { SleepRunOptions } from './types';
 

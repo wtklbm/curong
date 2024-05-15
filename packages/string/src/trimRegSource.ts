@@ -1,12 +1,11 @@
 import { isArrayHave, isTrue } from '@curong/types';
 
 import {
-    likeSpaceRegSource,
-    zeroWidthRegSource,
     controlRegSource,
-    specialChars
+    likeSpaceRegSource,
+    specialChars,
+    zeroWidthRegSource
 } from './characters';
-
 import type { SpecialCharNames, TrimOptions } from './types';
 
 /**

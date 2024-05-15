@@ -1,12 +1,11 @@
 import { promises } from 'fs';
 
-import { isTrue } from '@curong/types';
 import { format } from '@curong/term';
+import { isTrue } from '@curong/types';
 
-import diffFile from './diffFile';
-import destPath from './destPath';
 import deleteOne from './deleteOne';
-
+import destPath from './destPath';
+import diffFile from './diffFile';
 import type { CopyFileOptions } from './types';
 
 /**

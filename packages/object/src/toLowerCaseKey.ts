@@ -1,4 +1,4 @@
-import { isSymbol, isNumber } from '@curong/types';
+import { isNumber, isSymbol } from '@curong/types';
 
 import type { ObjectType } from './types';
 

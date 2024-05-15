@@ -1,10 +1,9 @@
-import { join, extname } from 'path';
-import { promises, Dirent } from 'fs';
+import { Dirent, promises } from 'fs';
+import { extname, join } from 'path';
 
 import { format } from '@curong/term';
 
 import readLnk from './readLnk';
-
 import type { FileListOptions } from './types';
 
 /**

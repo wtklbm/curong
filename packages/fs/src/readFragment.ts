@@ -1,7 +1,7 @@
 import { createReadStream } from 'fs';
 
-import { isUintSafe } from '@curong/types';
 import { format } from '@curong/term';
+import { isUintSafe } from '@curong/types';
 
 import type { ReadFragmentOptions } from './types';
 

@@ -1,7 +1,7 @@
 import { Stream } from 'stream';
 
-import isObject from './isObject';
 import isFunction from './isFunction';
+import isObject from './isObject';
 
 /**
  * 是不是一个 `Stream`

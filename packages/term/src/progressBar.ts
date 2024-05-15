@@ -5,10 +5,9 @@ import { isEqual, isUintSafe } from '@curong/types';
 import {
     cursorHidden,
     cursorOnLineBegin,
-    eraseLine,
-    cursorShow
+    cursorShow,
+    eraseLine
 } from './sequence';
-
 import type { ProgressBarOptions } from './types';
 
 /** 相当于: `\u001B[A\u001B[E\u001B[K` */

@@ -1,6 +1,5 @@
 import bindOutside from './bindOutside';
 import toRegExpSource from './toRegExpSource';
-
 import type { ToSentencesOptions } from './types';
 
 // 拉丁文缩写列表

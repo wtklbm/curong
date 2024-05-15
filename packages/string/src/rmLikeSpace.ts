@@ -1,6 +1,6 @@
 import { likeSpaceReg } from './characters';
-import rmLikeSpaceStart from './rmLikeSpaceStart';
 import rmLikeSpaceEnd from './rmLikeSpaceEnd';
+import rmLikeSpaceStart from './rmLikeSpaceStart';
 
 /**
  * 将字符串中开头和结尾的像空格的字符删除，并将其余所有的像空格的字符替换为空格

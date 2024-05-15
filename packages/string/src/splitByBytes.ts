@@ -1,9 +1,9 @@
 import { format } from '@curong/term';
 import { isNull, isUint } from '@curong/types';
 
+import bytesLength from './bytesLength';
 import chars from './chars';
 import fromChars from './fromChars';
-import bytesLength from './bytesLength';
 
 /**
  * 将一个字符串根据字节拆分为一个字符串数组

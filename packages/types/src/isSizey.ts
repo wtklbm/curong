@@ -1,5 +1,5 @@
-import isUint from './isUint';
 import isNullOrUndefined from './isNullOrUndefined';
+import isUint from './isUint';
 import type { Sizey } from './types';
 
 /**

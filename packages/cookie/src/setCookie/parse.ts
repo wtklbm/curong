@@ -1,7 +1,6 @@
 import { isStringHave } from '@curong/types';
 
 import { EQUAL, equalReg, semicolonReg } from './constants';
-
 import type {
     ParseSetCookieOptions,
     SetCookieItem,

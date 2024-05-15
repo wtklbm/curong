@@ -1,5 +1,6 @@
 import { inChkPunctuation } from '@curong/regexp';
 import { isEqual } from '@curong/types';
+
 import { symbolMap } from '../constants';
 
 /** 验证开头和结尾的句号的正则表达式 */

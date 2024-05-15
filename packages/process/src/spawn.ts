@@ -1,11 +1,11 @@
 import {
-    ChildProcess,
     spawn as _spawn,
-    StdioOptions,
-    spawnSync
+    ChildProcess,
+    spawnSync,
+    StdioOptions
 } from 'child_process';
 
-import { isTrue, isArray } from '@curong/types';
+import { isArray, isTrue } from '@curong/types';
 
 import type { SpawnOptions, SpawnResult } from './types';
 

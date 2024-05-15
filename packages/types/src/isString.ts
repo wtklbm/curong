@@ -1,5 +1,5 @@
-import isStringPrimitive from './isStringPrimitive';
 import isStringObject from './isStringObject';
+import isStringPrimitive from './isStringPrimitive';
 
 /**
  * 是不是一个字符串或被包装后的字符串对象

@@ -1,5 +1,5 @@
-import { RequestOptions as _RequestOptions } from 'https';
 import { ClientRequest, IncomingMessage } from 'http';
+import { RequestOptions as _RequestOptions } from 'https';
 import { ParsedUrlQueryInput } from 'querystring';
 
 /** 请求方法 */

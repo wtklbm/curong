@@ -1,4 +1,4 @@
-import { isUndefined, isTrue, isFalse } from '@curong/types';
+import { isFalse, isTrue, isUndefined } from '@curong/types';
 
 import type { AnsiFormatOptions, AnsiFormatResult } from './types';
 

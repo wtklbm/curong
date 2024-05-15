@@ -6,6 +6,7 @@ import {
     isPrimitive,
     isSymbol
 } from '@curong/types';
+
 import allAttrs from './allAttrs';
 import lackAttrs from './lackAttrs';
 

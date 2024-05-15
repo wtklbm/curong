@@ -1,7 +1,7 @@
 import { isEqual, isNull } from '@curong/types';
 
-import type { ColorName, ColorCodeResult } from './types';
 import { COLORS_CODE } from './constants';
+import type { ColorCodeResult, ColorName } from './types';
 
 /**
  * 通过颜色名生成3位的终端颜色代码

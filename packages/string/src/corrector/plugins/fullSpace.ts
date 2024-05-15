@@ -1,6 +1,6 @@
 import { mapReplace } from '@curong/regexp';
 
-import { symbol as s, symbolGroup as g } from '../constants';
+import { symbolGroup as g, symbol as s } from '../constants';
 
 const ss = '\u00A1-\u00FF\u0370-\u03FF\u2150-\u218F\u2700—\u27BF';
 

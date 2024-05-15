@@ -1,5 +1,4 @@
 import print from './print';
-
 import type { ForMatInfo } from './types';
 
 /**

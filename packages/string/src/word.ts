@@ -1,9 +1,8 @@
-import { isUint, isNotZero } from '@curong/types';
-
-import wordStart from './wordStart';
-import wordEnd from './wordEnd';
+import { isNotZero, isUint } from '@curong/types';
 
 import type { WordResult } from './types';
+import wordEnd from './wordEnd';
+import wordStart from './wordStart';
 
 /**
  * 从字符串中找到不为空的字符的索引位置

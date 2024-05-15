@@ -1,6 +1,5 @@
 import isArray from './isArray';
 import isTruthy from './isTruthy';
-
 import type { Truthy } from './types';
 
 /**

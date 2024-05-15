@@ -1,4 +1,4 @@
-import { promises, PathLike } from 'fs';
+import { PathLike, promises } from 'fs';
 
 import { format } from '@curong/term';
 

@@ -1,8 +1,8 @@
 import {
-    isString,
-    isFunctionHave,
     isDate,
+    isFunctionHave,
     isNumberSafe,
+    isString,
     isStringHave,
     isTrue
 } from '@curong/types';

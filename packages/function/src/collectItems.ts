@@ -1,10 +1,10 @@
 import { isPromise, isUint, isUndefined } from '@curong/types';
 
 import type {
-    CollectItemsOptions,
-    CollectItemsResult,
     CollectItemsLimitedOptions,
-    CollectItemsLimitedResult
+    CollectItemsLimitedResult,
+    CollectItemsOptions,
+    CollectItemsResult
 } from './types';
 
 /**

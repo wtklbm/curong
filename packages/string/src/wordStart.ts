@@ -1,4 +1,4 @@
-import { isUint, isNotZero } from '@curong/types';
+import { isNotZero, isUint } from '@curong/types';
 
 /**
  * 从字符串中按照从左向右的顺序找到不为空的字符的索引位置

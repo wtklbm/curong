@@ -1,7 +1,7 @@
 import { isNullOrUndefined } from '@curong/types';
 
-import copy from './copy';
 import allAttrs from './allAttrs';
+import copy from './copy';
 import lackAttrs from './lackAttrs';
 
 /**

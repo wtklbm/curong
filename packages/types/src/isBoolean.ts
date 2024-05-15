@@ -1,5 +1,5 @@
-import isBooleanPrimitive from './isBooleanPrimitive';
 import isBooleanObject from './isBooleanObject';
+import isBooleanPrimitive from './isBooleanPrimitive';
 
 /**
  * 是不是一个布尔值或被包装后的布尔值对象

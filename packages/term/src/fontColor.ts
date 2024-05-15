@@ -1,9 +1,8 @@
 import { isUndefined, isZero } from '@curong/types';
 
-import { CSI } from './sequence';
 import ansiFormat from './ansiFormat';
 import colorNameCode8bit from './colorNameCode8bit';
-
+import { CSI } from './sequence';
 import type { FontColorOptions } from './types';
 
 /**

@@ -1,7 +1,6 @@
 import { isUndefined } from '@curong/types';
 
 import { defaultMarks, DefaultMarksType } from './bindOutside';
-
 import type { BindSideCallback, BindSideOptions } from './types';
 
 /** 判断是不是英文单词后面的 `'` 的正则表达式 */

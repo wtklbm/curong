@@ -1,7 +1,6 @@
 import { isUndefined } from '@curong/types';
 
 import derive from './derive';
-
 import type { ObjectType } from './types';
 
 /**

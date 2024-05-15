@@ -1,8 +1,8 @@
 import { Writable } from 'stream';
 
-import isStream from './isStream';
 import isFunction from './isFunction';
 import isObject from './isObject';
+import isStream from './isStream';
 import isTrue from './isTrue';
 
 /**
