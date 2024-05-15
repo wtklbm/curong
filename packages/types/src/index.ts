@@ -143,15 +143,5 @@ export { default as isWindow } from './isWindow';
 export { default as isWritable } from './isWritable';
 export { default as isZero } from './isZero';
 
-export { default as MAX_ARRAY_LENGTH } from './MAX_ARRAY_LENGTH';
-
-export type { AsyncFunction } from './isAsyncFunction';
-export type { AsyncIterable } from './isAsyncIterable';
-export type { Class } from './isClass';
-export type { Function } from './isFunction';
-export type { Lengthy } from './isLengthy';
-export type { Primitive } from './isPrimitive';
-export type { Sizey } from './isSizey';
-export type { SyncIterable } from './isSyncIterable';
-
+export * from './constants';
 export * from './types';
