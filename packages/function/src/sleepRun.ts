@@ -63,10 +63,10 @@ export default function sleepRun<T>(
             end === start
                 ? end
                 : end <= 0 && start <= 0
-                ? 0
-                : start < end
-                ? range(end, start)
-                : range(start, end);
+                  ? 0
+                  : start < end
+                    ? range(end, start)
+                    : range(start, end);
     }
 
     if (isTrue(show) && timeout > 0) {

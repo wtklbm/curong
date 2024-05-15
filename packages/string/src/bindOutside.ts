@@ -43,7 +43,7 @@ export const defaultMarks = {
     '【': '】',
     '〔': '〕',
     '〖': '〗',
-    '＜': '＞',
+    '＜': '＞'
 };
 
 export type DefaultMarksType = keyof typeof defaultMarks;

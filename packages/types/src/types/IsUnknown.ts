@@ -14,12 +14,13 @@ import { IsNever } from './IsNever';
  * ```
  * @returns 是则返回 `true`，否则为 `false`
  */
-export type IsUnknown<T> = IsNever<T> extends false
-    ? T extends unknown
-        ? unknown extends T
-            ? IsAny<T> extends false
-                ? true
+export type IsUnknown<T> =
+    IsNever<T> extends false
+        ? T extends unknown
+            ? unknown extends T
+                ? IsAny<T> extends false
+                    ? true
+                    : false
                 : false
             : false
-        : false
-    : false;
+        : false;

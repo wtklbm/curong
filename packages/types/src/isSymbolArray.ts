@@ -6,7 +6,7 @@ import isSymbol from './isSymbol';
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
-*/
+ */
 export default function isSymbolArray(value: unknown): value is symbol[] {
     return isArray(value) && value.every(isSymbol);
 }

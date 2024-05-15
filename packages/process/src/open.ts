@@ -21,7 +21,10 @@ import type { OpenOptions } from './types';
  * console.log(ret);
  * ```
  */
-export default async function open(args: string | string[], opts: OpenOptions = {}) {
+export default async function open(
+    args: string | string[],
+    opts: OpenOptions = {}
+) {
     const options = { ...opts, shell: true } as OpenOptions;
     const _args = ([] as string[]).concat(args);
 

@@ -20,10 +20,10 @@ export default function isObjectHave<K extends keyof any, T = unknown>(
         methodLevel === 0
             ? Object.keys
             : methodLevel === 1
-            ? Object.getOwnPropertyNames
-            : methodLevel === 2
-            ? Object.getOwnPropertySymbols
-            : Reflect.ownKeys;
+              ? Object.getOwnPropertyNames
+              : methodLevel === 2
+                ? Object.getOwnPropertySymbols
+                : Reflect.ownKeys;
 
     return isObject(value) && f(value).length > 0;
 }

@@ -19,7 +19,10 @@
  * const result4 = toFiniteNumber(undefined, 0);
  * ```
  */
-export default function toFiniteNumber(value: any, defaultValue: number): number {
+export default function toFiniteNumber(
+    value: any,
+    defaultValue: number
+): number {
     value = +value;
     return Number.isFinite(value) ? value : defaultValue;
 }

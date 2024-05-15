@@ -74,7 +74,10 @@ describe('@curong/types/isOwnProperty', () => {
         }
 
         class Child extends Parent {
-            constructor(public c: string, p: string) {
+            constructor(
+                public c: string,
+                p: string
+            ) {
                 super(p);
             }
         }

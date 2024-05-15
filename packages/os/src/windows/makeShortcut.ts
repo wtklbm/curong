@@ -35,7 +35,9 @@ const buildArgs = (pathString: string, options?: ShortcutOptions): string[] => {
         !force &&
         (!existsSync(dirPath) || !lstatSync(dirPath).isDirectory())
     ) {
-        throw new Error(`[buildArgs]: "${dirPath}" 不是有效的存放链接的有效目录`);
+        throw new Error(
+            `[buildArgs]: "${dirPath}" 不是有效的存放链接的有效目录`
+        );
     }
 
     const scriptPath = join(__dirname, '../scripts/shortcut.vbs');

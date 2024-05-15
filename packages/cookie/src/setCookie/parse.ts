@@ -174,9 +174,12 @@ export default function parseSetCookie(
         return cookies.map((str: string) => parseChunk(str, decode));
     }
 
-    return cookies.reduce((cookie, str) => {
-        const v = parseChunk(str, decode);
-        cookie[v.name] = v;
-        return cookie;
-    }, {} as Record<string, SetCookieItem>);
+    return cookies.reduce(
+        (cookie, str) => {
+            const v = parseChunk(str, decode);
+            cookie[v.name] = v;
+            return cookie;
+        },
+        {} as Record<string, SetCookieItem>
+    );
 }

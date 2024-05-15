@@ -27,7 +27,7 @@ describe('@curong/types/isSyncIterable', () => {
         expect(isSyncIterable(new Map())).toBe(true);
         expect(isSyncIterable(new WeakMap())).toBe(false);
         expect(isSyncIterable((function* () {})())).toBe(true);
-    })
+    });
 
     test('测试3', () => {
         const syncIter = {

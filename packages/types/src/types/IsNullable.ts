@@ -12,6 +12,5 @@
  * ```
  * @returns 是则返回 `true`，否则为 `false`
  */
-export type IsNullable<T> = Extract<T, null | undefined> extends never
-    ? false
-    : true;
+export type IsNullable<T> =
+    Extract<T, null | undefined> extends never ? false : true;

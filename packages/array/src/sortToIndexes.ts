@@ -18,10 +18,13 @@ export default function sortToIndexes(lines: string[]): number[] {
         return [];
     }
 
-    const cowCodes = lines.reduce((memo, value, index) => {
-        memo[value.length] = (memo[value.length] ?? []).concat(index);
-        return memo;
-    }, {} as { [key: string]: number[] });
+    const cowCodes = lines.reduce(
+        (memo, value, index) => {
+            memo[value.length] = (memo[value.length] ?? []).concat(index);
+            return memo;
+        },
+        {} as { [key: string]: number[] }
+    );
 
     const lineCodes = Object.keys(cowCodes)
         .sort((a, b) => parseInt(a) - parseInt(b))
