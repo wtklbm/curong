@@ -3,7 +3,7 @@ import { isUint, isNotZero } from '@curong/types';
 import wordStart from './wordStart';
 import wordEnd from './wordEnd';
 
-import { WordResult } from './types/word';
+import type { WordResult } from './types';
 
 /**
  * 从字符串中找到不为空的字符的索引位置

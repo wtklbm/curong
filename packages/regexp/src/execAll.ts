@@ -5,7 +5,7 @@ import {
     isUndefined
 } from '@curong/types';
 
-import { RegExpExecOrigin } from './types/execAll';
+import type { RegExpExecOrigin } from './types';
 
 const matchKeysReg = /^(0|index|input|groups|length)$/;
 

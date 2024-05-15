@@ -5,7 +5,7 @@ import { format } from '@curong/term';
 
 import readLnk from './readLnk';
 
-import { FileListOptions } from './types/fileList';
+import type { FileListOptions } from './types';
 
 /**
  * 获取一个文件夹的所有文件名的列表

@@ -1,4 +1,4 @@
-import { ControlChars, LikeSpaceChars, ZeroWidthChars } from './types';
+import type { ControlChars, LikeSpaceChars, ZeroWidthChars } from './types';
 
 /** 零宽字符 */
 export const zeroWidthChars: ZeroWidthChars = {

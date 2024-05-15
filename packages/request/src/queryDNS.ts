@@ -2,8 +2,7 @@ import { isString, isNull, isEqual, isZero } from '@curong/types';
 
 import { request } from './request';
 
-import { RequestOptions } from './types/request';
-import { QueryDNSResult } from './types/queryDNS';
+import type { RequestOptions, QueryDNSResult } from './types';
 
 /**
  * 查询主机地址所对应的 `DNS`

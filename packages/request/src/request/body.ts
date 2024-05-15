@@ -5,7 +5,7 @@ import {
     isUint8Array
 } from '@curong/types';
 
-import { RequestOptions } from '../types';
+import type { RequestOptions } from '../types';
 import { contentTypeCallback } from './content';
 
 export async function handleBody(

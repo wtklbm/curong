@@ -1,7 +1,7 @@
 import { isUint, isFalse, isZero } from '@curong/types';
 
 import toRegExp from './toRegExp';
-import { GenericOptions } from './types/generic';
+import type { GenericOptions } from './types';
 
 /**
  * 从一个字符串的指定索引的前面查找是否包含某个字符串

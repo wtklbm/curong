@@ -1,6 +1,6 @@
 import { isFunctionHave, isString, isStringHave } from '@curong/types';
 
-import { ParseCookieOptions } from './types/parse';
+import type { ParseCookieOptions } from './types';
 
 /**
  * 解码一个值

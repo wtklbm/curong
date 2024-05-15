@@ -3,7 +3,7 @@ import { exec as _exec, PromiseWithChild } from 'child_process';
 
 import { isArray } from '@curong/types';
 
-import { ExecOptions } from './types/exec';
+import type { ExecOptions } from './types';
 
 /**
  * `Promise` 版本的 `exec` 方法

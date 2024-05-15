@@ -1,6 +1,6 @@
 import { isUint, isFalse } from '@curong/types';
 
-import { StartsSlice } from './types/startsSlice';
+import type { StartsSlice } from './types';
 import toRegExpSource from './toRegExpSource';
 
 /**

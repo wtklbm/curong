@@ -1,6 +1,6 @@
 import { isUndefined } from '@curong/types';
 
-import { BindSideCallback, BindSideOptions } from './types/bindSide';
+import type { BindSideCallback, BindSideOptions } from './types';
 
 /**
  * 被包裹的值的映射对象

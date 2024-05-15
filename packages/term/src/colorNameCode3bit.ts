@@ -1,6 +1,6 @@
 import { isEqual, isNull } from '@curong/types';
 
-import { ColorName, ColorCodeResult } from './types/color';
+import type { ColorName, ColorCodeResult } from './types';
 import { COLORS_CODE } from './constants';
 
 /**

@@ -1,4 +1,4 @@
-import { ColorName, ColorCodeResult } from './types/color';
+import type { ColorName, ColorCodeResult } from './types';
 import { COLORS_CODE } from './constants';
 import colorCode8bit from './colorCode8bit';
 

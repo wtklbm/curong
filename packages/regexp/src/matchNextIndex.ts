@@ -1,4 +1,4 @@
-import { RegExpExecOrigin } from './types/execAll';
+import type { RegExpExecOrigin } from './types';
 
 /**
  * 获取正则匹配对象的当前项的下一个字符的开始索引位置

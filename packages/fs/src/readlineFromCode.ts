@@ -1,6 +1,6 @@
 import { isFunctionHave, isString, isBuffer } from '@curong/types';
 
-import { ReadlineCallback } from './types/readline';
+import type { ReadlineCallback } from './types';
 
 /**
  * 一行一行地读取编程语言文件中的文本内容

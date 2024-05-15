@@ -1,7 +1,7 @@
 import bindOutside from './bindOutside';
 import toRegExpSource from './toRegExpSource';
 
-import { ToSentencesOptions } from './types';
+import type { ToSentencesOptions } from './types';
 
 // 拉丁文缩写列表
 // @see https://zh.wikipedia.org/wiki/拉丁文缩写列表

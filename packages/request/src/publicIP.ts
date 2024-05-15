@@ -5,7 +5,7 @@ import { isNotEqual, isNull } from '@curong/types';
 
 import { request } from './request';
 
-import { publicIpResult } from './types/publicIP';
+import type { publicIpResult } from './types';
 
 /**
  * 获取本地公共的 `IP` 地址和城市信息

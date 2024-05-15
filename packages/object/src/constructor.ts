@@ -1,6 +1,6 @@
 import { isNullOrUndefined } from '@curong/types';
 
-import { Constructor } from './types/constructor';
+import type { Constructor } from './types';
 
 /**
  * 获取一个值的构造函数

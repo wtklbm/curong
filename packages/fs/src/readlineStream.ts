@@ -5,7 +5,7 @@ import { isFunctionHave } from '@curong/types';
 import { format } from '@curong/term';
 
 import isFile from './isFile';
-import { ReadlineStreamCallback } from './types/readlineStream';
+import type { ReadlineStreamCallback } from './types';
 
 /**
  * 基于流的形式一行一行的读取文件的内容

@@ -1,6 +1,6 @@
 import { isArrayHave, isNumber } from '@curong/types';
 
-import { FromCascadeKeysOptions } from './types';
+import type { FromCascadeKeysOptions } from './types';
 
 const addPack = (
     key: string | number,

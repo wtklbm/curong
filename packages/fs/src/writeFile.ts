@@ -5,7 +5,7 @@ import { isObjectHave, isArrayHave } from '@curong/types';
 import { format } from '@curong/term';
 
 import mkdir from './mkdir';
-import { WriteFileOptions } from './types/writeFile';
+import type { WriteFileOptions } from './types';
 
 /**
  * 将数据写入到文件

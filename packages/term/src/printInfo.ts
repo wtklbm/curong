@@ -1,6 +1,6 @@
 import print from './print';
 
-import { ForMatInfo } from './types/format';
+import type { ForMatInfo } from './types';
 
 /**
  * 在终端打印一段文本消息

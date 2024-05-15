@@ -2,7 +2,7 @@ import plugins from './plugins';
 import general from './basic/general';
 import halfWidth from './basic/fullWith';
 
-import { CorrectorOptions } from './types';
+import type { CorrectorOptions } from './types';
 
 export * from './types';
 

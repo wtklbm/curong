@@ -3,7 +3,7 @@ import { existsSync, lstatSync } from 'fs';
 import { spawn } from '@curong/process';
 
 import { isWindows } from '../platform';
-import { ShortcutOptions } from './types';
+import type { ShortcutOptions } from './types';
 
 const buildArgs = (pathString: string, options?: ShortcutOptions): string[] => {
     const rawName = basename(pathString).replace(/(.*)\..*$/, '$1');

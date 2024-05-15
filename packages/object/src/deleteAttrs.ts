@@ -2,7 +2,7 @@ import { isUndefined } from '@curong/types';
 
 import derive from './derive';
 
-import { ObjectType } from './types/objectType';
+import type { ObjectType } from './types';
 
 /**
  * 从一个对象中删除一些属性

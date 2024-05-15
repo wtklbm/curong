@@ -4,7 +4,7 @@ import { CSI } from './sequence';
 import ansiFormat from './ansiFormat';
 import colorNameCode8bit from './colorNameCode8bit';
 
-import { FontColorOptions } from './types/color';
+import type { FontColorOptions } from './types';
 
 /**
  * 创建一个在终端使用的带有样式的字符串

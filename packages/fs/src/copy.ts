@@ -9,7 +9,7 @@ import isFile from './isFile';
 import symbolicLink from './symbolicLink';
 import copySymbolicLink from './copySymbolicLink';
 
-import { CopyFileOptions } from './types';
+import type { CopyFileOptions } from './types';
 
 const _copyFile = async (from: string, to: string, forcibly = false) => {
     // 如果目标文件已经存在，并且我们不想强制写入

@@ -1,7 +1,7 @@
 import { isUint, isFalse, isZero } from '@curong/types';
 
 import toRegExpSource from './toRegExpSource';
-import { GenericOptions } from './types/generic';
+import type { GenericOptions } from './types';
 
 /**
  * 判断一个字符串是否不是以某些字符串开头

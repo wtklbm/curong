@@ -2,7 +2,7 @@ import { range } from '@curong/number';
 import { printWarn } from '@curong/term';
 import { isTrue, isObject, isNumber } from '@curong/types';
 
-import { SleepRunOptions } from './types/sleepRun';
+import type { SleepRunOptions } from './types';
 
 const padZero = (num: number | string) => num.toString().padStart(2, '0');
 const initTime = new Date('2000-01-01 00:00:00').getTime();

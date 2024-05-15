@@ -1,6 +1,6 @@
 import { isUndefined } from '@curong/types';
 
-import { ObjectType } from './types/objectType';
+import type { ObjectType } from './types';
 
 /**
  * 基于一个对象派生出和它长得一模一样的对象。在派生出的对象中，它的属性和 `obj` 是完全一样的。

@@ -1,6 +1,6 @@
 import { isArrayHave, isTypeofObject } from '@curong/types';
 
-import { SetCookieParseResult } from './types';
+import type { SetCookieParseResult } from './types';
 
 /**
  * 将解析后的 `set-cookie` 对象转换为一个 `key=value; key=value` 的 `cookie` 字符串

@@ -17,7 +17,7 @@ import {
 
 import { commonHeaders } from './headers';
 
-import { Methods, RequestOptions } from '../types';
+import type { Methods, RequestOptions } from '../types';
 
 const validationParameters = (args: Record<PropertyKey, any>) => {
     for (const [k, v] of Object.entries(args)) {
@@ -79,7 +79,6 @@ const joinUrlQuery = (url: string, params: Record<string | number, any>) => {
             //  - `a=1&a=2&a=3`: 默认的拼接行为，和 `Node.js` 中的 `stringify` 方法的效果是一样的
             //  - `a[]=1&a[]=2&a[]=3`: 特殊拼接方式，并不是所有服务器都支持
             //  - 有关更多内容，可以看看名为 `querystring` 的第三方库
-
             // `a = [1, 2]` ==> `a[]=1&a[]=2`
             //key += '[]';
         }

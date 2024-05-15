@@ -1,6 +1,6 @@
 import { isUintSafe, isArray } from '@curong/types';
 
-import { ColorCodeResult } from './types/color';
+import type { ColorCodeResult } from './types';
 
 /**
  * 根据 `RGB` 数组，使用从0到255的任意数字生成24位的终端颜色代码

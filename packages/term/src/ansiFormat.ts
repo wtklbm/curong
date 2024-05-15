@@ -1,6 +1,6 @@
 import { isUndefined, isTrue, isFalse } from '@curong/types';
 
-import { AnsiFormatOptions, AnsiFormatResult } from './types/ansiFormat';
+import type { AnsiFormatOptions, AnsiFormatResult } from './types';
 
 /**
  * 使用 `ANSI` 转义序列来格式化一段在终端使用的文本字符串

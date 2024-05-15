@@ -6,7 +6,7 @@ import { isStringHave, isFormData } from '@curong/types';
 
 import { objectToFormData, formDataToBuffer } from './formData';
 
-import { RequestOptions } from '../types';
+import type { RequestOptions } from '../types';
 
 export function pipeDecompressStream(res: IncomingMessage): IncomingMessage {
     const encoding = (res.headers['content-encoding'] ?? '').toLowerCase();

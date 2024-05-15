@@ -1,5 +1,5 @@
 import format from './format';
-import { ForMatInfo } from './types/format';
+import type { ForMatInfo } from './types';
 
 /**
  * 在终端打印一段带有样式的消息

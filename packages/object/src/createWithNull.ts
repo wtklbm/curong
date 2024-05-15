@@ -1,6 +1,6 @@
 import { isObject } from '@curong/types';
 
-import { ObjectType } from './types/objectType';
+import type { ObjectType } from './types';
 
 /**
  * 创建一个纯对象，该对象的原型是 `null`

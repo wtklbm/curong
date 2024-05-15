@@ -1,4 +1,4 @@
-import { Primitive } from './types/common';
+import type { Primitive } from './types';
 
 /**
  * 对相同类型的基本类型的值或包含相同类型基本类型值的数组去重

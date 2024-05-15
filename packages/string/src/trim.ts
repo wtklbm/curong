@@ -1,7 +1,7 @@
 import { isZero } from '@curong/types';
 
 import { trimRegSource } from './trimRegSource';
-import { SpecialCharNames, TrimOptions } from './types';
+import type { SpecialCharNames, TrimOptions } from './types';
 
 /**
  * 删除字符串开头和结尾的特定字符

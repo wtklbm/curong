@@ -7,7 +7,7 @@ import {
 
 import { isTrue, isArray } from '@curong/types';
 
-import { SpawnOptions, SpawnResult } from './types';
+import type { SpawnOptions, SpawnResult } from './types';
 
 // https://blogs.msdn.microsoft.com/twistylittlepassagesallalike/2011/04/23/everyone-quotes-command-line-arguments-the-wrong-way
 const escapeCmd = (input: string, doubleEscape: boolean): string => {

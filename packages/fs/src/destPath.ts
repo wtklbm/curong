@@ -4,7 +4,7 @@ import { dirname, isAbsolute, join, normalize, relative } from 'path';
 import { isStringHave } from '@curong/types';
 import { format } from '@curong/term';
 
-import { destPathOptions } from './types/destPath';
+import type { DestPathOptions } from './types';
 import mkdir from './mkdir';
 import readLnk from './readLnk';
 import isDir from './isDir';
@@ -31,7 +31,7 @@ export default async function destPath(
     filePath: string,
     srcDir: string,
     desDir: string,
-    options?: destPathOptions
+    options?: DestPathOptions
 ): Promise<string> {
     const { isMakeDir = false } = options ?? {};
 

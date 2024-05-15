@@ -3,7 +3,7 @@ import { createReadStream } from 'fs';
 import { isUintSafe } from '@curong/types';
 import { format } from '@curong/term';
 
-import { ReadFragmentOptions } from './types/readFragment';
+import type { ReadFragmentOptions } from './types';
 
 /**
  * 从一个文件中读取一段长度的内容

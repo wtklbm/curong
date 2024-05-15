@@ -2,7 +2,7 @@ import { isUndefined } from '@curong/types';
 
 import { defaultMarks, DefaultMarksType } from './bindOutside';
 
-import { BindSideCallback, BindSideOptions } from './types';
+import type { BindSideCallback, BindSideOptions } from './types';
 
 /** 判断是不是英文单词后面的 `'` 的正则表达式 */
 const wordReg = /^[a-zA-Z]'[a-zA-Z]{1,2}[^a-zA-Z]/;

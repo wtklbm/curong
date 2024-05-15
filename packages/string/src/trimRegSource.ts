@@ -7,7 +7,7 @@ import {
     specialChars
 } from './characters';
 
-import { SpecialCharNames, TrimOptions } from './types';
+import type { SpecialCharNames, TrimOptions } from './types';
 
 /**
  * 根据选项生成可以删除字符串特定字符串的正则表达式字符串

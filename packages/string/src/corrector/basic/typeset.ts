@@ -2,7 +2,7 @@ import { execAll, matchNextIndex } from '@curong/regexp';
 import { isEqual, isNotZero, isTypeofObject, isZero } from '@curong/types';
 
 import { chkPunReg } from '../constants';
-import { TypesetResult } from '../types';
+import type { TypesetResult } from '../types';
 
 /**
  * 对文件进行编排，拆分出中日韩标点和汉字和其他字符

@@ -8,7 +8,7 @@ import { handleBody } from './body';
 import { pipeDecompressStream } from './content';
 import { deleteOptionsAttr, optionsHandler } from './options';
 
-import { RequestOptions, RequestHandler, RequestResult } from '../types';
+import type { RequestOptions, RequestHandler, RequestResult } from '../types';
 
 /**
  * 从远程连接获取响应的内容并返回 `Buffer`

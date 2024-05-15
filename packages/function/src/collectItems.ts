@@ -1,11 +1,11 @@
 import { isPromise, isUint, isUndefined } from '@curong/types';
 
-import {
+import type {
     CollectItemsOptions,
     CollectItemsResult,
     CollectItemsLimitedOptions,
     CollectItemsLimitedResult
-} from './types/collectItems';
+} from './types';
 
 /**
  * 收集 `total` 个 `Promise`，并在到达 `total` 个数时，返回收集的 `Promise` 数组的结果

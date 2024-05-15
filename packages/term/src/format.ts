@@ -1,8 +1,7 @@
 import { formatWithOptions } from 'util';
 
-import { ForMatOptions, ForMatInfo } from './types/format';
+import type { ForMatOptions, ForMatInfo, ColorName } from './types';
 import fontColor from './fontColor';
-import { ColorName } from './types/color';
 import {
     isStringHave,
     isObjectHave,

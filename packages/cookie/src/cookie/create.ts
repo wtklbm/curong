@@ -7,7 +7,7 @@ import {
     isTrue
 } from '@curong/types';
 
-import { CreateCookieOptions } from './types/create';
+import type { CreateCookieOptions } from './types';
 
 /**
  * 通过设置 `name`、`value` 和 `options` 属性配置，生成一个 `cookie` 字符串

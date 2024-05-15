@@ -9,7 +9,7 @@ import {
     cursorShow
 } from './sequence';
 
-import { ProgressBarOptions } from './types/progressBar';
+import type { ProgressBarOptions } from './types';
 
 /** 相当于: `\u001B[A\u001B[E\u001B[K` */
 const clearLine = () => cursorOnLineBegin + eraseLine();

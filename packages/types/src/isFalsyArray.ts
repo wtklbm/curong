@@ -1,7 +1,7 @@
 import isArray from './isArray';
 import isFalsy from './isFalsy';
 
-import { type Falsy } from './types';
+import type { Falsy } from './types';
 
 /**
  * 是不是一个数组，且每一项的值都是虚值 (强制转换为 `Boolean` 后为 `false` 的值)

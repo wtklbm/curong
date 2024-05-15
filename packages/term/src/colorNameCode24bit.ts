@@ -1,6 +1,6 @@
 import { isUndefined, isEqual } from '@curong/types';
 
-import { ColorName, TerminalType, ColorCodeResult } from './types/color';
+import type { ColorName, TerminalType, ColorCodeResult } from './types';
 import { COLORS_CODE, TERMINAL_COLOR_MAP } from './constants';
 
 /**

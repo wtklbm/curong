@@ -1,4 +1,4 @@
-import { ObjectType } from './types/objectType';
+import type { ObjectType } from './types';
 
 /**
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is

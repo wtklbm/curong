@@ -7,7 +7,7 @@ import diffFile from './diffFile';
 import destPath from './destPath';
 import deleteOne from './deleteOne';
 
-import { CopyFileOptions } from './types/copyFile';
+import type { CopyFileOptions } from './types';
 
 /**
  * 把一个文件，从一个目录拷贝到另一个目录中

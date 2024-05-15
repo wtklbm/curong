@@ -1,6 +1,6 @@
 import { exec } from '@curong/process';
 
-import { WindowsTaskListResult } from './types/taskList';
+import type { WindowsTaskListResult } from './types';
 
 /**
  * 获取 `Windows` 平台上正在运行的映像进程列表

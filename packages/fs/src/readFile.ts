@@ -2,7 +2,7 @@ import { promises, PathLike } from 'fs';
 
 import { format } from '@curong/term';
 
-import { ReadFileOptions } from './types/readFile';
+import type { ReadFileOptions } from './types';
 
 /**
  * 将文件的内容读取为指定格式的字符串

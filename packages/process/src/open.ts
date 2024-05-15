@@ -1,7 +1,7 @@
 import { release } from 'os';
 
 import spawn from './spawn';
-import { OpenOptions } from './types';
+import type { OpenOptions } from './types';
 
 /**
  * 使用用户操作系统定义的默认应用程序打开文件

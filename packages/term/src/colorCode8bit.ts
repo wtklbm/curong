@@ -1,6 +1,6 @@
 import { isUintSafe } from '@curong/types';
 
-import { ColorCodeResult } from './types/color';
+import type { ColorCodeResult } from './types';
 
 /**
  * 使用从0到255的任意数字生成8位的终端颜色代码
