@@ -1,9 +1,5 @@
 import isFunction from './isFunction';
-
-/** 类的类型定义 */
-export interface Class<T = unknown> {
-    new (...args: any[]): T;
-}
+import type { Class } from './types';
 
 /**
  * 是不是一个类

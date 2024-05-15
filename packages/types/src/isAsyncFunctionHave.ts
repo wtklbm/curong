@@ -1,4 +1,5 @@
-import isAsyncFunction, { AsyncFunction } from './isAsyncFunction';
+import isAsyncFunction from './isAsyncFunction';
+import type { AsyncFunction } from './types';
 
 /**
  * 是不是一个参数个数大于 `0` 的异步函数

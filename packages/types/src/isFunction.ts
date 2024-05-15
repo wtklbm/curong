@@ -1,5 +1,4 @@
-/** 函数的类型定义 */
-export type Function<T = unknown> = (...args: any[]) => T;
+import type { Function } from './types';
 
 /**
  * 是不是一个函数(包含同步函数、异步函数和 `Generator` 函数)

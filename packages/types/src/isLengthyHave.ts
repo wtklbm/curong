@@ -1,4 +1,5 @@
-import isLengthy, { Lengthy } from './isLengthy';
+import isLengthy from './isLengthy';
+import type { Lengthy } from './types';
 
 /**
  * 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于 0 的整数

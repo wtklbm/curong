@@ -1,7 +1,5 @@
 import getTag from './getTag';
-
-/** 异步函数的类型定义 */
-export type AsyncFunction<T = unknown> = (...args: any[]) => Promise<T>;
+import type { AsyncFunction } from './types';
 
 /**
  * 是不是一个异步函数

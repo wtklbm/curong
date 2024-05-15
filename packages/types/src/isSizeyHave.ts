@@ -1,4 +1,5 @@
-import isSizey, { Sizey } from './isSizey';
+import isSizey from './isSizey';
+import type { Sizey } from './types';
 
 /**
  * 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于 0 的整数

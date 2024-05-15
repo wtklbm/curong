@@ -1,10 +1,6 @@
 import isFunction from './isFunction';
 import isNullOrUndefined from './isNullOrUndefined';
-
-/** 同步可迭代的类型 */
-export interface SyncIterable<T> {
-    [Symbol.iterator](): Iterator<T>;
-}
+import type { SyncIterable } from './types';
 
 /**
  * 是不是一个同步可迭代的对象

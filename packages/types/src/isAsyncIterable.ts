@@ -1,10 +1,6 @@
 import isFunction from './isFunction';
 import isNullOrUndefined from './isNullOrUndefined';
-
-/** 异步可迭代的类型 */
-export interface AsyncIterable<T = unknown, R = any, N = unknown> {
-    [Symbol.asyncIterator](): AsyncGenerator<T, R, N>;
-}
+import type { AsyncIterable } from './types';
 
 /**
  * 是不是一个异步可迭代的对象

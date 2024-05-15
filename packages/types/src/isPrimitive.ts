@@ -1,12 +1,4 @@
-/** 基本类型的类型定义 */
-export type Primitive =
-    | string
-    | number
-    | bigint
-    | boolean
-    | symbol
-    | null
-    | undefined;
+import type { Primitive } from './types';
 
 /**
  * 是不是一个基本类型的值

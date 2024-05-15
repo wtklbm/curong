@@ -1,8 +1,6 @@
 import isUint from './isUint';
 import isNullOrUndefined from './isNullOrUndefined';
-
-/** 具有 `length` 属性的值的类型定义 */
-export type Lengthy<T extends {} = {}> = T & { length: number };
+import type { Lengthy } from './types';
 
 /**
  * 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于或等于 0 的整数

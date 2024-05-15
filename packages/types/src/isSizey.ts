@@ -1,8 +1,6 @@
 import isUint from './isUint';
 import isNullOrUndefined from './isNullOrUndefined';
-
-/** 具有 `size` 属性的值的类型定义 */
-export type Sizey<T extends {} = {}> = T & { size: number };
+import type { Sizey } from './types';
 
 /**
  * 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于或等于 0 的整数
