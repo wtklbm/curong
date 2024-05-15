@@ -1,4 +1,5 @@
 import { isArray } from '@curong/types';
+
 import { execAll } from '../src';
 
 describe('@curong/regexp/execAll', () => {
