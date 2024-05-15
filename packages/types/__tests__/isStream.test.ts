@@ -1,6 +1,6 @@
-import { isStream } from '../src';
-
 import { Stream } from 'stream';
+
+import { isStream } from '../src';
 
 describe('@curong/types/isStream', () => {
     test('测试1', () => {
