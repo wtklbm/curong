@@ -4,8 +4,9 @@
 
 // @ts-nocheck
 
-import { copy } from '../src';
 import { isPlainObject } from '@curong/types';
+
+import { copy } from '../src';
 
 describe('@curong/util/copy', () => {
     test('测试1', () => {
