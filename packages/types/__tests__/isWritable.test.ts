@@ -1,6 +1,6 @@
-import { isWritable } from '../src';
+import { Duplex, Stream, Writable } from 'stream';
 
-import { Writable, Stream, Duplex } from 'stream';
+import { isWritable } from '../src';
 
 describe('@curong/types/isReadable', () => {
     test('测试1', () => {
