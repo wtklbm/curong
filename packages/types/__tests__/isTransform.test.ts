@@ -1,6 +1,6 @@
-import { isTransform } from '../src';
+import { Duplex, Stream, Transform } from 'stream';
 
-import { Stream, Duplex, Transform } from 'stream';
+import { isTransform } from '../src';
 
 describe('@curong/types/isTransform', () => {
     test('测试1', () => {
