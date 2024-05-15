@@ -1,3 +1,4 @@
+/** @type {import("prettier").Config} */
 module.exports = {
     printWidth: 80,
     tabWidth: 4,
@@ -12,5 +13,50 @@ module.exports = {
     vueIndentScriptAndStyle: false,
     quoteProps: 'as-needed',
     htmlWhitespaceSensitivity: 'css',
-    endOfLine: 'lf'
+    endOfLine: 'lf',
+    plugins: ['@ianvs/prettier-plugin-sort-imports'],
+
+    /** @type {import("@ianvs/prettier-plugin-sort-imports").PluginConfig.importOrder} */
+    importOrder: [
+        '',
+        '<BUILT_IN_MODULES>',
+        '',
+        '^[a-zA-Z0-9_$]+$',
+        '',
+        '^[a-zA-Z0-9_$]+/',
+        '',
+        '<THIRD_PARTY_MODULES>',
+        '',
+        '^@(?:packages)(?:/|$)',
+        '',
+        '^(?:[.]{2}/){8}[.]{2}$',
+        '^(?:[.]{2}/){9}',
+        '',
+        '^(?:[.]{2}/){7}[.]{2}$',
+        '^(?:[.]{2}/){8}',
+        '',
+        '^(?:[.]{2}/){6}[.]{2}$',
+        '^(?:[.]{2}/){7}',
+        '',
+        '^(?:[.]{2}/){5}[.]{2}$',
+        '^(?:[.]{2}/){6}',
+        '',
+        '^(?:[.]{2}/){4}[.]{2}$',
+        '^(?:[.]{2}/){5}',
+        '',
+        '^(?:[.]{2}/){3}[.]{2}$',
+        '^(?:[.]{2}/){4}',
+        '',
+        '^(?:[.]{2}/){2}[.]{2}$',
+        '^(?:[.]{2}/){3}',
+        '',
+        '^[.]{2}/[.]{2}$',
+        '^(?:[.]{2}/){2}',
+        '',
+        '^[.]{2}$',
+        '^[.]{2}/',
+        '',
+        '^[.]$',
+        '^[.]/'
+    ]
 };
