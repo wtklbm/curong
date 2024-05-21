@@ -10,6 +10,7 @@ export { default as sortByEngInitials } from './sortByEngInitials';
 export { default as sortToIndexes } from './sortToIndexes';
 export { default as sortWords } from './sortWords';
 export { default as splitByStep } from './splitByStep';
+export { default as unique } from './unique';
 export { default as uniqueFromPrimitive } from './uniqueFromPrimitive';
 
 export * from './types';
