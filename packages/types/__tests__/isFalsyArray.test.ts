@@ -3,6 +3,7 @@ import { isFalsyArray } from '../src';
 describe('@curong/types/isFalsyArray', () => {
     test('测试1', () => {
         expect(isFalsyArray(false)).toBe(false);
+        expect(isFalsyArray([])).toBe(false);
         expect(isFalsyArray(0)).toBe(false);
         expect(isFalsyArray(-0)).toBe(false);
         expect(isFalsyArray(0n)).toBe(false);
