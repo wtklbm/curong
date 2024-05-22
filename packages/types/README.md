@@ -118,6 +118,7 @@
 - `isSymbolArray`: 是不是一个数组，且每一项的值都是 `symbol` 或被包装后的 `Symbol` 对象
 - `isSymbolObject`: 是不是一个被包装后的 `Symbol` 对象，即 `Object(Symbol())`
 - `isSyncFunction`: 是不是一个同步函数
+- `isSyncGenerator`: 是不是一个同步的 `Generator`
 - `isSyncIterable`: 是不是一个同步可迭代的对象
 - `isSyntaxError`: 是不是一个 `SyntaxError` 对象
 - `isTextNode`: 是不是一个 `TextNode`
