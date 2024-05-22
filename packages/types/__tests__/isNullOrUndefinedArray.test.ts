@@ -2,6 +2,7 @@ import { isNullOrUndefinedArray } from '../src';
 
 describe('@curong/types/isNullOrUndefinedArray', () => {
     test('测试1', () => {
+        expect(isNullOrUndefinedArray([])).toBe(false);
         expect(isNullOrUndefinedArray(0)).toBe(false);
         expect(isNullOrUndefinedArray('')).toBe(false);
         expect(isNullOrUndefinedArray(null)).toBe(false);
