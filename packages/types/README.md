@@ -18,6 +18,7 @@
 - `isAsyncFunction`: 是不是一个异步函数
 - `isAsyncFunctionHave`: 是不是一个参数个数大于 `0` 的异步函数
 - `isAsyncGenerator`: 是不是一个异步的 `Generator`
+- `isAsyncGeneratorFunction`: 是不是一个异步的 `Generator` 函数
 - `isAsyncIterable`: 是不是一个异步可迭代的对象
 - `isBigInt`: 是不是一个 `bigInt` (大数) 或被包装后的 `BigInt` 对象
 - `isBigInt64Array`: 是不是一个 `BigInt64Array`
