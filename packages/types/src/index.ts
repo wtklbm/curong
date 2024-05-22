@@ -59,6 +59,7 @@ export { default as isInt } from './isInt';
 export { default as isInt16Array } from './isInt16Array';
 export { default as isInt32Array } from './isInt32Array';
 export { default as isInt8Array } from './isInt8Array';
+export { default as isIntEven } from './isIntEven';
 export { default as isIntHave } from './isIntHave';
 export { default as isIntOdd } from './isIntOdd';
 export { default as isIntSafe } from './isIntSafe';
