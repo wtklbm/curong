@@ -64,8 +64,8 @@
 - `isIntSafe`: 是不是一个安全的整数
 - `isIterable`: 是不是一个同步或异步的可迭代的对象
 - `isIterator`: 是不是一个 `Iterator`
-- `isLengthy`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于或等于 0 的整数
-- `isLengthyHave`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于 0 的整数
+- `isLengthy`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于或等于 0 的安全的无符号整数
+- `isLengthyHave`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于 0 的安全的无符号整数
 - `isMap`: 是不是一个 `Map`
 - `isMapHave`: 是不是一个长度大于 `0` 的 `Map`
 - `isNaN`: 是不是一个 `NaN`
@@ -103,8 +103,8 @@
 - `isSameError`: 是不是一个 `name` 和 `message` 相同的 `Error` 对象
 - `isSet`: 是不是一个 `Set`
 - `isSetHave`: 是不是一个长度大于 `0` 的 `Set`
-- `isSizey`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于或等于 0 的整数
-- `isSizeyHave`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于 0 的整数
+- `isSizey`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于或等于 0 的安全的无符号整数
+- `isSizeyHave`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于 0 的安全的无符号整数
 - `isStream`: 是不是一个 `Stream`
 - `isString`: 是不是一个字符串或被包装后的字符串对象
 - `isStringArray`: 是不是一个数组，且每一项的值都是字符串或被包装后的字符串对象
