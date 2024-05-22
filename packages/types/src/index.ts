@@ -115,6 +115,7 @@ export { default as isSymbolArray } from './isSymbolArray';
 export { default as isSymbolObject } from './isSymbolObject';
 export { default as isSymbolPrimitive } from './isSymbolPrimitive';
 export { default as isSyncFunction } from './isSyncFunction';
+export { default as isSyncGenerator } from './isSyncGenerator';
 export { default as isSyncIterable } from './isSyncIterable';
 export { default as isSyntaxError } from './isSyntaxError';
 export { default as isTextNode } from './isTextNode';
