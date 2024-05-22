@@ -2,6 +2,7 @@ import { isStringArray } from '../src';
 
 describe('@curong/types/isStringArray', () => {
     test('测试1', () => {
+        expect(isStringArray([])).toBe(false);
         expect(isStringArray(0)).toBe(false);
         expect(isStringArray('')).toBe(false);
         expect(isStringArray('test')).toBe(false);
