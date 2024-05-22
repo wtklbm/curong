@@ -10,7 +10,7 @@ import type { AsyncIterable } from './types';
  * @note 更多内容，请参考 `isIterable` 方法的文档
  */
 export default function isAsyncIterable<T = unknown>(
-    value: any
+    value: unknown
 ): value is AsyncIterable<T> {
-    return !isNullOrUndefined(value) && isFunction(value[Symbol.asyncIterator]);
+    return !isNullOrUndefined(value) && isFunction((value as AsyncIterable<T>)[Symbol.asyncIterator]);
 }
