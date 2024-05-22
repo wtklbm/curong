@@ -60,6 +60,7 @@
 - `isFunctionHave`: 是不是一个参数个数大于 `0` 的函数
 - `isGenerator`: 是不是一个 `Generator`
 - `isGeneratorFunction`: 是不是一个 `Generator` 函数
+- `isHtmlElement`: 是不是一个 `HTMLElement`
 - `isInfinity`: 是不是一个 `Infinity`，即超出 `1.7976931348623157E+103088` 的数值
 - `isInt`: 是不是一个整数
 - `isInt16Array`: 是不是一个 `Int8Array`，每一项的值为 `-128 - 127`
