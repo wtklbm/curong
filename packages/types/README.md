@@ -111,6 +111,7 @@
 - `isSameError`: 是不是一个 `name` 和 `message` 相同的 `Error` 对象
 - `isSet`: 是不是一个 `Set`
 - `isSetHave`: 是不是一个长度大于 `0` 的 `Set`
+- `isSharedArrayBuffer`: 是不是一个 `SharedArrayBuffer`
 - `isSizey`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于或等于 0 的安全的无符号整数
 - `isSizeyHave`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于 0 的安全的无符号整数
 - `isStream`: 是不是一个 `Stream`
