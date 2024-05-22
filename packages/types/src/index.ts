@@ -111,6 +111,7 @@ export { default as isSetHave } from './isSetHave';
 export { default as isSharedArrayBuffer } from './isSharedArrayBuffer';
 export { default as isSizey } from './isSizey';
 export { default as isSizeyHave } from './isSizeyHave';
+export { default as isSome } from './isSome';
 export { default as isStream } from './isStream';
 export { default as isString } from './isString';
 export { default as isStringArray } from './isStringArray';
