@@ -1,7 +1,8 @@
-import getTag from './getTag';
+import isAsyncGenerator from './isAsyncGenerator';
+import isSyncGenerator from './isSyncGenerator';
 
 /**
- * 是不是一个 `Generator`
+ * 是不是一个同步或异步的 `Generator`
  *
  * 每一个 `Generator` 上，都会有三个方法:
  *  - `next`
@@ -14,5 +15,5 @@ import getTag from './getTag';
 export default function isGenerator<T = unknown, R = unknown, N = unknown>(
     value: any
 ): value is Generator<T, R, N> {
-    return getTag(value) === 'Generator';
+    return isSyncGenerator(value) || isAsyncGenerator(value);
 }
