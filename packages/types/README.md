@@ -44,6 +44,7 @@
 - `isError`: 是不是一个 `Error` 对象
 - `isEvalError`: 是不是一个 `EvalError` 对象
 - `isEvent`: 是不是一个 `Event` 事件
+- `isEvery`: 检查数组中所有元素是否满足给定条件
 - `isFalse`: 是不是 `false`
 - `isFalsy`: 是不是一个虚值 (强制转换为 `Boolean` 后为 `false` 的值)
 - `isFalsyArray`: 是不是一个长度大于 0 的数组，且每一项的值都是虚值 (强制转换为 `Boolean` 后为 `false` 的值)
