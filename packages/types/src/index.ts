@@ -129,6 +129,7 @@ export { default as isTruthy } from './isTruthy';
 export { default as isTruthyArray } from './isTruthyArray';
 export { default as isTypeError } from './isTypeError';
 export { default as isTypeofObject } from './isTypeofObject';
+export { default as isTypeofObjectArray } from './isTypeofObjectArray';
 export { default as isUDouble } from './isUDouble';
 export { default as isUint } from './isUint';
 export { default as isUint16Array } from './isUint16Array';
