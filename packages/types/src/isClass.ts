@@ -14,6 +14,6 @@ export default function isClass<T = unknown>(
     // 类中无法访问 `caller`，`callee` 和 `arguments` 属性
     return (
         isFunction(value) &&
-        Function.prototype.toString.call(value).trimStart().startsWith('class ')
+        Function.prototype.toString.call(value).startsWith('class ')
     );
 }
