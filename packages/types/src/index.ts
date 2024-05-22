@@ -107,6 +107,7 @@ export { default as isRegExp } from './isRegExp';
 export { default as isSameError } from './isSameError';
 export { default as isSet } from './isSet';
 export { default as isSetHave } from './isSetHave';
+export { default as isSharedArrayBuffer } from './isSharedArrayBuffer';
 export { default as isSizey } from './isSizey';
 export { default as isSizeyHave } from './isSizeyHave';
 export { default as isStream } from './isStream';
