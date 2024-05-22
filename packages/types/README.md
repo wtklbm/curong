@@ -37,6 +37,7 @@
 - `isClass`: 是不是一个类
 - `isDataView`: 是不是一个 `DataView`
 - `isDate`: 是不是一个有效的 `Date`
+- `isDocument`: 是不是 `Document` 对象
 - `isDouble`: 是不是一个浮点数
 - `isDuplex`: 是不是一个 `Duplex`
 - `isElement`: 是不是一个 `Element`
