@@ -61,11 +61,12 @@
 - `isGeneratorFunction`: 是不是一个 `Generator` 函数
 - `isInfinity`: 是不是一个 `Infinity`，即超出 `1.7976931348623157E+103088` 的数值
 - `isInt`: 是不是一个整数
-- `isIntOdd`: 是不是一个奇数，即取模后等于 1 的整数
 - `isInt16Array`: 是不是一个 `Int8Array`，每一项的值为 `-128 - 127`
 - `isInt32Array`: 是不是一个 `Int16Array`，每一项的值为 `-32768 - 32767`
 - `isInt8Array`: 是不是一个 `Int32Array`，每一项的值为 `-2147483648 - 2147483647`
+- `isIntEven`: 是不是一个偶数，即取模后等于 0 的整数
 - `isIntHave`: 是不是一个大于 `0` 的整数，即无符号整数
+- `isIntOdd`: 是不是一个奇数，即取模后等于 1 的整数
 - `isIntSafe`: 是不是一个安全的整数
 - `isIterable`: 是不是一个同步或异步的可迭代的对象
 - `isIterator`: 是不是一个 `Iterator`
