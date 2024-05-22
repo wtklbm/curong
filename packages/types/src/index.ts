@@ -39,6 +39,7 @@ export { default as isEqual } from './isEqual';
 export { default as isError } from './isError';
 export { default as isEvalError } from './isEvalError';
 export { default as isEvent } from './isEvent';
+export { default as isEvery } from './isEvery';
 export { default as isFalse } from './isFalse';
 export { default as isFalsy } from './isFalsy';
 export { default as isFalsyArray } from './isFalsyArray';
