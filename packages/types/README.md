@@ -111,7 +111,7 @@
 - `isStringHave`: 是不是一个长度大于 `0` 的字符串
 - `isStringObject`: 是不是一个被包装后的字符串对象，即 `new String()`
 - `isStringPrimitive`: 是不是一个基本的字符串，即 `string`
-- `isStringTrim`: 是不是一个经过 `trim` 后长度大于 `0` 的字符串
+- `isStringTrim`: 是不是一个经过 `trim` 后长度大于指定长度的字符串
 - `isSymbol`: 是不是一个 `symbol` 或被包装后的 `Symbol` 对象
 - `isSymbolArray`: 是不是一个数组，且每一项的值都是 `symbol` 或被包装后的 `Symbol` 对象
 - `isSymbolObject`: 是不是一个被包装后的 `Symbol` 对象，即 `Object(Symbol())`
