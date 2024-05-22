@@ -93,6 +93,7 @@
 - `isPlainObjectHave`: 是不是一个属性个数大于 `0` 的普通对象，即 `{}`
 - `isPrimitive`: 是不是一个基本类型的值
 - `isPromise`: 是不是一个 `Promise`
+- `isPromiseLike`: 是不是一个有 `then` 方法的像 `Promise` 的对象或函数
 - `isProperty`: 确定一个值上是否具有指定名称的属性，该属性可以是私有属性，也可以是原型上的属性
 - `isPropertyDescriptor`: 是不是一个属性描述器
 - `isPropertyKey`: 是不是一个可以作为属性的值
