@@ -8,6 +8,7 @@
 - `createWithNull`: 创建一个纯对象，该对象的原型是 `null`
 - `deleteAttrs`: 从一个对象中删除一些属性
 - `fromCascadeKeys`: 将级联属性数组转换为一个属性字符串
+- `isInstanceOf`: 判断给定的值是否是指定类的实例
 - `isKeysIncludes`: 检查指定的键是否存在于给定的对象或类数组对象中
 - `isPrototypeProperty`: 是不是当前对象的原型上的属性
 - `isValuesIncludes`: 检查指定的值是否存在于给定的对象或类数组对象中
