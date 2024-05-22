@@ -115,6 +115,7 @@
 - `isSharedArrayBuffer`: 是不是一个 `SharedArrayBuffer`
 - `isSizey`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于或等于 0 的安全的无符号整数
 - `isSizeyHave`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于 0 的安全的无符号整数
+- `isSome`: 检查数组中是否至少有一个元素满足给定的条件
 - `isStream`: 是不是一个 `Stream`
 - `isString`: 是不是一个字符串或被包装后的字符串对象
 - `isStringArray`: 是不是一个长度大于 0 的数组，且每一项的值都是字符串或被包装后的字符串对象
