@@ -2,6 +2,7 @@ import { isTruthyArray } from '../src';
 
 describe('@curong/types/isTruthyArray', () => {
     test('测试1', () => {
+        expect(isTruthyArray([])).toBe(false);
         expect(isTruthyArray(false)).toBe(false);
         expect(isTruthyArray(0)).toBe(false);
         expect(isTruthyArray(-0)).toBe(false);
