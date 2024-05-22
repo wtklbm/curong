@@ -10,6 +10,7 @@ export { default as isArrayLike } from './isArrayLike';
 export { default as isArrayLikeHave } from './isArrayLikeHave';
 export { default as isAsyncFunction } from './isAsyncFunction';
 export { default as isAsyncFunctionHave } from './isAsyncFunctionHave';
+export { default as isAsyncGenerator } from './isAsyncGenerator';
 export { default as isAsyncIterable } from './isAsyncIterable';
 export { default as isBigInt } from './isBigInt';
 export { default as isBigInt64Array } from './isBigInt64Array';
