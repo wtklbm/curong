@@ -22,14 +22,14 @@
 - `isAsyncIterable`: 是不是一个异步可迭代的对象
 - `isBigInt`: 是不是一个 `bigInt` (大数) 或被包装后的 `BigInt` 对象
 - `isBigInt64Array`: 是不是一个 `BigInt64Array`
-- `isBigIntArray`: 是不是一个数组，且每一项的值都是 `bigInt` (大数) 或被包装后的 `BigInt` 对象
+- `isBigIntArray`: 是不是一个长度大于 0 的数组，且每一项的值都是 `bigInt` (大数) 或被包装后的 `BigInt` 对象
 - `isBigIntHave`: 是不是一个大于 `0n` 的 `BigInt` (大数)
 - `isBigIntObject`: 是不是一个被包装后的 `BigInt` 对象，即 `Object(0n)`
 - `isBigIntPrimitive`: 是不是一个基本的大数，即 `bigint`
 - `isBigUint64Array`: 是不是一个 `BigUint64Array`
 - `isBlob`: 是不是一个 `Blob`
 - `isBoolean`: 是不是一个布尔值或被包装后的布尔值对象
-- `isBooleanArray`: 是不是一个数组，且每一项的值都是布尔值或被包装后的布尔值对象
+- `isBooleanArray`: 是不是一个长度大于 0 的数组，且每一项的值都是布尔值或被包装后的布尔值对象
 - `isBooleanObject`: 是不是一个被包装后的布尔值对象，即 `new Boolean`
 - `isBooleanPrimitive`: 是不是一个基本的布尔值，即 `boolean`
 - `isBuffer`: 是不是一个 `Buffer`
@@ -46,14 +46,14 @@
 - `isEvent`: 是不是一个 `Event` 事件
 - `isFalse`: 是不是 `false`
 - `isFalsy`: 是不是一个虚值 (强制转换为 `Boolean` 后为 `false` 的值)
-- `isFalsyArray`: 是不是一个数组，且每一项的值都是虚值 (强制转换为 `Boolean` 后为 `false` 的值)
+- `isFalsyArray`: 是不是一个长度大于 0 的数组，且每一项的值都是虚值 (强制转换为 `Boolean` 后为 `false` 的值)
 - `isFile`: 是不是一个 `File` 对象
 - `isFileList`: 是不是一个 `FileList` 对象
 - `isFileReader`: 是不是一个 `FileReader` 对象
 - `isFloat32Array`: 是不是一个 `Float32Array`，每一项的值为 `1.2×10-38 - 3.4×1038`
 - `isFloat64Array`: 是不是一个 `Float64Array`，每一项的值为 `5.0×10-324 - 1.8×10308`
 - `isFormData`: 是不是一个 `isFormData`
-- `isFunction`: 是不是一个函数(包含同步函数、异步函数和 `Generator` 函数)
+- `isFunction`: 是不是一个函数 (包含同步函数、异步函数、`Generator` 函数 ...)
 - `isFunctionHave`: 是不是一个参数个数大于 `0` 的函数
 - `isGenerator`: 是不是一个 `Generator`
 - `isGeneratorFunction`: 是不是一个 `Generator` 函数
@@ -76,11 +76,11 @@
 - `isNotEqual`: `简单` 的判断多个的值是否不相等
 - `isNotZero`: 不是 `0`
 - `isNull`: 是不是 `null`
-- `isNullArray`: 是不是一个数组，且每一项的值都是 `null`
+- `isNullArray`: 是不是一个长度大于 0 的数组，且每一项的值都是 `null`
 - `isNullOrUndefined`: 是不是 `undefined` 或者 `null`
-- `isNullOrUndefinedArray`: 是不是一个数组，且每一项的值都是 `null` 或 `undefined`
+- `isNullOrUndefinedArray`: 是不是一个长度大于 0 的数组，且每一项的值都是 `null` 或 `undefined`
 - `isNumber`: 是不是一个数字或被包装后的数字对象
-- `isNumberArray`: 是不是一个数组，且每一项的值都是数字或被包装后的数字对象
+- `isNumberArray`: 是不是一个长度大于 0 的数组，且每一项的值都是数字或被包装后的数字对象
 - `isNumberHave`: 是不是一个大于 `0` 并且小于或等于 `Number.MAX_VALUE` 的数字
 - `isNumberObject`: 是不是一个被包装后的数字对象，即 `new Number()`
 - `isNumberPrimitive`: 是不是一个基本的数字，即 `number`
@@ -110,13 +110,13 @@
 - `isSizeyHave`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于 0 的安全的无符号整数
 - `isStream`: 是不是一个 `Stream`
 - `isString`: 是不是一个字符串或被包装后的字符串对象
-- `isStringArray`: 是不是一个数组，且每一项的值都是字符串或被包装后的字符串对象
+- `isStringArray`: 是不是一个长度大于 0 的数组，且每一项的值都是字符串或被包装后的字符串对象
 - `isStringHave`: 是不是一个长度大于 `0` 的字符串
 - `isStringObject`: 是不是一个被包装后的字符串对象，即 `new String()`
 - `isStringPrimitive`: 是不是一个基本的字符串，即 `string`
 - `isStringTrim`: 是不是一个经过 `trim` 后长度大于指定长度的字符串
 - `isSymbol`: 是不是一个 `symbol` 或被包装后的 `Symbol` 对象
-- `isSymbolArray`: 是不是一个数组，且每一项的值都是 `symbol` 或被包装后的 `Symbol` 对象
+- `isSymbolArray`: 是不是一个长度大于 0 的数组，且每一项的值都是 `symbol` 或被包装后的 `Symbol` 对象
 - `isSymbolObject`: 是不是一个被包装后的 `Symbol` 对象，即 `Object(Symbol())`
 - `isSyncFunction`: 是不是一个同步函数
 - `isSyncGenerator`: 是不是一个同步的 `Generator`
@@ -127,7 +127,7 @@
 - `isTransform`: 是不是一个 `Transform`
 - `isTrue`: 是不是 `true`
 - `isTruthy`: 是不是一个非虚值 (强制转换为 `Boolean` 后为 `true` 的值)
-- `isTruthyArray`: 是不是一个数组，且每一项的值都是非虚值 (强制转换为 `Boolean` 后为 `true` 的值)
+- `isTruthyArray`: 是不是一个长度大于 0 的数组，且每一项的值都是非虚值 (强制转换为 `Boolean` 后为 `true` 的值)
 - `isTypeError`: 是不是一个 `TypeError` 对象
 - `isTypeofObject`: 使用 `typeof` 判断是不是一个不是 `null` 的任意对象
 - `isUDouble`: 是不是一个无符号浮点数，即大于 `0` 的浮点数
@@ -140,7 +140,7 @@
 - `isUintSafe`: 是不是一个安全的无符号整数
 - `isUintSafeHave`: 是不是一个大于 0 的安全的无符号整数
 - `isUndefined`: 是不是 `undefined`
-- `isUndefinedArray`: 是不是一个数组，且每一项的值都是 `undefined`
+- `isUndefinedArray`: 是不是一个长度大于 0 的数组，且每一项的值都是 `undefined`
 - `isURL`: 是不是一个 `URL`
 - `isUrlSearchParams`: 是不是一个 `URLSearchParams`
 - `isVarName`: 是不是可以把值当做 `JavaScript` 的变量名
