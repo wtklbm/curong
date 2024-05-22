@@ -2,6 +2,7 @@ import { isNumberArray } from '../src';
 
 describe('@curong/types/isNumberArray', () => {
     test('测试1', () => {
+        expect(isNumberArray([])).toBe(false);
         expect(isNumberArray(0)).toBe(false);
         expect(isNumberArray('')).toBe(false);
         expect(isNumberArray(2)).toBe(false);
