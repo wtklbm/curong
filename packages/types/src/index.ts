@@ -50,6 +50,7 @@ export { default as isFloat64Array } from './isFloat64Array';
 export { default as isFormData } from './isFormData';
 export { default as isFunction } from './isFunction';
 export { default as isFunctionArray } from './isFunctionArray';
+export { default as isFunctionBound } from './isFunctionBound';
 export { default as isFunctionHave } from './isFunctionHave';
 export { default as isGenerator } from './isGenerator';
 export { default as isGeneratorFunction } from './isGeneratorFunction';
