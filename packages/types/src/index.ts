@@ -89,6 +89,7 @@ export { default as isPlainObject } from './isPlainObject';
 export { default as isPlainObjectHave } from './isPlainObjectHave';
 export { default as isPrimitive } from './isPrimitive';
 export { default as isPromise } from './isPromise';
+export { default as isPromiseLike } from './isPromiseLike';
 export { default as isProperty } from './isProperty';
 export { default as isPropertyDescriptor } from './isPropertyDescriptor';
 export { default as isPropertyKey } from './isPropertyKey';
