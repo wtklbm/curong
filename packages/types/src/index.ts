@@ -153,6 +153,7 @@ export { default as isURL } from './isURL';
 export { default as isUrlSearchParams } from './isURLSearchParams';
 export { default as isVarName } from './isVarName';
 export { default as isWeakMap } from './isWeakMap';
+export { default as isWeakRef } from './isWeakRef';
 export { default as isWeakSet } from './isWeakSet';
 export { default as isWebWorker } from './isWebWorker';
 export { default as isWindow } from './isWindow';
