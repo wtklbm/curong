@@ -2,6 +2,7 @@ import { isSymbolArray } from '../src';
 
 describe('@curong/types/isSymbolArray', () => {
     test('测试1', () => {
+        expect(isSymbolArray([])).toBe(false);
         expect(isSymbolArray(0)).toBe(false);
         expect(isSymbolArray('')).toBe(false);
         expect(isSymbolArray(Symbol('1'))).toBe(false);
