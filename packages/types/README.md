@@ -132,6 +132,7 @@
 - `isTruthyArray`: 是不是一个长度大于 0 的数组，且每一项的值都是非虚值 (强制转换为 `Boolean` 后为 `true` 的值)
 - `isTypeError`: 是不是一个 `TypeError` 对象
 - `isTypeofObject`: 使用 `typeof` 判断是不是一个不是 `null` 的任意对象
+- `isTypeofObjectArray`: 是不是一个长度大于 0 的数组，且每一项的值都是对象 (通过 `typeof` 判断且不为 `null`)
 - `isUDouble`: 是不是一个无符号浮点数，即大于 `0` 的浮点数
 - `isUint`: 是不是一个无符号整数，即大于或等于 `0` 的整数
 - `isUint16Array`: 是不是一个 `Uint16Array`，每一项的值为 `0 - 65535`
