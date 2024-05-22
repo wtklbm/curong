@@ -2,6 +2,7 @@ import { isUndefinedArray } from '../src';
 
 describe('@curong/types/isUndefinedArray', () => {
     test('测试1', () => {
+        expect(isUndefinedArray([])).toBe(false);
         expect(isUndefinedArray(0)).toBe(false);
         expect(isUndefinedArray('')).toBe(false);
         expect(isUndefinedArray(void 0)).toBe(false);
