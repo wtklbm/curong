@@ -156,6 +156,7 @@
 - `isUrlSearchParams`: 是不是一个 `URLSearchParams`
 - `isVarName`: 是不是可以把值当做 `JavaScript` 的变量名
 - `isWeakMap`: 是不是一个 `WeakMap`
+- `isWeakRef`: 是不是一个 `WeakRef`
 - `isWeakSet`: 是不是一个 `WeakSet`
 - `isWindow`: 是不是 `Window` 对象
 - `isWritable`: 是不是一个 `Writable`
