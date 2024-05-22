@@ -1,9 +1,9 @@
 import isNullOrUndefined from './isNullOrUndefined';
-import isUint from './isUint';
+import isUintSafe from './isUintSafe';
 import type { Sizey } from './types';
 
 /**
- * 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于或等于 0 的整数
+ * 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于或等于 0 的安全的无符号整数
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
@@ -12,5 +12,5 @@ import type { Sizey } from './types';
 export default function isSizey<T extends {}>(
     value: unknown
 ): value is Sizey<T> {
-    return !isNullOrUndefined(value) && isUint((value as any).size);
+    return !isNullOrUndefined(value) && isUintSafe((value as any).size);
 }
