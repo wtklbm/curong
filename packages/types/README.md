@@ -54,6 +54,7 @@
 - `isFloat64Array`: 是不是一个 `Float64Array`，每一项的值为 `5.0×10-324 - 1.8×10308`
 - `isFormData`: 是不是一个 `isFormData`
 - `isFunction`: 是不是一个函数 (包含同步函数、异步函数、`Generator` 函数 ...)
+- `isFunctionArray`: 是不是一个长度大于 0 的数组，且每一项的值都是函数 (包含同步函数、异步函数、`Generator` 函数 ...)
 - `isFunctionHave`: 是不是一个参数个数大于 `0` 的函数
 - `isGenerator`: 是不是一个 `Generator`
 - `isGeneratorFunction`: 是不是一个 `Generator` 函数
