@@ -1,10 +1,11 @@
 import { isBooleanArray } from '../src';
 
 describe('@curong/types/isBooleanArray', () => {
-    test('测试true', () => {
+    test('测试1', () => {
         expect(isBooleanArray(0)).toBe(false);
         expect(isBooleanArray('')).toBe(false);
         expect(isBooleanArray(true)).toBe(false);
+        expect(isBooleanArray([])).toBe(false);
         expect(isBooleanArray([true, 1])).toBe(false);
         expect(isBooleanArray([true, ''])).toBe(false);
     });
