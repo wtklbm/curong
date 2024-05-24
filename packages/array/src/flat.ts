@@ -13,5 +13,8 @@ import { isArray } from '@curong/types';
  * ```
  */
 export default function flat<T>(value: T[]): T[] {
-    return value.reduce<T[]>((a, b) => a.concat(isArray(b) ? flat(b) : b), []);
+    return value.reduce<T[]>(
+        (a, b) => a.concat(isArray(b) ? (flat(b) as T[]) : b),
+        []
+    );
 }
