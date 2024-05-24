@@ -1,3 +1,4 @@
+export { default as dimensionLevel } from './dimensionLevel';
 export { default as flat } from './flat';
 export { default as fromArrayLike } from './fromArrayLike';
 export { default as isMultiDimensional } from './isMultiDimensional';
