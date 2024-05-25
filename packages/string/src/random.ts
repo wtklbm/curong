@@ -1,4 +1,4 @@
-import { isBrowser, isFunction, isNodejs } from '@curong/types';
+import { isBrowser, isNodejs } from '@curong/types';
 
 /**
  * 生成安全的随机数字符串
@@ -48,9 +48,12 @@ export default function random(length: number = 15): string | null {
         } else if (isNodejs()) {
             crypto = globalThis.crypto ?? require('crypto').webcrypto;
         }
+
+        return crypto!
+            .getRandomValues(new Uint8Array(length))
+            .join('')
+            .slice(-length);
     } catch {}
 
-    return crypto && isFunction(crypto.getRandomValues)
-        ? crypto.getRandomValues(new Uint8Array(length)).join('').slice(-length)
-        : null;
+    return null;
 }
