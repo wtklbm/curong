@@ -22,7 +22,7 @@ export default function dimensionLevel<T extends unknown[]>(value: T): number {
             return level;
         }
 
-        internal = internal.flat() as unknown[];
+        internal = internal.flat();
         level++;
     }
 
