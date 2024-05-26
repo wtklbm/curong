@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 当前的执行环境是不是 `Node.js`
@@ -15,7 +15,7 @@ export default function isNodejs(): boolean {
         typeof Buffer.isBuffer === 'function' &&
         typeof Buffer.byteLength === 'function' &&
         typeof process === 'object' &&
-        getTag(process) === 'process' &&
+        getTagEqual(process, 'process') &&
         typeof process.nextTick === 'function' &&
         typeof process.exit === 'function' &&
         typeof process.cwd === 'function'
