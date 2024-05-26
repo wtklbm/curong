@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `FileReader` 对象
@@ -7,5 +7,5 @@ import getTag from './getTag';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isFileReader(value: unknown): value is FileReader {
-    return getTag(value) === 'FileReader';
+    return getTagEqual(value, 'FileReader');
 }
