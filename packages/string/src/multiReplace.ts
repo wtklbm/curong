@@ -1,5 +1,9 @@
 import { isArray } from '@curong/types';
 
+type Match = string | RegExp;
+type Replacer = string | ((substring: string, ...args: any[]) => string);
+type Matcher = [Match, Replacer] | { match: Match; replacer: Replacer };
+
 /**
  * 根据一组规则替换字符串的内容
  *
@@ -22,10 +26,10 @@ export default function multiReplace(
          * - `string`: 只能匹配一次
          * - `RegExp`: 可以匹配一次，也可以匹配多次
          */
-        RegExp | string,
+        Match,
 
         /** 要替换的值；或指定一个替换函数，返回替换好的值 */
-        string | ((substring: string, ...args: any[]) => string)
+        Replacer
     ][]
 ): string;
 
@@ -58,19 +62,22 @@ export default function multiReplace(
          * - `string`: 只能匹配一次
          * - `RegExp`: 可以匹配一次，也可以匹配多次
          */
-        match: RegExp | string;
+        match: Match;
 
         /** 要替换的值；或指定一个替换函数，返回替换好的值 */
-        replacer: string | ((substring: string, ...args: any[]) => string);
+        replacer: Replacer;
     }[]
 ): string;
 
-export default function multiReplace(value: string, matchers: any): string {
-    return matchers.reduce((memo: string, matcher: any) => {
-        if (isArray(matcher)) {
-            return memo.replace(matcher[0], matcher[1]);
-        }
-
-        return memo.replace(matcher.match, matcher.replacer);
+export default function multiReplace(
+    value: string,
+    matchers: Matcher[]
+): string {
+    return matchers.reduce((memo: string, matcher: Matcher) => {
+        return memo.replace(
+            ...((isArray(matcher)
+                ? [matcher[0], matcher[1]]
+                : [matcher.match, matcher.replacer]) as [Match, any])
+        );
     }, value);
 }
