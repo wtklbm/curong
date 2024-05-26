@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `Float64Array`，每一项的值为 `5.0×10-324 - 1.8×10308`
@@ -7,5 +7,5 @@ import getTag from './getTag';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isFloat64Array(value: unknown): value is Float64Array {
-    return getTag(value) === 'Float64Array';
+    return getTagEqual(value, 'Float64Array');
 }
