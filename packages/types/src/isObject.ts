@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个类型标记为 `[object Object]` 的对象
@@ -17,5 +17,5 @@ import getTag from './getTag';
 export default function isObject<K extends keyof any, T = unknown>(
     value: any
 ): value is Record<K, T> {
-    return getTag(value) === 'Object';
+    return getTagEqual(value, 'Object');
 }
