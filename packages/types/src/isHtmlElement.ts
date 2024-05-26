@@ -17,7 +17,7 @@ const DOM_PROPERTIES_TO_CHECK: Array<keyof HTMLElement> = [
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isHtmlElement(value: unknown): value is HTMLElement {
+export default function isHTMLElement(value: unknown): value is HTMLElement {
     try {
         return (
             isObject(value) &&
