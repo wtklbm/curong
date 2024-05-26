@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `BigInt64Array`
@@ -10,5 +10,5 @@ import getTag from './getTag';
 export default function isBigInt64Array(
     value: unknown
 ): value is BigInt64Array {
-    return getTag(value) === 'BigInt64Array';
+    return getTagEqual(value, 'BigInt64Array');
 }
