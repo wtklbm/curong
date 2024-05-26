@@ -27,7 +27,8 @@ describe('@curong/object/isInstanceOf', () => {
     test('测试5', () => {
         class SubClass extends MyClass {}
         const subInstance = new SubClass();
-        expect(isInstanceOf(subInstance, MyClass)).toBe(true);
+        expect(isInstanceOf(subInstance, SubClass)).toBe(true);
+        expect(isInstanceOf(subInstance, MyClass)).toBe(false);
     });
 
     test('测试6', () => {
@@ -35,10 +36,6 @@ describe('@curong/object/isInstanceOf', () => {
         expect(isInstanceOf('测试', MyClass)).toBe(false);
         expect(isInstanceOf(true, MyClass)).toBe(false);
         expect(isInstanceOf(Symbol('测试'), MyClass)).toBe(false);
-    });
-
-    test('测试7', () => {
-        const func = () => {};
-        expect(isInstanceOf(func, MyClass)).toBe(false);
+        expect(isInstanceOf(() => {}, MyClass)).toBe(false);
     });
 });
