@@ -18,14 +18,15 @@
 - `encodeEntityToPoint`: 将字符串中的特殊字符编码为 `HTML` 实体编号 (`&#point;`)
 - `fromBytes`: 将字符数组转换为字符串
 - `frontOf`: 从一个字符串的指定索引的前面查找是否包含某个字符串
+- `isSpaceString`: 验证一个非空字符串是不是一个空字符字符串
 - `matchOrder`: 遍历一组正则表达式来验证一个字符串，当任意一个正则表达式符合字符串时，则返回该正则捕获到的结果
 - `matchSplit`: 使用正则表达式来拆分一个字符串，最后返回拆分后的结果
+- `multiReplace`: 根据一组规则替换字符串的内容
 - `notStarts`: 判断一个字符串是否不是以某些字符串开头
 - `parseJson`: 将 `JSON` 格式的字符串转换为一个 `JavaScript` 对象
 - `quoteClosed`: `简单` 的判断 `代码字符串` 在指定的符号之后是否含有未闭合的引号
 - `quotePair`: 从一个字符串中获取未闭合的引号
 - `random`: 生成安全的随机数字符串
-- `multiReplace`: 根据一组规则替换字符串的内容
 - `rmControl`: 删除字符串中所有的控制字符(包含回车、换行、制表符等)
 - `rmControlEnd`: 删除字符串结尾的控制字符(包含回车、换行、制表符等)
 - `rmControlStart`: 删除字符串开头的控制字符(包含回车、换行、制表符等)
