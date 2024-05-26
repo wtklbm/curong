@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `Int16Array`，每一项的值为 `-32768 - 32767`
@@ -7,5 +7,5 @@ import getTag from './getTag';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isInt16Array(value: unknown): value is Int16Array {
-    return getTag(value) === 'Int16Array';
+    return getTagEqual(value, 'Int16Array');
 }
