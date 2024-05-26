@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 import type { AsyncFunction } from './types';
 
 /**
@@ -10,5 +10,5 @@ import type { AsyncFunction } from './types';
 export default function isAsyncFunction<T = unknown>(
     value: unknown
 ): value is AsyncFunction<T> {
-    return getTag(value) === 'AsyncFunction';
+    return getTagEqual(value, 'AsyncFunction');
 }
