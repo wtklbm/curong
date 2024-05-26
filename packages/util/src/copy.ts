@@ -69,7 +69,7 @@ const copyByTag = <T extends object>(value: any, weak: WeakMap<T, T>) => {
 
         case 'BigInt64Array':
         case 'BigUint64Array':
-            return (value as any[]).map((v: any) => copy(v));
+            return new value.constructor(value);
 
         case 'DataView':
             const buffer = copyArrayBuffer(value.buffer);
