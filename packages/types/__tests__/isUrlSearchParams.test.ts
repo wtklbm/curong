@@ -1,8 +1,8 @@
-import { isUrlSearchParams } from '../src';
+import { isURLSearchParams } from '../src';
 
-describe('@curong/types/isUrlSearchParams', () => {
+describe('@curong/types/isURLSearchParams', () => {
     test('测试1', () => {
-        expect(isUrlSearchParams({})).toBe(false);
-        expect(isUrlSearchParams(new URLSearchParams())).toBe(true);
+        expect(isURLSearchParams({})).toBe(false);
+        expect(isURLSearchParams(new URLSearchParams())).toBe(true);
     });
 });
