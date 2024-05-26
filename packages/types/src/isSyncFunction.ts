@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个同步函数
@@ -7,5 +7,5 @@ import getTag from './getTag';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isSyncFunction(value: unknown): value is Function {
-    return getTag(value) === 'Function';
+    return getTagEqual(value, 'Function');
 }
