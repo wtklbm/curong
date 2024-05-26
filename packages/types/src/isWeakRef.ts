@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `WeakRef`
@@ -10,5 +10,5 @@ import getTag from './getTag';
  * @see [MDN 文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/WeakRef)
  */
 export default function isWeakRef(value: unknown): value is WeakRef<object> {
-    return getTag(value) === 'WeakRef';
+    return getTagEqual(value, 'WeakRef');
 }
