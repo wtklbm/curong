@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `FileList` 对象
@@ -7,5 +7,5 @@ import getTag from './getTag';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isFileList(value: unknown): value is FileList {
-    return getTag(value) === 'FileList';
+    return getTagEqual(value, 'FileList');
 }
