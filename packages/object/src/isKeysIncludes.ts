@@ -1,13 +1,7 @@
 import { isBoolean } from '@curong/types';
 
+import keys from './keys';
 import { ObjectType } from './types';
-
-const fns = [
-    Object.keys,
-    Object.getOwnPropertyNames,
-    Object.getOwnPropertySymbols,
-    Reflect.ownKeys
-];
 
 /**
  * 检查指定的键是否存在于给定的对象或类数组对象中
@@ -96,6 +90,6 @@ export default function isKeysIncludes(
     useAny: boolean = false
 ): boolean {
     isBoolean(methodLevel) && ((useAny = methodLevel), (methodLevel = 0));
-    const keys = new Set(fns[methodLevel as number](object));
-    return [key].flat()[useAny ? 'some' : 'every']((k: any) => keys.has(k));
+    const k = new Set(keys(object, methodLevel));
+    return [key].flat()[useAny ? 'some' : 'every']((v: any) => k.has(v));
 }
