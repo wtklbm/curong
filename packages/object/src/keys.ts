@@ -23,10 +23,9 @@ const fns = [
  * @example
  *
  * ```javascript
- * const b = Symbol('2');
- * const obj = { a: 1, [b]: '2' };
- * console.log(isKeysIncludes(obj)); // [ 'a' ]
- * console.log(isKeysIncludes(obj, 3)); // [ 'a', Symbol(2) ]
+ * const obj = { a: 1, [Symbol('2')]: '2' };
+ * console.log(keys(obj)); // [ 'a' ]
+ * console.log(keys(obj, 3)); // [ 'a', Symbol(2) ]
  * ```
  */
 export default function keys(
