@@ -152,6 +152,7 @@ export { default as isUndefined } from './isUndefined';
 export { default as isUndefinedArray } from './isUndefinedArray';
 export { default as isURL } from './isURL';
 export { default as isURLSearchParams } from './isURLSearchParams';
+export { default as isURLString } from './isURLString';
 export { default as isVarName } from './isVarName';
 export { default as isWeakMap } from './isWeakMap';
 export { default as isWeakRef } from './isWeakRef';
