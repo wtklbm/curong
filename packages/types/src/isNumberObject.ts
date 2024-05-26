@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个被包装后的数字对象，即 `new Number()` || `Object(0)`
@@ -7,5 +7,5 @@ import getTag from './getTag';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isNumberObject(value: unknown): value is Number {
-    return typeof value === 'object' && getTag(value) === 'Number';
+    return typeof value === 'object' && getTagEqual(value, 'Number');
 }
