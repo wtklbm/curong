@@ -13,5 +13,6 @@ export { default as shallowEqual } from './shallowEqual';
 export { default as stringify } from './stringify';
 export { default as toCascadeKeys } from './toCascadeKeys';
 export { default as toLowerCaseKey } from './toLowerCaseKey';
+export { default as values } from './values';
 
 export * from './types';
