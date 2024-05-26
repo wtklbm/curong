@@ -8,6 +8,7 @@ export { default as isInstanceOf } from './isInstanceOf';
 export { default as isKeysIncludes } from './isKeysIncludes';
 export { default as isPrototypeProperty } from './isPrototypeProperty';
 export { default as isValuesIncludes } from './isValuesIncludes';
+export { default as keys } from './keys';
 export { default as shallowEqual } from './shallowEqual';
 export { default as stringify } from './stringify';
 export { default as toCascadeKeys } from './toCascadeKeys';
