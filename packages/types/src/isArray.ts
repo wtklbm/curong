@@ -16,7 +16,7 @@ import isFunction from './isFunction';
  * }
  * ```
  */
-export default function isArray<T extends any[]>(value: unknown): value is T {
+export default function isArray<T extends unknown[]>(value: unknown): value is T {
     // Note: 数组/类数组、字符串、函数、对象、`Window`、`Buffer`/`ArrayBuffer` 等都有 `length` 属性
     return (
         (isFunction(Array.isArray) && Array.isArray(value)) ||
