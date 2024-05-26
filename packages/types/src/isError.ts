@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `Error` 对象
@@ -9,7 +9,7 @@ import getTag from './getTag';
  */
 export default function isError(value: unknown): value is Error {
     return (
-        getTag(value) === 'Error' &&
+        getTagEqual(value, 'Error') &&
         Object.getPrototypeOf(value).name === 'Error'
     );
 }
