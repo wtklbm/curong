@@ -63,4 +63,39 @@ describe('@curong/array/uniqueFromPrimitive', () => {
         const UniS2 = uniqueFromPrimitive(s1, s2, [s2, s1]);
         expect(UniS2.length).toBe(2);
     });
+
+    test('测试5', () => {
+        const numbers = [1, 2, 3, 2, 1];
+        expect(uniqueFromPrimitive(numbers)).toEqual([1, 2, 3]);
+    });
+
+    test('测试6', () => {
+        const fruits = ['apple', 'banana', 'apple', 'orange', 'banana'];
+        expect(uniqueFromPrimitive(fruits)).toEqual(['apple', 'banana', 'orange']);
+    });
+
+    test('测试7', () => {
+        const mixedArray = [1, 'apple', true, 1, 'apple', true];
+        expect(uniqueFromPrimitive(mixedArray)).toEqual([1, 'apple', true]);
+    });
+
+    test('测试8', () => {
+        const emptyArray: any[] = [];
+        expect(uniqueFromPrimitive(emptyArray)).toEqual([]);
+    });
+
+    test('测试9', () => {
+        const singleElementArray = [42];
+        expect(uniqueFromPrimitive(singleElementArray)).toEqual([42]);
+    });
+
+    test('测试10', () => {
+        const arrayWithNullAndUndefined = [null, undefined, null, undefined];
+        expect(uniqueFromPrimitive(arrayWithNullAndUndefined)).toEqual([null, undefined]);
+    });
+
+    test('测试11', () => {
+        const arrayWithNaN = [NaN, NaN];
+        expect(uniqueFromPrimitive(arrayWithNaN)).toEqual([NaN]);
+    });
 });
