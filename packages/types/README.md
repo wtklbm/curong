@@ -5,7 +5,8 @@
 
 `@curong/types` 主要包含以下的方法:
 
-- `getTag`: 获取原型上的类型标记
+- `getTag`: 判断原型上的类型标记是否等于某个值
+- `getTagEqual`: 获取原型上的类型标记
 - `isAnyError`: 是不是一个任意的 `Error` 对象
 - `isArguments`: 是不是函数的参数
 - `isArray`: 是不是一个数组
