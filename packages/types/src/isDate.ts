@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个有效的 `Date`
@@ -7,5 +7,5 @@ import getTag from './getTag';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isDate(value: unknown): value is Date {
-    return getTag(value) === 'Date';
+    return getTagEqual(value, 'Date');
 }
