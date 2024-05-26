@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个被包装后的字符串对象，即 `new String()` || `Object('')`
@@ -7,5 +7,5 @@ import getTag from './getTag';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isStringObject(value: unknown): value is String {
-    return typeof value === 'object' && getTag(value) === 'String';
+    return typeof value === 'object' && getTagEqual(value, 'String');
 }
