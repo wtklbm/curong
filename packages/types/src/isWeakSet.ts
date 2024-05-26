@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `WeakSet`
@@ -13,5 +13,5 @@ import getTag from './getTag';
 export default function isWeakSet<T extends object>(
     value: unknown
 ): value is WeakSet<T> {
-    return getTag(value) === 'WeakSet';
+    return getTagEqual(value, 'WeakSet');
 }
