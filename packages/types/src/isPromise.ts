@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `Promise`
@@ -22,5 +22,5 @@ import getTag from './getTag';
 export default function isPromise<T = unknown>(
     value: unknown
 ): value is Promise<T> {
-    return getTag(value) === 'Promise';
+    return getTagEqual(value, 'Promise');
 }
