@@ -1,4 +1,5 @@
 export { default as getTag } from './getTag';
+export { default as getTagEqual } from './getTagEqual';
 export { default as isAnyError } from './isAnyError';
 export { default as isArguments } from './isArguments';
 export { default as isArray } from './isArray';
