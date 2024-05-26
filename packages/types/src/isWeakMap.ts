@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `WeakMap`
@@ -27,5 +27,5 @@ import getTag from './getTag';
 export default function isWeakMap<K extends object, V = unknown>(
     value: unknown
 ): value is WeakMap<K, V> {
-    return getTag(value) === 'WeakMap';
+    return getTagEqual(value, 'WeakMap');
 }
