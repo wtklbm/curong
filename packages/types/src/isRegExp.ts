@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个正则表达式
@@ -55,5 +55,5 @@ import getTag from './getTag';
  * ```
  */
 export default function isRegExp(value: unknown): value is RegExp {
-    return getTag(value) === 'RegExp';
+    return getTagEqual(value, 'RegExp');
 }
