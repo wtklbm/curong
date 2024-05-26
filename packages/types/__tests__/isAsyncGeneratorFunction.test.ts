@@ -36,9 +36,11 @@ describe('@curong/types/isAsyncGeneratorFunction', () => {
 
     test('测试2', () => {
         function* test1() {}
+        expect(isAsyncGeneratorFunction(test1)).toBeFalsy();
         expect(isAsyncGeneratorFunction(test1())).toBeFalsy();
 
         async function* test2() {}
-        expect(isAsyncGeneratorFunction(test2())).toBeTruthy();
+        expect(isAsyncGeneratorFunction(test2)).toBeTruthy();
+        expect(isAsyncGeneratorFunction(test2())).toBeFalsy();
     });
 });
