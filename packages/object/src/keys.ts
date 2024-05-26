@@ -1,6 +1,6 @@
 import { isUint } from '@curong/types';
 
-import { ObjectType } from './types';
+import type { ObjectType } from './types';
 
 const fns = [
     Object.keys,
