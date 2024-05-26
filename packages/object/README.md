@@ -9,6 +9,7 @@
 - `deleteAttrs`: 从一个对象中删除一些属性
 - `fromCascadeKeys`: 将级联属性数组转换为一个属性字符串
 - `isPrototypeProperty`: 是不是当前对象的原型上的属性
+- `keys`: 从给定的对象或类数组对象中获取所有的键
 - `shallowEqual`: 通过浅比较的方式比较两个对象中的属性。(仅比较对象中的一层属性)
 - `stringify`: 将一个值转换为一个字符串
 - `toCascadeKeys`: 将级联属性字符串转换为一个级联属性数组
