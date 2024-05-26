@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个异步的 `Generator` 函数
@@ -9,5 +9,5 @@ import getTag from './getTag';
 export default function isAsyncGeneratorFunction(
     value: unknown
 ): value is AsyncGeneratorFunction {
-    return getTag(value) === 'AsyncGeneratorFunction';
+    return getTagEqual(value, 'AsyncGeneratorFunction');
 }
