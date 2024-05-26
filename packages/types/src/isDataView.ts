@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `DataView`
@@ -8,5 +8,5 @@ import getTag from './getTag';
  * @info `DataView` 是一个可以从二进制 `ArrayBuffer` 对象中读写多种数值类型的底层接口，使用它时，不用考虑不同平台的字节序问题。它是一个二进制字节缓存区。
  */
 export default function isDataView(value: unknown): value is DataView {
-    return getTag(value) === 'DataView';
+    return getTagEqual(value, 'DataView');
 }
