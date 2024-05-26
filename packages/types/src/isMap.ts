@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `Map`
@@ -22,5 +22,5 @@ import getTag from './getTag';
 export default function isMap<K = unknown, V = unknown>(
     value: unknown
 ): value is Map<K, V> {
-    return getTag(value) === 'Map';
+    return getTagEqual(value, 'Map');
 }
