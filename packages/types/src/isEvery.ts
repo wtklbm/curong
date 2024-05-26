@@ -17,5 +17,5 @@ export default function isEvery<
     P extends (value: unknown) => boolean
 >(value: V | V[], predicate: P | P[]): value is V {
     const v = [value].flat() as V[];
-    return [predicate].flat().every(v.every);
+    return [predicate].flat().every(f => v.every(f));
 }
