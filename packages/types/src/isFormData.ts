@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 import isFunction from './isFunction';
 import isNullOrUndefined from './isNullOrUndefined';
 import isTypeofObject from './isTypeofObject';
@@ -14,7 +14,7 @@ export default function isFormData(value: unknown): value is FormData {
         (isFunction(FormData) && value instanceof FormData) ||
         (!isNullOrUndefined(value) &&
             isFunction((value as FormData).append) &&
-            (getTag(value) === 'FormData' ||
+            (getTagEqual<FormData>(value, 'FormData') ||
                 (isTypeofObject(value) &&
                     isFunction(value.toString) &&
                     value.toString() === '[object FormData]')))
