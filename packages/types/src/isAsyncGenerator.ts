@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个异步的 `Generator`
@@ -9,5 +9,5 @@ import getTag from './getTag';
 export default function isAsyncGenerator<T = unknown, R = unknown, N = unknown>(
     value: unknown
 ): value is AsyncGenerator<T, R, N> {
-    return getTag(value) === 'AsyncGenerator';
+    return getTagEqual(value, 'AsyncGenerator');
 }
