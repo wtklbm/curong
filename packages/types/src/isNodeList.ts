@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `NodeList`
@@ -7,5 +7,5 @@ import getTag from './getTag';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isNodeList(value: unknown): value is NodeList {
-    return getTag(value) === 'NodeList';
+    return getTagEqual(value, 'NodeList');
 }
