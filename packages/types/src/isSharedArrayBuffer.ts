@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `SharedArrayBuffer`
@@ -9,5 +9,5 @@ import getTag from './getTag';
 export default function isSharedArrayBuffer(
     value: unknown
 ): value is SharedArrayBuffer {
-    return getTag(value) === 'SharedArrayBuffer';
+    return getTagEqual(value, 'SharedArrayBuffer');
 }
