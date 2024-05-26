@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `URLSearchParams`
@@ -9,5 +9,5 @@ import getTag from './getTag';
 export default function isUrlSearchParams(
     value: unknown
 ): value is URLSearchParams {
-    return getTag(value) === 'URLSearchParams';
+    return getTagEqual(value, 'URLSearchParams');
 }
