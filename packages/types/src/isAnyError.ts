@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个任意的 `Error` 对象
@@ -17,5 +17,5 @@ import getTag from './getTag';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isAnyError(value: unknown): value is Error {
-    return getTag(value) === 'Error' || value instanceof Error;
+    return getTagEqual<Error>(value, 'Error') || value instanceof Error;
 }
