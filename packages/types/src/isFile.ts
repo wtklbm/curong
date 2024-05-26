@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `File` 对象
@@ -16,5 +16,5 @@ import getTag from './getTag';
  * 比如说， `FileReader`, `URL.createObjectURL()`, `createImageBitmap()`, 及 `XMLHttpRequest.send()` 都能处理 `Blob` 和 `File`。
  */
 export default function isFile(value: unknown): value is File {
-    return getTag(value) === 'File';
+    return getTagEqual(value, 'File');
 }
