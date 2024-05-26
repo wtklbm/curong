@@ -57,7 +57,7 @@ export { default as isFunctionBound } from './isFunctionBound';
 export { default as isFunctionHave } from './isFunctionHave';
 export { default as isGenerator } from './isGenerator';
 export { default as isGeneratorFunction } from './isGeneratorFunction';
-export { default as isHtmlElement } from './isHtmlElement';
+export { default as isHTMLElement } from './isHTMLElement';
 export { default as isInfinity } from './isInfinity';
 export { default as isInt } from './isInt';
 export { default as isInt16Array } from './isInt16Array';
