@@ -1,7 +1,7 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /** 验证是不是 `Window` 的默认函数 */
-const defaultIsWindow = (value: unknown) => getTag(value) === 'Window';
+const defaultIsWindow = (value: unknown) => getTagEqual(value, 'Window');
 
 /**
  * 是不是 `Window` 对象
