@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个被包装后的 `Symbol` 对象，即 `Object(Symbol())`
@@ -7,5 +7,5 @@ import getTag from './getTag';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isSymbolObject(value: unknown): value is Symbol {
-    return typeof value === 'object' && getTag(value) === 'Symbol';
+    return typeof value === 'object' && getTagEqual(value, 'Symbol');
 }
