@@ -113,8 +113,8 @@ describe('@curong/util/copy', () => {
             u8a: new Uint8ClampedArray(),
             u16: new Uint16Array(),
             u32: new Uint32Array(),
-            // b64: new BigInt64Array(8),
-            // ub64: new BigUint64Array(),
+            b64: new BigInt64Array([2n, 3n]),
+            ub64: new BigUint64Array([1n, 3n]),
             o: new Object({ a: 1 })
         };
 
@@ -133,8 +133,16 @@ describe('@curong/util/copy', () => {
         expect(obj.u16 === ret.u16).toBe(false);
         expect(obj.u32 === ret.u32).toBe(false);
         expect(obj.o === ret.o).toBe(false);
-        // expect(obj.b64 === ret.b64).toBe(false);
-        // expect(obj.ub64 === ret.ub64).toBe(false);
+        expect(obj.b64 === ret.b64).toBe(false);
+        expect(obj.b64[0]).toBe(2n);
+        expect(obj.b64[1]).toBe(3n);
+        expect(obj.b64[0] === ret.b64[0]).toBe(true);
+        expect(obj.b64[1] === ret.b64[1]).toBe(true);
+        expect(obj.ub64[0]).toBe(1n);
+        expect(obj.ub64[1]).toBe(3n);
+        expect(obj.ub64[0] === ret.ub64[0]).toBe(true);
+        expect(obj.ub64[1] === ret.ub64[1]).toBe(true);
+        expect(obj.ub64 === ret.ub64).toBe(false);
     });
 
     test('测试4', () => {
