@@ -136,6 +136,7 @@ export { default as isTransform } from './isTransform';
 export { default as isTrue } from './isTrue';
 export { default as isTruthy } from './isTruthy';
 export { default as isTruthyArray } from './isTruthyArray';
+export { default as isTwoDimensionalArray } from './isTwoDimensionalArray';
 export { default as isTypeError } from './isTypeError';
 export { default as isTypeofObject } from './isTypeofObject';
 export { default as isTypeofObjectArray } from './isTypeofObjectArray';
