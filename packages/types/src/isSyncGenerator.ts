@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个同步的 `Generator`
@@ -9,5 +9,5 @@ import getTag from './getTag';
 export default function isSyncGenerator<T = unknown, R = unknown, N = unknown>(
     value: unknown
 ): value is Generator<T, R, N> {
-    return getTag(value) === 'Generator';
+    return getTagEqual(value, 'Generator');
 }
