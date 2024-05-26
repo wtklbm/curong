@@ -1,7 +1,7 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /** 验证是不是 `Document` 的默认函数 */
-const defaultIsDocument = (value: unknown) => getTag(value) === 'HTMLDocument';
+const defaultIsDocument = (value: unknown) => getTagEqual(value, 'HTMLDocument');
 
 /**
  * 是不是 `Document` 对象
