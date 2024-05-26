@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 
 /**
  * 是不是一个 `Blob`
@@ -9,5 +9,5 @@ import getTag from './getTag';
  * 可以被读取为文本或二进制数据，也可以转换为 `ReadableStream`
  */
 export default function isBlob(value: unknown): value is Blob {
-    return getTag(value) === 'Blob';
+    return getTagEqual(value, 'Blob');
 }
