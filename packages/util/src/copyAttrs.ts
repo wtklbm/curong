@@ -16,8 +16,6 @@ import lackAttrs from './lackAttrs';
  * @example
  *
  * ```javascript
- *  import { copyAttrs } from '@curong/util';
- *
  *  const obj1 = copyAttrs({a: 1, s: 'str'}, { a: 2, x: 'x' }, true);
  *  console.log(obj1); // {a: 2, x: 'x', s: 'str'}
  *
