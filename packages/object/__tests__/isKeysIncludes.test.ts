@@ -74,6 +74,9 @@ describe('isKeysIncludes', () => {
         expect(isKeysIncludes(obj, ['a', 'c'])).toBe(false);
         expect(isKeysIncludes(obj, ['a', 'c'], true)).toBe(true);
         expect(isKeysIncludes(obj, ['a', b, 'c'])).toBe(false);
+        expect(isKeysIncludes(obj, ['a', b, 'c'], 0)).toBe(false);
+        expect(isKeysIncludes(obj, ['a', b, 'c'], 0, true)).toBe(true);
+        expect(isKeysIncludes(obj, ['a', b, 'c'], 3)).toBe(false);
         expect(isKeysIncludes(obj, ['a', b, 'c'], 3, true)).toBe(true);
     });
 });
