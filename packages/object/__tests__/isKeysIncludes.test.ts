@@ -65,4 +65,15 @@ describe('isKeysIncludes', () => {
         expect(isKeysIncludes(obj, sym, 2)).toBe(true);
         expect(isKeysIncludes(obj, sym, 3)).toBe(true);
     });
+
+    test('测试6', () => {
+        const b = Symbol('2');
+        const obj = { a: 1, [b]: '2' };
+        expect(isKeysIncludes(obj, ['a', b])).toBe(false);
+        expect(isKeysIncludes(obj, ['a', b], 3)).toBe(true);
+        expect(isKeysIncludes(obj, ['a', 'c'])).toBe(false);
+        expect(isKeysIncludes(obj, ['a', 'c'], true)).toBe(true);
+        expect(isKeysIncludes(obj, ['a', b, 'c'])).toBe(false);
+        expect(isKeysIncludes(obj, ['a', b, 'c'], 3, true)).toBe(true);
+    });
 });
