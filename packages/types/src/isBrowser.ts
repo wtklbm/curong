@@ -9,6 +9,7 @@ import isWindow from './isWindow';
  */
 export default function isBrowser() {
     return (
+        typeof window !== 'undefined' &&
         isWindow(window) &&
         isDocument(window.document) &&
         getTag(window.history) === 'History' &&
