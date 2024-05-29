@@ -8,7 +8,7 @@ describe('@curong/types/isInt', () => {
         expect(isInt(Number.NaN)).toBe(false);
         expect(isInt(Infinity)).toBe(false);
         expect(isInt(-Infinity)).toBe(false);
-        expect(isInt(Number.MAX_VALUE)).toBe(false);
+        expect(isInt(Number.MAX_VALUE)).toBe(true); // 是个整数
         expect(isInt(Number.MIN_VALUE)).toBe(false);
     });
 
