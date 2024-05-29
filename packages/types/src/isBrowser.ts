@@ -1,4 +1,4 @@
-import getTag from './getTag';
+import getTagEqual from './getTagEqual';
 import isDocument from './isDocument';
 import isWindow from './isWindow';
 
@@ -12,8 +12,8 @@ export default function isBrowser() {
         typeof window !== 'undefined' &&
         isWindow(window) &&
         isDocument(window.document) &&
-        getTag(window.history) === 'History' &&
-        getTag(window.navigator) === 'Navigator' &&
+        getTagEqual(window.history, 'History') &&
+        getTagEqual(window.navigator, 'Navigator') &&
         typeof HTMLImageElement === 'function' &&
         typeof HTMLCanvasElement === 'function' &&
         typeof HTMLVideoElement === 'function'
