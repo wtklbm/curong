@@ -32,6 +32,7 @@ export { default as isBufferHave } from './isBufferHave';
 export { default as isClass } from './isClass';
 export { default as isDataView } from './isDataView';
 export { default as isDate } from './isDate';
+export { default as isDateValid } from './isDateValid';
 export { default as isDeno } from './isDeno';
 export { default as isDocument } from './isDocument';
 export { default as isDouble } from './isDouble';
