@@ -1,5 +1,4 @@
 import isArrayHave from './isArrayHave';
-import isFalse from './isFalse';
 
 /**
  * `简单` 的判断多个的值是否相等
@@ -15,8 +14,5 @@ export default function isEqual(value: any, ...args: any[]): boolean {
         ? (v: any) => Number.isNaN(v)
         : (v: any) => value === v;
 
-    return (
-        isArrayHave(args) &&
-        args.reduce((memo, v) => memo && !isFalse(handle(v)), true)
-    );
+    return isArrayHave(args) && args.every(handle);
 }
