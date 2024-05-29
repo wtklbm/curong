@@ -14,6 +14,6 @@ export default function isNumberObject(
     return (
         typeof value === 'object' &&
         getTagEqual(value, 'Number') &&
-        (isNaN || !Number.isNaN(value))
+        (isNaN || !Number.isNaN((value as object).valueOf()))
     );
 }
