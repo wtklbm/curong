@@ -3,6 +3,8 @@ import { isNaN } from '../src';
 describe('@curong/types/isNaN', () => {
     test('测试1', () => {
         expect(isNaN(12)).toBe(false);
+        // @ts-ignore
+        expect(isNaN(1n)).toBe(false);
         expect(isNaN(12, false)).toBe(false);
     });
 
