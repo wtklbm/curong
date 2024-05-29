@@ -95,6 +95,7 @@
 - `isNumberObject`: 是不是一个被包装后的数字对象，即 `new Number()`
 - `isNumberPrimitive`: 是不是一个基本的数字，即 `number`
 - `isNumberSafe`: 是不是一个安全的数字，该数字不能为 `NaN` ，并且介于 `MAX_VALUE` 和 `-MAX_VALUE` 之间
+- `isNumberValid`: 是不是一个有效的数字字符串
 - `isNumeric`: 是不是一个不是 `NaN` 的数字或数字字符串
 - `isNumericString`: 是不是一个转换为 `Number` 后不是 `NaN` 的数字字符串
 - `isObject`: 是不是一个 `[object Object]` 的对象
