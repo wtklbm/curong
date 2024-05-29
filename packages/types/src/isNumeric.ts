@@ -1,5 +1,5 @@
-import isNumber from './isNumber';
-import isString from './isString';
+import isNonNaNNumber from './isNonNaNNumber';
+import isNumericString from './isNumericString';
 
 /**
  * 是不是一个不是 `NaN` 的数字或数字字符串
@@ -8,9 +8,6 @@ import isString from './isString';
  * @returns 是则返回 `true`，否则为 `false`
  * @info 字符串 `Infinity` 和 `-Infinity` 的结果为 `true`
  */
-export default function isNumeric(value: unknown): value is string | number {
-    return (
-        (isNumber(value) && !Number.isNaN(value)) ||
-        (isString(value) && !isNaN(value as any))
-    );
+export default function isNumeric(value: unknown): value is number {
+    return isNonNaNNumber(value) || isNumericString(value);
 }
