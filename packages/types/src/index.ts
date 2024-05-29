@@ -91,6 +91,7 @@ export { default as isNumberObject } from './isNumberObject';
 export { default as isNumberPrimitive } from './isNumberPrimitive';
 export { default as isNumberSafe } from './isNumberSafe';
 export { default as isNumeric } from './isNumeric';
+export { default as isNumericString } from './isNumericString';
 export { default as isObject } from './isObject';
 export { default as isObjectArray } from './isObjectArray';
 export { default as isObjectHave } from './isObjectHave';
