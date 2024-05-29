@@ -20,7 +20,7 @@ describe('@curong/types/isPromiseLike', () => {
 
     test('测试2', () => {
         function fn() {}
-        fn.then = (resolve, reject) => {};
+        fn.then = (resolve: Function, reject: Function) => {};
 
         for (const value of [
             { then: () => 1 },
