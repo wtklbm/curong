@@ -9,4 +9,13 @@ describe('@curong/types/isNumberPrimitive', () => {
         expect(isNumberPrimitive(1)).toBe(true);
         expect(isNumberPrimitive(Number(1))).toBe(true);
     });
+
+    test('测试3', () => {
+        expect(isNumberPrimitive(NaN)).toBe(false);
+        expect(isNumberPrimitive(NaN, true)).toBe(true);
+        expect(isNumberPrimitive(NaN, false)).toBe(false);
+        expect(isNumberPrimitive(Number.NaN)).toBe(false);
+        expect(isNumberPrimitive(Number.NaN, true)).toBe(true);
+        expect(isNumberPrimitive(Number.NaN, false)).toBe(false);
+    });
 });
