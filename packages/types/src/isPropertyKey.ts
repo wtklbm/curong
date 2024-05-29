@@ -11,5 +11,5 @@ import isSymbol from './isSymbol';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isPropertyKey(value: unknown): value is PropertyKey {
-    return isString(value) || isNumber(value) || isSymbol(value);
+    return isString(value) || isNumber(value, true) || isSymbol(value);
 }
