@@ -81,6 +81,7 @@
 - `isNaN`: 是不是一个 `NaN`
 - `isNegativeInfinity`: 是不是一个 `-Infinity`，即小于 `-1.7976931348623157E+103088` 的数值
 - `isNodeList`: 是不是一个 `NodeList`
+- `isNonNaNNumber`: 是不是一个不是 `NaN` 的数字
 - `isNotEqual`: `简单` 的判断多个的值是否不相等
 - `isNotZero`: 不是 `0`
 - `isNull`: 是不是 `null`
