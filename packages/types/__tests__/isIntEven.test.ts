@@ -8,7 +8,7 @@ describe('@curong/types/isIntEven', () => {
         expect(isIntEven(Number.NaN)).toBe(false);
         expect(isIntEven(Infinity)).toBe(false);
         expect(isIntEven(-Infinity)).toBe(false);
-        expect(isIntEven(Number.MAX_VALUE)).toBe(false);
+        expect(isIntEven(Number.MAX_VALUE)).toBe(true);
         expect(isIntEven(Number.MIN_VALUE)).toBe(false);
     });
 
