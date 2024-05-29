@@ -1,4 +1,4 @@
-import { isArray, isNumber } from '@curong/types';
+import { isArray, isNonNaNNumber } from '@curong/types';
 
 /**
  * 判断一个数字的值是否在指定的范围内
@@ -8,7 +8,9 @@ import { isArray, isNumber } from '@curong/types';
  *  - 如果 `range` 是一个单一的数字，则检查 `value` 是否在从 0 到该数字的范围内
  *  - 如果 `range` 是一个包含两个数字的数组，则检查 `value` 是否在这两个数字的最小值和最大值之间
  * @returns 如果 `value` 在指定范围内，则返回 `true`，否则返回 `false`
- * @throws 如果 `range` 不是一个数字或包含两个数字的数组，则抛出 `TypeError`
+ * @throws
+ *  - 如果 `value` 不是一个非 `NaN` 的数字，则会抛出 `TypeError`
+ *  - 如果 `range` 不是一个非 `NaN` 的数字或包含两个数字的数组，则会抛出 `TypeError`
  * @example
  *
  * ```javascript
@@ -20,11 +22,20 @@ export default function isInRange(
     value: number,
     range: number | [number, number]
 ): value is number {
-    if (isNumber(range)) {
-        return value >= Math.min(0, range) && value <= Math.max(0, range);
-    } else if (isArray(range) && range.length === 2) {
-        return value >= Math.min(...range) && value <= Math.max(...range);
+    if (!isNonNaNNumber(value)) {
+        throw new TypeError(`[isInRange] value 必须是有效的数字，不能为 NaN`);
     }
 
-    throw new TypeError(`[isInRange] 无效的范围: ${JSON.stringify(range)}`);
+    if (isNonNaNNumber(range)) {
+        return value >= Math.min(0, range) && value <= Math.max(0, range);
+    }
+
+    if (isArray(range) && range.length === 2 && range.every(isNonNaNNumber)) {
+        const [min, max] = range;
+        return value >= Math.min(min, max) && value <= Math.max(min, max);
+    }
+
+    throw new TypeError(
+        `[isInRange] 必须是有效的数字或数字范围: ${JSON.stringify(range)}`
+    );
 }
