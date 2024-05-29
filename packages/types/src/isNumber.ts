@@ -17,6 +17,8 @@ import isNumberPrimitive from './isNumberPrimitive';
  * - `Number.MIN_SAFE_INTEGER` 最小安全范围的值
  * - `Number.EPSILON`  1 与大于 1 的最小值之间的差
  *
+ * 如果不想包含 `NaN`，请使用 `isNonNaNNumber` 或 `isNumeric` 方法。
+ *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
