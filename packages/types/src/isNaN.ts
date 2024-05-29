@@ -29,5 +29,9 @@ export default function (
     value: unknown,
     isImplicit: boolean = true
 ): value is number {
-    return isImplicit ? isNaN(value as any) : Number.isNaN(value);
+    try {
+        return isImplicit ? isNaN(value as any) : Number.isNaN(value);
+    } catch {}
+
+    return false;
 }
