@@ -15,15 +15,8 @@ export default function isEqual(value: any, ...args: any[]): boolean {
         ? (v: any) => Number.isNaN(v)
         : (v: any) => value === v;
 
-    if (isArrayHave(args)) {
-        for (let i = 0, len = args.length; i < len; i++) {
-            if (isFalse(handle(args[i]))) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    return false;
+    return (
+        isArrayHave(args) &&
+        args.reduce((memo, v) => memo && !isFalse(handle(v)), true)
+    );
 }
