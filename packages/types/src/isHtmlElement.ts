@@ -1,18 +1,11 @@
-import isFunction from './isFunction';
-import isObject from './isObject';
-import isPlainObject from './isPlainObject';
-import isString from './isString';
-
-const DOM_PROPERTIES_TO_CHECK: Array<keyof HTMLElement> = [
-    'attributes',
-    'innerHTML',
-    'nodeValue',
-    'ownerDocument',
-    'style'
-];
-
 /**
  * 是不是一个 `HTMLElement`
+ *
+ * 每一个 `HTMLElement` 具有以下特征：
+ *  - `nodeType` 等于 1
+ *  - `nodeName` 是一个字符串
+ *  - 包含 `attributes`、`innerHTML`、`nodeValue`、`ownerDocument`、`style` 等属性
+ *  - 继承自`<value>.ownerDocument.defaultView.HTMLElement`
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
@@ -20,15 +13,9 @@ const DOM_PROPERTIES_TO_CHECK: Array<keyof HTMLElement> = [
 export default function isHTMLElement(value: unknown): value is HTMLElement {
     try {
         return (
-            isObject(value) &&
-            !isPlainObject(value) &&
-            (value as HTMLElement).nodeType === 1 &&
-            isString((value as HTMLElement).nodeName) &&
-            DOM_PROPERTIES_TO_CHECK.every(p => p in value) &&
-            isFunction(
-                // @ts-ignore
-                (value as HTMLElement).ownerDocument.defaultView.HTMLElement
-            )
+            value instanceof
+            ((value as HTMLElement).ownerDocument.defaultView || window)
+                .HTMLElement
         );
     } catch {}
 
