@@ -16,6 +16,9 @@ describe('@curong/types/isArrayBufferView', () => {
         expect(isArrayBufferView(new Uint32Array())).toBe(true);
         expect(isArrayBufferView(new Float32Array())).toBe(true);
         expect(isArrayBufferView(new Float64Array())).toBe(true);
+        expect(isArrayBufferView(new BigInt64Array())).toBe(true);
+        expect(isArrayBufferView(new BigUint64Array())).toBe(true);
+
         expect(isArrayBufferView(new DataView(new ArrayBuffer(1)))).toBe(true);
     });
 });
