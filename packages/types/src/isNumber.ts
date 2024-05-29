@@ -17,11 +17,13 @@ import isNumberPrimitive from './isNumberPrimitive';
  * - `Number.MIN_SAFE_INTEGER` 最小安全范围的值
  * - `Number.EPSILON`  1 与大于 1 的最小值之间的差
  *
- * 如果不想包含 `NaN`，请使用 `isNonNaNNumber` 或 `isNumeric` 方法。
- *
  * @param value 要验证的值
+ * @param isNaN 当值为 `NaN` 时是否返回 `true`，默认为 `false`
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isNumber(value: unknown): value is number {
-    return isNumberPrimitive(value) || isNumberObject(value);
+export default function isNumber(
+    value: unknown,
+    isNaN: boolean = false
+): value is number {
+    return isNumberPrimitive(value, isNaN) || isNumberObject(value, isNaN);
 }
