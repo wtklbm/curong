@@ -14,8 +14,12 @@ describe('@curong/types/isNumber', () => {
         expect(isNumber(0xff)).toBe(true);
         expect(isNumber(0o644)).toBe(true);
         expect(isNumber(6.2e5)).toBe(true);
-        expect(isNumber(NaN)).toBe(true);
-        expect(isNumber(Number.NaN)).toBe(true);
+        expect(isNumber(NaN)).toBe(false);
+        expect(isNumber(NaN, true)).toBe(true);
+        expect(isNumber(NaN, false)).toBe(false);
+        expect(isNumber(Number.NaN)).toBe(false);
+        expect(isNumber(Number.NaN, true)).toBe(true);
+        expect(isNumber(Number.NaN)).toBe(false);
         expect(isNumber(Infinity)).toBe(true);
     });
 });
