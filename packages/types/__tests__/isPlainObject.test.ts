@@ -5,6 +5,7 @@ describe('@curong/types/isPlainObject', () => {
         expect(isPlainObject(null)).toBe(false);
         expect(isPlainObject(/\d+/)).toBe(false);
         expect(isPlainObject(12)).toBe(false);
+        expect(isPlainObject(Number(12))).toBe(false);
     });
 
     test('测试2', () => {
