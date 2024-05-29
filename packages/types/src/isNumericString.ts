@@ -8,5 +8,9 @@ import isStringHave from './isStringHave';
  * @info 字符串 `Infinity` 和 `-Infinity` 的结果为 `true`
  */
 export default function isNumericString(value: unknown): value is `${number}` {
-    return isStringHave(value) && !isNaN(value as any);
+    try {
+        return isStringHave(value) && !isNaN(value as any);
+    } catch {}
+
+    return false;
 }
