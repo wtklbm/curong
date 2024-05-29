@@ -1,6 +1,6 @@
 import { range } from '@curong/number';
-import { printWarn } from '@curong/term';
-import { isNumber, isObject, isTrue } from '@curong/types';
+import { format, printWarn } from '@curong/term';
+import { isNumberSafe, isObject, isTrue } from '@curong/types';
 
 import type { SleepRunOptions } from './types';
 
@@ -23,6 +23,7 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
  *  - 如果 `duration` 为一个大于 0 的数字，则表示至少应等待 `duration` 毫秒后执行
  *
  * @returns 返回一个 `Promise` 对象的成功态
+ * @throws 如果 `anyTimeout` 的值是 `NaN`，则会抛出异常
  * @example ````
  *
  * ### 传递一个数字
@@ -54,7 +55,15 @@ export default function sleepRun<T>(
     let show: boolean = false;
     let timeout: number = 0;
 
-    if (isNumber(anyTimeout)) {
+    if (isNumberSafe(anyTimeout)) {
+        if (Number.isNaN(anyTimeout)) {
+            throw format({
+                name: 'sleepRun',
+                message: 'anyTimeout 的值必须是有效的安全的数字，不能是 NaN',
+                data: { anyTimeout }
+            });
+        }
+
         timeout = anyTimeout;
     } else if (isObject(anyTimeout)) {
         const { start = 0, end = 0 } = anyTimeout;
