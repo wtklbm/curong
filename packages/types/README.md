@@ -82,7 +82,6 @@
 - `isNaN`: 是不是一个 `NaN`
 - `isNegativeInfinity`: 是不是一个 `-Infinity`，即小于 `-1.7976931348623157E+103088` 的数值
 - `isNodeList`: 是不是一个 `NodeList`
-- `isNonNaNNumber`: 是不是一个不是 `NaN` 的数字
 - `isNotEqual`: `简单` 的判断多个的值是否不相等
 - `isNotZero`: 不是 `0`
 - `isNull`: 是不是 `null`
@@ -96,8 +95,6 @@
 - `isNumberPrimitive`: 是不是一个基本的数字，即 `number`
 - `isNumberSafe`: 是不是一个安全的数字，该数字不能为 `NaN` ，并且介于 `MAX_VALUE` 和 `-MAX_VALUE` 之间
 - `isNumberValid`: 是不是一个有效的数字字符串
-- `isNumeric`: 是不是一个不是 `NaN` 的数字或数字字符串
-- `isNumericString`: 是不是一个转换为 `Number` 后不是 `NaN` 的数字字符串
 - `isObject`: 是不是一个 `[object Object]` 的对象
 - `isObjectArray`: 是不是一个长度大于 0 的数组，且每一项的值都是标记为 `[object Object]` 的对象
 - `isObjectHave`: 是不是一个属性个数大于 `0` 的对象

@@ -1,4 +1,4 @@
-import { isArray, isNonNaNNumber } from '@curong/types';
+import { isArray, isNumber } from '@curong/types';
 
 /**
  * 判断一个数字的值是否在指定的范围内
@@ -22,15 +22,15 @@ export default function isInRange(
     value: number,
     range: number | [number, number]
 ): value is number {
-    if (!isNonNaNNumber(value)) {
+    if (!isNumber(value)) {
         throw new TypeError(`[isInRange] value 必须是有效的数字，不能为 NaN`);
     }
 
-    if (isNonNaNNumber(range)) {
+    if (isNumber(range)) {
         return value >= Math.min(0, range) && value <= Math.max(0, range);
     }
 
-    if (isArray(range) && range.length === 2 && range.every(isNonNaNNumber)) {
+    if (isArray(range) && range.length === 2 && range.every(v => isNumber(v))) {
         const [min, max] = range;
         return value >= Math.min(min, max) && value <= Math.max(min, max);
     }
