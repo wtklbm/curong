@@ -18,4 +18,13 @@ describe('@curong/types/isNumberObject', () => {
         expect(isNumberObject(Object(NaN))).toBe(true);
         expect(isNumberObject(Object(Number.NaN))).toBe(true);
     });
+
+    test('测试3', () => {
+        expect(isNumberObject(Number(NaN))).toBe(false);
+        expect(isNumberObject(Number(NaN), true)).toBe(true);
+        expect(isNumberObject(Number(NaN), false)).toBe(false);
+        expect(isNumberObject(Number(Number.NaN))).toBe(false);
+        expect(isNumberObject(Number(Number.NaN), true)).toBe(true);
+        expect(isNumberObject(Number(Number.NaN), false)).toBe(false);
+    });
 });
