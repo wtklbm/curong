@@ -19,7 +19,7 @@ describe('@curong/types/isFunctionBound', () => {
         expect(isFunctionBound(fn1)).toBe(false);
         expect(isFunctionBound(fn2)).toBe(true);
 
-        function greet(name) {
+        function greet(name: string) {
             console.log(`Hello, ${name}!`);
         }
         const boundGreet = greet.bind(null, 'Alice');
