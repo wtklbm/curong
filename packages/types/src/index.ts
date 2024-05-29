@@ -77,6 +77,7 @@ export { default as isNaN } from './isNaN';
 export { default as isNegativeInfinity } from './isNegativeInfinity';
 export { default as isNodejs } from './isNodejs';
 export { default as isNodeList } from './isNodeList';
+export { default as isNonNaNNumber } from './isNonNaNNumber';
 export { default as isNotEqual } from './isNotEqual';
 export { default as isNotZero } from './isNotZero';
 export { default as isNull } from './isNull';
