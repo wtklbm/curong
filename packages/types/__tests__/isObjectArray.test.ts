@@ -14,6 +14,6 @@ describe('@curong/types/isObjectArray', () => {
     test('测试2', () => {
         expect(isObjectArray([{}])).toBe(true);
         expect(isObjectArray([{}, true])).toBe(false);
-        expect(isObjectArray([{}, Object(1)])).toBe(true);
+        expect(isObjectArray([{}, Object(1)])).toBe(false);
     });
 });
