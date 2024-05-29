@@ -12,7 +12,7 @@ describe('@curong/types/isTypeofObjectArray', () => {
     });
 
     test('测试2', () => {
-        expect(isTypeofObjectArray([{}])).toBe(false);
+        expect(isTypeofObjectArray([{}])).toBe(true);
         expect(isTypeofObjectArray([{}, true])).toBe(false);
         expect(isTypeofObjectArray([{}, Object.create(null)])).toBe(true);
     });
