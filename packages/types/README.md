@@ -91,6 +91,7 @@
 - `isNullOrUndefinedArray`: 是不是一个长度大于 0 的数组，且每一项的值都是 `null` 或 `undefined`
 - `isNumber`: 是不是一个数字或被包装后的数字对象
 - `isNumberArray`: 是不是一个长度大于 0 的数组，且每一项的值都是数字或被包装后的数字对象
+- `isNumberFinite`: 是不是一个不是 `Infinity`、`-Infinity` 或 `NaN` 的有限数
 - `isNumberHave`: 是不是一个不是 `0` 、`Infinity`、`-Infinity` 或 `NaN` 的数字
 - `isNumberNegative`: 是不是一个小于 `0` 且不是 `-Infinity` 或 `NaN` 的负数
 - `isNumberObject`: 是不是一个被包装后的数字对象，即 `new Number()` || `Object(0)`
