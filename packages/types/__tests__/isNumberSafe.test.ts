@@ -3,6 +3,7 @@ import { isNumberSafe } from '../src';
 describe('@curong/types/isNumberSafe', () => {
     test('测试1', () => {
         expect(isNumberSafe(Infinity)).toBe(false);
+        expect(isNumberSafe(-Infinity)).toBe(false);
         expect(isNumberSafe(Number.POSITIVE_INFINITY)).toBe(false);
     });
 
@@ -15,5 +16,6 @@ describe('@curong/types/isNumberSafe', () => {
 
     test('测试3', () => {
         expect(isNumberSafe(NaN)).toBe(false);
+        expect(isNumberSafe(Number.NaN)).toBe(false);
     });
 });
