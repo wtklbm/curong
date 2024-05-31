@@ -3,6 +3,8 @@ import { isIntSafe } from '../src';
 describe('@curong/types/isIntSafe', () => {
     test('测试1', () => {
         expect(isIntSafe(12.8)).toBe(false);
+        expect(isIntSafe(3.14159)).toBe(false);
+        expect(isIntSafe(-3.14159)).toBe(false);
         expect(isIntSafe([1])).toBe(false);
         expect(isIntSafe(Number.MIN_SAFE_INTEGER - 2)).toBe(false);
         expect(isIntSafe(Number.MAX_SAFE_INTEGER + 2)).toBe(false);
