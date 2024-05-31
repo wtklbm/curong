@@ -1,6 +1,6 @@
 import { range } from '@curong/number';
 import { format, printWarn } from '@curong/term';
-import { isNumberSafe, isObject, isTrue } from '@curong/types';
+import { isNumberFinite, isObject, isTrue } from '@curong/types';
 
 import type { SleepRunOptions } from './types';
 
@@ -55,15 +55,7 @@ export default function sleepRun<T>(
     let show: boolean = false;
     let timeout: number = 0;
 
-    if (isNumberSafe(anyTimeout)) {
-        if (Number.isNaN(anyTimeout)) {
-            throw format({
-                name: 'sleepRun',
-                message: 'anyTimeout 的值必须是有效的安全的数字，不能是 NaN',
-                data: { anyTimeout }
-            });
-        }
-
+    if (isNumberFinite(anyTimeout)) {
         timeout = anyTimeout;
     } else if (isObject(anyTimeout)) {
         const { start = 0, end = 0 } = anyTimeout;
@@ -76,6 +68,12 @@ export default function sleepRun<T>(
                   : start < end
                     ? range(end, start)
                     : range(start, end);
+    } else {
+        throw format({
+            name: 'sleepRun',
+            message: 'anyTimeout 的值必须为有限数或一个间隔对象',
+            data: { anyTimeout }
+        });
     }
 
     if (isTrue(show) && timeout > 0) {
