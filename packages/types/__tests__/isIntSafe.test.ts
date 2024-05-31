@@ -16,6 +16,7 @@ describe('@curong/types/isIntSafe', () => {
     });
 
     test('测试2', () => {
+        expect(isIntSafe(0)).toBe(true);
         expect(isIntSafe(22123412412434)).toBe(true);
         expect(isIntSafe(Math.pow(2, 53) - 1)).toBe(true);
 
