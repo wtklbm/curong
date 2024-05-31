@@ -7,6 +7,6 @@
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isNumberFinite(value: unknown): boolean {
+export default function isNumberFinite(value: unknown): value is number {
     return Number.isFinite(value);
 }
