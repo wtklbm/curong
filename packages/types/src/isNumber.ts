@@ -9,10 +9,10 @@ import isNumberPrimitive from './isNumberPrimitive';
  * - `Infinity` 无穷大
  * - `Number.POSITIVE_INFINITY` 正无穷大
  * - `Number.NEGATIVE_INFINITY` 负无穷大
- * - `Number.MAX_VALUE` 最大值，`MAX_VALUE` 属性值接近于 `1.79E+308`。大于 `MAX_VALUE` 的值代表 `Infinity`。
+ * - `Number.MAX_VALUE` 最大正数，`MAX_VALUE` 为 `1.7976931348623157e+308` (`(2**53 - 1) * (2**971)`)。大于 `MAX_VALUE` 的值代表 `Infinity`。
  *      因为精度原因，`MAX_VALUE + 1` 并不等于 `Infinity`。
- * - `Number.MIN_VALUE` 最小正数，`MIN_VALUE` 属性是最接近 `0` 的正值，而不是最小的负值。
- *      `MIN_VALUE` 的值约为` 5e-324`。小于` MIN_VALUE ("underflow values")` 的值将会转换为 `0`。
+ * - `Number.MIN_VALUE` 最小正数，`MIN_VALUE` 为 `5e-324` (`2**(-1074)`)，是最接近 `0` 的正值，而不是最小的负值。
+ *      小于 `MIN_VALUE` 的值将会转换为 `0`。
  * - `Number.MAX_SAFE_INTEGER` 最大安全范围的值
  * - `Number.MIN_SAFE_INTEGER` 最小安全范围的值
  * - `Number.EPSILON`  1 与大于 1 的最小值之间的差
