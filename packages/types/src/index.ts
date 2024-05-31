@@ -87,6 +87,7 @@ export { default as isNullOrUndefinedArray } from './isNullOrUndefinedArray';
 export { default as isNumber } from './isNumber';
 export { default as isNumberArray } from './isNumberArray';
 export { default as isNumberHave } from './isNumberHave';
+export { default as isNumberNegative } from './isNumberNegative';
 export { default as isNumberObject } from './isNumberObject';
 export { default as isNumberPrimitive } from './isNumberPrimitive';
 export { default as isNumberSafe } from './isNumberSafe';
