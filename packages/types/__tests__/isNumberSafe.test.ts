@@ -12,6 +12,9 @@ describe('@curong/types/isNumberSafe', () => {
         expect(isNumberSafe(1.5e3)).toBe(true);
         expect(isNumberSafe(-1.5e3)).toBe(true);
         expect(isNumberSafe(Number.MAX_VALUE)).toBe(true);
+        expect(isNumberSafe(Number.MIN_VALUE)).toBe(true);
+        expect(isNumberSafe(Number.MAX_SAFE_INTEGER)).toBe(true);
+        expect(isNumberSafe(Number.MIN_SAFE_INTEGER)).toBe(true);
     });
 
     test('测试3', () => {
