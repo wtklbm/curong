@@ -54,7 +54,7 @@
 - `isFile`: 是不是一个 `File` 对象
 - `isFileList`: 是不是一个 `FileList` 对象
 - `isFileReader`: 是不是一个 `FileReader` 对象
-- `isFinite`: 是不是一个不是 `Infinity`、`-Infinity` 或 `NaN`有限数
+- `isFinite`: 是不是一个不是 `Infinity`、`-Infinity` 或 `NaN` 的有限数
 - `isFloat32Array`: 是不是一个 `Float32Array`，每一项的值为 `1.2×10-38 - 3.4×1038`
 - `isFloat64Array`: 是不是一个 `Float64Array`，每一项的值为 `5.0×10-324 - 1.8×10308`
 - `isFormData`: 是不是一个 `isFormData`
@@ -93,6 +93,7 @@
 - `isNumberArray`: 是不是一个长度大于 0 的数组，且每一项的值都是数字或被包装后的数字对象
 - `isNumberFinite`: 是不是一个不是 `Infinity`、`-Infinity` 或 `NaN` 的有限数
 - `isNumberHave`: 是不是一个不是 `0` 、`Infinity`、`-Infinity` 或 `NaN` 的数字
+- `isNumberNaN`: 是不是一个 `NaN`
 - `isNumberNegative`: 是不是一个小于 `0` 且不是 `-Infinity` 或 `NaN` 的负数
 - `isNumberObject`: 是不是一个被包装后的数字对象，即 `new Number()` || `Object(0)`
 - `isNumberPositive`: 是不是一个大于 `0` 且不是 `Infinity` 或 `NaN` 的正数
