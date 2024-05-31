@@ -1,4 +1,5 @@
 import getTagEqual from './getTagEqual';
+import isNumberNaN from './isNumberNaN';
 
 /**
  * 是不是一个被包装后的数字对象，即 `new Number()` || `Object(0)`
@@ -14,6 +15,6 @@ export default function isNumberObject(
     return (
         typeof value === 'object' &&
         getTagEqual(value, 'Number') &&
-        (isNaN || !Number.isNaN((value as object).valueOf()))
+        (isNaN || !isNumberNaN((value as object).valueOf()))
     );
 }
