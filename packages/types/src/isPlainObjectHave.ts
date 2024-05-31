@@ -1,11 +1,5 @@
+import { GET_KEYS_FUNCTIONS } from './constants';
 import isPlainObject from './isPlainObject';
-
-const fns = [
-    Object.keys,
-    Object.getOwnPropertyNames,
-    Object.getOwnPropertySymbols,
-    Reflect.ownKeys
-];
 
 /**
  * 是不是一个属性个数大于 `0` 的普通对象，即 `{}`
@@ -22,5 +16,7 @@ export default function isPlainObjectHave<K extends keyof any, T = unknown>(
     value: any,
     methodLevel: 0 | 1 | 2 | 3 = 0
 ): value is Record<K, T> {
-    return isPlainObject(value) && fns[methodLevel](value).length > 0;
+    return (
+        isPlainObject(value) && GET_KEYS_FUNCTIONS[methodLevel](value).length > 0
+    );
 }
