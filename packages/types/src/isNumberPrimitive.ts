@@ -1,3 +1,5 @@
+import isNumberNaN from './isNumberNaN';
+
 /**
  * 是不是一个基本的数字，即 `number` || `Number()`
  *
@@ -9,5 +11,5 @@ export default function isNumberPrimitive(
     value: unknown,
     isNaN: boolean = false
 ): value is number {
-    return typeof value === 'number' && (isNaN || !Number.isNaN(value));
+    return typeof value === 'number' && (isNaN || !isNumberNaN(value));
 }
