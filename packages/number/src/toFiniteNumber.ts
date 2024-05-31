@@ -1,3 +1,5 @@
+import { isNumberFinite } from '@curong/types';
+
 /**
  * 将值转换为有限数值。如果无法转换为有限数值，则返回默认值
  *
@@ -5,6 +7,7 @@
  * @param defaultValue 默认值，如果无法转换为有限数值时使用
  * @returns 有限数值或默认值
  * @example
+ *
  * ```javascript
  * // 返回 42，因为字符串 "42" 可以转换为有限数值
  * const result1 = toFiniteNumber("42", 0);
@@ -24,5 +27,5 @@ export default function toFiniteNumber(
     defaultValue: number
 ): number {
     value = +value;
-    return Number.isFinite(value) ? value : defaultValue;
+    return isNumberFinite(value) ? value : defaultValue;
 }
