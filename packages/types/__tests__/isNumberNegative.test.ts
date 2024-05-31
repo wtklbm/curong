@@ -21,8 +21,10 @@ describe('@curong/types/isNumberNegative', () => {
         expect(isNumberNegative(0xff)).toBe(false);
         expect(isNumberNegative(0o644)).toBe(false);
         expect(isNumberNegative(6.2e5)).toBe(false);
-        expect(isNumberNegative(Number.MAX_VALUE)).toBe(false);
         expect(isNumberNegative(Number.MIN_VALUE)).toBe(false);
+        expect(isNumberNegative(Number.MAX_VALUE)).toBe(false);
+        expect(isNumberNegative(-Number.MIN_VALUE + 1e300)).toBe(false);
+        expect(isNumberNegative(-Number.MAX_VALUE - 1e300)).toBe(false);
     });
 
     test('测试2', () => {
