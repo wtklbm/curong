@@ -30,7 +30,7 @@ const fns = [
  */
 export default function keys(
     object: ObjectType<unknown> | ArrayLike<unknown>,
-    methodLevel: number = 0
+    methodLevel: 0 | 1 | 2 | 3 = 0
 ): PropertyKey[] {
     if (
         isUint(methodLevel) &&
