@@ -11,7 +11,7 @@ import isNumberPrimitive from './isNumberPrimitive';
  * - `Number.NEGATIVE_INFINITY` 负无穷大
  * - `Number.MAX_VALUE` 最大值，`MAX_VALUE` 属性值接近于 `1.79E+308`。大于 `MAX_VALUE` 的值代表 `Infinity`。
  *      因为精度原因，`MAX_VALUE + 1` 并不等于 `Infinity`。
- * - `Number.MIN_VALUE` 最小整数值，`MIN_VALUE` 属性是最接近 `0` 的正值，而不是最小的负值。
+ * - `Number.MIN_VALUE` 最小正数，`MIN_VALUE` 属性是最接近 `0` 的正值，而不是最小的负值。
  *      `MIN_VALUE` 的值约为` 5e-324`。小于` MIN_VALUE ("underflow values")` 的值将会转换为 `0`。
  * - `Number.MAX_SAFE_INTEGER` 最大安全范围的值
  * - `Number.MIN_SAFE_INTEGER` 最小安全范围的值
