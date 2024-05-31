@@ -1,13 +1,17 @@
 /**
  * 是不是一个可以安全计算的数字
  *
- * - 该方法是 `Number.isFinite` 的别名
- * - 只要 `value` 的值不能是 `Infinity`、`-Infinity` 或 `NaN` 即可
+ * - 一个能够在 `JavaScript` 中正确表示的数字就是一个可以安全计算的数字
  * - 如果想知道是否为安全的整数，请使用 `isIntSafe` 方法
  *
  * @param value 要验证的值
+ *  - 不能是 `Infinity`、`-Infinity` 或 `NaN`
+ *  - 必须是 `JavaScript` 中能表示的数字，即 `Number.MAX_VALUE ~ -Number.MAX_VALUE` (`1.7976931348623157e+308 ~ -1.7976931348623157e+308`)
+ *  - 需要注意的是：`Number.MIN_VALUE` 是一个最小正数，是一个大于 0 的数
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isNumberSafe(value: unknown): value is number {
-    return Number.isFinite(value);
+    return (
+        Number.isFinite(value) && (value as number) <= Math.abs(Number.MAX_VALUE)
+    );
 }
