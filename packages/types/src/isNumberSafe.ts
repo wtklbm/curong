@@ -1,6 +1,7 @@
 /**
  * 是不是一个可以安全计算的数字
  *
+ * - 该方法是 `Number.isFinite` 的别名，也应该是 `Number` 系列的常用方法
  * - 一个能够在 `JavaScript` 中正确表示的数字就是一个可以安全计算的数字
  * - 如果想知道是否为安全的整数，请使用 `isIntSafe` 方法
  *
@@ -11,7 +12,5 @@
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isNumberSafe(value: unknown): value is number {
-    return (
-        Number.isFinite(value) && (value as number) <= Math.abs(Number.MAX_VALUE)
-    );
+    return Number.isFinite(value);
 }
