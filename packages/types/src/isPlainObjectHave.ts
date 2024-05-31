@@ -1,4 +1,4 @@
-import { GET_KEYS_FUNCTIONS } from './constants';
+import { keysFns } from './constants/object';
 import isPlainObject from './isPlainObject';
 
 /**
@@ -16,7 +16,5 @@ export default function isPlainObjectHave<K extends keyof any, T = unknown>(
     value: any,
     methodLevel: 0 | 1 | 2 | 3 = 0
 ): value is Record<K, T> {
-    return (
-        isPlainObject(value) && GET_KEYS_FUNCTIONS[methodLevel](value).length > 0
-    );
+    return isPlainObject(value) && keysFns[methodLevel](value).length > 0;
 }
