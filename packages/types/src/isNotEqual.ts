@@ -1,4 +1,5 @@
 import isArrayHave from './isArrayHave';
+import isNumberNaN from './isNumberNaN';
 
 /**
  * `简单` 的判断多个的值是否不相等
@@ -10,8 +11,8 @@ import isArrayHave from './isArrayHave';
  * @returns 不相等返回 `true`，否则为 `false`
  */
 export default function isNotEqual(value: any, ...args: any[]): boolean {
-    const handle = Number.isNaN(value)
-        ? (v: any) => !Number.isNaN(v)
+    const handle = isNumberNaN(value)
+        ? (v: any) => !isNumberNaN(v)
         : (v: any) => value !== v;
 
     return isArrayHave(args) && args.every(handle);
