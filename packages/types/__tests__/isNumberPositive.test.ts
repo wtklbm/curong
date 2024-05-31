@@ -22,6 +22,8 @@ describe('@curong/types/isNumberPositive', () => {
         expect(isNumberPositive(-6.2e5)).toBe(false);
         expect(isNumberPositive(-Number.MAX_VALUE)).toBe(false);
         expect(isNumberPositive(-Number.MIN_VALUE)).toBe(false);
+        expect(isNumberPositive(Number.MAX_VALUE + 1e300)).toBe(false);
+        expect(isNumberPositive(Number.MIN_VALUE - 1e300)).toBe(false);
     });
 
     test('测试2', () => {
