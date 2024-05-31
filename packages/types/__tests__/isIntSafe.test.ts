@@ -10,7 +10,10 @@ describe('@curong/types/isIntSafe', () => {
 
     test('测试2', () => {
         expect(isIntSafe(22123412412434)).toBe(true);
+
         expect(isIntSafe(Number.MIN_SAFE_INTEGER)).toBe(true);
+        expect(isIntSafe(Number.MIN_SAFE_INTEGER - 2)).toBe(false);
         expect(isIntSafe(Number.MAX_SAFE_INTEGER)).toBe(true);
+        expect(isIntSafe(Number.MAX_SAFE_INTEGER + 2)).toBe(false);
     });
 });
