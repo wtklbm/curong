@@ -49,6 +49,7 @@ export { default as isFalsyArray } from './isFalsyArray';
 export { default as isFile } from './isFile';
 export { default as isFileList } from './isFileList';
 export { default as isFileReader } from './isFileReader';
+export { default as isFinite } from './isFinite';
 export { default as isFloat32Array } from './isFloat32Array';
 export { default as isFloat64Array } from './isFloat64Array';
 export { default as isFormData } from './isFormData';
