@@ -11,7 +11,7 @@ import isArrayHave from './isArrayHave';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isTwoDimensionalArray<T extends unknown[][]>(
+export default function isArrayTwoDimensional<T extends unknown[][]>(
     value: unknown
 ): value is T {
     return isArrayHave(value) && value.every(isArray);
