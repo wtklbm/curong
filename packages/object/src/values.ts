@@ -22,7 +22,7 @@ import type { ObjectType } from './types';
  */
 export default function values(
     object: ObjectType<unknown> | ArrayLike<unknown>,
-    methodLevel: number = 0
+    methodLevel: 0 | 1 | 2 | 3 = 0
 ): any[] {
     return keys(object, methodLevel).map(k => object[k as any]);
 }
