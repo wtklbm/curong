@@ -12,5 +12,6 @@ describe('@curong/types/isNumberNaN', () => {
 
     test('测试2', () => {
         expect(isNumberNaN(NaN)).toBe(true);
+        expect(isNumberNaN(Number.NaN)).toBe(true);
     });
 });
