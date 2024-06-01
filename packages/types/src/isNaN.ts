@@ -45,7 +45,10 @@
  * 而此方法不会抛出异常，而是直接返回一个布尔值。例如 `isNaN(0n)`，全局的 `isNaN` 会抛出
  * `Uncaught TypeError: Cannot convert a BigInt value to a number` 错误；而此方法会直接返回 `false`。
  */
-export default function (value: unknown, isImplicit: boolean = false): boolean {
+export default function _<T extends unknown = number>(
+    value: unknown,
+    isImplicit: boolean = false
+): value is T {
     try {
         return (isImplicit ? isNaN : Number.isNaN)(value as any);
     } catch {}

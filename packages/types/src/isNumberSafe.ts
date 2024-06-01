@@ -1,3 +1,5 @@
+import isFinite from './isFinite';
+
 /**
  * 是不是一个可以安全计算的数字
  *
@@ -12,5 +14,5 @@
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isNumberSafe(value: unknown): value is number {
-    return Number.isFinite(value);
+    return isFinite(value);
 }

@@ -4,7 +4,7 @@
  * - 该方法是 {@link Number.isSafeInteger} 的别名
  * - 包含正整数和负整数，并且只能是安全的整数
  * - 超过安全整数的运算是不安全的，如果要表示其他整数，请考虑使用 {@link BigInt}
- * - 如果想知道是不是一个 `JavaScript` 可以表示的数字，请使用 `isNumberFinite` 方法
+ * - 如果想知道是不是一个 `JavaScript` 可以表示的数字，请使用 `isFinite` 方法
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`

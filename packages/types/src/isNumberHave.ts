@@ -1,4 +1,4 @@
-import isNumberFinite from './isNumberFinite';
+import isFinite from './isFinite';
 
 /**
  * 是不是一个不是 `0` 、`Infinity`、`-Infinity` 或 `NaN` 的数字
@@ -9,5 +9,5 @@ import isNumberFinite from './isNumberFinite';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isNumberHave(value: unknown): value is number {
-    return isNumberFinite(value) && value !== 0;
+    return isFinite(value) && value !== 0;
 }
