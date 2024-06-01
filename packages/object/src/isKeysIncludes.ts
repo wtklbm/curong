@@ -26,7 +26,7 @@ import { ObjectType } from './types';
 export default function isKeysIncludes(
     object: ObjectType<unknown> | ArrayLike<unknown>,
     key: PropertyKey | PropertyKey[],
-    methodLevel?: number
+    methodLevel?: 0 | 1 | 2 | 3
 ): boolean;
 
 /**
@@ -79,14 +79,14 @@ export default function isKeysIncludes(
 export default function isKeysIncludes(
     object: ObjectType<unknown> | ArrayLike<unknown>,
     key: PropertyKey | PropertyKey[],
-    methodLevel?: number,
+    methodLevel?: 0 | 1 | 2 | 3,
     useAny?: boolean
 ): boolean;
 
 export default function isKeysIncludes(
     object: ObjectType<unknown> | ArrayLike<unknown>,
     key: PropertyKey | PropertyKey[],
-    methodLevel: number | boolean = 0,
+    methodLevel: 0 | 1 | 2 | 3 | boolean = 0,
     useAny: boolean = false
 ): boolean {
     isBoolean(methodLevel) && ((useAny = methodLevel), (methodLevel = 0));
