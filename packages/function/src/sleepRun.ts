@@ -1,6 +1,6 @@
 import { range } from '@curong/number';
 import { format, printWarn } from '@curong/term';
-import { isNumberFinite, isObject, isTrue } from '@curong/types';
+import { isNumber, isObject, isTrue } from '@curong/types';
 
 import type { SleepRunOptions } from './types';
 
@@ -23,7 +23,7 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
  *  - 如果 `duration` 为一个大于 0 的数字，则表示至少应等待 `duration` 毫秒后执行
  *
  * @returns 返回一个 `Promise` 对象的成功态
- * @throws 如果 `anyTimeout` 的值是 `NaN`，则会抛出异常
+ * @throws 如果 `anyTimeout` 的值超出 32 位整数值 (2^32-1，即 2147483647)，则会抛出异常
  * @example ````
  *
  * ### 传递一个数字
@@ -55,8 +55,18 @@ export default function sleepRun<T>(
     let show: boolean = false;
     let timeout: number = 0;
 
-    if (isNumberFinite(anyTimeout)) {
-        timeout = anyTimeout;
+    if (isNumber(anyTimeout)) {
+        if (anyTimeout < 0) {
+            timeout = 0;
+        } else if (anyTimeout <= 2147483647) {
+            timeout = anyTimeout;
+        } else {
+            throw format({
+                name: 'sleepRun',
+                message: 'anyTimeout 的值不可以超过 2^31-1，即 2147483647',
+                data: { anyTimeout }
+            });
+        }
     } else if (isObject(anyTimeout)) {
         const { start = 0, end = 0 } = anyTimeout;
         anyTimeout.show && (show = anyTimeout.show);
@@ -68,12 +78,6 @@ export default function sleepRun<T>(
                   : start < end
                     ? range(end, start)
                     : range(start, end);
-    } else {
-        throw format({
-            name: 'sleepRun',
-            message: 'anyTimeout 的值必须为有限数或一个间隔对象',
-            data: { anyTimeout }
-        });
     }
 
     if (isTrue(show) && timeout > 0) {
