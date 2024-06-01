@@ -11,7 +11,9 @@ Object.defineProperty(obj, 'c', {
 
 describe('keys function', () => {
     test('should throw a TypeError for invalid methodLevel', () => {
+        // @ts-ignore
         expect(() => keys(obj, 4)).toThrowError();
+        // @ts-ignore
         expect(() => keys(obj, -1)).toThrowError();
     });
 
