@@ -17,7 +17,9 @@ describe('values', () => {
     });
 
     it('测试1', () => {
+        // @ts-ignore
         expect(() => values(obj, 4)).toThrow(TypeError);
+        // @ts-ignore
         expect(() => values(obj, -1)).toThrow(TypeError);
     });
 
