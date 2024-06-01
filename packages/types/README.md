@@ -16,6 +16,7 @@
 - `isArrayIndex`: 是不是一个数组的下标索引，它是一个大于或等于 `0` 并且小于或等于数组的最大长度的整数
 - `isArrayLike`: 是不是一个类数组 (不包含数组)
 - `isArrayLikeHave`: 是不是一个长度大于 `0` 的类数组 (不包含数组)
+- `isArrayTwoDimensional`: 是不是一个长度大于 0 的数组，且每一项的值都是数组 (二维数组)
 - `isAsyncFunction`: 是不是一个异步函数
 - `isAsyncFunctionHave`: 是不是一个参数个数大于 `0` 的异步函数
 - `isAsyncGenerator`: 是不是一个异步的 `Generator`
@@ -145,7 +146,6 @@
 - `isTrue`: 是不是 `true`
 - `isTruthy`: 是不是一个非虚值 (强制转换为 `Boolean` 后为 `true` 的值)
 - `isTruthyArray`: 是不是一个长度大于 0 的数组，且每一项的值都是非虚值 (强制转换为 `Boolean` 后为 `true` 的值)
-- `isTwoDimensionalArray`: 是不是一个长度大于 0 的数组，且每一项的值都是数组 (二维数组)
 - `isTypeError`: 是不是一个 `TypeError` 对象
 - `isTypeofObject`: 使用 `typeof` 判断是不是一个不是 `null` 的任意对象
 - `isTypeofObjectArray`: 是不是一个长度大于 0 的数组，且每一项的值都是对象 (通过 `typeof` 判断且不为 `null`)
