@@ -1,7 +1,7 @@
 /**
  * 是不是一个可以安全计算的数字
  *
- * - 该方法是 `Number.isFinite` 的别名，也应该是 `Number` 系列的常用方法
+ * - 该方法是 {@link Number.isFinite} 的别名，也应该是 {@link Number} 系列的常用方法
  * - 一个能够在 `JavaScript` 中正确表示的数字就是一个可以安全计算的数字
  * - 如果想知道是否为安全的整数，请使用 `isIntSafe` 方法
  *
