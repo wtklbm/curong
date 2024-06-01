@@ -61,6 +61,7 @@ export { default as isGenerator } from './isGenerator';
 export { default as isGeneratorFunction } from './isGeneratorFunction';
 export { default as isHTMLElement } from './isHTMLElement';
 export { default as isInfinity } from './isInfinity';
+export { default as isInfinityPositive } from './isInfinityPositive';
 export { default as isInt } from './isInt';
 export { default as isInt16Array } from './isInt16Array';
 export { default as isInt32Array } from './isInt32Array';
