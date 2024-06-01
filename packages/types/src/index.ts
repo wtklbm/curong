@@ -169,5 +169,5 @@ export { default as isWindow } from './isWindow';
 export { default as isWritable } from './isWritable';
 export { default as isZero } from './isZero';
 
-export * from './constants';
+//export * from './constants';
 export * from './types';

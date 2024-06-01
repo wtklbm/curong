@@ -1,5 +1,9 @@
-import { MAX_ARRAY_LENGTH } from './constants';
 import isUint from './isUint';
+
+/**
+ * 获取数组最大索引下标的数字。最大为 `2` 的 `32` 次方减一，即 `4294967295`
+ */
+const MAX_ARRAY_LENGTH = 2 ** 32 - 1;
 
 /**
  * 是不是一个数组的下标索引，它是一个大于或等于 `0` 并且小于或等于数组的最大长度的整数
