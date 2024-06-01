@@ -1,4 +1,4 @@
-import { isNumberSafe } from '@curong/types';
+import { isFinite } from '@curong/types';
 
 /**
  * 将值转换为有限数值。如果无法转换为有限数值，则返回默认值
@@ -26,5 +26,5 @@ export default function toFiniteNumber(
     value: any,
     defaultValue: number
 ): number {
-    return isNumberSafe((value = +value)) ? value : defaultValue;
+    return isFinite((value = +value)) ? value : defaultValue;
 }

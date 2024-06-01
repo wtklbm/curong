@@ -18,12 +18,15 @@ import isNumberPrimitive from './isNumberPrimitive';
  * - {@link Number.EPSILON}  1 与大于 1 的最小值之间的差
  *
  * @param value 要验证的值
- * @param isNaN 当值为 `NaN` 时是否返回 `true`，默认为 `false`
+ * @param isAllowNaN 当值为 `NaN` 时是否返回 `true`，默认为 `false`
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isNumber(
     value: unknown,
-    isNaN: boolean = false
+    isAllowNaN: boolean = false
 ): value is number {
-    return isNumberPrimitive(value, isNaN) || isNumberObject(value, isNaN);
+    return (
+        isNumberPrimitive(value, isAllowNaN) ||
+        isNumberObject(value, isAllowNaN)
+    );
 }

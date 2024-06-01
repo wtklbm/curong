@@ -90,7 +90,6 @@ export { default as isNullOrUndefinedArray } from './isNullOrUndefinedArray';
 export { default as isNumber } from './isNumber';
 export { default as isNumberArray } from './isNumberArray';
 export { default as isNumberHave } from './isNumberHave';
-export { default as isNumberNaN } from './isNumberNaN';
 export { default as isNumberNegative } from './isNumberNegative';
 export { default as isNumberObject } from './isNumberObject';
 export { default as isNumberPositive } from './isNumberPositive';

@@ -1,7 +1,7 @@
 import {
     isDate,
+    isFinite,
     isFunctionHave,
-    isNumberSafe,
     isString,
     isStringHave,
     isTrue
@@ -69,7 +69,7 @@ export default function createCookie(
         [key: string]: (value: any, chunk: string[]) => string[];
     } = {
         maxAge(v: number, chunk: string[]) {
-            chunk.push(`Max-Age=${isNumberSafe(v) ? Math.floor(v) : 0}`);
+            chunk.push(`Max-Age=${isFinite(v) ? Math.floor(v) : 0}`);
             return chunk;
         },
 
