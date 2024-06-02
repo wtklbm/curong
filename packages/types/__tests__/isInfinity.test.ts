@@ -6,7 +6,7 @@ describe('@curong/types/isInfinity', () => {
         expect(isInfinity(-1.7976931348623157e103089)).toBe(true);
         expect(isInfinity(Infinity)).toBe(true);
         expect(isInfinity(-Infinity)).toBe(true);
-        expect(isInfinity(5/0)).toBe(true);
-        expect(isInfinity(-5/0)).toBe(true);
+        expect(isInfinity(5 / 0)).toBe(true);
+        expect(isInfinity(-5 / 0)).toBe(true);
     });
 });

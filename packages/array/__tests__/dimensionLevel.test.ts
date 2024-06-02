@@ -75,7 +75,7 @@ describe('@curong/array/dimensionLevel', () => {
                 [
                     [1, 2],
                     [3, 4]
-                ],
+                ]
             ])
         ).toEqual(3);
         expect(

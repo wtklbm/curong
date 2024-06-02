@@ -35,7 +35,6 @@ describe('@curong/types/isNaN', () => {
         expect(isNaN('1')).toBe(false);
     });
 
-
     test('测试3', () => {
         expect(isNaN(NaN, true)).toBe(true);
         expect(isNaN(NaN + 1, true)).toBe(true);

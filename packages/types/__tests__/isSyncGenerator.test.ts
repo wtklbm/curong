@@ -4,7 +4,7 @@ describe('@curong/types/isSyncGenerator', () => {
     test('测试1', () => {
         expect(isSyncGenerator(new Function())).toBe(false);
 
-        function fn1() { }
+        function fn1() {}
         expect(isSyncGenerator(fn1())).toBe(false);
 
         async function fn2() {}
@@ -15,7 +15,7 @@ describe('@curong/types/isSyncGenerator', () => {
         function* test1() {}
         expect(isSyncGenerator(test1())).toBe(true);
 
-        async function* test2() { }
+        async function* test2() {}
         expect(isSyncGenerator(test2())).toBe(false);
     });
 });

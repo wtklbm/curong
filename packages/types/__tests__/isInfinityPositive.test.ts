@@ -7,7 +7,7 @@ describe('@curong/types/isInfinityPositive', () => {
         expect(isInfinityPositive(Infinity)).toBe(true);
         expect(isInfinityPositive(-Infinity)).toBe(false);
         expect(isInfinityPositive(5 / 0)).toBe(true);
-        expect(isInfinityPositive(-5/0)).toBe(false);
+        expect(isInfinityPositive(-5 / 0)).toBe(false);
 
         expect(isInfinityPositive(2 * Infinity)).toBe(true);
         expect(isInfinityPositive(Infinity * Infinity)).toBe(true);

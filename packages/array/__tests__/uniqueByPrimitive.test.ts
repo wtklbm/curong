@@ -71,7 +71,11 @@ describe('@curong/array/uniqueFromPrimitive', () => {
 
     test('测试6', () => {
         const fruits = ['apple', 'banana', 'apple', 'orange', 'banana'];
-        expect(uniqueFromPrimitive(fruits)).toEqual(['apple', 'banana', 'orange']);
+        expect(uniqueFromPrimitive(fruits)).toEqual([
+            'apple',
+            'banana',
+            'orange'
+        ]);
     });
 
     test('测试7', () => {
@@ -91,7 +95,10 @@ describe('@curong/array/uniqueFromPrimitive', () => {
 
     test('测试10', () => {
         const arrayWithNullAndUndefined = [null, undefined, null, undefined];
-        expect(uniqueFromPrimitive(arrayWithNullAndUndefined)).toEqual([null, undefined]);
+        expect(uniqueFromPrimitive(arrayWithNullAndUndefined)).toEqual([
+            null,
+            undefined
+        ]);
     });
 
     test('测试11', () => {

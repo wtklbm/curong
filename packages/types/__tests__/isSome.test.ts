@@ -10,7 +10,7 @@ describe('@curong/types/isSome', () => {
     });
 
     test('测试3', () => {
-        expect(isSome([0, 5, -1],  v => v > 0)).toBe(true);
+        expect(isSome([0, 5, -1], v => v > 0)).toBe(true);
         expect(isSome([1, 2, 3], v => v > 2)).toBe(true);
         expect(isSome([1, 2, 3], [v => v > 1, v => v < 3])).toBe(true);
     });
@@ -40,7 +40,7 @@ describe('@curong/types/isSome', () => {
         const fns: any[] = [isNumber, isNumberSafe, isNumberHave];
         expect(isSome(v, fns)).toBe(true);
 
-        fns.push((v: any) => typeof v === 'string')
+        fns.push((v: any) => typeof v === 'string');
         expect(isSome(v, fns)).toBe(false);
         fns.pop();
 

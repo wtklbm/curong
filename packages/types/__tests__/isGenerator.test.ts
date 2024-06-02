@@ -4,7 +4,7 @@ describe('@curong/types/isGenerator', () => {
     test('测试1', () => {
         expect(isGenerator(new Function())).toBe(false);
 
-        function fn1() { }
+        function fn1() {}
         expect(isGenerator(fn1())).toBe(false);
 
         async function fn2() {}
@@ -15,7 +15,7 @@ describe('@curong/types/isGenerator', () => {
         function* test1() {}
         expect(isGenerator(test1())).toBe(true);
 
-        async function* test2() { }
+        async function* test2() {}
         expect(isGenerator(test2())).toBe(true);
     });
 });
