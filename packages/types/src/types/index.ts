@@ -1,3 +1,3 @@
-export * from './isAny';
-export * from './isNever';
+export * from './IsAny';
+export * from './IsNever';
 export * from './IsUnknown';
