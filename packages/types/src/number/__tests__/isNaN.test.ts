@@ -7,6 +7,7 @@ describe('@curong/types/isNaN', () => {
         expect(isNaN(12)).toBe(false);
         // @ts-ignore
         expect(isNaN(1n)).toBe(false);
+        expect(isNaN(1n, true)).toBe(false);
         expect(isNaN(12)).toBe(false);
         expect(isNaN([1])).toBe(false);
     });
