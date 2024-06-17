@@ -50,7 +50,7 @@
  * 4. 一个操作数被强制转换为 `NaN` 的方法或表达式 (例如，`7 ** NaN`、`7 * "xxx"`)——这意味着 `NaN` 具有传染性
  * 5. 将无效值表示为数字的其他情况 (例如，无效的 [Date] `new Date("xxx").getTime()`、`"".charCodeAt(1)`)
  */
-export default function _<T extends unknown = number>(
+export default function _<T = number>(
     value: unknown,
     isImplicit: boolean = false
 ): value is T {
