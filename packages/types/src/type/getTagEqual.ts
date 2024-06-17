@@ -7,7 +7,7 @@ import getTag from './getTag';
  * @param tag 要验证的类型标记
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function getTagEqual<T extends unknown>(
+export default function getTagEqual<T>(
     value: unknown,
     tag: string
 ): value is T {
