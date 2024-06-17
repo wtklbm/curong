@@ -201,6 +201,7 @@ function recursiveCopy<T extends object>(
  *
  * @param value 要克隆的数据
  * @returns 返回克隆好的新的值
+ * @see {@link https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Structured_clone_algorithm 结构化克隆算法}
  * @throw
  *
  * - 如果存在不支持深度克隆的数据类型，则会抛出异常

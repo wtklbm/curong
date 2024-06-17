@@ -27,7 +27,7 @@
     ],
     "scripts": {
         "prettier": "prettier --config ./.prettierrc.js --write \"{app,src,packages,test,__{tests,mocks}__}/**/*.{js,ts,jsx,tsx,vue,less,sass,scss,json,html}\"",
-        "test": "jest --verbose --runInBand --coverage",
+        "test": "jest --verbose --colors --coverage",
         "rmDist": "rimraf -g ./packages/**/dist ./coverage",
         "build": "npm-run-all rmDist build:umd build:cjs build:es build:dts",
         "build:cjs": "node --max-old-space-size=8192 ./scripts/build.cjs",
