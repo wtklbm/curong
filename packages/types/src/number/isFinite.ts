@@ -21,7 +21,7 @@
  * 如果是判断其他值，则可以写成 `isFinite(Number(value))`。
  *
  */
-export default function _<T extends unknown = number>(
+export default function _<T = number>(
     value: unknown,
     isImplicit: boolean = false
 ): value is T {
