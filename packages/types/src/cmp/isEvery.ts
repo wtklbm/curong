@@ -12,10 +12,10 @@
  * isEvery([1, 2, 3], [isFinite, isNumberHave]); // true
  * ```
  */
-export default function isEvery<
-    V extends unknown,
-    P extends (value: V) => boolean
->(value: V | V[], predicate: P | P[]): value is V {
+export default function isEvery<V, P extends (value: V) => boolean>(
+    value: V | V[],
+    predicate: P | P[]
+): value is V {
     const v = [value].flat() as V[];
     return [predicate].flat().every(f => v.every(f));
 }
