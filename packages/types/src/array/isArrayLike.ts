@@ -23,6 +23,10 @@ import isArrayIndex from './isArrayIndex';
  *     console.log(isArrayLike(arguments)); // true
  * }(0);
  * ```
+ *
+ * @note
+ *
+ * - 数组/类数组、字符串、函数、对象、`Window`、`Buffer`/`ArrayBuffer` 等都有 `length` 属性
  */
 export default function isArrayLike<T = unknown>(
     value: any,
@@ -34,7 +38,6 @@ export default function isArrayLike<T = unknown>(
         return ret;
     }
 
-    // Note: 数组/类数组、字符串、函数、对象、`Window`、`Buffer`/`ArrayBuffer` 等都有 `length` 属性
     const l = value.length;
 
     if (!isArrayIndex(l)) {
