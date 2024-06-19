@@ -5,7 +5,8 @@ import { getTagEqual } from '..';
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
- * @info `File` 提供了有关文件的信息，并允许网页中的 `JavaScript` 访问其内容。
+ *
+ * `File` 提供了有关文件的信息，并允许网页中的 `JavaScript` 访问其内容。
  * 一般在使用 `<input>` 标签时会涉及到 `File` 对象。
  *
  * 通常情况下， `File` 对象是来自用户在一个 `<input>` 元素上选择文件后返回的 `FileList` 对象，
