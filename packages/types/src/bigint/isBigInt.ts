@@ -2,7 +2,7 @@ import isBigIntObject from './isBigIntObject';
 import isBigIntPrimitive from './isBigIntPrimitive';
 
 /**
- * 是不是一个 `bigInt` (大数) 或被包装后的 `BigInt` 对象
+ * 是不是一个 `bigint` (大数) 或被包装后的 `BigInt` 对象
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
