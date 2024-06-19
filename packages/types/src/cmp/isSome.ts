@@ -12,10 +12,10 @@
  * isSome([1, 2, 3], [v => v > 1, v => v < 3]); // true
  * ```
  */
-export default function isSome<
-    V extends unknown,
-    P extends (value: V) => boolean
->(value: V | V[], predicate: P | P[]): value is V {
+export default function isSome<V, P extends (value: V) => boolean>(
+    value: V | V[],
+    predicate: P | P[]
+): value is V {
     const fns = [predicate].flat();
     return ([value].flat() as V[]).some(v => fns.every(f => f(v)));
 }
