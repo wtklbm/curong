@@ -1,4 +1,6 @@
-import isAsyncFunction from './isAsyncFunction';
+import { getTag } from '../type';
+
+import { asyncPattern } from './constants';
 import isFunction from './isFunction';
 import type { Function } from './types';
 
@@ -11,5 +13,5 @@ import type { Function } from './types';
 export default function isSyncFunction<T = unknown>(
     value: unknown
 ): value is Function<T> {
-    return isFunction(value) && !isAsyncFunction(value);
+    return isFunction(value) && !asyncPattern.test(getTag(value) ?? '');
 }
