@@ -115,7 +115,7 @@ export default class ProgressBar {
      *
      * @param value 要写入的数据
      * @returns 如果进度执行完成则返回 `true`，否则为 `false`
-     * @info
+     * @note
      *
      * ### 结束进度
      *
