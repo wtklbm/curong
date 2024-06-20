@@ -6,7 +6,7 @@ import { isTypeofObject } from '@curong/types';
  * @param object 要判断的对象
  * @param key 要判断的属性名
  * @returns 如果是则返回 `true`，否则为 `false`
- * @info 不是私有的并且在原型上就是当前对象的原型上的属性
+ * @note 不是私有的并且在原型上就是当前对象的原型上的属性
  * @example
  *
  * ```javascript
