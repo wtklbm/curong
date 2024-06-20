@@ -1,4 +1,4 @@
-import { isUint } from '..';
+import isUint from '../number/int/isUint';
 
 /**
  * 获取数组最大索引下标的数字。最大为 `2` 的 `32` 次方减一，即 `4294967295`
