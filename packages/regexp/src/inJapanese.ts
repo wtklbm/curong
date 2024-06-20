@@ -5,7 +5,7 @@ import { japanese } from './source';
  *
  * @param str 要验证的字符串
  * @returns 是则返回 `true`，否则为 `false`
- * @info 日文中包含汉字，所以用该方法验证汉字也返回 `true`
+ * @note 日文中包含汉字，所以用该方法验证汉字也返回 `true`
  * @example
  *
  * ```javascript
