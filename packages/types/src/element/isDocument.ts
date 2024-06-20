@@ -1,4 +1,4 @@
-import { getTagEqual } from '..';
+import getTagEqual from '../type/getTagEqual';
 
 /** 验证是不是 `Document` 的默认函数 */
 const defaultIsDocument = (value: unknown) =>
