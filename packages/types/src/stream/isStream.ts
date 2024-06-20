@@ -1,6 +1,7 @@
 import { Stream } from 'stream';
 
-import { isFunction, isObject } from '..';
+import isFunction from '../function/isFunction';
+import isObject from '../object/isObject';
 
 /**
  * 是不是一个流
