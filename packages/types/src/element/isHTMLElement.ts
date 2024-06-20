@@ -3,6 +3,7 @@
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
+ * @note
  *
  * 每一个 `HTMLElement` 具有以下特征：
  *  - `nodeType` 等于 1
