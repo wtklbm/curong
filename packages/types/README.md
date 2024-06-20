@@ -274,11 +274,11 @@
 
 #### `stream`
 
-- `isDuplex`: 是不是一个双工流对象
-- `isReadable`: 是不是一个可读流对象
-- `isStream`: 是不是一个流对象
-- `isTransform`: 是不是一个转换流对象
-- `isWritable`: 是不是一个可写流对象
+- `isDuplex`: 是不是一个双工流
+- `isReadable`: 是不是一个可读流
+- `isStream`: 是不是一个流
+- `isTransform`: 是不是一个转换流
+- `isWritable`: 是不是一个可写流
 
 #### `string`
 
