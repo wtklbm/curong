@@ -1,4 +1,6 @@
-import { getTagEqual, isDocument, isWindow } from '..';
+import isDocument from '../element/isDocument';
+import isWindow from '../element/isWindow';
+import getTagEqual from '../type/getTagEqual';
 
 /**
  * 当前的执行环境是不是浏览器
