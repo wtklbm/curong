@@ -1,4 +1,6 @@
-import { isFunction, isFunctionHave, isNullOrUndefined } from '..';
+import isFunction from '../function/isFunction';
+import isFunctionHave from '../function/isFunctionHave';
+import isNullOrUndefined from '../nullable/isNullOrUndefined';
 
 /**
  * 是不是一个 `React` 元素
