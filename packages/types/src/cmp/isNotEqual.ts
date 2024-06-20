@@ -1,4 +1,5 @@
-import { isArrayHave, isNaN } from '..';
+import isArrayHave from '../array/isArrayHave';
+import isNaN from '../number/isNaN';
 
 /**
  * **简单** 的判断多个的值是否不相等
