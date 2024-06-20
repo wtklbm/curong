@@ -1,4 +1,4 @@
-import { isNull } from '..';
+import isNull from '../nullable/isNull';
 
 /**
  * 使用 `typeof` 判断是不是一个不是 `null` 的任意对象
