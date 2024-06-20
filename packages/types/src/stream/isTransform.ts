@@ -1,6 +1,6 @@
 import { Transform } from 'stream';
 
-import { isFunctionHave } from '..';
+import isFunctionHave from '../function/isFunctionHave';
 
 import isDuplex from './isDuplex';
 
