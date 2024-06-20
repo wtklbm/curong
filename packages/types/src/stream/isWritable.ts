@@ -1,6 +1,10 @@
 import { Writable } from 'stream';
 
-import { isFunction, isObject, isStream, isTrue } from '..';
+import isTrue from '../boolean/isTrue';
+import isFunction from '../function/isFunction';
+import isObject from '../object/isObject';
+
+import isStream from './isStream';
 
 /**
  * 是不是一个可写流
