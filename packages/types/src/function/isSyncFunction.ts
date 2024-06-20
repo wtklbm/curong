@@ -13,5 +13,5 @@ import type { Function } from './types';
 export default function isSyncFunction<T = unknown>(
     value: unknown
 ): value is Function<T> {
-    return isFunction(value) && !asyncPattern.test(getTag(value) ?? '');
+    return isFunction(value) && !asyncPattern.test(getTag(value));
 }
