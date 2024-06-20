@@ -1,4 +1,4 @@
-import { getTagEqual } from '..';
+import getTagEqual from '../type/getTagEqual';
 
 /**
  * 是不是一个 `BigUint64Array`，每一项占八个字节，值为 `0 - 2^64-1`
