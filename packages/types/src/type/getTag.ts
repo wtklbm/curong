@@ -34,6 +34,8 @@ export default (() => {
      *   如果在导入 `getTag` 方法后修改了 `Object.prototype.toString`，
      *   那么当通过 `getTag` 进行类型标记获取时，还是使用的原来的缓存的 `toString` 方法，
      *
+     * @note
+     *
      * ### `Symbol.toStringTag`
      *
      * `Object.prototype.toString` 方法默认会调用 `Symbol.toStringTag` 方法
