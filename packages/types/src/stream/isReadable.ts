@@ -3,11 +3,11 @@ import { Readable } from 'stream';
 import { isFunction, isObject, isStream, isTrue } from '..';
 
 /**
- * 是不是一个 `Readable`
+ * 是不是一个可读流对象
  *
  * @param value 要验证的值
- * @returns 是则返回 `true`，否则为 `false`
- * @info 因为双工流包括可读流所以 `new Duplex()` 的结果返回 `true`
+ * @returns 是则返回 `true`，否则为 `false`。
+ * 因为双工流包括可读流，所以 `new Duplex()` 的结果返回 `true`。
  */
 export default function isReadable(value: unknown): value is Readable {
     return (
