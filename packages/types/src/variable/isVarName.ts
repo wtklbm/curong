@@ -1,4 +1,4 @@
-import { isString } from '..';
+import isString from '../string/isString';
 
 /**
  * 是不是可以把值当做 `JavaScript` 的变量名
