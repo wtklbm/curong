@@ -1,4 +1,4 @@
-import { isString } from '..';
+import isString from '../string/isString';
 
 /**
  * 是不是一个可以转换为 `URL` 对象的的字符串
