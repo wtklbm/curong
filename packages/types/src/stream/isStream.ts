@@ -3,9 +3,9 @@ import { Stream } from 'stream';
 import { isFunction, isObject } from '..';
 
 /**
- * 是不是一个流对象
+ * 是不是一个流
  *
- * 流对象包括：可读流、可写流、转换流、双工流。
+ * 流包括：可读流、可写流、转换流、双工流。
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
