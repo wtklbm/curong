@@ -1,4 +1,6 @@
-import { isBoolean, isFunction, isObject } from '..';
+import isBoolean from '../boolean/isBoolean';
+import isFunction from '../function/isFunction';
+import isObject from '../object/isObject';
 
 import isOwnProperty from './isOwnProperty';
 
