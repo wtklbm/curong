@@ -7,7 +7,7 @@
  *  - [韩文字母](http://www.unicode.org/charts/PDF/U1100.pdf)
  *  - [韩文兼容字母](http://www.unicode.org/charts/PDF/U3130.pdf)
  *
- * @info 该正则使用 `xregexp` 自动生成
+ * @note 该正则使用 `xregexp` 自动生成
  *
  * ```javascript
  *  const XRegExp = require('xregexp');
