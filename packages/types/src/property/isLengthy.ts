@@ -1,4 +1,5 @@
-import { isNullOrUndefined, isUintSafe } from '..';
+import isNullOrUndefined from '../nullable/isNullOrUndefined';
+import isUintSafe from '../number/int/isUintSafe';
 
 import type { Lengthy } from './types';
 
