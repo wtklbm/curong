@@ -5,7 +5,8 @@ import isObject from './isObject';
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
- * @info
+ * @note
+ *
  * - 如果想验证任意的对象，请使用 `isObject` 方法
  * - 如果想使用 `typeof` 验证一个对象，请使用 `isTypeofObject` 方法
  * - 如果想验证普通对象，请使用 `isPlainObject` 方法
