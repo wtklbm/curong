@@ -25,7 +25,7 @@ import type { ColorCodeResult, ColorName, TerminalType } from './types';
  * console.log(ret);
  * ```
  *
- * @info
+ * @note
  *
  * ### 并不是所有的系统平台都支持终端颜色代码
  *
