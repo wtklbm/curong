@@ -18,6 +18,8 @@ import isSyncIterable from './isSyncIterable';
  * console.log(isIterable(new WeakMap())); // false
  * ```
  *
+ * @note
+ *
  * ### 可迭代对象
  *
  * 只要对象（或者它原型链上的某个对象）有一个为 `[Symbol.iterator]` 或 `[Symbol.asyncIterator]` 的属性，
