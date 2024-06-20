@@ -10,7 +10,7 @@ import { isNotZero, isUint } from '@curong/types';
  *
  * - 如果 `position` 不是索引，则会抛出异常
  *
- * @info 依据 `含头不含尾` 规则，在使用该索引调用 `slice` 方法时，需要进行加一操作
+ * @note 依据 `含头不含尾` 规则，在使用该索引调用 `slice` 方法时，需要进行加一操作
  * @example
  *
  * ```javascript
