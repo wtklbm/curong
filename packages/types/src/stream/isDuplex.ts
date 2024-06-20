@@ -4,7 +4,7 @@ import isReadable from './isReadable';
 import isWritable from './isWritable';
 
 /**
- * 是不是一个双工流对象
+ * 是不是一个双工流
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`。
