@@ -1,4 +1,5 @@
-import { isTypeofObject, isWindow } from '..';
+import isWindow from '../element/isWindow';
+import isTypeofObject from '../object/isTypeofObject';
 
 import isArray from './isArray';
 import isArrayIndex from './isArrayIndex';
