@@ -30,5 +30,5 @@ const typedArrayPattern =
  * 但是，有很多不同的全局属性，其值是指定元素类型的类型化数组构造函数。
  */
 export default function isTypedArray(value: any): value is TypedArray {
-    return !isBuffer(value) && typedArrayPattern.test(getTag(value) ?? '');
+    return !isBuffer(value) && typedArrayPattern.test(getTag(value));
 }
