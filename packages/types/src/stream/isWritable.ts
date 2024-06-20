@@ -3,11 +3,11 @@ import { Writable } from 'stream';
 import { isFunction, isObject, isStream, isTrue } from '..';
 
 /**
- * 是不是一个 `Writable`
+ * 是不是一个可写流对象
  *
  * @param value 要验证的值
- * @returns 是则返回 `true`，否则为 `false`
- * @info 因为双工流包括可写流所以 `new Duplex()` 的结果返回 `true`
+ * @returns 是则返回 `true`，否则为 `false`。
+ * 因为双工流包括可写流，所以 `new Duplex()` 的结果返回 `true`。
  */
 export default function isWritable(value: unknown): value is Writable {
     return (
