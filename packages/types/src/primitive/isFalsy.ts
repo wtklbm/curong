@@ -5,7 +5,8 @@ import type { Falsy } from './types';
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
- * @info
+ * @note
+ *
  * 在判断语句时，值都会被强制类型转换为布尔值，例如条件语句和循环语句。
  * 在 `JavaScript` 中只有 `8` 个 `falsy` 值。
  *
