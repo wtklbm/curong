@@ -8,23 +8,23 @@
 
 - `isArray`: 是不是一个数组
 - `isArrayHave`: 是不是一个长度大于 `0` 的数组
-- `isArrayIndex`: 是不是一个数组的下标索引，它是一个大于或等于 `0` 并且小于或等于数组的最大长度的整数
+- `isArrayIndex`: 是不是一个数组的下标索引，它是一个大于或等于 `0` 并且小于或等于数组的最大长度的正整数
 - `isArrayLike`: 是不是一个类数组 (不包含数组)
 - `isArrayLikeHave`: 是不是一个长度大于 `0` 的类数组 (不包含数组)
-- `isArrayTwoDimensional`: 是不是一个长度大于 0 的数组，且每一项的值都是数组 (二维数组)
+- `isArrayTwoDimensional`: 是不是一个长度大于 `0` 的数组，且每一项的值都是数组 (二维数组)
 
 #### `bigint`
 
 - `isBigInt`: 是不是一个 `bigInt` (大数) 或被包装后的 `BigInt` 对象
-- `isBigIntArray`: 是不是一个长度大于 0 的数组，且每一项的值都是 `bigInt` (大数) 或被包装后的 `BigInt` 对象
-- `isBigIntHave`: 是不是一个大于 `0n` 的 `BigInt` (大数)
+- `isBigIntArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `bigInt` (大数) 或被包装后的 `BigInt` 对象
+- `isBigIntHave`: 是不是一个大于 `0n` 的 `bigInt` (大数)
 - `isBigIntObject`: 是不是一个被包装后的 `BigInt` 对象，即 `Object(0n)`
 - `isBigIntPrimitive`: 是不是一个基本的大数，即 `bigint`
 
 #### `boolean`
 
 - `isBoolean`: 是不是一个布尔值或被包装后的布尔值对象
-- `isBooleanArray`: 是不是一个长度大于 0 的数组，且每一项的值都是布尔值或被包装后的布尔值对象
+- `isBooleanArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是布尔值或被包装后的布尔值对象
 - `isBooleanObject`: 是不是一个被包装后的布尔值对象，即 `new Boolean`
 - `isBooleanPrimitive`: 是不是一个基本的布尔值，即 `boolean`
 - `isFalse`: 是不是 `false`
@@ -49,7 +49,7 @@
 - `isUint16Array`: 是不是一个 `Uint16Array`，每一项占两个字节，值为 `0 - 2^16-1`，即 `0 - 65535`
 - `isUint32Array`: 是不是一个 `Uint32Array`，每一项占四个字节，值为 `0 - 2^32-1`，即 `0 - 4294967295`
 - `isUint8Array`: 是不是一个 `Uint8Array`，每一项占一个字节，值为 `0 - 2^8-1`，即 `0 - 255`
-- `isUint8ClampedArray`: 是不是一个 `Uint8ClampedArray`，每一项占一个字节，值为 `0 - 2^8-1`，即 `0 - 255` (一定在 0 到 255 之间)
+- `isUint8ClampedArray`: 是不是一个 `Uint8ClampedArray`，每一项占一个字节，值为 `0 - 2^8-1`，即 `0 - 255` (一定在 `0` 到 `255` 之间)
 
 
 包含以下类型:
@@ -59,9 +59,9 @@
 
 #### `cmp`
 
-- `isEqual`: `简单` 的判断多个的值是否相等
+- `isEqual`: **简单** 的判断多个的值是否相等
 - `isEvery`: 检查数组中所有元素是否满足给定条件
-- `isNotEqual`: `简单` 的判断多个的值是否不相等
+- `isNotEqual`: **简单** 的判断多个的值是否不相等
 - `isSome`: 检查数组中是否至少有一个元素满足给定的条件
 
 #### `collection`
@@ -122,9 +122,10 @@
 - `isAsyncFunctionHave`: 是不是一个参数个数大于 `0` 的异步函数
 - `isClass`: 是不是一个类
 - `isFunction`: 是不是一个函数 (包含同步函数、异步函数、`Generator` 函数 ...)
-- `isFunctionArray`: 是不是一个长度大于 0 的数组，且每一项的值都是函数
+- `isFunctionArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是函数
 - `isFunctionBound`: 是不是一个经过 `.bind()` 所绑定过的函数
 - `isFunctionHave`: 是不是一个参数个数大于 `0` 的函数
+- `isNativeFunction`: 是不是一个 `JavaScript` 内置函数
 - `isSyncFunction`: 是不是一个同步函数
 - `isSyncFunctionHave`: 是不是一个参数个数大于 `0` 的同步函数
 
@@ -159,11 +160,11 @@
 #### `nullable`
 
 - `isNull`: 是不是 `null`
-- `isNullArray`: 是不是一个长度大于 0 的数组，且每一项的值都是 `null`
+- `isNullArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `null`
 - `isNullOrUndefined`: 是不是 `undefined` 或者 `null`
-- `isNullOrUndefinedArray`: 是不是一个长度大于 0 的数组，且每一项的值都是 `null` 或 `undefined`
+- `isNullOrUndefinedArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `null` 或 `undefined`
 - `isUndefined`: 是不是 `undefined`
-- `isUndefinedArray`: 是不是一个长度大于 0 的数组，且每一项的值都是 `undefined`
+- `isUndefinedArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `undefined`
 
 包含以下类型:
 
@@ -178,9 +179,9 @@
 - `isFloat`: 是不是一个浮点数，即不是整数的数
 - `isFloat16`: 是不是一个半精度浮点数，取值在 `-65504 - 65504` 之间的浮点数
 - `isFloat16SafeInt`: 是不是一个可以被半精度浮点数所能存储的整数，即 `2^11-1`，取值范围为 `-2047 - 2047`
-- `isFloat32`: 是不是一个单精度浮点数，取值在 `-3.4028234663852886e+38 - 3.4028234663852886e+38` 之间的浮点数
+- `isFloat32`: 是不是一个单精度浮点数，取值在 `-3.4028234663852886e38 - 3.4028234663852886e38` 之间的浮点数
 - `isFloat32SafeInt`: 是不是一个可以被单精度浮点数所能存储的整数，即 `2^24-1`，取值范围为 `-16777215 - 16777215`
-- `isFloat64`: 是不是一个双精度浮点数，取值在 `-1.7976931348623157e+308 - 1.7976931348623157e+308` 之间的浮点数
+- `isFloat64`: 是不是一个双精度浮点数，取值在 `-1.7976931348623157e308 - 1.7976931348623157e308` 之间的浮点数
 - `isFloat64SafeInt`: 是不是一个可以被双精度浮点数所能存储的整数，即 `2^53-1`，取值范围为 `-9007199254740991 - 9007199254740991`
 - `isInfinity`: 是不是一个无穷大的数
 - `isInfinityNegative`: 是不是一个 `-Infinity`，即负无穷大的数
@@ -189,15 +190,15 @@
 - `isInt16`: 是不是一个 `int16`，取值范围为 `-2^15 - 2^15-1` 的整数，即 `-32768 - 32767`
 - `isInt32`: 是不是一个 `int32`，取值范围为 `-2^31 - 2^31-1` 的整数，即 `-2147483648 - 2147483647`
 - `isInt8`: 是不是一个 `int8`，取值范围为 `-2^7 - 2^7-1` 的整数，即 `-128 - 127`
-- `isIntEven`: 是不是一个偶数，即取模后等于 0 的整数
+- `isIntEven`: 是不是一个偶数，即取模后等于 `0` 的整数
 - `isIntHave`: 是不是一个大于 `0` 的整数，即无符号整数
-- `isIntOdd`: 是不是一个奇数，即取模后等于 1 的整数
+- `isIntOdd`: 是不是一个奇数，即取模后等于 `1` 的整数
 - `isIntSafe`: 是不是一个安全的整数
 - `isNaN`: 是不是一个 `NaN`
 - `isNotZero`: 不是 `0`
 - `isNumber`: 是不是一个数字或被包装后的数字对象
-- `isNumberArray`: 是不是一个长度大于 0 的数组，且每一项的值都是数字或被包装后的数字对象
-- `isNumberHave`: 是不是一个不是 `0` 、`Infinity`、`-Infinity` 或 `NaN` 的数字
+- `isNumberArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是数字或被包装后的数字对象
+- `isNumberHave`: 是不是一个不是 `0`、`Infinity`、`-Infinity` 或 `NaN` 的数字
 - `isNumberNegative`: 是不是一个小于 `0` 且不是 `-Infinity` 或 `NaN` 的负数
 - `isNumberObject`: 是不是一个被包装后的数字对象，即 `new Number()` || `Object(0)`
 - `isNumberPositive`: 是不是一个大于 `0` 且不是 `Infinity` 或 `NaN` 的正数
@@ -209,21 +210,21 @@
 - `isUint16`: 是不是一个 `uint16`，取值范围为 `0 - 2^16-1` 的正整数，即 `0 - 65535`
 - `isUint32`: 是不是一个 `uint32`，取值范围为 `0 - 2^32-1` 的正整数，即 `0 - 4294967295`
 - `isUint8`: 是不是一个 `uint8`，取值范围为 `0 - 2^8-1` 的正整数，即 `0 - 255`
-- `isUintHave`: 是不是一个大于 0 的无符号整数
+- `isUintHave`: 是不是一个大于 `0` 的无符号整数
 - `isUintSafe`: 是不是一个安全的无符号整数
-- `isUintSafeHave`: 是不是一个大于 0 的安全的无符号整数
+- `isUintSafeHave`: 是不是一个大于 `0` 的安全的无符号整数
 - `isZero`: 是不是 `0`
 
 #### `object`
 
 - `isObject`: 是不是一个 `[object Object]` 的对象
-- `isObjectArray`: 是不是一个长度大于 0 的数组，且每一项的值都是标记为 `[object Object]` 的对象
+- `isObjectArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是标记为 `[object Object]` 的对象
 - `isObjectHave`: 是不是一个属性个数大于 `0` 的对象
 - `isPlainObject`: 是不是一个普通对象，即 `{}`，该对象的原型指向 `Object.prototype`
 - `isPlainObjectHave`: 是不是一个属性个数大于 `0` 的普通对象，即 `{}`
 - `isPureObject`: 是不是一个纯对象，即通过 `Object.create(null)` 创建的对象，该对象的原型就是 `null`
 - `isTypeofObject`: 使用 `typeof` 判断是不是一个不是 `null` 的任意对象
-- `isTypeofObjectArray`: 是不是一个长度大于 0 的数组，且每一项的值都是对象 (通过 `typeof` 判断且不为 `null`)
+- `isTypeofObjectArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是对象 (通过 `typeof` 判断且不为 `null`)
 
 #### `platform`
 
@@ -235,10 +236,10 @@
 #### `primitive`
 
 - `isFalsy`: 是不是一个虚值 (强制转换为 `Boolean` 后为 `false` 的值)
-- `isFalsyArray`: 是不是一个长度大于 0 的数组，且每一项的值都是虚值 (强制转换为 `Boolean` 后为 `false` 的值)
+- `isFalsyArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是虚值 (强制转换为 `Boolean` 后为 `false` 的值)
 - `isPrimitive`: 是不是一个基本类型的值
 - `isTruthy`: 是不是一个真值 (强制转换为 `Boolean` 后为 `true` 的值)
-- `isTruthyArray`: 是不是一个长度大于 0 的数组，且每一项的值都是真值 (强制转换为 `Boolean` 后为 `true` 的值)
+- `isTruthyArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是真值 (强制转换为 `Boolean` 后为 `true` 的值)
 
 包含以下类型:
 
@@ -253,14 +254,14 @@
 
 #### `property`
 
-- `isLengthy`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于或等于 0 的安全的无符号整数
-- `isLengthyHave`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于 0 的安全的无符号整数
+- `isLengthy`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于或等于 `0` 的安全的无符号整数
+- `isLengthyHave`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于 `0` 的安全的无符号整数
 - `isOwnProperty`: 确定一个值上是否具有指定名称的私有属性
 - `isProperty`: 确定一个值上是否具有指定名称的属性，该属性可以是私有属性，也可以是原型上的属性
 - `isPropertyDescriptor`: 是不是一个属性描述器
 - `isPropertyKey`: 是不是一个可以作为属性的值
-- `isSizey`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于或等于 0 的安全的无符号整数
-- `isSizeyHave`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于 0 的安全的无符号整数
+- `isSizey`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于或等于 `0` 的安全的无符号整数
+- `isSizeyHave`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于 `0` 的安全的无符号整数
 
 包含以下类型:
 
@@ -273,16 +274,16 @@
 
 #### `stream`
 
-- `isDuplex`: 是不是一个 `Duplex`
-- `isReadable`: 是不是一个 `Readable`
-- `isStream`: 是不是一个 `Stream`
-- `isTransform`: 是不是一个 `Transform`
-- `isWritable`: 是不是一个 `Writable`
+- `isDuplex`: 是不是一个双工流对象
+- `isReadable`: 是不是一个可读流对象
+- `isStream`: 是不是一个流对象
+- `isTransform`: 是不是一个转换流对象
+- `isWritable`: 是不是一个可写流对象
 
 #### `string`
 
 - `isString`: 是不是一个字符串或被包装后的字符串对象
-- `isStringArray`: 是不是一个长度大于 0 的数组，且每一项的值都是字符串或被包装后的字符串对象
+- `isStringArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是字符串或被包装后的字符串对象
 - `isStringHave`: 是不是一个长度大于 `0` 的字符串
 - `isStringObject`: 是不是一个被包装后的字符串对象，即 `new String()`
 - `isStringPrimitive`: 是不是一个基本的字符串，即 `string`
@@ -291,7 +292,7 @@
 #### `symbol`
 
 - `isSymbol`: 是不是一个 `symbol` 或被包装后的 `Symbol` 对象
-- `isSymbolArray`: 是不是一个长度大于 0 的数组，且每一项的值都是 `symbol` 或被包装后的 `Symbol` 对象
+- `isSymbolArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `symbol` 或被包装后的 `Symbol` 对象
 - `isSymbolObject`: 是不是一个被包装后的 `Symbol` 对象，即 `Object(Symbol())`
 - `isSymbolPrimitive`: 是不是一个基本的 `symbol` || `Symbol()`
 
