@@ -10,7 +10,7 @@ const { open } = promises;
  * @param pathString1 第一个文件的路径
  * @param pathString2 第二个文件的路径
  * @return 如果相等则返回 `true`，否则返回 `false`
- * @info 机械硬盘长期频繁写入某个区域会无法避免的产生坏道，但读取寿命是几乎无限的
+ * @note 机械硬盘长期频繁写入某个区域会无法避免的产生坏道，但读取寿命是几乎无限的
  */
 export default async function diffFile(
     pathString1: string,
