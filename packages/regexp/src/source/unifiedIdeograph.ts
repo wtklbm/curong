@@ -7,7 +7,7 @@
  *  const hanReg = new RegExp(`(?:${source.han})+`);
  * ```
  *
- * @info 该正则是自动生成的。原始代码：'\\p{Unified_Ideograph}'。
+ * @note 该正则是自动生成的。原始代码：'\\p{Unified_Ideograph}'。
  *  该正则只会匹配汉字，如果还需要多匹配一些字符，请使用 `han`。
  *
  * @see http://unicode.org/reports/tr44/#Unified_Ideograph
