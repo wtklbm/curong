@@ -1,4 +1,4 @@
-import { isArrayHave } from '..';
+import isArrayHave from '../array/isArrayHave';
 
 import isTruthy from './isTruthy';
 import type { Truthy } from './types';
