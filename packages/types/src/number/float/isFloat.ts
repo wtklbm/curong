@@ -1,4 +1,4 @@
-import { isFinite } from '..';
+import isFinite from '../isFinite';
 
 /**
  * 是不是一个浮点数，即不是整数的数
