@@ -1,4 +1,4 @@
-import { getTagEqual } from '..';
+import getTagEqual from '../type/getTagEqual';
 
 /**
  * 是不是一个 `Uint16Array`，每一项占两个字节，值为 `0 - 2^16-1`，即 `0 - 65535`
