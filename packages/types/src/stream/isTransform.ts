@@ -5,7 +5,7 @@ import { isFunctionHave } from '..';
 import isDuplex from './isDuplex';
 
 /**
- * 是不是一个转换流对象
+ * 是不是一个转换流
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
