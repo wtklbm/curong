@@ -1,4 +1,4 @@
-import { isNativeFunction } from '../function';
+import isNativeFunction from '../function/isNativeFunction';
 
 export default (() => {
     const store: Record<string, string> = {};
