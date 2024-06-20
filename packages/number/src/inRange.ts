@@ -5,7 +5,7 @@ import { isArray, isNumber } from '@curong/types';
  *
  * @param value 要检查的数字
  * @param range 要检查的范围。可以是一个数字或一个包含两个数字的数组
- *  - 如果 `range` 是一个单一的数字，则检查 `value` 是否在从 0 到该数字的范围内
+ *  - 如果 `range` 是一个单一的数字，则检查 `value` 是否在从 `0` 到该数字的范围内
  *  - 如果 `range` 是一个包含两个数字的数组，则检查 `value` 是否在这两个数字的最小值和最大值之间
  * @returns 如果 `value` 在指定范围内，则返回 `true`，否则返回 `false`
  * @throws

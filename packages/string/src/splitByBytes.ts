@@ -9,11 +9,11 @@ import fromChars from './fromChars';
  * 将一个字符串根据字节拆分为一个字符串数组
  *
  * @param value 要拆分的字符串
- * @param highWaterMark 最高水位线，它是大于 0 的无符号整数，默认为 4096 字节
+ * @param highWaterMark 最高水位线，它是大于 `0` 的无符号整数，默认为 `4096` 字节
  * @returns 返回拆分好的字符串数组
  * @throws
  *
- *  - 如果 `highWaterMark` 不是大于 0 的无符号整数，则会抛出异常
+ *  - 如果 `highWaterMark` 不是大于 `0` 的无符号整数，则会抛出异常
  *  - 如果在转换字节时失败，则会抛出异常
  *
  * @example

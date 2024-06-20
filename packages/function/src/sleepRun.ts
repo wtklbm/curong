@@ -19,11 +19,11 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
  *  - `show` 是否显示等待时间，默认为 `false`
  *
  * 如果参数是数字:
- *  - 如果 `duration` 为小于或等于 0 的数字，则表示定时器应尽快执行
- *  - 如果 `duration` 为一个大于 0 的数字，则表示至少应等待 `duration` 毫秒后执行
+ *  - 如果 `duration` 为小于或等于 `0` 的数字，则表示定时器应尽快执行
+ *  - 如果 `duration` 为一个大于 `0` 的数字，则表示至少应等待 `duration` 毫秒后执行
  *
  * @returns 返回一个 `Promise` 对象的成功态
- * @throws 如果 `anyTimeout` 的值超出 32 位整数值 (2^32-1，即 2147483647)，则会抛出异常
+ * @throws 如果 `anyTimeout` 的值超出 `32` 位整数值 (`2^32-1`，即 `2147483647`)，则会抛出异常
  * @example ````
  *
  * ### 传递一个数字
@@ -40,7 +40,7 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
  * ```javascript
  * const f = () => console.log('hello');
  *
- * // 从 3s 或 8s 间生成一个随机时间，等待并执行函数
+ * // 从 `3s` 或 `8s` 间生成一个随机时间，等待并执行函数
  * sleepRun(f, {
  *     start: 3e3,
  *     end: 8e3,

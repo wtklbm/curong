@@ -126,7 +126,7 @@ const getStdio = (
  * // }
  * console.log(ret);
  *
- * // 当命令以非 0 状态码退出时，则表示该命令报错了，需用户自行处理
+ * // 当命令以非 `0` 状态码退出时，则表示该命令报错了，需用户自行处理
  * if (ret.status !== 0 || signal !== null) {
  *     console.log(ret);
  * }
