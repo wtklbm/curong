@@ -3,6 +3,15 @@
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
+ *
+ * @polyfill
+ *
+ * ``` javascript
+ * Number.isSafeInteger = Number.isSafeInteger || function (value) {
+ *    return Number.isInteger(value) && Math.abs(value) <= Number.MAX_SAFE_INTEGER;
+ * };
+ * ```
+ *
  * @note
  *
  * - 该方法是 {@link Number.isSafeInteger} 的别名
@@ -49,14 +58,6 @@
  *         data => JSONbig({ storeAsString: true }).parse(data)
  *     ]
  * });
- * ```
- *
- * ### polyfill
- *
- * ``` javascript
- * Number.isSafeInteger = Number.isSafeInteger || function (value) {
- *    return Number.isInteger(value) && Math.abs(value) <= Number.MAX_SAFE_INTEGER;
- * };
  * ```
  */
 export default function isIntSafe(value: unknown): value is number {
