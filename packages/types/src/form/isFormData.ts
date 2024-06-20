@@ -1,4 +1,7 @@
-import { getTagEqual, isFunction, isNullOrUndefined, isTypeofObject } from '..';
+import isFunction from '../function/isFunction';
+import isNullOrUndefined from '../nullable/isNullOrUndefined';
+import isTypeofObject from '../object/isTypeofObject';
+import getTagEqual from '../type/getTagEqual';
 
 /**
  * 是不是一个 `FormData`
