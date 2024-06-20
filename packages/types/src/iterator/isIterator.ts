@@ -1,4 +1,5 @@
-import { isFunction, isNullOrUndefined } from '..';
+import isFunction from '../function/isFunction';
+import isNullOrUndefined from '../nullable/isNullOrUndefined';
 
 /**
  * 是不是一个 `Iterator`
