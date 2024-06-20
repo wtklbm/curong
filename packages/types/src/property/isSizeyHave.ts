@@ -6,7 +6,7 @@ import type { Sizey } from './types';
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
- * @info 一些 `HTML` 元素也有 `size` 属性，比如 `input` 元素
+ * @note 一些 `HTML` 元素也有 `size` 属性，比如 `input` 元素
  */
 export default function isSizeyHave<T extends {}>(
     value: unknown
