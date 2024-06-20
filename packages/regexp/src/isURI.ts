@@ -12,7 +12,7 @@ import { uri as sourceURI } from './source';
  * console.log(ret); // true
  * ```
  *
- * @info 各个浏览器对 `HTTP` 连接的长度都有所限制，其中最小的是两千多个，
+ * @note 各个浏览器对 `HTTP` 连接的长度都有所限制，其中最小的是两千多个，
  * 为了兼容所有的浏览器，所以这里规定两千之内的长度为有效的长度。
  *
  * - 根据HTTP规范，URL的长度没有限制。
