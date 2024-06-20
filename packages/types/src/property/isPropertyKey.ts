@@ -1,4 +1,6 @@
-import { isNumber, isString, isSymbol } from '..';
+import isNumber from '../number/isNumber';
+import isString from '../string/isString';
+import isSymbol from '../symbol/isSymbol';
 
 /**
  * 是不是一个可以作为属性的值
