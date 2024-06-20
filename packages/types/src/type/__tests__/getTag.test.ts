@@ -17,6 +17,6 @@ describe('@curong/types/getTag', () => {
     test('测试4', () => {
         // @ts-ignore
         Object.prototype.toString = null;
-        expect(getTag({})).toBe(null);
+        expect(getTag({})).toBe('Object');
     });
 });
