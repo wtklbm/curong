@@ -1,4 +1,5 @@
-import { isString, isUndefined } from '..';
+import isUndefined from '../nullable/isUndefined';
+import isString from '../string/isString';
 
 import isNumber from './isNumber';
 
