@@ -6,6 +6,7 @@ export { default as isFunction } from './isFunction';
 export { default as isFunctionArray } from './isFunctionArray';
 export { default as isFunctionBound } from './isFunctionBound';
 export { default as isFunctionHave } from './isFunctionHave';
+export { default as isNativeFunction } from './isNativeFunction';
 export { default as isSyncFunction } from './isSyncFunction';
 export { default as isSyncFunctionHave } from './isSyncFunctionHave';
 
