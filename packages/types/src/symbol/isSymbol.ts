@@ -6,10 +6,8 @@ import isSymbolPrimitive from './isSymbolPrimitive';
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
- *
- * @info `Symbol` 是一个基本类型的值
- *
  * @polyfill
+ *
  * ```javascript
  * try {
  *     const reg = /^Symbol\(.*\)$/;
@@ -23,6 +21,10 @@ import isSymbolPrimitive from './isSymbolPrimitive';
  *
  * return false;
  * ```
+ *
+ * @note
+ *
+ *  - `Symbol` 是一个基本类型的值
  */
 export default function isSymbol(value: unknown): value is symbol {
     return isSymbolPrimitive(value) || isSymbolObject(value);
