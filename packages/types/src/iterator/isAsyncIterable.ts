@@ -1,4 +1,5 @@
-import { isFunction, isNullOrUndefined } from '..';
+import isFunction from '../function/isFunction';
+import isNullOrUndefined from '../nullable/isNullOrUndefined';
 
 import type { AsyncIterable } from './types';
 
