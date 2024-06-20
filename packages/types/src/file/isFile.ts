@@ -5,6 +5,7 @@ import { getTagEqual } from '..';
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
+ * @note
  *
  * `File` 提供了有关文件的信息，并允许网页中的 `JavaScript` 访问其内容。
  * 一般在使用 `<input>` 标签时会涉及到 `File` 对象。
