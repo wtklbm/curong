@@ -14,7 +14,7 @@ export default function isVarName(value: unknown): boolean {
     try {
         new Function('fn', `var ${value};`);
         return true;
-    } catch (_e) {}
+    } catch {}
 
     return false;
 }
