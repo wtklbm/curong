@@ -1,4 +1,4 @@
-import { getTagEqual } from '..';
+import getTagEqual from '../type/getTagEqual';
 
 /**
  * 当前的执行环境是不是 `Node.js`
