@@ -13,7 +13,7 @@ import { isZero } from '@curong/types';
  * console.log(ret); // ['b', 'a', 'd', 'f', 'g', 'e', 'c'];
  * ```
  *
- * @info
+ * @note
  *
  * ### 使用 `Fisher-Yates` 算法生成随机数
  *
