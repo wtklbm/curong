@@ -1,4 +1,4 @@
-import { isAnyError } from '.';
+import isAnyError from './isAnyError';
 
 /**
  * 是不是一个 `name` 和 `message` 相同的 `Error` 对象
