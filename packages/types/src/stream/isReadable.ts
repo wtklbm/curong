@@ -3,7 +3,7 @@ import { Readable } from 'stream';
 import { isFunction, isObject, isStream, isTrue } from '..';
 
 /**
- * 是不是一个可读流对象
+ * 是不是一个可读流
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`。
