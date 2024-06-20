@@ -1,4 +1,5 @@
-import { isFunction, isTypeofObject } from '..';
+import isFunction from '../function/isFunction';
+import isTypeofObject from '../object/isTypeofObject';
 
 /**
  * 是不是一个有 `then` 方法的像 `Promise` 的对象或函数
