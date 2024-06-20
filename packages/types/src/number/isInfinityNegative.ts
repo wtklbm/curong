@@ -3,6 +3,7 @@
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
+ * @note
  *
  * - `-Infinity` 等价于  `Number.NEGATIVE_INFINITY`，是超出 `-1.7976931348623157e308` 的数
  * - `Number.NEGATIVE_INFINITY` 是一个不可写、不可枚举、不可配置的值
