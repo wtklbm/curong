@@ -1,4 +1,4 @@
-import { getTagEqual } from '..';
+import getTagEqual from '../type/getTagEqual';
 
 /**
  * 是不是一个被包装后的 `Symbol` 对象，即 `Object(Symbol())`
