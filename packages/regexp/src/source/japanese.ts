@@ -17,7 +17,7 @@
  * - 日文中包含片假名，中文中没有
  * - 同时捕获中文和日文，看日文正则和中文正则哪个捕获的内容最长
  *
- * @info 该正则使用 `xregexp` 自动生成
+ * @note 该正则使用 `xregexp` 自动生成
  *
  * ```javascript
  *   const XRegExp = require('xregexp);
