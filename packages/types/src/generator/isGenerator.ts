@@ -6,6 +6,7 @@ import isSyncGenerator from './isSyncGenerator';
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
+ * @note
  *
  * - 每一个 `Generator` 上，都会有三个方法: `next`、`throw`、`return`
  */
