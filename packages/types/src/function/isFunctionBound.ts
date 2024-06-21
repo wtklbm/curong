@@ -12,7 +12,7 @@ export default function isFunctionBound<T = unknown>(
 ): value is Function<T> {
     return (
         isFunction(value) &&
-        value.name.indexOf('bound ') === 0 &&
+        value.name.startsWith('bound ') &&
         !value.hasOwnProperty('prototype')
     );
 }
