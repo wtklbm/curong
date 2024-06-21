@@ -1,3 +1,4 @@
+import typeofEqual from '../type/typeofEqual';
 import isNaN from './isNaN';
 
 /**
@@ -11,5 +12,5 @@ export default function isNumberPrimitive(
     value: unknown,
     isAllowNaN: boolean = false
 ): value is number {
-    return typeof value === 'number' && (isAllowNaN || !isNaN(value));
+    return typeofEqual(value, 'number') && (isAllowNaN || !isNaN(value));
 }
