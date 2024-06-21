@@ -10,8 +10,6 @@ import type { Sizey } from './types';
  * @returns 是则返回 `true`，否则为 `false`
  * @note 一些 `HTML` 元素也有 `size` 属性，比如 `input` 元素
  */
-export default function isSizey<T extends {}>(
-    value: unknown
-): value is Sizey<T> {
-    return !isNullOrUndefined(value) && isUintSafe((value as any).size);
+export default function isSizey(value: unknown): value is Sizey {
+    return !isNullOrUndefined(value) && isUintSafe((value as Sizey).size);
 }
