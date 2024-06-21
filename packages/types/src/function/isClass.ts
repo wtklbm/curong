@@ -1,3 +1,4 @@
+import { functionToString } from './constants';
 import isFunction from './isFunction';
 import type { Class } from './types';
 
@@ -15,7 +16,6 @@ export default function isClass<T = unknown>(
     value: unknown
 ): value is Class<T> {
     return (
-        isFunction(value) &&
-        Function.prototype.toString.call(value).startsWith('class ')
+        isFunction(value) && functionToString.call(value).startsWith('class ')
     );
 }
