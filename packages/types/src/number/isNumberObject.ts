@@ -1,4 +1,5 @@
 import getTagEqual from '../type/getTagEqual';
+import typeofEqual from '../type/typeofEqual';
 
 import isNaN from './isNaN';
 
@@ -14,7 +15,7 @@ export default function isNumberObject(
     isAllowNaN: boolean = false
 ): value is Number {
     return (
-        typeof value === 'object' &&
+        typeofEqual(value, 'object') &&
         getTagEqual(value, 'Number') &&
         (isAllowNaN || !isNaN((value as object).valueOf()))
     );
