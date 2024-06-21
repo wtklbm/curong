@@ -3,6 +3,7 @@ export { default as isArrayBufferView } from './isArrayBufferView';
 export { default as isBigInt64Array } from './isBigInt64Array';
 export { default as isBigUint64Array } from './isBigUint64Array';
 export { default as isBuffer } from './isBuffer';
+export { default as isBufferArray } from './isBufferArray';
 export { default as isBufferHave } from './isBufferHave';
 export { default as isDataView } from './isDataView';
 export { default as isFloat32Array } from './isFloat32Array';
