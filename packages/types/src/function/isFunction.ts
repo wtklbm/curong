@@ -1,3 +1,4 @@
+import typeofEqual from '../type/typeofEqual';
 import type { Function } from './types';
 
 /**
@@ -11,5 +12,5 @@ import type { Function } from './types';
 export default function isFunction<T = unknown>(
     value: unknown
 ): value is Function<T> {
-    return typeof value === 'function';
+    return typeofEqual(value, 'function');
 }
