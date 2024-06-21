@@ -1,3 +1,5 @@
+import typeofEqual from '../type/typeofEqual';
+
 /**
  * 是不是一个基本的大数，即 `bigint`
  *
@@ -5,5 +7,5 @@
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isBigIntPrimitive(value: unknown): value is bigint {
-    return typeof value === 'bigint';
+    return typeofEqual(value, 'bigint');
 }
