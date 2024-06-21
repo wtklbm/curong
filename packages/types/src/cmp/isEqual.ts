@@ -10,10 +10,13 @@ import isNaN from '../number/isNaN';
  * @param args 要跟当前值比较的多个值
  * @returns 相等返回 `true`，否则为 `false`
  */
-export default function isEqual(value: any, ...args: any[]): boolean {
+export default function isEqual<T extends unknown[]>(
+    value: unknown,
+    ...args: T
+): boolean {
     const handle = isNaN(value)
-        ? (v: any) => isNaN(v)
-        : (v: any) => value === v;
+        ? (v: unknown) => isNaN(v)
+        : (v: unknown) => value === v;
 
     return isArrayHave(args) && args.every(handle);
 }
