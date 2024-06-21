@@ -1,3 +1,5 @@
+import typeofEqual from '../type/typeofEqual';
+
 /**
  * 是不是 `undefined`
  *
@@ -5,5 +7,5 @@
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isUndefined(value: unknown): value is undefined {
-    return typeof value === 'undefined';
+    return typeofEqual(value, 'undefined');
 }
