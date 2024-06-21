@@ -1,4 +1,5 @@
 import getTagEqual from '../type/getTagEqual';
+import typeofEqual from '../type/typeofEqual';
 
 /**
  * 是不是一个被包装后的布尔值对象，即 `new Boolean` || `Object(true)`
@@ -8,5 +9,5 @@ import getTagEqual from '../type/getTagEqual';
  */
 export default function isBooleanObject(value: unknown): value is Boolean {
     // Note: `typeof` 不能够匹配通过类创建的布尔值对象，所以这里使用 `getTag` 方法
-    return typeof value === 'object' && getTagEqual(value, 'Boolean');
+    return typeofEqual(value, 'object') && getTagEqual(value, 'Boolean');
 }
