@@ -1,4 +1,5 @@
 import isNull from '../nullable/isNull';
+import typeofEqual from '../type/typeofEqual';
 
 /**
  * 使用 `typeof` 判断是不是一个不是 `null` 的任意对象
@@ -23,5 +24,5 @@ import isNull from '../nullable/isNull';
 export default function isTypeofObject<T extends Object>(
     value: any
 ): value is T {
-    return typeof value === 'object' && !isNull(value);
+    return typeofEqual(value, 'object') && !isNull(value);
 }
