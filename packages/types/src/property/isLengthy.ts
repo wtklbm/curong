@@ -9,8 +9,6 @@ import type { Lengthy } from './types';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isLengthy<T extends {}>(
-    value: unknown
-): value is Lengthy<T> {
-    return !isNullOrUndefined(value) && isUintSafe((value as any).length);
+export default function isLengthy(value: unknown): value is Lengthy {
+    return !isNullOrUndefined(value) && isUintSafe((value as Lengthy).length);
 }
