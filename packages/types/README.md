@@ -37,6 +37,7 @@
 - `isBigInt64Array`: 是不是一个 `BigInt64Array`，每一项占八个字节，值为 `-2^63 - 2^63-1`
 - `isBigUint64Array`: 是不是一个 `BigUint64Array`，每一项占八个字节，值为 `0 - 2^64-1`
 - `isBuffer`: 是不是一个 `Buffer`
+- `isBufferArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `Buffer`
 - `isBufferHave`: 是不是一个长度大于 `0` 的 `Buffer`
 - `isDataView`: 是不是一个 `DataView`
 - `isFloat32Array`: 是不是一个 `Float32Array`，每一项占四个字节，值为 `-3.4028234663852886e38 - 3.4028234663852886e38`，并且 `1.2e-38` 是最小的正数
