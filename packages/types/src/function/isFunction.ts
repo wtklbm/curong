@@ -1,4 +1,5 @@
 import typeofEqual from '../type/typeofEqual';
+
 import type { Function } from './types';
 
 /**
