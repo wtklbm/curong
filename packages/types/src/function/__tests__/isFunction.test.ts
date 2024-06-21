@@ -26,7 +26,7 @@ describe('@curong/types/isFunction', () => {
     test('测试3', () => {
         expect(isFunction(Object(Function('xxx')))).toBe(true);
         expect(isFunction(Object(new Function('xxx')))).toBe(true);
-        expect(isFunction(Object(() => { }))).toBe(true);
-        expect(isFunction(Object(function () { }))).toBe(true);
+        expect(isFunction(Object(() => {}))).toBe(true);
+        expect(isFunction(Object(function () {}))).toBe(true);
     });
 });
