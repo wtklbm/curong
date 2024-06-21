@@ -61,8 +61,8 @@ export default (() => {
     return function getTag(value: any, slice: boolean = true): string {
         const v = cachedToString.call(value);
 
-        return slice && v.startsWith('[object ') && v.endsWith(']')
-            ? store[v] || (store[v] = v.slice(8, -1))
-            : v;
+        // 以前，我们会判断 `slice && v.startsWith('[object ') && v.endsWith(']')`，
+        // 因为上面已经验证过 `toString` 是原生方法了，所以这里就不进行断言了
+        return slice ? store[v] || (store[v] = v.slice(8, -1)) : v;
     };
 })();
