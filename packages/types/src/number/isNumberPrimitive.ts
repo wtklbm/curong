@@ -1,4 +1,5 @@
 import typeofEqual from '../type/typeofEqual';
+
 import isNaN from './isNaN';
 
 /**
