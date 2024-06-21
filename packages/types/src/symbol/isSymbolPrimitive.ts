@@ -1,3 +1,5 @@
+import typeofEqual from '../type/typeofEqual';
+
 /**
  * 是不是一个基本的 `symbol` || `Symbol()`
  *
@@ -5,5 +7,5 @@
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isSymbolPrimitive(value: unknown): value is symbol {
-    return typeof value === 'symbol';
+    return typeofEqual(value, 'symbol');
 }
