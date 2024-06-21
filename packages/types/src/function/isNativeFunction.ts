@@ -1,3 +1,4 @@
+import { functionToString } from './constants';
 import isFunction from './isFunction';
 import type { Function } from './types';
 
@@ -13,10 +14,11 @@ export default function isNativeFunction(value: unknown): value is Function {
     return (
         isFunction(value) &&
         // 确保该函数没有被人为修改
-        Function.prototype.toString() === 'function () { [native code] }' &&
+        functionToString.call(functionToString) ===
+            'function toString() { [native code] }' &&
         // 结果只能是特定的字符串
         new RegExp(
             `^function ${value.name}\\(\\) \\{ \\[native code\\] \\}$`
-        ).test(Function.prototype.toString.call(value))
+        ).test(functionToString.call(value))
     );
 }
