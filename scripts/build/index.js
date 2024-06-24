@@ -1,4 +1,4 @@
 const walk = require('./walk');
-const build = require('./make');
+const build = require('./build');
 
 module.exports = { build, walk };
