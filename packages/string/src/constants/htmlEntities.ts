@@ -1,4 +1,5 @@
-[
+/* prettier-ignore */
+export default [
     { "value": "\"", "name": "quot", "point": "34", "description": "双引号" },
     { "value": "&", "name": "amp", "point": "38", "description": "&" },
     { "value": "'", "name": "apos", "point": "39", "description": "撇号" },
