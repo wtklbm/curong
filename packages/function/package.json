@@ -18,8 +18,8 @@
     "main": "dist/index.js",
     "module": "dist/index.es.js",
     "types": "dist/index.d.ts",
-    "unpkg": "dist/index.umd.min.js",
-    "jsdelivr": "dist/index.umd.min.js",
+    "unpkg": "dist/index.umd.js",
+    "jsdelivr": "dist/index.umd.js",
     "files": [
         "dist"
     ],
