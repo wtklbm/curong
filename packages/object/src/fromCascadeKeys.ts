@@ -1,4 +1,4 @@
-import { isArrayHave, isNumber } from '@curong/types';
+import { isArrayFilled, isNumber } from '@curong/types';
 
 import type { FromCascadeKeysOptions } from './types';
 
@@ -51,7 +51,7 @@ export default function fromCascadeKeys(
     }
 
     // 如果属性数组中没有内容
-    if (!isArrayHave(keys)) {
+    if (!isArrayFilled(keys)) {
         return '';
     }
 

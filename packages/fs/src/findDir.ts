@@ -2,7 +2,7 @@ import { Dirent, promises } from 'fs';
 import { extname, join } from 'path';
 
 import { format } from '@curong/term';
-import { isArrayHave, isStringHave } from '@curong/types';
+import { isArrayFilled, isStringFilled } from '@curong/types';
 
 import readLnk from './readLnk';
 
@@ -26,7 +26,7 @@ async function findDirCall(
         })
         .catch(() => null);
 
-    if (!isArrayHave(dirents)) {
+    if (!isArrayFilled(dirents)) {
         return files;
     }
 
@@ -82,7 +82,7 @@ export default async function findDir(
 ): Promise<string[]> {
     const pathStrings: string[] = [];
 
-    if (!isStringHave(pathString)) {
+    if (!isStringFilled(pathString)) {
         throw format({
             name: 'findDir',
             message: 'pathString不是一个包含内容的字符串',
@@ -90,7 +90,7 @@ export default async function findDir(
         });
     }
 
-    if (isStringHave(folders)) {
+    if (isStringFilled(folders)) {
         folders = [folders];
     }
 

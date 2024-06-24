@@ -1,4 +1,4 @@
-import { isNumber, isNumberHave, isNumberSafe } from '../..';
+import { isNumber, isNumberFilled, isNumberSafe } from '../..';
 
 import { isEvery } from '..';
 
@@ -16,7 +16,7 @@ describe('@curong/types/isEvery', () => {
 
     test('测试2', () => {
         const v: any[] = [1];
-        const fns: any[] = [isNumber, isNumberSafe, isNumberHave];
+        const fns: any[] = [isNumber, isNumberSafe, isNumberFilled];
         expect(isEvery(1, fns)).toBeTruthy();
         expect(isEvery(1, isNumber)).toBeTruthy();
         expect(isEvery(v, fns)).toBeTruthy();

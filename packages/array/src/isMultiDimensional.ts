@@ -1,4 +1,4 @@
-import { isArray, isArrayHave, isUint } from '@curong/types';
+import { isArray, isArrayFilled, isUint } from '@curong/types';
 
 const handle = (dimension: unknown, strictly: boolean, level: number) => {
     return (
@@ -40,7 +40,7 @@ export default function isMultiDimensional<T extends unknown[][]>(
         );
     }
 
-    while (isArrayHave(internal)) {
+    while (isArrayFilled(internal)) {
         if (!internal.every(isArray)) {
             return handle(dimension, strictly, level);
         }

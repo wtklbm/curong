@@ -1,4 +1,4 @@
-import isArrayHave from '../array/isArrayHave';
+import isArrayFilled from '../array/isArrayFilled';
 
 import isBigInt from './isBigInt';
 
@@ -9,5 +9,5 @@ import isBigInt from './isBigInt';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isBigIntArray(value: unknown): value is bigint[] {
-    return isArrayHave(value) && value.every(isBigInt);
+    return isArrayFilled(value) && value.every(isBigInt);
 }

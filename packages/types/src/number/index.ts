@@ -6,7 +6,7 @@ export { default as isNaN } from './isNaN';
 export { default as isNotZero } from './isNotZero';
 export { default as isNumber } from './isNumber';
 export { default as isNumberArray } from './isNumberArray';
-export { default as isNumberHave } from './isNumberHave';
+export { default as isNumberFilled } from './isNumberFilled';
 export { default as isNumberNegative } from './isNumberNegative';
 export { default as isNumberObject } from './isNumberObject';
 export { default as isNumberPositive } from './isNumberPositive';

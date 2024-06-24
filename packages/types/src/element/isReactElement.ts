@@ -1,5 +1,5 @@
 import isFunction from '../function/isFunction';
-import isFunctionHave from '../function/isFunctionHave';
+import isFunctionFilled from '../function/isFunctionFilled';
 import isNullOrUndefined from '../nullable/isNullOrUndefined';
 
 /**
@@ -10,7 +10,7 @@ import isNullOrUndefined from '../nullable/isNullOrUndefined';
  */
 export default function isReactElement(value: any): boolean {
     // https://github.com/facebook/react/blob/b5ac963fb791d1298e7f396236383bc955f916c1/src/isomorphic/classic/element/ReactElement.js#L21-L25
-    const forF = isFunction(Symbol) && isFunctionHave(Symbol.for);
+    const forF = isFunction(Symbol) && isFunctionFilled(Symbol.for);
     const symbol = forF ? Symbol.for('react.element') : 60103;
 
     return !isNullOrUndefined(value) && value['$$typeof'] === symbol;

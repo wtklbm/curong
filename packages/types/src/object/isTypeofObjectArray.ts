@@ -1,4 +1,4 @@
-import isArrayHave from '../array/isArrayHave';
+import isArrayFilled from '../array/isArrayFilled';
 import type { Function } from '../function';
 
 import isTypeofObject from './isTypeofObject';
@@ -12,5 +12,5 @@ import isTypeofObject from './isTypeofObject';
 export default function isTypeofObjectArray<T = unknown>(
     value: unknown
 ): value is Function<T>[] {
-    return isArrayHave(value) && value.every(isTypeofObject);
+    return isArrayFilled(value) && value.every(isTypeofObject);
 }

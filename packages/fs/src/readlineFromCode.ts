@@ -1,4 +1,4 @@
-import { isBuffer, isFunctionHave, isString } from '@curong/types';
+import { isBuffer, isFunctionFilled, isString } from '@curong/types';
 
 import type { ReadlineCallback } from './types';
 
@@ -81,8 +81,8 @@ export default function readlineFromCode(
     let flag: boolean;
 
     do {
-        if ((flag = !isFunctionHave(callback))) {
-            if (isFunctionHave(encoding)) {
+        if ((flag = !isFunctionFilled(callback))) {
+            if (isFunctionFilled(encoding)) {
                 callback = encoding as ReadlineCallback;
                 encoding = 'utf8';
             } else {

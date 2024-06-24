@@ -1,6 +1,6 @@
 export { default as isArray } from './isArray';
-export { default as isArrayHave } from './isArrayHave';
+export { default as isArrayFilled } from './isArrayFilled';
 export { default as isArrayIndex } from './isArrayIndex';
 export { default as isArrayLike } from './isArrayLike';
-export { default as isArrayLikeHave } from './isArrayLikeHave';
+export { default as isArrayLikeFilled } from './isArrayLikeFilled';
 export { default as isArrayTwoDimensional } from './isArrayTwoDimensional';

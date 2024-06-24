@@ -4,8 +4,8 @@ import {
     isEqual,
     isNotZero,
     isNumber,
-    isObjectHave,
-    isStringHave
+    isObjectFilled,
+    isStringFilled
 } from '@curong/types';
 
 import fontColor from './fontColor';
@@ -21,7 +21,7 @@ const LF = '\n';
  * @returns 返回制作好的大标题文本
  */
 function makeTitle(type: ForMatInfo['type'] = 'error', title?: string): string {
-    if (!isStringHave(title)) {
+    if (!isStringFilled(title)) {
         return '';
     }
 
@@ -61,7 +61,7 @@ function makeTitle(type: ForMatInfo['type'] = 'error', title?: string): string {
 function makeInfo(info: ForMatInfo) {
     const messages: string[] = [];
 
-    if (!isObjectHave(info)) {
+    if (!isObjectFilled(info)) {
         return messages;
     }
 
@@ -87,7 +87,7 @@ function makeInfo(info: ForMatInfo) {
 
     /** 向消息列表中添加小标题 */
     const pushLittleTitle = (data: any, name?: string) => {
-        if (isStringHave(name)) {
+        if (isStringFilled(name)) {
             const title = fontColor(` ${name} `, {
                 foreground: 'lightwhite',
                 background: 'cyan'
@@ -103,19 +103,19 @@ function makeInfo(info: ForMatInfo) {
     Object.keys(info).forEach(key => {
         switch (key) {
             case 'name':
-                if (isStringHave(name)) {
+                if (isStringFilled(name)) {
                     pushLittleTitle(name, INFO_NAME.NAME);
                 }
                 break;
 
             case 'code':
-                if (isNumber(code) || isStringHave(code)) {
+                if (isNumber(code) || isStringFilled(code)) {
                     pushLittleTitle(code, INFO_NAME.CODE);
                 }
                 break;
 
             case 'message':
-                if (isStringHave(message)) {
+                if (isStringFilled(message)) {
                     pushLittleTitle(message, INFO_NAME.MESSAGE);
                 }
                 break;
@@ -137,7 +137,7 @@ function makeInfo(info: ForMatInfo) {
     if (stack || (isEqual(type, 'error') && messages.length > 0)) {
         const stack: string | undefined = new Error().stack;
 
-        if (isStringHave(stack)) {
+        if (isStringFilled(stack)) {
             const newStack = LF + stack.split(LF).slice(3).join(LF);
             const styleText = fontColor(newStack, {
                 foreground: 'red'

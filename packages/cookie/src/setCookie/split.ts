@@ -1,4 +1,4 @@
-import { isStringHave } from '@curong/types';
+import { isStringFilled } from '@curong/types';
 
 import { COMMA, EQUAL, SEMICOLON, whiteSpaceReg } from './constants';
 
@@ -34,7 +34,7 @@ const skipSpace = (cookie: string, index: number) => {
  * ```
  */
 export default function splitSetCookie(cookie: string): string[] {
-    if (!isStringHave(cookie)) {
+    if (!isStringFilled(cookie)) {
         return [];
     }
 

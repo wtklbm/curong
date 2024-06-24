@@ -1,4 +1,4 @@
-import isArrayHave from '../array/isArrayHave';
+import isArrayFilled from '../array/isArrayFilled';
 
 import isNullOrUndefined from './isNullOrUndefined';
 
@@ -11,5 +11,5 @@ import isNullOrUndefined from './isNullOrUndefined';
 export default function isNullOrUndefinedArray(
     value: unknown
 ): value is Array<null | undefined> {
-    return isArrayHave(value) && value.every(isNullOrUndefined);
+    return isArrayFilled(value) && value.every(isNullOrUndefined);
 }

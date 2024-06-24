@@ -3,7 +3,7 @@ import { stringify } from 'querystring';
 import { finished, pipeline, Transform, TransformCallback } from 'stream';
 import { constants, createBrotliDecompress, createUnzip } from 'zlib';
 
-import { isFormData, isStringHave } from '@curong/types';
+import { isFormData, isStringFilled } from '@curong/types';
 
 import type { RequestOptions } from '../types';
 
@@ -12,7 +12,7 @@ import { formDataToBuffer, objectToFormData } from './formData';
 export function pipeDecompressStream(res: IncomingMessage): IncomingMessage {
     const encoding = (res.headers['content-encoding'] ?? '').toLowerCase();
 
-    if (!isStringHave(encoding)) {
+    if (!isStringFilled(encoding)) {
         return res;
     }
 

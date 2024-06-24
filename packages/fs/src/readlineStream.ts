@@ -2,7 +2,7 @@ import { createReadStream } from 'fs';
 import { createInterface } from 'readline';
 
 import { format } from '@curong/term';
-import { isFunctionHave } from '@curong/types';
+import { isFunctionFilled } from '@curong/types';
 
 import isFile from './isFile';
 import type { ReadlineStreamCallback } from './types';
@@ -41,8 +41,8 @@ export default async function readlineStream(
 
     const ret: string[] = [];
 
-    if (!isFunctionHave(callback)) {
-        if (isFunctionHave(encoding)) {
+    if (!isFunctionFilled(callback)) {
+        if (isFunctionFilled(encoding)) {
             callback = encoding;
             encoding = 'utf8';
         } else {

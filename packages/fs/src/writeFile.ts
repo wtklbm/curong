@@ -2,7 +2,7 @@ import { promises } from 'fs';
 import { dirname } from 'path';
 
 import { format } from '@curong/term';
-import { isArrayHave, isObjectHave } from '@curong/types';
+import { isArrayFilled, isObjectFilled } from '@curong/types';
 
 import mkdir from './mkdir';
 import type { WriteFileOptions } from './types';
@@ -40,7 +40,7 @@ export default async function writeFile(
         ...options
     };
 
-    if (options.isFormat && (isObjectHave(data) || isArrayHave(data))) {
+    if (options.isFormat && (isObjectFilled(data) || isArrayFilled(data))) {
         try {
             data = JSON.stringify(data);
         } catch (error) {

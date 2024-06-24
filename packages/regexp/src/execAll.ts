@@ -1,7 +1,7 @@
 import {
-    isFunctionHave,
+    isFunctionFilled,
     isNull,
-    isStringHave,
+    isStringFilled,
     isUndefined
 } from '@curong/types';
 
@@ -166,7 +166,7 @@ export default function execAll(
     let match: RegExpExecOrigin | null = null;
 
     do {
-        if (isStringHave(keyOrCallback)) {
+        if (isStringFilled(keyOrCallback)) {
             const id = keyOrCallback.toLocaleLowerCase();
 
             if (!matchKeysReg.test(id)) {
@@ -180,7 +180,7 @@ export default function execAll(
             break;
         }
 
-        if (isFunctionHave(keyOrCallback)) {
+        if (isFunctionFilled(keyOrCallback)) {
             break;
         }
 

@@ -1,5 +1,5 @@
 import isArray from './isArray';
-import isArrayHave from './isArrayHave';
+import isArrayFilled from './isArrayFilled';
 
 /**
  * 是不是一个长度大于 `0` 的数组，且每一项的值都是数组 (二维数组)
@@ -15,5 +15,5 @@ import isArrayHave from './isArrayHave';
 export default function isArrayTwoDimensional<T extends unknown[][]>(
     value: unknown
 ): value is T {
-    return isArrayHave(value) && value.every(isArray);
+    return isArrayFilled(value) && value.every(isArray);
 }

@@ -1,4 +1,4 @@
-import isArrayHave from '../array/isArrayHave';
+import isArrayFilled from '../array/isArrayFilled';
 
 import isFalsy from './isFalsy';
 import type { Falsy } from './types';
@@ -10,5 +10,5 @@ import type { Falsy } from './types';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isFalsyArray(value: unknown): value is Falsy[] {
-    return isArrayHave(value) && value.every(isFalsy);
+    return isArrayFilled(value) && value.every(isFalsy);
 }

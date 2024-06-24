@@ -1,4 +1,4 @@
-import isArrayHave from '../array/isArrayHave';
+import isArrayFilled from '../array/isArrayFilled';
 
 import isString from './isString';
 
@@ -9,5 +9,5 @@ import isString from './isString';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isStringArray(value: unknown): value is string[] {
-    return isArrayHave(value) && value.every(isString);
+    return isArrayFilled(value) && value.every(isString);
 }

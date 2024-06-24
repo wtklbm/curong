@@ -1,4 +1,4 @@
-import isArrayHave from '../array/isArrayHave';
+import isArrayFilled from '../array/isArrayFilled';
 
 import isTruthy from './isTruthy';
 import type { Truthy } from './types';
@@ -10,5 +10,5 @@ import type { Truthy } from './types';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isTruthyArray<T>(value: unknown): value is Truthy<T>[] {
-    return isArrayHave(value) && value.every(isTruthy);
+    return isArrayFilled(value) && value.every(isTruthy);
 }

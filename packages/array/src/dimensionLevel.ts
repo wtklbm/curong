@@ -1,4 +1,4 @@
-import { isArrayHave } from '@curong/types';
+import { isArrayFilled } from '@curong/types';
 
 /**
  * 判断一个数组的维度
@@ -17,7 +17,7 @@ export default function dimensionLevel<T extends unknown[]>(value: T): number {
     let level = 1;
     let internal: unknown[] = value;
 
-    while (isArrayHave(internal)) {
+    while (isArrayFilled(internal)) {
         if (!internal.every(Array.isArray)) {
             return level;
         }

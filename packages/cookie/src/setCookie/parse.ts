@@ -1,4 +1,4 @@
-import { isStringHave } from '@curong/types';
+import { isStringFilled } from '@curong/types';
 
 import { EQUAL, equalReg, semicolonReg } from './constants';
 import type {
@@ -53,7 +53,7 @@ const setCookieValue = (cookie: SetCookieItem, key: string, value: string) => {
  * @returns 返回解析好的内容
  */
 function parseChunk(cookie: string, isDecode: boolean = true) {
-    const parts = cookie.split(semicolonReg).filter(isStringHave);
+    const parts = cookie.split(semicolonReg).filter(isStringFilled);
 
     if (parts.length <= 1) {
         throw new Error(

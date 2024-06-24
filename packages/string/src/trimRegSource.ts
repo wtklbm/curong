@@ -1,4 +1,4 @@
-import { isStringArray, isStringHave, isTrue } from '@curong/types';
+import { isStringArray, isStringFilled, isTrue } from '@curong/types';
 
 import {
     controlRegSource,
@@ -35,7 +35,7 @@ export const trimRegSource = (
         { is: () => isTrue(likeSpace), ret: () => likeSpaceRegSource },
         { is: () => isTrue(control), ret: () => controlRegSource },
         {
-            is: () => isStringHave(extras) || isStringArray(extras),
+            is: () => isStringFilled(extras) || isStringArray(extras),
             ret: () => `[${[extras].flat().join('')}]`
         }
     ];

@@ -1,5 +1,5 @@
 import { format } from '@curong/term';
-import { isStringHave } from '@curong/types';
+import { isStringFilled } from '@curong/types';
 
 import fromCascadeKeys from './fromCascadeKeys';
 import toCascadeKeys from './toCascadeKeys';
@@ -31,7 +31,7 @@ export default function cascade<T = unknown>(
     dependencies?: ObjectType,
     isThrow: boolean = true
 ): T | undefined {
-    if (!isStringHave(cascadeKey)) {
+    if (!isStringFilled(cascadeKey)) {
         throw format({
             name: 'cascade',
             message: 'cascadeKey不是一个有效的级联属性字符串',

@@ -1,4 +1,4 @@
-import isArrayHave from '../array/isArrayHave';
+import isArrayFilled from '../array/isArrayFilled';
 import isNaN from '../number/isNaN';
 
 /**
@@ -18,5 +18,5 @@ export default function isNotEqual<T extends unknown[]>(
         ? (v: unknown) => !isNaN(v)
         : (v: unknown) => value !== v;
 
-    return isArrayHave(args) && args.every(handle);
+    return isArrayFilled(args) && args.every(handle);
 }

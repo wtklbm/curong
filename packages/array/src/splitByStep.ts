@@ -1,4 +1,4 @@
-import { isIntHave } from '@curong/types';
+import { isIntFilled } from '@curong/types';
 
 /**
  * 将一个数组按照指定的步长进行拆分
@@ -16,7 +16,7 @@ import { isIntHave } from '@curong/types';
  * ```
  */
 export default function splitByStep<T>(value: T[], step: number): T[][] {
-    if (!isIntHave(step)) {
+    if (!isIntFilled(step)) {
         throw new TypeError(
             `[splitByStep]: step不是一个大于0的整数, step: "${step}"`
         );

@@ -1,4 +1,4 @@
-import isArrayHave from '../array/isArrayHave';
+import isArrayFilled from '../array/isArrayFilled';
 
 import isBuffer from './isBuffer';
 
@@ -9,5 +9,5 @@ import isBuffer from './isBuffer';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isBufferArray(value: unknown): value is boolean[] {
-    return isArrayHave(value) && value.every(isBuffer);
+    return isArrayFilled(value) && value.every(isBuffer);
 }

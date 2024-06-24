@@ -1,4 +1,4 @@
-import { isNumber, isNumberHave, isNumberSafe } from '../..';
+import { isNumber, isNumberFilled, isNumberSafe } from '../..';
 
 import { isSome } from '..';
 
@@ -39,7 +39,7 @@ describe('@curong/types/isSome', () => {
 
     test('测试9', () => {
         const v: any[] = [1, 2, 3];
-        const fns: any[] = [isNumber, isNumberSafe, isNumberHave];
+        const fns: any[] = [isNumber, isNumberSafe, isNumberFilled];
         expect(isSome(v, fns)).toBe(true);
 
         fns.push((v: any) => typeof v === 'string');

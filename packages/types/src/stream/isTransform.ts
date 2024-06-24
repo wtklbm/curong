@@ -1,6 +1,6 @@
 import { Transform } from 'stream';
 
-import isFunctionHave from '../function/isFunctionHave';
+import isFunctionFilled from '../function/isFunctionFilled';
 
 import isDuplex from './isDuplex';
 
@@ -11,5 +11,5 @@ import isDuplex from './isDuplex';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isTransform(value: unknown): value is Transform {
-    return isDuplex(value) && isFunctionHave((value as Transform)._transform);
+    return isDuplex(value) && isFunctionFilled((value as Transform)._transform);
 }

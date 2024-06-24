@@ -2,7 +2,7 @@ import { promises } from 'fs';
 import { dirname, isAbsolute, join, normalize, relative } from 'path';
 
 import { format } from '@curong/term';
-import { isStringHave } from '@curong/types';
+import { isStringFilled } from '@curong/types';
 
 import isDir from './isDir';
 import mkdir from './mkdir';
@@ -36,9 +36,9 @@ export default async function destPath(
     const { isMakeDir = false } = options ?? {};
 
     if (
-        !isStringHave(filePath) ||
-        !isStringHave(srcDir) ||
-        !isStringHave(desDir)
+        !isStringFilled(filePath) ||
+        !isStringFilled(srcDir) ||
+        !isStringFilled(desDir)
     ) {
         throw format({
             name: 'destPath',

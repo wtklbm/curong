@@ -1,7 +1,7 @@
 import { IncomingMessage } from 'http';
 
 import { sleepRun } from '@curong/function';
-import { isObjectHave } from '@curong/types';
+import { isObjectFilled } from '@curong/types';
 import { copy } from '@curong/util';
 
 import type { RequestHandler, RequestOptions, RequestResult } from '../types';
@@ -169,7 +169,7 @@ export default async function request(
     options: any = {},
     handlers: any = {}
 ): Promise<RequestResult> {
-    if (isObjectHave(url)) {
+    if (isObjectFilled(url)) {
         handlers = options;
         options = url;
         url = undefined;

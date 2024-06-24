@@ -9,7 +9,7 @@
  * ```javascript
  * isEvery([1, 2, 3], v => v > 0); // true
  * isEvery([1, 2, 3], [v => v > 0, v => v < 4]); // true
- * isEvery([1, 2, 3], [isFinite, isNumberHave]); // true
+ * isEvery([1, 2, 3], [isFinite, isNumberFilled]); // true
  * ```
  */
 export default function isEvery<V, P extends (value: V) => boolean>(

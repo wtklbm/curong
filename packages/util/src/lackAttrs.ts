@@ -1,4 +1,4 @@
-import { isArrayHave, isNullOrUndefined } from '@curong/types';
+import { isArrayFilled, isNullOrUndefined } from '@curong/types';
 
 import allAttrs from './allAttrs';
 
@@ -24,7 +24,7 @@ export default function lackAttrs(
     value: any,
     attributes: Array<string | number | symbol>
 ): Array<string | number | symbol> {
-    if (isNullOrUndefined(value) || !isArrayHave(attributes)) {
+    if (isNullOrUndefined(value) || !isArrayFilled(attributes)) {
         return [];
     }
 

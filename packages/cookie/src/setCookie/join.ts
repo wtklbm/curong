@@ -1,4 +1,4 @@
-import { isArrayHave, isTypeofObject } from '@curong/types';
+import { isArrayFilled, isTypeofObject } from '@curong/types';
 
 import type { SetCookieParseResult } from './types';
 
@@ -37,7 +37,7 @@ export default function joinSetCookie(cookie: SetCookieParseResult): string {
         cookie = Object.values(cookie);
     }
 
-    if (isArrayHave(cookie)) {
+    if (isArrayFilled(cookie)) {
         return cookie.map(({ name, value }) => `${name}=${value}`).join('; ');
     }
 

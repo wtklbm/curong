@@ -1,4 +1,4 @@
-import isArrayHave from '../array/isArrayHave';
+import isArrayFilled from '../array/isArrayFilled';
 
 import isSymbol from './isSymbol';
 
@@ -9,5 +9,5 @@ import isSymbol from './isSymbol';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isSymbolArray(value: unknown): value is symbol[] {
-    return isArrayHave(value) && value.every(isSymbol);
+    return isArrayFilled(value) && value.every(isSymbol);
 }

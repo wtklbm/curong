@@ -1,9 +1,9 @@
 import {
     isDate,
     isFinite,
-    isFunctionHave,
+    isFunctionFilled,
     isString,
-    isStringHave,
+    isStringFilled,
     isTrue
 } from '@curong/types';
 
@@ -55,7 +55,7 @@ export default function createCookie(
 
     const { encode = encodeURIComponent } = options ?? {};
 
-    if (!isFunctionHave(encode)) {
+    if (!isFunctionFilled(encode)) {
         throw new TypeError(`[create]: encode不是一个带参的函数: "${encode}"`);
     }
 
@@ -74,12 +74,12 @@ export default function createCookie(
         },
 
         domain(v: string, chunk: string[]) {
-            isStringHave(v) && verifyReg.test(v) && chunk.push(`Domain=${v}`);
+            isStringFilled(v) && verifyReg.test(v) && chunk.push(`Domain=${v}`);
             return chunk;
         },
 
         path(v: any, chunk: string[]) {
-            isStringHave(v) && verifyReg.test(v) && chunk.push(`Path=${v}`);
+            isStringFilled(v) && verifyReg.test(v) && chunk.push(`Path=${v}`);
             return chunk;
         },
 

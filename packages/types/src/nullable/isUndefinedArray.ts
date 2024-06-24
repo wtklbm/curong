@@ -1,4 +1,4 @@
-import isArrayHave from '../array/isArrayHave';
+import isArrayFilled from '../array/isArrayFilled';
 
 import isUndefined from './isUndefined';
 
@@ -9,5 +9,5 @@ import isUndefined from './isUndefined';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isUndefinedArray(value: unknown): value is undefined[] {
-    return isArrayHave(value) && value.every(isUndefined);
+    return isArrayFilled(value) && value.every(isUndefined);
 }

@@ -1,4 +1,4 @@
-import isArrayHave from '../array/isArrayHave';
+import isArrayFilled from '../array/isArrayFilled';
 
 import isNumber from './isNumber';
 
@@ -13,5 +13,5 @@ export default function isNumberArray(
     value: unknown,
     isAllowNaN: boolean = false
 ): value is number[] {
-    return isArrayHave(value) && value.every(v => isNumber(v, isAllowNaN));
+    return isArrayFilled(value) && value.every(v => isNumber(v, isAllowNaN));
 }

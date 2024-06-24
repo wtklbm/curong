@@ -1,4 +1,4 @@
-import { isFunctionHave, isString, isStringHave } from '@curong/types';
+import { isFunctionFilled, isString, isStringFilled } from '@curong/types';
 
 import type { ParseCookieOptions } from './types';
 
@@ -24,7 +24,7 @@ function getDecode(
     }
 
     // 如果是函数
-    if (isFunctionHave(decode)) {
+    if (isFunctionFilled(decode)) {
         const newValue = decode(value);
 
         if (!isString(newValue)) {
@@ -69,7 +69,7 @@ export default function parseCookie(
 ): { [key: string]: string } {
     const result: { [key: string]: string } = {};
 
-    if (!isStringHave(cookie) || !cookie.includes('=')) {
+    if (!isStringFilled(cookie) || !cookie.includes('=')) {
         throw new TypeError(`[parse]: cookie不是一个字符串, "${cookie}"`);
     }
 

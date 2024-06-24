@@ -10,8 +10,8 @@ import {
     isDate,
     isNullOrUndefined,
     isObject,
-    isObjectHave,
-    isStringHave,
+    isObjectFilled,
+    isStringFilled,
     isTypeofObject
 } from '@curong/types';
 
@@ -119,7 +119,7 @@ const joinUrlQuery = (url: string, params: Record<string | number, any>) => {
 const getPath = (path: string, query?: ParsedUrlQueryInput) => {
     path = path.trim();
 
-    if (isObjectHave(query)) {
+    if (isObjectFilled(query)) {
         path = joinUrlQuery(path, query);
     }
 
@@ -150,7 +150,7 @@ export const optionsHandler = (
     // 添加通用请求头
     options.headers = toLowerCaseKey({ ...commonHeaders, ...options.headers });
 
-    if (isStringHave(url)) {
+    if (isStringFilled(url)) {
         url = new URL(url);
     }
 

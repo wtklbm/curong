@@ -1,4 +1,4 @@
-import isArrayHave from '../array/isArrayHave';
+import isArrayFilled from '../array/isArrayFilled';
 
 import isNull from './isNull';
 
@@ -9,5 +9,5 @@ import isNull from './isNull';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isNullArray(value: unknown): value is null[] {
-    return isArrayHave(value) && value.every(isNull);
+    return isArrayFilled(value) && value.every(isNull);
 }
