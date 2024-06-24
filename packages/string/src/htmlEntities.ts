@@ -1,7 +1,7 @@
 // https://zh.wikipedia.org/wiki/XML与HTML字符实体引用列表
 // NOTE: `HTML` 实体名称是大小写敏感的
 
-import htmlEntities from './assets/htmlEntities.json';
+import htmlEntities from './constants/htmlEntities';
 
 const initObject = () => Object.create(null);
 
