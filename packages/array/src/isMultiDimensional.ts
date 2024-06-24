@@ -1,6 +1,10 @@
 import { isArray, isArrayFilled, isUint } from '@curong/types';
 
-const handle = (dimension: unknown, strictly: boolean, level: number) => {
+const handle = (
+    dimension: number | undefined,
+    strictly: boolean,
+    level: number
+) => {
     return (
         // 检查 `level` 是否大于 `1`，如果不大于 `1` 则返回 `false`
         level > 1 &&
