@@ -4,7 +4,7 @@ const { gzipSync } = require('zlib');
 
 const { rollup } = require('rollup');
 const { compress } = require('brotli');
-const chalk = require('chalk');
+const { green, cyan, bold } = require('colorette');
 
 const config = require('./config');
 
@@ -43,10 +43,10 @@ async function make(options) {
         : 0;
 
     console.log(
-        `${chalk.green(chalk.bold(file))}`,
-        `mini: ${minSize}kb /`,
-        `gzip: ${gZippedSize}kb /`,
-        `compressedSize: ${compressedSize}kb`
+        `${green(bold(file))}`,
+        `mini: ${cyan(minSize + 'kb')} /`,
+        `gzip: ${cyan(gZippedSize + 'kb')} /`,
+        `compressedSize: ${cyan(compressedSize + 'kb')}`
     );
 }
 

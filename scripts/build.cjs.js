@@ -1,8 +1,9 @@
 const fs = require('fs');
-const chalk = require('chalk');
-const { terser } = require('rollup-plugin-terser');
-const { build, walk } = require('./build');
 
+const { yellow } = require('colorette');
+const { compress } = require('minimist')(process.argv.slice(2));
+
+const { build, walk } = require('./build');
 const banner = require('./build/banner');
 
 /**
@@ -44,16 +45,11 @@ const genRollupConfig = (dirname, env = 'dev') => ({
         module: 'commonjs'
     },
 
-    terser: terser({
-        include: [/^.+\.prod\.js$/],
-        output: {
-            comments: false
-        }
-    })
+    useTerser: compress ? Boolean(compress) : env !== 'dev',
 });
 
 function main() {
-    console.log(chalk.blue(`INFO: 正在生成cjs模块!`));
+    console.log(yellow(`正在生成 CJS 模块`));
 
     walk(
         /**

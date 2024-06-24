@@ -1,10 +1,11 @@
-const chalk = require('chalk');
-const { build, walk } = require('./build');
+const { yellow } = require('colorette');
+const { compress } = require('minimist')(process.argv.slice(2));
 
+const { build, walk } = require('./build');
 const banner = require('./build/banner');
 
 function main() {
-    console.log(chalk.blue('INFO: 正在生成es模块!'));
+    console.log(yellow('正在生成 ESModule 模块'));
 
     walk(
         /**
@@ -30,7 +31,8 @@ function main() {
                 tsConfig: {
                     target: 'es5',
                     module: 'esnext'
-                }
+                },
+                useTerser: !!compress
             });
         }
     );

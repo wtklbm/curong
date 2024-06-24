@@ -1,11 +1,11 @@
-const chalk = require('chalk');
-const { terser } = require('rollup-plugin-terser');
-const { build } = require('./build');
-const { compress } = require('minimist')(process.argv.slice(2));
-
-const banner = require('./build/banner');
 const { join } = require('path');
 const { promises } = require('fs');
+
+const { compress } = require('minimist')(process.argv.slice(2));
+const { yellow } = require('colorette');
+
+const { build } = require('./build');
+const banner = require('./build/banner');
 
 /**
  * 创建打包任务
@@ -25,10 +25,7 @@ function create(name, input, output, options = {}) {
             banner
         },
         tsConfig: { target: 'es5', module: 'umd' },
-        terser: terser({
-            include: [/^.+\.min\.js$/],
-            output: { comments: false }
-        }),
+        useTerser: !!compress,
         ...options
     };
 
@@ -36,7 +33,7 @@ function create(name, input, output, options = {}) {
 }
 
 !(async function () {
-    console.log(chalk.blue(`INFO: 正在${compress ? '压缩' : '生成'}umd模块!`));
+    console.log(yellow(`正在${compress ? '压缩' : '生成'} UMD 模块`));
 
     // 汇总类型声明，将类型声明打包成一个文件
     const rootDir = join(__dirname, '../packages');

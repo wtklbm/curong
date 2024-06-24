@@ -1,7 +1,7 @@
 const { promises } = require('fs');
 const { join } = require('path');
 
-const chalk = require('chalk');
+const { yellow, green } = require('colorette');
 const { rollup } = require('rollup');
 const dts = require('rollup-plugin-dts').default;
 const { readFile, writeFile } = promises;
@@ -10,7 +10,7 @@ const { readFile, writeFile } = promises;
  * 创建类型声明文件
  */
 !(async function () {
-    console.log(chalk.blue('INFO: 正在生成类型声明文件!'));
+    console.log(yellow('正在生成类型声明文件'));
 
     // 汇总类型声明，将类型声明打包成一个文件
     const rootDir = join(__dirname, '../packages');
@@ -38,7 +38,7 @@ const { readFile, writeFile } = promises;
             plugins: [dts()]
         });
 
-        console.log(chalk.green(input));
+        console.log(green(input));
         await bundle.write({ dir: join(packageDir, 'dist') });
     }
 
