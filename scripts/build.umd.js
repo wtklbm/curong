@@ -18,13 +18,7 @@ const banner = require('./build/banner');
 function create(name, input, output, options = {}) {
     options = {
         input,
-        output: {
-            name,
-            file: compress ? output.replace(/\.js$/, '.min.js') : output,
-            format: 'umd',
-            banner
-        },
-        tsConfig: { target: 'es5', module: 'umd' },
+        output: { name, file: output, format: 'umd', banner },
         useTerser: !!compress,
         ...options
     };

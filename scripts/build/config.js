@@ -17,7 +17,13 @@ const banner = require('./banner');
  * @param {*} options
  */
 function config(options = {}) {
-    const { input, output = {}, useTerser = true, tsConfig, external } = options;
+    const {
+        input,
+        output = {},
+        useTerser = true,
+        tsConfig,
+        external
+    } = options;
 
     const plugins = [
         // 转换 `commonjs` 模块为 `es6` 模块，该插件必须放在最上面执行
@@ -32,15 +38,12 @@ function config(options = {}) {
 
         typescript({
             typescript: TS,
-            tsconfigDefaults: {
-                ...tsConfig,
-                removeComments: true,
-                sourceMap: false
-            },
+            tsconfigDefaults: tsConfig,
             tsconfigOverride: {
-                ...tsConfig,
-                removeComments: true,
-                sourceMap: false
+                compilerOptions: {
+                    removeComments: true,
+                    sourceMap: false
+                }
             },
             clean: true
         }),
@@ -56,6 +59,7 @@ function config(options = {}) {
 
     useTerser && plugins.push(terser());
 
+    /** @type {import('rollup').RollupOptions} */
     return {
         input,
 
@@ -69,7 +73,7 @@ function config(options = {}) {
 
         output: {
             ...output,
-            sourcemap: true,
+            //sourcemap: 'inline', // boolean || 'inline'
             banner
         }
     };

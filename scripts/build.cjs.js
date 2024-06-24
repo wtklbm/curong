@@ -40,11 +40,6 @@ const genRollupConfig = (dirname, env = 'dev') => ({
         return ['tslib'].includes(id) || /^@curong-/i.test(id);
     },
 
-    tsConfig: {
-        target: 'es5',
-        module: 'commonjs'
-    },
-
     useTerser: compress ? Boolean(compress) : env !== 'dev',
 });
 
