@@ -7,10 +7,7 @@ const { green, cyan, bold } = require('colorette');
 
 const config = require('./config');
 
-/**
- * @param {any} options
- */
-async function make(options) {
+module.exports = async function build(options) {
     const bundle = await rollup(config(options)).catch(
         /**
          * @param {*} e
@@ -40,8 +37,6 @@ async function make(options) {
     console.log(
         `${green(bold(file))}`,
         `mini: ${cyan(minSize + 'kb')} /`,
-        `gzip: ${cyan(gZippedSize + 'kb')} /`
+        `gzip: ${cyan(gZippedSize + 'kb')}`
     );
 }
-
-module.exports = make;
