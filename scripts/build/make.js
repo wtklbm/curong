@@ -3,7 +3,6 @@ const { promises } = require('fs');
 const { gzipSync } = require('zlib');
 
 const { rollup } = require('rollup');
-const { compress } = require('brotli');
 const { green, cyan, bold } = require('colorette');
 
 const config = require('./config');
@@ -37,16 +36,11 @@ async function make(options) {
     const minSize = (code.length / 1024).toFixed(2);
     const gZipped = gzipSync(code);
     const gZippedSize = (gZipped.length / 1024).toFixed(2);
-    const compressed = compress(code);
-    const compressedSize = compressed
-        ? (compressed.length / 1024).toFixed(2)
-        : 0;
 
     console.log(
         `${green(bold(file))}`,
         `mini: ${cyan(minSize + 'kb')} /`,
-        `gzip: ${cyan(gZippedSize + 'kb')} /`,
-        `compressedSize: ${cyan(compressedSize + 'kb')}`
+        `gzip: ${cyan(gZippedSize + 'kb')} /`
     );
 }
 
