@@ -54,7 +54,7 @@ export async function formDataToBuffer(
 
     const boundaryBytes = textEncoder.encode('--' + boundary);
     const footerBytes = textEncoder.encode('--' + boundary + '--' + CRLF);
-    let buffers: any[] = [];
+    let buffers: unknown[] = [];
 
     for (let [name, value] of Array.from(form.entries())) {
         const isStringValue = isString(value);
