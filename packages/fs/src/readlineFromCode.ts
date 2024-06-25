@@ -76,7 +76,7 @@ export default function readlineFromCode(
     callback?: ReadlineCallback
 ): Array<string> | null {
     const contents: Array<string> = [];
-    const buffer: any[] = [];
+    const buffer: unknown[] = [];
     let toString: (data: any) => string;
     let flag: boolean;
 
