@@ -12,8 +12,8 @@
  * ```
  */
 export default async function noCatch<T = unknown>(
-    fn: (...args: any[]) => Promise<T> | T,
-    ...args: any[]
+    fn: (...args: unknown[]) => Promise<T> | T,
+    ...args: unknown[]
 ): Promise<void | T> {
     try {
         return Promise.resolve(fn(...args)).catch(() => {});
