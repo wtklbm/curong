@@ -38,7 +38,7 @@ export default function mapReplace(
 export default function mapReplace(
     regexps: RegExp[],
     value: string,
-    replacer: (substring: string, ...args: any[]) => string
+    replacer: (substring: string, ...args: unknown[]) => string
 ): string;
 
 export default function mapReplace(
