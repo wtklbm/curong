@@ -1,7 +1,7 @@
 import { isArray } from '@curong/types';
 
 type Match = string | RegExp;
-type Replacer = string | ((substring: string, ...args: any[]) => string);
+type Replacer = string | ((substring: string, ...args: unknown[]) => string);
 type Matcher = [Match, Replacer] | { match: Match; replacer: Replacer };
 
 /**
