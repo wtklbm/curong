@@ -1,4 +1,4 @@
-const _depth = (arr: any[], level: number) => {
+const _depth = (arr: unknown[], level: number) => {
     let maxDepth = 0;
 
     arr.forEach((item: any) => {
