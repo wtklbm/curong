@@ -13,7 +13,7 @@
  * ```
  */
 export type ClassInstanceKeys<T, K = keyof T> = K extends keyof T
-    ? T[K] extends (...args: any[]) => any
+    ? T[K] extends (...args: unknown[]) => any
         ? K
         : never
     : never;
