@@ -15,7 +15,7 @@ const punctuationReg = new RegExp(`${source.punctuation}| `);
  */
 const fillingSpaces = (
     substring: string,
-    _matches: any[],
+    _matches: unknown[],
     leftChar: string,
     rightChar: string
 ): string => {
@@ -48,7 +48,7 @@ const fillingSpaces = (
 export default function subSpaces(
     value: string,
     regexp: RegExp,
-    handleMatch?: (substring: string, matches: any[]) => string
+    handleMatch?: (substring: string, matches: unknown[]) => string
 ): string {
     let repair = fillingSpaces;
 
