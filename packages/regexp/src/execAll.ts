@@ -7,7 +7,15 @@ import {
 
 import type { RegExpExecOrigin } from './types';
 
-const matchKeysReg = /^(0|index|input|groups|length)$/;
+/**
+ * 验证捕获到的对象中的属性名的正则表达式
+ *
+ * ### 这里定义 `[0-9]{1,2}` 的原因是什么？
+ *
+ * `0` 表示的是捕获到的值，而大于 `0` 的整数表示的是捕获到的小分组。
+ * 虽然小分组可以写无数个，但是一般在定义小分组时，小分组的个数不会超过 100 个。
+ */
+const matchKeysReg = /^([0-9]{1,2}|index|input|groups|length)$/;
 
 /**
  * 循环遍历 `RegExp.exec` 方法捕获到的内容
@@ -29,7 +37,7 @@ const matchKeysReg = /^(0|index|input|groups|length)$/;
  *
  * ```javascript
  * const str = '123abc123';
- * const ret = execAll(/\d+/g, str, '0');
+ * const ret = execAll(/\d+/g, str, 0);
  *
  * console.log(ret); // [ '123', '123' ];
  * ```
@@ -49,11 +57,12 @@ const matchKeysReg = /^(0|index|input|groups|length)$/;
  *
  * ### 1. 如果只想保留捕获到的某一个属性，那么属性名可能为以下的值:
  *
- * - `0` 捕获到的值
- * - `index` 当前值在字符串中的索引位置
- * - `input` 原始字符串
- * - `groups` 命名捕获组或 `undefined`
- * - `length` 值为 `1`
+ * - `0`: 捕获到的值
+ * - `1+` (大于 0 且小于 100 的任意整数，超出则会抛出异常): 捕获到的小分组
+ * - `index`: 当前值在字符串中的索引位置
+ * - `input`: 原始字符串
+ * - `groups`: 命名捕获组或 `undefined`
+ * - `length`: 值为 `1`
  *
  * ### 2. 回调函数的参数就是当前捕获到的内容，回调函数可以返回值也可以不返回值。
  *
@@ -107,7 +116,7 @@ const matchKeysReg = /^(0|index|input|groups|length)$/;
 export default function execAll(
     reg: RegExp,
     str: string,
-    keyOrCallback: '0' | 0
+    keyOrCallback: number
 ): string[];
 
 export default function execAll(
@@ -162,7 +171,6 @@ export default function execAll(
     keyOrCallback?: any
 ): any {
     const res = [];
-    // match： [0, index, input, groups, length]
     let match: RegExpExecOrigin | null = null;
 
     do {
@@ -173,10 +181,7 @@ export default function execAll(
                 throw new TypeError(`[execAll]: id不是预期的值, "${id}"`);
             }
 
-            keyOrCallback = (match: RegExpExecOrigin) => {
-                res.push(match[id as any]);
-            };
-
+            keyOrCallback = (match: RegExpExecOrigin) => match[id as any];
             break;
         }
 
