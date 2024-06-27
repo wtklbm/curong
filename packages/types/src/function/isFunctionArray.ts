@@ -9,8 +9,9 @@ import type { Function } from './types';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isFunctionArray<T = unknown>(
-    value: unknown
-): value is Function<T>[] {
+export default function isFunctionArray<
+    R = unknown,
+    A extends unknown[] = unknown[]
+>(value: unknown): value is Function<R, A>[] {
     return isArrayFilled(value) && value.every(isFunction);
 }
