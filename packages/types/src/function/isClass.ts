@@ -12,9 +12,9 @@ import type { Class } from './types';
  * - 类不能直接执行，必须使用 `new` 关键字
  * - 类中无法访问 `caller`，`callee` 和 `arguments` 属性
  */
-export default function isClass<T = unknown>(
+export default function isClass<R = unknown, A extends unknown[] = unknown[]>(
     value: unknown
-): value is Class<T> {
+): value is Class<R, A> {
     return (
         isFunction(value) && functionToString.call(value).startsWith('class ')
     );
