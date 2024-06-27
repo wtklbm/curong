@@ -10,8 +10,9 @@ import type { Function } from './types';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isFunction<T = unknown>(
-    value: unknown
-): value is Function<T> {
+export default function isFunction<
+    R = unknown,
+    A extends unknown[] = unknown[]
+>(value: unknown): value is Function<R, A> {
     return typeofEqual(value, 'function');
 }
