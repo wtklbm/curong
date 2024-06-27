@@ -1,4 +1,4 @@
-import { Writable } from 'stream';
+import type { Writable } from 'stream';
 
 import isTrue from '../boolean/isTrue';
 import isFunction from '../function/isFunction';
