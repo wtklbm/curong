@@ -5,7 +5,7 @@ import type { Function } from './types';
 /**
  * 是不是一个 `JavaScript` 内置函数
  *
- * 内置函数是 `JavaScript` 原生自带的函数。没有被任何认为的修改。
+ * 内置函数是 `JavaScript` 原生自带的函数。没有被任何人为的修改。
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
