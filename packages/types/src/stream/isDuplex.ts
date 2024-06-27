@@ -1,4 +1,4 @@
-import { Duplex } from 'stream';
+import type { Duplex } from 'stream';
 
 import isReadable from './isReadable';
 import isWritable from './isWritable';
