@@ -1,5 +1,4 @@
 import isArrayFilled from '../array/isArrayFilled';
-import type { Function } from '../function';
 
 import isObject from './isObject';
 
@@ -9,8 +8,8 @@ import isObject from './isObject';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isObjectArray<T = unknown>(
+export default function isObjectArray<K extends PropertyKey, V = unknown>(
     value: unknown
-): value is Function<T>[] {
+): value is Record<K, V>[] {
     return isArrayFilled(value) && value.every(isObject);
 }
