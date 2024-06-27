@@ -21,8 +21,8 @@ import typeofEqual from '../type/typeofEqual';
  * - `typeof null === 'object'` 的结果为 `true`。`null` 是空指针对象。
  * - `null instanceof Object === false` 的结果为 `true`
  */
-export default function isTypeofObject<T extends Object>(
-    value: any
-): value is T {
+export default function isTypeofObject<K extends PropertyKey, V = unknown>(
+    value: unknown
+): value is Record<K, V> {
     return typeofEqual(value, 'object') && !isNull(value);
 }
