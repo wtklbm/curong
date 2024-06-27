@@ -11,9 +11,9 @@ import isObject from './isObject';
  * - 如果想使用 `typeof` 验证一个对象，请使用 `isTypeofObject` 方法
  * - 如果想验证普通对象，请使用 `isPlainObject` 方法
  */
-export default function isPureObject<K extends keyof any, T = unknown>(
+export default function isPureObject<K extends PropertyKey, V = unknown>(
     value: any
-): value is Record<K, T> {
+): value is Record<K, V> {
     return (
         isObject(value) &&
         value.constructor === undefined &&
