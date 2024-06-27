@@ -10,8 +10,9 @@ import type { AsyncFunction } from './types';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isAsyncFunction<T = unknown>(
-    value: unknown
-): value is AsyncFunction<T> {
+export default function isAsyncFunction<
+    R = unknown,
+    A extends unknown[] = unknown[]
+>(value: unknown): value is AsyncFunction<R, A> {
     return isFunction(value) && asyncPattern.test(getTag(value));
 }
