@@ -13,8 +13,8 @@ import getTagEqual from '../type/getTagEqual';
  * - 如果想验证普通对象，请使用 `isPlainObject` 方法
  * - 如果想验证纯对象 (通过 `Object.create(null)` 创建的对象)，请使用 `isPureObject` 方法
  */
-export default function isObject<K extends keyof any, T = unknown>(
+export default function isObject<K extends PropertyKey, V = unknown>(
     value: any
-): value is Record<K, T> {
+): value is Record<K, V> {
     return getTagEqual(value, 'Object');
 }
