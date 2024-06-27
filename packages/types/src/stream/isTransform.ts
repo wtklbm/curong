@@ -1,4 +1,4 @@
-import { Transform } from 'stream';
+import type { Transform } from 'stream';
 
 import isFunctionFilled from '../function/isFunctionFilled';
 
