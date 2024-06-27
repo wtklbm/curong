@@ -12,6 +12,6 @@ import isSyncGenerator from './isSyncGenerator';
  */
 export default function isGenerator<T = unknown, R = unknown, N = unknown>(
     value: any
-): value is Generator<T, R, N> {
+): value is Generator<T, R, N> | AsyncGenerator<T, R, N> {
     return isSyncGenerator(value) || isAsyncGenerator(value);
 }
