@@ -6,7 +6,7 @@ import isString from '../string/isString';
  * @param value 想要当做变量名的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isVarName(value: unknown): boolean {
+export default function isVarName(value: unknown): value is string {
     if (!isString(value) || value.trim() !== value) {
         return false;
     }
