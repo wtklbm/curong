@@ -7,6 +7,8 @@ import isSyncGeneratorFunction from './isSyncGeneratorFunction';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isGeneratorFunction(value: unknown): value is Function {
+export default function isGeneratorFunction(
+    value: unknown
+): value is GeneratorFunction | AsyncGeneratorFunction {
     return isSyncGeneratorFunction(value) || isAsyncGeneratorFunction(value);
 }
