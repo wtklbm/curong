@@ -4,11 +4,11 @@
  * `interface` 的写法：
  *
  * ```typescript
- * export interface Class<T = unknown, A extends unknown[] = unknown[]> {
- *    new (...args: A): T;
+ * export interface Class<R = unknown, A extends unknown[] = unknown[]> {
+ *    new (...args: A): R;
  * }
  * ```
  */
-export type Class<T = unknown, A extends unknown[] = unknown[]> = new (
+export type Class<R = unknown, A extends unknown[] = unknown[]> = new (
     ...args: A
-) => T;
+) => R;
