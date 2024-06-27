@@ -12,6 +12,6 @@ export default function isPromiseLike<T = unknown>(
 ): value is Promise<T> {
     return (
         (isTypeofObject(value) || isFunction(value)) &&
-        isFunction((value as Promise<T>).then)
+        isFunction((value as unknown as Promise<T>).then)
     );
 }
