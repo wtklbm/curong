@@ -12,9 +12,9 @@ import isObject from './isObject';
  *  - `3`: `Reflect.ownKeys`: 包含可枚举属性、不可枚举属性、`Symbol` 属性
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isObjectFilled<K extends keyof any, T = unknown>(
-    value: any,
+export default function isObjectFilled<K extends PropertyKey, V = unknown>(
+    value: unknown,
     methodLevel: 0 | 1 | 2 | 3 = 0
-): value is Record<K, T> {
+): value is Record<K, V> {
     return isObject(value) && keysFns[methodLevel](value).length > 0;
 }
