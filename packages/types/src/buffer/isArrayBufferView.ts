@@ -24,7 +24,7 @@ import isTypedArray from './isTypedArray';
  * `ArrayBuffer` 中的内容不能直接被操作，而是要通过 [TypedArray](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) (类型化数组对象) 或 [`DataView`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/DataView) 对象来操作，它们会将缓冲区中的数据表示为特定的格式，并通过这些格式来读写缓冲区的内容。
  */
 export default function isArrayBufferView(
-    value: any
+    value: unknown
 ): value is ArrayBufferView {
     return isTypedArray(value) || isDataView(value);
 }
