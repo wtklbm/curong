@@ -8,6 +8,6 @@ import isBuffer from './isBuffer';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isBufferArray(value: unknown): value is boolean[] {
+export default function isBufferArray(value: unknown): value is Buffer[] {
     return isArrayFilled(value) && value.every(isBuffer);
 }
