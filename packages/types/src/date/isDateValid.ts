@@ -14,6 +14,8 @@ import isUndefined from '../nullable/isUndefined';
  * isDateValid('01 Jan 1970 00:00:00 GMT'); // true
  * ```
  */
-export default function isDateValid(value: unknown): boolean {
+export default function isDateValid<T = number | string | unknown[] | Date>(
+    value: unknown
+): value is T {
     return !isUndefined(value) && !isNaN(new Date(value as any).valueOf());
 }
