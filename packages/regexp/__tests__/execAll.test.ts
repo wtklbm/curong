@@ -34,7 +34,7 @@ describe('@curong/regexp/execAll', () => {
     });
 
     test('测试4', () => {
-        const res = execAll(/\d+/g, 'xxx12xxx', '0');
+        const res = execAll(/\d+/g, 'xxx12xxx', 0);
         if (isArray(res)) {
             expect(res[0]).toBe('12');
             return;
@@ -44,7 +44,7 @@ describe('@curong/regexp/execAll', () => {
     });
 
     test('测试5', () => {
-        const res = execAll(/\d+/, 'xxx12xxx', '0');
+        const res = execAll(/\d+/, 'xxx12xxx', 0);
         if (isArray(res)) {
             expect(res[0]).toBe('12');
             return;
