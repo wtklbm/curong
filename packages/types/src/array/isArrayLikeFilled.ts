@@ -7,7 +7,7 @@ import isArrayLike from './isArrayLike';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isArrayLikeFilled<T = unknown>(
-    value: any
+    value: unknown
 ): value is ArrayLike<T> {
     return isArrayLike(value) && value.length > 0;
 }
