@@ -8,7 +8,7 @@ import isString from './isString';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isStringTrim(
-    value: any,
+    value: unknown,
     length: number = 0
 ): value is string {
     return isString(value) && value.trim().length > length;
