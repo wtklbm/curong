@@ -17,6 +17,8 @@ import getTagEqual from '../type/getTagEqual';
  * - `TypeError`
  * - 一切 `Object.prototype.toString.call(value) === '[object Error]'` 的对象
  */
-export default function isAnyError(value: unknown): value is Error {
+export default function isAnyError<T extends Error = Error>(
+    value: unknown
+): value is T {
     return getTagEqual<Error>(value, 'Error') || value instanceof Error;
 }
