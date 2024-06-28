@@ -5,7 +5,7 @@
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isNullOrUndefined(
-    value: any
+    value: unknown
 ): value is null | undefined {
     return value == null;
 }
