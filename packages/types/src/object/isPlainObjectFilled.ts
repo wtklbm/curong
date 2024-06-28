@@ -13,7 +13,7 @@ import isPlainObject from './isPlainObject';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isPlainObjectFilled<K extends PropertyKey, V = unknown>(
-    value: any,
+    value: unknown,
     methodLevel: 0 | 1 | 2 | 3 = 0
 ): value is Record<K, V> {
     return isPlainObject(value) && keysFns[methodLevel](value).length > 0;
