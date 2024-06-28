@@ -1,0 +1,31 @@
+{
+    "name": "@curong/asserts",
+    "version": "0.5.0",
+    "license": "MIT",
+    "author": {
+        "name": "wtklbm",
+        "email": "wtklbm@gmail.com",
+        "url": "https://github.com/wtklbm/"
+    },
+    "homepage": "https://github.com/wtklbm/curong/tree/master/packages/asserts#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wtklbm/curong.git"
+    },
+    "bugs": {
+        "url": "https://github.com/wtklbm/curong/issues/"
+    },
+    "main": "dist/index.js",
+    "module": "dist/index.es.js",
+    "types": "dist/index.d.ts",
+    "unpkg": "dist/index.umd.js",
+    "jsdelivr": "dist/index.umd.js",
+    "files": [
+        "dist"
+    ],
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
+    "sideEffects": false
+}
