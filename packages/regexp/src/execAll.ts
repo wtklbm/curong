@@ -1,9 +1,4 @@
-import {
-    isFunctionFilled,
-    isNull,
-    isStringFilled,
-    isUndefined
-} from '@curong/types';
+import { isFunctionFilled, isNumber, isString } from '@curong/types';
 
 import type { RegExpExecOrigin } from './types';
 
@@ -153,17 +148,11 @@ export default function execAll<
     T extends RegExpExecOrigin[keyof RegExpExecOrigin]
 >(reg: RegExp, str: string, keyOrCallback: (m: RegExpExecOrigin) => T): T[];
 
-export default function execAll(
+export default function execAll<T = unknown>(
     reg: RegExp,
     str: string,
-    keyOrCallback?: (m: RegExpExecOrigin) => void
-): void;
-
-export default function execAll(
-    reg: RegExp,
-    str: string,
-    keyOrCallback?: (m: RegExpExecOrigin) => any
-): any[];
+    keyOrCallback?: (m: RegExpExecOrigin) => T
+): T[];
 
 export default function execAll(
     reg: RegExp,
@@ -174,8 +163,8 @@ export default function execAll(
     let match: RegExpExecOrigin | null = null;
 
     do {
-        if (isStringFilled(keyOrCallback)) {
-            const id = keyOrCallback.toLocaleLowerCase();
+        if (isString(keyOrCallback) || isNumber(keyOrCallback)) {
+            const id = keyOrCallback.toString();
 
             if (!matchKeysReg.test(id)) {
                 throw new TypeError(`[execAll]: id不是预期的值, "${id}"`);
@@ -196,13 +185,6 @@ export default function execAll(
         match = reg.exec(str) as RegExpExecOrigin;
         match && res.push(keyOrCallback(match));
     } while (reg.global && match);
-
-    if (
-        res.length &&
-        (res.every(v => isUndefined(v)) || res.every(v => isNull(v)))
-    ) {
-        return;
-    }
 
     return res;
 }
