@@ -1,4 +1,4 @@
-import { isNotZero, isUint } from '@curong/types';
+import { isUint, isZero } from '@curong/types';
 
 /**
  * 从字符串中按照从右向左的顺序找到不为空的字符的索引位置
@@ -31,7 +31,7 @@ export default function wordEnd(
 
     let ret = null;
 
-    if (isNotZero(str.length) && str.length > position) {
+    if (!isZero(str.length) && str.length > position) {
         if ((ret = str.match(rightSpaceReg))) {
             const value = (ret.index as number) - 1;
 
