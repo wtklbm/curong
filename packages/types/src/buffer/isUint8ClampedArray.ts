@@ -11,7 +11,7 @@ import getTagEqual from '../type/getTagEqual';
  * 它会将数字钳制 (`clamp`) 到 `0` 到 `255` 的范围内，而不是截断最高有效位。
  */
 export default function isUint8ClampedArray(
-    value: any
+    value: unknown
 ): value is Uint8ClampedArray {
     return getTagEqual(value, 'Uint8ClampedArray');
 }
