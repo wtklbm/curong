@@ -8,11 +8,11 @@ import isAnyError from './isAnyError';
  * @param message 错误的消息
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isSameError(
+export default function isSameError<T extends Error = Error>(
     value: unknown,
     name: string,
     message: string
-): value is Error {
+): value is T {
     return (
         isAnyError(value) && value.name === name && value.message === message
     );
