@@ -30,7 +30,7 @@ import isArrayIndex from './isArrayIndex';
  * - 数组/类数组、字符串、函数、对象、`Window`、`Buffer`/`ArrayBuffer` 等都有 `length` 属性
  */
 export default function isArrayLike<T = unknown>(
-    value: any,
+    value: unknown,
     similarity: 0 | 1 | 2 = 0
 ): value is ArrayLike<T> {
     let ret = false;
