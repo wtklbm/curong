@@ -11,7 +11,7 @@ import isSyncGenerator from './isSyncGenerator';
  * - 每一个 `Generator` 上，都会有三个方法: `next`、`throw`、`return`
  */
 export default function isGenerator<T = unknown, R = unknown, N = unknown>(
-    value: any
+    value: unknown
 ): value is Generator<T, R, N> | AsyncGenerator<T, R, N> {
     return isSyncGenerator(value) || isAsyncGenerator(value);
 }
