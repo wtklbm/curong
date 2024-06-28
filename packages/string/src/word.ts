@@ -1,4 +1,4 @@
-import { isNotZero, isUint } from '@curong/types';
+import { isUint, isZero } from '@curong/types';
 
 import type { WordResult } from './types';
 import wordEnd from './wordEnd';
@@ -36,7 +36,7 @@ export default function word(
     const ret: WordResult = { left: null, right: null };
 
     if (
-        isNotZero(str.length) &&
+        !isZero(str.length) &&
         str.length > position &&
         isUint((ret.right = wordEnd(str, position))) &&
         isUint((ret.left = wordStart(str, position)))
