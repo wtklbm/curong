@@ -9,7 +9,10 @@ import isNullOrUndefined from '../nullable/isNullOrUndefined';
  * @note 在这里，只要迭代器有 `next` 方法，则返回 `true`
  */
 export default function isIterator<T = unknown, R = unknown, N = undefined>(
-    value: any
+    value: unknown
 ): value is Iterator<T, R, N> {
-    return !isNullOrUndefined(value) && isFunction(value.next);
+    return (
+        !isNullOrUndefined(value) &&
+        isFunction((value as Iterator<T, R, N>).next)
+    );
 }
