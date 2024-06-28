@@ -7,7 +7,7 @@ import getTagEqual from '../type/getTagEqual';
  *
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isBrowser() {
+export default function isBrowser(): boolean {
     return (
         typeof window !== 'undefined' &&
         isWindow(window) &&
