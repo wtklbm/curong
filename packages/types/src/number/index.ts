@@ -3,7 +3,6 @@ export { default as isInfinity } from './isInfinity';
 export { default as isInfinityNegative } from './isInfinityNegative';
 export { default as isInfinityPositive } from './isInfinityPositive';
 export { default as isNaN } from './isNaN';
-export { default as isNotZero } from './isNotZero';
 export { default as isNumber } from './isNumber';
 export { default as isNumberArray } from './isNumberArray';
 export { default as isNumberFilled } from './isNumberFilled';
