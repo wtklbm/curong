@@ -2,10 +2,10 @@ import { formatWithOptions } from 'util';
 
 import {
     isEqual,
-    isNotZero,
     isNumber,
     isObjectFilled,
-    isStringFilled
+    isStringFilled,
+    isZero
 } from '@curong/types';
 
 import fontColor from './fontColor';
@@ -239,7 +239,7 @@ export default function format(info: ForMatInfo, options?: ForMatOptions) {
     }
 
     /** 添加空行 */
-    if (isNotZero(styleMsg.length)) {
+    if (!isZero(styleMsg.length)) {
         styleText[0] = LF + styleText[0].trimStart();
         styleText.push(LF);
     }
