@@ -10,6 +10,8 @@ import getTagEqual from '../type/getTagEqual';
  *
  * `WeakRef` 对象允许你保留对另一个对象的弱引用，但不会阻止垃圾回收 (`GC`) 清理被弱引用的对象
  */
-export default function isWeakRef(value: unknown): value is WeakRef<object> {
+export default function isWeakRef<T extends object = object>(
+    value: unknown
+): value is WeakRef<T> {
     return getTagEqual(value, 'WeakRef');
 }
