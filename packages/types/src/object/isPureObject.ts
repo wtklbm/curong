@@ -12,7 +12,7 @@ import isObject from './isObject';
  * - 如果想验证普通对象，请使用 `isPlainObject` 方法
  */
 export default function isPureObject<K extends PropertyKey, V = unknown>(
-    value: any
+    value: unknown
 ): value is Record<K, V> {
     return (
         isObject(value) &&
