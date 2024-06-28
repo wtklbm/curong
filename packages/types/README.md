@@ -196,7 +196,6 @@
 - `isIntOdd`: 是不是一个奇数，即取模后等于 `1` 的整数
 - `isIntSafe`: 是不是一个安全的整数
 - `isNaN`: 是不是一个 `NaN`
-- `isNotZero`: 不是 `0`
 - `isNumber`: 是不是一个数字或被包装后的数字对象
 - `isNumberArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是数字或被包装后的数字对象
 - `isNumberFilled`: 是不是一个不是 `0`、`Infinity`、`-Infinity` 或 `NaN` 的数字
