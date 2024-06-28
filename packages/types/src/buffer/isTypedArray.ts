@@ -29,6 +29,6 @@ const typedArrayPattern =
  * 没有称为 `TypedArray` 的全局属性，也没有直接可用的 `TypedArray` 构造函数。
  * 但是，有很多不同的全局属性，其值是指定元素类型的类型化数组构造函数。
  */
-export default function isTypedArray(value: any): value is TypedArray {
+export default function isTypedArray(value: unknown): value is TypedArray {
     return !isBuffer(value) && typedArrayPattern.test(getTag(value));
 }
