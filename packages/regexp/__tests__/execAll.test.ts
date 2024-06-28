@@ -95,13 +95,13 @@ describe('@curong/regexp/execAll', () => {
     test('测试9', () => {
         const res = execAll(/\d+/g, 'wo123ni456', m => {});
 
-        expect(res).toEqual(undefined);
+        expect(res).toEqual([undefined, undefined]);
     });
 
     test('测试10', () => {
         const res = execAll(/\d+/g, 'wo123ni456', m => null);
 
-        expect(res).toEqual(undefined);
+        expect(res).toEqual([null, null]);
     });
 
     test('测试11', () => {
