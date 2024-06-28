@@ -1,5 +1,5 @@
 import { execAll, matchNextIndex } from '@curong/regexp';
-import { isEqual, isNotZero, isTypeofObject, isZero } from '@curong/types';
+import { isEqual, isTypeofObject, isZero } from '@curong/types';
 
 import { chkPunReg } from '../constants';
 import type { TypesetResult } from '../types';
@@ -23,7 +23,7 @@ export default function typeset(value: string): TypesetResult {
     if (isTypeofObject(matches[0])) {
         const index = matches[0].index;
 
-        if (isNotZero(index)) {
+        if (!isZero(index)) {
             const data = value.slice(0, index).trimEnd();
             matchResult.push({ match: false, data });
         }
