@@ -12,7 +12,7 @@ import getTagEqual from '../type/getTagEqual';
  * `WeakSet` 是不可枚举的。
  * 递归调用自身的函数需要一种通过跟踪哪些对象已被处理，来应对循环数据结构的方法。为此，`WeakSet` 非常适合处理这种情况。
  */
-export default function isWeakSet<T extends object>(
+export default function isWeakSet<T extends object = object>(
     value: unknown
 ): value is WeakSet<T> {
     return getTagEqual(value, 'WeakSet');
