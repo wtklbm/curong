@@ -19,9 +19,13 @@ const r = (value: any) => value.constructor.isBuffer(value);
  * `Node.js` API 在支持 `Buffer` 的地方也接受纯 `Uint8Array`。
  *  在进行类型判断时，应该始终使用 `isBuffer` 方法。而不是使用 `isUint8Array`。
  */
-export default function isBuffer(value: any): value is Buffer {
+export default function isBuffer(value: unknown): value is Buffer {
     try {
-        return r(value) || (value.readFloatLE && r(value.slice(0, 0)));
+        return (
+            r(value) ||
+            ((value as Buffer).readFloatLE &&
+                r((value as Buffer).subarray(0, 1)))
+        );
     } catch {}
 
     return false;
