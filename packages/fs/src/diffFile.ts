@@ -1,6 +1,6 @@
 import { promises, readSync } from 'fs';
 
-import { isNotZero, isNull, isZero } from '@curong/types';
+import { isNull, isZero } from '@curong/types';
 
 const { open } = promises;
 
@@ -53,7 +53,7 @@ export default async function diffFile(
             break;
         }
 
-        if (nullChunk1 || nullChunk2 || isNotZero(chunk1!.compare(chunk2!))) {
+        if (nullChunk1 || nullChunk2 || !isZero(chunk1!.compare(chunk2!))) {
             compared = false;
             break;
         }
