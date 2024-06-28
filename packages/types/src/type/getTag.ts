@@ -58,7 +58,7 @@ export default (() => {
      * Object.prototype.toString.call(new ValidatorClass());
      * ```
      */
-    return function getTag(value: any, slice: boolean = true): string {
+    return function getTag(value: unknown, slice: boolean = true): string {
         const v = cachedToString.call(value);
 
         // 以前，我们会判断 `slice && v.startsWith('[object ') && v.endsWith(']')`，
