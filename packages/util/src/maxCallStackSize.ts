@@ -6,7 +6,7 @@
 export default function maxCallStackSize(): number {
     try {
         return maxCallStackSize() + 1;
-    } catch (_e) {
+    } catch {
         return 1;
     }
 }
