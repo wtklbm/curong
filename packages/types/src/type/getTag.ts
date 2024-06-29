@@ -3,6 +3,7 @@ import isNativeFunction from '../function/isNativeFunction';
 export default (() => {
     const store: Record<string, string> = {};
     const cachedToString = Object.prototype.toString;
+    const tagExtractReg = /^\[object ([^\]]+)\]$/;
 
     if (!isNativeFunction(cachedToString)) {
         let pack: string = '';
@@ -61,8 +62,9 @@ export default (() => {
     return function getTag(value: unknown, slice: boolean = true): string {
         const v = cachedToString.call(value);
 
-        // 以前，我们会判断 `slice && v.startsWith('[object ') && v.endsWith(']')`，
-        // 因为上面已经验证过 `toString` 是原生方法了，所以这里就不进行断言了
-        return slice ? store[v] || (store[v] = v.slice(8, -1)) : v;
+        // 使用正则来保证字符串是以 '[object ' 开头且以 ']' 结尾
+        return slice
+            ? store[v] || (store[v] = v.replace(tagExtractReg, '$1'))
+            : v;
     };
 })();
