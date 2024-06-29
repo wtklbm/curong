@@ -25,5 +25,5 @@ export default function isWindow(
     value: unknown,
     evaluator?: (value: unknown) => value is Window
 ): value is Window {
-    return (evaluator ? evaluator : defaultIsWindow)(value);
+    return (evaluator || defaultIsWindow)(value);
 }
