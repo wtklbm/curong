@@ -1,4 +1,4 @@
-import { isArray, isNumber } from '@curong/types';
+import { isNumber, isUndefined } from '@curong/types';
 
 /**
  * 判断一个数字的值是否在指定的范围内
@@ -9,33 +9,39 @@ import { isArray, isNumber } from '@curong/types';
  *  - 如果 `range` 是一个包含两个数字的数组，则检查 `value` 是否在这两个数字的最小值和最大值之间
  * @returns 如果 `value` 在指定范围内，则返回 `true`，否则返回 `false`
  * @throws
+ *
  *  - 如果 `value` 不是一个非 `NaN` 的数字，则会抛出 `TypeError`
- *  - 如果 `range` 不是一个非 `NaN` 的数字或包含两个数字的数组，则会抛出 `TypeError`
+ *  - 如果 `start` 不是一个非 `NaN` 的数字，则会抛出 `TypeError`
+ *  - 如果传递了 `end` 且传递的值不是一个非 `NaN` 的数字，则会抛出 `TypeError`
+ *
  * @example
  *
  * ```javascript
  * console.log(inRange(5, 10)); // true
- * console.log(inRange(5, [3, 10])); // true
+ * console.log(inRange(5, 3, 10)); // true
  * ```
  */
 export default function inRange(
     value: number,
-    range: number | [number, number]
+    start: number,
+    end?: number
 ): value is number {
     if (!isNumber(value)) {
         throw new TypeError(`[inRange] value 必须是有效的数字，不能为 NaN`);
     }
 
-    if (isNumber(range)) {
-        return value >= Math.min(0, range) && value <= Math.max(0, range);
+    if (!isNumber(start)) {
+        throw new TypeError(`[inRange] start 必须是有效的数字: ${start}`);
     }
 
-    if (isArray(range) && range.length === 2 && range.every(v => isNumber(v))) {
-        const [min, max] = range;
-        return value >= Math.min(min, max) && value <= Math.max(min, max);
+    if (!isNumber(end)) {
+        if (isUndefined(end)) {
+            end = start;
+            start = 0;
+        } else {
+            throw new TypeError(`[inRange] end 必须是有效的数字: ${end}`);
+        }
     }
 
-    throw new TypeError(
-        `[inRange] 必须是有效的数字或数字范围: ${JSON.stringify(range)}`
-    );
+    return value >= Math.min(start, end) && value <= Math.max(start, end);
 }
