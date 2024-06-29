@@ -87,6 +87,7 @@
 
 #### `error`
 
+- `assertDOMException`: 是不是一个 `DOMException` 对象
 - `assertsAnyError`: 是不是一个任意的 `Error` 对象
 - `assertsError`: 是不是一个 `Error` 对象
 - `assertsEvalError`: 是不是一个 `EvalError` 对象
