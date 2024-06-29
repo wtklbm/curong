@@ -1,4 +1,5 @@
 export { default as isAnyError } from './isAnyError';
+export { default as isDOMException } from './isDOMException';
 export { default as isError } from './isError';
 export { default as isEvalError } from './isEvalError';
 export { default as isRangeError } from './isRangeError';
