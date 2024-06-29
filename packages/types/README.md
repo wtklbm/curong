@@ -93,6 +93,7 @@
 #### `error`
 
 - `isAnyError`: 是不是一个任意的 `Error` 对象
+- `isDOMException`: 是不是一个 `DOMException` 对象
 - `isError`: 是不是一个 `Error` 对象
 - `isEvalError`: 是不是一个 `EvalError` 对象
 - `isRangeError`: 是不是一个 `RangeError` 对象
