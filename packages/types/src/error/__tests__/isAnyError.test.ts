@@ -3,6 +3,7 @@ import { isAnyError } from '..';
 describe('@curong/types/isAnyError', () => {
     test('测试1', () => {
         expect(isAnyError({})).toBe(false);
+        expect(isAnyError(new DOMException())).toBe(false);
     });
 
     test('测试2', () => {
