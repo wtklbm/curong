@@ -27,5 +27,8 @@
         "access": "public",
         "registry": "https://registry.npmjs.org/"
     },
+    "dependencies": {
+        "@curong/types": "^0.5.0"
+    },
     "sideEffects": false
 }
