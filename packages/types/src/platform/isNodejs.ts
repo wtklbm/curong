@@ -9,15 +9,11 @@ export default function isNodejs(): boolean {
     return (
         typeof global === 'object' &&
         global !== null &&
-        typeof setImmediate === 'function' &&
-        typeof clearImmediate === 'function' &&
-        typeof Buffer === 'function' &&
-        typeof Buffer.isBuffer === 'function' &&
-        typeof Buffer.byteLength === 'function' &&
+        typeof global.clearImmediate === 'function' &&
         typeof process === 'object' &&
         getTagEqual(process, 'process') &&
-        typeof process.nextTick === 'function' &&
-        typeof process.exit === 'function' &&
-        typeof process.cwd === 'function'
+        (process.release ?? {}).name === 'node' &&
+        typeof Buffer === 'function' &&
+        typeof Buffer.isBuffer === 'function'
     );
 }
