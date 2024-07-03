@@ -2,12 +2,12 @@ export type SleepRunOptions = {
     /**
      * 间隔的开始时的最小数字
      */
-    start?: number;
+    min?: number;
 
     /**
      * 间隔结束时的最大数字
      */
-    end: number;
+    max: number;
 
     /**
      * 显示多长时间的消息
