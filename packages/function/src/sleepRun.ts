@@ -14,8 +14,8 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
  * @param anyTimeout 参数对象或者一个超时数字，单位 `毫秒`
  *
  * 如果参数是对象:
- *  - `start` 开始的毫秒数，默认为 `0`
- *  - `end` 结束时的毫秒数
+ *  - `min` 开始的毫秒数，默认为 `0`
+ *  - `max` 结束时的毫秒数
  *  - `show` 是否显示等待时间，默认为 `false`
  *
  * 如果参数是数字:
@@ -42,8 +42,8 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
  *
  * // 从 `3s` 或 `8s` 间生成一个随机时间，等待并执行函数
  * sleepRun(f, {
- *     start: 3e3,
- *     end: 8e3,
+ *     min: 3e3,
+ *     max: 8e3,
  *     show: true
  * });
  * ```
@@ -68,16 +68,16 @@ export default function sleepRun<T>(
             });
         }
     } else if (isObject(anyTimeout)) {
-        const { start = 0, end = 0 } = anyTimeout;
+        const { min = 0, max = 0 } = anyTimeout;
         anyTimeout.show && (show = anyTimeout.show);
         timeout =
-            end === start
-                ? end
-                : end <= 0 && start <= 0
+            max === min
+                ? max
+                : max <= 0 && min <= 0
                   ? 0
-                  : start < end
-                    ? range(end, start)
-                    : range(start, end);
+                  : min < max
+                    ? range(max, min)
+                    : range(min, max);
     }
 
     if (isTrue(show) && timeout > 0) {
