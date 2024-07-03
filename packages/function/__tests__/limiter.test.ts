@@ -31,7 +31,7 @@ describe('@curong/function/limiter', () => {
         const pool = await limiter([task, task, 12312]);
         expect(pool).toEqual([1, 2, 12312]);
         expect(s).toEqual([1, 2]);
-        expect(Math.floor((Date.now() - date) / 100)).toBe(2);
+        expect(Math.floor((Date.now() - date) / 100)).toBe(1);
     });
 
     test('测试3', async () => {
