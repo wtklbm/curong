@@ -1,4 +1,5 @@
-import { isFunction, isUndefined, isZero } from '@curong/types';
+import { range } from '@curong/number';
+import { isFunction, isTypeofObject, isUndefined, isZero } from '@curong/types';
 
 import sleepAsync from './sleepAsync';
 import type { LimiterOptions } from './types';
@@ -19,10 +20,10 @@ import type { LimiterOptions } from './types';
  * @example
  *
  * ```javascript
-* const arr = [1, 2, 3, 4];
-* const mapper = (v: number) => Promise.resolve(v * v);
-* const pool = await limiter(arr.map(mapper));
-* console.log(pool); // [1, 4, 9, 16]
+ * const arr = [1, 2, 3, 4];
+ * const mapper = (v: number) => Promise.resolve(v * v);
+ * const pool = await limiter(arr.map(mapper));
+ * console.log(pool); // [1, 4, 9, 16]
  * ```
  */
 export default async function limiter<T extends unknown[]>(
@@ -39,6 +40,9 @@ export default async function limiter<T extends unknown[]>(
     } = options;
 
     const ret: any[] = [];
+    const getWaitTime = isTypeofObject(retryWait)
+        ? () => range(retryWait.min, retryWait.max)
+        : () => retryWait;
     const isOnError = isFunction(onError);
     const isOnProgress = isFunction(onProgress);
     const isOnProgressRetry = isFunction(onProgressRetry);
@@ -93,8 +97,12 @@ export default async function limiter<T extends unknown[]>(
                         } else {
                             throw firstError!;
                         }
-                    } else if (retryWait > 0) {
-                        await sleepAsync(retryWait);
+                    } else {
+                        const waitTime = getWaitTime();
+
+                        if (waitTime > 0) {
+                            await sleepAsync(waitTime);
+                        }
                     }
                 }
             }
