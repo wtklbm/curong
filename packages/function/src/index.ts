@@ -2,6 +2,7 @@ export { default as before } from './before';
 export { default as cancelExec } from './cancelExec';
 export { default as collectItems } from './collectItems';
 export { default as currying } from './currying';
+export { default as limiter } from './limiter';
 export { default as noCatch } from './noCatch';
 export { default as reach } from './reach';
 export { default as sleepAsync } from './sleepAsync';
