@@ -9,7 +9,7 @@ import type { LimiterOptions } from './types';
  *
  * @param tasks 要执行的任务数组，每个任务可以是一个同步函数、异步函数、`Promise` 或任意类型的普通值
  * @param options 配置选项对象，用于设置并发数、错误处理、重试设置和进度回调等
- *  - `concurrency`: 最大并发运行的任务数量。默认为 `1`，即一个任务一个任务地连续执行
+ *  - `concurrency`: 最大并发运行的任务数量。默认为任务的长度，即所有任务并行执行
  *  - `maxRetry`: 任务失败时的最大重试次数。默认为 `0`，即默认情况下不重试任务
  *  - `retryWait`: 重试失败任务之前等待的时间（以毫秒为单位）。默认为 `0`，即不等待
  *  - `onError`: 处理任务执行过程中发生的错误的函数
@@ -31,7 +31,7 @@ export default async function limiter<T extends unknown[]>(
     options: LimiterOptions = {}
 ) {
     const {
-        concurrency = 1,
+        concurrency = tasks.length,
         maxRetry = 0,
         retryWait = 0,
         onError,
