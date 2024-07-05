@@ -5,6 +5,7 @@ export { default as collectItems } from './collectItems';
 export { default as currying } from './currying';
 export { default as limiter } from './limiter';
 export { default as noCatch } from './noCatch';
+export { default as padding } from './padding';
 export { default as reach } from './reach';
 export { default as sleepAsync } from './sleepAsync';
 export { default as sleepRun } from './sleepRun';
