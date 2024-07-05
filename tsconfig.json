@@ -1,9 +1,8 @@
 {
     "compilerOptions": {
-        // "module": "commonjs",
-        // "outDir": "dist",
-        "target": "esnext",
-        "lib": ["esnext", "DOM"],
+        "module": "CommonJS",
+        "target": "ESNext",
+        "lib": ["ESNext", "DOM"],
         "strict": true,
         "esModuleInterop": true,
         "noImplicitAny": true,
