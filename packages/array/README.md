@@ -9,6 +9,7 @@
 - `maxLengthIndex`: 获取字符串数组中最大长度的项的索引位置
 - `maxRecursionDepth`: 计算数组的最大递归深度 (即数组中包含数组)
 - `minLengthIndex`: 获取字符串数组中最小长度的项的索引位置
+- `random`: 从数组中随机挑选一个元素
 - `shuffle`: 将一个数组随机打乱
 - `sortByEng`: 按照单词的所有字母全量排序
 - `sortByEngInitials`: 根据英文首字母排序
