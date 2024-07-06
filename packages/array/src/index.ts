@@ -5,6 +5,7 @@ export { default as isMultiDimensional } from './isMultiDimensional';
 export { default as maxLengthIndex } from './maxLengthIndex';
 export { default as maxRecursionDepth } from './maxRecursionDepth';
 export { default as minLengthIndex } from './minLengthIndex';
+export { default as random } from './random';
 export { default as shuffle } from './shuffle';
 export { default as sortByEng } from './sortByEng';
 export { default as sortByEngInitials } from './sortByEngInitials';
