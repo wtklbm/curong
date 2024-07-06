@@ -62,7 +62,7 @@ export default function createCookie(
     value = encode(value);
 
     if (!isString(value) || !verifyReg.test(value)) {
-        throw new Error(`[create]: value的值不是预期的: "${value}"`);
+        throw new TypeError(`[create]: value的值不是预期的: "${value}"`);
     }
 
     const compiler: {
