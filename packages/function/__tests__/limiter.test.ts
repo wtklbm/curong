@@ -207,7 +207,7 @@ describe('@curong/function/limiter', () => {
                 concurrency: 2,
                 onError: e => 'xxx',
                 maxRetry: 3,
-                retryWait: { min: 0, max: 100 }
+                retryWait: { start: 0, end: 100 }
             }
         );
 
