@@ -1,3 +1,5 @@
+import setTimeout from './setTimeout';
+
 /**
  * 异步阻塞一段时间
  *
@@ -13,11 +15,5 @@
  * ```
  */
 export default async function sleepAsync(duration: number): Promise<void> {
-    return new Promise(resolve => {
-        let timer: any = setTimeout(() => {
-            clearTimeout(timer);
-            timer = null;
-            resolve();
-        }, duration);
-    });
+    return new Promise(resolve => setTimeout(resolve, duration));
 }
