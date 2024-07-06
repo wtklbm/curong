@@ -10,7 +10,7 @@ describe('@curong/function/padding', () => {
 
     test('测试2', async () => {
         let [data, error] = await padding(() => {
-            throw new Error('xxx')
+            throw new Error('xxx');
         });
 
         expect(data).toBeNull();
@@ -38,14 +38,12 @@ describe('@curong/function/padding', () => {
         expect(error).toBe(null);
     });
 
-
     test('测试6', async () => {
         let [data, error] = await padding(Promise.reject(1));
 
         expect(data).toBe(null);
         expect(error).toBe(1);
     });
-
 
     test('测试7', async () => {
         let [data, error] = await padding(() => Promise.reject(1));
