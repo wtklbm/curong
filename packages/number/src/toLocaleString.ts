@@ -34,7 +34,9 @@ export default function toLocaleString(
     const { separator, capacity } = { separator: ',', capacity: 3, ...options };
 
     if (!isUintFilled(capacity)) {
-        throw new TypeError(`[toLocaleString] capacity 必须是一个大于 0 的整数`);
+        throw new TypeError(
+            `[toLocaleString] capacity 必须是一个大于 0 的整数`
+        );
     }
 
     const [integerPart, decimalPart] = numStr.split('.');
