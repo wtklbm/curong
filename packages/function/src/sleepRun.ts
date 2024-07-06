@@ -1,5 +1,5 @@
 import { range } from '@curong/number';
-import { format, printWarn } from '@curong/term';
+import { printWarn } from '@curong/term';
 import { isNumber, isObject, isTrue } from '@curong/types';
 
 import setTimeout from './setTimeout';
@@ -57,17 +57,7 @@ export default function sleepRun<T>(
     let timeout: number = 0;
 
     if (isNumber(anyTimeout)) {
-        if (anyTimeout < 0) {
-            timeout = 0;
-        } else if (anyTimeout <= 2147483647) {
-            timeout = anyTimeout;
-        } else {
-            throw format({
-                name: 'sleepRun',
-                message: 'anyTimeout 的值不可以超过 2^31-1，即 2147483647',
-                data: { anyTimeout }
-            });
-        }
+        timeout = anyTimeout <= 0 ? 0 : anyTimeout;
     } else if (isObject(anyTimeout)) {
         const { min = 0, max = 0 } = anyTimeout;
         anyTimeout.show && (show = anyTimeout.show);
