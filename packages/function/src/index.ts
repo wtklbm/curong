@@ -8,6 +8,7 @@ export { default as noCatch } from './noCatch';
 export { default as padding } from './padding';
 export { default as reach } from './reach';
 export { default as select } from './select';
+export { default as setTimeout } from './setTimeout';
 export { default as sleepAsync } from './sleepAsync';
 export { default as sleepRun } from './sleepRun';
 export { default as sleepSync } from './sleepSync';
