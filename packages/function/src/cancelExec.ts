@@ -41,9 +41,7 @@ export default function cancelExec<T = unknown>(
 
     return [
         Promise.race([
-            isPromise(callable)
-                ? callable
-                : Promise.resolve(mapCall(callable)),
+            isPromise(callable) ? callable : Promise.resolve(mapCall(callable)),
             new Promise(
                 (resolve, reject) =>
                     (abort = payload => {
