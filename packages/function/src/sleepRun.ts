@@ -2,6 +2,7 @@ import { range } from '@curong/number';
 import { format, printWarn } from '@curong/term';
 import { isNumber, isObject, isTrue } from '@curong/types';
 
+import setTimeout from './setTimeout';
 import type { SleepRunOptions } from './types';
 
 const padZero = (num: number | string) => num.toString().padStart(2, '0');
@@ -98,10 +99,6 @@ export default function sleepRun<T>(
     }
 
     return new Promise(resolve => {
-        let timer: any = setTimeout(() => {
-            clearTimeout(timer);
-            timer = null;
-            return resolve(handler());
-        }, timeout);
+        setTimeout(() => resolve(handler()), timeout);
     });
 }
