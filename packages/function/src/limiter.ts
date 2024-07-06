@@ -41,7 +41,7 @@ export default async function limiter<T extends unknown[]>(
 
     const ret: any[] = [];
     const getWaitTime = isTypeofObject(retryWait)
-        ? () => range(retryWait.min, retryWait.max)
+        ? () => range(retryWait.start, retryWait.end)
         : () => retryWait;
     const isOnError = isFunction(onError);
     const isOnProgress = isFunction(onProgress);
