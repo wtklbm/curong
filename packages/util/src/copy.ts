@@ -138,7 +138,9 @@ const copyByTag = <T extends object>(value: any, weak: WeakMap<T, T>) => {
             return o;
 
         default:
-            throw new EvalError('[copy]: 无法进行深度拷贝，对象中包含不支持类型');
+            throw new EvalError(
+                '[copy]: 无法进行深度拷贝，对象中包含不支持类型'
+            );
     }
 };
 
