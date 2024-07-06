@@ -1,5 +1,7 @@
 import { isFunction, isPromise } from '@curong/types';
 
+import setTimeout from './setTimeout';
+
 /**
  * 执行一个函数，并获取函数的返回值，如果函数的执行时间超过 `duration` 时，就执行回调函数
  *
@@ -29,10 +31,7 @@ export default function timeoutCallback<T = unknown>(
             ? callable
             : Promise.resolve(isFunction(callable) ? callable() : callable),
         new Promise((resolve, reject) => {
-            let timer: any = setTimeout(() => {
-                clearTimeout(timer);
-                timer = null;
-
+            setTimeout(() => {
                 try {
                     if (isFunction(returnable)) {
                         returnable = returnable();
