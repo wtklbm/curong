@@ -69,7 +69,7 @@ export default function colorNameCode24bit(
         isUndefined(terminalColor) ||
         isUndefined(terminalColor[index])
     ) {
-        throw new Error(
+        throw new TypeError(
             `[colorNameCode24bit]: colorName不是有效颜色值, "${colorName}"`
         );
     }
