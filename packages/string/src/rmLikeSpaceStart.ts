@@ -7,7 +7,7 @@ import { likeSpaceStartReg } from './characters';
  * @returns 返回处理好的字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = rmLikeSpaceStart(`\u3000\u3000x\u3000xx\u3000\u3000`);
  * console.log(ret); // 'x\u3000xx\u3000\u3000'
  * ```

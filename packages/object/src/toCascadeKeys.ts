@@ -19,7 +19,7 @@ import type { ObjectType } from './types';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * let o = { value: 'test' };
  * let ret = toCascadeKeys('.key[0].value');
  * console.log(ret); // [ 'key', 0, 'value' ]

@@ -51,7 +51,7 @@ type Currying6<T1, T2, T3, T4, T5, T6, R> = {
  * @returns 返回 fn 函数的返回结果
  * @example
  *
- * ```javascript
+ * ```typescript
 * const c = curring((a: number, b: number): number => a + b);
 * console.log(c(1)(2)); // 3
 * ```

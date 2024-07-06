@@ -7,7 +7,7 @@ import type { Primitive } from './types';
  * @returns 返回去重好的数组
  * @example
  *
- * ```javascript
+ * ```typescript
  * const a1 = [1, 2, 3];
  * const a2 = [4, 5, 6, 1, 2, 3];
  * const a3 = [4, 5, 6, 7, 8, 9];
@@ -23,14 +23,14 @@ import type { Primitive } from './types';
  *
  * ## 情况一
  *
- * ```javascript
+ * ```typescript
  * const ret = uniqueFromPrimitive(Symbol('1'), [Symbol('2'), Symbol('1')]);
  * console.log(ret); // [ Symbol(1), Symbol(2), Symbol(1) ]
  * ```
  *
  * ## 情况二
  *
- * ```javascript
+ * ```typescript
  * const s1 = Symbol('1');
  * const s2 = Symbol('2');
  * const ret = uniqueFromPrimitive(s1, s2, [s2, s1]);

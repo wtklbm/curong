@@ -21,7 +21,7 @@ import type { StartsSlice } from './types';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = startsSlice('xxx', 'X', {
  *     position: 1,
  *     preserve: true,

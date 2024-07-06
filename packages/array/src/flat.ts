@@ -7,7 +7,7 @@ import { isArray } from '@curong/types';
  * @returns 返回一个一位数组
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = flat([1, [[2], 3], 4]);
  * console.log(ret); // [ 1, 2, 3, 4 ]
  * ```

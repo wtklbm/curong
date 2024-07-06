@@ -6,7 +6,7 @@
  * @returns 返回排序好的内容
  * @example
  *
- * ```javascript
+ * ```typescript
  * const value = ['ae', 'aa', 'ac', 'cg', 'do', 'gj', 'bl'];
  * const ret1 = sortByEngInitials(value);
  * console.log(ret1); // ['ae', 'aa', 'ac', 'bl', 'cg', 'do', 'gj'];

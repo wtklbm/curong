@@ -37,7 +37,7 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
  *
  * ### 传递一个对象
  *
- * ```javascript
+ * ```typescript
  * const f = () => console.log('hello');
  *
  * // 从 `3s` 或 `8s` 间生成一个随机时间，等待并执行函数

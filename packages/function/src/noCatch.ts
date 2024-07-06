@@ -5,7 +5,7 @@
  * @returns 返回函数的执行结果
  * @example
  *
- * ```javascript
+ * ```typescript
  * const fn = () => new Promise(r => setTimeout(() => r('完成了'), 1e3));
  * const ret = await noCatch(fn);
  * console.log(ret); // 完成了

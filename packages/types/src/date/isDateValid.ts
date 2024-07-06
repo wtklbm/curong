@@ -7,7 +7,7 @@ import isUndefined from '../nullable/isUndefined';
  * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * isDateValid(1617235200000); // true
  * isDateValid([0])); // true (Sat Jan 01 2000 00:00:00 GMT+0800)
  * isDateValid(new Date(1617235200000)); // true

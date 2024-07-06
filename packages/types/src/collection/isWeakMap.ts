@@ -17,7 +17,7 @@ import getTagEqual from '../type/getTagEqual';
  *
  * `WeakMap` 使用的是弱引用，当 `WeakMap` 中引用的变量重新赋值时，`WeakMap` 中的引用就会被销毁。
  *
- * ```javascript
+ * ```typescript
  * let o = { name: 'wtklbm' };
  * const map = new WeakMap([[o, o.name]]);
  *

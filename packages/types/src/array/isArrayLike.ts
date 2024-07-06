@@ -17,7 +17,7 @@ import isArrayIndex from './isArrayIndex';
  * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * console.log(isArrayLike([])); // false
  *
  * const fn = function (a: number) {

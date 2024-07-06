@@ -8,7 +8,7 @@ import { isFunction, isPromise } from '@curong/types';
  * @returns 返回一个数组，数组的第一项是一个新的 `Promise`，第二项是中止新的 `Promise` 的函数
  * @example
  *
- * ```javascript
+ * ```typescript
  * const fn = (a: number, b: string, bool: boolean) => {
  *     return new Promise(resolve => {
  *         let timer = setTimeout(() => {

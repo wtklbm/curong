@@ -9,7 +9,7 @@ import type { Constructor } from './types';
  * @returns 如果当前值有构造返回则返回当前值的构造函数，否则返回 `null`
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = constructor('');
  * console.log(ret); // [Function: String]
  * ```

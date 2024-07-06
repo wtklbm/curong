@@ -12,7 +12,7 @@ import { isUint, isZero } from '@curong/types';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = wordStart('xx    xx    ', 2);
  * console.log(ret); // 6
  * ```

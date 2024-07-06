@@ -19,7 +19,7 @@ import type { LimiterOptions } from './types';
  * @throws 如果任务执行失败且没有提供 `onError` 来处理错误时，将抛出错误
  * @example
  *
- * ```javascript
+ * ```typescript
  * const arr = [1, 2, 3, 4];
  * const mapper = (v: number) => Promise.resolve(v * v);
  * const pool = await limiter(arr.map(mapper));

@@ -9,7 +9,7 @@ import { isZero } from '@curong/types';
  * @returns 返回捕获到的结果或者是 `null`
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = matchOrder('wtklbm123abc', [/\d+/, /\w+/]);
  *
  * // [ '123', index: 6, input: 'wtklbm123abc', groups: undefined ]

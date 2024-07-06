@@ -3,7 +3,7 @@
  *
  * @example ```` 生成验证汉字的正则表达式
  *
- * ```javascript
+ * ```typescript
  *  const hanReg = new RegExp(`(?:${source.han})+`);
  * ```
  *
@@ -14,7 +14,7 @@
  *
  * @example ```` 验证表达式
  *
- * ```javascript
+ * ```typescript
  *  // ES 2018
  *  const reg = /\p{Unified_Ideograph}/u;
  * ```

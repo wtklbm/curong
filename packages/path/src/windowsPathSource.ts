@@ -3,7 +3,7 @@
  *
  * 如果需要验证是否为合法的 `Windows` 路径字符串，请使用 `isWindowsPath` 方法。
  *
- * ```javascript
+ * ```typescript
  * const pathWin =
  '(((\\\\\\\\\\?\\\\)?[a-zA-Z]:\\\\?)|\\.{1,2})(\\\\((?![<>:"/\\\\|?*]|CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(.*[^.\\s])*)+)+';
  * // \\?(?!CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9]|\.| )([^<>:"/\\|?*]))

@@ -20,7 +20,7 @@ import type { GenericOptions } from './types';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = notStarts('x x x', ['X', 'a', 'b'], {
  *     position: 2,
  *     caseSensitivity: false

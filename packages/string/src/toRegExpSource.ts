@@ -5,7 +5,7 @@
  * @returns 返回转义后的字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = toRegExpSource('+');
  * console.log(ret); // '\\+'
  * ```

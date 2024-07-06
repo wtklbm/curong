@@ -14,7 +14,7 @@ import type { TrimOptions } from './types';
  * @returns 是则返回 `true`，否则为 `false` (空字符串的结果为 `false`)
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = isSpaceString(` \u3000 \u200B`);
  * console.log(ret); // true
  * ```

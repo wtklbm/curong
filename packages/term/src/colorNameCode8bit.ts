@@ -9,7 +9,7 @@ import type { ColorCodeResult, ColorName } from './types';
  * @returns 返回生成好的终端代码，包含前景色代码和背景色代码
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = colorNameCode8bit('red');
  *
  * // {

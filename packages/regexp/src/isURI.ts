@@ -7,7 +7,7 @@ import { uri as sourceURI } from './source';
  * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = isURI('https://www.wtklbm.com?name=wtklbm&age=29#good');
  * console.log(ret); // true
  * ```

@@ -9,7 +9,7 @@ import { isTypeofObject } from '@curong/types';
  * @note 不是私有的并且在原型上就是当前对象的原型上的属性
  * @example
  *
- * ```javascript
+ * ```typescript
  * class Arr extends Array {
  *     constructor() {
  *         super()

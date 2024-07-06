@@ -10,7 +10,7 @@ import randomSafe from './randomSafe';
  * @returns 返回生成的安全的随机数
  * @example
  *
- * ```javascript
+ * ```typescript
  * const n = rangeSafe(1, 12);
  * console.log(n); // 5
  * ```

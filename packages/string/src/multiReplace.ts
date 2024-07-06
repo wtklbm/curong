@@ -11,7 +11,7 @@ type Matcher = [Match, Replacer] | { match: Match; replacer: Replacer };
  * @param matchers 匹配器，如果匹配则进行替换
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = replace('this is good.', [
  *     [ /this/, 'book' ],
  *     [ /good/, v => v.toUpperCase() ]
@@ -40,7 +40,7 @@ export default function multiReplace(
  * @param matchers 匹配器，如果匹配则进行替换
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = replace('this is good.', [
  *     {
  *         match: /this/,

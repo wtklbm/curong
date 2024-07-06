@@ -6,7 +6,7 @@
  * @returns 返回函数的返回值
  * @example
  *
- * ```javascript
+ * ```typescript
  * const b = before(() => console.log('两数相加的结果为：'));
  *
  * // 两数相加的结果为：

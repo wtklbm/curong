@@ -18,7 +18,7 @@ import type { WindowsTaskListResult } from './types';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const tasks = await windowsTaskList();
  * // [
  * //     {

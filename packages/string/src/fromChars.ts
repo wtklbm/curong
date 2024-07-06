@@ -7,7 +7,7 @@
  * @returns 返回转换好的字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = fromBytes([ '中', '国' ]);
  * console.log(ret); // '中国'
  * ```

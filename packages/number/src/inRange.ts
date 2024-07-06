@@ -16,7 +16,7 @@ import { isNumber, isUndefined } from '@curong/types';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * console.log(inRange(5, 10)); // true
  * console.log(inRange(5, 3, 10)); // true
  * ```

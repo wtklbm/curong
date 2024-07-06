@@ -18,7 +18,7 @@ import type { GenericOptions } from './types';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = behindOf('this is xxx aaa bbb', ['This', 'Is'], {
  *     position: 5,
  *     caseSensitivity: false

@@ -38,7 +38,7 @@ const fillingSpaces = (
  * @param handleMatch 处理函数，它接收正则所匹配的第一项的值和正则所匹配的结果并返回新的子串
  * @example
  *
- * ```javascript
+ * ```typescript
  * // 为捕获到的值添加反引号和空格。
  * subSpaces('有100本书。', /\d+/, v => '`' + v + '`'); // 有 `100` 本书。
  * ```

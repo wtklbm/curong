@@ -24,7 +24,7 @@ const _depth = (arr: unknown[], level: number) => {
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * isMultiDimensional([0, [], 1]); // 2
  * isMultiDimensional([[], [], []]); // 2
  * ```

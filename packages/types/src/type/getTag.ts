@@ -42,13 +42,13 @@ export default (() => {
      * `Object.prototype.toString` 方法默认会调用 `Symbol.toStringTag` 方法
      * 得到当前对象的类型标记，而该方法是 `ES6` 标准，它并不支持 `IE` 浏览器。
      *
-     * ```javascript
+     * ```typescript
      * typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
      * ```
      *
      * ### 在自定义的类上使用标记
      *
-     * ```javascript
+     * ```typescript
      * class ValidatorClass {
      *     get [Symbol.toStringTag]() {
      *       // "[object Validator]"

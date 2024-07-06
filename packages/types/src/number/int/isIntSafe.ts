@@ -38,14 +38,14 @@
  *
  * #### 使用 `BigInt`
  *
- * ```javascript
+ * ```typescript
  * const max = BigInt(Number.MAX_SAFE_INTEGER);
  * console.log(max + 1n, max + BigInt(1)); // 9007199254740992n
  * ```
  *
  * #### 把数字转换为字符串
  *
- * ```javascript
+ * ```typescript
  * import JSONbig from 'json-bigint';
  *
  * axios({

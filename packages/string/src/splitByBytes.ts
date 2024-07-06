@@ -18,7 +18,7 @@ import fromChars from './fromChars';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const v = '中华人民共和国中央人民政府';
  * const ret = splitByBytes(v, 6);
  * console.log(ret); // ['中华', '人民', '共和', '国中', '央人', '民政', '府'];

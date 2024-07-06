@@ -34,7 +34,7 @@ const addPack = (
  * @returns 返回级联属性字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = fromCascadeKeys(['a', 'b', 10, 'c']);
  * console.log(ret); // 'a.b[10].c'
  * ```

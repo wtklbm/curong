@@ -36,7 +36,7 @@ import { format } from '@curong/term';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const s = { value: '', number: 0, bool: false };
  * const ret = await stringify(s, (key, value) => {
  *     if (typeof value === 'string') {
@@ -90,7 +90,7 @@ export default function stringify(
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const s = { value: '', number: 0, bool: false };
  * const ret = await stringify(s, ['value', 'bool']);
  * console.log(ret); // '{"value":"","bool":false}'

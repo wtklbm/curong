@@ -6,7 +6,7 @@
  * @returns 如果至少有一个元素满足条件，则返回 `true`，否则为 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * isSome(1, v => v > 0); // true
  * isSome([1, 2, 3], v => v > 2); // true
  * isSome([1, 2, 3], [v => v > 1, v => v < 3]); // true

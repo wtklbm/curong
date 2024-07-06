@@ -9,7 +9,7 @@ import type { SetCookieParseResult } from './types';
  * @returns 返回 `cookie` 字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * const parsedCookie = {
  *     SNUID: {
  *         name: 'SNUID',

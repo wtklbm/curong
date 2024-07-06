@@ -7,7 +7,7 @@ import { isZero } from '@curong/types';
  * @returns 返回被打乱的数组
  * @example
  *
- * ```javascript
+ * ```typescript
  * const arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
  * const ret = shuffle(arr);
  * console.log(ret); // ['b', 'a', 'd', 'f', 'g', 'e', 'c'];

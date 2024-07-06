@@ -10,7 +10,7 @@ import { isFunction } from '@curong/types';
  *  - 如果任务抛出错误，则数组的第一项为 `null`，第二项为错误的值，该值可能是一个 `Error` 也可能是任意的值
  * @example
  *
- * ```javascript
+ * ```typescript
  * const [data, error] = await padding(Promise.resolve(1));
  * consol.log({data, error}); // { data: 1, error: null }
  * ```

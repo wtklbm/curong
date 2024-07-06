@@ -15,7 +15,7 @@ import { isNullOrUndefined } from '@curong/types';
  * @return 返回获取到的属性数组
  * @example
  *
- * ```javascript
+ * ```typescript
  *  console.log(allAttrs({a: 1, s: 'str', [Symbol('x')]: 'x'})); // [ 'a', 's', 'Symbol(x)' ]
  * ```
  */

@@ -11,7 +11,7 @@ import { ObjectType } from './types';
  * @returns 如果在对象中找到该值 (或数组中的所有值)，则返回 `true`，否则返回 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * const obj = { a: 1, b: 2, c: 3 };
  * console.log(isValuesIncludes(obj, [2, 4])); // false
  * console.log(isValuesIncludes(obj, [2, 4], true)); // true

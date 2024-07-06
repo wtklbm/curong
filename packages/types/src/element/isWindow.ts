@@ -14,7 +14,7 @@ const defaultIsWindow = (value: unknown) => getTagEqual(value, 'Window');
  * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * // 使用自定义判断逻辑
  * const evaluator = (value: unknown): value is Window =>
  *     value != null && value === (value as Window).window;

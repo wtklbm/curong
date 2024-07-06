@@ -15,7 +15,7 @@ import { isRegExp, isUint, isZero } from '@curong/types';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = matchSplit('wtklbm123abc', /\d+/);
  * console.log(ret); // [ 'wtklbm', '123', 'abc' ]
  * ```

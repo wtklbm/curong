@@ -8,7 +8,7 @@ import isSymbolPrimitive from './isSymbolPrimitive';
  * @returns 是则返回 `true`，否则为 `false`
  * @polyfill
  *
- * ```javascript
+ * ```typescript
  * try {
  *     const reg = /^Symbol\(.*\)$/;
  *

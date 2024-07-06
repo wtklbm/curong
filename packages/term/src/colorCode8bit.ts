@@ -13,7 +13,7 @@ import type { ColorCodeResult } from './types';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = colorCode8bit(23);
  *
  * // {

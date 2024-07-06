@@ -10,7 +10,7 @@ import random from './random';
  * @returns 返回生成的不安全的随机数
  * @example
  *
- * ```javascript
+ * ```typescript
  * const n = range(1, 12);
  * console.log(n); // 3
  * ```

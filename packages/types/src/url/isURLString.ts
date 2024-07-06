@@ -7,7 +7,7 @@ import isString from '../string/isString';
  * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * console.log(isURLString(12345)); // false
  * console.log(isURLString('not a url')); // false
  * console.log(isURLString('https://www.example.com')); // true

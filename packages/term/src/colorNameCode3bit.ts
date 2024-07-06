@@ -14,7 +14,7 @@ import type { ColorCodeResult, ColorName } from './types';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = colorNameCode3bit('lightred');
  *
  * // {

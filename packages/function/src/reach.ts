@@ -11,14 +11,14 @@ import { isUintSafe } from '@curong/types';
  *
  * ### 常规示例
  *
- * ```javascript
+ * ```typescript
  * const r = reach(3, () => 10);
  * console.log(r()()()); // 10
  * ```
  *
  * ### 异步读取文件，并等待所有文件读取完毕，然后打印出数据
  *
- * ```javascript
+ * ```typescript
  * const data = {};
  * const ready = reach(2, () => console.log(data));
  *

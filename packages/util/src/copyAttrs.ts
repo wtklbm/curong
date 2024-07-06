@@ -15,7 +15,7 @@ import lackAttrs from './lackAttrs';
  * @returns 返回拷贝好属性的值
  * @example
  *
- * ```javascript
+ * ```typescript
  *  const obj1 = copyAttrs({a: 1, s: 'str'}, { a: 2, x: 'x' }, true);
  *  console.log(obj1); // {a: 2, x: 'x', s: 'str'}
  *

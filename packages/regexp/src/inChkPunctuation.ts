@@ -7,7 +7,7 @@ import { chkPunctuation } from './source';
  * @returns 返回验证的结果
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = inChkPunctuation('您好，中国');
  * console.log(ret); // true
  * ```

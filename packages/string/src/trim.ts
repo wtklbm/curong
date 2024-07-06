@@ -17,7 +17,7 @@ import type { TrimOptions } from './types';
  * @returns 返回处理好的字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = trim(` \u3000xxx \u200B`, { space: false });
  * console.log(ret); // ' \u3000xxx '
  * ```

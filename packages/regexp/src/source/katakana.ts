@@ -7,7 +7,7 @@
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  *  // ES 2018
  *  const reg = /[\p{Katakana}]/u;
  * ```

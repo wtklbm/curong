@@ -59,7 +59,7 @@ const wordReg = /^[a-zA-Z]'[a-zA-Z]{1,2}[^a-zA-Z]/;
  * @returns 返回处理好的字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * const v = 'the [`crate`] is very good.';
  * const ret = bindOutside(v, v => v.replace('very', 'very very'));
  * console.log(ret); // "the [`crate`] is very very good."
@@ -82,7 +82,7 @@ export default function bindOutside(
  * @returns 返回处理好的字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * const v = "that is 'box\\'s'";
  *
  * let ret = bindOutside(v, { escape: true }, v => v.replace("s", ''));

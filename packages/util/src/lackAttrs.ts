@@ -12,7 +12,7 @@ import allAttrs from './allAttrs';
  * @return 返回缺少的属性
  * @example
  *
- * ```javascript
+ * ```typescript
  *  import { lackAttrs } from '@curong/util';
  *
  *  const attrs = lackAttrs({ a: 1, s: 's' }, ['a', 'b', 'c']);

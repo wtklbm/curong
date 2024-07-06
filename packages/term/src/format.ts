@@ -173,7 +173,7 @@ function makeInfo(info: ForMatInfo) {
  * @returns 返回格式化好的字符串文本
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = format({
  *     type: 'info',
  *     title: '这是标题',

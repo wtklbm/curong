@@ -7,7 +7,7 @@
  * @returns 返回转换好的字符数组
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = chars('中国');
  * console.log(ret); // [ '中', '国' ]
  * ```

@@ -9,7 +9,7 @@ import rmLikeSpaceStart from './rmLikeSpaceStart';
  * @returns 返回处理好的字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = rmLikeSpace(`\u00A0\u00A0x\u00A0xx\u00A0\u00A0`);
  * console.log(ret); // 'x xx'
  * ```

@@ -26,7 +26,7 @@ import toRegExpSource from './toRegExpSource';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = toRegExp('\\d+', 'g');
  * console.log(ret); // /\\d\+/g
  * ```

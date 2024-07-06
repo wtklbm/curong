@@ -15,7 +15,7 @@
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const regexps = [/\d+/, /^[\w ]+$/];
  * const str = 'hello 123 world';
  * const ret = testEvery(regexps, str);

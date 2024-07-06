@@ -278,7 +278,7 @@ function recursiveCopy<T extends object>(
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const obj = {
  *     str: '',
  *     num: 0,

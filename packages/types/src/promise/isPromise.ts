@@ -9,7 +9,7 @@ import getTagEqual from '../type/getTagEqual';
  * @returns 是则返回 `true`，否则为 `false`
  * @polyfill
  *
- * ```javascript
+ * ```typescript
  * const isPromise = value => {
  *     return (
  *         ((typeof value === 'object' && value !== null) ||

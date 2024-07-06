@@ -12,7 +12,7 @@ import { isFunction, isPromise } from '@curong/types';
  * @returns 如果函数执行的时间没有超时，则返回该结果，否则返回回调函数的结果
  * @example
  *
- * ```javascript
+ * ```typescript
  * const fn = (a, b) => a + b;
  * const ret = await timeoutCallback(1e3, fn(1, 2), 0);
  * console.log(ret); // 3

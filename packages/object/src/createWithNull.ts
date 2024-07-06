@@ -9,7 +9,7 @@ import type { ObjectType } from './types';
  * @returns 返回一个纯对象
  * @example
  *
- * ```javascript
+ * ```typescript
  * const obj = createWithNull({
  *     a: {
  *         get() {

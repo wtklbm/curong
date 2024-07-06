@@ -105,7 +105,7 @@ export type RequestHandler = {
      *
      * 1. 判断 `res.statusCode` 状态码是不是以2开头的数字，或者是不是 `302` 或 `304`
      *
-     *  ```javascript
+     *  ```typescript
      *  // 打开网页错误了
      *  if (!/^(2\d{2})|(30[24])$/.test(statusCode.toString())) {
      *      // 返回 `true` 时会关闭连接
@@ -126,7 +126,7 @@ export type RequestHandler = {
      * 1. 通过 `/; /g` 正则截取 `res.headers['content-type']`，
      *    得到截取的结果后根据 `mime` 和 `encoding` 编码，使用 `iconv.decode` 进行文本的转义。
      *
-     *  ```javascript
+     *  ```typescript
      *  // 验证 `encoding` 编码，使用 `res.headers['content-type']` 截取。
      *  // 在使用属性之前需要先验证一下该属性是否存在。
      *  if (res.headers['content-type']) {

@@ -13,7 +13,7 @@ import { isUint, isZero } from '@curong/types';
  * @note 依据 `含头不含尾` 规则，在使用该索引调用 `slice` 方法时，需要进行加一操作
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = wordEnd('xx    xx    ', 2);
  * console.log(ret); // 7
  * ```

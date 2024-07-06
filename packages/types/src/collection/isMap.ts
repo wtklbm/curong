@@ -11,7 +11,7 @@ import getTagEqual from '../type/getTagEqual';
  *
  * `Map` 使用的是强引用，当 `Map` 中引用的变量重新赋值时，`Map` 中的引用并不会被销毁。
  *
- * ```javascript
+ * ```typescript
  * let o = { name: 'wtklbm' };
  * const map = new Map([[o, o.name]]);
  *

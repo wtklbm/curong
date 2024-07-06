@@ -8,7 +8,7 @@ import { isFinite } from '@curong/types';
  * @returns 有限数值或默认值
  * @example
  *
- * ```javascript
+ * ```typescript
  * // 返回 42，因为字符串 "42" 可以转换为有限数值
  * const result1 = toFiniteNumber("42", 0);
  *

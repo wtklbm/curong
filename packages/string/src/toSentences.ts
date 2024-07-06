@@ -67,7 +67,7 @@ const zhReg = /[\u4e00-\u9fff]/;
  * @returns 返回处理的句子数组
  * @example
  *
- * ```javascript
+ * ```typescript
  * const value = 'this is a test. my name is `li ming`';
  * const ret = toSentences(value);
  * console.log(ret); // [ 'this is a test.', 'my name is `li ming`' ]

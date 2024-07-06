@@ -9,7 +9,7 @@ import { isFunction } from '@curong/types';
  * @throws 如果在执行 `fallback` 时出错，则会抛出异常
  * @example
  *
- * ```javascript
+ * ```typescript
  * const result = await catchOr(() => {
  *     throw new Error('获取数据失败');
  * }, 'defaultData');

@@ -7,7 +7,7 @@ import { isArrayFilled } from '@curong/types';
  * @returns 返回数组的维度数字
  * @example
  *
- * ```javascript
+ * ```typescript
  * console.log(dimensionLevel([1, 2, 3])); // 1
  * console.log(dimensionLevel([[1, 2], [3, 4]])); // 2
  * console.log(dimensionLevel([[[1, 2]], [[3, 4]]])); // 3

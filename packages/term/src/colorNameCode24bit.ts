@@ -15,7 +15,7 @@ import type { ColorCodeResult, ColorName, TerminalType } from './types';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = colorNameCode24bit('red');
  *
  * // {

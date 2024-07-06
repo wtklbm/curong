@@ -21,7 +21,7 @@ const clearLine = () => cursorOnLineBegin + eraseLine();
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const delay = () => new Promise(resolve => {
  *     setTimeout(() => resolve(), 200);
  * });
@@ -121,7 +121,7 @@ export default class ProgressBar {
      *
      * 因为要考虑进度条在终端上的位置关系，所以当不再使用进度条时，请使用 `this.end()` 方法来结束当前进度条。
      *
-     * ```javascript
+     * ```typescript
      *  function delay() {
      *      return new Promise(resolve => {
      *          setTimeout(() => resolve(), 200);

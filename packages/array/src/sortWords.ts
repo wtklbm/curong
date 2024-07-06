@@ -6,7 +6,7 @@
  * @returns 返回排序好的字符串数组
  * @example
  *
- * ```javascript
+ * ```typescript
  * const value = ['中', 'this', '国', 'is', 'test', 'a'];
  * const ret1 = sortWords(value);
  * console.log(ret1); // [ '国', '中', 'a', 'is', 'test', 'this' ]

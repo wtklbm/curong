@@ -14,7 +14,7 @@ const wordReg = /^[a-zA-Z]'[a-zA-Z]{1,2}[^a-zA-Z]/;
  * @returns 返回处理好的字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * const v = 'the [`crate`] is very good.';
  * const ret = bindInside(v, v => v.replace('crate', 'pkg'));
  * console.log(ret); // "the [`pkg`] is very good."
@@ -37,7 +37,7 @@ export default function bindInside(
  * @returns 返回处理好的字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * const v = "that is 'box\\'s'";
  *
  * let ret = bindInside(v, { escape: true }, v => v.replace('box', 'pkg'));

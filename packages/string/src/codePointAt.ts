@@ -10,7 +10,7 @@ import { isUint } from '@curong/types';
  * @returns 如果有代码点则返回代码点，否则返回 `null`
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = codePointAt('中国', 1);
  * console.log(ret); // 22269
  * ```

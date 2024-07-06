@@ -30,7 +30,7 @@ const matchKeysReg = /^([0-9]{1,2}|index|input|groups|length)$/;
  *
  * # 将捕获到的值放入数组中
  *
- * ```javascript
+ * ```typescript
  * const str = '123abc123';
  * const ret = execAll(/\d+/g, str, 0);
  *
@@ -39,7 +39,7 @@ const matchKeysReg = /^([0-9]{1,2}|index|input|groups|length)$/;
  *
  * # 自定义处理逻辑
  *
- * ```javascript
+ * ```typescript
  * const str = '123abc123';
  * const numbers = [];
  *

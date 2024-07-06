@@ -7,7 +7,7 @@
  * @returns 返回替换好的值
  * @example
  *
- * ```javascript
+ * ```typescript
  * const regexps = [/b/g, /a/g];
  * console.log(mapReplace(regexps, 'Aa', 'x')); // 'Ax'
  * console.log(mapReplace(regexps, 'ab', 'x')); // 'xx'
@@ -29,7 +29,7 @@ export default function mapReplace(
  * @returns 返回替换好的值
  * @example
  *
- * ```javascript
+ * ```typescript
  * const regexps = [/b/g, /a/g];
  * console.log(mapReplace(regexps, 'Aa', v => v + 'x')); //'Aax'
  * console.log(mapReplace(regexps, 'ab', v => v + 'X')); //'aXbX'

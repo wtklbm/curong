@@ -7,7 +7,7 @@ import getTagEqual from '../type/getTagEqual';
  * @returns 是则返回 `true`，否则为 `false`
  * @polyfill
  *
- * ```javascript
+ * ```typescript
  * if (!Array.isArray) {
  *   Array.isArray = function(arg) {
  *     return Object.prototype.toString.call(arg) === '[object Array]';

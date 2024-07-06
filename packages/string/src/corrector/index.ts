@@ -13,7 +13,7 @@ export * from './types';
  * @todo 支持 `Markdown` 语法
  * @example
  *
- * ```javascript
+ * ```typescript
  * const v = '今天li Ming搬了一天的砖，赚了100元，花了2.5元坐车回家，其他的给老婆。';
  * const ret = corrector(v);
  * console.log(ret); // "今天 li Ming 搬了一天的砖，赚了 100 元，花了 2.5 元坐车回家，其他的交给老婆。"

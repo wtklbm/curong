@@ -5,7 +5,7 @@
  * @returns 返回随机挑选的元素
  * @example
  *
- * ```javascript
+ * ```typescript
  * const arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
  * const ret = random(arr);
  * console.log(ret); // 'd'

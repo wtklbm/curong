@@ -6,7 +6,7 @@
  * @returns 如果所有元素都满足条件，则返回 `true`，否则为 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * isEvery([1, 2, 3], v => v > 0); // true
  * isEvery([1, 2, 3], [v => v > 0, v => v < 4]); // true
  * isEvery([1, 2, 3], [isFinite, isNumberFilled]); // true

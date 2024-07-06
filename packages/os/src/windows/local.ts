@@ -8,7 +8,7 @@ import { isWindows } from '../platform';
  * @returns 如果找到了区域语言则返回语言代码，比如 `zh-CN`，否则返回 `null`
  * @example
  *
- * ```javascript
+ * ```typescript
  * const local = await windowsLocal();
  * console.log(local); // "zh-CN"
  * ```

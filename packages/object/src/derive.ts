@@ -14,7 +14,7 @@ import type { ObjectType } from './types';
  * @returns 返回派生好的对象
  * @example
  *
- * ```javascript
+ * ```typescript
  * const obj = { a: 1, b: 2, c: 3, d: { e: true } };
  * const ret = derive(obj);
  *

@@ -12,7 +12,7 @@ import windowsPathSource from './windowsPathSource';
  * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = isWindowsPath('C:\\Program Files\\Common Files\\system');
  * console.log(ret); // true
  * ```

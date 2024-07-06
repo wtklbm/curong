@@ -13,7 +13,7 @@ import type { ExecOptions } from './types';
  * @returns 返回输入与输出
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = await exec('node -v', { encoding: 'utf-8' });
  *
  * // { stdout: 'v15.6.0\r\n', stderr: '' }

@@ -8,7 +8,7 @@ const startSpacesReg = /^ +/;
  * @returns 返回字符串开头所找到的空格数
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = startSpacesLength(' +');
  * console.log(ret); // 1
  * ```

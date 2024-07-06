@@ -18,7 +18,7 @@ import type { GenericOptions } from './types';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = frontOf('this X ABC is xxx aaa bbb', ['a', 'b', 'c', 'x'], {
  *     position: 5,
  *     caseSensitivity: false

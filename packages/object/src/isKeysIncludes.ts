@@ -16,7 +16,7 @@ import { ObjectType } from './types';
  * @returns 如果在对象中找到该键（或数组中的所有键），则返回 `true`，否则返回 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * const b = Symbol('2');
  * const obj = { a: 1, [b]: '2' };
  * console.log(isKeysIncludes(obj, ['a', b])); // false
@@ -40,7 +40,7 @@ export default function isKeysIncludes(
  * @returns 如果在对象中找到该键（或数组中的所有键），则返回 `true`，否则返回 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * const b = Symbol('2');
  * const obj = { a: 1, [b]: '2' };
  * console.log(isKeysIncludes(obj, ['a', 'c'])); // false
@@ -69,7 +69,7 @@ export default function isKeysIncludes(
  * @returns 如果在对象中找到该键（或数组中的所有键），则返回 `true`，否则返回 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * const b = Symbol('2');
  * const obj = { a: 1, [b]: '2' };
  * console.log(isKeysIncludes(obj, ['a', b, 'c'])); // false

@@ -7,7 +7,7 @@ import { likeSpaceEndReg } from './characters';
  * @returns 返回处理好的字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = rmLikeSpaceEnd(`\u3000\u3000x\u3000xx\u3000\u3000`);
  * console.log(ret); // '\u3000\u3000x\u3000xx'
  * ```

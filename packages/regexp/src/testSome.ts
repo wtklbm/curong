@@ -15,7 +15,7 @@
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const regexps = [/\d+/, /^[abc]+$/];
  * const str = 'hello 123 world';
  * const ret = testSome(regexps, str);

@@ -9,7 +9,7 @@ import { isFunction } from '@curong/types';
  * @returns 返回指定条件的值
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = select(true, Promise.resolve(1), 2);
  * console.log(ret); // 1
  * ```

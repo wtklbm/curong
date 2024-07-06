@@ -23,7 +23,7 @@ const handle = (
  * @throws 如果传递的 `dimension` 值不是大于 1 的正整数，则会抛出类型错误
  * @example
  *
- * ```javascript
+ * ```typescript
  * console.log(isMultiDimensional([1])); // false
  * console.log(isMultiDimensional([[1], [2]], 2, true)); // true
  * console.log(isMultiDimensional([[[1]], [[2]]], 2)); // true

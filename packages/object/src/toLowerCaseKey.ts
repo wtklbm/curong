@@ -14,7 +14,7 @@ import type { ObjectType } from './types';
  * @returns 返回处理好的新的对象
  * @example
  *
- * ```javascript
+ * ```typescript
  * let ret = toLowerCaseKey({ name: 1, NAME: 2 });
  * console.log(ret); // { name: 2 }
  * ret = toLowerCaseKey({ name: 1, NAME: 2 }, false);

@@ -9,7 +9,7 @@ import { isWindows } from '../platform';
  * @returns 返回命令的可执行字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * const cmd = appendCmd('npm');
  * console.log(cmd); // "npm.cmd"
  * ```

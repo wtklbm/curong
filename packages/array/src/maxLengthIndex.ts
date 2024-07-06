@@ -7,7 +7,7 @@ import { isEqual, isZero } from '@curong/types';
  * @returns 如果数组不为空则返回找到的最大长度的索引，否则返回 `null`
  * @example
  *
- * ```javascript
+ * ```typescript
  * const lines = ['hello.', 'this is a test.', 'very match.'];
  * console.log(maxLengthIndex(lines)); // 1
  * ```

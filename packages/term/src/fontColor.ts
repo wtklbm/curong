@@ -26,7 +26,7 @@ import type { FontColorOptions } from './types';
  * @returns 返回带有样式的终端字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * const text = fontColor('正在加载进度条...', {
  *     foreground: 'red',
  *     background: 'yellow',

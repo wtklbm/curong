@@ -11,7 +11,7 @@ import codePointAt from './codePointAt';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = bytesLength('中国');
  * console.log(ret); // 6
  * ```

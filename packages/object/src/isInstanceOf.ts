@@ -10,7 +10,7 @@ import { isNullOrUndefined, type Class } from '@curong/types';
  * @returns 如果值是指定类的实例则返回 `true`，否则为 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * class MyClass {}
  * const myInstance = new MyClass();
  *

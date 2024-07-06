@@ -8,7 +8,7 @@ import { hiragana, katakana, unifiedIdeograph } from './source';
  * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = inChinese('hello，中国');
  * console.log(ret); // true
  * ```

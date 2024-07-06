@@ -11,7 +11,7 @@ import type { ObjectType } from './types';
  * @returns 返回处理好的对象
  * @example
  *
- * ```javascript
+ * ```typescript
  * let obj = { a: 1, b: 2, c: 3 };
  * // 请在删除属性时接受该函数的返回值
  * obj = deleteAttrs(obj, ['b']);

@@ -49,7 +49,7 @@ function getDecode(
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const cookie =
  *     'htVD_2132_saltkey=UrzaeSMmA; htVD_2132_lastvisit=15797202730; htVD_2132_connect_is_bind=0; htVD_2132_smile=1D1';
  * const cookieObj = parseCookie(cookie);

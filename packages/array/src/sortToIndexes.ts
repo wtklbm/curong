@@ -7,7 +7,7 @@ import { isZero } from '@curong/types';
  * @returns 返回排列好的行号数组
  * @example
  *
- * ```javascript
+ * ```typescript
  * const lines = ['this is a test.', 'omg', 'hello world.', 'very good'];
  * const indexes = sortToIndexes(lines);
  * console.log(indexes); // [1, 3, 2, 0]

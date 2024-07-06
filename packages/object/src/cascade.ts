@@ -19,7 +19,7 @@ import type { ObjectType } from './types';
  *  - 如果从源对象中访问属性失败了，则可能会抛出异常，需要用户自己捕获处理
  * @example
  *
- * ```javascript
+ * ```typescript
  * const o = { key: [{ value: 'this is a test.' }] };
  * const ret = cascade(o, 'key[0].value');
  * console.log(ret); //'this is a test.'

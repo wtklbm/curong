@@ -7,7 +7,7 @@ import type { RegExpExecOrigin } from './types';
  * @returns 返回正则匹配对象匹配值后面的索引位置
  * @example
  *
- * ```javascript
+ * ```typescript
  * const r = /\d+/g;
  * const v = 'hello123world';
  * console.log(matchNextIndex(r.exec(v)!)); // 8

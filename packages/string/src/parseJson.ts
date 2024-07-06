@@ -10,7 +10,7 @@ import { format } from '@curong/term';
  * @throw 如果转换失败，则会抛出异常
  * @example
  *
- * ```javascript
+ * ```typescript
  * const s = '{"value":"","number":0,"bool":false}';
  * const ret = await parseJson(s);
  * console.log(ret); // { value: '', number: 0, bool: false }

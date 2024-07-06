@@ -14,7 +14,7 @@ import type { ColorCodeResult } from './types';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = colorCode24bit([128, 136, 255]);
  *
  * // {

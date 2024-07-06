@@ -7,7 +7,7 @@ import { isUint } from '@curong/types';
  * @throw 如果 duration 不是一个无符号整数，则会抛出异常
  * @example
  *
- * ```javascript
+ * ```typescript
  * console.time('delay');
  * sleepSync(20);
  * console.timeEnd('delay'); // 21.0ms

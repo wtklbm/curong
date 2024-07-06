@@ -15,7 +15,7 @@
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  *  // ES 2018
  *  // `/\p{Ideographic}/u` 和 `/\p{Script=Han}/u` 匹配了除汉字外的其他一些字符
  *  const reg = /[\p{Han}]/u;

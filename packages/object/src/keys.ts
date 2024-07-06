@@ -22,7 +22,7 @@ const fns = [
  * @throws 如果 `methodLevel` 的值不是 `0` 到 `3` 的整数，则会抛出类型错误
  * @example
  *
- * ```javascript
+ * ```typescript
  * const obj = { a: 1, [Symbol('2')]: '2' };
  * console.log(keys(obj)); // [ 'a' ]
  * console.log(keys(obj, 3)); // [ 'a', Symbol(2) ]

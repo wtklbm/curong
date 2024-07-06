@@ -18,7 +18,7 @@ export class TimeoutThrowError extends Error {
  * @throw 如果方法已超时，则会抛出 `TimeoutThrowError` 异常
  * @example
  *
- * ```javascript
+ * ```typescript
  * const fn = (a, b) => a + b;
  * const ret = await timeoutThrow(1e3, fn, 1, 2);
  * console.log(ret); // 3

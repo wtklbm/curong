@@ -12,7 +12,7 @@
  * @returns 如果引号闭合则返回空字符串，否则返回从前向后找到的第一个未闭合的单个引号
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = quotePair(`"this is a i\\"m for ok."/**`);
  * console.log(ret); ''
  * ```

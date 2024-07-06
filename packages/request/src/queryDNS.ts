@@ -10,7 +10,7 @@ import type { QueryDNSResult, RequestOptions } from './types';
  * @returns 返回查询到的主机地址所对应的 `DNS` 对象
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = await queryDNS('github.com');
  *
  * // { 'github.com': ['13.250.177.223'] };

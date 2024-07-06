@@ -20,7 +20,7 @@ import wordStart from './wordStart';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = word('xx    xx    ', 2);
  * console.log(ret); // { left: 6, right: 7 }
  * ```

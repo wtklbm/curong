@@ -8,7 +8,7 @@ import { exec } from '@curong/process';
  * 返回 `false` 的情况还有可能是因为没有找到当前要结束的那个进程。
  * @example
  *
- * ```javascript
+ * ```typescript
  * const imageName = 'notepad.exe';
  * await killWindowsTask(imageName);
  * ```

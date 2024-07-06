@@ -9,7 +9,7 @@
  *
  * @note 该正则使用 `xregexp` 自动生成
  *
- * ```javascript
+ * ```typescript
  *  const XRegExp = require('xregexp');
  *  const reg = new XRegExp('\\p{Hangul}', 'u');
  *  console.log(reg);
@@ -17,7 +17,7 @@
  *
  * @example ```` 验证韩文的正则
  *
- * ```javascript
+ * ```typescript
  *  // ES 2018
  *  const reg = /[\p{Script_Extensions=Hangul}]/u;
  * ```

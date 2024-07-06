@@ -6,7 +6,7 @@
  *  - 如果 `duration` 为一个大于 `0` 的数字，则表示至少应等待 `duration` 毫秒后执行
  * @example
  *
- * ```javascript
+ * ```typescript
  * console.time('delay');
  * await sleepAsync(20);
  * console.timeEnd('delay'); // 21.0ms

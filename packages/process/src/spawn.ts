@@ -113,7 +113,7 @@ const getStdio = (
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = await spawn('node', ['-v']);
  *
  * // {

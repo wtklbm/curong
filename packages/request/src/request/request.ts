@@ -43,7 +43,7 @@ import { deleteOptionsAttr, optionsHandler } from './options';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const requestOpts: RequestOptions = {
  *     hostname: 'baidu.com',
  *     path: '/',
@@ -117,7 +117,7 @@ export default function request(
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const requestOpts: RequestOptions = {
  *     method: 'GET',
  *     // 更多参数会拼接到 URL 的末尾

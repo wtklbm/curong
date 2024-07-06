@@ -15,7 +15,7 @@ import type { publicIpResult } from './types';
  * - 如果响应的数据格式不正确，则会抛出异常
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = await publicIP();
  *
  * // { cip: '89.163.224.142', cid: 'DE', cname: 'GERMANY' }

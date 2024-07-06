@@ -19,14 +19,14 @@
  *
  * @note 该正则使用 `xregexp` 自动生成
  *
- * ```javascript
+ * ```typescript
  *   const XRegExp = require('xregexp);
  *   const reg = new XRegExp('[\\p{Han}\\p{Hiragana}\\p{Katakana}]');
  * ```
  *
  * @example ```` 验证日文的 `ES` 写法
  *
- * ```javascript
+ * ```typescript
  *  // ES 2018
  *  const reg = /[\p{Script_Extensions=Han}\p{Script_Extensions=Hiragana}\p{Script_Extensions=Katakana}]/u;
  * ```

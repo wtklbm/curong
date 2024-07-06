@@ -15,7 +15,7 @@ import type { OpenOptions } from './types';
  * @returns 该方法内部调用了 `spawn` 来执行命令，所以会返回 `SpawnResult`
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = await open('http://baidu.com');
  *
  * console.log(ret);

@@ -20,7 +20,7 @@ import type { AnsiFormatOptions, AnsiFormatResult } from './types';
  * @returns 返回格式化代码，包含设置代码和恢复设置代码
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = ansiFormat({
  *     bold: true,
  *     italic: true,

@@ -7,7 +7,7 @@ import { email as sourceEmail } from './source';
  * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = isEmail('wtklbm@gmail.com');
  * console.log(ret); // true
  * ```

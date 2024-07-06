@@ -17,7 +17,7 @@ import isNumber from './isNumber';
  *  例如在进行算术运算时，需要判断 `isNumberValid(value) && isFinite(value)`。
  * @example
  *
- * ```javascript
+ * ```typescript
  * isNumberValid(' '); // true
  * isNumberValid(' ', false); // false
  * isNumberValid(' ', false, false, true); // true

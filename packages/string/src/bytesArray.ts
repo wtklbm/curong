@@ -9,7 +9,7 @@ import codePointAt from './codePointAt';
  * @returns 返回转换好的字节数组
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = bytesArray('中国');
  * console.log(ret); // [ 228, 184, 173, 229, 155, 189 ]
  * ```

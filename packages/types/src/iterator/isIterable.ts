@@ -8,7 +8,7 @@ import isSyncIterable from './isSyncIterable';
  * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * console.log(isIterable([])); // true
  * console.log(isIterable("")); // true
  * console.log(isIterable({})); // false

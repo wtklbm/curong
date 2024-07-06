@@ -9,7 +9,7 @@ import { isIntFilled } from '@curong/types';
  * @throws 如果 `step` 不是大于 `0` 的整数，则会抛出类型错误
  * @example
  *
- * ```javascript
+ * ```typescript
  * const v = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
  * const ret = splitByStep(v, 5);
  * console.log(ret); // [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11]]

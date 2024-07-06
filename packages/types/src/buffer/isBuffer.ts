@@ -7,7 +7,7 @@ const r = (value: any) => value.constructor.isBuffer(value);
  * @returns 是则返回 `true`，否则为 `false`
  * @source
  *
- * ```javascript
+ * ```typescript
  * Buffer.isBuffer = function isBuffer(b) {
  *   return b instanceof Buffer;
  * };

@@ -20,13 +20,13 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  *
  * ### 两个空对象的结果为 `true`
  *
- * ```javascript
+ * ```typescript
  * console.log(shallowEqual({}, {})); // true
  * ```
  *
  * ### 对象中的属性相同结果为 `true`
  *
- * ```javascript
+ * ```typescript
  * const o1 = { name: 'wtklbm' };
  * const o2 = { name: 'wtklbm' };
  *
@@ -35,7 +35,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  *
  * ### 对象中的属性个数不同结果为 `false`
  *
- * ```javascript
+ * ```typescript
  * const o1 = { name: 'wtklbm' };
  * const o2 = {
  *     name: 'wtklbm',
@@ -47,7 +47,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  *
  * ### 对象中的属性引用地址不同结果为 `false`
  *
- * ```javascript
+ * ```typescript
  * const o1 = {
  *     name: { data: 'wtklbm' }
  * };

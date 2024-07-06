@@ -8,7 +8,7 @@ import { japanese } from './source';
  * @note 日文中包含汉字，所以用该方法验证汉字也返回 `true`
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = inJapanese('こんにちは中国');
  * console.log(ret); // true
  * ```

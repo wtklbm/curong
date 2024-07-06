@@ -16,7 +16,7 @@ import type { TrimOptions } from './types';
  * @returns 返回处理好的字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = trimStart(`\t \u3000xxx`, { control: false });
  * console.log(ret); // '\t \u3000xxx'
  * ```

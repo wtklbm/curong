@@ -9,7 +9,7 @@ const startTabsReg = /^\t+/;
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const ret = startTabsLength('\t+');
  * console.log(ret); // 1
  * ```

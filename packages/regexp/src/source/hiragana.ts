@@ -4,7 +4,7 @@
  * @see http://www.unicode.org/charts/PDF/U3040.pdf
  * @example
  *
- * ```javascript
+ * ```typescript
  *  // ES 2018
  *  const reg = /[\p{Hiragana}]/u;
  * ```

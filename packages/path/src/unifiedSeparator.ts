@@ -5,7 +5,7 @@
  * @returns 返回处理好的路径字符串
  * @example
  *
- * ```javascript
+ * ```typescript
  * console.log(unifiedSeparator('C:\\Video\\js.mp4')); // C:/Video/js.mp4
  * console.log(unifiedSeparator('/Video/js.mp4')); // /Video/js.mp4
  * ```

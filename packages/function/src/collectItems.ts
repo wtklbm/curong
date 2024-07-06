@@ -19,7 +19,7 @@ import type {
  * @returns 返回一个函数，函数包含一个参数，并返回一个包含 `done` 和 `value` 的对象
  * @example
  *
- * ```javascript
+ * ```typescript
  * let total = 0;
  * const f = async () => Promise.resolve(++total);
  * const collectItem = collectItems({ total: 2 });
@@ -45,7 +45,7 @@ export default function collectItems<T>(
  * @returns 返回一个函数，函数包含两个参数，并返回一个包含 `done` 和 `value` 的对象
  * @example
  *
- * ```javascript
+ * ```typescript
  * let total = 0;
  * const f = async () => Promise.resolve(++total);
  * const collectItem = collectItems();

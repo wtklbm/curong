@@ -24,7 +24,7 @@ import type { CreateCookieOptions } from './types';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * const cookie = createCookie('wtklbm', 'value', {
  *     encode(value) {
  *         return value;

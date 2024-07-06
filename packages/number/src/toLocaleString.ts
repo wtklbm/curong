@@ -17,7 +17,7 @@ import type { ToLocaleStringOptions } from './types';
  *
  * @example
  *
- * ```javascript
+ * ```typescript
  * toLocaleString(123456789); // 123,456,789
  * toLocaleString(123456789, { separator: '_', capacity: 4 }); // 1_2345_6789
  * ```

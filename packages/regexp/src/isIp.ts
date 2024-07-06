@@ -9,7 +9,7 @@ const ipReg =
  * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
- * ```javascript
+ * ```typescript
  * console.log(isIp('2409:8054:48::1006')); // true
  * console.log(isIp('[240e:e0::abcd]:65533')); // true
  * console.log(isIp('[240e:e0::abcd]:65560')); // false
