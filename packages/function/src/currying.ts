@@ -52,19 +52,16 @@ type Currying6<T1, T2, T3, T4, T5, T6, R> = {
  * @example
  *
  * ```typescript
-* const c = curring((a: number, b: number): number => a + b);
-* console.log(c(1)(2)); // 3
-* ```
-*
-* # 柯里化函数
-*
-* 该函数是柯里化函数，柯里化函数就是把一个大函数拆分成很多的具体的功能的小函数。
-* 高阶函数中包含柯里化，柯理化的好处是可以保留参数，它非常像 `bind` 方法。
-*/
-function currying<T1, R>(
-    func: (t1: T1) => R,
-    depth?: number
-): Currying1<T1, R>;
+ * const c = curring((a: number, b: number): number => a + b);
+ * console.log(c(1)(2)); // 3
+ * ```
+ *
+ * # 柯里化函数
+ *
+ * 该函数是柯里化函数，柯里化函数就是把一个大函数拆分成很多的具体的功能的小函数。
+ * 高阶函数中包含柯里化，柯理化的好处是可以保留参数，它非常像 `bind` 方法。
+ */
+function currying<T1, R>(func: (t1: T1) => R, depth?: number): Currying1<T1, R>;
 
 function currying<T1, T2, R>(
     func: (t1: T1, t2: T2) => R,
@@ -91,9 +88,7 @@ function currying<T1, T2, T3, T4, T5, T6, R>(
     depth?: number
 ): Currying6<T1, T2, T3, T4, T5, T6, R>;
 
-function currying(
-    fn: (...args: any[]) => any
-): (...args: any[]) => any {
+function currying(fn: (...args: any[]) => any): (...args: any[]) => any {
     const depth = fn.length;
 
     return function curried(...args: any[]) {
