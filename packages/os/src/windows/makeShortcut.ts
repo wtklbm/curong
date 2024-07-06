@@ -27,7 +27,7 @@ const buildArgs = (pathString: string, options?: ShortcutOptions): string[] => {
     const { dirPath, force } = newOptions;
 
     if (!force && !existsSync(pathString)) {
-        throw new Error(
+        throw new TypeError(
             `[buildArgs]: 快捷方式的源 "${pathString}" 不是有效的路径`
         );
     }
@@ -37,7 +37,7 @@ const buildArgs = (pathString: string, options?: ShortcutOptions): string[] => {
         !force &&
         (!existsSync(dirPath) || !lstatSync(dirPath).isDirectory())
     ) {
-        throw new Error(
+        throw new TypeError(
             `[buildArgs]: "${dirPath}" 不是有效的存放链接的有效目录`
         );
     }
