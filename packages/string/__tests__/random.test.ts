@@ -17,5 +17,12 @@ describe('@curong/string/random', () => {
             v = Math.floor(v);
             expect(random(v)?.length).toBe(v);
         });
+
+        for (let i = 0, len = 10000, v; i < len; i++) {
+            v = random();
+            if (v.length !== 15) {
+                throw new Error(`长度不相等: ${v}`);
+            }
+        }
     });
 });
