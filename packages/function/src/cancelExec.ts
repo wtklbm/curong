@@ -1,4 +1,6 @@
-import { isFunction, isPromise } from '@curong/types';
+import { isPromise } from '@curong/types';
+
+import mapCall from './constants/mapCall';
 
 /**
  * 随时取消对 `Promise`、同步函数或异步函数的执行
@@ -41,11 +43,11 @@ export default function cancelExec<T = unknown>(
         Promise.race([
             isPromise(callable)
                 ? callable
-                : Promise.resolve(isFunction(callable) ? callable() : callable),
+                : Promise.resolve(mapCall(callable)),
             new Promise(
                 (resolve, reject) =>
                     (abort = payload => {
-                        payload = isFunction(payload) ? payload() : payload;
+                        payload = mapCall(payload);
                         return isThrow ? reject(payload) : resolve(payload);
                     })
             )
