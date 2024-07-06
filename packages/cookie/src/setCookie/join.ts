@@ -41,5 +41,5 @@ export default function joinSetCookie(cookie: SetCookieParseResult): string {
         return cookie.map(({ name, value }) => `${name}=${value}`).join('; ');
     }
 
-    throw new Error(`[joinSetCookie]: 拼接Cookie失败, "${cookie}"`);
+    throw new EvalError(`[joinSetCookie]: 拼接Cookie失败, "${cookie}"`);
 }
