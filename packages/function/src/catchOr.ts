@@ -6,7 +6,6 @@ import { isFunction } from '@curong/types';
  * @param task 要执行的任务。可以是异步函数、同步函数或 `Promise`
  * @param fallback 当执行的任务抛出错误时使用的备用函数或备用值
  * @returns 返回一个操作成功时的值或发生错误时的备用值
- * @throws 如果在执行 `fallback` 时出错，则会抛出异常
  * @example
  *
  * ```typescript
@@ -20,7 +19,7 @@ import { isFunction } from '@curong/types';
 export default async function catchOr<A extends unknown[], T>(
     task: ((...args: A) => any) | Promise<any>,
     fallback?:
-        | (<E extends Error, T>(error: E, ...args: A) => T | Promise<T>)
+        | (<E extends Error, R>(error: E, ...args: A) => R | Promise<R>)
         | Promise<any>
         | T
         | null
