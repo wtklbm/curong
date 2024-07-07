@@ -5,7 +5,7 @@ import { isUintSafe } from '@curong/types';
  *
  * @param count 要等待的总次数，它是一个大于或等于 `0` 的安全整数
  * @param callback 当次数到达时所要执行的回调函数
- * @param args 要传递给回调函数的参数
+ * @param args 传递给 `callback` 的参数
  * @throws 如果 `count` 不是大于或等于 `0` 的安全整数，则会抛出类型错误异常
  * @example ````
  *
@@ -44,7 +44,7 @@ export default function reach<R, A extends unknown[]>(
     ...args: A
 ): () => any {
     if (!isUintSafe(count)) {
-        throw new TypeError('[reach]: count 不是大于或等于0的安全整数');
+        throw new TypeError('[reach]: count 不是大于或等于 0 的安全整数');
     }
 
     const reachCall = () =>
