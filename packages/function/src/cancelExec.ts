@@ -11,7 +11,6 @@ type Payload<R, A extends unknown[]> =
  * 随时取消对 `Promise`、同步函数或异步函数的执行
  *
  * @param callable 一个 `Promise`、同步函数或异步函数
- * @param isThrow 是否在取消 `callable` 的执行后抛出一个错误，默认为 `false`
  * @returns 返回一个数组，数组的第一项是一个新的 `Promise`，第二项是中止新的 `Promise` 的 `abort` 函数
  * @example
  *
