@@ -17,6 +17,7 @@
 - `sleepRun`: 等待一段时间后执行一个同步或异步的函数
 - `sleepSync`: 同步阻塞一段时间
 - `timeoutCallback`: 执行一个函数，并获取函数的返回值，如果函数的执行时间超过 `duration` 时，就执行回调函数
+- `timeoutOr`: 执行一个函数，并获取函数的返回值，如果函数的执行时间超过 `duration` 时，就执行回调函数
 - `timeoutThrow`: 执行一个函数，并获取函数的返回值。如果函数的执行时间超过 `duration` 时，就会抛出异常
 - `tryCatch`: `try...catch...` 语法的 `Promise` 包装
 
