@@ -266,6 +266,6 @@ export default async function request(
     };
 
     return new Promise(async (resolve, reject) => {
-        return await sleepRun(() => getF(resolve, reject), delay ?? 0);
+        return await sleepRun(delay ?? 0, () => getF(resolve, reject));
     });
 }
