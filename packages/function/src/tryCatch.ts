@@ -2,6 +2,7 @@
  * `try...catch...` 语法的 `Promise` 包装
  *
  * @param fn 要执行的函数 (包括同步函数和异步函数)
+ * @param args 传递给 `fn` 的参数
  * @returns 如果函数执行成功则将结果返回，否则抛出异常
  * @example ````
  *
