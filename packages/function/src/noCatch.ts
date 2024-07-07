@@ -1,3 +1,5 @@
+import fCall from './constants/fCall';
+
 /**
  * 获取函数返回的值，并忽略抛出的错误
  *
@@ -11,11 +13,11 @@
  * console.log(ret); // 完成了
  * ```
  */
-export default async function noCatch<T = unknown>(
-    fn: (...args: unknown[]) => Promise<T> | T,
-    ...args: unknown[]
-): Promise<void | T> {
+export default async function noCatch<R, A extends unknown[]>(
+    fn: ((...args: A) => Promise<R> | R) | Promise<R>,
+    ...args: A
+): Promise<R | void> {
     try {
-        return Promise.resolve(fn.apply(fn, args)).catch(() => {});
+        return fCall(fn, args).catch(() => {});
     } catch {}
 }
