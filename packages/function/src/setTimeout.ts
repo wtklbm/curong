@@ -28,7 +28,7 @@ export default function _<A extends unknown[], R>(
     // 浏览器内部将延迟存储为 `32` 位有符号整数。当使用大于 `2147483647` 毫秒（约 `24.8` 天）的延迟时，这会导致整数溢出
     if (!isUint(duration) || duration > 2147483647) {
         throw new TypeError(
-            `[setTimeout] 超时时间不要超过 2147483647 毫秒 (即 24.8 天)`
+            `[setTimeout] 超时时间不要超过 2147483647 毫秒 (约 24.8 天)`
         );
     }
 
@@ -37,4 +37,6 @@ export default function _<A extends unknown[], R>(
         timer = null;
         callback.apply(callback, args);
     }, duration);
+
+    return timer;
 }
