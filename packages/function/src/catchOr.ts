@@ -5,6 +5,7 @@ import { isFunction } from '@curong/types';
  *
  * @param task 要执行的任务。可以是异步函数、同步函数或 `Promise`
  * @param fallback 当执行的任务抛出错误时使用的备用函数或备用值
+ * @param args 传递给 `task` 和 `fallback` 的参数 (`fallback` 的参数从第二个开始)
  * @returns 返回一个操作成功时的值或发生错误时的备用值
  * @example
  *
