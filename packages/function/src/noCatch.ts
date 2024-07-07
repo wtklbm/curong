@@ -4,6 +4,7 @@ import fCall from './constants/fCall';
  * 获取函数返回的值，并忽略抛出的错误
  *
  * @param fn 要执行的函数 (包括同步函数和异步函数)
+ * @param args 传递给 `fn` 的参数
  * @returns 返回函数的执行结果
  * @example
  *
