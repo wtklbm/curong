@@ -3,7 +3,7 @@ import { isUintSafe } from '@curong/types';
 /**
  * 当函数执行到达指定次数后执行回调函数
  *
- * @param count 要等待的总次数 (必须大于 `0`)
+ * @param count 要等待的总次数，它是一个大于或等于 `0` 的安全整数
  * @param callback 当次数到达时所要执行的回调函数
  * @param args 要传递给回调函数的参数
  * @throws 如果 `count` 不是大于或等于 `0` 的安全整数，则会抛出类型错误异常
