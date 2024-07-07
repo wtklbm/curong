@@ -38,4 +38,12 @@ describe('@curong/function/noCatch', () => {
         // @ts-ignore
         expect(await noCatch(() => c.xx.xx.xx)).toBe(undefined);
     });
+
+    test('测试5', async () => {
+        expect(await noCatch(Promise.resolve(1))).toBe(1);
+        expect(await noCatch(Promise.reject(1))).toBe(undefined);
+
+        expect(await noCatch(() => Promise.resolve(1))).toBe(1);
+        expect(await noCatch(() => Promise.reject(1))).toBe(undefined);
+    });
 });
