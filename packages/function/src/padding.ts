@@ -1,4 +1,4 @@
-import { isFunction } from '@curong/types';
+import fCall from './constants/fCall';
 
 /**
  * 等待任务的执行，并等待结果的返回
@@ -20,10 +20,7 @@ export default async function padding<R, A extends unknown[], E>(
     ...args: A
 ): Promise<[R | null, E | null]> {
     try {
-        return [
-            await (isFunction<R, A>(task) ? task.apply(task, args) : task),
-            null
-        ];
+        return [await fCall(task, args), null];
     } catch (error: any) {
         return [null, error];
     }
