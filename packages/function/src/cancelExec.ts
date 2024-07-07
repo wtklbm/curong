@@ -1,5 +1,11 @@
-import fCall from './constants/fCall';
 import pWarper from './constants/pWarper';
+
+type Payload<R, A extends unknown[]> =
+    | ((...args: A) => Promise<R> | R)
+    | Promise<R>
+    | R
+    | null
+    | undefined;
 
 /**
  * 随时取消对 `Promise`、同步函数或异步函数的执行
@@ -12,42 +18,38 @@ import pWarper from './constants/pWarper';
  * ```typescript
  * const fn = (a: number, b: string, bool: boolean) => {
  *     return new Promise(resolve => {
- *         let timer = setTimeout(() => {
+ *         let timer: any = setTimeout(() => {
  *             clearTimeout(timer);
  *             timer = null;
  *             resolve(a + +b * 2 - +bool);
- *         }, 3e3);
+ *         }, 100);
  *     });
  * };
  *
- * const [promise, abort] = cancelExec(fn(1, '2', false));
+ * const [promise, abort] = cancelExec(fn, 1, '2', true);
  *
  * promise.then(
- *     data => console.log(data),
- *     err => console.log(err) // 在这里打印 "超过 2s 了"
+ *     data => console.log(data), // 0
+ *     err => console.log(err)
  * );
  *
  * setTimeout(() => {
- *     abort('超过 2s 了');
- * }, 2e3);
+ *     abort(0);
+ * }, 50);
  * ```
  */
-export default function cancelExec<T = unknown>(
-    callable: (() => Promise<T>) | (() => T) | Promise<T>,
-    isThrow: boolean = false
-): [Promise<T>, (payload?: unknown) => void] {
-    let abort: (payload?: unknown) => void;
+export default function cancelExec<R, A extends unknown[]>(
+    callable: ((...args: A) => Promise<R> | R) | Promise<R>,
+    ...args: A
+): [Promise<R>, (payload?: Payload<R, A>) => void] {
+    let abort: (payload?: Payload<R, A>) => void;
 
     return [
         Promise.race([
             pWarper(callable),
-            new Promise(
-                (resolve, reject) =>
-                    (abort = payload => {
-                        payload = fCall(payload);
-                        return isThrow ? reject(payload) : resolve(payload);
-                    })
-            )
+            new Promise(resolve => {
+                abort = payload => resolve(pWarper(payload, args));
+            })
         ]),
         abort!
     ];
