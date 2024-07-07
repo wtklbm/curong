@@ -22,7 +22,7 @@ import { isUint } from '@curong/types';
  */
 export default function _<A extends unknown[], R>(
     callback: (...args: A) => R,
-    duration?: number,
+    duration: number = 0,
     ...args: A
 ) {
     // 浏览器内部将延迟存储为 `32` 位有符号整数。当使用大于 `2147483647` 毫秒（约 `24.8` 天）的延迟时，这会导致整数溢出
