@@ -47,12 +47,11 @@ type Currying6<T1, T2, T3, T4, T5, T6, R> = {
  * 把接受多个参数的函数变成接受任意多个参数的函数，并且返回接受余下的参数的新函数
  *
  * @param fn 要接受多个参数的函数
- * @param store 缓存容器，默认为 `[]`
- * @returns 返回 fn 函数的返回结果
+ * @returns 返回一个新的函数，该函数可以接受任意参数，并可以被调用多次，直到参数个数与 `fn` 的参数个数相同
  * @example
  *
  * ```typescript
- * const c = curring((a: number, b: number): number => a + b);
+ * const c = currying((a: number, b: number): number => a + b);
  * console.log(c(1)(2)); // 3
  * ```
  *
