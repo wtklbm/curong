@@ -3,11 +3,21 @@
  *
  * @param fn 要执行的函数 (包括同步函数和异步函数)
  * @returns 如果函数执行成功则将结果返回，否则抛出异常
- * @example
+ * @example ````
+ *
+ * ### 正常情况
  *
  * ```typescript
  * const ret = await tryCatch(async () => Promise.resolve(10));
  * console.log(ret); // 10
+ * ```
+ *
+ * ### 异常处理
+ *
+ * ```typescript
+ * await tryCatch(async () => Promise.reject(10)).catch(e => {
+ *     console.log(e); // 10
+ * });
  * ```
  */
 export default async function tryCatch<R, A extends unknown[]>(
