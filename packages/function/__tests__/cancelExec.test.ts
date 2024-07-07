@@ -12,7 +12,7 @@ const fn = (a: number, b: string, bool: boolean) => {
 
 describe('@curong/function/cancelExec', () => {
     test('测试1', () => {
-        const [promise, abort] = cancelExec(fn(1, '2', false));
+        const [promise, abort] = cancelExec(fn, 1, '2', false);
 
         promise.then(
             data => {
@@ -29,7 +29,7 @@ describe('@curong/function/cancelExec', () => {
     });
 
     test('测试2', () => {
-        const [promise, abort] = cancelExec(fn(1, '2', false), true);
+        const [promise, abort] = cancelExec(fn, 1, '2', false);
 
         promise.then(
             data => {
@@ -41,12 +41,12 @@ describe('@curong/function/cancelExec', () => {
         );
 
         setTimeout(() => {
-            abort('超过 2s 了');
+            abort(Promise.reject('超过 2s 了'));
         }, 10);
     });
 
     test('测试3', () => {
-        const [promise, abort] = cancelExec(fn(1, '2', false));
+        const [promise, abort] = cancelExec(fn, 1, '2', false);
 
         promise.then(
             data => {
@@ -63,7 +63,7 @@ describe('@curong/function/cancelExec', () => {
     });
 
     test('测试4', () => {
-        const [promise, abort] = cancelExec(fn(1, '2', false));
+        const [promise, abort] = cancelExec(() => fn(1, '2', false));
 
         promise.then(
             data => {
@@ -80,7 +80,7 @@ describe('@curong/function/cancelExec', () => {
     });
 
     test('测试5', () => {
-        const [promise, abort] = cancelExec(fn(1, '2', false));
+        const [promise, abort] = cancelExec(fn, 1, '2', false);
 
         promise.then(
             data => {
@@ -97,7 +97,7 @@ describe('@curong/function/cancelExec', () => {
     });
 
     test('测试5', () => {
-        const [promise, abort] = cancelExec(fn(1, '2', false), true);
+        const [promise, abort] = cancelExec(fn, 1, '2', false);
 
         promise.then(
             data => {
@@ -114,7 +114,7 @@ describe('@curong/function/cancelExec', () => {
     });
 
     test('测试6', () => {
-        const [promise, abort] = cancelExec(fn(1, '2', false));
+        const [promise, abort] = cancelExec(async () => fn(1, '2', false));
 
         promise.then(
             data => {
@@ -131,7 +131,7 @@ describe('@curong/function/cancelExec', () => {
     });
 
     test('测试7', () => {
-        const [promise, abort] = cancelExec(fn(1, '2', false), true);
+        const [promise, abort] = cancelExec(() => fn(1, '2', false));
 
         promise.then(
             data => {
@@ -143,32 +143,29 @@ describe('@curong/function/cancelExec', () => {
         );
 
         setTimeout(() => {
-            abort(() => '超过 2s 了');
+            abort(() => Promise.reject('超过 2s 了'));
         }, 10);
     });
 
     test('测试8', () => {
-        const [promise, abort] = cancelExec(() => fn(1, '2', false), true);
+        const [promise, abort] = cancelExec(() => fn(1, '2', false));
 
         promise.then(
             data => {
-                expect(data).toBe(undefined);
+                expect(data).toBe('超过 2s 了');
             },
             err => {
-                expect(err).toBe('超过 2s 了');
+                expect(err).toBe(undefined);
             }
         );
 
         setTimeout(() => {
-            abort(() => '超过 2s 了');
+            abort(() => Promise.resolve('超过 2s 了'));
         }, 10);
     });
 
     test('测试9', () => {
-        const [promise, abort] = cancelExec(
-            async () => fn(1, '2', false),
-            true
-        );
+        const [promise, abort] = cancelExec(async () => fn(1, '2', false));
 
         promise.then(
             data => {
@@ -180,7 +177,10 @@ describe('@curong/function/cancelExec', () => {
         );
 
         setTimeout(() => {
-            abort(() => '超过 2s 了');
+            abort((...args: any) => {
+                expect(args).toEqual([1, '2', false]);
+                throw '超过 2s 了';
+            });
         }, 10);
     });
 });
