@@ -16,7 +16,7 @@ import fCall from './constants/fCall';
  * ```
  */
 export default async function padding<R, A extends unknown[], E>(
-    task: ((...args: A) => R) | Promise<R>,
+    task: ((...args: A) => Promise<R> | R) | Promise<R>,
     ...args: A
 ): Promise<[R | null, E | null]> {
     try {
