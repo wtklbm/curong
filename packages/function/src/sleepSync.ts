@@ -4,7 +4,7 @@ import { isUint } from '@curong/types';
  * 同步阻塞一段时间
  *
  * @param duration 要阻塞多长时间，以毫秒为单位
- * @throw 如果 duration 不是一个无符号整数，则会抛出异常
+ * @throw 如果 `duration` 不是一个无符号整数，则会抛出类型异常
  * @example
  *
  * ```typescript
@@ -16,7 +16,7 @@ import { isUint } from '@curong/types';
 export default function sleepSync(duration: number): void {
     if (!isUint(duration)) {
         throw new TypeError(
-            `[sleepSync]: duration不是一个有效的超时毫秒数: "${duration}"`
+            `[sleepSync]: duration 必须是一个大于或等于 0 的整数: "${duration}"`
         );
     }
 
