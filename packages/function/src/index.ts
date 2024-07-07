@@ -12,9 +12,7 @@ export { default as setTimeout } from './setTimeout';
 export { default as sleepAsync } from './sleepAsync';
 export { default as sleepRun } from './sleepRun';
 export { default as sleepSync } from './sleepSync';
-export { default as timeoutCallback } from './timeoutCallback';
 export { default as timeoutOr } from './timeoutOr';
-export { default as timeoutThrow } from './timeoutThrow';
 export { default as tryCatch } from './tryCatch';
 
 export * from './types';
