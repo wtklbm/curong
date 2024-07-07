@@ -1,5 +1,11 @@
 import { range } from '@curong/number';
-import { isFunction, isTypeofObject, isUndefined, isZero } from '@curong/types';
+import {
+    isAnyError,
+    isFunction,
+    isTypeofObject,
+    isUndefined,
+    isZero
+} from '@curong/types';
 
 import sleepAsync from './sleepAsync';
 import type { LimiterOptions } from './types';
@@ -16,7 +22,7 @@ import type { LimiterOptions } from './types';
  *  - `onProgress`: 每次任务完成时调用的回调函数
  *  - `onProgressRetry`: 每次任务失败并重试时调用的回调函数
  * @returns 返回一个包含任务结果的数组
- * @throws 如果任务执行失败且没有提供 `onError` 来处理错误时，将抛出错误
+ * @throws 如果任务执行失败且没有提供 `onError` 来处理错误，将抛出第一次执行时所产生的错误
  * @example
  *
  * ```typescript
@@ -54,8 +60,10 @@ export default async function limiter<T extends unknown[]>(
         try {
             ret[i] = await (isFunction(task) ? task() : task);
         } catch (e: any) {
-            e.message = `[limiter] 执行第 ${i} 个任务时出错: ${e.message}`;
-            e.cause = { index: i, tasks, options };
+            if (isAnyError(e)) {
+                e.message = `[limiter] 执行第 ${i} 个任务时出错: ${e.message}`;
+                e.cause = { index: i, tasks, options };
+            }
             throw e;
         }
     };
