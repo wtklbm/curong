@@ -1,4 +1,4 @@
-import { isFunction } from '@curong/types';
+import fCall from './constants/fCall';
 
 /**
  * 根据条件来返回相应的结果
@@ -23,7 +23,5 @@ export default async function select<A extends unknown[], T>(
     doElse?: ((...args: A) => any) | Promise<any> | T | null | undefined,
     ...args: A
 ): Promise<T | null | undefined> {
-    const f = async (f: any) => await (isFunction(f) ? f.apply(f, args) : f);
-
-    return await ((await f(condition)) ? f(doIf) : f(doElse));
+    return (await fCall(condition)) ? fCall(doIf, args) : fCall(doElse, args);
 }
