@@ -145,4 +145,99 @@ describe('@curong/function/timeoutOr', () => {
             expect(e).toBe(1)
         );
     });
+
+    test('测试17', async () => {
+        const fn = (a: number, b: string) => a + +b * 2;
+        let ret = await timeoutOr(122, () => fn(1, '2'), 0);
+        expect(ret).toBe(5);
+
+        ret = await timeoutOr(122, () => fn(1, '2'), 0);
+        expect(ret).toBe(5);
+
+        ret = await timeoutOr(122, async () => fn(1, '2'), 0);
+        expect(ret).toBe(5);
+
+        ret = await timeoutOr(122, async () => fn(1, '2'), 0);
+        expect(ret).toBe(5);
+
+        ret = await timeoutOr(
+            122,
+            async () => {
+                if (1.1 + 1.0 > 2) {
+                    throw 0;
+                }
+
+                return 0;
+            },
+            0
+        ).catch(() => 0);
+        expect(ret).toBe(0);
+
+        ret = await timeoutOr(
+            122,
+            () => fn(1, '2'),
+            () => 0
+        );
+
+        expect(ret).toBe(5);
+
+        ret = await timeoutOr(
+            122,
+            () => fn(1, '2'),
+            () => 0
+        );
+
+        expect(ret).toBe(5);
+    });
+
+    test('测试18', async () => {
+        const fn = (a: number, b: string, bool: boolean) =>
+            new Promise(resolve => {
+                let timer: any = setTimeout(() => {
+                    clearTimeout(timer);
+                    timer = null;
+                    resolve(a + +b * 2 - +bool);
+                }, 999);
+            });
+
+        let ret = await timeoutOr(1e3, fn(1, '2', false), 0);
+        expect(ret).toBe(5);
+
+        ret = await timeoutOr(1, fn(1, '2', false), 0);
+        expect(ret).toBe(0);
+
+        ret = await timeoutOr(1, fn(1, '2', false), 0, true).catch(e => {
+            expect(e).toBe(0);
+        });
+
+        ret = await timeoutOr(1e3, async () => fn(1, '2', false), 0);
+        expect(ret).toBe(5);
+
+        ret = await timeoutOr(1, async () => fn(1, '2', false), 0);
+        expect(ret).toBe(0);
+    });
+
+    test('测试19', async () => {
+        const fn = (a: number, b: string) => a + +b * 2;
+        const ret = await timeoutOr(122, fn, 1, 2, '1');
+
+        expect(ret).toBe(4);
+    });
+
+    test('测试20', async () => {
+        const fn = (a: number, b: string, bool: boolean) =>
+            new Promise(resolve => {
+                let timer: any = setTimeout(() => {
+                    clearTimeout(timer);
+                    timer = null;
+                    resolve(a + +b * 2 - +bool);
+                }, 999);
+            });
+
+        let ret = await timeoutOr(1e3, fn, null, 1, '2', false);
+        expect(ret).toBe(5);
+
+        ret = await timeoutOr(123, fn, null, 1, '2', true);
+        expect(ret).toBe(null);
+    });
 });
