@@ -12,8 +12,9 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
 /**
  * 等待一段时间后执行一个同步或异步的函数
  *
- * @param handler 要执行的函数，可以是同步函数或异步函数
  * @param anyTimeout 可以是一个超时时间 (以毫秒为单位) 或一个对象
+ * @param handler 要执行的函数，可以是同步函数或异步函数
+ * @param args 传递给 `handler` 的参数
  *
  * - 如果参数是大于或等于 `0` 的整数，则表示至少应等待 `duration` 毫秒后执行
  * - 如果参数是对象，则表示生成一个随机超时毫秒数:
