@@ -8,6 +8,7 @@ import { isUint } from '@curong/types';
  * @param callback 当定时器到期时，要执行的回调
  * @param duration 以毫秒为单位的超时时间，即在回调之前要等待的时间
  * @param args 要传递给回调函数的参数
+ * @throws 如果超时时间不是一个整数或者该整数大于 `2147483647`，则会抛出类型异常
  * @note
  *
  * - 如果要重复调用某个函数（如每 N 毫秒调用一次），请使用 {@link setInterval} 方法
@@ -25,10 +26,11 @@ export default function _<A extends unknown[], R>(
     duration: number = 0,
     ...args: A
 ) {
-    // 浏览器内部将延迟存储为 `32` 位有符号整数。当使用大于 `2147483647` 毫秒（约 `24.8` 天）的延迟时，这会导致整数溢出
+    // 浏览器内部将延迟存储为 `32` 位有符号整数 (一位用于符号位，数字部分为 `2^31-1`)
+    // 当使用大于 `2147483647` 毫秒（约 `24.8` 天）的延迟时，这会导致整数溢出
     if (!isUint(duration) || duration > 2147483647) {
         throw new TypeError(
-            `[setTimeout] 超时时间不要超过 2147483647 毫秒 (约 24.8 天)`
+            `[setTimeout] 超时时间应大于或等于 0 且不要超过 2147483647 毫秒 (约 24.8 天)`
         );
     }
 
