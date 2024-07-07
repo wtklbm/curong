@@ -1,7 +1,7 @@
 import fCall from './constants/fCall';
 
 /**
- * 等待任务的执行，并等待结果的返回
+ * 执行任务并等待结果的返回
  *
  * @param task 要执行的任务
  * @param args 要传递给任务的参数
