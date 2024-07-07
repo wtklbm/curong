@@ -8,6 +8,7 @@ import setTimeout from './setTimeout';
  * @param duration 一个以毫秒为单位的超时时间，它是一个大于或等于 `0` 的整数
  * @param callable 一个 `Promise`、同步函数或异步函数
  * @param callback 当超时时，要返回的一个值、`Promise` 或一个可执行的回调函数
+ * @param args 传递给 `fn` 和 `callback` 的参数
  * @returns 如果函数执行的时间没有超时，则返回该结果，否则返回回调函数的结果
  * @example
  *
@@ -19,9 +20,9 @@ import setTimeout from './setTimeout';
  */
 export default async function timeoutOr<A extends unknown[], R>(
     duration: number,
-    callable: ((...args: A) => any) | Promise<any>,
+    callable: (<T>(...args: A) => T | Promise<T>) | Promise<any>,
     callback?:
-        | (<E extends Error, T>(error: E, ...args: A) => T | Promise<T>)
+        | (<T>(...args: A) => T | Promise<T>)
         | Promise<any>
         | R
         | null
