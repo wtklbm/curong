@@ -1,7 +1,8 @@
 import { range } from '@curong/number';
 import { printWarn } from '@curong/term';
-import { isNumber, isObject, isTrue } from '@curong/types';
+import { isNumber, isObject } from '@curong/types';
 
+import fCall from './constants/fCall';
 import setTimeout from './setTimeout';
 import type { SleepRunOptions } from './types';
 
@@ -11,67 +12,59 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
 /**
  * 等待一段时间后执行一个同步或异步的函数
  *
- * @param handler 要执行的函数，如果函数是异步函数，则使用 `await syncRun(()=>{})` 执行
- * @param anyTimeout 参数对象或者一个超时数字，单位 `毫秒`
+ * @param handler 要执行的函数，可以是同步函数或异步函数
+ * @param anyTimeout 可以是一个超时时间 (以毫秒为单位) 或一个对象
  *
- * 如果参数是对象:
- *  - `start` 开始的毫秒数，默认为 `0`
- *  - `end` 结束时的毫秒数
- *  - `show` 是否显示等待时间，默认为 `false`
+ * - 如果参数是大于或等于 `0` 的整数，则表示至少应等待 `duration` 毫秒后执行
+ * - 如果参数是对象，则表示生成一个随机超时毫秒数:
+ *   - `start` 开始毫秒数 (包含)，默认为 `0`
+ *   - `end` 结束毫秒数 (包含)
+ *   - `show` 是否在终端上显示等待多少时间的信息，默认为 `false`
  *
- * 如果参数是数字:
- *  - 如果 `duration` 为小于或等于 `0` 的数字，则表示定时器应尽快执行
- *  - 如果 `duration` 为一个大于 `0` 的数字，则表示至少应等待 `duration` 毫秒后执行
- *
- * @returns 返回一个 `Promise` 对象的成功态
- * @throws 如果 `anyTimeout` 的值超出 `32` 位整数值 (`2^32-1`，即 `2147483647`)，则会抛出异常
+ * @returns 返回 `handler` 的执行结果
  * @example ````
  *
  * ### 传递一个数字
  *
- * ``` javascript
- * const f = () => console.log('hello');
- *
+ * ```typescript
  * // 等待 `10ms` 后执行函数
- * sleepRun(f, 10);
+ * sleepRun(10, () => console.log('hello'));
  * ```
  *
  * ### 传递一个对象
  *
  * ```typescript
- * const f = () => console.log('hello');
- *
  * // 从 `3s` 或 `8s` 间生成一个随机时间，等待并执行函数
- * sleepRun(f, {
+ * sleepRun({
  *     start: 3e3,
  *     end: 8e3,
  *     show: true
- * });
+ * }, () => console.log('hello'));
  * ```
  */
-export default function sleepRun<T>(
-    handler: () => T,
-    anyTimeout: SleepRunOptions | number
-): Promise<T> {
-    let show: boolean = false;
+export default function sleepRun<R, A extends unknown[]>(
+    anyTimeout: SleepRunOptions | number,
+    handler: (...args: A) => R,
+    ...args: A
+): Promise<R> {
+    let isShow: boolean = false;
     let timeout: number = 0;
 
     if (isNumber(anyTimeout)) {
-        timeout = anyTimeout <= 0 ? 0 : anyTimeout;
+        timeout = Math.max(0, anyTimeout);
     } else if (isObject(anyTimeout)) {
-        const { start = 0, end = 0 } = anyTimeout;
-        anyTimeout.show && (show = anyTimeout.show);
+        const start = Math.max(0, anyTimeout.start ?? 0);
+        const end = Math.max(0, anyTimeout.end ?? 0);
+        anyTimeout.show && (isShow = anyTimeout.show);
         timeout =
             end === start
                 ? end
-                : end <= 0 && start <= 0
-                  ? 0
-                  : start < end
-                    ? range(end, start)
-                    : range(start, end);
+                : start < end
+                  ? range(end, start)
+                  : range(start, end);
     }
 
-    if (isTrue(show) && timeout > 0) {
+    if (isShow && timeout > 0) {
         const date = new Date(initTime + timeout);
 
         if (timeout < 1e3) {
@@ -89,6 +82,6 @@ export default function sleepRun<T>(
     }
 
     return new Promise(resolve => {
-        setTimeout(() => resolve(handler()), timeout);
+        setTimeout(() => resolve(fCall(handler, args)), timeout);
     });
 }
