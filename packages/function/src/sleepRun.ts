@@ -13,15 +13,15 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
  * 等待一段时间后执行一个同步或异步的函数
  *
  * @param anyTimeout 可以是一个超时时间 (以毫秒为单位) 或一个对象
+*
+* - 如果参数是大于或等于 `0` 的整数，则表示至少应等待 `duration` 毫秒后执行
+* - 如果参数是对象，则表示生成一个随机超时毫秒数:
+*   - `start` 开始毫秒数 (包含)，默认为 `0`
+*   - `end` 结束毫秒数 (包含)
+*   - `show` 是否在终端上显示等待多少时间的信息，默认为 `false`
+*
  * @param handler 要执行的函数，可以是同步函数或异步函数
  * @param args 传递给 `handler` 的参数
- *
- * - 如果参数是大于或等于 `0` 的整数，则表示至少应等待 `duration` 毫秒后执行
- * - 如果参数是对象，则表示生成一个随机超时毫秒数:
- *   - `start` 开始毫秒数 (包含)，默认为 `0`
- *   - `end` 结束毫秒数 (包含)
- *   - `show` 是否在终端上显示等待多少时间的信息，默认为 `false`
- *
  * @returns 返回 `handler` 的执行结果
  * @example ````
  *
@@ -45,7 +45,7 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
  */
 export default function sleepRun<R, A extends unknown[]>(
     anyTimeout: SleepRunOptions | number,
-    handler: (...args: A) => R,
+    handler: (...args: A) => Promise<R> | R,
     ...args: A
 ): Promise<R> {
     let isShow: boolean = false;
