@@ -18,13 +18,13 @@ import setTimeout from './setTimeout';
  * console.log(ret); // 3
  * ```
  */
-export default async function timeoutOr<A extends unknown[], R>(
+export default async function timeoutOr<A extends unknown[], R1, R2>(
     duration: number,
-    callable: (<T>(...args: A) => T | Promise<T>) | Promise<any>,
+    callable: ((...args: A) => Promise<R1> | R1) | Promise<R1>,
     callback?:
-        | (<T>(...args: A) => T | Promise<T>)
-        | Promise<any>
-        | R
+        | ((...args: A) => Promise<R2> | R2)
+        | Promise<R2>
+        | R2
         | null
         | undefined,
     ...args: A
@@ -32,7 +32,7 @@ export default async function timeoutOr<A extends unknown[], R>(
     let timer;
     const ret = await Promise.race([
         pWarper(callable, args),
-        new Promise<R>((resolve, reject) => {
+        new Promise((resolve, reject) => {
             timer = setTimeout(() => {
                 try {
                     resolve(fCall(callback, args));
