@@ -8,7 +8,7 @@ import { isUint } from '@curong/types';
  * @param callback 当定时器到期时，要执行的回调
  * @param duration 以毫秒为单位的超时时间，即在回调之前要等待的时间
  * @param args 传递给 `callback` 的参数
- * @throws 如果超时时间不是一个大于或等于 `0` 且小于 `2147483647` 的整数，则会抛出类型异常
+ * @throws 如果超时时间不是一个大于或等于 `0` 且小于 `2147483648` 的整数，则会抛出类型异常
  * @note
  *
  * - 如果要重复调用某个函数（如每 N 毫秒调用一次），请使用 {@link setInterval} 方法
