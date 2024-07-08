@@ -8,10 +8,10 @@ import setTimeout from './setTimeout';
  *
  * ```typescript
  * console.time('delay');
- * await sleepAsync(20);
+ * await delay(20);
  * console.timeEnd('delay'); // 21.0ms
  * ```
  */
-export default async function sleepAsync(duration: number): Promise<void> {
+export default async function delay(duration: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, duration));
 }

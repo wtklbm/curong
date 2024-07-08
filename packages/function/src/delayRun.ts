@@ -4,7 +4,7 @@ import { isNumber, isObject } from '@curong/types';
 
 import fCall from './constants/fCall';
 import setTimeout from './setTimeout';
-import type { SleepRunOptions } from './types';
+import type { DelayRunOptions } from './types';
 
 const padZero = (num: number | string) => num.toString().padStart(2, '0');
 const initTime = new Date('2000-01-01 00:00:00').getTime();
@@ -29,22 +29,22 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
  *
  * ```typescript
  * // 等待 `10ms` 后执行函数
- * sleepRun(10, () => console.log('hello'));
+ * delayRun(10, () => console.log('hello'));
  * ```
  *
  * ### 传递一个对象
  *
  * ```typescript
  * // 从 `3s` 或 `8s` 间生成一个随机时间，等待并执行函数
- * sleepRun({
+ * delayRun({
  *     start: 3e3,
  *     end: 8e3,
  *     show: true
  * }, () => console.log('hello'));
  * ```
  */
-export default function sleepRun<R, A extends unknown[]>(
-    anyTimeout: SleepRunOptions | number,
+export default function delayRun<R, A extends unknown[]>(
+    anyTimeout: DelayRunOptions | number,
     handler: (...args: A) => Promise<R> | R,
     ...args: A
 ): Promise<R> {

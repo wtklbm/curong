@@ -1,4 +1,4 @@
-export type SleepRunOptions = {
+export type DelayRunOptions = {
     /**
      * 间隔的开始时的最小数字
      */

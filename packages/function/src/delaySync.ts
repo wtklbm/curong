@@ -9,14 +9,14 @@ import { isUint } from '@curong/types';
  *
  * ```typescript
  * console.time('delay');
- * sleepSync(20);
+ * delaySync(20);
  * console.timeEnd('delay'); // 21.0ms
  * ```
  */
-export default function sleepSync(duration: number): void {
+export default function delaySync(duration: number): void {
     if (!isUint(duration)) {
         throw new TypeError(
-            `[sleepSync]: duration 必须是一个大于或等于 0 的整数: "${duration}"`
+            `[delaySync]: duration 必须是一个大于或等于 0 的整数: "${duration}"`
         );
     }
 

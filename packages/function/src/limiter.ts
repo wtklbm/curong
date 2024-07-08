@@ -7,7 +7,7 @@ import {
     isZero
 } from '@curong/types';
 
-import sleepAsync from './sleepAsync';
+import delay from './delay';
 import type { LimiterOptions } from './types';
 
 /**
@@ -109,7 +109,7 @@ export default async function limiter<T extends unknown[]>(
                         const waitTime = getWaitTime();
 
                         if (waitTime > 0) {
-                            await sleepAsync(waitTime);
+                            await delay(waitTime);
                         }
                     }
                 }

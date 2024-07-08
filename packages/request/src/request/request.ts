@@ -1,6 +1,6 @@
 import { IncomingMessage } from 'http';
 
-import { sleepRun } from '@curong/function';
+import { delayRun } from '@curong/function';
 import { isObjectFilled } from '@curong/types';
 import { copy } from '@curong/util';
 
@@ -266,6 +266,6 @@ export default async function request(
     };
 
     return new Promise(async (resolve, reject) => {
-        return await sleepRun(delay ?? 0, () => getF(resolve, reject));
+        return await delayRun(delay ?? 0, () => getF(resolve, reject));
     });
 }
