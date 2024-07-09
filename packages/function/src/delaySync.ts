@@ -5,6 +5,7 @@ import { isUint } from '@curong/types';
  *
  * @param duration 要阻塞多长时间，以毫秒为单位
  * @throw 如果 `duration` 不是一个无符号整数，则会抛出类型异常
+ * @note 如果想同步阻塞，请使用 `delay` 方法
  * @example
  *
  * ```typescript
