@@ -102,6 +102,7 @@
 - `isSameError`: 是不是一个 `name` 和 `message` 相同的 `Error` 对象
 - `isSyntaxError`: 是不是一个 `SyntaxError` 对象
 - `isTypeError`: 是不是一个 `TypeError` 对象
+- `isURIError`: 是不是一个 `isURIError` 对象
 
 #### `event`
 
