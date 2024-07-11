@@ -1,3 +1,4 @@
+export { default as assertAggregateError } from './assertAggregateError';
 export { default as assertAnyError } from './assertAnyError';
 export { default as assertDOMException } from './assertDOMException';
 export { default as assertError } from './assertError';
