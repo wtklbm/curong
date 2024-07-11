@@ -1,6 +1,6 @@
 import { isUint } from '@curong/types';
 
-import evaluateInt, { type EvaluableIntValue } from './evaluateInt';
+import evaluateInt, { type EvaluableIntValue } from './constants/evaluateInt';
 
 /**
  * 计算整数值
