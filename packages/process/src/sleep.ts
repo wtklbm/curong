@@ -4,11 +4,5 @@
  * @param duration 要睡眠多长时间，以毫秒为单位
  */
 export default function sleep(duration: number): Promise<void> {
-    return new Promise(resolve => {
-        let timer: any = setTimeout(() => {
-            clearTimeout(timer);
-            timer = null;
-            resolve();
-        }, duration);
-    });
+    return new Promise(resolve => setTimeout(resolve, duration));
 }
