@@ -1,4 +1,4 @@
-import evaluateInt from '../evaluateInt';
+import evaluateInt from '../constants/evaluateInt';
 
 describe('@curong/function/evaluateInt', () => {
     test('测试1', () => {

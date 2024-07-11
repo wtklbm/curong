@@ -1,7 +1,7 @@
 import setTimeout from '../timeout/setTimeout';
-import timeoutDurationResolve, {
-    type ResolvableDuration
-} from '../timeout/timeoutDurationResolve';
+import timeoutMsResolve, {
+    type ResolvableTimeoutMs
+} from '../timeout/timeoutMsResolve';
 
 /**
  * 异步阻塞一段时间
@@ -16,8 +16,8 @@ import timeoutDurationResolve, {
  * console.timeEnd('delay'); // 21.0ms
  * ```
  */
-export default function delay(duration: ResolvableDuration): Promise<void> {
+export default function delay(duration: ResolvableTimeoutMs): Promise<void> {
     return new Promise(resolve => {
-        setTimeout(resolve, timeoutDurationResolve(duration));
+        setTimeout(resolve, timeoutMsResolve(duration));
     });
 }

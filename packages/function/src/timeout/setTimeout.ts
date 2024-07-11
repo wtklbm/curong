@@ -1,6 +1,4 @@
-import timeoutDurationResolve, {
-    type ResolvableDuration
-} from './timeoutDurationResolve';
+import timeoutMsResolve, { type ResolvableTimeoutMs } from './timeoutMsResolve';
 
 /**
  * 设置一个定时器，一旦定时器到期，就会执行回调
@@ -25,11 +23,11 @@ import timeoutDurationResolve, {
  */
 export default function _<A extends unknown[], R>(
     callback: (...args: A) => R,
-    duration: ResolvableDuration = 0,
+    duration: ResolvableTimeoutMs = 0,
     ...args: A
 ) {
     return setTimeout(
         () => callback.apply(callback, args),
-        timeoutDurationResolve(duration)
+        timeoutMsResolve(duration)
     );
 }

@@ -1,6 +1,6 @@
-import timeoutDurationResolve, {
-    type ResolvableDuration
-} from '../timeout/timeoutDurationResolve';
+import timeoutMsResolve, {
+    type ResolvableTimeoutMs
+} from '../timeout/timeoutMsResolve';
 
 /**
  * 同步阻塞一段时间
@@ -15,7 +15,7 @@ import timeoutDurationResolve, {
  * console.timeEnd('delay'); // 21.0ms
  * ```
  */
-export default function delaySync(duration: ResolvableDuration): void {
-    const timeout = timeoutDurationResolve(duration);
+export default function delaySync(duration: ResolvableTimeoutMs): void {
+    const timeout = timeoutMsResolve(duration);
     for (const start = Date.now(); Date.now() - start <= timeout; ) {}
 }

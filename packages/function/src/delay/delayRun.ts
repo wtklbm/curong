@@ -1,8 +1,8 @@
 import fCall from '../constants/fCall';
 import setTimeout from '../timeout/setTimeout';
-import timeoutDurationResolve, {
-    type ResolvableDuration
-} from '../timeout/timeoutDurationResolve';
+import timeoutMsResolve, {
+    type ResolvableTimeoutMs
+} from '../timeout/timeoutMsResolve';
 
 /**
  * 等待一段时间后执行一个同步或异步的函数
@@ -28,14 +28,14 @@ import timeoutDurationResolve, {
  * ```
  */
 export default function delayRun<R, A extends unknown[]>(
-    duration: ResolvableDuration,
+    duration: ResolvableTimeoutMs,
     handler: (...args: A) => Promise<R> | R,
     ...args: A
 ): Promise<R> {
     return new Promise(resolve => {
         setTimeout(
             () => resolve(fCall(handler, args)),
-            timeoutDurationResolve(duration)
+            timeoutMsResolve(duration)
         );
     });
 }
