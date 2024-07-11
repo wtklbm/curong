@@ -1,0 +1,23 @@
+import setTimeout from '../timeout/setTimeout';
+import timeoutDurationResolve, {
+    type ResolvableDuration
+} from '../timeout/timeoutDurationResolve';
+
+/**
+ * 异步阻塞一段时间
+ *
+ * @param duration 要阻塞多长时间，以毫秒为单位
+ * @note 如果想同步阻塞，请使用 `delaySync` 方法
+ * @example
+ *
+ * ```typescript
+ * console.time('delay');
+ * await delay(20);
+ * console.timeEnd('delay'); // 21.0ms
+ * ```
+ */
+export default function delay(duration: ResolvableDuration): Promise<void> {
+    return new Promise(resolve => {
+        setTimeout(resolve, timeoutDurationResolve(duration));
+    });
+}
