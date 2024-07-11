@@ -1,0 +1,21 @@
+import timeoutDurationResolve, {
+    type ResolvableDuration
+} from '../timeout/timeoutDurationResolve';
+
+/**
+ * 同步阻塞一段时间
+ *
+ * @param duration 要阻塞多长时间，以毫秒为单位
+ * @note 如果想同步阻塞，请使用 `delay` 方法
+ * @example
+ *
+ * ```typescript
+ * console.time('delay');
+ * delaySync(20);
+ * console.timeEnd('delay'); // 21.0ms
+ * ```
+ */
+export default function delaySync(duration: ResolvableDuration): void {
+    const timeout = timeoutDurationResolve(duration);
+    for (const start = Date.now(); Date.now() - start <= timeout; ) {}
+}
