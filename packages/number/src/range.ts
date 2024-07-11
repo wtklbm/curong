@@ -8,6 +8,7 @@ import random from './random';
  * @param start 开始时的数字(包含)。无论传递的值是否为整数，都会向上取整为整数
  * @param end 结束时的数字(包含)。无论传递的值是否为整数，都会向下取整为整数
  * @returns 返回生成的不安全的随机数
+ * @throws 如果 `start` 或 `end` 不是一个安全的整数，则会抛出类型异常
  * @example
  *
  * ```typescript
