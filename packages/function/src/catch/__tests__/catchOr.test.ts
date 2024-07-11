@@ -1,4 +1,4 @@
-import { catchOr } from '../src';
+import { catchOr } from '..';
 
 describe('@curong/function/catchOr', () => {
     test('测试1', async () => {
@@ -181,6 +181,38 @@ describe('@curong/function/catchOr', () => {
             catchOr(
                 () => Promise.reject('1'),
                 () => Promise.reject(1)
+            )
+        ).rejects.toBe(1);
+    });
+
+    test('测试16', async () => {
+        expect(await catchOr(Promise.reject('1'))).toBe(undefined);
+        expect(await catchOr(Promise.reject('1'))).toBe(undefined);
+        expect(await catchOr(Promise.resolve('1'))).toBe('1');
+        expect(await catchOr(() => Promise.resolve('1'))).toBe('1');
+        expect(await catchOr(() => 1)).toBe(1);
+        expect(
+            await catchOr(() => {
+                throw 1;
+            })
+        ).toBe(undefined);
+        expect(
+            await catchOr(
+                () => {
+                    throw 1;
+                },
+                e => e
+            )
+        ).toBe(1);
+
+        expect(
+            catchOr(
+                () => {
+                    throw 1;
+                },
+                e => {
+                    throw e;
+                }
             )
         ).rejects.toBe(1);
     });
