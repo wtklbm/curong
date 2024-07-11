@@ -1,4 +1,4 @@
-import { noCatch } from '../src';
+import { noCatch } from '..';
 
 describe('@curong/function/noCatch', () => {
     test('测试1', async () => {
