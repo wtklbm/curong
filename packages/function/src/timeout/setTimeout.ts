@@ -5,7 +5,7 @@ import timeoutDurationResolve, {
 /**
  * 设置一个定时器，一旦定时器到期，就会执行回调
  *
- * 该方法是 `setTimeout` 的增强版本，当定时器执行完毕时会自动清除该定时器。
+ * 该方法是 `setTimeout` 的增强版本，支持不同形式的超时时间。
  *
  * @param callback 当定时器到期时，要执行的回调
  * @param duration 以毫秒为单位的超时时间，即在回调之前要等待的时间
@@ -28,11 +28,8 @@ export default function _<A extends unknown[], R>(
     duration: ResolvableDuration = 0,
     ...args: A
 ) {
-    let timer: any = setTimeout(() => {
-        clearTimeout(timer);
-        timer = null;
-        callback.apply(callback, args);
-    }, timeoutDurationResolve(duration));
-
-    return timer;
+    return setTimeout(
+        () => callback.apply(callback, args),
+        timeoutDurationResolve(duration)
+    );
 }
