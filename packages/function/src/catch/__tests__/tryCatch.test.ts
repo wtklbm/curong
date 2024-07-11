@@ -1,4 +1,4 @@
-import { tryCatch } from '../src';
+import { tryCatch } from '..';
 
 describe('@curong/function/tryCatch', () => {
     test('测试1', async () => {
