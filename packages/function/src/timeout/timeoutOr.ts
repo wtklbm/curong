@@ -38,5 +38,6 @@ export default async function timeoutOr<A extends unknown[], R1, R2>(
         })
     ]);
     clearTimeout(timer);
+    timer = null;
     return ret;
 }
