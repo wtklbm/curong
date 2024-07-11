@@ -12,6 +12,7 @@ import isAnyError from './isAnyError';
  */
 export default function isAggregateError(value: unknown): value is EvalError {
     return (
-        isAnyError(value) && Object.getPrototypeOf(value).name === 'AggregateError'
+        isAnyError(value) &&
+        Object.getPrototypeOf(value).name === 'AggregateError'
     );
 }
