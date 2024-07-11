@@ -1,4 +1,4 @@
-import { timeoutOr } from '../src';
+import { timeoutOr } from '..';
 
 describe('@curong/function/timeoutOr', () => {
     test('测试1', async () => {
