@@ -7,18 +7,6 @@ type EvaluableIntValueSub =
     | { start?: number; end?: number }
     | (number | { start?: number; end?: number })[];
 
-/**
- * 计算整数值
- *
- * 支持的值的类型:
- * - 如果是一个整数，则直接返回该数
- * - 如果是一个字符串，就会将其转换为数字
- * - 如果是一个函数，则执行该函数，并获取结果
- * - 如果是一个数组，则从数组中随机抽选一个元素，并计算得到结果
- * - 如果是一个对象，则表示生成一个某范围内的数:
- *   - `start`: 开始时的数 (包含)，默认为 `0`
- *   - `end`: 结束时的数 (包含)，默认为 `0`
- */
 export type EvaluableIntValue =
     | EvaluableIntValueSub
     | (() => EvaluableIntValueSub);
