@@ -92,6 +92,7 @@
 
 #### `error`
 
+- `isAggregateError`: 是不是一个 `AggregateError` 对象
 - `isAnyError`: 是不是一个任意的 `Error` 对象
 - `isDOMException`: 是不是一个 `DOMException` 对象
 - `isError`: 是不是一个 `Error` 对象
