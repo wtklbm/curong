@@ -18,11 +18,7 @@ type Payload<R, A extends unknown[]> =
  * ```typescript
  * const fn = (a: number, b: string, bool: boolean) => {
  *     return new Promise(resolve => {
- *         let timer: any = setTimeout(() => {
- *             clearTimeout(timer);
- *             timer = null;
- *             resolve(a + +b * 2 - +bool);
- *         }, 100);
+ *         setTimeout(() => resolve(a + +b * 2 - +bool), 100);
  *     });
  * };
  *
