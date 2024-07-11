@@ -43,6 +43,11 @@ describe('@curong/function/evaluateInt', () => {
         expect(evaluateInt({ start: 10, end: -10 })).toBeTruthy();
         expect(() => evaluateInt({ start: NaN, end: 10 })).toThrow();
         expect(() => evaluateInt({ start: 10, end: Infinity })).toThrow();
+        expect(() => evaluateInt({ start: Infinity, end: Infinity })).toThrow();
+        expect(() => evaluateInt({ start: Infinity, end: NaN })).toThrow();
+        expect(() => evaluateInt({ start: NaN, end: Infinity })).toThrow();
+        expect(() => evaluateInt({ start: NaN, end: NaN })).toThrow();
+        expect(() => evaluateInt({ start: 0, end: NaN })).toThrow();
         expect(evaluateInt({ start: 0, end: 10 })).toBeTruthy();
         expect(evaluateInt(() => ({ start: 0, end: 10 }))).toBeTruthy();
     });
