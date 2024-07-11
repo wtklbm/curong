@@ -87,6 +87,7 @@
 
 #### `error`
 
+- `assertAggregateError`: 是不是一个任意的 `AggregateError` 对象
 - `assertAnyError`: 是不是一个任意的 `Error` 对象
 - `assertDOMException`: 是不是一个 `DOMException` 对象
 - `assertError`: 是不是一个 `Error` 对象
@@ -96,6 +97,7 @@
 - `assertSameError`: 是不是一个 `name` 和 `message` 相同的 `Error` 对象
 - `assertSyntaxError`: 是不是一个 `SyntaxError` 对象
 - `assertTypeError`: 是不是一个 `TypeError` 对象
+- `assertURIError`: 是不是一个 `URIError` 对象
 
 #### `event`
 
