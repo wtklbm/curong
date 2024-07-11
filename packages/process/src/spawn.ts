@@ -255,11 +255,9 @@ export default function spawn(
         handler.on('error', reject);
     }) as SpawnResult;
 
-    let timer: any = setTimeout(() => {
+    setTimeout(() => {
         child.stdin = handler!.stdin;
         child.process = handler!;
-        clearTimeout(timer);
-        timer = null;
     });
 
     return child;
