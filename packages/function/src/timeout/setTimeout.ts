@@ -1,4 +1,6 @@
-import { isUint } from '@curong/types';
+import timeoutDurationResolve, {
+    type ResolvableDuration
+} from './timeoutDurationResolve';
 
 /**
  * 设置一个定时器，一旦定时器到期，就会执行回调
@@ -23,22 +25,14 @@ import { isUint } from '@curong/types';
  */
 export default function _<A extends unknown[], R>(
     callback: (...args: A) => R,
-    duration: number = 0,
+    duration: ResolvableDuration = 0,
     ...args: A
 ) {
-    // 浏览器内部将延迟存储为 `32` 位有符号整数 (一位用于符号位，数字部分为 `2^31-1`)
-    // 当使用大于 `2147483647` 毫秒（约 `24.8` 天）的延迟时，这会导致整数溢出
-    if (!isUint(duration) || duration > 2147483647) {
-        throw new TypeError(
-            `[setTimeout] 超时时间应大于或等于 0 且不要超过 2147483647 毫秒 (约 24.8 天)`
-        );
-    }
-
     let timer: any = setTimeout(() => {
         clearTimeout(timer);
         timer = null;
         callback.apply(callback, args);
-    }, duration);
+    }, timeoutDurationResolve(duration));
 
     return timer;
 }
