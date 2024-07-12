@@ -16,6 +16,6 @@ import timeoutMsResolve, {
  * ```
  */
 export default function delaySync(duration: ResolvableTimeoutMs): void {
-    const timeout = timeoutMsResolve(duration);
-    for (const start = Date.now(); Date.now() - start <= timeout; ) {}
+    const endTime = Date.now() + timeoutMsResolve(duration);
+    while (Date.now() <= endTime) {}
 }
