@@ -2,6 +2,7 @@ import fCall from '../constants/fCall';
 import pWarper from '../constants/pWarper';
 
 import setTimeout from './setTimeout';
+import timeoutMsResolve, { type ResolvableTimeoutMs } from './timeoutMsResolve';
 
 /**
  * 执行一个函数，并获取函数的返回值，如果函数的执行时间超过 `duration` 时，就执行回调函数
@@ -20,7 +21,7 @@ import setTimeout from './setTimeout';
  * ```
  */
 export default async function timeoutOr<A extends unknown[], R1, R2>(
-    duration: number,
+    duration: ResolvableTimeoutMs,
     callable: ((...args: A) => Promise<R1> | R1) | Promise<R1>,
     callback?:
         | ((...args: A) => Promise<R2> | R2)
@@ -34,10 +35,12 @@ export default async function timeoutOr<A extends unknown[], R1, R2>(
     const ret = await Promise.race([
         pWarper(callable, args),
         new Promise(resolve => {
-            timer = setTimeout(() => resolve(fCall(callback, args)), duration);
+            timer = setTimeout(
+                () => resolve(fCall(callback, args)),
+                timeoutMsResolve(duration)
+            );
         })
     ]);
     clearTimeout(timer);
-    timer = null;
     return ret;
 }
