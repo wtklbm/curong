@@ -7,7 +7,7 @@ import { isFunction } from '@curong/types';
  * @param fallback 当执行的任务抛出错误时使用的备用函数或备用值
  * @param args 传递给 `task` 和 `fallback` 的参数 (`fallback` 的参数从第二个开始)
  * @returns 返回一个操作成功时的值或发生错误时的备用值。
- *  如果 `task` 执行报错且没有传递 `fallback` 参数，则函数的将返回  `undefined`
+ *  如果 `task` 执行报错且没有传递 `fallback` 参数，则函数将返回  `undefined`
  * @throws 如果 `task` 执行报错且 `fallback` 也抛出了错误，则函数将抛出 `fallback` 产生的错误
  * @example
  *
