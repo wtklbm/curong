@@ -8,7 +8,7 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
  *
  * @param duration 以毫秒为单位的超时时间
  */
-export default function timeoutLog(duration: number) {
+export default function timeoutLog(duration: number): void {
     // 浏览器内部将延迟存储为 `32` 位有符号整数 (一位用于符号位，数字部分为 `2^31-1`)
     // 当使用大于 `2147483647` 毫秒（约 `24.8` 天）的延迟时，这会导致整数溢出
     if (!isUint(duration) || duration > 2147483647) {
