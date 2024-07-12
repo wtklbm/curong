@@ -25,6 +25,7 @@ export type EvaluableIntValue =
  * @returns 返回一个计算得到的整数
  * @throws
  *  - 如果传递的是一个数字，且数字不是一个安全的整数，则会抛出类型异常
+ *  - 如果传递的是一个对象，且经过计算后的值不是一个安全的整数，则会抛出类型异常
  *  - 如果传递的值不是一个预期的类型，则会抛出类型异常
  */
 export default function evaluateInt(value: EvaluableIntValue): number {
