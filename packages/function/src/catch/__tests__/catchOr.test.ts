@@ -2,6 +2,9 @@ import { catchOr } from '..';
 
 describe('@curong/function/catchOr', () => {
     test('测试1', async () => {
+        // @ts-ignore
+        expect(await catchOr(1)).toBe(1);
+
         async function fetchData() {
             return Promise.resolve(1);
         }
