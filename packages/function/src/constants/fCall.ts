@@ -1,12 +1,19 @@
 import { isFunction } from '@curong/types';
 
+/**
+ * 如果传递的是一个函数，就将函数执行，否则返回该值
+ *
+ * @param value 要判断的值
+ * @param args 要传递给函数的参数
+ * @returns  返回一个包装的 `Promise`
+ */
 export default function fCall<A extends unknown[], R = any>(
-    f: any,
+    value: any,
     args?: A
 ): Promise<R> {
     return new Promise<R>((resolve, reject) => {
         try {
-            resolve(isFunction(f) ? f.apply(f, args ?? []) : f);
+            resolve(isFunction(value) ? value.apply(value, args ?? []) : value);
         } catch (e) {
             reject(e);
         }
