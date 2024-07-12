@@ -3,7 +3,7 @@ import { isUint } from '@curong/types';
 import evaluateInt, { type EvaluableIntValue } from './constants/evaluateInt';
 
 /**
- * 计算整数值
+ * 计算超时毫秒数
  *
  * 支持的值的类型:
  * - 如果是一个整数，则直接返回该数
