@@ -7,7 +7,7 @@ import {
     isZero
 } from '@curong/types';
 
-import delay from './delay';
+import delay from './delay/delay';
 import type { LimiterOptions } from './types';
 
 /**
@@ -21,8 +21,8 @@ import type { LimiterOptions } from './types';
  *  - `onError`: 处理任务执行过程中发生的错误的函数
  *  - `onProgress`: 每次任务完成时调用的回调函数
  *  - `onProgressRetry`: 每次任务失败并重试时调用的回调函数
- * @returns 返回一个包含任务结果的数组
- * @throws 如果任务执行失败且没有提供 `onError` 来处理错误，将抛出第一次执行时所产生的错误
+ * @returns 返回一个包含任务结果的数组 (如果有任务执行失败，则可能是**稀疏数组**)
+ * @throws 如果任务执行失败且没有提供 `onError` 来处理错误，将通过 `AggregateError` 抛出自第一次执行以来的所有错误
  * @example
  *
  * ```typescript
@@ -72,9 +72,9 @@ export default async function limiter<T extends unknown[]>(
         while (index < tasks.length) {
             const i = index++;
             const task = tasks[i];
+            const errors = [];
             let attempts = -1;
             let success = false;
-            let firstError: Error;
 
             while (attempts < maxRetry && !success) {
                 try {
@@ -88,10 +88,9 @@ export default async function limiter<T extends unknown[]>(
                     }
                 } catch (e: any) {
                     attempts++;
+                    errors.push(e);
 
-                    if (isZero(attempts)) {
-                        firstError = e;
-                    } else if (isOnProgressRetry) {
+                    if (!isZero(attempts) && isOnProgressRetry) {
                         onProgressRetry(i, e, attempts);
                     }
 
@@ -103,7 +102,11 @@ export default async function limiter<T extends unknown[]>(
                                 ret[i] = newValue;
                             }
                         } else {
-                            throw firstError!;
+                            throw new AggregateError(
+                                errors,
+                                `[limiter] 第 ${i} 个任务执行失败`,
+                                { cause: { index: i, task, options } }
+                            );
                         }
                     } else {
                         const waitTime = getWaitTime();
