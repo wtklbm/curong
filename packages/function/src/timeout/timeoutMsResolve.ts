@@ -23,7 +23,9 @@ export type ResolvableTimeoutMs = EvaluableIntValue;
  * @returns 返回一个超时时间。如果超时时间小于 `0`，则会返回 `0`
  * @throws 如果超时时间不是一个大于等于 `0` 且小于 `2147483648` 的整数，则会抛出类型错误异常
  */
-export default function timeoutMsResolve(duration: ResolvableTimeoutMs) {
+export default function timeoutMsResolve(
+    duration: ResolvableTimeoutMs
+): number {
     const timeout = Math.max(0, evaluateInt(duration));
 
     // 浏览器内部将延迟存储为 `32` 位有符号整数 (一位用于符号位，数字部分为 `2^31-1`)
