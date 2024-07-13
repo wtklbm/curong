@@ -7,8 +7,12 @@ const initTime = new Date('2000-01-01 00:00:00').getTime();
  * 将超时时间打印为一个可读的字符串格式。包含天、小时、分钟和秒
  *
  * @param duration 以毫秒为单位的超时时间
+ * @param presetTemplate 预设的打印模板。超时时间将以 `{}` 的形式占位。默认值为 `等待 {}`
  */
-export default function timeoutLog(duration: number): void {
+export default function timeoutLog(
+    duration: number,
+    presetTemplate = '等待 {}'
+): void {
     // 浏览器内部将延迟存储为 `32` 位有符号整数 (一位用于符号位，数字部分为 `2^31-1`)
     // 当使用大于 `2147483647` 毫秒（约 `24.8` 天）的延迟时，这会导致整数溢出
     if (!isUint(duration) || duration > 2147483647) {
@@ -33,9 +37,13 @@ export default function timeoutLog(duration: number): void {
         if (duration < 864e5) {
             formatString = `${hours}:${minutes}:${seconds}${millisecond}`;
         } else {
-            formatString = `${date.getDate() - 1} 天 ${hours}:${minutes}:${seconds}${millisecond}`;
+            formatString =
+                `${date.getDate() - 1}天 ${hours}:${minutes}:${seconds}${millisecond}`.replace(
+                    ' 00:00:00',
+                    ''
+                );
         }
     }
 
-    console.log(`等待 ${formatString}`);
+    console.log(presetTemplate.replace(/\{\}/g, formatString));
 }
