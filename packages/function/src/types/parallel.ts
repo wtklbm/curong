@@ -1,5 +1,5 @@
 /** 配置限流器函数的选项 */
-export type LimiterOptions = {
+export type ParallelOptions = {
     /** 任务的最大并发数量。默认为任务的长度，即所有任务并行执行 */
     concurrency?: number;
 

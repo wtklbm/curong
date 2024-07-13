@@ -8,10 +8,10 @@ import {
 } from '@curong/types';
 
 import delay from './delay/delay';
-import type { LimiterOptions } from './types';
+import type { ParallelOptions } from './types';
 
 /**
- * 一个异步限流器，用于控制并发执行任务，支持失败重试和进度回调
+ * 一个异步并发器，用于控制并发执行任务，支持失败重试和进度回调
  *
  * @param tasks 要执行的任务数组，每个任务可以是一个同步函数、异步函数、`Promise` 或任意类型的普通值
  * @param options 配置选项对象，用于设置并发数、错误处理、重试设置和进度回调等
@@ -28,13 +28,13 @@ import type { LimiterOptions } from './types';
  * ```typescript
  * const arr = [1, 2, 3, 4];
  * const mapper = (v: number) => Promise.resolve(v * v);
- * const pool = await limiter(arr.map(mapper));
+ * const pool = await parallel(arr.map(mapper));
  * console.log(pool); // [1, 4, 9, 16]
  * ```
  */
-export default async function limiter<T extends unknown[]>(
+export default async function parallel<T extends unknown[]>(
     tasks: T,
-    options: LimiterOptions = {}
+    options: ParallelOptions = {}
 ) {
     const {
         concurrency = tasks.length,
@@ -61,7 +61,7 @@ export default async function limiter<T extends unknown[]>(
             ret[i] = await (isFunction(task) ? task() : task);
         } catch (e: any) {
             if (isAnyError(e)) {
-                e.message = `[limiter] 执行第 ${i} 个任务时出错: ${e.message}`;
+                e.message = `[parallel] 执行第 ${i} 个任务时出错: ${e.message}`;
                 e.cause = { index: i, tasks, options };
             }
             throw e;
@@ -122,7 +122,7 @@ export default async function limiter<T extends unknown[]>(
                         } else {
                             throw new AggregateError(
                                 errors,
-                                `[limiter] 第 ${i} 个任务执行失败`,
+                                `[parallel] 第 ${i} 个任务执行失败`,
                                 { cause: { index: i, task, options } }
                             );
                         }

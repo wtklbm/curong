@@ -2,8 +2,8 @@ export { default as before } from './before';
 export { default as cancelExec } from './cancelExec';
 export { default as collectItems } from './collectItems';
 export { default as currying } from './currying';
-export { default as limiter } from './limiter';
 export { default as padding } from './padding';
+export { default as parallel } from './parallel';
 export { default as reach } from './reach';
 export { default as select } from './select';
 
