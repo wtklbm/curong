@@ -88,16 +88,34 @@ export default async function limiter<T extends unknown[]>(
                     }
                 } catch (e: any) {
                     attempts++;
-                    errors.push(e);
 
-                    if (!isZero(attempts) && isOnProgressRetry) {
-                        onProgressRetry(i, e, attempts);
-                    }
-
-                    if (attempts >= maxRetry) {
+                    if (
+                        !isZero(attempts) && // 如果当前正在进行重试
+                        isOnProgressRetry && // 如果传递了重试回调
+                        onProgressRetry(i, e, attempts) // 只要回调返回了真值
+                    ) {
                         if (isOnError) {
                             const newValue = onError(e);
 
+                            // 如果不想继续重试了，那么就看看 `onError` 有没有返回值
+                            if (!isUndefined(newValue)) {
+                                // 如果有就直接赋值就行了
+                                ret[i] = newValue;
+                            }
+                        }
+
+                        // 不再执行该任务，继续执行下一个任务
+                        continue;
+                    }
+
+                    errors.push(e);
+
+                    if (attempts >= maxRetry) {
+                        // 如果用户选择手动处理错误
+                        if (isOnError) {
+                            const newValue = onError(e);
+
+                            // 只有在经过多次重试之后，才使用备用值
                             if (!isUndefined(newValue)) {
                                 ret[i] = newValue;
                             }
