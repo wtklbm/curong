@@ -1,8 +1,7 @@
 import fCall from '../constants/fCall';
-import setTimeout from '../timeout/setTimeout';
-import timeoutMsResolve, {
-    type ResolvableTimeoutMs
-} from '../timeout/timeoutMsResolve';
+import type { ResolvableTimeoutMs } from '../timeout/timeoutMsResolve';
+
+import delay from './delay';
 
 /**
  * 等待一段时间后执行一个同步或异步的函数
@@ -27,15 +26,12 @@ import timeoutMsResolve, {
  * delayRun({ start: 3e3, end: 8e3 }, () => console.log('hello'));
  * ```
  */
-export default function delayRun<R, A extends unknown[]>(
+export default async function delayRun<R, A extends unknown[]>(
     duration: ResolvableTimeoutMs,
     handler: (...args: A) => Promise<R> | R,
     ...args: A
 ): Promise<R> {
-    return new Promise(resolve => {
-        setTimeout(
-            () => resolve(fCall(handler, args)),
-            timeoutMsResolve(duration)
-        );
-    });
+    await delay(duration);
+
+    return await fCall(handler, args);
 }
