@@ -6,7 +6,7 @@ import timeoutMsResolve, {
  * 同步阻塞一段时间
  *
  * @param duration 要阻塞多长时间，以毫秒为单位
- * @note 如果想同步阻塞，请使用 `delay` 方法
+ * @note 如果想异步阻塞，请使用 `delay` 方法
  * @example
  *
  * ```typescript
