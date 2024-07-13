@@ -17,9 +17,10 @@ describe('@curong/function/timeoutLog', () => {
         expect(() => timeoutLog(Number.MAX_SAFE_INTEGER)).toThrow();
         expect(() => timeoutLog(2 ** 31)).toThrow();
         expect(() => timeoutLog(1.5)).toThrow();
+        expect(() => timeoutLog(2147483648)).toThrow();
     });
     test('测试2', async () => {
-        f(() => timeoutLog(2 ** 31 - 1), '等待 24 天 20:31:23.647');
+        f(() => timeoutLog(2 ** 31 - 1), '等待 24天 20:31:23.647');
         f(() => timeoutLog(0), '等待 0ms');
         f(() => timeoutLog(1), '等待 1ms');
         f(() => timeoutLog(999), '等待 999ms');
@@ -31,6 +32,14 @@ describe('@curong/function/timeoutLog', () => {
         f(() => timeoutLog(1000 * 60 * 59 * 23), '等待 22:37:00');
         f(() => timeoutLog(1000 * 60 * 60 * 23), '等待 23:00:00');
         f(() => timeoutLog(1000 * 60 * 59 * 24), '等待 23:36:00');
-        f(() => timeoutLog(1000 * 60 * 60 * 24), '等待 1 天 00:00:00');
+        f(() => timeoutLog(1000 * 60 * 60 * 24), '等待 1天');
+        f(
+            () => timeoutLog(1000 * 60 * 60 * 24, '还有{}的等待时间'),
+            '还有1天的等待时间'
+        );
+        f(
+            () => timeoutLog(1000 * 60 * 60 * 24, '还有{}的等待时间，你要等待{}吗？'),
+            '还有1天的等待时间，你要等待1天吗？'
+        );
     });
 });
