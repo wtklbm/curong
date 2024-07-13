@@ -57,7 +57,8 @@ describe('@curong/function/limiter', () => {
                     12312
                 ],
                 {
-                    concurrency: 2
+                    concurrency: 2,
+                    onProgress(index, result){}
                 }
             )
         ).rejects.toThrow();
@@ -208,6 +209,73 @@ describe('@curong/function/limiter', () => {
                 onError: e => 'xxx',
                 maxRetry: 3,
                 retryWait: { start: 0, end: 100 }
+            }
+        );
+
+        expect(pool).toEqual([1, 2, 3, 'xxx', 12312, 4]);
+        expect(s).toEqual([1, 2, 3, 4]);
+
+        const time = Math.floor((Date.now() - date) / 100);
+        expect(time > 0 && time < 5).toBe(true);
+    });
+
+    test('测试12', async () => {
+        const { task, s } = get();
+        const date = Date.now();
+        const pool = await limiter(
+            [
+                task,
+                task,
+                task,
+                () => {
+                    throw new Error('xxx');
+                },
+                12312,
+                task
+            ],
+            {
+                concurrency: 2,
+                maxRetry: 3,
+                retryWait: { start: 0, end: 100 },
+                onProgressRetry(index, error, attempts) {
+                    if (error.message.includes('xxx')) {
+                        return true;
+                    }
+                }
+            }
+        );
+
+        expect(pool).toEqual([1, 2, 3, undefined, 12312, 4]);
+        expect(s).toEqual([1, 2, 3, 4]);
+
+        const time = Math.floor((Date.now() - date) / 100);
+        expect(time > 0 && time < 5).toBe(true);
+    });
+
+    test('测试13', async () => {
+        const { task, s } = get();
+        const date = Date.now();
+        const pool = await limiter(
+            [
+                task,
+                task,
+                task,
+                () => {
+                    throw new Error('xxx');
+                },
+                12312,
+                task
+            ],
+            {
+                concurrency: 2,
+                maxRetry: 3,
+                retryWait: { start: 0, end: 100 },
+                onError: e => 'xxx',
+                onProgressRetry(index, error, attempts) {
+                    if (error.message.includes('xxx')) {
+                        return true;
+                    }
+                }
             }
         );
 
