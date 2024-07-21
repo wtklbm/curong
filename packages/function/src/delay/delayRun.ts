@@ -7,9 +7,9 @@ import delay from './delay';
  * 等待一段时间后执行一个同步或异步的函数
  *
  * @param duration 要阻塞多长时间，以毫秒为单位
- * @param handler 要执行的函数，可以是同步函数或异步函数
- * @param args 传递给 `handler` 的参数
- * @returns 返回 `handler` 的执行结果
+ * @param task 要执行的函数，可以是同步函数或异步函数
+ * @param args 传递给 `task` 的参数
+ * @returns 返回 `task` 的执行结果
  * @example ````
  *
  * ### 传递一个数字
@@ -28,10 +28,10 @@ import delay from './delay';
  */
 export default async function delayRun<R, A extends unknown[]>(
     duration: ResolvableTimeoutMs,
-    handler: (...args: A) => Promise<R> | R,
+    task: (...args: A) => Promise<R> | R,
     ...args: A
 ): Promise<R> {
     await delay(duration);
 
-    return await fCall(handler, args);
+    return await fCall(task, args);
 }
