@@ -7,19 +7,16 @@ import readLnk from './readLnk';
 import type { FileListOptions } from './types';
 
 /**
- * 获取一个文件夹的所有文件名的列表
+ * 获取一个文件夹的所有文件列表
+ *
  * 支持从 Windows 快捷方式(`lnk`) 中读取目录或文件
  *
- * @todo 将参数变为一个 `options`： { ignored = '', depth = 0 }
  * @param {string} dirName 文件夹目录
- * @param options
- *
- * - `depthOnce` 是否只获取一层深度的数据，默认为 `false`
- *
+ * @param options 配置选项
+ *  - `depthOnce` 是否只获取一层深度的数据，默认为 `false`
  * @return 返回一个包含文件名的列表
- * @throws
- *
- * - 如果读取文件夹失败，则会抛出异常
+ * @throws 如果读取文件夹失败，则会抛出异常
+ * @todos 将参数变为一个 `options`： { ignored = '', depth = 0 }
  */
 export default async function fileList(
     dirName: string,
