@@ -12,14 +12,14 @@ import { isFunction } from '@curong/types';
  * @example
  *
  * ```typescript
- * const result = await catchOr(() => {
+ * const result = await ifThrow(() => {
  *     throw new Error('获取数据失败');
  * }, 'defaultData');
  *
  * console.log(result); // 'defaultData'
  * ```
  */
-export default async function catchOr<A extends unknown[], T>(
+export default async function ifThrow<A extends unknown[], T>(
     task: ((...args: A) => any) | Promise<any>,
     fallback?:
         | (<E extends Error, R>(error: E, ...args: A) => R | Promise<R>)
