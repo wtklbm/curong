@@ -1,14 +1,14 @@
-import { catchOr } from '..';
+import { ifThrow } from '..';
 
-describe('@curong/function/catchOr', () => {
+describe('@curong/function/ifThrow', () => {
     test('测试1', async () => {
         // @ts-ignore
-        expect(await catchOr(1)).toBe(1);
+        expect(await ifThrow(1)).toBe(1);
 
         async function fetchData() {
             return Promise.resolve(1);
         }
-        const result = await catchOr(fetchData, 'defaultData');
+        const result = await ifThrow(fetchData, 'defaultData');
         expect(result).toBe(1);
     });
 
@@ -16,7 +16,7 @@ describe('@curong/function/catchOr', () => {
         async function fetchData() {
             throw new Error('xxx');
         }
-        const result = await catchOr(fetchData, 'defaultData');
+        const result = await ifThrow(fetchData, 'defaultData');
         expect(result).toBe('defaultData');
     });
 
@@ -24,7 +24,7 @@ describe('@curong/function/catchOr', () => {
         function getData() {
             return 'syncData';
         }
-        const result = await catchOr(getData, 'defaultData');
+        const result = await ifThrow(getData, 'defaultData');
         expect(result).toBe('syncData');
     });
 
@@ -32,7 +32,7 @@ describe('@curong/function/catchOr', () => {
         async function fetchData() {
             return Promise.resolve(1);
         }
-        const result = await catchOr(fetchData, () => 'defaultData');
+        const result = await ifThrow(fetchData, () => 'defaultData');
         expect(result).toBe(1);
     });
 
@@ -40,7 +40,7 @@ describe('@curong/function/catchOr', () => {
         async function fetchData() {
             throw new Error('xxx');
         }
-        const result = await catchOr(fetchData, () => 'defaultData');
+        const result = await ifThrow(fetchData, () => 'defaultData');
         expect(result).toBe('defaultData');
     });
 
@@ -48,7 +48,7 @@ describe('@curong/function/catchOr', () => {
         function getData() {
             return 'syncData';
         }
-        const result = await catchOr(getData, () => 'defaultData');
+        const result = await ifThrow(getData, () => 'defaultData');
         expect(result).toBe('syncData');
     });
 
@@ -59,7 +59,7 @@ describe('@curong/function/catchOr', () => {
             }
             return value;
         }
-        const result = await catchOr(
+        const result = await ifThrow(
             fetchData,
             (value: number) => 'defaultData',
             1
@@ -74,7 +74,7 @@ describe('@curong/function/catchOr', () => {
             }
             return value;
         }
-        const result = catchOr(
+        const result = ifThrow(
             fetchData,
             (error, value: number) => {
                 expect(value).toBe(1);
@@ -92,7 +92,7 @@ describe('@curong/function/catchOr', () => {
             }
             return value;
         }
-        const result = await catchOr(
+        const result = await ifThrow(
             fetchData,
             (error, value: number) => {
                 if (error.message.includes('失败')) {
@@ -113,7 +113,7 @@ describe('@curong/function/catchOr', () => {
             }
             return value;
         }
-        const result = await catchOr(
+        const result = await ifThrow(
             fetchData,
             (error, value: number) => {
                 if (error.message.includes('失败')) {
@@ -135,7 +135,7 @@ describe('@curong/function/catchOr', () => {
             return value;
         }
 
-        const result = catchOr(
+        const result = ifThrow(
             fetchData,
             (error, value: number) => {
                 if (error.message.includes('失败')) {
@@ -150,21 +150,21 @@ describe('@curong/function/catchOr', () => {
     });
 
     test('测试13', async () => {
-        expect(await catchOr(Promise.resolve(1))).toBe(1);
-        expect(await catchOr(() => Promise.resolve(1))).toBe(1);
+        expect(await ifThrow(Promise.resolve(1))).toBe(1);
+        expect(await ifThrow(() => Promise.resolve(1))).toBe(1);
     });
 
     test('测试14', async () => {
-        expect(await catchOr(Promise.reject('1'), 1)).toBe(1);
-        expect(await catchOr(Promise.reject('1'), Promise.resolve(1))).toBe(1);
+        expect(await ifThrow(Promise.reject('1'), 1)).toBe(1);
+        expect(await ifThrow(Promise.reject('1'), Promise.resolve(1))).toBe(1);
         expect(
-            await catchOr(Promise.reject('1'), () => Promise.resolve(1))
+            await ifThrow(Promise.reject('1'), () => Promise.resolve(1))
         ).toBe(1);
         expect(
-            await catchOr(() => Promise.reject('1'), Promise.resolve(1))
+            await ifThrow(() => Promise.reject('1'), Promise.resolve(1))
         ).toBe(1);
         expect(
-            await catchOr(
+            await ifThrow(
                 () => Promise.reject('1'),
                 () => Promise.resolve(1)
             )
@@ -172,16 +172,16 @@ describe('@curong/function/catchOr', () => {
     });
 
     test('测试15', async () => {
-        expect(await catchOr(Promise.reject('1'), 1)).toBe(1);
-        expect(catchOr(Promise.reject('1'), Promise.reject(1))).rejects.toBe(1);
+        expect(await ifThrow(Promise.reject('1'), 1)).toBe(1);
+        expect(ifThrow(Promise.reject('1'), Promise.reject(1))).rejects.toBe(1);
         expect(
-            catchOr(Promise.reject('1'), () => Promise.reject(1))
+            ifThrow(Promise.reject('1'), () => Promise.reject(1))
         ).rejects.toBe(1);
         expect(
-            catchOr(() => Promise.reject('1'), Promise.reject(1))
+            ifThrow(() => Promise.reject('1'), Promise.reject(1))
         ).rejects.toBe(1);
         expect(
-            catchOr(
+            ifThrow(
                 () => Promise.reject('1'),
                 () => Promise.reject(1)
             )
@@ -189,18 +189,18 @@ describe('@curong/function/catchOr', () => {
     });
 
     test('测试16', async () => {
-        expect(await catchOr(Promise.reject('1'))).toBe(undefined);
-        expect(await catchOr(Promise.reject('1'))).toBe(undefined);
-        expect(await catchOr(Promise.resolve('1'))).toBe('1');
-        expect(await catchOr(() => Promise.resolve('1'))).toBe('1');
-        expect(await catchOr(() => 1)).toBe(1);
+        expect(await ifThrow(Promise.reject('1'))).toBe(undefined);
+        expect(await ifThrow(Promise.reject('1'))).toBe(undefined);
+        expect(await ifThrow(Promise.resolve('1'))).toBe('1');
+        expect(await ifThrow(() => Promise.resolve('1'))).toBe('1');
+        expect(await ifThrow(() => 1)).toBe(1);
         expect(
-            await catchOr(() => {
+            await ifThrow(() => {
                 throw 1;
             })
         ).toBe(undefined);
         expect(
-            await catchOr(
+            await ifThrow(
                 () => {
                     throw 1;
                 },
@@ -209,7 +209,7 @@ describe('@curong/function/catchOr', () => {
         ).toBe(1);
 
         expect(
-            catchOr(
+            ifThrow(
                 () => {
                     throw 1;
                 },
