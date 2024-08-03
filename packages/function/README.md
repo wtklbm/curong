@@ -32,6 +32,11 @@
 - `delayRun`: 等待一段时间后执行一个同步或异步的函数
 - `delaySync`: 同步阻塞一段时间
 
+### `limit`
+
+- `deferred`: 返回一个函数，当函数执行到达指定次数后执行回调函数
+- `limited`: 返回一个函数，当函数执行到达指定次数后就不再执行回调函数
+
 ### `timeout`
 
 - `clearTimeoutAll`: 清除所有已分配的 `setTimeout` 定时器
