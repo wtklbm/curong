@@ -1,4 +1,4 @@
-import { select } from '../src';
+import select from '../select';
 
 describe('@curong/function/select', () => {
     test('测试1', async () => {
