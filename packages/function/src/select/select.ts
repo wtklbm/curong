@@ -1,4 +1,4 @@
-import fCall from './constants/fCall';
+import fCall from '../constants/fCall';
 
 /**
  * 根据条件来返回相应的结果
