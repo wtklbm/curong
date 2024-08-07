@@ -322,3 +322,6 @@
 - `IsAny`: 是不是一个 `any` 类型的值
 - `IsNever`: 是不是一个 `never` 类型的值
 - `IsUnknown`: 是不是一个 `unknown` 类型的值
+- `WithNull`: 包含指定类型 `T` 或 `null` 的类型
+- `WithNullOrUndefined`: 包含指定类型 `T`、`null` 或 `undefined` 的类型
+- `WithUndefined`: 包含指定类型 `T` 或 `undefined` 的类型
