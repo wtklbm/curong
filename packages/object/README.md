@@ -8,6 +8,8 @@
 - `createWithNull`: 创建一个纯对象，该对象的原型是 `null`
 - `deleteAttrs`: 从一个对象中删除一些属性
 - `fromCascadeKeys`: 将级联属性数组转换为一个属性字符串
+- `getProperty`: 获取属性的值
+- `getPropertyGetter`: 传递一个属性名，并返回一个新的函数，该函数可用于从对象中提取该属性的值
 - `isPrototypeProperty`: 是不是当前对象的原型上的属性
 - `keys`: 从给定的对象或类数组对象中获取所有的键
 - `shallowEqual`: 通过浅比较的方式比较两个对象中的属性。(仅比较对象中的一层属性)
