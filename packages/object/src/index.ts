@@ -4,6 +4,8 @@ export { default as createWithNull } from './createWithNull';
 export { default as deleteAttrs } from './deleteAttrs';
 export { default as derive } from './derive';
 export { default as fromCascadeKeys } from './fromCascadeKeys';
+export { default as getProperty } from './getProperty';
+export { default as getPropertyGetter } from './getPropertyGetter';
 export { default as isInstanceOf } from './isInstanceOf';
 export { default as isKeysIncludes } from './isKeysIncludes';
 export { default as isPrototypeProperty } from './isPrototypeProperty';
