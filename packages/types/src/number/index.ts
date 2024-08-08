@@ -16,3 +16,4 @@ export { default as isZero } from './isZero';
 
 export * from './float';
 export * from './int';
+export * from './isNumberValid';
