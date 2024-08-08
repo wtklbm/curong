@@ -12,6 +12,7 @@ export { default as isNumberPositive } from './isNumberPositive';
 export { default as isNumberPrimitive } from './isNumberPrimitive';
 export { default as isNumberSafe } from './isNumberSafe';
 export { default as isNumberValid } from './isNumberValid';
+export { default as isPrimeNumber } from './isPrimeNumber';
 export { default as isZero } from './isZero';
 
 export * from './float';
