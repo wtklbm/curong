@@ -39,8 +39,8 @@ describe('@curong/types/isNumberValid', () => {
         expect(isNumberValid(' 123 ')).toBe(true); // 去掉空格后的数字仍然有效
         expect(isNumberValid('Infinity')).toBe(true); // Infinity 是有效数字
         expect(isNumberValid('-Infinity')).toBe(true); // -Infinity 是有效数字
-        expect(isNumberValid('', false)).toBe(false);
-        expect(isNumberValid(' ', false)).toBe(false);
+        expect(isNumberValid('', { implicit: false })).toBe(false);
+        expect(isNumberValid(' ', { implicit: false })).toBe(false);
 
         expect(isNumberValid('Infinity')).toBe(true);
         expect(isNumberValid('-Infinity')).toBe(true);
@@ -67,48 +67,90 @@ describe('@curong/types/isNumberValid', () => {
         //@ts-ignore
         expect(isNumberValid(1n)).toBe(true);
 
-        expect(isNumberValid(true, true)).toBe(true);
-        expect(isNumberValid(false, true)).toBe(true);
-        expect(isNumberValid('', true)).toBe(true);
-        expect(isNumberValid(' ', true)).toBe(true);
-        expect(isNumberValid([], true)).toBe(true);
-        expect(isNumberValid(null, true)).toBe(true);
-        expect(isNumberValid(NaN, true)).toBe(false);
-        expect(isNumberValid(Number.NaN, true)).toBe(false);
+        expect(isNumberValid(true, { implicit: true })).toBe(true);
+        expect(isNumberValid(false, { implicit: true })).toBe(true);
+        expect(isNumberValid('', { implicit: true })).toBe(true);
+        expect(isNumberValid(' ', { implicit: true })).toBe(true);
+        expect(isNumberValid([], { implicit: true })).toBe(true);
+        expect(isNumberValid(null, { implicit: true })).toBe(true);
+        expect(isNumberValid(NaN, { implicit: true })).toBe(false);
+        expect(isNumberValid(Number.NaN, { implicit: true })).toBe(false);
         //@ts-ignore
-        expect(isNumberValid(1n, true)).toBe(true);
+        expect(isNumberValid(1n, { implicit: true })).toBe(true);
 
-        expect(isNumberValid(true, false)).toBe(false);
-        expect(isNumberValid(false, false)).toBe(false);
-        expect(isNumberValid('', false)).toBe(false);
-        expect(isNumberValid(' ', false)).toBe(false);
-        expect(isNumberValid([], false)).toBe(false);
-        expect(isNumberValid(null, false)).toBe(false);
-        expect(isNumberValid(NaN, false)).toBe(false);
-        expect(isNumberValid(Number.NaN, false)).toBe(false);
+        expect(isNumberValid(true, { implicit: false })).toBe(false);
+        expect(isNumberValid(false, { implicit: false })).toBe(false);
+        expect(isNumberValid('', { implicit: false })).toBe(false);
+        expect(isNumberValid(' ', { implicit: false })).toBe(false);
+        expect(isNumberValid([], { implicit: false })).toBe(false);
+        expect(isNumberValid(null, { implicit: false })).toBe(false);
+        expect(isNumberValid(NaN, { implicit: false })).toBe(false);
+        expect(isNumberValid(Number.NaN, { implicit: false })).toBe(false);
         //@ts-ignore
-        expect(isNumberValid(1n, false)).toBe(false);
+        expect(isNumberValid(1n, { implicit: false })).toBe(false);
     });
 
     test('测试4', () => {
-        expect(isNumberValid(NaN, true)).toBe(false);
-        expect(isNumberValid(Number.NaN, true)).toBe(false);
+        expect(isNumberValid(NaN, { implicit: true })).toBe(false);
+        expect(isNumberValid(Number.NaN, { implicit: true })).toBe(false);
 
-        expect(isNumberValid(NaN, true, true)).toBe(true);
-        expect(isNumberValid(Number.NaN, true, true)).toBe(true);
+        expect(isNumberValid(NaN, { implicit: true, allowNaN: true })).toBe(
+            true
+        );
+        expect(
+            isNumberValid(Number.NaN, { implicit: true, allowNaN: true })
+        ).toBe(true);
 
-        expect(isNumberValid(NaN, true, false)).toBe(false);
-        expect(isNumberValid(Number.NaN, true, false)).toBe(false);
+        expect(isNumberValid(NaN, { implicit: true, allowNaN: false })).toBe(
+            false
+        );
+        expect(
+            isNumberValid(Number.NaN, { implicit: true, allowNaN: false })
+        ).toBe(false);
     });
 
     test('测试5', () => {
-        expect(isNumberValid('', false, false)).toBe(false);
-        expect(isNumberValid(' ', false, false)).toBe(false);
+        expect(
+            isNumberValid('', {
+                implicit: false,
+                allowNaN: false
+            })
+        ).toBe(false);
+        expect(
+            isNumberValid(' ', {
+                implicit: false,
+                allowNaN: false
+            })
+        ).toBe(false);
 
-        expect(isNumberValid('', false, false, true)).toBe(true);
-        expect(isNumberValid(' ', false, false, true)).toBe(true);
+        expect(
+            isNumberValid('', {
+                implicit: false,
+                allowNaN: false,
+                allowEmptyString: true
+            })
+        ).toBe(true);
+        expect(
+            isNumberValid(' ', {
+                implicit: false,
+                allowNaN: false,
+                allowEmptyString: true
+            })
+        ).toBe(true);
 
-        expect(isNumberValid('', false, false, false)).toBe(false);
-        expect(isNumberValid(' ', false, false, false)).toBe(false);
+        expect(
+            isNumberValid('', {
+                implicit: false,
+                allowNaN: false,
+                allowEmptyString: false
+            })
+        ).toBe(false);
+        expect(
+            isNumberValid(' ', {
+                implicit: false,
+                allowNaN: false,
+                allowEmptyString: false
+            })
+        ).toBe(false);
     });
 });
