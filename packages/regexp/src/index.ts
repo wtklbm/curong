@@ -4,6 +4,7 @@ export { default as execAll } from './execAll';
 export { default as inChinese } from './inChinese';
 export { default as inChkPunctuation } from './inChkPunctuation';
 export { default as inJapanese } from './inJapanese';
+export { default as isChinaPhoneNumber } from './isChinaPhoneNumber';
 export { default as isEmail } from './isEmail';
 export { default as isIp } from './isIp';
 export { default as isURI } from './isURI';
