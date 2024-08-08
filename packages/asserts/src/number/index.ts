@@ -12,6 +12,7 @@ export { default as assertNumberPositive } from './assertNumberPositive';
 export { default as assertNumberPrimitive } from './assertNumberPrimitive';
 export { default as assertNumberSafe } from './assertNumberSafe';
 export { default as assertNumberValid } from './assertNumberValid';
+export { default as assertPrimeNumber } from './assertPrimeNumber';
 export { default as assertZero } from './assertZero';
 
 export * from './float';
