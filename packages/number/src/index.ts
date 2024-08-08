@@ -3,6 +3,7 @@ export { default as random } from './random';
 export { default as randomSafe } from './randomSafe';
 export { default as range } from './range';
 export { default as rangeSafe } from './rangeSafe';
+export { default as stringify } from './stringify';
 export { default as toFiniteNumber } from './toFiniteNumber';
 export { default as toLocaleString } from './toLocaleString';
 
