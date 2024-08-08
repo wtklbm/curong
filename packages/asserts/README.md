@@ -186,6 +186,7 @@
 - `assertNumberPrimitive`: 是不是一个基本的数字，即 `number` || `Number()`
 - `assertNumberSafe`: 是不是一个可以安全计算的数字
 - `assertNumberValid`: 是不是一个可以转换为有效的数字的值
+- `assertPrimeNumber`: 是不是一个质数 (素数)
 - `assertUFloat`: 是不是一个无符号浮点数，即大于 `0` 的浮点数
 - `assertUint`: 是不是一个无符号整数，即大于或等于 `0` 的整数
 - `assertUint16`: 是不是一个 `uint16`，取值范围为 `0 - 2^16-1` 的正整数，即 `0 - 65535`
