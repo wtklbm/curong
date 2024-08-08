@@ -7,6 +7,7 @@
 - `inChinese`: 是否包含中文汉字
 - `inChkPunctuation`: 是否包含中日韩标点符号
 - `inJapanese`: 是否包含日文
+- `isChinaPhoneNumber`: 是不是一个中国的手机号码
 - `isEmail`: 是否为合法的邮箱地址
 - `isIp`: 是不是一个 `IP` 地址
 - `isURI`: 是否为合法的链接地址
