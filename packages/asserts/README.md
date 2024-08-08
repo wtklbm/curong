@@ -11,6 +11,7 @@
 - `assertArrayIndex`: 是不是一个数组的下标索引，它是一个大于或等于 `0` 并且小于或等于数组的最大长度的正整数
 - `assertArrayLike`: 是不是一个类数组 (不包含数组)
 - `assertArrayLikeFilled`: 是不是一个长度大于 `0` 的类数组 (不包含数组)
+- `assertArraySparse`: 是不是一个稀疏数组
 - `assertArrayTwoDimensional`: 是不是一个长度大于 `0` 的数组，且每一项的值都是数组 (二维数组)
 
 #### `bigint`
