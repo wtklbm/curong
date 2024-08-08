@@ -310,7 +310,7 @@
 
 #### `url`
 
-- `isURL`: 是不是一个 `URL`
+- `isURL`: 是不是一个 `URL` 对象
 - `isURLSearchParams`: 是不是一个 `URLSearchParams`
 - `isURLString`: 是不是一个可以转换为 `URL` 对象的的字符串
 
