@@ -75,6 +75,7 @@
 
 - `assertDate`: 是不是一个 `Date`
 - `assertDateValid`: 是不是一个有效的 `Date` 数字 (格林威治时间戳) 、字符串 (日期字符串)、数组 (包含年、月、日、时、分、秒、毫秒的数组)、对象 (`Date`)
+- `isLeapYear`: 是不是一个闰年年份
 
 #### `element`
 
