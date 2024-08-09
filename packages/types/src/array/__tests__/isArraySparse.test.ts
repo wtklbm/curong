@@ -81,4 +81,16 @@ describe('@curong/types/isArraySparse', () => {
 
         expect(isArraySparse(sparseArray)).toBe(true);
     });
+
+    test('测试10', () => {
+        const sparseArray: any = {
+            0: '0',
+            2: '2',
+            4: '4',
+            value: 'test',
+            length: 3,
+        };
+
+        expect(isArraySparse(sparseArray)).toBe(false);
+    });
 });
