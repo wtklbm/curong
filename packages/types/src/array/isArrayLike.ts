@@ -9,11 +9,10 @@ import isArrayIndex from './isArrayIndex';
  *
  * @param value 要验证的值
  * @param similarity 类数组的相似程度，默认值为 `0`
- *
  *  - `0`: 粗略判断，只要元素的 `length` 属性是数组的合法索引即可
  *  - `1`: 在保证 `length` 符合要求的情况下，判断数字 `key` 的个数是否与 `length` 相同
  *  - `2`: 不仅数字 `key` 的个数与 `length` 相同，还要保证对象的可枚举的属性的总个数是 `length` 加一
- *
+ * @param isSparse 当值为稀疏的类数组时是否返回 `true`。默认为 `true`。仅在 `similarity` 为 `1` 或 `2` 时有效
  * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
@@ -31,36 +30,42 @@ import isArrayIndex from './isArrayIndex';
  */
 export default function isArrayLike<T = unknown>(
     value: unknown,
-    similarity: 0 | 1 | 2 = 0
+    similarity: 0 | 1 | 2 = 0,
+    isSparse: boolean = true
 ): value is ArrayLike<T> {
-    let ret = false;
-
     if (!isTypeofObject(value) || isArray(value) || isWindow(value)) {
-        return ret;
+        return false;
     }
 
     const l = value.length;
 
     if (!isArrayIndex(l)) {
-        return ret;
+        return false;
     }
 
-    ret = true;
-
     if (similarity <= 0) {
-        return ret;
+        return true;
     }
 
     const keys = Object.keys(value);
+    const nkl = keys.map(Number).filter(isArrayIndex).length;
+
+    if (!isSparse) {
+        for (let i = 0, len = nkl; i < len; i++) {
+            if (!value.hasOwnProperty(i)) {
+                return false;
+            }
+        }
+    }
 
     // 确保数字 `key` 的个数与 `length` 相同
-    if (keys.reduce((m, v) => (isArrayIndex(+v) ? m + 1 : m), 0) !== l) {
+    if (nkl !== l) {
         return false;
     }
 
     if (similarity === 1) {
-        return ret;
+        return true;
     }
 
-    return ret && keys.length === l + 1;
+    return keys.length === l + 1;
 }
