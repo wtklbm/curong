@@ -5,14 +5,14 @@ import isArray from './isArray';
 import isArrayIndex from './isArrayIndex';
 
 /**
- * 是不是一个类数组 (不包含数组)
+ * 是不是一个类数组 (包括稀疏的类数组，不包含数组和稀疏数组)
  *
  * @param value 要验证的值
  * @param similarity 类数组的相似程度，默认值为 `0`
  *
- *  - `0`: 粗略判断，只要 `length` 属性符合要求即可
- *  - `1`: 在保证 `length` 符合要求的情况下，判断对象中可枚举的属性是否存在
- *  - `2`: 不仅属性存在，还要保证对象的可枚举的属性的个数是 `length` 的个数加一
+ *  - `0`: 粗略判断，只要元素的 `length` 属性是数组的合法索引即可
+ *  - `1`: 在保证 `length` 符合要求的情况下，判断数字 `key` 的个数是否与 `length` 相同
+ *  - `2`: 不仅数字 `key` 的个数与 `length` 相同，还要保证对象的可枚举的属性的总个数是 `length` 加一
  *
  * @returns 是则返回 `true`，否则为 `false`
  * @example
@@ -51,15 +51,16 @@ export default function isArrayLike<T = unknown>(
         return ret;
     }
 
-    for (let i = 0; i < l; i++) {
-        if (!(i in value)) {
-            ret = false;
-        }
+    const keys = Object.keys(value);
+
+    // 确保数字 `key` 的个数与 `length` 相同
+    if (keys.reduce((m, v) => (isArrayIndex(+v) ? m + 1 : m), 0) !== l) {
+        return false;
     }
 
     if (similarity === 1) {
         return ret;
     }
 
-    return ret && Object.keys(value).length === l + 1;
+    return ret && keys.length === l + 1;
 }
