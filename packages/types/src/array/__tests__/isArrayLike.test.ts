@@ -38,6 +38,19 @@ describe('@curong/types/isArrayLike', () => {
 
     test('测试3', () => {
         let obj = {
+            length: 3
+        };
+        expect(isArrayLike(obj)).toBe(true);
+        expect(isArrayLike(obj, 1)).toBe(false);
+        expect(isArrayLike(obj, 2)).toBe(false);
+        expect(isArrayLike(obj, 0, true)).toBe(true);
+        expect(isArrayLike(obj, 1, true)).toBe(false);
+        expect(isArrayLike(obj, 2, true)).toBe(false);
+        expect(isArrayLike(obj, 0, false)).toBe(true);
+        expect(isArrayLike(obj, 1, false)).toBe(false);
+        expect(isArrayLike(obj, 2, false)).toBe(false);
+
+        obj = {
             0: 'a',
             2: 'v',
             3: 'c',
@@ -57,6 +70,12 @@ describe('@curong/types/isArrayLike', () => {
         expect(isArrayLike(obj)).toBe(true);
         expect(isArrayLike(obj, 1)).toBe(true);
         expect(isArrayLike(obj, 2)).toBe(true);
+        expect(isArrayLike(obj, 0, true)).toBe(true);
+        expect(isArrayLike(obj, 1, true)).toBe(true);
+        expect(isArrayLike(obj, 2, true)).toBe(true);
+        expect(isArrayLike(obj, 0, false)).toBe(true);
+        expect(isArrayLike(obj, 1, false)).toBe(true);
+        expect(isArrayLike(obj, 2, false)).toBe(true);
 
         obj = {
             0: 'a',
@@ -117,6 +136,9 @@ describe('@curong/types/isArrayLike', () => {
         expect(isArrayLike(obj)).toBe(true);
         expect(isArrayLike(obj, 1)).toBe(true);
         expect(isArrayLike(obj, 2)).toBe(true);
+        expect(isArrayLike(obj, 0, false)).toBe(true);
+        expect(isArrayLike(obj, 1, false)).toBe(false);
+        expect(isArrayLike(obj, 2, false)).toBe(false);
 
         obj = {
             0: '0',
@@ -128,6 +150,9 @@ describe('@curong/types/isArrayLike', () => {
         expect(isArrayLike(obj)).toBe(true);
         expect(isArrayLike(obj, 1)).toBe(true);
         expect(isArrayLike(obj, 2)).toBe(false);
+        expect(isArrayLike(obj, 0, false)).toBe(true);
+        expect(isArrayLike(obj, 1, false)).toBe(false);
+        expect(isArrayLike(obj, 2, false)).toBe(false);
 
         obj = {
             '0': '0',
@@ -138,6 +163,9 @@ describe('@curong/types/isArrayLike', () => {
         expect(isArrayLike(obj)).toBe(true);
         expect(isArrayLike(obj, 1)).toBe(true);
         expect(isArrayLike(obj, 2)).toBe(true);
+        expect(isArrayLike(obj, 0, false)).toBe(true);
+        expect(isArrayLike(obj, 1, false)).toBe(false);
+        expect(isArrayLike(obj, 2, false)).toBe(false);
 
         obj = {
             '0': '0',
@@ -148,6 +176,9 @@ describe('@curong/types/isArrayLike', () => {
         expect(isArrayLike(obj)).toBe(true);
         expect(isArrayLike(obj, 1)).toBe(true);
         expect(isArrayLike(obj, 2)).toBe(true);
+        expect(isArrayLike(obj, 0, false)).toBe(true);
+        expect(isArrayLike(obj, 1, false)).toBe(false);
+        expect(isArrayLike(obj, 2, false)).toBe(false);
 
         obj = {
             '0': '0',
@@ -159,5 +190,8 @@ describe('@curong/types/isArrayLike', () => {
         expect(isArrayLike(obj)).toBe(true);
         expect(isArrayLike(obj, 1)).toBe(true);
         expect(isArrayLike(obj, 2)).toBe(false);
+        expect(isArrayLike(obj, 0, false)).toBe(true);
+        expect(isArrayLike(obj, 1, false)).toBe(false);
+        expect(isArrayLike(obj, 2, false)).toBe(false);
     });
 });
