@@ -3,7 +3,7 @@ import { isBigIntPrimitive } from '@curong/types';
 import typeGuard from '../constants/typeGuard';
 
 /**
- * 是不是一个基本的大数，即 `bigint`
+ * 是不是一个基本的大数，即 `bigint` || `BigInt()`
  *
  * @param value 要验证的值
  * @param variableName 该值的变量名
