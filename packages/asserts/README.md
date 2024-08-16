@@ -9,9 +9,9 @@
 - `assertArray`: 是不是一个数组
 - `assertArrayFilled`: 是不是一个长度大于 `0` 的数组
 - `assertArrayIndex`: 是不是一个数组的下标索引，它是一个大于或等于 `0` 并且小于或等于数组的最大长度的正整数
-- `assertArrayLike`: 是不是一个类数组 (不包含数组)
+- `assertArrayLike`: 是不是一个类数组 (包括稀疏的类数组，不包含数组和稀疏数组)
 - `assertArrayLikeFilled`: 是不是一个长度大于 `0` 的类数组 (不包含数组)
-- `assertArraySparse`: 是不是一个稀疏数组
+- `assertArraySparse`: 是不是一个稀疏数组 (不包含稀疏的类数组)
 - `assertArrayTwoDimensional`: 是不是一个长度大于 `0` 的数组，且每一项的值都是数组 (二维数组)
 
 #### `bigint`
@@ -19,8 +19,8 @@
 - `assertBigInt`: 是不是一个 `bigInt` (大数) 或被包装后的 `BigInt` 对象
 - `assertBigIntArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `bigInt` (大数) 或被包装后的 `BigInt` 对象
 - `assertBigIntFilled`: 是不是一个大于 `0n` 的 `bigInt` (大数)
-- `assertBigIntObject`: 是不是一个被包装后的 `BigInt` 对象，即 `Object(0n)`
-- `assertBigIntPrimitive`: 是不是一个基本的大数，即 `bigint`
+- `assertBigIntObject`: 是不是一个被包装后的 `BigInt` 对象，即 `Object()`
+- `assertBigIntPrimitive`: 是不是一个基本的大数，即 `bigint` || `BigInt()`
 
 #### `boolean`
 
@@ -276,7 +276,7 @@
 
 #### `url`
 
-- `assertURL`: 是不是一个 `URL`
+- `assertURL`: 是不是一个 `URL` 对象
 - `assertURLSearchParams`: 是不是一个 `URLSearchParams`
 - `assertURLString`: 是不是一个可以转换为 `URL` 对象的的字符串
 
