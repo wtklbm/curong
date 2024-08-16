@@ -3,7 +3,7 @@ import { isArrayLike } from '@curong/types';
 import typeGuard from '../constants/typeGuard';
 
 /**
- * 是不是一个类数组 (不包含数组)
+ * 是不是一个类数组 (包括稀疏的类数组，不包含数组和稀疏数组)
  *
  * @param value 要验证的值
  * @param variableName 该值的变量名
