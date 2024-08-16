@@ -3,7 +3,7 @@ import { isArraySparse } from '@curong/types';
 import typeGuard from '../constants/typeGuard';
 
 /**
- * 是不是一个稀疏数组
+ * 是不是一个稀疏数组 (不包含稀疏的类数组)
  *
  * @param value 要验证的值
  * @param variableName 该值的变量名
