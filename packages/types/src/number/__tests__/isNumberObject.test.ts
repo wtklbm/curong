@@ -12,6 +12,8 @@ describe('@curong/types/isNumberObject', () => {
 
     test('测试2', () => {
         expect(isNumberObject(new Number(1))).toBe(true);
+        expect(isNumberObject(Object(1))).toBe(true);
+        expect(isNumberObject(new Object(1))).toBe(true);
 
         expect(isNumberObject(new Number(NaN))).toBe(false);
         expect(isNumberObject(new Number(NaN), true)).toBe(true);
