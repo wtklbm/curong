@@ -25,10 +25,13 @@ export default function stringify(value: number): string {
     switch (value) {
         case 0:
             return Object.is(value, -0) ? '-0' : '0';
-        case Number.NEGATIVE_INFINITY:
-            return '-Infinity';
+
         case Number.POSITIVE_INFINITY:
             return 'Infinity';
+
+        case Number.NEGATIVE_INFINITY:
+            return '-Infinity';
+
         default:
             return value === value ? String(value) : 'NaN';
     }
