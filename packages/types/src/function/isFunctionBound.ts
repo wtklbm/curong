@@ -6,6 +6,10 @@ import type { Function } from './types';
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
+ * @note
+ * - `.name` 的值的开头为 `bound `
+ * - `.toString()` 的结果为 `'function () { [native code] }'`
+ * - 没有 `prototype` 属性
  */
 export default function isFunctionBound<
     R = unknown,
@@ -14,6 +18,7 @@ export default function isFunctionBound<
     return (
         isFunction(value) &&
         value.name.startsWith('bound ') &&
-        !value.hasOwnProperty('prototype')
+        !value.hasOwnProperty('prototype') &&
+        value.toString() === 'function () { [native code] }'
     );
 }
