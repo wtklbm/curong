@@ -1,5 +1,6 @@
 export { default as cascade } from './cascade';
 export { default as constructor } from './constructor';
+export { default as constructorName } from './constructorName';
 export { default as createWithNull } from './createWithNull';
 export { default as deleteAttrs } from './deleteAttrs';
 export { default as derive } from './derive';
