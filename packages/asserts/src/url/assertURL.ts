@@ -3,7 +3,7 @@ import { isURL } from '@curong/types';
 import typeGuard from '../constants/typeGuard';
 
 /**
- * 是不是一个 `URL`
+ * 是不是一个 `URL` 对象
  *
  * @param value 要验证的值
  * @param variableName 该值的变量名
