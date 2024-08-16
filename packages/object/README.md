@@ -5,6 +5,7 @@
 
 - `cascade`: 根据级联属性字符串获取源对象中的内容
 - `constructor`: 获取一个值的构造函数
+- `constructorName`: 获取一个值的构造函数的名称
 - `createWithNull`: 创建一个纯对象，该对象的原型是 `null`
 - `deleteAttrs`: 从一个对象中删除一些属性
 - `fromCascadeKeys`: 将级联属性数组转换为一个属性字符串
