@@ -19,8 +19,8 @@
 - `isBigInt`: 是不是一个 `bigInt` (大数) 或被包装后的 `BigInt` 对象
 - `isBigIntArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `bigInt` (大数) 或被包装后的 `BigInt` 对象
 - `isBigIntFilled`: 是不是一个大于 `0n` 的 `bigInt` (大数)
-- `isBigIntObject`: 是不是一个被包装后的 `BigInt` 对象，即 `Object(0n)`
-- `isBigIntPrimitive`: 是不是一个基本的大数，即 `bigint`
+- `isBigIntObject`: 是不是一个被包装后的 `BigInt` 对象，即 `Object()`
+- `isBigIntPrimitive`: 是不是一个基本的大数，即 `bigint` || `BigInt()`
 
 #### `boolean`
 
