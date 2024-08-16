@@ -6,4 +6,11 @@ describe('@curong/types/isTrue', () => {
         expect(isTrue(true)).toBe(true);
         expect(isTrue(false)).toBe(false);
     });
+
+    test('测试2', () => {
+        expect(isTrue(Boolean(true))).toBe(true);
+        expect(isTrue(new Boolean(true))).toBe(false);
+        expect(isTrue(Object(true))).toBe(false);
+        expect(isTrue(new Object(true))).toBe(false);
+    });
 });
