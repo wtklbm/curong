@@ -93,6 +93,7 @@
 - `assertAnyError`: 是不是一个任意的 `Error` 对象
 - `assertDOMException`: 是不是一个 `DOMException` 对象
 - `assertError`: 是不是一个 `Error` 对象
+- `assertErrorLike`: 是不是一个类错误对象
 - `assertEvalError`: 是不是一个 `EvalError` 对象
 - `assertRangeError`: 是不是一个 `RangeError` 对象
 - `assertReferenceError`: 是不是一个 `ReferenceError` 对象
