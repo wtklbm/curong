@@ -3,6 +3,8 @@ import { isNumberPrimitive } from '..';
 describe('@curong/types/isNumberPrimitive', () => {
     test('测试1', () => {
         expect(isNumberPrimitive(new Number(1))).toBe(false);
+        expect(isNumberPrimitive(Object(1))).toBe(false);
+        expect(isNumberPrimitive(new Object(1))).toBe(false);
     });
 
     test('测试2', () => {
