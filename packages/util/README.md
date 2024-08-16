@@ -11,4 +11,5 @@
 - `lackAttrs`: 检测一个值的自身属性中是否缺少某些属性
 - `maxArgsLength`: 获取函数的最大参数的长度
 - `maxCallStackSiz`: 获取执行调用栈的最大大小
+- `stringify`: 将任何值转换为字符串形式
 
