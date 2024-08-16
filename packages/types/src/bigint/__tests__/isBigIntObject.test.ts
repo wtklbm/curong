@@ -6,9 +6,11 @@ describe('@curong/types/isBigIntObject', () => {
         expect(isBigIntObject(1)).toBe(false);
         expect(isBigIntObject(0n)).toBe(false);
         expect(isBigIntObject(-1n)).toBe(false);
+        expect(isBigIntObject(BigInt(1n))).toBe(false);
     });
 
     test('测试2', () => {
         expect(isBigIntObject(Object(1n))).toBe(true);
+        expect(isBigIntObject(new Object(1n))).toBe(true);
     });
 });
