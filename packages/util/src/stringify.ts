@@ -1,3 +1,5 @@
+// [49746db](https://github.com/dubzzz/fast-check/blob/main/packages/fast-check/src/utils/stringify.ts)
+
 import {
     getTag,
     isArraySparse,
@@ -18,7 +20,7 @@ import {
  * 使用此符号为您的实例定义自定义序列化器。
  * 序列化器必须是一个返回字符串的函数 (参见 {@link WithToStringMethod})。
  */
-export const toStringMethod = Symbol.for('__TO_STRING_METHOD__');
+export const toStringMethod: unique symbol = Symbol.for('__TO_STRING_METHOD__');
 
 /**
  * 为 {@link toStringMethod} 实现的接口
@@ -49,7 +51,9 @@ export const hasToStringMethod = <T>(
  * 1. 它仅对异步属性有用。
  * 2. 它必须立即返回。
  */
-export const asyncToStringMethod = Symbol.for('__ASYNC_TO_STRING_METHOD__');
+export const asyncToStringMethod: unique symbol = Symbol.for(
+    '__ASYNC_TO_STRING_METHOD__'
+);
 
 /**
  * 为 {@link asyncToStringMethod} 实现的接口
@@ -121,7 +125,7 @@ const stringifyNumber = (value: number) => {
             return '-Infinity';
 
         default:
-            return value === value ? String(value) : 'NaN';
+            return Number.isNaN(value) ? 'NaN' : String(value);
     }
 };
 
@@ -134,11 +138,13 @@ export function stringifyInternal(
     previousValues: any[],
     getAsyncContent: (
         p: Promise<unknown> | WithAsyncToStringMethod
-    ) => AsyncContent
+    ) => AsyncContent,
+    options: Required<StringifyOptions>
 ): string {
     const currentValues = previousValues.concat([value]);
+
     const strInter = (v: any) => {
-        return stringifyInternal(v, currentValues, getAsyncContent);
+        return stringifyInternal(v, currentValues, getAsyncContent, options);
     };
 
     if (isTypeofObject(value) && previousValues.indexOf(value) !== -1) {
@@ -166,6 +172,7 @@ export function stringifyInternal(
     }
 
     const tag = getTag(value);
+    const { nearestDate, errorHandler } = options;
 
     switch (tag) {
         case 'Null':
@@ -249,9 +256,10 @@ export function stringifyInternal(
 
             return Number.isNaN(t)
                 ? `new Date(NaN)`
-                : /* Math.floor(Date.now() / 1e3) === Math.floor(t / 1e3)
+                : nearestDate &&
+                    Math.floor(Date.now() / 1e3) === Math.floor(t / 1e3)
                   ? 'new Date()'
-                  : */ `new Date(${JSON.stringify(d.toISOString())})`;
+                  : `new Date(${JSON.stringify(d.toISOString())})`;
         }
 
         case 'Map':
@@ -268,8 +276,8 @@ export function stringifyInternal(
                     return (value as any).toString();
                 }
             } catch (err) {
-                throw err;
                 // return '[object Object]';
+                return errorHandler(err);
             }
 
             const mapper = (k: string | symbol) =>
@@ -390,9 +398,9 @@ export function stringifyInternal(
 
     try {
         return (value as any).toString();
-    } catch (e) {
-        throw e;
+    } catch (err) {
         // return Object.prototype.toString.call(value);
+        return errorHandler(err);
     }
 }
 
@@ -403,7 +411,8 @@ export function stringifyInternal(
  * 否则，它会尝试进一步调查并返回 Promise<string>。
  */
 export function possiblyAsyncStringify<Ts>(
-    value: Ts
+    value: Ts,
+    options: Required<StringifyOptions>
 ): string | Promise<string> {
     const stillPendingMarker = Symbol();
     const pendingPromisesForCache: Promise<void>[] = [];
@@ -485,7 +494,12 @@ export function possiblyAsyncStringify<Ts>(
      * 我们可以偶尔为此付出代价
      */
     function loop(): string | Promise<string> {
-        const stringifiedValue = stringifyInternal(value, [], getAsyncContent);
+        const stringifiedValue = stringifyInternal(
+            value,
+            [],
+            getAsyncContent,
+            options
+        );
 
         if (pendingPromisesForCache.length === 0) {
             return stringifiedValue;
@@ -497,8 +511,16 @@ export function possiblyAsyncStringify<Ts>(
     return loop();
 }
 
+type StringifyOptions = {
+    /** 就近解析日期。默认为 `false` */
+    nearestDate?: boolean;
+
+    /** 当出现内部错误时 (例如无法解析的类型)，是直接报错还是返回一个值。默认为抛出错误 */
+    errorHandler?: (error: any) => any;
+};
+
 /**
- * 将任何值转换为其快速检查字符串表示形式
+ * 将任何值转换为字符串形式
  *
  * 此异步版本还能够深入了解 Promise 的状态
  *
@@ -520,15 +542,29 @@ export function possiblyAsyncStringify<Ts>(
  * - `FileReader`
  * - `DataTransfer`
  */
-export function stringify<T>(value: T): string {
-    return stringifyInternal(value, [], () => ({
-        state: 'unknown',
-        value: undefined
-    }));
+export function stringify<T>(value: T, options?: StringifyOptions): string {
+    const opts = {
+        nearestDate: false,
+        errorHandler(error: any) {
+            throw error;
+        },
+
+        ...options
+    };
+
+    return stringifyInternal(
+        value,
+        [],
+        () => ({
+            state: 'unknown',
+            value: undefined
+        }),
+        opts
+    );
 }
 
 /**
- * 将任何值转换为其快速检查字符串表示形式
+ * 将任何值转换为字符串形式
  *
  * 此异步版本还能够深入了解 Promise 的状态
  *
@@ -550,6 +586,18 @@ export function stringify<T>(value: T): string {
  * - `FileReader`
  * - `DataTransfer`
  */
-export async function asyncStringify<T>(value: T): Promise<string> {
-    return Promise.resolve(possiblyAsyncStringify(value));
+export async function asyncStringify<T>(
+    value: T,
+    options?: StringifyOptions
+): Promise<string> {
+    const opts = {
+        nearestDate: false,
+        errorHandler(error: any) {
+            throw error;
+        },
+
+        ...options
+    };
+
+    return Promise.resolve(possiblyAsyncStringify(value, opts));
 }
