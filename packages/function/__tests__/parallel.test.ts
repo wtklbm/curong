@@ -58,7 +58,7 @@ describe('@curong/function/parallel', () => {
                 ],
                 {
                     concurrency: 2,
-                    onProgress(index, result){}
+                    onProgress(index, result) {}
                 }
             )
         ).rejects.toThrow();
