@@ -52,5 +52,9 @@ export type ParallelOptions = {
      * @param attempts 这是第几次重试
      * @returns 如果该函数返回 `true`，则不再进行重试，而是执行下一个任务
      */
-    onProgressRetry?: (index: number, error: Error, attempts: number) => boolean | void;
+    onProgressRetry?: (
+        index: number,
+        error: Error,
+        attempts: number
+    ) => boolean | void;
 };
