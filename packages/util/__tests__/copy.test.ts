@@ -854,4 +854,341 @@ describe('@curong/util/copy', () => {
         expect(obj.arrVal).toBe(1);
         expect(cfg.arrVal).toBe(2);
     });
+
+    test('测试33', () => {
+        expect(copy([])).toEqual([]);
+        expect(copy([12, null])).toEqual([12, null]);
+        expect(copy([[2], [3]])).toEqual([[2], [3]]);
+
+        // 类数组
+        expect(copy([1, , 2, , , 3])).toEqual([1, , 2, , , 3]);
+        expect(
+            copy({
+                0: '0',
+                2: '2',
+                4: '4',
+                length: 3
+            })
+        ).toEqual({
+            0: '0',
+            2: '2',
+            4: '4',
+            length: 3
+        });
+    });
+
+    test('测试34', () => {
+        expect(copy(0n)).toBe(0n);
+        expect(copy(-0n)).toBe(-0n);
+        expect(copy(BigInt(1n))).toEqual(BigInt(1n));
+        expect(copy(Object(1n))).toEqual(Object(1n));
+        expect(copy(new Object(1n))).toEqual(new Object(1n));
+    });
+
+    test('测试35', () => {
+        expect(copy(true)).toEqual(true);
+        expect(copy(false)).toEqual(false);
+        expect(copy(Boolean(false))).toEqual(Boolean(false));
+        expect(copy(new Boolean(false))).toEqual(new Boolean(false));
+        expect(copy(Object(false))).toEqual(Object(false));
+        expect(copy(new Object(false))).toEqual(new Object(false));
+    });
+
+    test('测试36', () => {
+        expect(copy(new ArrayBuffer(1))).toEqual(new ArrayBuffer(1));
+        expect(copy(new Int8Array())).toEqual(new Int8Array());
+        expect(copy(new Uint8Array())).toEqual(new Uint8Array());
+        expect(copy(new Uint8ClampedArray())).toEqual(new Uint8ClampedArray());
+        expect(copy(new Int16Array())).toEqual(new Int16Array());
+        expect(copy(new Uint16Array())).toEqual(new Uint16Array());
+        expect(copy(new Int32Array())).toEqual(new Int32Array());
+        expect(copy(new Uint32Array())).toEqual(new Uint32Array());
+        expect(copy(new Float32Array())).toEqual(new Float32Array());
+        expect(copy(new Float64Array())).toEqual(new Float64Array());
+        expect(copy(new BigInt64Array())).toEqual(new BigInt64Array());
+        expect(copy(new BigUint64Array())).toEqual(new BigUint64Array());
+        // expect(copy(new SharedArrayBuffer(1))).toEqual(new SharedArrayBuffer(1));
+        expect(copy(new DataView(new ArrayBuffer(1)))).toEqual(
+            new DataView(new ArrayBuffer(1))
+        );
+        expect(copy(Buffer.from('x'))).toEqual(Buffer.from('x'));
+    });
+
+    test('测试37', () => {
+        expect(copy(new Map())).toEqual(new Map());
+        expect(copy(new Set())).toEqual(new Set());
+    });
+
+    test('测试38', () => {
+        expect(copy(new Date(0))).toEqual(new Date(0));
+    });
+
+    test('测试39', () => {
+        // expect(copy(document)).toEqual(document);
+        // expect(copy(document.body)).toEqual(document.body);
+        // const iframe = document.createElement('iframe');
+        // document.body.append(iframe);
+        // const iframeDocument = iframe.contentDocument!;
+        // const input = iframeDocument.createElement('input');
+        // iframeDocument.body.append(input);
+        // expect(copy(input)).toEqual(input);
+        // expect(copy(document.querySelectorAll('body'))).toEqual(
+        //     document.querySelectorAll('body')
+        // );
+        // expect(copy(new Text())).toEqual(new Text());
+        // expect(copy(document.createTextNode(''))).toEqual(
+        //     document.createTextNode('')
+        // );
+        // expect(copy(window)).toEqual(window);
+    });
+
+    test('测试40', () => {
+        expect(
+            copy(new AggregateError([new Error('some error')], 'Hello'))
+        ).toEqual(new AggregateError([new Error('some error')], 'Hello'));
+
+        expect(copy(new Error())).toEqual(new Error());
+        expect(copy(new TypeError())).toEqual(new TypeError());
+        expect(copy(new SyntaxError())).toEqual(new SyntaxError());
+        expect(copy(new EvalError())).toEqual(new EvalError());
+        expect(copy(new ReferenceError())).toEqual(new ReferenceError());
+        expect(copy(new RangeError())).toEqual(new RangeError());
+
+        expect(copy(new DOMException())).toEqual(new DOMException());
+
+        try {
+            decodeURIComponent('%');
+        } catch (e: any) {
+            expect(copy(e)).toEqual(e);
+        }
+    });
+
+    test('测试41', () => {
+        expect(copy(new Blob())).toEqual(new Blob());
+        expect(copy(new File(['x'], 'test'))).toEqual(new File(['x'], 'test'));
+        expect(copy(new FileReader())).toEqual(new FileReader());
+
+        // const dataTransfer = new DataTransfer();
+        // const file1 = new File(["内容1"], "file1.txt", { type: "text/plain" });
+        // const file2 = new File(["内容2"], "file2.txt", { type: "text/plain" });
+        // dataTransfer.items.add(file1);
+        // dataTransfer.items.add(file2);
+        // const fileList = dataTransfer.files;
+        // expect(copy(fileList)).toEqual(fileList);
+    });
+
+    test('测试42', () => {
+        expect(copy(new FormData())).toEqual(new FormData());
+    });
+
+    test('测试43', async () => {
+        (function () {
+            expect(copy(arguments)).toEqual(arguments);
+        })();
+
+        expect(copy(new Function('return 1'))()).toBe(
+            new Function('return 1')()
+        );
+
+        expect(await copy(new Function('return async () => 1'))()()).toBe(
+            await new Function('return async () => 1')()()
+        );
+
+        expect(
+            copy(function fn() {
+                return 1;
+            })()
+        ).toBe(
+            (function fn() {
+                return 1;
+            })()
+        );
+
+        expect(
+            copy(async function fn() {
+                return 1;
+            })()
+        ).toEqual(
+            (async function fn() {
+                return 1;
+            })()
+        );
+
+        expect(copy(() => 1)()).toBe((() => 1)());
+        expect(await copy(async () => 1)()).toBe(await (async () => 1)());
+
+        class A {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            greet() {
+                console.log(`Hello`);
+            }
+        }
+        expect(copy(new A())).toEqual(new A());
+
+        expect(copy(Object(Function('return 1')))()).toBe(
+            Object(Function('return 1'))()
+        );
+        expect(copy(Object(new Function('return 1')))()).toBe(
+            Object(new Function('return 1'))()
+        );
+
+        expect(copy(Object(() => 1))()).toBe(Object(() => 1)());
+
+        expect(
+            copy(
+                Object(function () {
+                    return 1;
+                })
+            )()
+        ).toBe(
+            Object(function () {
+                return 1;
+            })()
+        );
+
+        const fn1 = () => 1;
+        const fn2 = fn1.bind(null);
+        expect(copy(fn1())).toEqual(fn1());
+        expect(copy(fn2())).toEqual(fn2());
+
+        expect(copy(''.toString)).toEqual(''.toString);
+    });
+
+    test('测试44', () => {
+        function* test1() {}
+        expect(copy(test1).toString()).toBe(test1.toString());
+
+        async function* test2() {}
+        expect(copy(test2).toString()).toBe(test2.toString());
+
+        function* test3(): Generator<number> {
+            let i = 0;
+            while (i < 5) {
+                yield i++;
+            }
+        }
+        expect(Array.from(copy(test3())())).toEqual([0, 1, 2, 3, 4]);
+    });
+
+    test('测试45', () => {
+        const syncIter = {
+            // 定义迭代器
+            [Symbol.iterator]() {
+                let count = 0; // 计数器
+                const max = 5; // 迭代的最大值
+
+                // 返回一个迭代器对象
+                return {
+                    next() {
+                        if (count < max) {
+                            return { value: count++, done: false }; // 返回当前值和 done 状态
+                        } else {
+                            return { done: true }; // 迭代结束
+                        }
+                    }
+                };
+            }
+        };
+
+        expect(copy(syncIter)).toEqual(syncIter);
+        expect(copy(syncIter)[Symbol.iterator].toString()).toEqual(
+            syncIter[Symbol.iterator].toString()
+        );
+
+        const asyncIter = {
+            async *[Symbol.asyncIterator]() {
+                for (let i = 0; i < 5; i++) {
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    yield i;
+                }
+            }
+        };
+
+        expect(copy(asyncIter)[Symbol.asyncIterator].toString()).toEqual(
+            asyncIter[Symbol.asyncIterator].toString()
+        );
+    });
+
+    test('测试46', () => {
+        expect(copy(Number.MAX_VALUE)).toEqual(Number.MAX_VALUE);
+        expect(copy(-Number.MAX_VALUE)).toEqual(-Number.MAX_VALUE);
+        expect(copy(Number.MIN_VALUE)).toEqual(Number.MIN_VALUE);
+        expect(copy(-Number.MIN_VALUE)).toEqual(-Number.MIN_VALUE);
+        expect(copy(Number.MIN_SAFE_INTEGER)).toEqual(Number.MIN_SAFE_INTEGER);
+        expect(copy(-Number.MIN_SAFE_INTEGER)).toEqual(
+            -Number.MIN_SAFE_INTEGER
+        );
+        expect(copy(Number.MAX_SAFE_INTEGER)).toEqual(Number.MAX_SAFE_INTEGER);
+        expect(copy(-Number.MAX_SAFE_INTEGER)).toEqual(
+            -Number.MAX_SAFE_INTEGER
+        );
+
+        expect(copy(Infinity)).toEqual(Infinity);
+        expect(copy(-Infinity)).toEqual(-Infinity);
+        expect(copy(NaN)).toEqual(NaN);
+        expect(copy(Number.NaN)).toEqual(Number.NaN);
+
+        expect(copy(0)).toEqual(0);
+        expect(copy(-0)).toEqual(-0);
+        expect(copy(1)).toEqual(1);
+        expect(copy(1.1)).toEqual(1.1);
+        expect(copy(-1)).toEqual(-1);
+        expect(copy(-1.1)).toEqual(-1.1);
+
+        expect(copy(Number(1))).toEqual(Number(1));
+        expect(copy(new Number(1))).toEqual(new Number(1));
+        expect(copy(Object(1))).toEqual(Object(1));
+        expect(copy(new Object(1))).toEqual(new Object(1));
+    });
+
+    test('测试47', () => {
+        expect(copy({})).toEqual({});
+        expect(copy({ length: 0 })).toEqual({ length: 0 });
+        expect(copy({ size: 0 })).toEqual({ size: 0 });
+        expect(
+            copy({
+                [Symbol.for('xxx')]: 'xxx'
+            })
+        ).toEqual({
+            [Symbol.for('xxx')]: 'xxx'
+        });
+        expect(copy(Object.create(null))).toEqual(Object.create(null));
+    });
+
+    test('测试48', () => {
+        const t = { then: () => 1 };
+        expect(copy(t).then.toString()).toEqual(t.then.toString());
+    });
+
+    test('测试49', () => {
+        expect(copy(Function.prototype)).toEqual(Function.prototype);
+        expect(copy(Object.prototype)).toEqual(Object.prototype);
+    });
+
+    test('测试50', () => {
+        expect(copy(/\d/)).toEqual(/\d/);
+        expect(copy(new RegExp('\\d'))).toEqual(/\d/);
+    });
+
+    test('测试51', () => {
+        expect(copy('')).toEqual('');
+        expect(copy(String(''))).toEqual(String(''));
+        expect(copy(new String(''))).toEqual(new String(''));
+    });
+
+    test('测试52', () => {
+        expect(copy(Symbol('x'))).not.toEqual(Symbol('x'));
+        expect(copy(Object(Symbol('x')))).toEqual(Object(Symbol('x')));
+    });
+
+    test('测试53', () => {
+        expect(copy(new URL('https://www.q.com'))).toEqual(
+            new URL('https://www.q.com')
+        );
+        expect(copy(new URLSearchParams())).toEqual(new URLSearchParams());
+    });
 });
