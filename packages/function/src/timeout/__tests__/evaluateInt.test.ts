@@ -18,29 +18,31 @@ describe('@curong/function/evaluateInt', () => {
 
     test('测试2', () => {
         expect(evaluateInt(() => 10)).toBe(10);
-        expect(evaluateInt(() => ({ start: 0, end: 10 }))).toBeTruthy();
-        expect(evaluateInt(() => [{ start: 0, end: 10 }, 20, 30])).toBeTruthy();
+        expect(evaluateInt(() => ({ start: 0, end: 10 }))).toBeDefined();
+        expect(
+            evaluateInt(() => [{ start: 0, end: 10 }, 20, 30])
+        ).toBeDefined();
     });
 
     test('测试3', () => {
         expect(evaluateInt([10])).toBe(10);
-        expect(evaluateInt([10, 20, 30])).toBeTruthy();
-        expect(evaluateInt([10, 20, 30, { start: 0, end: 10 }])).toBeTruthy();
+        expect(evaluateInt([10, 20, 30])).toBeDefined();
+        expect(evaluateInt([10, 20, 30, { start: 0, end: 10 }])).toBeDefined();
 
         expect(evaluateInt(() => [10])).toBe(10);
-        expect(evaluateInt(() => [10, 20, 30])).toBeTruthy();
+        expect(evaluateInt(() => [10, 20, 30])).toBeDefined();
         expect(
             evaluateInt(() => [10, 20, 30, { start: 0, end: 10 }])
-        ).toBeTruthy();
+        ).toBeDefined();
     });
 
     test('测试4', () => {
         expect(evaluateInt({ start: 0 })).toBe(0);
-        expect(evaluateInt({ end: 10 })).toBeTruthy();
-        expect(evaluateInt({ start: 0, end: 10 })).toBeTruthy();
-        expect(evaluateInt({ start: 10, end: 10 })).toBeTruthy();
-        expect(evaluateInt({ start: -10, end: 10 })).toBeTruthy();
-        expect(evaluateInt({ start: 10, end: -10 })).toBeTruthy();
+        expect(evaluateInt({ end: 10 })).toBeDefined();
+        expect(evaluateInt({ start: 0, end: 10 })).toBeDefined();
+        expect(evaluateInt({ start: 10, end: 10 })).toBeDefined();
+        expect(evaluateInt({ start: -10, end: 10 })).toBeDefined();
+        expect(evaluateInt({ start: 10, end: -10 })).toBeDefined();
         expect(() => evaluateInt({ start: NaN, end: 10 })).toThrow();
         expect(() => evaluateInt({ start: 10, end: Infinity })).toThrow();
         expect(() => evaluateInt({ start: Infinity, end: Infinity })).toThrow();
@@ -48,15 +50,15 @@ describe('@curong/function/evaluateInt', () => {
         expect(() => evaluateInt({ start: NaN, end: Infinity })).toThrow();
         expect(() => evaluateInt({ start: NaN, end: NaN })).toThrow();
         expect(() => evaluateInt({ start: 0, end: NaN })).toThrow();
-        expect(evaluateInt({ start: 0, end: 10 })).toBeTruthy();
-        expect(evaluateInt(() => ({ start: 0, end: 10 }))).toBeTruthy();
+        expect(evaluateInt({ start: 0, end: 10 })).toBeDefined();
+        expect(evaluateInt(() => ({ start: 0, end: 10 }))).toBeDefined();
     });
 
     test('测试5', () => {
         expect(evaluateInt('1')).toBe(1);
         expect(evaluateInt('1000')).toBe(1000);
         expect(() => evaluateInt('NaN')).toThrow();
-        expect(() => evaluateInt('xxx')).toBeTruthy();
+        expect(() => evaluateInt('xxx')).toBeDefined();
     });
 
     test('测试5', () => {
