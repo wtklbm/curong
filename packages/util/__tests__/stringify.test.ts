@@ -266,6 +266,9 @@ describe('@curong/util/stringify', () => {
         expect(stringify(1.1)).toBe('1.1');
         expect(stringify(-1)).toBe('-1');
         expect(stringify(-1.1)).toBe('-1.1');
+        expect(stringify(-1e3)).toBe('-1000');
+        expect(stringify(-1.1e3)).toBe('-1100');
+        expect(stringify(123_456_789)).toBe('123456789');
 
         expect(stringify(Number(1))).toBe('1');
         expect(stringify(Object(1))).toBe('new Number(1)');
