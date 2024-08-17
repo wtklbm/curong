@@ -94,39 +94,9 @@ const getSymbolDescription = (s: symbol): string | null => {
 };
 
 const stringifyNumber = (value: number) => {
-    switch (value) {
-        case 0:
-            return 1 / value === Number.NEGATIVE_INFINITY ? '-0' : '0';
-
-        case Number.EPSILON:
-            return '2.220446049250313e-16';
-        case -Number.EPSILON:
-            return '-2.220446049250313e-16';
-
-        case Number.MAX_SAFE_INTEGER:
-            return '9007199254740991';
-        case Number.MIN_SAFE_INTEGER:
-            return '-9007199254740991';
-
-        case Number.MAX_VALUE:
-            return '1.7976931348623157e+308';
-        case -Number.MAX_VALUE:
-            return '-1.7976931348623157e+308';
-
-        case Number.MIN_VALUE:
-            return '5e-324';
-        case -Number.MIN_VALUE:
-            return '-5e-324';
-
-        case Number.POSITIVE_INFINITY:
-            return 'Infinity';
-
-        case Number.NEGATIVE_INFINITY:
-            return '-Infinity';
-
-        default:
-            return Number.isNaN(value) ? 'NaN' : String(value);
-    }
+    return value === 0 && 1 / value === Number.NEGATIVE_INFINITY
+        ? '-0'
+        : String(value);
 };
 
 const constructorName = (value: unknown) => {
@@ -529,8 +499,9 @@ type StringifyOptions = {
  * - `ArrayBuffer`
  * - `SharedArrayBuffer`
  * - `DataView`
- * - `WeakMap`
  * - `WeakSet`
+ * - `WeakMap`
+ * - `WeakRef`
  * - `FormData`
  * - `Blob`
  * - `File`
