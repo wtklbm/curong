@@ -384,11 +384,6 @@ export function stringifyInternal(
             )})`;
         }
 
-        case 'Event':
-        case 'CustomEvent': {
-            return `new ${constructorName(value)}("${value.type}")`;
-        }
-
         case 'URL':
         case 'URLSearchParams':
             return `new ${constructorName(value)}(${strInter(
@@ -541,6 +536,8 @@ type StringifyOptions = {
  * - `File`
  * - `FileReader`
  * - `DataTransfer`
+ * - `Event`
+ * - `CustomEvent`
  */
 export function stringify<T>(value: T, options?: StringifyOptions): string {
     const opts = {
@@ -585,6 +582,8 @@ export function stringify<T>(value: T, options?: StringifyOptions): string {
  * - `File`
  * - `FileReader`
  * - `DataTransfer`
+ * - `Event`
+ * - `CustomEvent`
  */
 export async function asyncStringify<T>(
     value: T,
