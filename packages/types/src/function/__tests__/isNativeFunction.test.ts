@@ -30,7 +30,9 @@ describe('@curong/types/isNativeFunction', () => {
     });
 
     test('测试4', () => {
-        expect(isNativeFunction(Object.prototype.toString.bind(null))).toBe(false);
+        expect(isNativeFunction(Object.prototype.toString.bind(null))).toBe(
+            false
+        );
         expect(isNativeFunction(Function.toString.bind(null))).toBe(false);
     });
 
