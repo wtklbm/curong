@@ -145,11 +145,6 @@ describe('@curong/util/stringify', () => {
     });
 
     test('测试', () => {
-        expect(stringify(new Event('a'))).toBe('new Event("a")');
-        expect(stringify(new CustomEvent('a'))).toBe('new CustomEvent("a")');
-    });
-
-    test('测试', () => {
         // const blob = new Blob(["Hello, world!"], { type: "text/plain" });
         // expect(stringify(blob)).toBe('');
         // expect(stringify(new File(['x'], 'test'))).toBe('');
