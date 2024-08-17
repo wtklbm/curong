@@ -341,7 +341,7 @@ function recursiveCopy<T extends object>(
  * - 自定义数据类型: 还没有办法将它们一一实现
  * - `ECMAScript` 原生函数: 源代码不可见
  * - `Promise`: 没有相关的 `toString` 方法
- * - `WeakSet` 和 `WeakMap`: 不支持迭代器模式，无法迭代
+ * - `WeakSet`、`WeakMap` 和 `WeakRef`: 不支持迭代器模式，无法迭代
  * - `Event`
  * - `CustomEvent`
  * - `DataTransfer`
