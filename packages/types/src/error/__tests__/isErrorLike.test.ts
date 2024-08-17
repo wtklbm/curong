@@ -6,6 +6,5 @@ describe('@curong/types/isErrorLike', () => {
         expect(isErrorLike(new TypeError(''))).toBe(true);
     });
 
-    test('测试2', () => {
-    });
+    test('测试2', () => {});
 });
