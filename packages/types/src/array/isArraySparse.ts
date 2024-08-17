@@ -10,13 +10,13 @@ import isArray from './isArray';
  * @example
  *
  * ```typescript
-* const arr1 = [1, 2, , 4]; // 稀疏数组
-* const arr2 = [1, 2, 3, 4]; // 非稀疏数组
-*
-* console.log(isArraySparse(arr1)); // true
-* console.log(isArraySparse(arr2)); // false
-* ```
-*/
+ * const arr1 = [1, 2, , 4]; // 稀疏数组
+ * const arr2 = [1, 2, 3, 4]; // 非稀疏数组
+ *
+ * console.log(isArraySparse(arr1)); // true
+ * console.log(isArraySparse(arr2)); // false
+ * ```
+ */
 export default function isArraySparse<T>(value: unknown): value is Array<T> {
     if (!isArray(value)) {
         return false;
