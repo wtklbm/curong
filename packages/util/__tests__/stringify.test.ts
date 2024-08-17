@@ -97,7 +97,7 @@ describe('@curong/util/stringify', () => {
     });
 
     test('测试', () => {
-        expect(stringify(new Date(), {nearestDate: true})).toBe('new Date()');
+        expect(stringify(new Date(), { nearestDate: true })).toBe('new Date()');
         expect(stringify(new Date('2020-01-01'))).toBe(
             'new Date("2020-01-01T00:00:00.000Z")'
         );
@@ -705,7 +705,11 @@ describe('@curong/util/stringify', () => {
         });
         expect(stringify(instance2)).toEqual('hello2');
 
-        const instance3 = { [toStringMethod]: () => { throw new Error('hello3'); } };
+        const instance3 = {
+            [toStringMethod]: () => {
+                throw new Error('hello3');
+            }
+        };
         const stringified3 = stringify(instance3);
         expect(stringified3.replace(/[\s\n]+/g, ' ')).toEqual(
             '{[Symbol.for("__TO_STRING_METHOD__")]:() => { throw new Error(\'hello3\'); }}'
