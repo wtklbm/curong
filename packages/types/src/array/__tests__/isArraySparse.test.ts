@@ -88,7 +88,7 @@ describe('@curong/types/isArraySparse', () => {
             2: '2',
             4: '4',
             value: 'test',
-            length: 3,
+            length: 3
         };
 
         expect(isArraySparse(sparseArray)).toBe(false);
