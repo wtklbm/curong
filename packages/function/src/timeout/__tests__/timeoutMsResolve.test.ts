@@ -17,9 +17,7 @@ describe('@curong/function/timeoutMsResolve', () => {
         expect(timeoutMsResolve(2147483647)).toBe(2147483647);
         expect(timeoutMsResolve('1000')).toBe(1000);
         expect(timeoutMsResolve(() => 1)).toBe(1);
-        expect(
-            timeoutMsResolve(() => ({ start: 0, end: 10 }))
-        ).toBeTruthy();
+        expect(timeoutMsResolve(() => ({ start: 0, end: 10 }))).toBeTruthy();
         expect(timeoutMsResolve([1])).toBe(1);
         expect(timeoutMsResolve([{ start: 10 }])).toBeTruthy();
         expect(timeoutMsResolve([{ end: 10 }])).toBeTruthy();
