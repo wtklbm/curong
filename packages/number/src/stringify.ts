@@ -22,17 +22,7 @@
  * ```
  */
 export default function stringify(value: number): string {
-    switch (value) {
-        case 0:
-            return Object.is(value, -0) ? '-0' : '0';
-
-        case Number.POSITIVE_INFINITY:
-            return 'Infinity';
-
-        case Number.NEGATIVE_INFINITY:
-            return '-Infinity';
-
-        default:
-            return value === value ? String(value) : 'NaN';
-    }
+    return value === 0 && 1 / value === Number.NEGATIVE_INFINITY
+        ? '-0'
+        : String(value);
 }
