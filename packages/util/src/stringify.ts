@@ -118,7 +118,7 @@ export function stringifyInternal(
     };
 
     if (isTypeofObject(value) && previousValues.indexOf(value) !== -1) {
-        return '[cyclic]';
+        return '[Circular]';
     }
 
     if (hasAsyncToStringMethod(value)) {
@@ -493,7 +493,7 @@ type StringifyOptions = {
  * @note
  *
  * - 该方法并不完全可信，可能丢失特定的属性
- * - 如果出现循环引用，则会表示为 `[cyclic]`
+ * - 如果出现循环引用，则会表示为 `[Circular]`
  *
  * 已知的不支持的类型:
  * - `ArrayBuffer`
@@ -540,7 +540,7 @@ export function stringify<T>(value: T, options?: StringifyOptions): string {
  * @note
  *
  * - 该方法并不完全可信，可能丢失特定的属性
- * - 如果出现循环引用，则会表示为 `[cyclic]`
+ * - 如果出现循环引用，则会表示为 `[Circular]`
  *
  * 已知的不支持的类型:
  * - `ArrayBuffer`
