@@ -1,32 +1,43 @@
 import { format } from '@curong/term';
-import { isArray, isFunction, isTypeofObject } from '@curong/types';
+import {
+    isArray,
+    isFunction,
+    isPlainObject,
+    isTypeofObject
+} from '@curong/types';
 
-const safeStringifyReplacer = (seen: WeakSet<WeakKey> = new WeakSet()) => {
-    return (_: string, value: any) => {
-        if (typeof value?.toJSON === 'function') {
-            value = value.toJSON();
-        }
+const safeStringifyReplacer = (object: any) => {
+    const seen: WeakMap<object, string[]> = new WeakMap();
 
+    const internal = (value: any, path: string[] = []) => {
         if (!isTypeofObject(value)) {
             return value;
         }
 
-        if (seen.has(value)) {
-            return '[Circular]';
+        const existingPath = seen.get(value);
+        if (existingPath) {
+            return `[Circular *${existingPath.join('.')}]`;
         }
 
-        seen.add(value);
+        seen.set(value, path);
 
-        const newValue: any = isArray(value) ? [] : {};
+        const isA = isArray(value);
+        let newValue: any  = value;
 
-        for (const [k, v] of Object.entries(value)) {
-            newValue[k] = safeStringifyReplacer(seen)(k, v);
+        if (isA || isPlainObject(value)) {
+            newValue = isA ? [] : {};
+
+            for (const [k, v] of Object.entries(value)) {
+                newValue[k] = internal(v, path.concat(k));
+            }
         }
 
         seen.delete(value);
 
         return newValue;
     };
+
+    return internal(object);
 };
 
 /**
@@ -58,11 +69,9 @@ const safeStringifyReplacer = (seen: WeakSet<WeakKey> = new WeakSet()) => {
  * 如果该参数没有提供或者为 `null`，将没有空格。
  *
  * @returns 返回一个 `JSON` 格式的字符串
+ *  - 如果对象中出现了循环引用，则会通过 `[Circular *]` 来表示
  * @throw
- *
- * - 对包含循环引用的对象 (对象之间相互引用，形成无限循环) 执行此方法，会抛出异常
- * - 当尝试去转换 `BigInt` 类型的值会抛出异常
- *
+ *  - 当尝试去转换 `BigInt` 类型的值会抛出异常
  * @example
  *
  * ```typescript
@@ -97,7 +106,7 @@ const safeStringifyReplacer = (seen: WeakSet<WeakKey> = new WeakSet()) => {
  *   - `Date` 日期调用了 `toJSON()` 将其转换为了 `string` 字符串，
  *     (同 `Date.toISOString()`) 因此会被当做字符串处理。
  *   - `NaN` 和 `Infinity` 格式的数值，以及 `null`，都会被当做 `null`。
- *   - 其他类型的对象，包括 `Map/Set/WeakMap/WeakSet`，仅会序列化可枚举的属性。
+ *   - 其他类型的对象，包括 `Map/Set/WeakMap/WeakSet/WeakRef`，仅会序列化可枚举的属性。
  */
 export default function stringify(
     value: any,
@@ -111,7 +120,7 @@ export default function stringify(
 
     if (isFunction(replacer)) {
         handler = (k: string, v: any) => {
-            return replacer(k, safeStringifyReplacer()(k, v));
+            return replacer(k, safeStringifyReplacer(v));
         };
     } else if (isArray(replacer)) {
         const memo = new Set(replacer);
@@ -122,11 +131,11 @@ export default function stringify(
             }
 
             if (!memo.has(k)) {
-                return safeStringifyReplacer()(k, v);
+                return safeStringifyReplacer(v);
             }
         };
     } else {
-        handler = safeStringifyReplacer();
+        handler = (k: string, v: any) => safeStringifyReplacer(v);
     }
 
     return new Promise(resolve => {
