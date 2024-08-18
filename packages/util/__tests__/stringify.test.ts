@@ -328,22 +328,22 @@ describe('@curong/util/stringify', () => {
     });
 
     test('测试', () => {
-        const cyclic: any = { a: 1, b: 2, c: 3 };
-        cyclic.b = cyclic;
-        const repr = stringify(cyclic);
+        const Circular: any = { a: 1, b: 2, c: 3 };
+        Circular.b = Circular;
+        const repr = stringify(Circular);
         expect(repr).toContain('"a"');
         expect(repr).toContain('"b"');
         expect(repr).toContain('"c"');
-        expect(repr).toContain('[cyclic]');
-        expect(repr).toEqual('{"a":1,"b":[cyclic],"c":3}');
+        expect(repr).toContain('[Circular]');
+        expect(repr).toEqual('{"a":1,"b":[Circular],"c":3}');
     });
 
     test('测试', () => {
-        const cyclic: any[] = [1, 2, 3];
-        cyclic.push(cyclic);
-        cyclic.push(4);
-        const repr = stringify(cyclic);
-        expect(repr).toEqual('[1,2,3,[cyclic],4]');
+        const Circular: any[] = [1, 2, 3];
+        Circular.push(Circular);
+        Circular.push(4);
+        const repr = stringify(Circular);
+        expect(repr).toEqual('[1,2,3,[Circular],4]');
     });
 
     test('测试', () => {
@@ -381,22 +381,22 @@ describe('@curong/util/stringify', () => {
     });
 
     test('测试', () => {
-        const cyclic: Set<any> = new Set([1, 2, 3]);
-        cyclic.add(cyclic);
-        cyclic.add(4);
-        const repr = stringify(cyclic);
-        expect(repr).toEqual('new Set([1,2,3,[cyclic],4])');
+        const Circular: Set<any> = new Set([1, 2, 3]);
+        Circular.add(Circular);
+        Circular.add(4);
+        const repr = stringify(Circular);
+        expect(repr).toEqual('new Set([1,2,3,[Circular],4])');
     });
 
     test('测试', () => {
-        const cyclic: Map<any, any> = new Map();
-        cyclic.set(1, 2);
-        cyclic.set(3, cyclic);
-        cyclic.set(cyclic, 4);
-        cyclic.set(5, 6);
-        const repr = stringify(cyclic);
+        const Circular: Map<any, any> = new Map();
+        Circular.set(1, 2);
+        Circular.set(3, Circular);
+        Circular.set(Circular, 4);
+        Circular.set(5, 6);
+        const repr = stringify(Circular);
         expect(repr).toEqual(
-            'new Map([[1,2],[3,[cyclic]],[[cyclic],4],[5,6]])'
+            'new Map([[1,2],[3,[Circular]],[[Circular],4],[5,6]])'
         );
     });
 
@@ -803,7 +803,7 @@ describe('@curong/util/stringify', () => {
         const nestedPromises = Promise.resolve(resolvedValue);
         resolvedValueChildLvl1.a1 = nestedPromises;
         expect(await asyncStringify(nestedPromises)).toEqual(
-            'Promise.resolve({"a":Promise.resolve({"a1":[cyclic]}),"b":{"b1":Promise.resolve({"a1":[cyclic]})}})'
+            'Promise.resolve({"a":Promise.resolve({"a1":[Circular]}),"b":{"b1":Promise.resolve({"a1":[Circular]})}})'
         );
     });
 
