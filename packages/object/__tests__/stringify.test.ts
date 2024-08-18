@@ -10,6 +10,10 @@ describe('@curong/string/stringify', () => {
         stringify(s).catch(e => {
             expect(e).toBeTruthy();
         });
+
+        stringify(BigInt(0n)).catch(e => {
+            expect(e).toBeTruthy();
+        });
     });
 
     test('测试2', async () => {
@@ -45,7 +49,7 @@ describe('@curong/string/stringify', () => {
         };
 
         expect(await stringify(fixture)).toEqual(
-            '{"a":true,"b":"[Circular]","c":["[Circular]","[Circular]"],"d":{"e":["[Circular]","[Circular]"]}}'
+            '{"a":true,"b":"[Circular *]","c":["[Circular *]","[Circular *]"],"d":{"e":["[Circular *]","[Circular *]"]}}'
         );
     });
 
@@ -70,7 +74,7 @@ describe('@curong/string/stringify', () => {
         fixture.push(fixture, fixture);
 
         expect(await stringify(fixture)).toEqual(
-            '[1,"[Circular]","[Circular]"]'
+            '[1,"[Circular *]","[Circular *]"]'
         );
     });
 
@@ -82,7 +86,7 @@ describe('@curong/string/stringify', () => {
         fixture.b = fixture;
 
         expect(await stringify([fixture, fixture])).toEqual(
-            '[{"a":true,"b":"[Circular]"},{"a":true,"b":"[Circular]"}]'
+            '[{"a":true,"b":"[Circular *0]"},{"a":true,"b":"[Circular *1]"}]'
         );
     });
 
@@ -94,7 +98,7 @@ describe('@curong/string/stringify', () => {
         fixture.b = fixture;
 
         expect(await stringify({ x: fixture, y: fixture })).toEqual(
-            '{"x":{"a":true,"b":"[Circular]"},"y":{"a":true,"b":"[Circular]"}}'
+            '{"x":{"a":true,"b":"[Circular *x]"},"y":{"a":true,"b":"[Circular *y]"}}'
         );
     });
 
@@ -124,7 +128,7 @@ describe('@curong/string/stringify', () => {
         fixture.a.b.c.d = fixture.a;
 
         expect(await stringify(fixture)).toEqual(
-            '{"a":{"b":{"c":{"d":"[Circular]"}}}}'
+            '{"a":{"b":{"c":{"d":"[Circular *a]"}}}}'
         );
     });
 
@@ -143,7 +147,7 @@ describe('@curong/string/stringify', () => {
         };
 
         expect(await stringify(fixture)).toEqual(
-            '{"a":{"x":1},"b":{"c":{"x":1},"d":{"y":2,"self":"[Circular]"}},"e":{"y":2,"self":"[Circular]"}}'
+            '{"a":{"x":1},"b":{"c":{"x":1},"d":{"y":2,"self":"[Circular *b.d]"}},"e":{"y":2,"self":"[Circular *e]"}}'
         );
     });
 
@@ -160,7 +164,7 @@ describe('@curong/string/stringify', () => {
         fixture.a.b.c.e = fixture.a.b;
 
         expect(await stringify(fixture)).toEqual(
-            '{"a":{"b":{"c":{"d":"[Circular]","e":"[Circular]"}}}}'
+            '{"a":{"b":{"c":{"d":"[Circular *a]","e":"[Circular *a.b]"}}}}'
         );
     });
 
@@ -173,7 +177,7 @@ describe('@curong/string/stringify', () => {
         fixture.self = fixture;
 
         expect(await stringify(fixture)).toEqual(
-            '{"a":1,"b":2,"self":"[Circular]"}'
+            '{"a":1,"b":2,"self":"[Circular *]"}'
         );
     });
 
@@ -213,7 +217,7 @@ describe('@curong/string/stringify', () => {
         fixture.a.b.c.f = fixture.a.b.c;
 
         expect(await stringify(fixture)).toEqual(
-            '{"a":{"b":{"c":{"d":"[Circular]","e":"[Circular]","f":"[Circular]"}}}}'
+            '{"a":{"b":{"c":{"d":"[Circular *a]","e":"[Circular *a.b]","f":"[Circular *a.b.c]"}}}}'
         );
     });
 
@@ -223,7 +227,7 @@ describe('@curong/string/stringify', () => {
         fixture.push(fixture, [fixture, fixture]);
 
         expect(await stringify(fixture)).toEqual(
-            '[[1,2,3],"[Circular]",["[Circular]","[Circular]"]]'
+            '[[1,2,3],"[Circular *]",["[Circular *]","[Circular *]"]]'
         );
     });
 
@@ -240,7 +244,7 @@ describe('@curong/string/stringify', () => {
         fixture.a.b.c.grandparent = fixture.a;
 
         expect(await stringify(fixture)).toEqual(
-            '{"a":{"b":{"c":{"parent":"[Circular]","grandparent":"[Circular]"}}}}'
+            '{"a":{"b":{"c":{"parent":"[Circular *a.b]","grandparent":"[Circular *a]"}}}}'
         );
     });
 
@@ -254,7 +258,7 @@ describe('@curong/string/stringify', () => {
         ];
 
         expect(await stringify(fixture)).toEqual(
-            '[{"b":2,"c":{"a":1,"self":"[Circular]"}},{"d":3,"e":{"a":1,"self":"[Circular]"}}]'
+            '[{"b":2,"c":{"a":1,"self":"[Circular *0.c]"}},{"d":3,"e":{"a":1,"self":"[Circular *1.e]"}}]'
         );
     });
 
@@ -299,7 +303,7 @@ describe('@curong/string/stringify', () => {
 
         const expected = JSON.stringify({
             date: '2024-06-12T16:06:46.442Z',
-            self: '[Circular]'
+            self: '[Circular *]'
         });
         expect(await stringify(fixture)).toEqual(expected);
     });
@@ -331,7 +335,7 @@ describe('@curong/string/stringify', () => {
             }
         };
 
-        const expected = JSON.stringify({ b: 2, self: '[Circular]' });
+        const expected = JSON.stringify({ b: 2, self: '[Circular *]' });
         expect(await stringify(fixture)).toEqual(expected);
     });
 
