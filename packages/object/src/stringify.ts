@@ -6,7 +6,13 @@ import {
     isTypeofObject
 } from '@curong/types';
 
-const safeStringifyReplacer = (object: any) => {
+import type { StringifyOptions } from './types';
+
+const safeStringifyReplacer = (
+    object: any,
+    compare: StringifyOptions['compare'],
+    cycles: StringifyOptions['cycles'] = true
+) => {
     const seen: WeakMap<object, string[]> = new WeakMap();
 
     const internal = (value: any, path: string[] = []) => {
@@ -15,8 +21,15 @@ const safeStringifyReplacer = (object: any) => {
         }
 
         const existingPath = seen.get(value);
+
         if (existingPath) {
-            return `[Circular *${existingPath.join('.')}]`;
+            const path = existingPath.join('.');
+
+            if (cycles) {
+                return `[Circular *${path}]`;
+            } else {
+                throw new EvalError(`[stringify] 在 ${path} 出现了循环引用`);
+            }
         }
 
         seen.set(value, path);
@@ -27,8 +40,20 @@ const safeStringifyReplacer = (object: any) => {
         if (isA || isPlainObject(value)) {
             newValue = isA ? [] : {};
 
-            for (const [k, v] of Object.entries(value)) {
-                newValue[k] = internal(v, path.concat(k));
+            let keys = Object.keys(value);
+
+            if (isFunction(compare)) {
+                keys = keys.sort((a, b) =>
+                    compare(
+                        { key: a, value: value[a] },
+                        { key: b, value: value[b] }
+                    )
+                );
+            }
+
+            for (let i = 0, k, len = keys.length; i < len; i++) {
+                k = keys[i];
+                newValue[k] = internal(value[k], path.concat(k));
             }
         }
 
@@ -44,50 +69,31 @@ const safeStringifyReplacer = (object: any) => {
  * 将 `JavaScript` 对象或值转换为 `JSON` 字符串
  *
  * @param value 要转换的 `JavaScript` 值，通常是对象或数组
- * @param replacer 一个转换结果的函数、字符串或数字数组
- *  - 如果传递的是包含字符串或数字的数组，则只有出现在数组中的键会出现在最终的结果中
- *  - 如果传递的是一个转换结果的函数
- *  `replacer` 作为函数，它有两个参数，键 (key) 和值 (value)，它们都会被序列化。
- *   在开始时, `replacer` 函数会被传入一个空字符串作为 `key` 值，
- *   代表着要被 `stringify` 的这个对象。随后每个对象或数组上的属性会被依次传入。
- *   函数应当返回 `JSON` 字符串中的 `value`，如下所示：
- *
- *   - 如果返回一个 `Number`，转换成相应的字符串作为属性值被添加入 `JSON` 字符串。
- *   - 如果返回一个 `String`，该字符串作为属性值被添加入 `JSON` 字符串。
- *   - 如果返回一个 `Boolean`，"true" 或者 "false" 作为属性值被添加入 `JSON` 字符串。
- *   - 如果返回任何其他对象，该对象递归地序列化成 `JSON` 字符串，对每个属性调用 `replacer` 方法。
- *     除非该对象是一个函数，这种情况将不会被序列化成 `JSON` 字符串。
- *   - 如果返回 `undefined`，该属性值不会在 `JSON` 字符串中输出。
- *
- *   注意: 不能用 `replacer` 方法，从数组中移除值 (values)，
- *   如若返回 `undefined` 或者一个函数，将会被 `null` 取代。
- * @param space 向返回值 `JSON` 文本添加缩进、空格和换行符以使其更易于阅读
- *
- * 指定缩进用的空白字符串，用于美化输出；如果参数是个数字，
- * 它代表有多少的空格；上限为10。该值若小于1，则意味着没有空格。
- * 如果该参数为字符串，则该字符串将被作为空格，当字符串长度超过 10 个字母，取其前 10 个字母。
- * 如果该参数没有提供或者为 `null`，将没有空格。
- *
+ * @param options 配置选项
+ *  - `replacer`: 可以是一个转换结果的函数，也可以是一个字符串或数字数组
+ *  - `space`: 向返回值 `JSON` 文本添加缩进、空格和换行符以使其更易于阅读
+ *  - `compare`: 对象键的自定义比较函数
+ *  - `cycles`: 是否将循环引用替换为 `[Circular *]` 的形式，默认为 `true`
  * @returns 返回一个 `JSON` 格式的字符串
- *  - 如果对象中出现了循环引用，则会通过 `[Circular *]` 来表示
- * @throw
- *  - 当尝试去转换 `BigInt` 类型的值会抛出异常
+ * @throw 当尝试去转换不支持的类型 (例如 `BigInt`) 时，会抛出异常
  * @example
  *
  * ```typescript
  * const s = { value: '', number: 0, bool: false };
- * const ret = await stringify(s, (key, value) => {
- *     if (typeof value === 'string') {
- *         return undefined;
+ * const ret = await stringify(s, {
+ *     replacer(key, value) {
+ *         if (typeof value === 'string') {
+ *             return undefined;
+ *         }
+ *         return value;
  *     }
- *     return value;
  * });
  * console.log(ret); // '{"number":0,"bool":false}'
  * ```
  *
  * ```typescript
  * const s = { value: '', number: 0, bool: false };
- * const ret = await stringify(s, ['value', 'bool']);
+ * const ret = await stringify(s, { replacer: ['value', 'bool'] });
  * console.log(ret); // '{"value":"","bool":false}'
  * ```
  *
@@ -110,17 +116,14 @@ const safeStringifyReplacer = (object: any) => {
  */
 export default function stringify(
     value: any,
-    replacer?:
-        | ((this: any, key: string, value: any) => any)
-        | (number | string)[]
-        | null,
-    space?: string | number
+    options: StringifyOptions = {}
 ): Promise<string> {
+    const { replacer, space, compare, cycles } = options;
     let handler;
 
     if (isFunction(replacer)) {
         handler = (k: string, v: any) => {
-            return replacer(k, safeStringifyReplacer(v));
+            return replacer(k, safeStringifyReplacer(v, compare, cycles));
         };
     } else if (isArray(replacer)) {
         const memo = new Set(replacer);
@@ -130,12 +133,13 @@ export default function stringify(
                 return v;
             }
 
-            if (!memo.has(k)) {
-                return safeStringifyReplacer(v);
+            if (memo.has(k)) {
+                return safeStringifyReplacer(v, compare, cycles);
             }
         };
     } else {
-        handler = (k: string, v: any) => safeStringifyReplacer(v);
+        handler = (k: string, v: any) =>
+            safeStringifyReplacer(v, compare, cycles);
     }
 
     return new Promise(resolve => {
