@@ -13,6 +13,7 @@ export { default as isPrototypeProperty } from './isPrototypeProperty';
 export { default as isValuesIncludes } from './isValuesIncludes';
 export { default as keys } from './keys';
 export { default as shallowEqual } from './shallowEqual';
+export { default as sortKeys } from './sortKeys';
 export { default as stringify } from './stringify';
 export { default as toCascadeKeys } from './toCascadeKeys';
 export { default as toLowerCaseKey } from './toLowerCaseKey';
