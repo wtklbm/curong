@@ -7,12 +7,12 @@ describe('@curong/string/stringify', () => {
         const s = { title: '标题' };
         s.content = s;
 
-        stringify(s).catch(e => {
-            expect(e).toBeTruthy();
+        stringify(s, { cycles: false }).catch(e => {
+            expect(e).toBeDefined();
         });
 
         stringify(BigInt(0n)).catch(e => {
-            expect(e).toBeTruthy();
+            expect(e).toBeDefined();
         });
     });
 
@@ -30,7 +30,7 @@ describe('@curong/string/stringify', () => {
             }
         };
 
-        expect(await stringify(fixture, undefined, '\t')).toEqual(
+        expect(await stringify(fixture, { space: '\t' })).toEqual(
             JSON.stringify(fixture, undefined, '\t')
         );
     });
@@ -421,32 +421,62 @@ describe('@curong/string/stringify', () => {
 
         expect(await stringify(fixture)).toEqual(expected);
 
-        expect(await stringify(fixture, ['a', 'c', 'y'])).toEqual(
-            '{"b":{"d":{"self":"[Circular]"}},"e":{"self":"[Circular]"}}'
-        );
+        expect(
+            await stringify(fixture, {
+                replacer: ['a', 'x', 'e', 'y']
+            })
+        ).toEqual('{"a":{"x":1},"e":{"y":2}}');
 
         expect(
-            await stringify(fixture, (k, v) => {
-                if (['a', 'c', 'y'].includes(k)) {
-                    return undefined;
-                }
+            await stringify(fixture, {
+                replacer(k, v) {
+                    if (['a', 'c', 'y'].includes(k)) {
+                        return undefined;
+                    }
 
-                return v;
+                    return v;
+                }
             })
         ).toEqual(
             '{"b":{"d":{"self":"[Circular]"}},"e":{"self":"[Circular]"}}'
         );
 
         expect(
-            await stringify(fixture, (k, v) => {
-                if (typeof v === 'number') {
-                    return undefined;
-                }
+            await stringify(fixture, {
+                replacer(k, v) {
+                    if (typeof v === 'number') {
+                        return undefined;
+                    }
 
-                return v;
+                    return v;
+                }
             })
         ).toEqual(
             '{"a":{},"b":{"c":{},"d":{"self":"[Circular]"}},"e":{"self":"[Circular]"}}'
+        );
+    });
+
+    test('测试30', async () => {
+        const obj = { c: 8, b: [{ z: 6, y: 5, x: 4 }, 7], a: 3 };
+        const objSerializer = await stringify(obj, {
+            compare(a, b) {
+                return a.key < b.key ? 1 : -1;
+            }
+        });
+
+        expect(objSerializer).toBe('{"c":8,"b":[{"z":6,"y":5,"x":4},7],"a":3}');
+    });
+
+    test('测试31', async () => {
+        const obj = { d: 6, c: 5, b: [{ z: 3, y: 2, x: 1 }, 9], a: 10 };
+        const objSerializer = await stringify(obj, {
+            compare(a, b) {
+                return a.value < b.value ? 1 : -1;
+            }
+        });
+
+        expect(objSerializer).toBe(
+            '{"a":10,"b":[{"z":3,"y":2,"x":1},9],"d":6,"c":5}'
         );
     });
 });
