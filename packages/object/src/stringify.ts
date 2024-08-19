@@ -22,7 +22,7 @@ const safeStringifyReplacer = (object: any) => {
         seen.set(value, path);
 
         const isA = isArray(value);
-        let newValue: any  = value;
+        let newValue: any = value;
 
         if (isA || isPlainObject(value)) {
             newValue = isA ? [] : {};
@@ -45,7 +45,7 @@ const safeStringifyReplacer = (object: any) => {
  *
  * @param value 要转换的 `JavaScript` 值，通常是对象或数组
  * @param replacer 一个转换结果的函数、字符串或数字数组
- *  - 如果传递的是字符串或数字数组，则可以用作选择将被字符串化的对象属性的批准列表
+ *  - 如果传递的是包含字符串或数字的数组，则只有出现在数组中的键会出现在最终的结果中
  *  - 如果传递的是一个转换结果的函数
  *  `replacer` 作为函数，它有两个参数，键 (key) 和值 (value)，它们都会被序列化。
  *   在开始时, `replacer` 函数会被传入一个空字符串作为 `key` 值，
