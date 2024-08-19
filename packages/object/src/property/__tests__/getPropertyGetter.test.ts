@@ -1,4 +1,4 @@
-import { getPropertyGetter } from '../src';
+import { getPropertyGetter } from '..';
 
 describe('@curong/util/getPropertyGetter', () => {
     test('测试1', () => {

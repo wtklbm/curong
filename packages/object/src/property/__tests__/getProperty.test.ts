@@ -1,4 +1,4 @@
-import { getProperty } from '../src';
+import { getProperty } from '..';
 
 describe('@curong/util/getProperty', () => {
     test('测试1', () => {

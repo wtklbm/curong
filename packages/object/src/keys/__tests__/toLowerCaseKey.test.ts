@@ -1,4 +1,4 @@
-import { toLowerCaseKey } from '../src';
+import { toLowerCaseKey } from '..';
 
 describe('@curong/object/toLowerCaseKey', () => {
     test('测试1', () => {

@@ -1,4 +1,4 @@
-import { keys } from '../src';
+import { keys } from '..';
 
 // 用于测试的对象
 const b = Symbol('yes');

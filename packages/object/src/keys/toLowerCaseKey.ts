@@ -1,6 +1,6 @@
 import { isNumber, isSymbol } from '@curong/types';
 
-import type { ObjectType } from './types';
+import type { ObjectType } from '../types';
 
 /**
  * 将一个对象中的键全部转换为小写，并返回一个新的对象

@@ -1,4 +1,4 @@
-import { fromCascadeKeys } from '../src';
+import { fromCascadeKeys } from '..';
 
 describe('@curong/object/fromCascadeKeys', () => {
     const o = { startDot: true };

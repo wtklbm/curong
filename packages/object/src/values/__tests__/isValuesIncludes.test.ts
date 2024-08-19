@@ -1,4 +1,4 @@
-import { isValuesIncludes } from '../src'; // 导入待测试的函数
+import { isValuesIncludes } from '..';
 
 describe('isValuesIncludes', () => {
     test('测试1', () => {

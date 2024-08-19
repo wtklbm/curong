@@ -1,4 +1,4 @@
-import { toCascadeKeys } from '../src';
+import { toCascadeKeys } from '..';
 
 describe('@curong/object/toCascadeKeys', () => {
     test('测试1', () => {

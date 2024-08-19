@@ -1,4 +1,4 @@
-import { ObjectType } from './types';
+import { ObjectType } from '../types';
 
 /**
  * 检查指定的值是否存在于给定的对象或类数组对象中

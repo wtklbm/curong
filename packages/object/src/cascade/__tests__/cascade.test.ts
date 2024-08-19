@@ -1,4 +1,4 @@
-import { cascade } from '../src';
+import { cascade } from '..';
 
 describe('@curong/object/cascade', () => {
     const o = { key: [{ value: 'this is a test.' }] };

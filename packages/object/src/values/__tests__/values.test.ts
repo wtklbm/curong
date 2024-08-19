@@ -1,4 +1,4 @@
-import { values } from '../src';
+import { values } from '..';
 
 describe('values', () => {
     let obj: any, symbolKey: any;

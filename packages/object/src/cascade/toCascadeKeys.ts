@@ -2,7 +2,7 @@ import { chars } from '@curong/string';
 import { format } from '@curong/term';
 import { isArrayIndex } from '@curong/types';
 
-import type { ObjectType } from './types';
+import type { ObjectType } from '../types';
 
 /**
  * 将级联属性字符串转换为一个级联属性数组

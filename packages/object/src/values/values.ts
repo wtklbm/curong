@@ -1,5 +1,5 @@
-import keys from './keys';
-import type { ObjectType } from './types';
+import keys from '../keys/keys';
+import type { ObjectType } from '../types';
 
 /**
  * 从给定的对象或类数组对象中获取所有的值

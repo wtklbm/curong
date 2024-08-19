@@ -1,4 +1,4 @@
-import { isKeysIncludes } from '../src';
+import { isKeysIncludes } from '..';
 
 // 用于测试的对象
 const s = Symbol('yes');

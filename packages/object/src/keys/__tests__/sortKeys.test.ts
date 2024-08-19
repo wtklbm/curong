@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { sortKeys } from '../src';
+import { sortKeys } from '..';
 
 function deepEqualInOrder(actual, expected) {
     expect(actual).toEqual(expected);

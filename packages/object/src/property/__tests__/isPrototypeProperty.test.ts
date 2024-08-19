@@ -1,4 +1,4 @@
-import { isPrototypeProperty } from '../src';
+import { isPrototypeProperty } from '..';
 
 describe('@curong/object/isPrototypeProperty', () => {
     test('测试1', () => {
