@@ -14,6 +14,7 @@
 - `isPrototypeProperty`: 是不是当前对象的原型上的属性
 - `keys`: 从给定的对象或类数组对象中获取所有的键
 - `shallowEqual`: 通过浅比较的方式比较两个对象中的属性。(仅比较对象中的一层属性)
+- `sortKeys`: 对象或数组的键进行排序
 - `stringify`: 将一个值转换为一个字符串
 - `toCascadeKeys`: 将级联属性字符串转换为一个级联属性数组
 - `toLowerCaseKey`: 将一个对象中的键全部转换为小写，并返回一个新的对象
