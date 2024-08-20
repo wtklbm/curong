@@ -9,6 +9,8 @@
 - `windowsLocal`: 获取 `Windows` 系统的区域语言设置
 - `windowsMakeShortcut`: 创建 Windows 系统的快捷方式文件 (.link)
 - `windowsTaskList`: 获取 `Windows` 平台上正在运行的映像进程列表
+- `kill`: 终止进程树中的所有进程，包括根进程
+- `asyncKill`: 终止进程树中的所有进程，包括根进程
 
 `@curong/os` 主要包含以下的属性:
 
