@@ -1,3 +1,4 @@
+export { default as isChar } from './isChar';
 export { default as isString } from './isString';
 export { default as isStringArray } from './isStringArray';
 export { default as isStringFilled } from './isStringFilled';
