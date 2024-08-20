@@ -68,11 +68,9 @@ const copyAttrs = <T extends object>(
                     ? { get, set }
                     : { value: recursiveCopy(src[key], hash) })
             });
-
-            return memo;
+        } else {
+            memo[key] = recursiveCopy(src[key], hash);
         }
-
-        memo[key] = recursiveCopy(src[key], hash);
 
         return memo;
     }, dest);
