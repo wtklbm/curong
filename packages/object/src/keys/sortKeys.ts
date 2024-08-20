@@ -12,10 +12,10 @@ import type { SortOptions } from './types';
  * @returns 返回排序后的对象或数组
  * @throws 如果输入的对象既不是普通对象也不是数组，则会抛出类型异常
  */
-export default function sortKeys<T>(
-    value: Record<PropertyKey, T> | T[],
+export default function sortKeys(
+    value: Record<PropertyKey, any> | any[],
     options: SortOptions = {}
-): Record<string, any> | any[] {
+): Record<PropertyKey, any> | any[] {
     if (!isPlainObject(value) && !isArray(value)) {
         throw new TypeError(
             `[sortKeys] value 必须是一个数组或普通对象: ${value}`
@@ -23,8 +23,18 @@ export default function sortKeys<T>(
     }
 
     const { deep, compare } = options;
-    const seenInput: (Record<string, any> | any[])[] = [];
-    const seenOutput: (Record<string, any> | any[])[] = [];
+    const seenMap = new WeakMap();
+    const processValue = (value: Record<PropertyKey, any> | any[]) => {
+        if (isArray(value)) {
+            return sortArray(value);
+        }
+
+        if (isPlainObject(value)) {
+            return sort(value);
+        }
+
+        return value;
+    };
 
     /**
      * 深度排序数组
@@ -32,33 +42,17 @@ export default function sortKeys<T>(
      * @param array 要排序的数组
      * @returns 返回排序后的数组
      */
-    const deepSortArray = <T extends unknown[]>(array: T): T => {
-        const seenIndex = seenInput.indexOf(array);
-
-        if (seenIndex !== -1) {
-            return seenOutput[seenIndex] as T;
+    const sortArray = <T extends unknown[]>(array: T): T => {
+        if (seenMap.has(array)) {
+            return seenMap.get(array) as T;
         }
 
         const result = [] as unknown as T;
-        seenInput.push(array);
-        seenOutput.push(result);
-
-        const processItem = (item: any) => {
-            if (isArray(item)) {
-                return deepSortArray(item);
-            }
-            if (isPlainObject(item)) {
-                return sort(item);
-            }
-            return item;
-        };
-
-        result.push(...array.map(processItem));
+        seenMap.set(array, result);
+        array.forEach((v: any) => result.push(processValue(v)));
 
         return result;
     };
-
-    const seenMap = new Map<Record<string, any>, Record<string, any>>();
 
     /**
      * 对对象的键进行排序
@@ -66,38 +60,40 @@ export default function sortKeys<T>(
      * @param object 要排序的对象
      * @returns 返回排序后的对象
      */
-    const sort = <T>(object: Record<string, T>): Record<string, T> => {
+    const sort = (
+        object: Record<PropertyKey, any> | any[]
+    ): Record<PropertyKey, any> | any[] => {
         if (seenMap.has(object)) {
             return seenMap.get(object)!;
         }
 
-        const result: Record<string, T> = {};
+        if (isArray(object)) {
+            return deep ? sortArray(object) : object.slice();
+        }
+
+        const result: Record<PropertyKey, any> = {};
         const keys = Object.keys(object).sort(compare);
 
         seenMap.set(object, result);
 
-        const processValue = (value: T) => {
-            if (deep && isArray(value)) {
-                return deepSortArray(value);
-            }
-            return deep && isPlainObject(value) ? sort(value) : value;
-        };
-
-        for (let i = 0, key; i < keys.length; i++) {
+        for (let i = 0, key: any; i < keys.length; i++) {
             key = keys[i];
 
+            const { get, set, ...descriptor } = Object.getOwnPropertyDescriptor(
+                object,
+                key
+            )!;
+
             Object.defineProperty(result, key, {
-                ...Object.getOwnPropertyDescriptor(object, key),
-                value: processValue(object[key])
+                ...descriptor,
+                ...(get || set
+                    ? { get, set }
+                    : { value: processValue(object[key]) })
             });
         }
 
         return result;
     };
-
-    if (isArray(value)) {
-        return deep ? deepSortArray(value) : value.slice();
-    }
 
     return sort(value);
 }
