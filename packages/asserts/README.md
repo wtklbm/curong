@@ -255,6 +255,7 @@
 
 #### `string`
 
+- `assertChar`: 是不是单个字符
 - `assertString`: 是不是一个字符串或被包装后的字符串对象
 - `assertStringArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是字符串或被包装后的字符串对象
 - `assertStringFilled`: 是不是一个长度大于 `0` 的字符串
