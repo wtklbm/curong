@@ -37,6 +37,8 @@ export default (() => {
      *
      * @note
      *
+     * 除了使用 `Object.prototype.toString` 外，还可以通过 `value.constructor.name` 来判断。
+     *
      * ### `Symbol.toStringTag`
      *
      * `Object.prototype.toString` 方法默认会调用 `Symbol.toStringTag` 方法
