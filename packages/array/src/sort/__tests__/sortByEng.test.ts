@@ -1,4 +1,4 @@
-import { sortByEng } from '../src';
+import { sortByEng } from '..';
 
 describe('@curong/string/sortByEng', () => {
     test('测试1', () => {

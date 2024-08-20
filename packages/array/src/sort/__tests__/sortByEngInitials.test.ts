@@ -1,4 +1,4 @@
-import { sortByEngInitials } from '../src';
+import { sortByEngInitials } from '..';
 
 describe('@curong/string/sortByEngInitials', () => {
     test('测试1', () => {

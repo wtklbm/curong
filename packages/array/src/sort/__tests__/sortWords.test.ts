@@ -1,4 +1,4 @@
-import { sortWords } from '../src';
+import { sortWords } from '..';
 
 describe('@curong/string/sortWords', () => {
     test('测试1', () => {

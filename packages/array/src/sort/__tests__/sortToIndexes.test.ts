@@ -1,4 +1,4 @@
-import { sortToIndexes } from '../src';
+import { sortToIndexes } from '..';
 
 describe('@curong/array/sortToIndexes', () => {
     test('测试1', () => {
