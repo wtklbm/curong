@@ -479,4 +479,19 @@ describe('@curong/string/stringify', () => {
             '{"a":10,"b":[{"z":3,"y":2,"x":1},9],"d":6,"c":5}'
         );
     });
+
+    test('测试32', async () => {
+        const obj = { c: 8, b: [{ z: 6, y: 5, x: 4 }, 7], a: 3 };
+
+        expect(await stringify(obj)).toBe(
+            '{"c":8,"b":[{"z":6,"y":5,"x":4},7],"a":3}'
+        );
+        expect(
+            await stringify(obj, {
+                compare(a, b) {
+                    return a.key - b.key ? 1 : -1;
+                }
+            })
+        ).toBe('{"a":3,"b":[{"x":4,"y":5,"z":6},7],"c":8}');
+    });
 });
