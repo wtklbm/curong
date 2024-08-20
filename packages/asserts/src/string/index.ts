@@ -1,3 +1,4 @@
+export { default as assertChar } from './assertChar';
 export { default as assertString } from './assertString';
 export { default as assertStringArray } from './assertStringArray';
 export { default as assertStringFilled } from './assertStringFilled';
