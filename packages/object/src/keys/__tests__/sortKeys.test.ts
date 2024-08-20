@@ -39,7 +39,7 @@ describe('@curong/object/sortKeys', () => {
     test('测试1', () => {
         expect(() => sortKeys(null)).toThrow();
         expect(() => sortKeys(undefined)).toThrow();
-        expect(() => sortKeys(() => { })).toThrow();
+        expect(() => sortKeys(() => {})).toThrow();
         expect(() => sortKeys(1)).toThrow();
         expect(() => sortKeys(false)).toThrow();
         expect(() => sortKeys(Object.create(null))).toThrow();
@@ -171,5 +171,39 @@ describe('@curong/object/sortKeys', () => {
 
         deepEqualInOrder(sorted, { a: 2, b: 1 });
         expect(Object.getOwnPropertyDescriptors(sorted)).toEqual(descriptors);
+    });
+
+    test('测试7', () => {
+        const obj = {};
+
+        Object.defineProperty(obj, 'b', {
+            value: 0,
+            enumerable: true,
+            configurable: true
+        });
+
+        Object.defineProperty(obj, 'a', {
+            get() {
+                return 3;
+            },
+            enumerable: true,
+            configurable: true
+        });
+
+        let internalValue;
+        Object.defineProperty(obj, 'c', {
+            get() {
+                return internalValue;
+            },
+            set(newValue) {
+                internalValue = newValue;
+            },
+            enumerable: true,
+            configurable: true
+        });
+
+        obj.c = -1;
+
+        expect(sortKeys(obj)).toEqual({ a: 3, b: 0, c: -1 });
     });
 });
