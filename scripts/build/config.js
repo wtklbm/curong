@@ -41,6 +41,7 @@ function config(options = {}) {
             tsconfigDefaults: tsConfig,
             tsconfigOverride: {
                 compilerOptions: {
+                    module: 'ESNext',
                     removeComments: true,
                     sourceMap: false
                 }
