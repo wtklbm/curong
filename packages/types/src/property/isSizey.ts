@@ -1,4 +1,3 @@
-import isNullOrUndefined from '../nullable/isNullOrUndefined';
 import { isUintSafe } from '../number/int';
 
 import type { Sizey } from './types';
@@ -11,5 +10,9 @@ import type { Sizey } from './types';
  * @note 一些 `HTML` 元素也有 `size` 属性，比如 `input` 元素
  */
 export default function isSizey(value: unknown): value is Sizey {
-    return !isNullOrUndefined(value) && isUintSafe((value as Sizey).size);
+    try {
+        return isUintSafe((value as Sizey).size);
+    } catch {}
+
+    return false;
 }
