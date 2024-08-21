@@ -485,9 +485,7 @@ type StringifyOptions = {
 };
 
 /**
- * 将任何值转换为字符串形式
- *
- * 此异步版本还能够深入了解 Promise 的状态
+ * 将运行时代码转换为代码字符串
  *
  * @param value 要转换为字符串的值
  * @note
@@ -532,7 +530,7 @@ export function stringify<T>(value: T, options?: StringifyOptions): string {
 }
 
 /**
- * 将任何值转换为字符串形式
+ * 将运行时代码转换为代码字符串
  *
  * 此异步版本还能够深入了解 Promise 的状态
  *
