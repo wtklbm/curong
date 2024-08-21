@@ -1,5 +1,3 @@
-import { isNullOrUndefined } from '@curong/types';
-
 /**
  * 获取一个值自身的所有属性
  *
@@ -12,7 +10,7 @@ import { isNullOrUndefined } from '@curong/types';
  * `Object.getOwnPropertyNames(value)` 和 `Object.getOwnPropertySymbols(value)` 结果的集合。
  *
  * @param value 包含自身属性的值
- * @return 返回获取到的属性数组
+ * @return 返回获取到的属性数组。如果无法获取，则会返回空数组
  * @example
  *
  * ```typescript
@@ -20,9 +18,9 @@ import { isNullOrUndefined } from '@curong/types';
  * ```
  */
 export default function allAttrs(value: any): PropertyKey[] {
-    if (isNullOrUndefined(value)) {
-        return [];
-    }
+    try {
+        return Reflect.ownKeys(value);
+    } catch {}
 
-    return Reflect.ownKeys(value);
+    return [];
 }
