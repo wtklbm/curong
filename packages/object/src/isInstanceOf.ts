@@ -1,4 +1,4 @@
-import { isNullOrUndefined, type Class } from '@curong/types';
+import type { Class } from '@curong/types';
 
 /**
  * 判断给定的值是否是指定类的实例
@@ -23,8 +23,9 @@ export default function isInstanceOf<T extends unknown>(
     value: unknown,
     class_: Class<T>
 ): value is T {
-    return (
-        !isNullOrUndefined(value) &&
-        Object.getPrototypeOf(value) === class_.prototype
-    );
+    try {
+        return Object.getPrototypeOf(value) === class_.prototype;
+    } catch {}
+
+    return false;
 }
