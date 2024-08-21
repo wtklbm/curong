@@ -1,5 +1,4 @@
 import isFunction from '../function/isFunction';
-import isNullOrUndefined from '../nullable/isNullOrUndefined';
 
 /**
  * 是不是一个 `Iterator`
@@ -11,8 +10,9 @@ import isNullOrUndefined from '../nullable/isNullOrUndefined';
 export default function isIterator<T = unknown, R = unknown, N = undefined>(
     value: unknown
 ): value is Iterator<T, R, N> {
-    return (
-        !isNullOrUndefined(value) &&
-        isFunction((value as Iterator<T, R, N>).next)
-    );
+    try {
+        return isFunction((value as Iterator<T, R, N>).next);
+    } catch {}
+
+    return false;
 }
