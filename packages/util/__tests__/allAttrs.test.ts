@@ -4,6 +4,10 @@ describe('@curong/util/allAttrs', () => {
     test('测试1', () => {
         expect(allAttrs(null)).toEqual([]);
         expect(allAttrs(undefined)).toEqual([]);
+        expect(allAttrs(1)).toEqual([]);
+        expect(allAttrs(true)).toEqual([]);
+        expect(allAttrs('')).toEqual([]);
+        expect(allAttrs(Symbol('x'))).toEqual([]);
     });
 
     test('测试2', () => {
