@@ -19,10 +19,7 @@ export * from './types';
  * console.log(ret); // "今天 li Ming 搬了一天的砖，赚了 100 元，花了 2.5 元坐车回家，其他的交给老婆。"
  * ```
  */
-export default function corrector(
-    value: string,
-    options?: CorrectorOptions
-): string {
+export function corrector(value: string, options?: CorrectorOptions): string {
     if (!(value = value.trim())) {
         return value;
     }

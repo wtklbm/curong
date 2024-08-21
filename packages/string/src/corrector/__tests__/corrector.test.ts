@@ -1,4 +1,4 @@
-import corrector from '..';
+import { corrector } from '..';
 
 describe('Corrector', () => {
     test('测试', () => {

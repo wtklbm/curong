@@ -1,9 +1,10 @@
 import { format } from '@curong/term';
 import { isStringFilled } from '@curong/types';
 
+import type { ObjectType } from '../types';
+
 import fromCascadeKeys from './fromCascadeKeys';
 import toCascadeKeys from './toCascadeKeys';
-import type { ObjectType } from '../types';
 
 /**
  * 根据级联属性字符串获取源对象中的内容
