@@ -8,6 +8,10 @@ import isNullOrUndefined from '../nullable/isNullOrUndefined';
  * @returns 如果属性存在，则返回 `true`，否则为 `false`
  */
 export default function isProperty(value: unknown, key: PropertyKey): boolean {
-    // NOTE `key in value` 等价于 `Reflect.has(value, key)`
-    return !isNullOrUndefined(value) && key in (value as object);
+    try {
+        // NOTE `key in value` 等价于 `Reflect.has(value, key)`
+        return key in (value as object);
+    } catch {}
+
+    return false;
 }
