@@ -11,3 +11,7 @@
 - `stringify`: 将数字转换为字符串
 - `toFiniteNumber`: 将值转换为有限数值。如果无法转换为有限数值，则返回默认值
 - `toLocaleString`: 将数字格式化为本地化字符串表示形式
+
+## `amount`
+
+-  `amountInWords`: 将金额转换为中文大写的样式
