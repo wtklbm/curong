@@ -4,7 +4,7 @@ import { isZero } from '@curong/types';
  * 将一个数组随机打乱
  *
  * @param value 要打乱的数组
- * @returns 返回被打乱的数组
+ * @returns 返回被打乱的新数组
  * @example
  *
  * ```typescript
@@ -31,15 +31,16 @@ export default function shuffle<T extends unknown[]>(value: T): T {
         return value;
     }
 
-    let m = value.length;
+    const v = value.slice() as T;
+    let m = v.length;
     let current;
 
     while (m) {
         const i = Math.floor(Math.random() * m--);
-        current = value[m];
-        value[m] = value[i];
-        value[i] = current;
+        current = v[m];
+        v[m] = v[i];
+        v[i] = current;
     }
 
-    return value;
+    return v;
 }
