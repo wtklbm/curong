@@ -10,6 +10,7 @@
 - `maxRecursionDepth`: 计算数组的最大递归深度 (即数组中包含数组)
 - `minLengthIndex`: 获取字符串数组中最小长度的项的索引位置
 - `random`: 从数组中随机挑选一个元素
+- `range`: 生成一个指定范围的数字数组
 - `shuffle`: 将一个数组随机打乱
 - `splitChunk`: 将一个数组按照指定的大小拆分成多个数组
 - `toArray`: 将给定的值转换为数组
