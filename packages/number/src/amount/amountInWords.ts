@@ -1,4 +1,4 @@
-import { isNaN, isNumberValid, isZero } from '@curong/types';
+import { isNaN, isFinite, isZero } from '@curong/types';
 
 import type { AmountInWordsOptions } from './types';
 
@@ -142,7 +142,7 @@ export default function amountInWords(
 ): string {
     const { prefix = '', negative = '负' } = options;
 
-    if (!isNumberValid(amount)) {
+    if (!isFinite(+amount)) {
         throw new TypeError(
             `[amountInWords] amount 必须为有效的金额数字或字符串: ${amount}`
         );
