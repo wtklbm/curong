@@ -12,6 +12,7 @@
 - `shuffle`: 将一个数组随机打乱
 - `splitChunk`: 将一个数组按照指定的大小拆分成多个数组
 - `uniqueFromPrimitive`: 对相同类型的基本类型的值或包含相同类型基本类型值的数组去重
+- `toArray`: 将给定的值转换为数组
 
 ## `dimension`
 
