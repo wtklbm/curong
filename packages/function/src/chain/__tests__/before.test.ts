@@ -42,4 +42,11 @@ describe('@curong/function/before', () => {
         const addWithLogging = before(logBefore, add.name);
         expect(addWithLogging(add, 1, 2)).toBe(3);
     });
+
+    test('测试6', () => {
+        let b = before(() => console.log('两数相加的结果为：'));
+
+        expect(b(() => 1 + 2)).toBe(3);
+        expect(b(() => 2 + 2)).toBe(4);
+    });
 });
