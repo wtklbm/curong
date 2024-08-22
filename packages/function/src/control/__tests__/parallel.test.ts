@@ -1,4 +1,4 @@
-import { parallel } from '../src';
+import { parallel } from '..';
 
 describe('@curong/function/parallel', () => {
     const get = () => {

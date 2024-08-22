@@ -1,4 +1,4 @@
-import pWarper from './constants/pWarper';
+import pWarper from '../constants/pWarper';
 
 type Payload<R, A extends unknown[]> =
     | ((...args: A) => Promise<R> | R)

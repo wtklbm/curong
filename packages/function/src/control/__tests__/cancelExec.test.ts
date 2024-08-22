@@ -1,4 +1,4 @@
-import { cancelExec } from '../src';
+import { cancelExec } from '..';
 
 const fn = (a: number, b: string, bool: boolean) => {
     return new Promise(resolve => {

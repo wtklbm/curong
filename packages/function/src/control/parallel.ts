@@ -7,7 +7,7 @@ import {
     isZero
 } from '@curong/types';
 
-import delay from './delay/delay';
+import delay from '../delay/delay';
 import type { ParallelOptions } from './types';
 
 /**

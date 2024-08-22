@@ -17,7 +17,7 @@ import { isSyncFunction, isUintSafe } from '@curong/types';
  * ### 常规示例
  *
  * ```typescript
- * const r = deferred(3, () => 10);
+ * const r = runAfterTimes(3, () => 10);
  * console.log(r()()()); // 10
  * ```
  *
@@ -25,7 +25,7 @@ import { isSyncFunction, isUintSafe } from '@curong/types';
  *
  * ```typescript
  * const data = {};
- * const ready = deferred(2, () => console.log(data));
+ * const ready = runAfterTimes(2, () => console.log(data));
  *
  * readFile('./a.txt', 'utf8', (_err, data) => {
  *     data['a'] = data;
@@ -43,17 +43,19 @@ import { isSyncFunction, isUintSafe } from '@curong/types';
  * 该函数是柯里化函数，柯里化函数就是把一个大函数拆分成很多的具体的功能的小函数。
  * 高阶函数中包含柯里化，柯理化的好处是可以保留参数，它非常像 `bind` 方法。
  */
-export default function deferred<R, A extends unknown[]>(
+export default function runAfterTimes<R, A extends unknown[]>(
     count: number,
     callback: (...args: A) => R,
     ...args: A
 ): () => any {
     if (!isUintSafe(count)) {
-        throw new TypeError('[deferred]: count 不是大于或等于 0 的安全整数');
+        throw new TypeError(
+            '[runAfterTimes]: count 不是大于或等于 0 的安全整数'
+        );
     }
 
     if (!isSyncFunction(callback)) {
-        throw new TypeError('[deferred]: callback 必须是一个同步函数');
+        throw new TypeError('[runAfterTimes]: callback 必须是一个同步函数');
     }
 
     const reachCall = () =>

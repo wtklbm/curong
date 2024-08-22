@@ -1,3 +1,3 @@
-export { default as deferred } from './deferred';
-export { default as limited } from './limited';
 export { default as once } from './once';
+export { default as runAfterTimes } from './runAfterTimes';
+export { default as runOnlyNTimes } from './runOnlyNTimes';

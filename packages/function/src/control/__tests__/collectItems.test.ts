@@ -1,4 +1,4 @@
-import { collectItems } from '../src';
+import { collectItems } from '..';
 
 describe('@curong/function/curring', () => {
     test('测试1', async () => {

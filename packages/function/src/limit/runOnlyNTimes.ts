@@ -16,7 +16,7 @@ import { isSyncFunction, isUintSafe } from '@curong/types';
  *
  * ```typescript
  * // 创建一个函数，最多调用 `3` 次
- * const limitedCallback = limited(3, data => data, 'Hello');
+ * const limitedCallback = runOnlyNTimes(3, data => data, 'Hello');
  *
  * console.log(limitedCallback()); // Hello
  * console.log(limitedCallback()); // Hello
@@ -25,31 +25,31 @@ import { isSyncFunction, isUintSafe } from '@curong/types';
  * console.log(limitedCallback()); // undefined
  * ```
  */
-function limited<R, A extends unknown[]>(
+function runOnlyNTimes<R, A extends unknown[]>(
     count: number,
     callback: (...args: A) => R,
     ...args: A
 ): () => R | undefined;
 
-function limited<R, A extends unknown[]>(
+function runOnlyNTimes<R, A extends unknown[]>(
     count: number,
     callback: (...args: A) => R
 ): (...args: A) => R | undefined;
 
-function limited<R, A extends unknown[], A1>(
+function runOnlyNTimes<R, A extends unknown[], A1>(
     count: number,
     callback: (a1: A1, ...args: A) => R,
     a1: A1
 ): (...args: A) => R | undefined;
 
-function limited<R, A extends unknown[], A1, A2>(
+function runOnlyNTimes<R, A extends unknown[], A1, A2>(
     count: number,
     callback: (a1: A1, a2: A2, ...args: A) => R,
     a1: A1,
     a2: A2
 ): (...args: A) => R | undefined;
 
-function limited<R, A extends unknown[], A1, A2, A3>(
+function runOnlyNTimes<R, A extends unknown[], A1, A2, A3>(
     count: number,
     callback: (a1: A1, a2: A2, a3: A3, ...args: A) => R,
     a1: A1,
@@ -57,7 +57,7 @@ function limited<R, A extends unknown[], A1, A2, A3>(
     a3: A3
 ): (...args: A) => R | undefined;
 
-function limited<R, A extends unknown[], A1, A2, A3, A4>(
+function runOnlyNTimes<R, A extends unknown[], A1, A2, A3, A4>(
     count: number,
     callback: (a1: A1, a2: A2, a3: A3, a4: A4, ...args: A) => R,
     a1: A1,
@@ -66,7 +66,7 @@ function limited<R, A extends unknown[], A1, A2, A3, A4>(
     a4: A4
 ): (...args: A) => R | undefined;
 
-function limited<R, A extends unknown[], A1, A2, A3, A4, A5>(
+function runOnlyNTimes<R, A extends unknown[], A1, A2, A3, A4, A5>(
     count: number,
     callback: (a1: A1, a2: A2, a3: A3, a4: A4, a5: A5, ...args: A) => R,
     a1: A1,
@@ -76,7 +76,7 @@ function limited<R, A extends unknown[], A1, A2, A3, A4, A5>(
     a5: A5
 ): (...args: A) => R | undefined;
 
-function limited<R, A extends unknown[], A1, A2, A3, A4, A5, A6>(
+function runOnlyNTimes<R, A extends unknown[], A1, A2, A3, A4, A5, A6>(
     count: number,
     callback: (a1: A1, a2: A2, a3: A3, a4: A4, a5: A5, a6: A6, ...args: A) => R,
     a1: A1,
@@ -87,7 +87,7 @@ function limited<R, A extends unknown[], A1, A2, A3, A4, A5, A6>(
     a6: A6
 ): (...args: A) => R | undefined;
 
-function limited<R, A extends unknown[], A1, A2, A3, A4, A5, A6, A7>(
+function runOnlyNTimes<R, A extends unknown[], A1, A2, A3, A4, A5, A6, A7>(
     count: number,
     callback: (
         a1: A1,
@@ -108,7 +108,7 @@ function limited<R, A extends unknown[], A1, A2, A3, A4, A5, A6, A7>(
     a7: A7
 ): (...args: A) => R | undefined;
 
-function limited<R, A extends unknown[], A1, A2, A3, A4, A5, A6, A7, A8>(
+function runOnlyNTimes<R, A extends unknown[], A1, A2, A3, A4, A5, A6, A7, A8>(
     count: number,
     callback: (
         a1: A1,
@@ -131,7 +131,19 @@ function limited<R, A extends unknown[], A1, A2, A3, A4, A5, A6, A7, A8>(
     a8: A8
 ): (...args: A) => R | undefined;
 
-function limited<R, A extends unknown[], A1, A2, A3, A4, A5, A6, A7, A8, A9>(
+function runOnlyNTimes<
+    R,
+    A extends unknown[],
+    A1,
+    A2,
+    A3,
+    A4,
+    A5,
+    A6,
+    A7,
+    A8,
+    A9
+>(
     count: number,
     callback: (
         a1: A1,
@@ -156,17 +168,19 @@ function limited<R, A extends unknown[], A1, A2, A3, A4, A5, A6, A7, A8, A9>(
     a9: A9
 ): (...args: A) => R | undefined;
 
-function limited<R, A extends unknown[]>(
+function runOnlyNTimes<R, A extends unknown[]>(
     count: number,
     callback: (...args: A) => R,
     ...args: any[]
 ): (...params: any[]) => any {
     if (!isUintSafe(count)) {
-        throw new TypeError('[limited]: count 不是大于或等于 0 的安全整数');
+        throw new TypeError(
+            '[runOnlyNTimes]: count 不是大于或等于 0 的安全整数'
+        );
     }
 
     if (!isSyncFunction(callback)) {
-        throw new TypeError('[limited]: callback 必须是一个同步函数');
+        throw new TypeError('[runOnlyNTimes]: callback 必须是一个同步函数');
     }
 
     return (...params: A) => {
@@ -176,4 +190,4 @@ function limited<R, A extends unknown[]>(
     };
 }
 
-export default limited;
+export default runOnlyNTimes;
