@@ -1,6 +1,7 @@
 import isUndefined from '../nullable/isUndefined';
 import isString from '../string/isString';
 
+import isInfinity from './isInfinity';
 import isNumber from './isNumber';
 
 export type IsNumberValidOptions = {
@@ -11,16 +12,13 @@ export type IsNumberValidOptions = {
      */
     implicit?: boolean;
 
-    /**
-     * 当 `isImplicit` 为 `false` 且 `value` 为 `NaN` 时是否返回 `true`。
-     * 默认为 `false`。
-     */
+    /** 当转换后为 `NaN` 时，是否返回 `true`。默认为 `false` */
     allowNaN?: boolean;
 
-    /**
-     * 当 `isImplicit` 为 `false` 且 `value` 为经过 `trim` 后长度为 `0` 的空字符串时是否返回 `true`。
-     * 默认为 `false`。
-     */
+    /** 当转换后为 `Infinity` 或 `-Infinity` 时，是否返回 `true`。默认为 `false` */
+    allowInfinity?: boolean;
+
+    /** 当转换且经过 `trim` 后长度为 `0` 的空字符串时，是否返回 `true`。默认为 `false` */
     allowEmptyString?: boolean;
 };
 
@@ -30,11 +28,10 @@ export type IsNumberValidOptions = {
  * @param value 要验证的值
  * @param options 配置选项
  *  - `implicit`: 在进行数字转换时，是否可以进行隐式转换。默认为 `true`
- *  - `allowNaN`: 当 `isImplicit` 为 `false` 且 `value` 为 `NaN` 时是否返回 `true`。默认为 `false`
- *  - `allowEmptyString`:  当 `isImplicit` 为 `false` 且 `value` 为经过 `trim` 后长度为 `0` 的空字符串时是否返回 `true`。默认为 `false`
- * @returns 是则返回 `true`，否则为 `false`。
- *  因为 `Infinity` 和 `-Infinity` 是有效数字，所以在使用该方法时，可能还需要进行额外判断。
- *  例如在进行算术运算时，需要判断 `isNumberValid(value) && !isInfinity(value)`。
+ *  - `allowNaN`: 当转换后为 `NaN` 时，是否返回 `true`。默认为 `false`
+ *  - `allowInfinity`: 当转换后为 `Infinity` 或 `-Infinity` 时，是否返回 `true`。默认为 `false`
+ *  - `allowEmptyString`: 当转换且经过 `trim` 后长度为 `0` 的空字符串时，是否返回 `true`。默认为 `false`
+ * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
  * ```typescript
@@ -54,6 +51,8 @@ export type IsNumberValidOptions = {
  * - 布尔值: `true` 转换为 1，`false` 转换为 0
  * - `null`: 转换为 0
  * - `undefined`: 转换为 NaN
+ * - `Infinity`: 转换为 Infinity
+ * - `-Infinity`: 转换为 -Infinity
  * - 数组
  *  - 数组在转换为数字时，会调用其 `toString()` 方法，返回的字符串会被转换为数字
  *  - 如果数组为空，转换结果为 0；如果数组包含有效数字字符串，则会转换为相应的数字
@@ -85,6 +84,7 @@ export default function isNumberValid(
     const {
         implicit = true,
         allowNaN = false,
+        allowInfinity = false,
         allowEmptyString = false
     } = options;
 
@@ -93,6 +93,7 @@ export default function isNumberValid(
             ? !isUndefined(value)
             : isNumber(value, allowNaN) ||
               (isString(value) && (allowEmptyString || value.trim() !== ''))) &&
-        (allowNaN || !isNaN(Number(value).valueOf()))
+        (allowNaN || !isNaN(Number(value).valueOf())) &&
+        (allowInfinity || !isInfinity(Number(value).valueOf()))
     );
 }
