@@ -1,4 +1,4 @@
-import { isMultiDimensional } from '../src';
+import { isMultiDimensional } from '..';
 
 describe('@curong/types/isMultiDimensional', () => {
     test('测试1', () => {

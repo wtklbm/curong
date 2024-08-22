@@ -1,4 +1,4 @@
-import { dimensionLevel } from '../src';
+import { dimensionLevel } from '..';
 
 describe('@curong/array/dimensionLevel', () => {
     test('测试1', () => {

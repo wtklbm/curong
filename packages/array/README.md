@@ -2,10 +2,8 @@
 
 `@curong/array` 包含以下的方法:
 
-- `dimensionLevel`: 判断一个数组的维度
 - `flat`: 展平一个多维数组
 - `fromArrayLike`: 将一个类数组转换为数组
-- `isMultiDimensional`: 是不是一个多维数组 (至少是二维)
 - `isUnique`: 判断数组中的所有元素是否都是唯一的
 - `maxLengthIndex`: 获取字符串数组中最大长度的项的索引位置
 - `maxRecursionDepth`: 计算数组的最大递归深度 (即数组中包含数组)
@@ -14,6 +12,11 @@
 - `shuffle`: 将一个数组随机打乱
 - `splitByStep`: 将一个数组按照指定的步长进行拆分
 - `uniqueFromPrimitive`: 对相同类型的基本类型的值或包含相同类型基本类型值的数组去重
+
+## `dimension`
+
+- `dimensionLevel`: 判断一个数组的维度
+- `isMultiDimensional`: 是不是一个多维数组 (至少是二维)
 
 ## `sort`
 
