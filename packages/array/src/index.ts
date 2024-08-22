@@ -1,6 +1,7 @@
 export { default as flat } from './flat';
 export { default as fromArrayLike } from './fromArrayLike';
 export { default as isUnique } from './isUnique';
+export { default as mapPick } from './mapPick';
 export { default as maxLengthIndex } from './maxLengthIndex';
 export { default as maxRecursionDepth } from './maxRecursionDepth';
 export { default as minLengthIndex } from './minLengthIndex';
