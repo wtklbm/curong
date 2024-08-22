@@ -39,14 +39,10 @@ describe('@curong/types/isNumberValid', () => {
         expect(isNumberValid('-123.45')).toBe(true);
         expect(isNumberValid('123 ')).toBe(true); // 去掉空格后的数字仍然有效
         expect(isNumberValid(' 123 ')).toBe(true); // 去掉空格后的数字仍然有效
-        expect(isNumberValid('Infinity')).toBe(true); // Infinity 是有效数字
-        expect(isNumberValid('-Infinity')).toBe(true); // -Infinity 是有效数字
+
         expect(isNumberValid('', { implicit: false })).toBe(false);
         expect(isNumberValid(' ', { implicit: false })).toBe(false);
 
-        expect(isNumberValid('Infinity')).toBe(true);
-        expect(isNumberValid('-Infinity')).toBe(true);
-        expect(isNumberValid(`${Number.POSITIVE_INFINITY}`)).toBe(true);
         expect(isNumberValid('1')).toBe(true);
         expect(isNumberValid(`${Number(1)}`)).toBe(true);
         expect(isNumberValid(new Number(1) + '')).toBe(true);
@@ -112,6 +108,47 @@ describe('@curong/types/isNumberValid', () => {
     });
 
     test('测试5', () => {
+        expect(isNumberValid(Infinity)).toBe(false);
+        expect(isNumberValid(-Infinity)).toBe(false);
+        expect(isNumberValid('Infinity')).toBe(false);
+        expect(isNumberValid('-Infinity')).toBe(false);
+        expect(isNumberValid(`${Number.POSITIVE_INFINITY}`)).toBe(false);
+        expect(isNumberValid(`-${Number.POSITIVE_INFINITY}`)).toBe(false);
+
+        expect(isNumberValid(Infinity, { allowInfinity: true })).toBe(true);
+        expect(isNumberValid(-Infinity, { allowInfinity: true })).toBe(true);
+        expect(isNumberValid('Infinity', { allowInfinity: true })).toBe(true);
+        expect(isNumberValid('-Infinity', { allowInfinity: true })).toBe(true);
+        expect(
+            isNumberValid(`${Number.POSITIVE_INFINITY}`, {
+                allowInfinity: true
+            })
+        ).toBe(true);
+        expect(
+            isNumberValid(`-${Number.POSITIVE_INFINITY}`, {
+                allowInfinity: true
+            })
+        ).toBe(true);
+
+        expect(isNumberValid(Infinity, { allowInfinity: false })).toBe(false);
+        expect(isNumberValid(-Infinity, { allowInfinity: false })).toBe(false);
+        expect(isNumberValid('Infinity', { allowInfinity: false })).toBe(false);
+        expect(isNumberValid('-Infinity', { allowInfinity: false })).toBe(
+            false
+        );
+        expect(
+            isNumberValid(`${Number.POSITIVE_INFINITY}`, {
+                allowInfinity: false
+            })
+        ).toBe(false);
+        expect(
+            isNumberValid(`-${Number.POSITIVE_INFINITY}`, {
+                allowInfinity: false
+            })
+        ).toBe(false);
+    });
+
+    test('测试6', () => {
         expect(
             isNumberValid('', {
                 implicit: false,
