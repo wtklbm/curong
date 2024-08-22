@@ -9,7 +9,7 @@ import type { ToArrayOptions } from './types';
  * @param options 配置选项
  *  - `allowNull`: 当值为 `null` 时是否可以转换为 `[null]`。默认为 `false`
  *  - `allowUndefined`: 当值为 `undefined` 时是否可以转换为 `[undefined]`，默认为 `false`
- * @returns 返回转换后的数组
+ * @returns 如果是数组则直接返回，否则返回转换后的数组
  * @example
  *
  * ```typescript
