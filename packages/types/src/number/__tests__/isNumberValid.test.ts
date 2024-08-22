@@ -22,6 +22,8 @@ describe('@curong/types/isNumberValid', () => {
     test('测试2', () => {
         expect(isNumberValid('123 ')).toBe(true);
         expect(isNumberValid(1)).toBe(true);
+        expect(isNumberValid(1e3)).toBe(true);
+        expect(isNumberValid(1.2e3)).toBe(true);
         expect(isNumberValid(Number(1))).toBe(true);
         expect(isNumberValid(new Number(1))).toBe(true);
         expect(isNumberValid(Object(1))).toBe(true);
