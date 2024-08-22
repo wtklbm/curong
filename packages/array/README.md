@@ -5,14 +5,15 @@
 - `flat`: 展平一个多维数组
 - `fromArrayLike`: 将一个类数组转换为数组
 - `isUnique`: 判断数组中的所有元素是否都是唯一的
+- `mapPick`: 从数组中获取指定的值并映射成一个新的数组
 - `maxLengthIndex`: 获取字符串数组中最大长度的项的索引位置
 - `maxRecursionDepth`: 计算数组的最大递归深度 (即数组中包含数组)
 - `minLengthIndex`: 获取字符串数组中最小长度的项的索引位置
 - `random`: 从数组中随机挑选一个元素
 - `shuffle`: 将一个数组随机打乱
 - `splitChunk`: 将一个数组按照指定的大小拆分成多个数组
-- `uniqueFromPrimitive`: 对相同类型的基本类型的值或包含相同类型基本类型值的数组去重
 - `toArray`: 将给定的值转换为数组
+- `uniqueFromPrimitive`: 对相同类型的基本类型的值或包含相同类型基本类型值的数组去重
 
 ## `dimension`
 
