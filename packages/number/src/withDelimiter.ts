@@ -1,9 +1,9 @@
 import { isFinite, isUintFilled } from '@curong/types';
 
-import type { ToLocaleStringOptions } from './types';
+import type { WithDelimiterOptions } from './types';
 
 /**
- * 将数字格式化为本地化字符串表示形式
+ * 将数字或数字字符串格式化为带有分隔符的样式
  *
  * @param value 要格式化的数字
  * @param options 格式化选项
@@ -12,20 +12,22 @@ import type { ToLocaleStringOptions } from './types';
  * @returns 返回格式化后的字符串
  * @throws
  *  - 如果 `value` 不是一个有限数，则会抛出类型错误异常
- *  - 如果 `capacity` 不是一个无符号整数，则会抛出类型错误异常
+ *  - 如果 `capacity` 不是一个大于 0 的无符号整数，则会抛出类型错误异常
  * @example
  *
  * ```typescript
- * toLocaleString(123456789); // 123,456,789
- * toLocaleString(123456789, { delimiter: '_', capacity: 4 }); // 1_2345_6789
+ * withDelimiter(123456789); // 123,456,789
+ * withDelimiter(123456789, { delimiter: '_', capacity: 4 }); // 1_2345_6789
  * ```
  */
-export default function toLocaleString(
+export default function withDelimiter(
     value: number | string,
-    options?: ToLocaleStringOptions
+    options?: WithDelimiterOptions
 ): string {
     if (!isFinite(+value)) {
-        throw new TypeError(`[toLocaleString] value 必须是一个有效的数字`);
+        throw new TypeError(
+            `[withDelimiter] value 必须是一个有效的数字: ${value}`
+        );
     }
 
     const numStr = value.toString();
@@ -33,7 +35,7 @@ export default function toLocaleString(
 
     if (!isUintFilled(capacity)) {
         throw new TypeError(
-            `[toLocaleString] capacity 必须是一个大于 0 的整数`
+            `[withDelimiter] capacity 必须是一个大于 0 的整数: ${capacity}`
         );
     }
 

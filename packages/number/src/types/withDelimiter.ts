@@ -1,4 +1,4 @@
-export type ToLocaleStringOptions = {
+export type WithDelimiterOptions = {
     /** 分隔符。默认为 `,` */
     delimiter?: string;
 

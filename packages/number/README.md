@@ -10,7 +10,7 @@
 - `rangeSafe`: 生成一个从开始位置到结束位置的安全的随机整数
 - `stringify`: 将数字转换为字符串
 - `toFiniteNumber`: 将值转换为有限数值。如果无法转换为有限数值，则返回默认值
-- `toLocaleString`: 将数字格式化为本地化字符串表示形式
+- `withDelimiter`: 将数字或数字字符串格式化为带有分隔符的样式
 
 ## `amount`
 

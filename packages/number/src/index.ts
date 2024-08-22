@@ -5,6 +5,6 @@ export { default as range } from './range';
 export { default as rangeSafe } from './rangeSafe';
 export { default as stringify } from './stringify';
 export { default as toFiniteNumber } from './toFiniteNumber';
-export { default as toLocaleString } from './toLocaleString';
+export { default as withDelimiter } from './withDelimiter';
 
 export * from './types';
