@@ -10,7 +10,7 @@
 - `minLengthIndex`: 获取字符串数组中最小长度的项的索引位置
 - `random`: 从数组中随机挑选一个元素
 - `shuffle`: 将一个数组随机打乱
-- `splitByStep`: 将一个数组按照指定的步长进行拆分
+- `splitChunk`: 将一个数组按照指定的大小拆分成多个数组
 - `uniqueFromPrimitive`: 对相同类型的基本类型的值或包含相同类型基本类型值的数组去重
 
 ## `dimension`
