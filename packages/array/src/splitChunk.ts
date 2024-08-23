@@ -1,12 +1,12 @@
-import { isIntFilled } from '@curong/types';
+import { isUintFilled } from '@curong/types';
 
 /**
  * 将一个数组按照指定的大小拆分成多个数组
  *
  * @param value 要处理的数组
- * @param size 每一项的数组长度，它是一个大于 `0` 的整数
+ * @param step 每一项的数组长度，它是一个大于 `0` 的整数
  * @returns 返回拆分好的内容
- * @throws 如果 `size` 不是大于 `0` 的整数，则会抛出类型错误
+ * @throws 如果 `step` 不是大于 `0` 的整数，则会抛出类型错误
  * @example
  *
  * ```typescript
@@ -15,16 +15,18 @@ import { isIntFilled } from '@curong/types';
  * console.log(ret); // [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11]]
  * ```
  */
-export default function splitChunk<T>(value: T[], size: number): T[][] {
-    if (!isIntFilled(size)) {
-        throw new TypeError(`[splitChunk] step不是一个大于0的整数: "${size}"`);
+export default function splitChunk<T>(value: T[], step: number): T[][] {
+    if (!isUintFilled(step)) {
+        throw new TypeError(
+            `[splitChunk] step 不是一个大于 0 的整数: "${step}"`
+        );
     }
 
-    if (size >= value.length) {
+    if (step >= value.length) {
         return [value];
     }
 
-    return Array.from({ length: Math.ceil(value.length / size) }, (_, i) =>
-        value.slice(i * size, i * size + size)
+    return Array.from({ length: Math.ceil(value.length / step) }, (_, i) =>
+        value.slice(i * step, i * step + step)
     );
 }
