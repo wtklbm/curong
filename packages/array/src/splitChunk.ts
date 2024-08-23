@@ -26,7 +26,11 @@ export default function splitChunk<T>(value: T[], step: number): T[][] {
         return [value];
     }
 
-    return Array.from({ length: Math.ceil(value.length / step) }, (_, i) =>
-        value.slice(i * step, i * step + step)
-    );
+    const result = [];
+
+    for (let i = 0; i < value.length; i += step) {
+        result.push(value.slice(i, i + step));
+    }
+
+    return result;
 }
