@@ -13,6 +13,7 @@ export { default as toArray } from './toArray';
 export { default as uniqueFromPrimitive } from './uniqueFromPrimitive';
 
 export * from './dimension';
+export * from './forEach';
 export * from './sort';
 
 export * from './types';
