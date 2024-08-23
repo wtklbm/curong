@@ -21,6 +21,15 @@
 - `dimensionLevel`: 判断一个数组的维度
 - `isMultiDimensional`: 是不是一个多维数组 (至少是二维)
 
+## `forEach`
+
+- `each`: 遍历数组并对每个元素依次执行回调函数
+- `eachAsync`: 异步串行遍历数组并对每个元素依次执行回调函数
+- `eachParallel`: 异步并行遍历数组并对每个元素执行回调函数
+- `eachRight`: 从右到左遍历数组并对每个元素依次执行回调函数
+- `eachRightAsync`: 从右到左异步串行遍历数组并对每个元素依次执行异步回调函数
+- `eachRightParallel`: 从右到左异步并行遍历数组并对每个元素执行异步回调函数
+
 ## `sort`
 
 - `sortByEng`: 按照单词的所有字母全量排序
