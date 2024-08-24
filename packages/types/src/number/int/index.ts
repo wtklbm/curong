@@ -3,7 +3,6 @@ export { default as isInt16 } from './isInt16';
 export { default as isInt32 } from './isInt32';
 export { default as isInt8 } from './isInt8';
 export { default as isIntEven } from './isIntEven';
-export { default as isIntFilled } from './isIntFilled';
 export { default as isIntOdd } from './isIntOdd';
 export { default as isIntSafe } from './isIntSafe';
 export { default as isUint } from './isUint';
