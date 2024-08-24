@@ -21,67 +21,42 @@ describe('@curong/array/splitChunk', () => {
         expect(splitChunk(v, 30)).toEqual([[0]]);
     });
 
+    /* prettier-ignore  */
     test('测试3', () => {
         const v = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
-        expect(splitChunk(v, 1)).toEqual([
-            [1],
-            [2],
-            [3],
-            [4],
-            [5],
-            [6],
-            [7],
-            [8],
-            [9],
-            [10],
-            [11]
-        ]);
+        // @ts-ignore
+        expect(() => splitChunk(v, 0, 'xxx')).toThrow();
+        // @ts-ignore
+        expect(() => splitChunk(v, 3, 'xxx')).toThrow();
+
+        expect(splitChunk(v, 5)).toEqual([[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11]]);
+        expect(splitChunk(v, 5, 'start')).toEqual([ [ 1, 2, 3 ], [ 4, 5 ], [ 6, 7 ], [ 8, 9 ], [ 10, 11 ] ]);
+        expect(splitChunk(v, 5, 'end')).toEqual([ [ 1, 2 ], [ 3, 4 ], [ 5, 6 ], [ 7, 8 ], [ 9, 10, 11 ] ]);
+
+        expect(splitChunk(v, 3)).toEqual([ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ], [ 10, 11 ] ]);
+        expect(splitChunk(v, 3, 'start')).toEqual([ [ 1, 2, 3, 4 ], [ 5, 6, 7, 8 ], [ 9, 10, 11 ] ]);
+        expect(splitChunk(v, 3, 'end')).toEqual([ [ 1, 2, 3 ], [ 4, 5, 6, 7 ], [ 8, 9, 10, 11 ] ]);
+
+        expect(splitChunk(v, 2)).toEqual([ [ 1, 2, 3, 4, 5 ], [ 6, 7, 8, 9, 10 ], [ 11 ] ]);
+        expect(splitChunk(v, 2, 'start')).toEqual([ [ 1, 2, 3, 4, 5, 6 ], [ 7, 8, 9, 10, 11 ] ]);
+        expect(splitChunk(v, 2, 'end')).toEqual([ [ 1, 2, 3, 4, 5 ], [ 6, 7, 8, 9, 10, 11 ] ]);
+
+        expect(splitChunk(v, 1)).toEqual([ [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] ]);
+        expect(splitChunk(v, 1, 'start')).toEqual([ [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] ]);
+        expect(splitChunk(v, 1, 'end')).toEqual([ [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] ]);
     });
 
+    /* prettier-ignore  */
     test('测试4', () => {
-        const v = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+        const v = [1, 2, 3, 4];
 
-        expect(splitChunk(v, 2)).toEqual([
-            [1, 2],
-            [3, 4],
-            [5, 6],
-            [7, 8],
-            [9, 10],
-            [11]
-        ]);
-    });
+        expect(splitChunk(v, 2)).toEqual([ [1, 2], [3, 4] ]);
+        expect(splitChunk(v, 2, 'start')).toEqual([ [1, 2], [3, 4] ]);
+        expect(splitChunk(v, 2, 'end')).toEqual([ [1, 2], [3, 4] ]);
 
-    test('测试5', () => {
-        const v = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-
-        expect(splitChunk(v, 5)).toEqual([
-            [1, 2, 3, 4, 5],
-            [6, 7, 8, 9, 10],
-            [11]
-        ]);
-    });
-
-    test('测试6', () => {
-        const v = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-
-        expect(splitChunk(v, 10)).toEqual([
-            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            [11]
-        ]);
-    });
-
-    test('测试7', () => {
-        const v = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-
-        expect(() => splitChunk(v, 1.5)).toThrow();
-    });
-
-    test('测试8', () => {
-        const v = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-
-        expect(splitChunk(v, 11)).toEqual([
-            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-        ]);
+        expect(splitChunk(v, 3)).toEqual([ [1], [2], [3], [4] ]);
+        expect(splitChunk(v, 3, 'start')).toEqual([ [1, 2], [3], [4] ]);
+        expect(splitChunk(v, 3, 'end')).toEqual([ [1], [2], [3, 4] ]);
     });
 });
