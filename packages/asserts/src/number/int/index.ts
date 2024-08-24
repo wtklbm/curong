@@ -3,7 +3,6 @@ export { default as assertInt16 } from './assertInt16';
 export { default as assertInt32 } from './assertInt32';
 export { default as assertInt8 } from './assertInt8';
 export { default as assertIntEven } from './assertIntEven';
-export { default as assertIntFilled } from './assertIntFilled';
 export { default as assertIntOdd } from './assertIntOdd';
 export { default as assertIntSafe } from './assertIntSafe';
 export { default as assertUint } from './assertUint';
