@@ -6,6 +6,7 @@ import { isUintFilled } from '@curong/types';
  * @param value 要处理的数组
  * @param step 每一项的长度，它是一个大于 `0` 的整数
  * @returns 返回拆分好的二维数组
+ *  - 如果 `step` 大于或等于 `value.length`，则直接返回 `[value]`
  * @throws 如果 `step` 不是大于 `0` 的整数，则会抛出类型错误
  * @example
  *
@@ -26,10 +27,10 @@ export default function splitByStep<T>(value: T[], step: number): T[][] {
         return [value];
     }
 
-    //可以简写成下面这样，但是运行速度有点慢：
-    // return Array.from({ length: Math.ceil(value.length / step) }, (_, i) =>
-    //     value.slice(i * step, i * step + step)
-    // );
+    // 可以简写成下面这样，但是运行速度有点慢：
+    //return Array.from({ length: Math.ceil(value.length / step) }, (_, i) =>
+    //    value.slice(i * step, i * step + step)
+    //);
 
     const result = [];
 
