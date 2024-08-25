@@ -7,17 +7,17 @@
  * @example
  *
  * ```typescript
-* const arr = [1, 2, 3, 4];
-*
-* await mapAsync(arr, async (value, index) => {
-*     console.log(`索引 ${index} 的值是 ${value}`);
-*     return `${value}`.toLowerCase();
-* }); // [ '1', '2', '3', '4' ]
+ * const arr = [1, 2, 3, 4];
+ *
+ * await mapAsync(arr, async (value, index) => {
+ *     console.log(`索引 ${index} 的值是 ${value}`);
+ *     return `${value}`.toLowerCase();
+ * }); // [ '1', '2', '3', '4' ]
  * ```
  */
 export default async function mapAsync<T, R>(
     value: T[],
-    callback: (value: T, index: number, array: T[]) => Promise<R>,
+    callback: (value: T, index: number, array: T[]) => Promise<R> | R
 ): Promise<R[]> {
     const result = [];
 
