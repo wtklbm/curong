@@ -20,7 +20,11 @@
  */
 export default async function eachRightAsync<T>(
     value: T[],
-    callback: (value: T, index: number, array: T[]) => Promise<void | boolean>
+    callback: (
+        value: T,
+        index: number,
+        array: T[]
+    ) => Promise<void | boolean> | void | boolean
 ): Promise<void> {
     let length = value.length;
 
@@ -30,4 +34,3 @@ export default async function eachRightAsync<T>(
         }
     }
 }
-
