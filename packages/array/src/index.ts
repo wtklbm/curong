@@ -15,6 +15,7 @@ export { default as uniqueFromPrimitive } from './uniqueFromPrimitive';
 
 export * from './dimension';
 export * from './forEach';
+export * from './map';
 export * from './sort';
 
 export * from './types';
