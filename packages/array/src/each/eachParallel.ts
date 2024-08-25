@@ -16,9 +16,9 @@
  */
 export default async function eachParallel<T>(
     value: T[],
-    callback: (value: T, index: number, array: T[]) => void | Promise<void>
+    callback: (value: T, index: number, array: T[]) => Promise<void> | void
 ): Promise<void> {
-    const promises: (void | Promise<void>)[] = [];
+    const promises: (Promise<void> | void)[] = [];
 
     for (let index = 0; index < value.length; index++) {
         promises.push(callback(value[index], index, value));
