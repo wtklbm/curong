@@ -11,6 +11,7 @@ export { default as shuffle } from './shuffle';
 export { default as splitByStep } from './splitByStep';
 export { default as splitChunk } from './splitChunk';
 export { default as toArray } from './toArray';
+export { default as toObject } from './toObject';
 export { default as uniqueFromPrimitive } from './uniqueFromPrimitive';
 
 export * from './dimension';
