@@ -7,20 +7,24 @@
  * @example
  *
  * ```typescript
-* const arr = [1, 2, 3, 4];
-*
-* await eachAsync(arr, async (value, index) => {
-*     console.log(`索引 ${index} 的值是 ${value}`);
-*
-*     if (value === 3) {
-*         return true; // 遇到值为 3 时停止遍历
-*     }
-* });
+ * const arr = [1, 2, 3, 4];
+ *
+ * await eachAsync(arr, async (value, index) => {
+ *     console.log(`索引 ${index} 的值是 ${value}`);
+ *
+ *     if (value === 3) {
+ *         return true; // 遇到值为 3 时停止遍历
+ *     }
+ * });
  * ```
  */
 export default async function eachAsync<T>(
     value: T[],
-    callback: (value: T, index: number, array: T[]) => Promise<void | boolean>
+    callback: (
+        value: T,
+        index: number,
+        array: T[]
+    ) => Promise<void | boolean> | void | boolean
 ): Promise<void> {
     for (let index = 0; index < value.length; index++) {
         if ((await callback(value[index], index, value)) === true) {
