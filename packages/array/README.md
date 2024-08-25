@@ -9,6 +9,7 @@
 - `maxLengthIndex`: 获取字符串数组中最大长度的项的索引位置
 - `maxRecursionDepth`: 计算数组的最大递归深度 (即数组中包含数组)
 - `minLengthIndex`: 获取字符串数组中最小长度的项的索引位置
+- `move`: 将数组中的指定元素从 `from` 移动到 `to`
 - `random`: 从数组中随机挑选一个元素
 - `range`: 生成一个指定范围的数字数组
 - `shuffle`: 将一个数组随机打乱
