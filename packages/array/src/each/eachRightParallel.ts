@@ -7,18 +7,18 @@
  * @example
  *
  * ```typescript
-* const arr = [1, 2, 3, 4];
-*
-* await eachRightParallel(arr, async (value, index) => {
-*     console.log(`索引 ${index} 的值是 ${value}`);
-* });
-* ```
-*/
+ * const arr = [1, 2, 3, 4];
+ *
+ * await eachRightParallel(arr, async (value, index) => {
+ *     console.log(`索引 ${index} 的值是 ${value}`);
+ * });
+ * ```
+ */
 export default async function eachRightParallel<T>(
     value: T[],
-    callback: (value: T, index: number, array: T[]) => void | Promise<void>
+    callback: (value: T, index: number, array: T[]) => Promise<void> | void
 ): Promise<void> {
-    const promises: (void | Promise<void>)[] = [];
+    const promises: (Promise<void> | void)[] = [];
     let length = value.length;
 
     while (length--) {
