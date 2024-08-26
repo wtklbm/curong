@@ -1,4 +1,4 @@
-import { toObject } from '../src';
+import { toObject } from '..';
 
 describe('@curong/array/toObject', () => {
     test('测试1: 传入空数组时，返回空对象', () => {

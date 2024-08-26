@@ -1,7 +1,7 @@
-import { toTree } from '../src';
-import { countNodes } from '../src/toTree';
+import { toTree } from '..';
+import { countNodes } from '../toTree';
 
-describe('toTree', () => {
+describe('@curong/array/toTree', () => {
     test('should work with nested objects', () => {
         expect(
             toTree([
@@ -152,10 +152,15 @@ describe('toTree', () => {
 
     test('should work with integer parentId 0', () => {
         expect(
-            toTree([
-                { id: 0, parentId: null, custom: 'abc' },
-                { id: 31, parentId: 0, custom: '12' }
-            ])
+            toTree(
+                [
+                    { id: 0, parentId: null, custom: 'abc' },
+                    { id: 31, parentId: 0, custom: '12' }
+                ],
+                {
+                    rootParentIds: {}
+                }
+            )
         ).toStrictEqual([
             {
                 data: { id: 0, parentId: null, custom: 'abc' },
@@ -165,6 +170,44 @@ describe('toTree', () => {
                         children: []
                     }
                 ]
+            }
+        ]);
+
+        expect(
+            toTree(
+                [
+                    { id: 0, parentId: null, custom: 'abc' },
+                    { id: 31, parentId: 0, custom: '12' }
+                ],
+                {
+                    rootParentIds: { 0: false }
+                }
+            )
+        ).toStrictEqual([
+            {
+                data: { id: 0, parentId: null, custom: 'abc' },
+                children: [
+                    {
+                        data: { id: 31, parentId: 0, custom: '12' },
+                        children: []
+                    }
+                ]
+            }
+        ]);
+
+        expect(
+            toTree([
+                { id: 1, parentId: null, custom: 'abc' },
+                { id: 31, parentId: 0, custom: '12' }
+            ])
+        ).toStrictEqual([
+            {
+                data: { id: 1, parentId: null, custom: 'abc' },
+                children: []
+            },
+            {
+                data: { id: 31, parentId: 0, custom: '12' },
+                children: []
             }
         ]);
     });
@@ -900,7 +943,9 @@ describe('toTree', () => {
         expect(tree[0].__proto__).toStrictEqual(Object.prototype);
         expect(tree[0].legs).toEqual(undefined);
     });
+});
 
+describe('@curong/array/toTree/countNodes', () => {
     test('should work with nested objects', () => {
         expect(
             countNodes(

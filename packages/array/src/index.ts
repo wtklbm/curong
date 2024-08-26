@@ -11,14 +11,11 @@ export { default as range } from './range';
 export { default as shuffle } from './shuffle';
 export { default as splitByStep } from './splitByStep';
 export { default as splitChunk } from './splitChunk';
-export { default as toArray } from './toArray';
-export { default as toObject } from './toObject';
-export { default as toTree } from './toTree';
 export { default as uniqueFromPrimitive } from './uniqueFromPrimitive';
 
+export * from './convert';
 export * from './dimension';
 export * from './each';
 export * from './map';
 export * from './sort';
 
-export * from './types';

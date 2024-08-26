@@ -1,4 +1,4 @@
-import { toArray } from '../src';
+import { toArray } from '..';
 
 describe('@curong/array/toArray', () => {
     test('测试1', () => {
