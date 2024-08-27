@@ -1,4 +1,4 @@
-import fCall from './constants/fCall';
+import executeToPromise from './promise/executeToPromise';
 
 /**
  * 执行任务并等待结果的返回
@@ -20,7 +20,7 @@ export default async function padding<R, A extends unknown[], E>(
     ...args: A
 ): Promise<[R | null, E | null]> {
     try {
-        return [await fCall(task, args), null];
+        return [await executeToPromise(task, args), null];
     } catch (error: any) {
         return [null, error];
     }

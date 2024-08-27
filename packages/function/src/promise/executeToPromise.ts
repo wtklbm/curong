@@ -7,7 +7,7 @@ import { isFunction } from '@curong/types';
  * @param args 要传递给函数的参数
  * @returns  返回一个包装的 `Promise`
  */
-export default function fCall<A extends unknown[], R = any>(
+export default function executeToPromise<A extends unknown[], R = any>(
     value: any,
     args?: A
 ): Promise<R> {

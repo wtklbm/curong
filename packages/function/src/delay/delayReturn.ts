@@ -1,4 +1,4 @@
-import pWarper from '../constants/pWarper';
+import toPromise from '../promise/toPromise';
 import timeoutMsResolve, {
     type ResolvableTimeoutMs
 } from '../timeout/timeoutMsResolve';
@@ -21,7 +21,7 @@ export default function delayReturn<R, A extends unknown[]>(
     const paddingMs = timeoutMsResolve(duration);
     const start = Date.now();
 
-    return Promise.all([pWarper(task, args), delay(paddingMs)])
+    return Promise.all([toPromise(task, args), delay(paddingMs)])
         .then(([result]) => result)
         .catch(error => {
             const elapsed = Date.now() - start;

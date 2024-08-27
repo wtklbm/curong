@@ -1,4 +1,4 @@
-import pWarper from '../constants/pWarper';
+import toPromise from '../promise/toPromise';
 
 type Payload<R, A extends unknown[]> =
     | ((...args: A) => Promise<R> | R)
@@ -42,9 +42,9 @@ export default function cancelExec<R, A extends unknown[]>(
 
     return [
         Promise.race([
-            pWarper(callable),
+            toPromise(callable),
             new Promise(resolve => {
-                abort = payload => resolve(pWarper(payload, args));
+                abort = payload => resolve(toPromise(payload, args));
             })
         ]),
         abort!

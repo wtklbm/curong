@@ -1,4 +1,4 @@
-import fCall from '../constants/fCall';
+import executeToPromise from '../promise/executeToPromise';
 
 /**
  * 根据条件来返回相应的结果
@@ -24,5 +24,5 @@ export default async function select<A extends unknown[], T>(
     doElse?: ((...args: A) => any) | Promise<any> | T | null | undefined,
     ...args: A
 ): Promise<T | null | undefined> {
-    return (await fCall(condition)) ? fCall(doIf, args) : fCall(doElse, args);
+    return (await executeToPromise(condition)) ? executeToPromise(doIf, args) : executeToPromise(doElse, args);
 }

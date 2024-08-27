@@ -6,6 +6,7 @@ export * from './chain';
 export * from './control';
 export * from './delay';
 export * from './limit';
+export * from './promise';
 export * from './select';
 export * from './timeout';
 

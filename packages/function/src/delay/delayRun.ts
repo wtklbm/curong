@@ -1,4 +1,4 @@
-import fCall from '../constants/fCall';
+import executeToPromise from '../promise/executeToPromise';
 import type { ResolvableTimeoutMs } from '../timeout/timeoutMsResolve';
 
 import delay from './delay';
@@ -33,5 +33,5 @@ export default async function delayRun<R, A extends unknown[]>(
 ): Promise<R> {
     await delay(duration);
 
-    return await fCall(task, args);
+    return await executeToPromise(task, args);
 }

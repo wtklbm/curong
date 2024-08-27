@@ -1,5 +1,5 @@
-import fCall from '../constants/fCall';
-import pWarper from '../constants/pWarper';
+import executeToPromise from '../promise/executeToPromise';
+import toPromise from '../promise/toPromise';
 
 import setTimeout from './setTimeout';
 import timeoutMsResolve, { type ResolvableTimeoutMs } from './timeoutMsResolve';
@@ -33,10 +33,10 @@ export default async function timeoutOr<A extends unknown[], R1, R2>(
 ) {
     let timer;
     const ret = await Promise.race([
-        pWarper(callable, args),
+        toPromise(callable, args),
         new Promise(resolve => {
             timer = setTimeout(
-                () => resolve(fCall(callback, args)),
+                () => resolve(executeToPromise(callback, args)),
                 timeoutMsResolve(duration)
             );
         })
