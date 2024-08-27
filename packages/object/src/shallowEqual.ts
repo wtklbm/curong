@@ -85,11 +85,12 @@ export default function shallowEqual(
         return false;
     }
 
-    for (let i = 0; i < keysA.length; i++) {
-        if (
-            !hasOwnProperty.call(objB, keysA[i]) ||
-            !is(objA[keysA[i]], objB[keysA[i]])
-        ) {
+    const bHasOwn = hasOwnProperty.bind(objB);
+
+    for (let i = 0, k; i < keysA.length; i++) {
+        k = keysA[i];
+
+        if (!bHasOwn(k) || !is(objA[k], objB[k])) {
             return false;
         }
     }
