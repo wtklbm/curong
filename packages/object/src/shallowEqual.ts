@@ -15,6 +15,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  *
  * @param objA 一个对象
  * @param objB 另一个对象
+ * @param compare 一个返回布尔值的比较函数。默认为 `Object.is`
  * @returns 如果相等则返回 `true`，否则返回 `false`
  * @example ````
  *
@@ -61,11 +62,12 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  *
  * @see https://github.com/facebook/react/blob/2c9fef32db5c9a342a1a60c34217ffc9ae087fbb/packages/shared/shallowEqual.js
  */
-export default function shallowEqual(
-    objA: ObjectType | null,
-    objB: ObjectType | null
+export default function shallowEqual<T>(
+    objA: ObjectType<T> | null,
+    objB: ObjectType<T> | null,
+    compare: <T>(objA: T, objB: T, indexOrKey?: number | string) => boolean = is
 ): boolean {
-    if (is(objA, objB)) {
+    if (compare(objA, objB)) {
         return true;
     }
 
@@ -90,7 +92,7 @@ export default function shallowEqual(
     for (let i = 0, k; i < keysA.length; i++) {
         k = keysA[i];
 
-        if (!bHasOwn(k) || !is(objA[k], objB[k])) {
+        if (!bHasOwn(k) || !compare(objA[k], objB[k], k)) {
             return false;
         }
     }
