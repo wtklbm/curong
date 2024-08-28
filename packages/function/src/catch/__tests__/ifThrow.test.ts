@@ -219,4 +219,21 @@ describe('@curong/function/ifThrow', () => {
             )
         ).rejects.toBe(1);
     });
+
+    test('测试16', async () => {
+        async function fetchData(this: any) {
+            console.log(this);
+            return this.value;
+        }
+
+        expect(await ifThrow(fetchData, 'defaultData')).toBe(undefined);
+
+        const o1 = { value: 1 };
+        const b1 = fetchData.bind(o1);
+        expect(await ifThrow(b1, 'defaultData')).toBe(1);
+
+        const o2 = { value: 2 };
+        const b2 = fetchData.bind(o2);
+        expect(await ifThrow(b2, 'defaultData')).toBe(2);
+    });
 });
