@@ -109,7 +109,8 @@ export default function toTree(
     const rootItems: TreeItem[] = [];
 
     // 存储所有已处理的项，使用它们的 `id` 作为键，以便于查找
-    const lookup: { [id: string]: TreeItem } = {};
+    const lookup: { [id: string]: TreeItem; } = {};
+    const hasOwn = hasOwnProperty.bind(lookup);
 
     // 存储所有尚未添加到结果树中的项的 `id`
     // 这是一个可选属性，因为它有轻微的运行时开销
@@ -141,7 +142,7 @@ export default function toTree(
         }
 
         // 检查项是否已存在于查找表中
-        if (!hasOwnProperty.call(lookup, itemId)) {
+        if (!hasOwn(itemId)) {
             // 项尚不存在，因此添加一个初步的项（稍后会添加它的数据）
             lookup[itemId] = { [childrenField]: [] };
         }
@@ -174,7 +175,7 @@ export default function toTree(
             // 有父项
 
             // 检查父项是否已存在于查找表中
-            if (!hasOwnProperty.call(lookup, parentId)) {
+            if (!hasOwn(parentId)) {
                 // 父项尚不存在，因此添加一个初步的父项 (稍后会添加它的数据)
                 lookup[parentId] = { [childrenField]: [] };
 
