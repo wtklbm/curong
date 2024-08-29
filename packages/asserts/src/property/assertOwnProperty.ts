@@ -1,4 +1,4 @@
-import { isOwnProperty } from '@curong/types';
+import { hasOwnProperty } from '@curong/types';
 
 import typeGuard from '../constants/typeGuard';
 
@@ -15,5 +15,5 @@ export default function assertOwnProperty(
     variableName: string,
     key: PropertyKey
 ) {
-    return typeGuard(value, variableName, isOwnProperty, key);
+    return typeGuard(value, variableName, hasOwnProperty, key);
 }

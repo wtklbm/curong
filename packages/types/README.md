@@ -260,9 +260,9 @@
 
 #### `property`
 
+- `hasOwnProperty`: 确定一个值上是否具有指定名称的私有属性
 - `isLengthy`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于或等于 `0` 的安全的无符号整数
 - `isLengthyFilled`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于 `0` 的安全的无符号整数
-- `isOwnProperty`: 确定一个值上是否具有指定名称的私有属性
 - `isProperty`: 确定一个值上是否具有指定名称的属性，该属性可以是私有属性，也可以是原型上的属性
 - `isPropertyDescriptor`: 是不是一个属性描述器
 - `isPropertyKey`: 是不是一个可以作为属性的值

@@ -1,3 +1,5 @@
+import { hasOwnProperty } from '@curong/types';
+
 import type { ObjectType } from './types';
 
 /**
@@ -86,12 +88,10 @@ export default function shallowEqual<T>(
         return false;
     }
 
-    const bHasOwn = Object.prototype.hasOwnProperty.bind(objB);
-
     for (let i = 0, k; i < keysA.length; i++) {
         k = keysA[i];
 
-        if (!bHasOwn(k) || !compare(objA[k], objB[k], k)) {
+        if (!hasOwnProperty(objB, k) || !compare(objA[k], objB[k], k)) {
             return false;
         }
     }

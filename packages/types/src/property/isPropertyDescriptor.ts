@@ -2,7 +2,7 @@ import isBoolean from '../boolean/isBoolean';
 import isFunction from '../function/isFunction';
 import isObject from '../object/isObject';
 
-import isOwnProperty from './isOwnProperty';
+import hasOwnProperty from './hasOwnProperty';
 
 /**
  * 是不是一个属性描述器
@@ -19,10 +19,10 @@ export default function isPropertyDescriptor(
         return false;
     }
 
-    const isData = isOwnProperty(value, 'value');
+    const isData = hasOwnProperty(value, 'value');
     const IsAccessor =
-        (isOwnProperty(value, 'get') && isFunction(value.get)) ||
-        (isOwnProperty(value, 'set') && isFunction(value.set));
+        (hasOwnProperty(value, 'get') && isFunction(value.get)) ||
+        (hasOwnProperty(value, 'set') && isFunction(value.set));
 
     // `value` 和 `get/set` 不能同时存在
     if (isData && IsAccessor) {

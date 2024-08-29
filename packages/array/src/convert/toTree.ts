@@ -1,3 +1,5 @@
+import { hasOwnProperty } from '@curong/types';
+
 import type { Item, ToTreeOptions, TreeItem } from './types';
 
 /**
@@ -107,8 +109,7 @@ export default function toTree(
     const rootItems: TreeItem[] = [];
 
     // 存储所有已处理的项，使用它们的 `id` 作为键，以便于查找
-    const lookup: { [id: string]: TreeItem; } = {};
-    const hasOwn = Object.prototype.hasOwnProperty.bind(lookup);
+    const lookup: { [id: string]: TreeItem } = {};
 
     // 存储所有尚未添加到结果树中的项的 `id`
     // 这是一个可选属性，因为它有轻微的运行时开销
@@ -140,7 +141,7 @@ export default function toTree(
         }
 
         // 检查项是否已存在于查找表中
-        if (!hasOwn(itemId)) {
+        if (!hasOwnProperty(lookup, itemId)) {
             // 项尚不存在，因此添加一个初步的项（稍后会添加它的数据）
             lookup[itemId] = { [childrenField]: [] };
         }
@@ -173,7 +174,7 @@ export default function toTree(
             // 有父项
 
             // 检查父项是否已存在于查找表中
-            if (!hasOwn(parentId)) {
+            if (!hasOwnProperty(lookup, parentId)) {
                 // 父项尚不存在，因此添加一个初步的父项 (稍后会添加它的数据)
                 lookup[parentId] = { [childrenField]: [] };
 

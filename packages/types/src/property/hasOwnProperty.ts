@@ -5,7 +5,7 @@
  * @param key 属性名称
  * @returns 如果存在私有属性，则返回 `true`，否则为 `false`
  */
-export default function isOwnProperty(
+export default function hasOwnProperty(
     value: unknown,
     key: PropertyKey
 ): boolean {
