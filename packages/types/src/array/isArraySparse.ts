@@ -1,3 +1,5 @@
+import hasOwnProperty from '../property/hasOwnProperty';
+
 import isArray from './isArray';
 
 /**
@@ -23,7 +25,7 @@ export default function isArraySparse<T>(value: unknown): value is Array<T> {
     }
 
     for (let i = 0, l = value.length; i < l; i++) {
-        if (!value.hasOwnProperty(i)) {
+        if (!hasOwnProperty(value, i)) {
             return true;
         }
     }
