@@ -4,7 +4,6 @@
 
 - `bind`: 将函数绑定到指定的上下文对象上
 - `curring`: 把接受多个参数的函数变成接受任意多个参数的函数，并且返回接受余下的参数的新函数
-- `padding`: 执行任务并等待结果的返回
 
 ### `cache`
 
@@ -35,6 +34,7 @@
 - `cancelExec`: 随时取消对 `Promise`、同步函数或异步函数的执行
 - `collectItems`: 收集 `Promise`，返回收集的 `Promise` 数组的结果
 - `deferred`: 创建一个可以受外部控制的 `Promise`
+- `padding`: 执行任务并等待结果的返回
 - `parallel`: 一个异步并发器，用于控制并发执行任务，支持失败重试和进度回调
 
 ### `delay`

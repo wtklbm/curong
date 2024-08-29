@@ -1,4 +1,4 @@
-import executeToPromise from './promise/executeToPromise';
+import executeToPromise from '../promise/executeToPromise';
 
 /**
  * 执行任务并等待结果的返回

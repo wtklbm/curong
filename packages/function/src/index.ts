@@ -1,6 +1,5 @@
 export { default as bind } from './bind';
 export { default as currying } from './currying';
-export { default as padding } from './padding';
 
 export * from './catch';
 export * from './chain';

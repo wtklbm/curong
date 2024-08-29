@@ -1,4 +1,4 @@
-import { padding } from '../src';
+import { padding } from '..';
 
 describe('@curong/function/padding', () => {
     test('测试1', async () => {
