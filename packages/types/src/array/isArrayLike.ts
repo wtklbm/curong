@@ -1,5 +1,6 @@
 import isWindow from '../element/isWindow';
 import isTypeofObject from '../object/isTypeofObject';
+import hasOwnProperty from '../property/hasOwnProperty';
 
 import isArray from './isArray';
 import isArrayIndex from './isArrayIndex';
@@ -52,7 +53,7 @@ export default function isArrayLike<T = unknown>(
 
     if (!isSparse) {
         for (let i = 0, len = nkl; i < len; i++) {
-            if (!value.hasOwnProperty(i)) {
+            if (!hasOwnProperty(value, i)) {
                 return false;
             }
         }
