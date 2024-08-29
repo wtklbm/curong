@@ -10,7 +10,7 @@ export default function isOwnProperty(
     key: PropertyKey
 ): boolean {
     try {
-        return Object.hasOwnProperty.call(value, key);
+        return Object.prototype.hasOwnProperty.call(value, key);
     } catch {}
 
     return false;
