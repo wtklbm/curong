@@ -63,6 +63,7 @@
 ### `timeout`
 
 - `clearTimeoutAll`: 清除所有已分配的 `setTimeout` 定时器
+- `nextTick`: `process.nextTick` 的 `polyfill`，用于将 `callback` 添加到 "下一个滴答队列"
 - `setTimeout`: 设置一个定时器，一旦定时器到期，就会执行回调
 - `timeoutLog`: 将超时时间打印为一个可读的字符串格式。包含天、小时、分钟和秒
 - `timeoutMsResolve`: 计算传递的值，并得到一个以毫秒为单位的超时时间
