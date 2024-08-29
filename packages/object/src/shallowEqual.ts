@@ -8,7 +8,6 @@ const _is = (x: any, y: any) => {
 };
 
 const is = typeof Object.is === 'function' ? Object.is : _is;
-const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 /**
  * 通过浅比较的方式比较两个对象中的属性。(仅比较对象中的一层属性)
@@ -87,7 +86,7 @@ export default function shallowEqual<T>(
         return false;
     }
 
-    const bHasOwn = hasOwnProperty.bind(objB);
+    const bHasOwn = Object.prototype.hasOwnProperty.bind(objB);
 
     for (let i = 0, k; i < keysA.length; i++) {
         k = keysA[i];
