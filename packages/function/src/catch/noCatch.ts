@@ -18,7 +18,5 @@ export default async function noCatch<R, A extends unknown[]>(
     fn: ((...args: A) => Promise<R> | R) | Promise<R>,
     ...args: A
 ): Promise<R | void> {
-    try {
-        return executeToPromise(fn, args).catch(() => {});
-    } catch {}
+    return executeToPromise(fn, args).catch(() => {});
 }
