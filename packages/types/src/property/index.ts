@@ -5,6 +5,7 @@ export { default as isProperty } from './isProperty';
 export { default as isPropertyDescriptor } from './isPropertyDescriptor';
 export { default as isPropertyKey } from './isPropertyKey';
 export { default as isPrototype } from './isPrototype';
+export { default as isPrototypeOf } from './isPrototypeOf';
 export { default as isSizey } from './isSizey';
 export { default as isSizeyFilled } from './isSizeyFilled';
 
