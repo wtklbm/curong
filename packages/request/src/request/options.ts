@@ -5,6 +5,7 @@ import { ParsedUrlQueryInput } from 'querystring';
 import { toLowerCaseKey } from '@curong/object';
 import { format, printInfo } from '@curong/term';
 import {
+    hasOwnProperty,
     isArguments,
     isArray,
     isDate,
@@ -62,7 +63,7 @@ const joinUrlQuery = (url: string, params: Record<string | number, any>) => {
         }
 
         for (const key in obj) {
-            if (obj.hasOwnProperty(key)) {
+            if (hasOwnProperty(obj, key)) {
                 fn.call(null, obj[key], key, obj);
             }
         }
