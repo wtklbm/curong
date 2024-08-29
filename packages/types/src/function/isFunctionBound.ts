@@ -1,3 +1,5 @@
+import hasOwnProperty from '../property/hasOwnProperty';
+
 import isFunction from './isFunction';
 import type { Function } from './types';
 
@@ -18,7 +20,7 @@ export default function isFunctionBound<
     return (
         isFunction(value) &&
         value.name.startsWith('bound ') &&
-        !value.hasOwnProperty('prototype') &&
+        !hasOwnProperty(value, 'prototype') &&
         value.toString() === 'function () { [native code] }'
     );
 }
