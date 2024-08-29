@@ -1,4 +1,4 @@
-import { isTypeofObject } from '@curong/types';
+import { hasOwnProperty, isTypeofObject } from '@curong/types';
 
 /**
  * 是不是当前对象的原型上的属性
@@ -28,6 +28,6 @@ import { isTypeofObject } from '@curong/types';
  */
 export default function isPrototypeProperty(object: any, key: string): boolean {
     return (
-        isTypeofObject(object) && !object.hasOwnProperty(key) && key in object
+        isTypeofObject(object) && !hasOwnProperty(object, key) && key in object
     );
 }
