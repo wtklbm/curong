@@ -1,7 +1,5 @@
 import type { Item, ToTreeOptions, TreeItem } from './types';
 
-const hasOwnProperty = Object.prototype.hasOwnProperty;
-
 /**
  * 递归返回树中的节点数量
  *
@@ -110,7 +108,7 @@ export default function toTree(
 
     // 存储所有已处理的项，使用它们的 `id` 作为键，以便于查找
     const lookup: { [id: string]: TreeItem; } = {};
-    const hasOwn = hasOwnProperty.bind(lookup);
+    const hasOwn = Object.prototype.hasOwnProperty.bind(lookup);
 
     // 存储所有尚未添加到结果树中的项的 `id`
     // 这是一个可选属性，因为它有轻微的运行时开销
