@@ -267,6 +267,7 @@
 - `isPropertyDescriptor`: 是不是一个属性描述器
 - `isPropertyKey`: 是不是一个可以作为属性的值
 - `isPrototype`: 是不是一个构造函数的原型对象
+- `isPrototypeOf`: 判断一个对象是否存在于另一个对象的原型链中
 - `isSizey`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于或等于 `0` 的安全的无符号整数
 - `isSizeyFilled`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于 `0` 的安全的无符号整数
 
