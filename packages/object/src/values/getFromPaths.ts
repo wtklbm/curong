@@ -1,7 +1,5 @@
 import { isNullOrUndefined } from '@curong/types';
 
-const { hasOwnProperty } = Object.prototype;
-
 /**
  * 根据给定的路径数组，从对象中获取嵌套属性的值
  *
@@ -34,7 +32,10 @@ export default function getFromPaths<T, K extends keyof any>(
 
         const path = paths[i];
 
-        if (onlyPrivate && !hasOwnProperty.call(current, path)) {
+        if (
+            onlyPrivate &&
+            !Object.prototype.hasOwnProperty.call(current, path)
+        ) {
             return undefined;
         }
 
