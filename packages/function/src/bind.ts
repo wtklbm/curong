@@ -20,10 +20,10 @@
  * console.log(boundGetX()); // 返回 42，因为 getX 在 obj 上下文中执行
  * ```
  */
-export default function bind<
-    F extends (...args: unknown[]) => unknown,
-    T
->(method: F, ctx: T) {
+export default function bind<F extends (...args: unknown[]) => unknown, C>(
+    method: F,
+    ctx: C
+) {
     const bound = method.bind(ctx);
-    return (...args: Parameters<F>) => bound(...args);
+    return (...args: Parameters<F>) => bound(...args) as ReturnType<F>;
 }
