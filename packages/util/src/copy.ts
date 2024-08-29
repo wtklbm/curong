@@ -1,5 +1,6 @@
 import {
     getTag,
+    hasOwnProperty,
     isBigIntPrimitive,
     isBuffer,
     isFunction,
@@ -214,7 +215,7 @@ const copyFunction = (value: any, weak: any) => {
         // `function () { [native code] }` 中包含 `[native code]`
         src.includes('[native code]') &&
         // 不是经过 `.bind()` 之后的函数
-        !(name.startsWith('bound ') && !value.hasOwnProperty('prototype'))
+        !(name.startsWith('bound ') && !hasOwnProperty(value, 'prototype'))
     ) {
         return value;
     }
