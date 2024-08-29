@@ -25,11 +25,5 @@ export default async function tryCatch<R, A extends unknown[]>(
     fn: (...args: A) => Promise<R> | R,
     ...args: A
 ): Promise<R> {
-    return new Promise<R>((resolve, reject) => {
-        try {
-            return resolve(fn.apply(fn, args));
-        } catch (e) {
-            return reject(e);
-        }
-    });
+    return Promise.resolve(fn.apply(fn, args));
 }
