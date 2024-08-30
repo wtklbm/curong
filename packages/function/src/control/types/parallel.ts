@@ -1,5 +1,5 @@
 /** 配置限流器函数的选项 */
-export type ParallelOptions = {
+export type ParallelOptions<T = any> = {
     /** 任务的最大并发数量。默认为任务的长度，即所有任务并行执行 */
     concurrency?: number;
 
@@ -29,17 +29,19 @@ export type ParallelOptions = {
      * 如果没有指定该函数，则当执行任务发生错误时，会立即抛出错误。
      * 且所有之前已成功的任务就白执行了。不会看到任何的结果。
      *
+     * @param index 当前任务的索引
      * @param error 发生的错误
      * @returns 该方法可以返回一个值，该值可以作为该任务的最终值存储在结果数组中。
      * 也就是说，如果当前任务报错，就可以返回一个值作为该任务的默认值。
-     * 需要注意的是，如果设置了 `maxRetry` 选项，则经过多次重试后，才会将这个默认值设置为该任务的最终值。
+     *  - 如果设置了 `maxRetry` 选项，则经过多次重试后，才会将这个默认值设置为该任务的最终值
+     *  - 如果设置了 `onProgressRetry` 且返回 `true`，则会立即将这个默认值设置为该任务的最终值
      */
-    onError?: <T extends Error>(error: T) => any;
+    onError?: <E extends Error>(index: number, error: E) => T | undefined;
 
     /**
      * 每次任务完成时调用的回调函数
      *
-     * @param index 任务的索引
+     * @param index 当前任务的索引
      * @param result 当前任务的执行结果
      */
     onProgress?: (index: number, result: any) => void;
@@ -47,14 +49,16 @@ export type ParallelOptions = {
     /**
      * 每次任务失败并重试时调用的回调函数
      *
-     * @param index 任务的索引
+     * @param index 当前任务的索引
      * @param error 发生的错误
      * @param attempts 这是第几次重试
      * @returns 如果该函数返回 `true`，则不再进行重试，而是执行下一个任务
+     *  - 如果同时传递了 `onError` 且该函数有返回值，则返回该值
+     *  - 如果没有传递 `onError`，则返回 `undefined`
      */
     onProgressRetry?: (
         index: number,
         error: Error,
         attempts: number
-    ) => boolean | void;
+    ) => boolean | undefined;
 };
