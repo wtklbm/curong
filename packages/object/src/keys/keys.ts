@@ -1,7 +1,5 @@
 import { isUint } from '@curong/types';
 
-import type { ObjectType } from '../types';
-
 const fns = [
     Object.keys,
     Object.getOwnPropertyNames,
@@ -28,16 +26,16 @@ const fns = [
  * console.log(keys(obj, 3)); // [ 'a', Symbol(2) ]
  * ```
  */
-export default function keys(
-    object: ObjectType<unknown> | ArrayLike<unknown>,
+export default function keys<K extends PropertyKey, V>(
+    object: Record<K, V> | ArrayLike<V>,
     methodLevel: 0 | 1 | 2 | 3 = 0
-): PropertyKey[] {
+): K[] {
     if (
         isUint(methodLevel) &&
         methodLevel >= Math.min(0, 3) &&
         methodLevel <= Math.max(0, 3)
     ) {
-        return fns[methodLevel](object);
+        return fns[methodLevel](object) as K[];
     }
 
     throw new TypeError(
