@@ -1,7 +1,5 @@
 import { isBoolean } from '@curong/types';
 
-import { ObjectType } from '../types';
-
 import keys from './keys';
 
 /**
@@ -24,8 +22,8 @@ import keys from './keys';
  * console.log(isKeysIncludes(obj, ['a', b], 3)); // true
  * ```
  */
-export default function isKeysIncludes(
-    object: ObjectType<unknown> | ArrayLike<unknown>,
+export default function isKeysIncludes<K extends PropertyKey, V>(
+    object: Record<K, V> | ArrayLike<V>,
     key: PropertyKey | PropertyKey[],
     methodLevel?: 0 | 1 | 2 | 3
 ): boolean;
@@ -48,8 +46,8 @@ export default function isKeysIncludes(
  * console.log(isKeysIncludes(obj, ['a', 'c'], true)); // true
  * ```
  */
-export default function isKeysIncludes(
-    object: ObjectType<unknown> | ArrayLike<unknown>,
+export default function isKeysIncludes<K extends PropertyKey, V>(
+    object: Record<K, V> | ArrayLike<V>,
     key: PropertyKey | PropertyKey[],
     useAny?: boolean
 ): boolean;
@@ -77,20 +75,25 @@ export default function isKeysIncludes(
  * console.log(isKeysIncludes(obj, ['a', b, 'c'], 3, true)); // true
  * ```
  */
-export default function isKeysIncludes(
-    object: ObjectType<unknown> | ArrayLike<unknown>,
+export default function isKeysIncludes<K extends PropertyKey, V>(
+    object: Record<K, V> | ArrayLike<V>,
     key: PropertyKey | PropertyKey[],
     methodLevel?: 0 | 1 | 2 | 3,
     useAny?: boolean
 ): boolean;
 
-export default function isKeysIncludes(
-    object: ObjectType<unknown> | ArrayLike<unknown>,
+export default function isKeysIncludes<K extends PropertyKey, V>(
+    object: Record<K, V> | ArrayLike<V>,
     key: PropertyKey | PropertyKey[],
     methodLevel: 0 | 1 | 2 | 3 | boolean = 0,
     useAny: boolean = false
 ): boolean {
-    isBoolean(methodLevel) && ((useAny = methodLevel), (methodLevel = 0));
+    if (isBoolean(methodLevel)) {
+        useAny = methodLevel;
+        methodLevel = 0;
+    }
+
     const k = new Set(keys(object, methodLevel));
+
     return [key].flat()[useAny ? 'some' : 'every']((v: any) => k.has(v));
 }
