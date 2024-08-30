@@ -9,6 +9,7 @@
 - `deleteAttrs`: 从一个对象中删除一些属性
 - `shallowEqual`: 通过浅比较的方式比较两个对象中的属性。(仅比较对象中的一层属性)
 - `stringify`: 将一个值转换为一个字符串
+- `toArray`: 将一个普通对象的键值对转换为数组
 
 ##  `cascade`
 
