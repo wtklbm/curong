@@ -99,7 +99,7 @@ describe('@curong/function/parallel', () => {
             ],
             {
                 concurrency: 2,
-                onError: e => 'xxx'
+                onError: (i, e) => 'xxx'
             }
         );
         expect(pool).toEqual([1, 'xxx', 2, 12312]);
@@ -122,7 +122,7 @@ describe('@curong/function/parallel', () => {
             {
                 concurrency: 2,
                 maxRetry: 3,
-                onError: e => 'xxx'
+                onError: (i, e) => 'xxx'
             }
         );
         expect(pool).toEqual([1, 'xxx', 2, 12312]);
@@ -146,7 +146,7 @@ describe('@curong/function/parallel', () => {
                 concurrency: 2,
                 maxRetry: 3,
                 retryWait: 100,
-                onError: e => 'xxx'
+                onError: (i, e) => 'xxx'
             }
         );
         expect(pool).toEqual([1, 'xxx', 2, 12312]);
@@ -170,7 +170,7 @@ describe('@curong/function/parallel', () => {
             ],
             {
                 concurrency: 2,
-                onError: e => 'xxx',
+                onError: (i, e) => 'xxx',
                 maxRetry: 3,
                 retryWait: 100
             }
@@ -206,7 +206,7 @@ describe('@curong/function/parallel', () => {
             ],
             {
                 concurrency: 2,
-                onError: e => 'xxx',
+                onError: (i, e) => 'xxx',
                 maxRetry: 3,
                 retryWait: { start: 0, end: 100 }
             }
@@ -270,7 +270,7 @@ describe('@curong/function/parallel', () => {
                 concurrency: 2,
                 maxRetry: 3,
                 retryWait: { start: 0, end: 100 },
-                onError: e => 'xxx',
+                onError: (i, e) => 'xxx',
                 onProgressRetry(index, error, attempts) {
                     if (error.message.includes('xxx')) {
                         return true;
