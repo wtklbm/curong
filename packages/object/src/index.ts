@@ -6,6 +6,7 @@ export { default as derive } from './derive';
 export { default as isInstanceOf } from './isInstanceOf';
 export { default as shallowEqual } from './shallowEqual';
 export { default as stringify } from './stringify';
+export { default as toArray } from './toArray';
 
 export * from './cascade';
 export * from './keys';
