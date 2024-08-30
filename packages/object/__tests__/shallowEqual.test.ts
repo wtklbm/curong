@@ -111,7 +111,7 @@ describe('@curong/object/shallowEqual', () => {
         ];
 
         shallowEqual(object1, object2, (a, b, k) => {
-            argsList.push([a, b,k]);
+            argsList.push([a, b, k]);
             return Object.is(a, b);
         });
 
@@ -125,9 +125,7 @@ describe('@curong/object/shallowEqual', () => {
 
         expect(shallowEqual('a', 'b', compare)).toEqual(true);
         expect(shallowEqual(['a'], ['b'], compare)).toEqual(true);
-        expect(shallowEqual({ '0': 'a' }, { '0': 'b' }, compare)).toEqual(
-            true
-        );
+        expect(shallowEqual({ '0': 'a' }, { '0': 'b' }, compare)).toEqual(true);
     });
 
     test('如果 `compare` 返回 `false`，应不处理比较', () => {
