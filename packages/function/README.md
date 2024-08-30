@@ -7,7 +7,8 @@
 
 ### `cache`
 
-- `memoizeWith`: 返回一个新函数，并缓存函数的计算结果
+- `memoizeWith`: 返回一个同步函数，并缓存函数的计算结果
+- `memoizeWithAsync`: 返回一个异步函数，并缓存函数的计算结果
 
 ### `catch`
 
