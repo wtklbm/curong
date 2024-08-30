@@ -24,5 +24,7 @@ export default async function select<A extends unknown[], T>(
     doElse?: ((...args: A) => any) | Promise<any> | T | null | undefined,
     ...args: A
 ): Promise<T | null | undefined> {
-    return (await executeToPromise(condition)) ? executeToPromise(doIf, args) : executeToPromise(doElse, args);
+    return (await executeToPromise(condition))
+        ? executeToPromise(doIf, args)
+        : executeToPromise(doElse, args);
 }
