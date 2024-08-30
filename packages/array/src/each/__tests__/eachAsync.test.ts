@@ -23,7 +23,6 @@ describe('@curong/array/eachAsync', () => {
         expect(ret).toEqual([1]);
     });
 
-
     test('测试2', async () => {
         const mockCallback = jest.fn().mockResolvedValue(undefined);
         await eachAsync([], mockCallback);
@@ -45,7 +44,8 @@ describe('@curong/array/eachAsync', () => {
     });
 
     test('测试4', async () => {
-        const mockCallback = jest.fn()
+        const mockCallback = jest
+            .fn()
             .mockResolvedValueOnce(false)
             .mockResolvedValueOnce(true); // 返回 true 来终止迭代
 
