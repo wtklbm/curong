@@ -29,11 +29,15 @@ export default function range(from: number, to: number, step: number = 1) {
     }
 
     if (from > to && step > 0) {
-        throw new TypeError(`[range] 当 from 大于 to 时，step 不能为大于 0 的数: ${step}`);
+        throw new TypeError(
+            `[range] 当 from 大于 to 时，step 不能为大于 0 的数: ${step}`
+        );
     }
 
     if (from < to && step < 0) {
-        throw new TypeError(`[range] 当 from 小于 to 时，step 不能为小于 0 的数: ${step}`);
+        throw new TypeError(
+            `[range] 当 from 小于 to 时，step 不能为小于 0 的数: ${step}`
+        );
     }
 
     return Array.from(
