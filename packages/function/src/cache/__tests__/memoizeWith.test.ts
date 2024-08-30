@@ -95,4 +95,61 @@ describe('@curong/function/memoizeWith', () => {
         expect(mockFunc).toHaveBeenCalledTimes(1);
         expect(memoizedFunc.cache.size).toBe(1);
     });
+
+    test('基本缓存功能', () => {
+        const func = jest.fn((x: number) => x * 2);
+        const harsher = (x: number) => x;
+        const memoizedFunc = memoizeWith(func, harsher);
+
+        expect(memoizedFunc(2)).toBe(4);
+        expect(memoizedFunc(2)).toBe(4);
+        expect(func).toHaveBeenCalledTimes(1); // 确保函数只调用了一次，第二次返回缓存值
+    });
+
+    test('缓存超时机制', async () => {
+        jest.useFakeTimers();
+        const func = jest.fn((x: number) => x * 2);
+        const harsher = (x: number) => x;
+        const memoizedFunc = memoizeWith(func, harsher, -1);
+
+        expect(memoizedFunc(2)).toBe(4);
+        jest.advanceTimersByTime(500);
+        expect(memoizedFunc(2)).toBe(4);
+        jest.advanceTimersByTime(500); // 超时
+        expect(memoizedFunc(2)).toBe(4);
+        expect(func).toHaveBeenCalledTimes(3); // 超时后，函数重新调用
+        jest.useRealTimers();
+    });
+
+    test('缓存清除功能', () => {
+        const func = jest.fn((x: number) => x * 2);
+        const harsher = (x: number) => x;
+        const memoizedFunc = memoizeWith(func, harsher);
+
+        expect(memoizedFunc(2)).toBe(4);
+        memoizedFunc.clear();
+        expect(memoizedFunc(2)).toBe(4);
+        expect(func).toHaveBeenCalledTimes(2); // 缓存被清除，函数重新调用
+    });
+
+    test('缓存删除功能', () => {
+        const func = jest.fn((x: number) => x * 2);
+        const harsher = (x: number) => x;
+        const memoizedFunc = memoizeWith(func, harsher);
+
+        expect(memoizedFunc(2)).toBe(4);
+        memoizedFunc.delete(2);
+        expect(memoizedFunc(2)).toBe(4);
+        expect(func).toHaveBeenCalledTimes(2); // 删除指定缓存项后，函数重新调用
+    });
+
+    test('无超时参数的缓存功能', () => {
+        const func = jest.fn((x: number) => x * 2);
+        const harsher = (x: number) => x;
+        const memoizedFunc = memoizeWith(func, harsher);
+
+        expect(memoizedFunc(2)).toBe(4);
+        expect(memoizedFunc(2)).toBe(4);
+        expect(func).toHaveBeenCalledTimes(1); // 没有超时参数，缓存一直有效
+    });
 });
