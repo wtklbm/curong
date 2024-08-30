@@ -1,13 +1,8 @@
-import { range } from '@curong/number';
-import {
-    isAnyError,
-    isFunction,
-    isTypeofObject,
-    isUndefined,
-    isZero
-} from '@curong/types';
+import { isAnyError, isFunction } from '@curong/types';
 
-import delay from '../delay/delay';
+import retry from '../catch/retry';
+import { toPromise } from '../promise';
+
 import type { ParallelOptions } from './types';
 
 /**
@@ -32,8 +27,8 @@ import type { ParallelOptions } from './types';
  * console.log(pool); // [1, 4, 9, 16]
  * ```
  */
-export default async function parallel<T extends unknown[]>(
-    tasks: T,
+export default async function parallel<T>(
+    tasks: T[],
     options: ParallelOptions = {}
 ) {
     const {
@@ -46,19 +41,11 @@ export default async function parallel<T extends unknown[]>(
     } = options;
 
     const ret: any[] = [];
-    const getWaitTime = isTypeofObject(retryWait)
-        ? () => range(retryWait.start, retryWait.end)
-        : () => retryWait;
-    const isOnError = isFunction(onError);
-    const isOnProgress = isFunction(onProgress);
-    const isOnProgressRetry = isFunction(onProgressRetry);
-
     let index = 0;
-    let completedTasks = 0;
 
     const runTask = async (task: unknown, i: number) => {
         try {
-            ret[i] = await (isFunction(task) ? task() : task);
+            return await toPromise(task);
         } catch (e: any) {
             if (isAnyError(e)) {
                 e.message = `[parallel] 执行第 ${i} 个任务时出错: ${e.message}`;
@@ -72,68 +59,27 @@ export default async function parallel<T extends unknown[]>(
         while (index < tasks.length) {
             const i = index++;
             const task = tasks[i];
-            const errors = [];
-            let attempts = -1;
-            let success = false;
 
-            while (attempts < maxRetry && !success) {
-                try {
-                    await runTask(task, i);
+            try {
+                ret[i] = await retry(maxRetry, () => runTask(task, i), {
+                    retryWait,
+                    onError: isFunction(onError)
+                        ? e => onError(i, e)
+                        : undefined,
+                    onProgressRetry: isFunction(onProgressRetry)
+                        ? (e, a) => onProgressRetry(i, e, a)
+                        : undefined
+                });
 
-                    success = true;
-                    completedTasks++;
-
-                    if (isOnProgress) {
-                        onProgress(i, ret[i]);
-                    }
-                } catch (e: any) {
-                    attempts++;
-
-                    if (
-                        !isZero(attempts) && // 如果当前正在进行重试
-                        isOnProgressRetry && // 如果传递了重试回调
-                        onProgressRetry(i, e, attempts) // 只要回调返回了真值
-                    ) {
-                        if (isOnError) {
-                            const newValue = onError(e);
-
-                            // 如果不想继续重试了，那么就看看 `onError` 有没有返回值
-                            if (!isUndefined(newValue)) {
-                                // 如果有就直接赋值就行了
-                                ret[i] = newValue;
-                            }
-                        }
-
-                        // 不再执行该任务，继续执行下一个任务
-                        continue;
-                    }
-
-                    errors.push(e);
-
-                    if (attempts >= maxRetry) {
-                        // 如果用户选择手动处理错误
-                        if (isOnError) {
-                            const newValue = onError(e);
-
-                            // 只有在经过多次重试之后，才使用备用值
-                            if (!isUndefined(newValue)) {
-                                ret[i] = newValue;
-                            }
-                        } else {
-                            throw new AggregateError(
-                                errors,
-                                `[parallel] 第 ${i} 个任务执行失败`,
-                                { cause: { index: i, task, options } }
-                            );
-                        }
-                    } else {
-                        const waitTime = getWaitTime();
-
-                        if (waitTime > 0) {
-                            await delay(waitTime);
-                        }
-                    }
+                if (isFunction(onProgress)) {
+                    onProgress(i, ret[i]);
                 }
+            } catch (e: any) {
+                if (isAnyError(e)) {
+                    // @ts-ignore
+                    (e.cause ?? (e.cause = {})).index = i;
+                }
+                throw e;
             }
         }
     }
