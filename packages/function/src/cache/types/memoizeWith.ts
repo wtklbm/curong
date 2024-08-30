@@ -1,6 +1,6 @@
 export type MemoizeWithReturn<F extends (...args: unknown[]) => unknown, K> = {
     /** 缓存对象 */
-    cache: Map<K, {value: ReturnType<F>, expiration: number}>;
+    cache: Map<K, { value: ReturnType<F>; expiration: number }>;
 
     /** 清空所有已缓存的值 */
     clear(): void;
