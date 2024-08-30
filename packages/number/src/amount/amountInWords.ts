@@ -1,4 +1,4 @@
-import { isNaN, isFinite, isZero } from '@curong/types';
+import { isFinite, isNaN, isZero } from '@curong/types';
 
 import type { AmountInWordsOptions } from './types';
 
