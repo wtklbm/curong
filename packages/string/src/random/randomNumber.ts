@@ -1,4 +1,4 @@
-import getCrypto from '../../number/src/constants/getCrypto';
+import getCrypto from '../../../number/src/constants/getCrypto';
 
 // `getRandomValues` 方法所支持的最大长度，超过此长度就会报错
 const MAX_LENGTH = 65536;
@@ -18,7 +18,7 @@ const creator = (length: number) =>
  *
  * ```JavaScript
  * // 生成一个长度为 10 的随机数字符串
- * const n = random(10);
+ * const n = randomNumber(10);
  *
  * // 如果想使用随机数数字，可以调用 `parseInt(n)` 或 `Number(n)`
  * // 如果要转换的数字的值超过了 `Number.MAX_SAFE_INTEGER`，则可能会导出不安全
@@ -26,7 +26,7 @@ const creator = (length: number) =>
  * console.log(n);
  * ```
  */
-export default function random(length: number = 15): string {
+export default function randomNumber(length: number = 15): string {
     return (
         length < MAX_LENGTH
             ? creator(length)

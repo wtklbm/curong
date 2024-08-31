@@ -1,8 +1,8 @@
-import { random } from '../src';
+import { randomNumber } from '..';
 
-describe('@curong/string/random', () => {
+describe('@curong/string/randomNumber', () => {
     test('测试1', () => {
-        expect(random()?.length).toBe(15);
+        expect(randomNumber()?.length).toBe(15);
 
         [
             1,
@@ -15,11 +15,11 @@ describe('@curong/string/random', () => {
             65537 * 2.1
         ].forEach(v => {
             v = Math.floor(v);
-            expect(random(v)?.length).toBe(v);
+            expect(randomNumber(v)?.length).toBe(v);
         });
 
         for (let i = 0, len = 10000, v; i < len; i++) {
-            v = random();
+            v = randomNumber();
             if (v.length !== 15) {
                 throw new Error(`长度不相等: ${v}`);
             }

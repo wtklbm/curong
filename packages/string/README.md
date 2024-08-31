@@ -5,7 +5,6 @@
 
 - `multiReplace`: 根据一组规则替换字符串的内容
 - `parseJson`: 将 `JSON` 格式的字符串转换为一个 `JavaScript` 对象
-- `random`: 生成安全的随机数字符串
 
 ## `bytes`
 
@@ -58,6 +57,10 @@
 
 - `quoteClosed`: `简单` 的判断 `代码字符串` 在指定的符号之后是否含有未闭合的引号
 - `quotePair`: 从一个字符串中获取未闭合的引号
+
+## `random`
+
+- `randomNumber`: 生成安全的随机数字符串
 
 ## `regexp`
 
