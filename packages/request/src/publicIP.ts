@@ -10,6 +10,7 @@ import type { publicIpResult } from './types';
  * 获取本地公共的 `IP` 地址和城市信息
  *
  * @returns 返回获取到的公共 `IP` 地址和城市信息对象
+ * @note 该方法使用了 `new Function`，如果用户禁用了 [eval](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval)，则导致代码异常
  * @throws
  * - 如果请求失败，则会抛出异常
  * - 如果响应的数据格式不正确，则会抛出异常
