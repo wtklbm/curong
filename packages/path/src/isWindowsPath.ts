@@ -17,10 +17,12 @@ import windowsPathSource from './windowsPathSource';
  * console.log(ret); // true
  * ```
  *
- * # 路径解析规则
+ * @note
+ *
+ * ### 路径解析规则
  *
  * - 格式：可选的长路径前缀(4)，驱动器号(1)，冒号(2)，反斜杠(1)，由反斜杠分隔的名称组件(255), 终止的空字符(1)
- * - 最大总路径长度为 `32767` 个字符
+ * - [最大路径的长度限制](https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation) 为 `32767` 个字符
  * - 不能包含保留字 `[<>:"/\\|?*]|CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9]`
  * - 可能驱动器号前缀 `\\?\`
  * - 文件名或目录名不要以空格或句号结尾
@@ -28,7 +30,7 @@ import windowsPathSource from './windowsPathSource';
  */
 export default function isWindowsPath(path: string, extend: boolean = false) {
     const reg = new RegExp(`^${windowsPathSource}$`);
-    const size = extend ? 32_767 : 260;
+    const size = extend ? 32767 : 260;
     const dirNoReg = /^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])$/;
     const dirSearchReg = /[<>:"/\\|?*]/g;
 
