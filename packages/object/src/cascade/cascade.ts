@@ -14,6 +14,7 @@ import toCascadeKeys from './toCascadeKeys';
  * @param dependencies 级联属性字符串中所依赖的外部变量
  * @param isThrow 是否在访问属性失败时抛出异常，默认为 `true`
  * @returns 返回从源对象中依据级联属性字符串获取到的内容
+ * @note 该方法使用了 `new Function`，如果用户禁用了 [eval](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval)，则导致代码异常
  * @throws
  *
  *  - 如果 `cascadeKey` 不是一个有效的级联属性字符串，则会抛出异常
@@ -50,5 +51,5 @@ export default function cascade<T = unknown>(
 
     try {
         return f(obj);
-    } catch (_) {}
+    } catch {}
 }
