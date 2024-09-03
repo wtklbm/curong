@@ -7,7 +7,7 @@ const creator = (length: number) =>
     crypto.getRandomValues(new Uint8Array(length)).join('');
 
 /**
- * 生成安全的随机数字符串
+ * 生成一个安全的随机数字符串
  *
  * @param length 要返回的随机数的长度，默认为 15 位 (可安全的转换为无符号整数)
  * @returns 返回一个随机数字符串
