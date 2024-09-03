@@ -60,7 +60,11 @@
 
 ## `random`
 
-- `randomNumber`: 生成安全的随机数字符串
+- `randomBoolean`: 生成一个随机的布尔值
+- `randomHexColor`: 生成一个随机的十六进制颜色字符串
+- `randomLower`: 生成一个随机的小写字母
+- `randomNumber`: 生成一个安全的随机数字符串
+- `randomUpper`: 生成一个随机的大写字母
 
 ## `regexp`
 
