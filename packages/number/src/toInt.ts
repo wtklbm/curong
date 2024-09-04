@@ -16,7 +16,7 @@ import { isString, isZero } from '@curong/types';
  * ```
  */
 export default function toInt(value: number | string): number {
-    if (isString(value) && isZero(value.length)) {
+    if (isString(value) && isZero(value.trim().length)) {
         throw new TypeError(`[toInt] value 不能为空字符串`);
     }
 
