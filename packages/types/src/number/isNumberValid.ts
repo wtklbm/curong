@@ -18,7 +18,7 @@ export type IsNumberValidOptions = {
     /** 当转换后为 `Infinity` 或 `-Infinity` 时，是否返回 `true`。默认为 `false` */
     allowInfinity?: boolean;
 
-    /** 当转换且经过 `trim` 后长度为 `0` 的空字符串时，是否返回 `true`。默认为 `false` */
+    /** 当 `implicit` 为 `false`，且经过 `trim` 后长度为 `0` 的空字符串时，是否返回 `true`。默认为 `false` */
     allowEmptyString?: boolean;
 };
 
@@ -30,7 +30,7 @@ export type IsNumberValidOptions = {
  *  - `implicit`: 在进行数字转换时，是否可以进行隐式转换。默认为 `true`
  *  - `allowNaN`: 当转换后为 `NaN` 时，是否返回 `true`。默认为 `false`
  *  - `allowInfinity`: 当转换后为 `Infinity` 或 `-Infinity` 时，是否返回 `true`。默认为 `false`
- *  - `allowEmptyString`: 当转换且经过 `trim` 后长度为 `0` 的空字符串时，是否返回 `true`。默认为 `false`
+ *  - `allowEmptyString`: 当 `implicit` 为 `false`，且经过 `trim` 后长度为 `0` 的空字符串时，是否返回 `true`。默认为 `false`
  * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
