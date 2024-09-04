@@ -20,6 +20,7 @@ describe('@curong/number/toInt', () => {
 
     test('空字符串输入', () => {
         expect(() => toInt('')).toThrow('[toInt] value 不能为空字符串');
+        expect(() => toInt('    ')).toThrow('[toInt] value 不能为空字符串');
     });
 
     test('非数字字符串输入', () => {
