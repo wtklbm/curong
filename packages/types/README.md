@@ -305,6 +305,10 @@
 - `isSymbolObject`: 是不是一个被包装后的 `Symbol` 对象，即 `Object(Symbol())`
 - `isSymbolPrimitive`: 是不是一个基本的 `symbol` || `Symbol()`
 
+#### `timeout`
+
+- `isTimeoutMs`: 是不是一个超时时间毫秒数
+
 #### `type`
 
 - `getTag`: 判断原型上的类型标记是否等于某个值
