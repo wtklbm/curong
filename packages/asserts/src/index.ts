@@ -24,6 +24,7 @@ export * from './regexp';
 export * from './stream';
 export * from './string';
 export * from './symbol';
+export * from './timeout';
 export * from './type';
 export * from './url';
 export * from './variable';
