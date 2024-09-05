@@ -1,4 +1,4 @@
-import { isUint } from '@curong/types';
+import { isTimeoutMs } from '@curong/types';
 
 import evaluateInt, { type EvaluableIntValue } from './constants/evaluateInt';
 
@@ -30,7 +30,7 @@ export default function timeoutMsResolve(
 
     // 浏览器内部将延迟存储为 `32` 位有符号整数 (一位用于符号位，数字部分为 `2^31-1`)
     // 当使用大于 `2147483647` 毫秒（约 `24.8` 天）的延迟时，这会导致整数溢出
-    if (!isUint(timeout) || timeout > 2147483647) {
+    if (!isTimeoutMs(timeout)) {
         throw new TypeError(
             `[timeoutMsResolve] 超时时间应大于等于 0 且不超过 2147483647 毫秒 (约 24.8 天)`
         );
