@@ -270,6 +270,10 @@
 - `assertSymbolObject`: 是不是一个被包装后的 `Symbol` 对象，即 `Object(Symbol())`
 - `assertSymbolPrimitive`: 是不是一个基本的 `symbol` || `Symbol()`
 
+#### `timeout`
+
+- `assertTimeoutMs`: 是不是一个超时时间毫秒数
+
 #### `type`
 
 - `assertTagEqual`: 判断原型上的类型标记是否等于某个值
