@@ -288,7 +288,7 @@ export function stringifyInternal(
 
         case 'Promise': {
             const promiseContent = getAsyncContent(
-                value as any as Promise<unknown>
+                value as Promise<unknown>
             );
 
             switch (promiseContent.state) {
@@ -308,7 +308,7 @@ export function stringifyInternal(
         }
 
         case 'DOMException': {
-            const s = strInter(value.message);
+            const s = strInter((value as DOMException).message);
             return `new ${tag}(${s === '""' ? '' : s})`;
         }
 
@@ -319,10 +319,10 @@ export function stringifyInternal(
         case 'SyntaxError':
         case 'TypeError':
         case 'URIError': {
-            const s = strInter(value.message);
+            const s = strInter((value as Error).message);
 
             if (Object.getPrototypeOf(value).name === 'AggregateError') {
-                return `new AggregateError([${value.errors
+                return `new AggregateError([${(value as AggregateError).errors
                     .map((e: Error) => strInter(e))
                     .join(',')}], ${s})`;
             }
@@ -342,7 +342,7 @@ export function stringifyInternal(
         case 'BigInt64Array':
         case 'BigUint64Array': {
             if (isBuffer(value)) {
-                return `Buffer.from(${strInter(Array.from(value.values()))})`;
+                return `Buffer.from(${strInter(Array.from((value as Buffer).values()))})`;
             }
 
             const typedArray = value as unknown as TypedArray;
@@ -357,7 +357,7 @@ export function stringifyInternal(
         case 'URL':
         case 'URLSearchParams':
             return `new ${constructorName(value)}(${strInter(
-                value.toString()
+                (value as URL).toString()
             )})`;
     }
 
