@@ -1,4 +1,6 @@
-// @ts-nocheck
+/**
+ * @jest-environment jsdom
+ */
 
 import { memoizeWithAsync } from '..';
 
