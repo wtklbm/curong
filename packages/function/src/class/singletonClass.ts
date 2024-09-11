@@ -1,10 +1,10 @@
 import type { Class } from '@curong/types';
 
+const CLASS_SINGLETON_KEY = Symbol.for('[[SINGLETON]]');
+
 export type SingletonClass<T extends Class> = T & {
     [CLASS_SINGLETON_KEY]: InstanceType<T>;
 };
-
-const CLASS_SINGLETON_KEY = Symbol.for('[[SINGLETON]]');
 
 /**
  * 创建一个类的单例模式代理，确保该类在应用中只能被实例化一次
