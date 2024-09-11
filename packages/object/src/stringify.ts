@@ -119,7 +119,7 @@ export default function stringify(
     options: StringifyOptions = {}
 ): Promise<string> {
     const { replacer, space, compare, cycles } = options;
-    let handler;
+    let handler: (k: string, v: any) => any;
 
     if (isFunction(replacer)) {
         handler = (k: string, v: any) => {
