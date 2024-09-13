@@ -24,7 +24,23 @@ export type ParallelOptions<T = any> = {
           };
 
     /**
-     * 处理任务执行过程中发生的错误的函数
+     * 当任务开始执行前执行的回调函数
+     *
+     * @param index 当前任务的索引
+     * @param task 要执行的任务
+     */
+    onStart?: <T>(index: number, task: T) => void;
+
+    /**
+     * 当任务返回数据时执行的回调函数
+     *
+     * @param index 当前任务的索引
+     * @param result 当前任务的执行结果
+     */
+    onData?: (index: number, result: T) => void;
+
+    /**
+     * 当任务执行过程中发生错误时执行的回调函数
      *
      * 如果没有指定该函数，则当执行任务发生错误时，会立即抛出错误。
      * 且所有之前已成功的任务就白执行了。不会看到任何的结果。
@@ -39,15 +55,7 @@ export type ParallelOptions<T = any> = {
     onError?: <E extends Error>(index: number, error: E) => T | undefined;
 
     /**
-     * 每次任务完成时调用的回调函数
-     *
-     * @param index 当前任务的索引
-     * @param result 当前任务的执行结果
-     */
-    onProgress?: (index: number, result: any) => void;
-
-    /**
-     * 每次任务失败并重试时调用的回调函数
+     * 当任务执行失败并重试时执行的回调函数
      *
      * @param index 当前任务的索引
      * @param error 发生的错误
@@ -56,7 +64,7 @@ export type ParallelOptions<T = any> = {
      *  - 如果同时传递了 `onError` 且该函数有返回值，则返回该值
      *  - 如果没有传递 `onError`，则返回 `undefined`
      */
-    onProgressRetry?: (
+    onRetry?: (
         index: number,
         error: Error,
         attempts: number
