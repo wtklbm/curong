@@ -21,11 +21,11 @@ import type { RetryOptions } from './types';
  * @param task 要执行的任务,可以是一个返回 `Promise` 的函数，或者 `Promise` 对象
  * @param options 配置选项
  *  - `retryWait`: 重试失败任务之前等待的时间（以毫秒为单位）。默认为 `0`，即不等待
- *  - `onError`: 处理任务执行过程中发生的错误的函数
- *  - `onProgressRetry`: 每次任务失败并重试时调用的回调函数
+ *  - `onError`: 当任务执行过程中发生错误时执行的回调函数
+ *  - `onRetry`: 当任务执行失败并重试时执行的回调函数
  * @returns 成功时返回任务的结果，如果在达到最大重试次数后仍然失败，则返回 `undefined` 或抛出错误
- *  - 如果在每次重试时 `onProgressRetry` 都返回了 `true` 且没有传递 `onError`，则该函数的返回结果为 `undefined`
- *  - 如果在每次重试时 `onProgressRetry` 都返回了 `true` 且传递了 `onError`，如果 `onError` 有返回结果，则使用该结果，否则返回 `undefined`
+ *  - 如果在每次重试时 `onRetry` 都返回了 `true` 且没有传递 `onError`，则该函数的返回结果为 `undefined`
+ *  - 如果在每次重试时 `onRetry` 都返回了 `true` 且传递了 `onError`，如果 `onError` 有返回结果，则使用该结果，否则返回 `undefined`
  * @throws 如果经过最大执行次数后，且没有传递 `onError`，则会抛出 `AggregateError` 异常
  */
 export default async function retry<T>(
@@ -33,13 +33,13 @@ export default async function retry<T>(
     task: (() => Promise<T> | T) | Promise<T>,
     options: RetryOptions<T> = {}
 ): Promise<T | undefined> {
-    const { retryWait = 0, onError, onProgressRetry } = options;
+    const { retryWait = 0, onError, onRetry } = options;
     const errors: Error[] = [];
     const getWaitTime = isTypeofObject(retryWait)
         ? () => range(retryWait.start, retryWait.end)
         : () => retryWait;
     const isOnError = isFunction(onError);
-    const isOnProgressRetry = isFunction(onProgressRetry);
+    const isOnProgressRetry = isFunction(onRetry);
 
     let attempts = -1;
 
@@ -52,7 +52,7 @@ export default async function retry<T>(
             if (
                 !isZero(attempts) && // 如果当前正在进行重试
                 isOnProgressRetry && // 如果传递了重试回调
-                isTrue(onProgressRetry(e, attempts)) // 只要回调返回了 `true`
+                isTrue(onRetry(e, attempts)) // 只要回调返回了 `true`
             ) {
                 if (isOnError) {
                     const newValue = onError(e);
