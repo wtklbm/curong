@@ -21,12 +21,12 @@ describe('@curong/function/retry', () => {
         expect(task).toHaveBeenCalledTimes(3);
     });
 
-    test('重试回调 onProgressRetry', async () => {
+    test('重试回调 onRetry', async () => {
         const task = jest.fn().mockRejectedValue(new Error('failed'));
-        const onProgressRetry = jest.fn(() => true);
+        const onRetry = jest.fn(() => true);
 
-        await retry(3, task, { onProgressRetry });
-        expect(onProgressRetry).toHaveBeenCalledTimes(1);
+        await retry(3, task, { onRetry });
+        expect(onRetry).toHaveBeenCalledTimes(1);
     });
 
     test('错误处理 onError', async () => {
@@ -89,7 +89,7 @@ describe('@curong/function/retry', () => {
                 onError(e) {
                     return 'ok';
                 },
-                onProgressRetry() {
+                onRetry() {
                     return true;
                 }
             }
