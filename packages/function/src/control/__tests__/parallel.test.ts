@@ -58,7 +58,8 @@ describe('@curong/function/parallel', () => {
                 ],
                 {
                     concurrency: 2,
-                    onProgress(index, result) {}
+                    onStart(index, task) {},
+                    onData(index, result) {}
                 }
             )
         ).rejects.toThrow();
@@ -237,7 +238,7 @@ describe('@curong/function/parallel', () => {
                 concurrency: 2,
                 maxRetry: 3,
                 retryWait: { start: 0, end: 100 },
-                onProgressRetry(index, error, attempts) {
+                onRetry(index, error, attempts) {
                     if (error.message.includes('xxx')) {
                         return true;
                     }
@@ -271,7 +272,7 @@ describe('@curong/function/parallel', () => {
                 maxRetry: 3,
                 retryWait: { start: 0, end: 100 },
                 onError: (i, e) => 'xxx',
-                onProgressRetry(index, error, attempts) {
+                onRetry(index, error, attempts) {
                     if (error.message.includes('xxx')) {
                         return true;
                     }
