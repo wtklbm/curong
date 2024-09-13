@@ -17,7 +17,7 @@ export interface RetryOptions<T = any> {
           };
 
     /**
-     * 处理任务执行过程中发生的错误的函数
+     * 当任务执行过程中发生错误时执行的回调函数
      *
      * 如果没有指定该函数，则当执行任务发生错误时，会立即抛出错误。
      *
@@ -30,7 +30,7 @@ export interface RetryOptions<T = any> {
     onError?: <E extends Error>(error: E) => T | undefined;
 
     /**
-     * 每次任务失败并重试时调用的回调函数
+     * 当任务执行失败并重试时执行的回调函数
      *
      * @param error 发生的错误
      * @param attempts 这是第几次重试
@@ -38,5 +38,5 @@ export interface RetryOptions<T = any> {
      *  - 如果同时传递了 `onError` 且该函数有返回值，则返回该值
      *  - 如果没有传递 `onError`，则返回 `undefined`
      */
-    onProgressRetry?: (error: Error, attempts: number) => boolean | undefined;
+    onRetry?: (error: Error, attempts: number) => boolean | undefined;
 }
