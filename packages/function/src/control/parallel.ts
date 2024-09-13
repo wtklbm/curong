@@ -13,9 +13,10 @@ import type { ParallelOptions } from './types';
  *  - `concurrency`: 任务的最大并发数量。默认为任务的长度，即所有任务并行执行
  *  - `maxRetry`: 任务失败时的最大重试次数。默认为 `0`，即默认情况下不重试任务
  *  - `retryWait`: 重试失败任务之前等待的时间（以毫秒为单位）。默认为 `0`，即不等待
- *  - `onError`: 处理任务执行过程中发生的错误的函数
- *  - `onProgress`: 每次任务完成时调用的回调函数
- *  - `onProgressRetry`: 每次任务失败并重试时调用的回调函数
+ *  - `onStart`: 当任务开始执行前执行的回调函数
+ *  - `onData`: 当任务返回数据时执行的回调函数
+ *  - `onError`: 当任务执行过程中发生错误时执行的回调函数
+ *  - `onRetry`: 当任务执行失败并重试时执行的回调函数
  * @returns 返回一个包含任务结果的数组 (如果有任务执行失败，则可能是**稀疏数组**)
  * @throws 如果任务执行失败且没有提供 `onError` 来处理错误，将通过 `AggregateError` 抛出自第一次执行以来的所有错误
  * @example
@@ -36,8 +37,9 @@ export default async function parallel<T>(
         maxRetry = 0,
         retryWait = 0,
         onError,
-        onProgress,
-        onProgressRetry
+        onData,
+        onRetry,
+        onStart
     } = options;
 
     const ret: any[] = [];
@@ -60,26 +62,30 @@ export default async function parallel<T>(
             const i = index++;
             const task = tasks[i];
 
+            if (isFunction(onStart)) {
+                onStart(i, task);
+            }
+
             try {
                 ret[i] = await retry(maxRetry, () => runTask(task, i), {
                     retryWait,
                     onError: isFunction(onError)
                         ? e => onError(i, e)
                         : undefined,
-                    onProgressRetry: isFunction(onProgressRetry)
-                        ? (e, a) => onProgressRetry(i, e, a)
+                    onRetry: isFunction(onRetry)
+                        ? (e, a) => onRetry(i, e, a)
                         : undefined
                 });
-
-                if (isFunction(onProgress)) {
-                    onProgress(i, ret[i]);
-                }
             } catch (e: any) {
                 if (isAnyError(e)) {
                     // @ts-ignore
                     (e.cause ?? (e.cause = {})).index = i;
                 }
                 throw e;
+            }
+
+            if (isFunction(onData)) {
+                onData(i, ret[i]);
             }
         }
     }
