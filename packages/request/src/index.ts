@@ -1,5 +1,5 @@
-export { default as publicIP } from './publicIP';
-export { default as queryDNS } from './queryDNS';
-
+export * from './dns';
+export * from './ip';
 export * from './request';
+
 export * from './types';
