@@ -21,6 +21,6 @@ import timeoutMsResolve, {
 export default function delay(duration: ResolvableTimeoutMs): Promise<void> {
     return new Promise(resolve => {
         const timeout = timeoutMsResolve(duration);
-        isZero(timeout) || setTimeout(resolve, timeout);
+        isZero(timeout) ? resolve() : setTimeout(resolve, timeout);
     });
 }
