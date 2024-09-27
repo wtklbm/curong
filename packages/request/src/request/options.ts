@@ -142,9 +142,6 @@ export const optionsHandler = (
     // 进行大写转换，保证后续不会出现隐式问题
     options.method = (options.method ?? 'GET').toUpperCase() as Methods;
 
-    // 永远不要超时
-    options.timeout = options.timeout ?? 2147483647;
-
     // 如果 `https` 的安全证书不是合法的，则忽略证书验证
     options.rejectUnauthorized = options.rejectUnauthorized ?? false;
 
