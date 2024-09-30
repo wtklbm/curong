@@ -16,14 +16,15 @@ const banner = require('./build/banner');
  * @param {Object} [options] 配置参数
  */
 function create(name, input, output, options = {}) {
-    options = {
+    build({
         input,
         output: { name, file: output, format: 'umd', banner },
         useTerser: !!compress,
+        external(id) {
+            return ['tslib'].includes(id) || /^@curong-/i.test(id);
+        },
         ...options
-    };
-
-    build(options);
+    });
 }
 
 !(async function () {
