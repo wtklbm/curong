@@ -3,7 +3,6 @@ import { request as HttpsRequest } from 'https';
 import { ParsedUrlQueryInput } from 'querystring';
 
 import { toLowerCaseKey } from '@curong/object';
-import { format, printInfo } from '@curong/term';
 import {
     hasOwnProperty,
     isArguments,
@@ -13,6 +12,7 @@ import {
     isObject,
     isObjectFilled,
     isStringFilled,
+    isTrue,
     isTypeofObject
 } from '@curong/types';
 
@@ -23,10 +23,8 @@ import { commonHeaders } from './headers';
 const validationParameters = (args: Record<PropertyKey, any>) => {
     for (const [k, v] of Object.entries(args)) {
         if (isNullOrUndefined(v)) {
-            throw format({
-                name: 'validationParameters',
-                message: `参数错误，${k} 不能为空`,
-                data: { k }
+            throw new TypeError(`[validationParameters] 参数 ${k} 不能为空`, {
+                cause: { args }
             });
         }
     }
@@ -117,7 +115,11 @@ const joinUrlQuery = (url: string, params: Record<string | number, any>) => {
     return url;
 };
 
-const getPath = (path: string, query?: ParsedUrlQueryInput) => {
+const getPath = (path?: string, query?: ParsedUrlQueryInput) => {
+    if (!isStringFilled(path)) {
+        return '/';
+    }
+
     path = path.trim();
 
     if (isObjectFilled(query)) {
@@ -131,16 +133,59 @@ export const deleteOptionsAttr = <T extends Record<PropertyKey, any>>(
     options: T,
     deleteKeys: Array<keyof T>
 ): void => {
-    deleteKeys.forEach(key => Reflect.deleteProperty(options, key));
+    if (!isNullOrUndefined(options)) {
+        deleteKeys.forEach(key => Reflect.deleteProperty(options, key));
+    }
+};
+
+/**
+ * 进行数据整合，根据选项替换 URL 中的内容
+ *
+ * @param baseUrl 基本的 URL
+ * @param options 请求选项
+ */
+const urlToParams = (baseUrl: string, options: RequestOptions) => {
+    let urlParams;
+
+    try {
+        urlParams = new URL(baseUrl);
+    } catch {
+        throw new TypeError(
+            `[urlToParams] baseUrl 不是一个合法链接: ${baseUrl}`
+        );
+    }
+
+    const {
+        protocol,
+        username,
+        password,
+        hostname,
+        pathname: path,
+        port,
+        search
+    } = urlParams;
+
+    options.https ??= protocol === 'https:';
+    options.hostname ??= hostname;
+    options.path = options.query // 如果传递空对象也是 `true`
+        ? getPath(options.path ?? path, options.query)
+        : getPath((options.path ?? path) + search);
+    Reflect.deleteProperty(options, 'query'); // 删除它，防止后续重复操作
+    options.port ??= port ? +port : undefined;
+    options.auth ??=
+        username && password ? `${username}:${password}` : undefined;
 };
 
 export const optionsHandler = (
-    url: string | URL | undefined,
+    baseUrl: string | URL | undefined,
     options: RequestOptions = {}
 ) => {
     // 默认是 `GET` 请求
     // 进行大写转换，保证后续不会出现隐式问题
     options.method = (options.method ?? 'GET').toUpperCase() as Methods;
+
+    // 设置最大重定向次数
+    options.maxRedirects = options.maxRedirects ?? 21;
 
     // 如果 `https` 的安全证书不是合法的，则忽略证书验证
     options.rejectUnauthorized = options.rejectUnauthorized ?? false;
@@ -148,53 +193,22 @@ export const optionsHandler = (
     // 添加通用请求头
     options.headers = toLowerCaseKey({ ...commonHeaders, ...options.headers });
 
-    if (isStringFilled(url)) {
-        url = new URL(url);
-    }
-
-    if (url instanceof URL) {
-        let { hostname, pathname: path, search, port, origin, protocol } = url;
-
-        if (options.hostname) {
-            printInfo(
-                '[optionsHandler] 您传递了 hostname 选项，将替换 URL 中的 hostname 部分'
-            );
-        }
-
-        if (options.path) {
-            printInfo(
-                '[optionsHandler] 您传递了 path 选项，将替换 URL 中的 path 部分'
-            );
-        }
-
-        validationParameters({ hostname, path });
-        options.hostname = options.hostname ?? hostname;
-        options.path = getPath((options.path ?? path) + search, options.query);
-        port && (options.port = +port);
-        options.headers = toLowerCaseKey({
-            Host: hostname,
-            Origin: origin,
-            Referer: origin, // 后面不要加 `/` 了
-            ...options.headers
-        });
-
-        return protocol === 'https:' ? HttpsRequest : HttpRequest;
+    if (isStringFilled(baseUrl)) {
+        urlToParams(baseUrl, options);
     }
 
     const { hostname, path = '/', https = true, query } = options;
-    const origin = `${https ? 'https' : 'http'}://${hostname}`;
+    // `hostname` 有可能是 IP 地址，这时候就要看看 `options.headers.host` 有没有值了
+    const origin = `${https ? 'https' : 'http'}://${options.headers.host ?? hostname}`;
 
     deleteOptionsAttr(options, ['https', 'query']);
     validationParameters({ hostname, path });
 
-    options.hostname = hostname;
-    options.path = getPath(path!, query);
-    options.headers = toLowerCaseKey({
-        Host: hostname,
-        Origin: origin,
-        Referer: origin, // 后面不要加 `/` 了
-        ...options.headers
-    });
+    options.path = getPath(path, query);
+    options.headers.host ??= hostname;
+    options.headers.origin ??= origin;
+    // 可包含完整的 URL 路径（包括协议、主机名、端口、路径等），后面不要加 `/` 了
+    options.headers.referer ??= origin;
 
-    return https ? HttpsRequest : HttpRequest;
+    return isTrue(https) ? HttpsRequest : HttpRequest;
 };
