@@ -1,7 +1,13 @@
-import { IncomingMessage } from 'http';
+import { IncomingMessage, type ClientRequest } from 'http';
 
 import { delayRun } from '@curong/function';
-import { isObjectFilled } from '@curong/types';
+import { toLowerCaseKey } from '@curong/object';
+import {
+    isNull,
+    isNullOrUndefined,
+    isObjectFilled,
+    isStringFilled
+} from '@curong/types';
 import { copy } from '@curong/util';
 
 import type { RequestHandler, RequestOptions, RequestResult } from '../types';
@@ -24,6 +30,7 @@ import { deleteOptionsAttr, optionsHandler } from './options';
  * - `body` 当前请求的请求体对象
  * - `delay` 延迟请求时间，单位 `毫秒`
  * - `timeout` 响应超时时间，单位 `毫秒`
+ * - `maxRedirects` 最大重定向次数。默认为 `21`
  * - `headers` 请求头对象
  *    - `port` 端口号
  *    - `timeout` 响应头超时时间
@@ -175,34 +182,88 @@ export default async function request(
         url = undefined;
     }
 
-    options = copy(options);
+    const config = copy(options);
 
-    const requestFn = optionsHandler(url, options);
-    const { body, delay, timeout } = options;
-    const bodyBuffer: any = await handleBody(body, options);
-    deleteOptionsAttr(options, ['body', 'delay']);
+    const requestFn = optionsHandler(url, config);
+    const { body, delay, maxRedirects } = config;
+    const bodyBuffer: any = await handleBody(body, config);
+    deleteOptionsAttr(config, ['body', 'delay', 'maxRedirects']);
+    let req: ClientRequest;
 
     const getF = (resolve: any, reject: any) => {
         /** 发起网络请求 */
-        const req = requestFn(options, (res: IncomingMessage) => {
+        req = requestFn(config, (res: IncomingMessage) => {
             if (req.destroyed) {
                 return;
+            }
+
+            // 自动跟随重定向。如果请求的 URL 被重定向到另一个 URL，则自动请求新的 URL
+            const locationUrl = res.headers.location;
+
+            if (
+                // 如果请求头中包含 `location` 属性
+                isStringFilled(locationUrl) &&
+                // 最大重定向次数大于 `0`
+                maxRedirects > 0 &&
+                // 是 `300` 的请求头
+                /^3\d{2}$/.test(`${res.statusCode}`)
+            ) {
+                // 销毁当前请求
+                req.destroy();
+
+                // 消耗一次重定向请求
+                options.maxRedirects = maxRedirects - 1;
+
+                // 对请求头的处理
+                const redirectHost = new URL(locationUrl).hostname;
+
+                // 当进行重定向时，删除 URL 中已包含的重复部分
+                deleteOptionsAttr(options, [
+                    'protocol',
+                    'username',
+                    'password',
+                    'hostname',
+                    'path',
+                    'port',
+                    'query',
+                    'https'
+                ]);
+
+                if (!isNullOrUndefined(options.headers)) {
+                    options.headers = toLowerCaseKey(options.headers);
+                }
+
+                // 如果当前请求的主机名与要重定向的主机名不同，则删除隐私数据
+                if (!isNull(redirectHost) && redirectHost !== config.hostname) {
+                    deleteOptionsAttr(options, ['auth']);
+                    deleteOptionsAttr(options.headers, [
+                        'cookie',
+                        'authorization'
+                    ]);
+                }
+
+                // 浏览器会将 POST 请求的 301 和 301 重定向重写为 GET
+                // https://tools.ietf.org/html/rfc7231%5C#section-6.4.2
+                if (
+                    config.method === 'POST' &&
+                    /^30[12]$/.test(`${res.statusCode}`)
+                ) {
+                    options.method = 'GET';
+                    deleteOptionsAttr(options.headers, [
+                        'content-length',
+                        'content-type'
+                    ]);
+                }
+
+                return resolve(request(locationUrl, options));
             }
 
             const buffers: Buffer[] = [];
             const serialStream = pipeDecompressStream(res);
 
-            // 关闭当前当前响应
-            const removeListeners = () => {
-                req.emit('close');
-                res.emit('close');
-                req.removeAllListeners();
-                res.removeAllListeners();
-            };
-
             /** 创建返回的数据对象 */
             const returns = async (error?: Error) => {
-                removeListeners();
+                req.destroy();
 
                 const data = Buffer.concat(buffers);
                 const responseData: RequestResult = {
@@ -211,7 +272,7 @@ export default async function request(
                     statusText: res.statusMessage,
                     request: req,
                     response: res,
-                    config: options,
+                    config,
                     error: error ?? null
                 };
 
@@ -222,13 +283,13 @@ export default async function request(
             };
 
             /** 处理响应头 */
-            if (handlers.header && handlers.header!(res, options)) {
+            if (handlers.header && handlers.header(res, config)) {
                 return resolve(returns());
             }
 
             /** 接收响应体 */
             serialStream.on('data', (chunk: Buffer) => {
-                if (handlers.data && handlers.data!(chunk, res, options)) {
+                if (handlers.data && handlers.data(chunk, res, config)) {
                     return resolve(returns());
                 }
 
@@ -239,22 +300,29 @@ export default async function request(
             serialStream.on('error', e => reject(returns(e)));
         });
 
-        req.setTimeout(timeout, () => {
-            req.abort();
+        req.on('timeout', () => {
+            // 当 `HTTP` 请求对象 (`http.IncomingMessage` 或 `http.ClientRequest)` 超时时，`timeout` 事件会被触发
+            // 触发 `timeout` 事件后，默认情况下并不会自动销毁请求对象，也不会关闭连接
+            // 超时事件只是告诉你请求已经超过了设定的时间限制，需要开发者手动决定如何处理
+            // 如果你希望在超时后立即关闭连接并释放相关资源，需要手动调用 `req.destroy()` 来销毁请求对象
+            req.destroy();
 
-            reject({
-                name: 'request',
-                message: `当前请求已超时 ${timeout} ms`,
-                request: req,
-                config: options
-            });
+            reject(
+                new Error(`[request] 当前请求已超时`, {
+                    cause: {
+                        request: req,
+                        config
+                    }
+                })
+            );
         });
 
-        req.on('error', error => {
-            req.emit('close');
-            req.removeAllListeners();
-
-            reject({ request: req, config: options, error });
+        req.on('error', (error: any) => {
+            reject(
+                new Error('[request] 当前请求出错', {
+                    cause: { request: req, config, error }
+                })
+            );
         });
 
         // 结束请求
@@ -262,10 +330,10 @@ export default async function request(
         // @note 这里不要用 `req.write()` 来发送请求体
         //  `req.write()` 异步的，有可能请求体还没有发送完，就走了 `req.end()`
         //  从而造成请求失败，或返回的结果非预期的值
-        req.end(body ? bodyBuffer : void 0);
+        req.end(body ? bodyBuffer : undefined);
     };
 
-    return new Promise(async (resolve, reject) => {
-        return await delayRun(delay ?? 0, () => getF(resolve, reject));
+    return await delayRun(delay ?? 0, () => {
+        return new Promise((resolve, reject) => getF(resolve, reject));
     });
 }
