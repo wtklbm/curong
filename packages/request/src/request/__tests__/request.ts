@@ -109,4 +109,29 @@ describe('@curong/request/createWithNull', () => {
 
         expect(ret.every(v => v === true)).toBe(true);
     });
+
+    test('测试6', async () => {
+        const httpPing = async () => {
+            const pingResult = await request({
+                hostname: '216.239.32.40',
+                path: '/translate_a/t?client=dict-chrome-ex&sl=en&tl=zh&dt=t&q=I%20love%20you',
+                headers: {
+                    Host: 'translate.google.com'
+                },
+                timeout: 3500
+            }).catch(e => {
+                return { status: -1, data: '' };
+            });
+
+            if (pingResult.status === -1) {
+                return false;
+            }
+
+            const data = pingResult.data.toString();
+
+            return data.includes('我爱你');
+        };
+
+        expect(await httpPing()).toBe(true);
+    });
 });
