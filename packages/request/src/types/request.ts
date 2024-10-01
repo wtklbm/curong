@@ -72,6 +72,13 @@ export type RequestOptions = _RequestOptions & {
 
     /** 延迟请求时间，单位 `毫秒` */
     delay?: number;
+
+    /**
+     * 最大重定向次数。默认为 `21`
+     *
+     * 如果传递 `0`，则表示忽略重定向
+     */
+    maxRedirects?: number;
 };
 
 /** 返回结果 */
