@@ -9,8 +9,8 @@ declare global {
  */
 export default function isDeno(): boolean {
     return (
-        typeof Deno !== 'undefined' &&
-        typeof Deno.version !== 'undefined' &&
-        typeof Deno.core !== 'undefined'
+        typeof Deno === 'object' &&
+        Deno !== null &&
+        typeof Deno.version?.deno === 'string'
     );
 }
