@@ -12,7 +12,7 @@ export default function isNodejs(): boolean {
         typeof global.clearImmediate === 'function' &&
         typeof process === 'object' &&
         getTagEqual(process, 'process') &&
-        (process.release ?? {}).name === 'node' &&
+        process.release?.name === 'node' &&
         typeof Buffer === 'function' &&
         typeof Buffer.isBuffer === 'function'
     );
