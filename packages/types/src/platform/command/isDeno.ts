@@ -9,8 +9,7 @@ declare global {
  */
 export default function isDeno(): boolean {
     return (
-        typeof Deno === 'object' &&
-        Deno !== null &&
-        typeof Deno.version?.deno === 'string'
+        typeof Deno?.version?.deno === 'string' &&
+        navigator?.userAgent?.startsWith('Deno')
     );
 }
