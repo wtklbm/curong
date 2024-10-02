@@ -1,4 +1,4 @@
-import getTagEqual from '../type/getTagEqual';
+import getTagEqual from '../../type/getTagEqual';
 
 /**
  * 当前的执行环境是不是 `Node.js`
@@ -13,6 +13,7 @@ export default function isNodejs(): boolean {
         typeof process === 'object' &&
         getTagEqual(process, 'process') &&
         process.release?.name === 'node' &&
+        navigator?.userAgent?.startsWith('Node.js') &&
         typeof Buffer === 'function' &&
         typeof Buffer.isBuffer === 'function'
     );
