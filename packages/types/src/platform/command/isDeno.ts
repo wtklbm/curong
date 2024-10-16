@@ -1,6 +1,6 @@
-declare global {
-    export const Deno: any;
-}
+import getUserAgent from '../browser/getUserAgent';
+
+declare const Deno: any;
 
 /**
  * 当前的执行环境是不是 `Deno`
@@ -9,7 +9,8 @@ declare global {
  */
 export default function isDeno(): boolean {
     return (
+        typeof Deno === 'object' &&
         typeof Deno?.version?.deno === 'string' &&
-        navigator?.userAgent?.startsWith('Deno')
+        getUserAgent().startsWith('Deno/')
     );
 }
