@@ -246,8 +246,6 @@
 - `isBun`: 当前的执行环境是不是 `Bun`
 - `isDeno`: 当前的执行环境是不是 `Deno`
 - `isJsDom`: 当前的执行环境是不是 `JsDom`
-- `isBun`: 当前的执行环境是不是 `Bun`
-- `isBun`: 当前的执行环境是不是 `Bun`
 - `isNodejs`: 当前的执行环境是不是 `Node.js`
 - `isNodejsProcess`: 是不是 `Node.js` 的 `process` 模块
 
