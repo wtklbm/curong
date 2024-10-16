@@ -210,9 +210,39 @@
 
 #### `platform`
 
+- `assertGlobalThis`: 当前的执行环境是不是包含 `globalThis`
+
+##### `browser`
+
 - `assertBrowser`: 当前的执行环境是不是浏览器
+- `assertBrowserExtension`: 当前的执行环境是不是浏览器扩展
+
+##### `command`
+
+- `assertBun`: 当前的执行环境是不是 `Bun`
 - `assertDeno`: 当前的执行环境是不是 `Deno`
+- `assertJsDom`: 当前的执行环境是不是 `JsDom`
 - `assertNodejs`: 当前的执行环境是不是 `Node.js`
+- `assertNodejsProcess`: 是不是 `Node.js` 的 `process` 模块
+
+##### `desktop`
+
+- `assertElectron`: 当前的执行环境是不是 `Electron`
+- `assertLinux`: 当前的执行环境是不是 `Linux`
+- `assertMacOS`: 当前的执行环境是不是 `macOS`
+- `assertWindows`: 当前的执行环境是不是 `Windows`
+
+##### `mobile`
+
+- `assertAndroid`: 当前的执行环境是不是 `Android`
+- `assertIOS`: 当前的执行环境是不是 `iOS`
+- `assertReactNative`: 当前的执行环境是不是 `React Native`
+
+##### `webWorker`
+
+- `assertDedicatedWorker`: 当前的执行环境是不是 `DedicatedWorker`
+- `assertServiceWorker`: 当前的执行环境是不是 `ServiceWorker`
+- `assertSharedWorker`: 当前的执行环境是不是 `SharedWorker`
 - `assertWebWorker`: 当前的执行环境是不是 `Web Worker`
 
 #### `primitive`
