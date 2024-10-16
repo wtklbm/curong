@@ -1,6 +1,5 @@
-import isDocument from '../../element/isDocument';
-import isWindow from '../../element/isWindow';
-import getTagEqual from '../../type/getTagEqual';
+import isFuzzyBrowser from '../constants/isFuzzyBrowser';
+import isFuzzyJsDom from '../constants/isFuzzyJsDom';
 
 /**
  * 当前的执行环境是不是浏览器
@@ -8,14 +7,5 @@ import getTagEqual from '../../type/getTagEqual';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isBrowser(): boolean {
-    return (
-        typeof window !== 'undefined' &&
-        isWindow(window) &&
-        isDocument(window.document) &&
-        getTagEqual(window.history, 'History') &&
-        getTagEqual(window.navigator, 'Navigator') &&
-        typeof HTMLImageElement === 'function' &&
-        typeof HTMLCanvasElement === 'function' &&
-        typeof HTMLVideoElement === 'function'
-    );
+    return !isFuzzyJsDom() && isFuzzyBrowser();
 }
