@@ -234,9 +234,41 @@
 
 #### `platform`
 
+- `isGlobalThis`: 当前的执行环境是不是包含 `globalThis`
+
+##### `browser`
+
 - `isBrowser`: 当前的执行环境是不是浏览器
+- `isBrowserExtension`: 当前的执行环境是不是浏览器扩展
+
+##### `command`
+
+- `isBun`: 当前的执行环境是不是 `Bun`
 - `isDeno`: 当前的执行环境是不是 `Deno`
+- `isJsDom`: 当前的执行环境是不是 `JsDom`
+- `isBun`: 当前的执行环境是不是 `Bun`
+- `isBun`: 当前的执行环境是不是 `Bun`
 - `isNodejs`: 当前的执行环境是不是 `Node.js`
+- `isNodejsProcess`: 是不是 `Node.js` 的 `process` 模块
+
+##### `desktop`
+
+- `isElectron`: 当前的执行环境是不是 `Electron`
+- `isLinux`: 当前的执行环境是不是 `Linux`
+- `isMacOS`: 当前的执行环境是不是 `macOS`
+- `isWindows`: 当前的执行环境是不是 `Windows`
+
+##### `mobile`
+
+- `isAndroid`: 当前的执行环境是不是 `Android`
+- `isIOS`: 当前的执行环境是不是 `iOS`
+- `isReactNative`: 当前的执行环境是不是 `React Native`
+
+##### `webWorker`
+
+- `isDedicatedWorker`: 当前的执行环境是不是 `DedicatedWorker`
+- `isServiceWorker`: 当前的执行环境是不是 `ServiceWorker`
+- `isSharedWorker`: 当前的执行环境是不是 `SharedWorker`
 - `isWebWorker`: 当前的执行环境是不是 `Web Worker`
 
 #### `primitive`
