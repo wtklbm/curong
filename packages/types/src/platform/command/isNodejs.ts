@@ -1,5 +1,5 @@
 import isFunction from '../../function/isFunction';
-import getUserAgent from '../browser/getUserAgent';
+import getUserAgent from '../constants/getUserAgent';
 
 import isNodejsProcess from './isNodejsProcess';
 
