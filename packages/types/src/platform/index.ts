@@ -1,5 +1,7 @@
-export { default as isDeno } from './isDeno';
-export { default as isNodejs } from './isNodejs';
-export { default as isWebWorker } from './isWebWorker';
+export { default as isGlobalThis } from './isGlobalThis';
 
 export * from './browser';
+export * from './command';
+export * from './desktop';
+export * from './mobile';
+export * from './webWorker';
