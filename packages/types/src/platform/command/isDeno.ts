@@ -1,4 +1,4 @@
-import getUserAgent from '../browser/getUserAgent';
+import getUserAgent from '../constants/getUserAgent';
 
 declare const Deno: any;
 
