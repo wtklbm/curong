@@ -1,4 +1,7 @@
-import getTagEqual from '../../type/getTagEqual';
+import isFunction from '../../function/isFunction';
+import getUserAgent from '../browser/getUserAgent';
+
+import isNodejsProcess from './isNodejsProcess';
 
 /**
  * 当前的执行环境是不是 `Node.js`
@@ -9,12 +12,11 @@ export default function isNodejs(): boolean {
     return (
         typeof global === 'object' &&
         global !== null &&
-        typeof global.clearImmediate === 'function' &&
-        typeof process === 'object' &&
-        getTagEqual(process, 'process') &&
-        process.release?.name === 'node' &&
-        navigator?.userAgent?.startsWith('Node.js') &&
-        typeof Buffer === 'function' &&
-        typeof Buffer.isBuffer === 'function'
+        isFunction(global.clearImmediate) &&
+        isNodejsProcess() &&
+        globalThis.process.release?.name === 'node' &&
+        getUserAgent().startsWith('Node.js/') &&
+        isFunction(globalThis.Buffer) &&
+        isFunction(globalThis.Buffer.isBuffer)
     );
 }
