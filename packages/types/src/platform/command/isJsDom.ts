@@ -4,7 +4,7 @@ import isFuzzyJsDom from '../constants/isFuzzyJsDom';
 /**
  * 当前的执行环境是不是 `JsDom`
  *
- * @param window `jsdom` 中的 `Window` 对象，默认为 `globalThis` (即当前执行环境的全局根属性)
+ * @param window `jsdom` 中的 `Window` 对象，默认为 `globalThis.window` (即当前执行环境的全局根属性)
  * @returns 是则返回 `true`，否则为 `false`
  * @example
  *
@@ -15,6 +15,6 @@ import isFuzzyJsDom from '../constants/isFuzzyJsDom';
  * console.log(isJsDom(window)); // true
  * ```
  */
-export default function isJsDom(window = globalThis): boolean {
+export default function isJsDom(window = globalThis.window): boolean {
     return isFuzzyJsDom(window) && isFuzzyBrowser();
 }
