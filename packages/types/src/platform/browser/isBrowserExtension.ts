@@ -1,8 +1,13 @@
+import isTypeofObject from '../../object/isTypeofObject';
+
 interface BrowserRuntime {
     id?: unknown;
 }
-declare const chrome: { runtime?: BrowserRuntime };
-declare const browser: { runtime?: BrowserRuntime };
+
+declare global {
+    var chrome: { runtime?: BrowserRuntime };
+    var browser: { runtime?: BrowserRuntime };
+}
 
 /**
  * 当前的执行环境是不是浏览器扩展
@@ -11,8 +16,8 @@ declare const browser: { runtime?: BrowserRuntime };
  */
 export default function isBrowserExtension(): boolean {
     const runtime =
-        (typeof chrome === 'object' && chrome?.runtime) ||
-        (typeof browser === 'object' && browser?.runtime);
+        (isTypeofObject(globalThis.chrome) && globalThis.chrome.runtime) ||
+        (isTypeofObject(globalThis.browser) && globalThis.browser.runtime);
 
-    return typeof runtime === 'object' && runtime?.id !== undefined;
+    return isTypeofObject(runtime) && runtime.id != undefined;
 }
