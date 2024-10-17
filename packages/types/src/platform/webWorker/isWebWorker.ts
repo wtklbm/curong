@@ -9,8 +9,6 @@ declare const WorkerGlobalScope: Function | undefined;
 export default function isWebWorker(): boolean {
     return (
         typeof WorkerGlobalScope === 'function' &&
-        typeof self === 'object' &&
-        self !== null &&
-        self instanceof WorkerGlobalScope
+        globalThis instanceof WorkerGlobalScope
     );
 }
