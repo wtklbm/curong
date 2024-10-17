@@ -1,6 +1,17 @@
+import isTypeofObject from '../../object/isTypeofObject';
+import isString from '../../string/isString';
+
 import getUserAgent from '../constants/getUserAgent';
 
-declare const Deno: any;
+type Deno = {
+    version?: {
+        deno?: string;
+    };
+};
+
+declare global {
+    var Deno: Deno | undefined;
+}
 
 /**
  * 当前的执行环境是不是 `Deno`
@@ -9,8 +20,8 @@ declare const Deno: any;
  */
 export default function isDeno(): boolean {
     return (
-        typeof Deno === 'object' &&
-        typeof Deno?.version?.deno === 'string' &&
+        isTypeofObject(globalThis.Deno) &&
+        isString(globalThis.Deno.version?.deno) &&
         getUserAgent().startsWith('Deno/')
     );
 }
