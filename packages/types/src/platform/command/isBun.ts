@@ -1,6 +1,9 @@
+import isTypeofObject from '../../object/isTypeofObject';
 import isString from '../../string/isString';
 
-declare const Bun: any;
+declare global {
+    var Bun: any;
+}
 
 /**
  * 当前的执行环境是不是 `Bun`
@@ -9,8 +12,8 @@ declare const Bun: any;
  */
 export default function isBun(): boolean {
     return (
-        typeof Bun === 'object' &&
-        isString(Bun?.version) &&
+        isTypeofObject(globalThis.Bun) &&
+        isString(globalThis.Bun.version) &&
         isString(globalThis.process?.versions?.bun)
     );
 }
