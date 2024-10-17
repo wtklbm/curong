@@ -11,6 +11,6 @@ export default function isWindows(): boolean {
         (isNodejsProcess() && globalThis.process.platform === 'win32') ||
         (isNavigator() && // @ts-ignore
             (globalThis.navigator.userAgentData?.platform === 'Windows' ||
-                globalThis.navigator.platform === 'Win32 '))
+                globalThis.navigator.platform === 'Win32'))
     );
 }
