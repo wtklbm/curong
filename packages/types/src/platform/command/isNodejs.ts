@@ -1,4 +1,6 @@
 import isFunction from '../../function/isFunction';
+import isTypeofObject from '../../object/isTypeofObject';
+
 import getUserAgent from '../constants/getUserAgent';
 
 import isNodejsProcess from './isNodejsProcess';
@@ -10,9 +12,8 @@ import isNodejsProcess from './isNodejsProcess';
  */
 export default function isNodejs(): boolean {
     return (
-        typeof global === 'object' &&
-        global !== null &&
-        isFunction(global.clearImmediate) &&
+        isTypeofObject(globalThis.global) &&
+        isFunction(globalThis.global.clearImmediate) &&
         isNodejsProcess() &&
         globalThis.process.release?.name === 'node' &&
         getUserAgent().startsWith('Node.js/') &&
