@@ -1,3 +1,5 @@
+import isString from '../../string/isString';
+
 import isNodejsProcess from '../command/isNodejsProcess';
 
 /**
@@ -6,8 +8,5 @@ import isNodejsProcess from '../command/isNodejsProcess';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isElectron(): boolean {
-    return (
-        isNodejsProcess() &&
-        typeof globalThis.process.versions?.electron === 'string'
-    );
+    return isNodejsProcess() && isString(globalThis.process.versions?.electron);
 }
