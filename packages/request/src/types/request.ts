@@ -45,9 +45,6 @@ export type RequestOptions = _RequestOptions & {
     /** 主机路径 */
     path?: string;
 
-    /** 响应超时时间，单位 `毫秒` */
-    timeout?: number;
-
     /** 请求头字段 */
     headers?: _RequestOptions['headers'];
 
@@ -70,7 +67,17 @@ export type RequestOptions = _RequestOptions & {
         | Uint8Array
         | ArrayBuffer;
 
-    /** 延迟请求时间，单位 `毫秒` */
+    /** 连接超时时间，单位 `毫秒` */
+    timeout?: number;
+
+    /**
+     * 最大请求时间，单位 `毫秒`。默认为 `2147483647`
+     *
+     * 当前请求发出后，如果请求时间超过了 `maxTime`，则会抛出异常
+     */
+    maxTime?: number;
+
+    /** 延迟请求时间，单位 `毫秒`。默认为 `0` */
     delay?: number;
 
     /**
