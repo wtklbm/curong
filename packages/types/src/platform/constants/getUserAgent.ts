@@ -1,5 +1,3 @@
-import isNavigator from '../constants/isNavigator';
-
 /**
  * 获取 `userAgent` 字符串
  *
@@ -7,5 +5,5 @@ import isNavigator from '../constants/isNavigator';
  * @returns 如果 `navigator.userAgent` 存在则返回该值，否则返回后备值
  */
 export default function getUserAgent(ua: string = '') {
-    return isNavigator() ? (globalThis.navigator.userAgent ?? ua) : ua;
+    return globalThis.navigator?.userAgent ?? ua;
 }
