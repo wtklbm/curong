@@ -1,186 +1,62 @@
 import { cancelExec } from '..';
 
-const fn = (a: number, b: string, bool: boolean) => {
+const fn = (a: number, b: number) => {
     return new Promise(resolve => {
-        let timer: any = setTimeout(() => {
-            clearTimeout(timer);
-            timer = null;
-            resolve(a + +b * 2 - +bool);
-        }, 50);
+        setTimeout(() => resolve(a + b), 100);
     });
 };
 
 describe('@curong/function/cancelExec', () => {
-    test('测试1', () => {
-        const [promise, abort] = cancelExec(fn, 1, '2', false);
+    test('测试1', async () => {
+        const [promise] = cancelExec(fn, 2, 3);
 
-        promise.then(
-            data => {
-                expect(data).toBe('超过 2s 了');
-            },
-            err => {
-                expect(err).toBe(undefined);
-            }
-        );
-
-        setTimeout(() => {
-            abort('超过 2s 了');
-        }, 10);
+        const result = await promise;
+        expect(result).toBe(5);
     });
 
-    test('测试2', () => {
-        const [promise, abort] = cancelExec(fn, 1, '2', false);
-
-        promise.then(
-            data => {
-                expect(data).toBe(undefined);
-            },
-            err => {
-                expect(err).toBe('超过 2s 了');
-            }
-        );
+    test('测试2', async () => {
+        const [promise, abort] = cancelExec(fn, 2, 3);
 
         setTimeout(() => {
-            abort(Promise.reject('超过 2s 了'));
-        }, 10);
+            abort('被终止');
+        }, 50);
+
+        const result = await promise;
+        expect(result).toBe('被终止');
     });
 
-    test('测试3', () => {
-        const [promise, abort] = cancelExec(fn, 1, '2', false);
+    test('测试3', async () => {
+        const [promise, abort] = cancelExec(fn, 2, 3);
 
-        promise.then(
-            data => {
-                expect(data).toBe(undefined);
-            },
-            err => {
-                expect(err).toBe(undefined);
-            }
-        );
+        setTimeout(() => {
+            abort(Promise.resolve('中止后的结果'));
+        }, 50);
+
+        const result = await promise;
+        expect(result).toBe('中止后的结果');
+    });
+
+    test('测试4', async () => {
+        const [promise, abort] = cancelExec(fn, 2, 3);
 
         setTimeout(() => {
             abort();
-        }, 10);
+        }, 50);
+
+        const result = await promise;
+        expect(result).toBeUndefined();
     });
 
-    test('测试4', () => {
-        const [promise, abort] = cancelExec(() => fn(1, '2', false));
-
-        promise.then(
-            data => {
-                expect(data).toBe(undefined);
-            },
-            err => {
-                expect(err).toBe(undefined);
-            }
-        );
+    test('测试5', async () => {
+        const [promise, abort] = cancelExec(fn, 2, 3);
 
         setTimeout(() => {
-            abort();
-        }, 10);
-    });
-
-    test('测试5', () => {
-        const [promise, abort] = cancelExec(fn, 1, '2', false);
-
-        promise.then(
-            data => {
-                expect(data).toBe(5);
-            },
-            err => {
-                expect(err).toBe(undefined);
-            }
-        );
-
-        setTimeout(() => {
-            abort('超过 2s 了');
-        }, 60);
-    });
-
-    test('测试5', () => {
-        const [promise, abort] = cancelExec(fn, 1, '2', false);
-
-        promise.then(
-            data => {
-                expect(data).toBe(5);
-            },
-            err => {
-                expect(err).toBe(undefined);
-            }
-        );
-
-        setTimeout(() => {
-            abort('超过 2s 了');
-        }, 60);
-    });
-
-    test('测试6', () => {
-        const [promise, abort] = cancelExec(async () => fn(1, '2', false));
-
-        promise.then(
-            data => {
-                expect(data).toBe('超过 2s 了');
-            },
-            err => {
-                expect(err).toBe(undefined);
-            }
-        );
-
-        setTimeout(() => {
-            abort(() => '超过 2s 了');
-        }, 10);
-    });
-
-    test('测试7', () => {
-        const [promise, abort] = cancelExec(() => fn(1, '2', false));
-
-        promise.then(
-            data => {
-                expect(data).toBe(undefined);
-            },
-            err => {
-                expect(err).toBe('超过 2s 了');
-            }
-        );
-
-        setTimeout(() => {
-            abort(() => Promise.reject('超过 2s 了'));
-        }, 10);
-    });
-
-    test('测试8', () => {
-        const [promise, abort] = cancelExec(() => fn(1, '2', false));
-
-        promise.then(
-            data => {
-                expect(data).toBe('超过 2s 了');
-            },
-            err => {
-                expect(err).toBe(undefined);
-            }
-        );
-
-        setTimeout(() => {
-            abort(() => Promise.resolve('超过 2s 了'));
-        }, 10);
-    });
-
-    test('测试9', () => {
-        const [promise, abort] = cancelExec(async () => fn(1, '2', false));
-
-        promise.then(
-            data => {
-                expect(data).toBe(undefined);
-            },
-            err => {
-                expect(err).toBe('超过 2s 了');
-            }
-        );
-
-        setTimeout(() => {
-            abort((...args: any) => {
-                expect(args).toEqual([1, '2', false]);
-                throw '超过 2s 了';
+            abort((...args: [number, number]) => {
+                return `终止时传递的参数: ${args.join(', ')}`;
             });
-        }, 10);
+        }, 50);
+
+        const result = await promise;
+        expect(result).toBe('终止时传递的参数: 2, 3');
     });
 });
