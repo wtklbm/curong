@@ -240,4 +240,19 @@ describe('@curong/function/timeoutOr', () => {
         ret = await timeoutOr(123, fn, null, 1, '2', true);
         expect(ret).toBe(null);
     });
+
+    test('测试21', async () => {
+        const fn = (a: number, b: string) => {
+            throw a + +b * 2;
+        };
+        const ret = timeoutOr(
+            2147483647,
+            fn,
+            () => Promise.reject('获取失败啦'),
+            2,
+            '1'
+        );
+
+        expect(ret).rejects.toBe(4);
+    });
 });
