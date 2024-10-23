@@ -1,6 +1,6 @@
 import { IncomingMessage, type ClientRequest } from 'http';
 
-import { delayRun } from '@curong/function';
+import { delayRun, timeoutOr } from '@curong/function';
 import { toLowerCaseKey } from '@curong/object';
 import {
     isNull,
@@ -28,8 +28,9 @@ import { deleteOptionsAttr, optionsHandler } from './options';
  * - `port` 端口号
  * - `query` 当前请求的查询字符串对象，会被转换为 `a=b&b=c` 的格式
  * - `body` 当前请求的请求体对象
- * - `delay` 延迟请求时间，单位 `毫秒`
- * - `timeout` 响应超时时间，单位 `毫秒`
+ * - `timeout` 连接超时时间，单位 `毫秒`
+ * - `maxTime` 最大请求时间，单位 `毫秒`。默认为 `2147483647`
+ * - `delay` 延迟请求时间，单位 `毫秒`。默认为 `0`
  * - `maxRedirects` 最大重定向次数。默认为 `21`
  * - `headers` 请求头对象
  *    - `port` 端口号
@@ -107,8 +108,9 @@ export default function request(
  * - `method` 请求方式
  * - `query` 当前请求的查询字符串对象，会被转换为 `a=b&b=c` 的格式
  * - `body` 当前请求的请求体对象
- * - `delay` 延迟请求时间，单位 `毫秒`
- * - `timeout` 响应超时时间，单位 `毫秒`
+ * - `timeout` 连接超时时间，单位 `毫秒`
+ * - `maxTime` 最大请求时间，单位 `毫秒`。默认为 `2147483647`
+ * - `delay` 延迟请求时间，单位 `毫秒`。默认为 `0`
  * - `headers` 请求头对象
  *    - `port` 端口号
  *    - `timeout` 响应头超时时间
@@ -185,9 +187,9 @@ export default async function request(
     const config = copy(options);
 
     const requestFn = optionsHandler(url, config);
-    const { body, delay, maxRedirects } = config;
+    const { body, delay, maxTime, maxRedirects } = config;
     const bodyBuffer: any = await handleBody(body, config);
-    deleteOptionsAttr(config, ['body', 'delay', 'maxRedirects']);
+    deleteOptionsAttr(config, ['body', 'delay', 'maxTime', 'maxRedirects']);
     let req: ClientRequest;
 
     const getF = (resolve: any, reject: any) => {
@@ -296,6 +298,15 @@ export default async function request(
                 buffers.push(chunk);
             });
 
+            /** 处理套接字错误 */
+            serialStream.on('error', error => {
+                reject(
+                    new Error('[request] 套接字错误', {
+                        cause: { request: req, config, error }
+                    })
+                );
+            });
+
             serialStream.on('end', () => resolve(returns()));
             serialStream.on('error', e => reject(returns(e)));
         });
@@ -308,7 +319,7 @@ export default async function request(
             req.destroy();
 
             reject(
-                new Error(`[request] 当前请求已超时`, {
+                new Error(`[request] 请求已超时`, {
                     cause: {
                         request: req,
                         config
@@ -319,7 +330,7 @@ export default async function request(
 
         req.on('error', (error: any) => {
             reject(
-                new Error('[request] 当前请求出错', {
+                new Error('[request] 请求出错', {
                     cause: { request: req, config, error }
                 })
             );
@@ -334,6 +345,18 @@ export default async function request(
     };
 
     return await delayRun(delay ?? 0, () => {
-        return new Promise((resolve, reject) => getF(resolve, reject));
+        return timeoutOr(
+            maxTime ?? 2147483647,
+            () => new Promise((resolve, reject) => getF(resolve, reject)),
+            () => {
+                req.destroy();
+
+                return Promise.reject(
+                    new Error('[request] 当前请求已超出最大请求时间', {
+                        cause: { config }
+                    })
+                );
+            }
+        );
     });
 }
