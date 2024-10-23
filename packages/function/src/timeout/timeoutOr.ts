@@ -31,7 +31,8 @@ export default async function timeoutOr<A extends unknown[], R1, R2>(
         | undefined,
     ...args: A
 ) {
-    let timer;
+    let timer: NodeJS.Timeout;
+
     const ret = await Promise.race([
         toPromise(callable, args),
         new Promise(resolve => {
@@ -40,7 +41,7 @@ export default async function timeoutOr<A extends unknown[], R1, R2>(
                 timeoutMsResolve(duration)
             );
         })
-    ]);
-    clearTimeout(timer);
+    ]).finally(() => clearTimeout(timer));
+
     return ret;
 }
