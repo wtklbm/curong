@@ -42,7 +42,7 @@ export default function cancelExec<R, A extends unknown[]>(
 
     return [
         Promise.race([
-            toPromise(callable),
+            toPromise(callable, args),
             new Promise(resolve => {
                 abort = payload => resolve(toPromise(payload, args));
             })
