@@ -1191,4 +1191,11 @@ describe('@curong/util/copy', () => {
         );
         expect(copy(new URLSearchParams())).toEqual(new URLSearchParams());
     });
+
+    test('测试54', () => {
+        const t = () => 1;
+        t.toString = () => 'toString';
+        expect(copy(t).toString()).toEqual('toString');
+        expect(Function.prototype.toString.call(copy(t))).toEqual('() => 1');
+    });
 });
