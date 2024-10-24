@@ -206,7 +206,7 @@ const getDescriptorSource = (src: string, name: string, flag: string) => `
 
 const copyFunction = (value: any, weak: any) => {
     const { name } = value;
-    const src = value.toString();
+    const src = Function.prototype.toString.call(value);
     let source: string;
     let m: any;
 
