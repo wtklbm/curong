@@ -6,6 +6,8 @@ export default function isFuzzyJsDom(window = globalThis): boolean {
             ?.get?.toString()
             .includes('[native code]') &&
         getTagEqual(window.navigator, 'Navigator') &&
-        window.navigator.userAgent?.includes('jsdom')
+        window.navigator.userAgent?.includes('jsdom') &&
+        // 浏览器是 `HTMLDocument`，`jsdom` 是 `Document`
+        getTagEqual(globalThis.document, 'Document')
     );
 }
