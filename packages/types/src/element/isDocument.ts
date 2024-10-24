@@ -1,8 +1,8 @@
-import getTagEqual from '../type/getTagEqual';
+import getTag from '../type/getTag';
 
 /** 验证是不是 `Document` 的默认函数 */
 const defaultIsDocument = (value: unknown) =>
-    getTagEqual(value, 'HTMLDocument');
+    getTag(value).includes('Document');
 
 /**
  * 是不是 `Document` 对象
@@ -10,6 +10,8 @@ const defaultIsDocument = (value: unknown) =>
  * @param value 要验证的值
  * @param evaluator 一个自定义的评估函数
  *  默认情况下，该函数会通过 `Object.prototype.toString.call(value)` 来判断类型，
+ *  浏览器的结果是 `HTMLDocument`，`jsdom` 是 `Document`。为了最大程度的做到兼容，
+ *  默认情况下，该方法的返回结果中只要包含 `Document` 结果就为 `true`。
  *  有时候我们需要更加严谨的判断，那么就可以指定 `evaluator` 函数来自定义判断逻辑，
  *  如果指定了 `evaluator` 函数，则不会再进行 `Object.prototype.toString.call(value)` 判断。
  * @returns 是则返回 `true`，否则为 `false`
