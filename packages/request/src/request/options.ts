@@ -199,11 +199,13 @@ export const optionsHandler = (
 
     const { hostname, path = '/', https = true, query } = options;
     // `hostname` 有可能是 IP 地址，这时候就要看看 `options.headers.host` 有没有值了
-    const origin = `${https ? 'https' : 'http'}://${options.headers.host ?? hostname}`;
+    const protocol = https ? 'https:' : 'http:';
+    const origin = `${protocol}//${options.headers.host ?? hostname}`;
 
     deleteOptionsAttr(options, ['https', 'query']);
     validationParameters({ hostname, path });
 
+    options.protocol = protocol;
     options.path = getPath(path, query);
     options.headers.host ??= hostname;
     options.headers.origin ??= origin;
