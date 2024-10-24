@@ -3,7 +3,6 @@ import { IncomingMessage, type ClientRequest } from 'http';
 import { delayRun, timeoutOr } from '@curong/function';
 import { toLowerCaseKey } from '@curong/object';
 import {
-    isNull,
     isNullOrUndefined,
     isObjectFilled,
     isStringFilled
@@ -20,35 +19,32 @@ import { deleteOptionsAttr, optionsHandler } from './options';
  * 从远程连接获取响应的内容并返回 `Buffer`
  *
  * @param options 参数列表，默认为 `{}`
- *
- * - `hostname` 远程主机名(不包括 `https://`)，比如 `www.xxx.com`
- * - `path` 路径地址，比如 `/xxx/xxx?xx=xx&xx=xx#xx`
- * - `method` 请求方式
- * - `https` 是否使用更加安全的 `https` 发送请求
- * - `port` 端口号
- * - `query` 当前请求的查询字符串对象，会被转换为 `a=b&b=c` 的格式
- * - `body` 当前请求的请求体对象
- * - `timeout` 连接超时时间，单位 `毫秒`
- * - `maxTime` 最大请求时间，单位 `毫秒`。默认为 `2147483647`
- * - `delay` 延迟请求时间，单位 `毫秒`。默认为 `0`
- * - `maxRedirects` 最大重定向次数。默认为 `21`
- * - `headers` 请求头对象
+ *  - `hostname` 远程主机名(不包括 `https://`)，比如 `www.xxx.com`
+ *  - `path` 路径地址，比如 `/xxx/xxx?xx=xx&xx=xx#xx`
+ *  - `method` 请求方式
+ *  - `https` 是否使用更加安全的 `https` 发送请求
+ *  - `port` 端口号
+ *  - `query` 当前请求的查询字符串对象，会被转换为 `a=b&b=c` 的格式
+ *  - `body` 当前请求的请求体对象
+ *  - `timeout` 连接超时时间，单位 `毫秒`
+ *  - `maxTime` 最大请求时间，单位 `毫秒`。默认为 `2147483647`
+ *  - `delay` 延迟请求时间，单位 `毫秒`。默认为 `0`
+ *  - `maxRedirects` 最大重定向次数。默认为 `21`
+ *  - `headers` 请求头对象
  *    - `port` 端口号
  *    - `timeout` 响应头超时时间
  *    - `headers` 请求头
  *    - `...` 更多参数
- *
  * @param handlers 回调函数对象
- *
- * - `header` 接收到响应头之后的回调函数，方法签名为:
- *   `(res: IncomingMessage, options: RequestOptions) => true | void;`
- * - `data` 接收到响应体之后的回调函数，方法签名为:
- *   `( chunk: any, res: IncomingMessage, options: RequestOptions ) => true | void;`
- *
+ *  - `header` 接收到响应头之后的回调函数，方法签名为:
+ *    `(res: IncomingMessage, options: RequestOptions) => true | void;`
+ *  - `data` 接收到响应体之后的回调函数，方法签名为:
+ *    `( chunk: any, res: IncomingMessage, options: RequestOptions ) => true | void;`
  * @throws
- *
- * - 如果 `hostname` 为空，则会抛出异常
- *
+ *  - 如果 `hostname` 为空，则会抛出异常
+ * @note
+ *  - 为了防止隐私泄漏，如果重定向的地址与当前域名不相同，则会删除 `auth`
+ *  - 如果所重定向的地址传递了不规范的路径，则可能导致不预期的结果，需要在请求后自行验证结果是否符合预期
  * @example
  *
  * ```typescript
@@ -88,11 +84,10 @@ import { deleteOptionsAttr, optionsHandler } from './options';
  * ```
  *
  * @todo
- *
- * - 支持跨域
- * - 支持 `Ajax` 和 `fetch`
- * - 删除 `querystring`，支持 `body` 参数嵌套
- * - 处理响应头，避免连接的状态挂起
+ *  - 支持跨域
+ *  - 支持 `Ajax` 和 `fetch`
+ *  - 删除 `querystring`，支持 `body` 参数嵌套
+ *  - 处理响应头，避免连接的状态挂起
  */
 export default function request(
     options: RequestOptions,
@@ -104,26 +99,25 @@ export default function request(
  *
  * @param url 要请求的 URL 字符串地址或 URL 对象
  * @param options 参数列表，默认为 `{}`
- *
- * - `method` 请求方式
- * - `query` 当前请求的查询字符串对象，会被转换为 `a=b&b=c` 的格式
- * - `body` 当前请求的请求体对象
- * - `timeout` 连接超时时间，单位 `毫秒`
- * - `maxTime` 最大请求时间，单位 `毫秒`。默认为 `2147483647`
- * - `delay` 延迟请求时间，单位 `毫秒`。默认为 `0`
- * - `headers` 请求头对象
+ *  - `method` 请求方式
+ *  - `query` 当前请求的查询字符串对象，会被转换为 `a=b&b=c` 的格式
+ *  - `body` 当前请求的请求体对象
+ *  - `timeout` 连接超时时间，单位 `毫秒`
+ *  - `maxTime` 最大请求时间，单位 `毫秒`。默认为 `2147483647`
+ *  - `delay` 延迟请求时间，单位 `毫秒`。默认为 `0`
+ *  - `headers` 请求头对象
  *    - `port` 端口号
  *    - `timeout` 响应头超时时间
  *    - `headers` 请求头
  *    - `...` 更多参数
- *
  * @param handlers 回调函数对象
- *
- * - `header` 接收到响应头之后的回调函数，方法签名为:
- *   `(res: IncomingMessage, options: RequestOptions) => true | void;`
- * - `data` 接收到响应体之后的回调函数，方法签名为:
- *   `( chunk: any, res: IncomingMessage, options: RequestOptions ) => true | void;`
- *
+ *  - `header` 接收到响应头之后的回调函数，方法签名为:
+ *    `(res: IncomingMessage, options: RequestOptions) => true | void;`
+ *  - `data` 接收到响应体之后的回调函数，方法签名为:
+ *    `( chunk: any, res: IncomingMessage, options: RequestOptions ) => true | void;`
+ * @note
+ *  - 为了防止隐私泄漏，如果重定向的地址与当前域名不相同，则会删除 `auth`
+ *  - 如果所重定向的地址传递了不规范的路径，则可能导致不预期的结果，需要在请求后自行验证结果是否符合预期
  * @example
  *
  * ```typescript
@@ -161,11 +155,10 @@ export default function request(
  * ```
  *
  * @todo
- *
- * - 支持跨域
- * - 支持 `Ajax` 和 `fetch`
- * - 删除 `querystring`，支持 `body` 参数嵌套
- * - 处理响应头，避免连接的状态挂起
+ *  - 支持跨域
+ *  - 支持 `Ajax` 和 `fetch`
+ *  - 删除 `querystring`，支持 `body` 参数嵌套
+ *  - 处理响应头，避免连接的状态挂起
  */
 export default function request(
     url: string | URL,
@@ -200,7 +193,7 @@ export default async function request(
             }
 
             // 自动跟随重定向。如果请求的 URL 被重定向到另一个 URL，则自动请求新的 URL
-            const locationUrl = res.headers.location;
+            let locationUrl = res.headers.location;
 
             if (
                 // 如果请求头中包含 `location` 属性
@@ -212,12 +205,6 @@ export default async function request(
             ) {
                 // 销毁当前请求
                 req.destroy();
-
-                // 消耗一次重定向请求
-                options.maxRedirects = maxRedirects - 1;
-
-                // 对请求头的处理
-                const redirectHost = new URL(locationUrl).hostname;
 
                 // 当进行重定向时，删除 URL 中已包含的重复部分
                 deleteOptionsAttr(options, [
@@ -235,13 +222,41 @@ export default async function request(
                     options.headers = toLowerCaseKey(options.headers);
                 }
 
-                // 如果当前请求的主机名与要重定向的主机名不同，则删除隐私数据
-                if (!isNull(redirectHost) && redirectHost !== config.hostname) {
-                    deleteOptionsAttr(options, ['auth']);
-                    deleteOptionsAttr(options.headers, [
-                        'cookie',
-                        'authorization'
-                    ]);
+                // 消耗一次重定向请求
+                options.maxRedirects = maxRedirects - 1;
+
+                // 优先使用请求头的 `Host`，因为 `config.hostname` 有可能是 IP 地址
+                const originHost = config.headers.host ?? config.hostname;
+
+                // 如果不是完整链接地址，例如 `https://xxx.com/login`
+                // 则可能重定向的地址只包含路径，比如 `/login`
+                if (!/^https?:\/\//.test(locationUrl)) {
+                    // 如果路径前面没有 `/`，比如 `login`
+                    if (!locationUrl.startsWith('/')) {
+                        console.error(
+                            `[request] 您当前重定向的地址是不规范的 URL，${locationUrl}`
+                        );
+                        locationUrl = `/${locationUrl}`;
+                    }
+
+                    // 拼接成完整路径
+                    locationUrl = `${config.protocol}//${originHost}${locationUrl}`;
+                }
+
+                // 对请求头的处理
+                try {
+                    // 如果当前请求的主机名与要重定向的主机名不同，则删除隐私数据
+                    if (new URL(locationUrl).hostname !== originHost) {
+                        deleteOptionsAttr(options, ['auth']);
+                        deleteOptionsAttr(options.headers, [
+                            'cookie',
+                            'authorization'
+                        ]);
+                    }
+                } catch {
+                    throw new TypeError(
+                        `[request] 重定向请求中给出的链接不是一个合法链接: ${locationUrl}`
+                    );
                 }
 
                 // 浏览器会将 POST 请求的 301 和 301 重定向重写为 GET
