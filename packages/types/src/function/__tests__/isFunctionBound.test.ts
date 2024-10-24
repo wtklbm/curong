@@ -56,4 +56,14 @@ describe('@curong/types/isFunctionBound', () => {
         const boundGreet = greet.bind(null, 'Alice');
         expect(isFunctionBound(boundGreet)).toBe(true);
     });
+
+    test('测试6', () => {
+        function greet(name: string) {
+            console.log(`Hello, ${name}!`);
+        }
+
+        greet.toString = () => 'toString';
+        const boundGreet = greet.bind(null, 'Alice');
+        expect(isFunctionBound(boundGreet)).toBe(true);
+    });
 });
