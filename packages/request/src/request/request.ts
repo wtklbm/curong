@@ -1,6 +1,6 @@
 import { IncomingMessage, type ClientRequest } from 'http';
 
-import { delayRun, timeoutOr } from '@curong/function';
+import { delayRun, retry, timeoutOr } from '@curong/function';
 import { isObjectFilled, isStringFilled } from '@curong/types';
 import { copy } from '@curong/util';
 
@@ -26,6 +26,7 @@ import toRedirects from './functions/toRedirects';
  *  - `maxTime` 最大请求时间，单位 `毫秒`。默认为 `2147483647`
  *  - `delay` 延迟请求时间，单位 `毫秒`。默认为 `0`
  *  - `maxRedirects` 最大重定向次数。默认为 `21`
+ *  - `errorRetry` 当请求抛出错误时 (比如请求失败、请求超时等)，要重试的次数。默认为 `0`，即不重试
  *  - `headers` 请求头对象
  *    - `port` 端口号
  *    - `timeout` 响应头超时时间
@@ -42,6 +43,8 @@ import toRedirects from './functions/toRedirects';
  *  - 为了防止隐私泄漏，如果重定向的地址与当前域名不相同，则会删除 `auth`
  *  - 如果所重定向的地址传递了不规范的路径，则可能导致不预期的结果，需要在请求后自行验证结果是否符合预期
  * @example
+ *
+ * ### 常规请求
  *
  * ```typescript
  * const requestOpts: RequestOptions = {
@@ -79,6 +82,35 @@ import toRedirects from './functions/toRedirects';
  * console.log(ret);
  * ```
  *
+ * ### 发送代理请求
+ *
+ * - 将 `hostname` 设置为要代理的主机地址，例如 `127.0.0.1`
+ * - `port` 可能也需要设置，例如 `1080`，默认为 `443`
+ * - `https` 可能也需要设置，例如 `false`，默认为 `true`
+ * - 将 `headers.host` 设置为真实的主机地址，例如 `translate.google.com`
+ * - 支持操作系统环境变量，比如 `HTTP_PROXY`、`HTTPS_PROXY`、`NO_PROXY` ... 的方法:
+ *   - 通过 [proxy-from-env](https://www.npmjs.com/package/proxy-from-env) 来获取代理地址
+ *   - 通过 [proxy-agent](https://www.npmjs.com/package/proxy-agent) 来创建一个 `Agent`
+ *
+ * ```typescript
+ * const config: RequestOptions = {
+ *     hostname: '216.239.32.40',
+ *     path: '/translate_a/t?client=dict-chrome-ex&sl=en&tl=zh&dt=t&q=I%20love%20you',
+ *     headers: {
+ *         Host: 'translate.google.com'
+ *     },
+ *     errorRetry: 3,
+ *     maxTime: 6000,
+ *     timeout: 3000
+ * };
+ *
+ * const ret = await request(config).catch(e => {
+ *     console.log(e);
+ * });
+ *
+ * console.log(ret); // "['我爱你']"
+ * ```
+ *
  * @todo
  *  - 支持跨域
  *  - 支持 `Ajax` 和 `fetch`
@@ -101,6 +133,8 @@ export default function request(
  *  - `timeout` 连接超时时间，单位 `毫秒`
  *  - `maxTime` 最大请求时间，单位 `毫秒`。默认为 `2147483647`
  *  - `delay` 延迟请求时间，单位 `毫秒`。默认为 `0`
+ *  - `maxRedirects` 最大重定向次数。默认为 `21`
+ *  - `errorRetry` 当请求抛出错误时 (比如请求失败、请求超时等)，要重试的次数。默认为 `0`，即不重试
  *  - `headers` 请求头对象
  *    - `port` 端口号
  *    - `timeout` 响应头超时时间
@@ -111,10 +145,14 @@ export default function request(
  *    `(res: IncomingMessage, options: RequestOptions) => true | void;`
  *  - `data` 接收到响应体之后的回调函数，方法签名为:
  *    `( chunk: any, res: IncomingMessage, options: RequestOptions ) => true | void;`
+ * @throws
+ *  - 如果 `hostname` 为空，则会抛出异常
  * @note
  *  - 为了防止隐私泄漏，如果重定向的地址与当前域名不相同，则会删除 `auth`
  *  - 如果所重定向的地址传递了不规范的路径，则可能导致不预期的结果，需要在请求后自行验证结果是否符合预期
  * @example
+ *
+ * ### 常规请求
  *
  * ```typescript
  * const requestOpts: RequestOptions = {
@@ -150,6 +188,35 @@ export default function request(
  * console.log(ret);
  * ```
  *
+ * ### 发送代理请求
+ *
+ * - 将 `hostname` 设置为要代理的主机地址，例如 `127.0.0.1`
+ * - `port` 可能也需要设置，例如 `1080`，默认为 `443`
+ * - `https` 可能也需要设置，例如 `false`，默认为 `true`
+ * - 将 `headers.host` 设置为真实的主机地址，例如 `translate.google.com`
+ * - 支持操作系统环境变量，比如 `HTTP_PROXY`、`HTTPS_PROXY`、`NO_PROXY` ... 的方法:
+ *   - 通过 [proxy-from-env](https://www.npmjs.com/package/proxy-from-env) 来获取代理地址
+ *   - 通过 [proxy-agent](https://www.npmjs.com/package/proxy-agent) 来创建一个 `Agent`
+ *
+ * ```typescript
+ * const proxyUrl = 'https://216.239.32.40/translate_a/t?client=dict-chrome-ex&sl=en&tl=zh&dt=t&q=I%20love%20you';
+ *
+ * const config: RequestOptions = {
+ *     headers: {
+ *         Host: 'translate.google.com'
+ *     },
+ *     errorRetry: 3,
+ *     maxTime: 6000,
+ *     timeout: 3000
+ * };
+ *
+ * const ret = await request(proxyUrl, config).catch(e => {
+ *     console.log(e);
+ * });
+ *
+ * console.log(ret); // "['我爱你']"
+ * ```
+ *
  * @todo
  *  - 支持跨域
  *  - 支持 `Ajax` 和 `fetch`
@@ -176,9 +243,15 @@ export default async function request(
     const config = copy(options);
 
     const requestFn = optionsHandler(url, config);
-    const { body, delay, maxTime, maxRedirects } = config;
+    const { body, delay, maxTime, maxRedirects, errorRetry } = config;
     const bodyBuffer: any = await handleBody(body, config);
-    deleteOptionsAttr(config, ['body', 'delay', 'maxTime', 'maxRedirects']);
+    deleteOptionsAttr(config, [
+        'body',
+        'delay',
+        'maxTime',
+        'maxRedirects',
+        'errorRetry'
+    ]);
     let req: ClientRequest;
 
     const getF = (resolve: any, reject: any) => {
@@ -233,13 +306,13 @@ export default async function request(
             };
 
             /** 处理响应头 */
-            if (handlers?.header(res, config)) {
+            if (handlers.header?.(res, config)) {
                 return resolve(returns());
             }
 
             /** 接收响应体 */
             serialStream.on('data', (chunk: Buffer) => {
-                if (handlers?.data(chunk, res, config)) {
+                if (handlers.data?.(chunk, res, config)) {
                     return resolve(returns());
                 }
 
@@ -292,19 +365,21 @@ export default async function request(
         req.end(body ? bodyBuffer : undefined);
     };
 
-    return await delayRun(delay ?? 0, () => {
-        return timeoutOr(
-            maxTime ?? 2147483647,
-            () => new Promise((resolve, reject) => getF(resolve, reject)),
-            () => {
-                req.destroy();
+    return retry(errorRetry ?? 0, () => {
+        return delayRun(delay ?? 0, () => {
+            return timeoutOr(
+                maxTime ?? 2147483647,
+                () => new Promise((resolve, reject) => getF(resolve, reject)),
+                () => {
+                    req.destroy();
 
-                return Promise.reject(
-                    new Error('[request] 当前请求已超出最大请求时间', {
-                        cause: { config }
-                    })
-                );
-            }
-        );
+                    return Promise.reject(
+                        new Error('[request] 当前请求已超出最大请求时间', {
+                            cause: { config }
+                        })
+                    );
+                }
+            );
+        });
     });
 }
