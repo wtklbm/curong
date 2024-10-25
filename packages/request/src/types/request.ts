@@ -86,6 +86,9 @@ export type RequestOptions = _RequestOptions & {
      * 如果传递 `0`，则表示忽略重定向
      */
     maxRedirects?: number;
+
+    /** 当请求抛出错误时 (比如请求失败、请求超时等)，要重试的次数。默认为 `0`，即不重试 */
+    errorRetry?: number;
 };
 
 /** 返回结果 */
