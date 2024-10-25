@@ -19,7 +19,7 @@ import type { Class } from '@curong/types';
  * console.log(isInstanceOf(null, MyClass)); // false
  * ```
  */
-export default function isInstanceOf<T extends unknown>(
+export default function isInstanceOf<T>(
     value: unknown,
     class_: Class<T>
 ): value is T {
