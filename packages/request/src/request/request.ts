@@ -233,13 +233,13 @@ export default async function request(
             };
 
             /** 处理响应头 */
-            if (handlers.header && handlers.header(res, config)) {
+            if (handlers?.header(res, config)) {
                 return resolve(returns());
             }
 
             /** 接收响应体 */
             serialStream.on('data', (chunk: Buffer) => {
-                if (handlers.data && handlers.data(chunk, res, config)) {
+                if (handlers?.data(chunk, res, config)) {
                     return resolve(returns());
                 }
 
