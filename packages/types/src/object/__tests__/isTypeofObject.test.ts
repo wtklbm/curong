@@ -7,6 +7,7 @@ describe('@curong/types/isTypeofObject', () => {
 
     test('测试2', () => {
         expect(isTypeofObject(new TypeError())).toBe(true);
+        expect(isTypeofObject(Object.create(null))).toBe(true);
         expect(isTypeofObject({})).toBe(true);
         expect(isTypeofObject([])).toBe(true);
         expect(isTypeofObject(new Boolean(true))).toBe(true);
