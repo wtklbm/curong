@@ -3,8 +3,8 @@ import {
     isFunction,
     isTrue,
     isTypeofObject,
-    isUndefined,
-    isZero
+    isUintSafeFilled,
+    isUndefined
 } from '@curong/types';
 
 import delay from '../delay/delay';
@@ -17,7 +17,9 @@ import type { RetryOptions } from './types';
  *
  * `retry` 函数允许在任务失败时进行多次重试，并在每次重试之间等待指定的时间。可以通过回调函数处理错误或在重试过程中进行自定义逻辑。
  *
- * @param maxRetry 任务失败时的最大重试次数
+ * @param maxRetry 任务失败时的最大重试次数。当值大于 `0` 时才会进行重试
+ * - `<= 0`: 任务被执行，不进行重试
+ * - `>= 1`: 任务被执行，当任务执行失败后，并进行 `n` 次重试
  * @param task 要执行的任务,可以是一个返回 `Promise` 的函数，或者 `Promise` 对象
  * @param options 配置选项
  *  - `retryWait`: 重试失败任务之前等待的时间（以毫秒为单位）。默认为 `0`，即不等待
@@ -41,56 +43,74 @@ export default async function retry<T>(
     const isOnError = isFunction(onError);
     const isOnProgressRetry = isFunction(onRetry);
 
-    let attempts = -1;
+    try {
+        return await toPromise(task);
+    } catch (e: any) {
+        if (!isUintSafeFilled(maxRetry)) {
+            if (isOnError) {
+                const newValue = onError(e);
 
-    while (attempts < maxRetry) {
-        try {
-            return await toPromise(task);
-        } catch (e: any) {
-            attempts++;
-
-            if (
-                !isZero(attempts) && // 如果当前正在进行重试
-                isOnProgressRetry && // 如果传递了重试回调
-                isTrue(onRetry(e, attempts)) // 只要回调返回了 `true`
-            ) {
-                if (isOnError) {
-                    const newValue = onError(e);
-
-                    // 如果不想继续重试了，那么就看看 `onError` 有没有返回值
-                    if (!isUndefined(newValue)) {
-                        // 如果有就直接赋值就行了
-                        return newValue;
-                    }
-                }
-
-                // 不再执行该任务
-                return;
-            }
-
-            errors.push(e);
-
-            if (attempts >= maxRetry) {
-                // 如果用户选择手动处理错误
-                if (isOnError) {
-                    const newValue = onError(e);
-
-                    // 只有在经过多次重试之后，才使用备用值
-                    if (!isUndefined(newValue)) {
-                        return newValue;
-                    }
-                } else {
-                    throw new AggregateError(
-                        errors,
-                        `当前任务经过 ${attempts} 次重试后失败了`,
-                        { cause: { task, attempts, error: e } }
-                    );
+                // 只有在经过多次重试之后，才使用备用值
+                if (!isUndefined(newValue)) {
+                    return newValue;
                 }
             } else {
-                const waitTime = getWaitTime();
+                throw new Error('当前任务执行失败了', {
+                    cause: { task, error: e }
+                });
+            }
+        }
 
-                if (waitTime > 0) {
-                    await delay(waitTime);
+        // 在重试之前，先等待一下
+        await delay(getWaitTime());
+
+        let attempts = 0;
+
+        while (attempts < maxRetry) {
+            try {
+                return await toPromise(task);
+            } catch (e: any) {
+                attempts++;
+
+                if (
+                    isOnProgressRetry && // 如果传递了重试回调
+                    isTrue(onRetry(e, attempts)) // 只要回调返回了 `true`
+                ) {
+                    if (isOnError) {
+                        const newValue = onError(e);
+
+                        // 如果不想继续重试了，那么就看看 `onError` 有没有返回值
+                        if (!isUndefined(newValue)) {
+                            // 如果有就直接赋值就行了
+                            return newValue;
+                        }
+                    }
+
+                    // 不再执行该任务
+                    return;
+                }
+
+                errors.push(e);
+
+                if (attempts >= maxRetry) {
+                    // 如果用户选择手动处理错误
+                    if (isOnError) {
+                        const newValue = onError(e);
+
+                        // 只有在经过多次重试之后，才使用备用值
+                        if (!isUndefined(newValue)) {
+                            return newValue;
+                        }
+                    } else {
+                        throw new AggregateError(
+                            errors,
+                            `当前任务经过 ${attempts} 次重试后失败了`,
+                            { cause: { task, attempts } }
+                        );
+                    }
+                } else {
+                    // 每次重试的时候，都要进行等待
+                    await delay(getWaitTime());
                 }
             }
         }
