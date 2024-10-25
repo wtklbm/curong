@@ -8,6 +8,7 @@ describe('@curong/types/isObject', () => {
 
     test('测试2', () => {
         expect(isObject({})).toBe(true);
+        expect(isObject(Object.create(null))).toBe(true);
 
         class Fn {}
 
