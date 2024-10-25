@@ -1,5 +1,3 @@
-import { isZero } from '@curong/types';
-
 import setTimeout from '../timeout/setTimeout';
 import timeoutMsResolve, {
     type ResolvableTimeoutMs
@@ -21,6 +19,6 @@ import timeoutMsResolve, {
 export default function delay(duration: ResolvableTimeoutMs): Promise<void> {
     return new Promise(resolve => {
         const timeout = timeoutMsResolve(duration);
-        isZero(timeout) ? resolve() : setTimeout(resolve, timeout);
+        timeout <= 0 ? resolve() : setTimeout(resolve, timeout);
     });
 }
