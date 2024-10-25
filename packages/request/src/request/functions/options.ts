@@ -16,7 +16,7 @@ import {
     isTypeofObject
 } from '@curong/types';
 
-import type { Methods, RequestOptions } from '../types';
+import type { Methods, RequestOptions } from '../../types';
 
 import { commonHeaders } from './headers';
 

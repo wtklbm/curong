@@ -3,10 +3,11 @@ import type { IncomingMessage } from 'http';
 import { toLowerCaseKey } from '@curong/object';
 import { isNullOrUndefined } from '@curong/types';
 
-import type { RequestOptions } from '../types';
+import type { RequestOptions } from '../../types';
+
+import request from '../request';
 
 import { deleteOptionsAttr } from './options';
-import request from './request';
 
 /**
  * 跳转至重定向请求

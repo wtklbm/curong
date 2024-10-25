@@ -6,10 +6,10 @@ import { copy } from '@curong/util';
 
 import type { RequestHandler, RequestOptions, RequestResult } from '../types';
 
-import { handleBody } from './body';
-import { pipeDecompressStream } from './content';
-import { deleteOptionsAttr, optionsHandler } from './options';
-import toRedirects from './toRedirects';
+import { handleBody } from './functions/body';
+import { pipeDecompressStream } from './functions/content';
+import { deleteOptionsAttr, optionsHandler } from './functions/options';
+import toRedirects from './functions/toRedirects';
 
 /**
  * 从远程连接获取响应的内容并返回 `Buffer`
@@ -189,7 +189,7 @@ export default async function request(
             }
 
             // 自动跟随重定向。如果请求的 URL 被重定向到另一个 URL，则自动请求新的 URL
-            let locationUrl = res.headers.location;
+            const locationUrl = res.headers.location;
 
             if (
                 // 如果请求头中包含 `location` 属性

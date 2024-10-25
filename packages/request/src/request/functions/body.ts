@@ -5,7 +5,7 @@ import {
     isUint8Array
 } from '@curong/types';
 
-import type { RequestOptions } from '../types';
+import type { RequestOptions } from '../../types';
 
 import { contentTypeCallback } from './content';
 

@@ -5,7 +5,7 @@ import { constants, createBrotliDecompress, createUnzip } from 'zlib';
 
 import { isFormData, isStringFilled } from '@curong/types';
 
-import type { RequestOptions } from '../types';
+import type { RequestOptions } from '../../types';
 
 import { formDataToBuffer, objectToFormData } from './formData';
 
