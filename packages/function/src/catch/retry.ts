@@ -1,8 +1,6 @@
-import { range } from '@curong/number';
 import {
     isFunction,
     isTrue,
-    isTypeofObject,
     isUintSafeFilled,
     isUndefined
 } from '@curong/types';
@@ -37,9 +35,6 @@ export default async function retry<T>(
 ): Promise<T | undefined> {
     const { retryWait = 0, onError, onRetry } = options;
     const errors: Error[] = [];
-    const getWaitTime = isTypeofObject(retryWait)
-        ? () => range(retryWait.start, retryWait.end)
-        : () => retryWait;
     const isOnError = isFunction(onError);
     const isOnProgressRetry = isFunction(onRetry);
 
@@ -62,7 +57,7 @@ export default async function retry<T>(
         }
 
         // 在重试之前，先等待一下
-        await delay(getWaitTime());
+        await delay(retryWait);
 
         let attempts = 0;
 
@@ -110,7 +105,7 @@ export default async function retry<T>(
                     }
                 } else {
                     // 每次重试的时候，都要进行等待
-                    await delay(getWaitTime());
+                    await delay(retryWait);
                 }
             }
         }
