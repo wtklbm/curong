@@ -130,7 +130,7 @@ const getPath = (path?: string, query?: ParsedUrlQueryInput) => {
 };
 
 export const deleteOptionsAttr = <T extends Record<PropertyKey, any>>(
-    options: T,
+    options: T | undefined | null,
     deleteKeys: Array<keyof T>
 ): void => {
     if (!isNullOrUndefined(options)) {
