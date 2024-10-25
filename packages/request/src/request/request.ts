@@ -1,12 +1,7 @@
 import { IncomingMessage, type ClientRequest } from 'http';
 
 import { delayRun, timeoutOr } from '@curong/function';
-import { toLowerCaseKey } from '@curong/object';
-import {
-    isNullOrUndefined,
-    isObjectFilled,
-    isStringFilled
-} from '@curong/types';
+import { isObjectFilled, isStringFilled } from '@curong/types';
 import { copy } from '@curong/util';
 
 import type { RequestHandler, RequestOptions, RequestResult } from '../types';
@@ -14,6 +9,7 @@ import type { RequestHandler, RequestOptions, RequestResult } from '../types';
 import { handleBody } from './body';
 import { pipeDecompressStream } from './content';
 import { deleteOptionsAttr, optionsHandler } from './options';
+import toRedirects from './toRedirects';
 
 /**
  * 从远程连接获取响应的内容并返回 `Buffer`
@@ -206,73 +202,10 @@ export default async function request(
                 // 销毁当前请求
                 req.destroy();
 
-                // 当进行重定向时，删除 URL 中已包含的重复部分
-                deleteOptionsAttr(options, [
-                    'protocol',
-                    'username',
-                    'password',
-                    'hostname',
-                    'path',
-                    'port',
-                    'query',
-                    'https'
-                ]);
-
-                if (!isNullOrUndefined(options.headers)) {
-                    options.headers = toLowerCaseKey(options.headers);
-                }
-
                 // 消耗一次重定向请求
                 options.maxRedirects = maxRedirects - 1;
 
-                // 优先使用请求头的 `Host`，因为 `config.hostname` 有可能是 IP 地址
-                const originHost = config.headers.host ?? config.hostname;
-
-                // 如果不是完整链接地址，例如 `https://xxx.com/login`
-                // 则可能重定向的地址只包含路径，比如 `/login`
-                if (!/^https?:\/\//.test(locationUrl)) {
-                    // 如果路径前面没有 `/`，比如 `login`
-                    if (!locationUrl.startsWith('/')) {
-                        console.error(
-                            `[request] 您当前重定向的地址是不规范的 URL，${locationUrl}`
-                        );
-                        locationUrl = `/${locationUrl}`;
-                    }
-
-                    // 拼接成完整路径
-                    locationUrl = `${config.protocol}//${originHost}${locationUrl}`;
-                }
-
-                // 对请求头的处理
-                try {
-                    // 如果当前请求的主机名与要重定向的主机名不同，则删除隐私数据
-                    if (new URL(locationUrl).hostname !== originHost) {
-                        deleteOptionsAttr(options, ['auth']);
-                        deleteOptionsAttr(options.headers, [
-                            'cookie',
-                            'authorization'
-                        ]);
-                    }
-                } catch {
-                    throw new TypeError(
-                        `[request] 重定向请求中给出的链接不是一个合法链接: ${locationUrl}`
-                    );
-                }
-
-                // 浏览器会将 POST 请求的 301 和 301 重定向重写为 GET
-                // https://tools.ietf.org/html/rfc7231%5C#section-6.4.2
-                if (
-                    config.method === 'POST' &&
-                    /^30[12]$/.test(`${res.statusCode}`)
-                ) {
-                    options.method = 'GET';
-                    deleteOptionsAttr(options.headers, [
-                        'content-length',
-                        'content-type'
-                    ]);
-                }
-
-                return resolve(request(locationUrl, options));
+                return resolve(toRedirects(locationUrl, options, config, res));
             }
 
             const buffers: Buffer[] = [];
