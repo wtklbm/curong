@@ -90,7 +90,7 @@ const getSymbolDescription = (s: symbol): string | null => {
     // 节点 6、8、10 (不是 12) 中的描述始终未定义
     const m = /^Symbol\((.*)\)$/.exec(String(s));
     // 对于节点 < 12，'' 被认为等同于未定义 (无法区分未定义和 '')，而对于节点 12 及以上，s.description 将等于 ''
-    return m && m[1].length ? m[1] : null;
+    return m?.[1]?.length ? m[1] : null;
 };
 
 const stringifyNumber = (value: number) => {
@@ -152,11 +152,13 @@ export function stringifyInternal(
         case 'BigInt':
             return isBigIntPrimitive(value) ? `${value}n` : `Object(${value}n)`;
 
-        case 'Boolean':
-            const unboxedToString = (value as any).toString();
+        case 'Boolean': {
+            const unboxedToString = value.toString();
+
             return isBooleanPrimitive(value)
                 ? unboxedToString
                 : `new Boolean(${unboxedToString})`;
+        }
 
         case 'Number':
             return isNumberPrimitive(value, true)
@@ -233,17 +235,17 @@ export function stringifyInternal(
         }
 
         case 'Map':
-            return `new Map(${strInter(Array.from(value as any))})`;
+            return `new Map(${strInter(Array.from(value as Map<unknown, unknown>))})`;
 
         case 'Object': {
             try {
-                const toStringAccessor = (value as any).toString;
+                const toStringAccessor = (value as Object).toString;
 
                 if (
                     isFunction(toStringAccessor) &&
                     toStringAccessor !== Object.prototype.toString
                 ) {
-                    return (value as any).toString();
+                    return value.toString();
                 }
             } catch (err) {
                 // return '[object Object]';
@@ -257,7 +259,7 @@ export function stringifyInternal(
                         : typeof k === 'symbol'
                           ? `[${strInter(k)}]`
                           : JSON.stringify(k)
-                }:${strInter((value as any)[k])}`;
+                }:${strInter(value[k])}`;
 
             const stringifiedProperties = [
                 ...Object.keys(value as Record<PropertyKey, any>).map(mapper),
@@ -267,7 +269,7 @@ export function stringifyInternal(
                             value,
                             s
                         );
-                        return descriptor && descriptor.enumerable;
+                        return descriptor?.enumerable;
                     })
                     .map(mapper)
             ];
@@ -284,12 +286,10 @@ export function stringifyInternal(
         }
 
         case 'Set':
-            return `new Set(${strInter(Array.from(value as any))})`;
+            return `new Set(${strInter(Array.from(value as Set<unknown>))})`;
 
         case 'Promise': {
-            const promiseContent = getAsyncContent(
-                value as Promise<unknown>
-            );
+            const promiseContent = getAsyncContent(value as Promise<unknown>);
 
             switch (promiseContent.state) {
                 case 'fulfilled':
@@ -342,7 +342,7 @@ export function stringifyInternal(
         case 'BigInt64Array':
         case 'BigUint64Array': {
             if (isBuffer(value)) {
-                return `Buffer.from(${strInter(Array.from((value as Buffer).values()))})`;
+                return `Buffer.from(${strInter(Array.from(value.values()))})`;
             }
 
             const typedArray = value as unknown as TypedArray;
@@ -362,7 +362,7 @@ export function stringifyInternal(
     }
 
     try {
-        return (value as any).toString();
+        return value.toString();
     } catch (err) {
         // return Object.prototype.toString.call(value);
         return errorHandler(err);
@@ -416,10 +416,8 @@ export function possiblyAsyncStringify<Ts>(
         const delay0 = createDelay0();
         const p: Promise<unknown> =
             asyncToStringMethod in data
-                ? Promise.resolve().then(() =>
-                      (data as WithAsyncToStringMethod)[asyncToStringMethod]()
-                  )
-                : (data as Promise<unknown>);
+                ? Promise.resolve().then(() => data[asyncToStringMethod]())
+                : data;
         p.catch(() => {});
 
         pendingPromisesForCache.push(
