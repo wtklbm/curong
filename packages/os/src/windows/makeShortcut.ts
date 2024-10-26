@@ -9,20 +9,18 @@ import type { ShortcutOptions } from './types';
 
 const buildArgs = (pathString: string, options?: ShortcutOptions): string[] => {
     const rawName = basename(pathString).replace(/(.*)\..*$/, '$1');
-    const newOptions: Required<ShortcutOptions> = Object.assign(
-        {
-            args: '',
-            cwd: '',
-            hotkey: '',
-            dirPath: '',
-            force: false,
-            name: rawName,
-            windowMode: 4,
-            description: '',
-            icon: pathString
-        },
-        options
-    );
+    const newOptions: Required<ShortcutOptions> = {
+        args: '',
+        cwd: '',
+        hotkey: '',
+        dirPath: '',
+        force: false,
+        name: rawName,
+        windowMode: 4,
+        description: '',
+        icon: pathString,
+        ...options
+    };
 
     const { dirPath, force } = newOptions;
 
