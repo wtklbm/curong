@@ -280,6 +280,9 @@
 包含以下类型:
 
 - `Falsy`: 一个虚值 (强制转换为 `Boolean` 后为 `false` 的值) 的类型
+- `IsAny`: 是不是一个 `any` 类型的值
+- `IsNever`: 是不是一个 `never` 类型的值
+- `IsUnknown`: 是不是一个 `unknown` 类型的值
 - `Primitive`: 基本类型的类型定义
 - `Truthy`: 一个真值 (强制转换为 `Boolean` 后为 `true` 的值) 的类型
 
@@ -354,13 +357,3 @@
 #### `variable`
 
 - `isVarName`: 是不是可以把值当做 `JavaScript` 的变量名
-
-
-### 一些 TypeScript 类型
-
-- `IsAny`: 是不是一个 `any` 类型的值
-- `IsNever`: 是不是一个 `never` 类型的值
-- `IsUnknown`: 是不是一个 `unknown` 类型的值
-- `WithNull`: 包含指定类型 `T` 或 `null` 的类型
-- `WithNullOrUndefined`: 包含指定类型 `T`、`null` 或 `undefined` 的类型
-- `WithUndefined`: 包含指定类型 `T` 或 `undefined` 的类型

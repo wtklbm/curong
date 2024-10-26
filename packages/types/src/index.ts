@@ -29,5 +29,3 @@ export * from './type';
 export * from './url';
 export * from './variable';
 
-//export * from './constants';
-export * from './types';
