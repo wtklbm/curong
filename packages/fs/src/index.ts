@@ -20,5 +20,6 @@ export { default as readLnk } from './readLnk';
 export { default as stripBOM } from './stripBOM';
 export { default as symbolicLink } from './symbolicLink';
 export { default as writeFile } from './writeFile';
+export { default as Writer } from './Writer';
 
 export * from './types';
