@@ -48,7 +48,7 @@ export default async function copyFile(
         try {
             await promises.copyFile(filePath, destString);
         } catch (error) {
-            if (isTrue(options!.forcibly)) {
+            if (isTrue(options.forcibly)) {
                 await deleteOne(filePath);
 
                 return await copyFile(filePath, srcDir, desDir, {
