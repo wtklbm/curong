@@ -15,7 +15,7 @@ const addPack = (
 
     //# 处理字符串
 
-    if (/^[^0-9][\w$]*$/.test(key)) {
+    if (/^[^\d][\w$]*$/.test(key)) {
         return isAppendWen ? `${optionalChar}.${key}` : `.${key}`;
     }
 
