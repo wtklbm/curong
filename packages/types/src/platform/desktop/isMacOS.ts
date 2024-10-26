@@ -7,6 +7,7 @@ import isNavigator from '../constants/isNavigator';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isMacOS(): boolean {
+    // NOTE 也可以判断 `globalThis.os.type()` 是否为 `Darwin`
     return (
         (isNodejsProcess() && globalThis.process.platform === 'darwin') ||
         (isNavigator() && // @ts-ignore
