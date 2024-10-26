@@ -1198,4 +1198,32 @@ describe('@curong/util/copy', () => {
         expect(copy(t).toString()).toEqual('toString');
         expect(Function.prototype.toString.call(copy(t))).toEqual('() => 1');
     });
+
+    test('测试55', () => {
+        const root = {
+            name: 'root'
+        };
+
+        const member1 = {
+            name: 'member1',
+            fun: function () {
+                console.log('这是函数');
+            }
+        };
+
+        const member2 = {
+            name: 'member2'
+        };
+
+        root.sub = member1;
+        member1.sub = member2;
+        member2.sub = root;
+
+        const rootCopy = copy(root, null, { copyFun: true });
+
+        expect(root.sub.sub.sub === root).toBe(true);
+        expect(rootCopy.sub.sub.sub === rootCopy).toBe(true);
+        expect(root.sub.fun === rootCopy.sub.fun).toBe(false);
+        expect(root.sub.fun() === rootCopy.sub.fun()).toBe(true);
+    });
 });
