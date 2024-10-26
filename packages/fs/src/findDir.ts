@@ -59,8 +59,6 @@ async function findDirCall(
                 // 不是文件夹，那么就是文件了
                 files.push(targetPath);
             }
-
-            continue;
         }
     }
 
