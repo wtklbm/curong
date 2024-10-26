@@ -7,6 +7,7 @@ import isNavigator from '../constants/isNavigator';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isWindows(): boolean {
+    // NOTE 也可以判断 `globalThis.os.type()` 是否为 `Windows_NT`
     return (
         (isNodejsProcess() && globalThis.process.platform === 'win32') ||
         (isNavigator() && // @ts-ignore
