@@ -36,7 +36,7 @@ export default async function diffFile(
     const fileHandle2 = await open(pathString2, 'r').catch(() => null);
 
     if (isNull(fileHandle2)) {
-        await fileHandle1!.close();
+        await fileHandle1.close();
         return !compared;
     }
 
@@ -53,7 +53,7 @@ export default async function diffFile(
             break;
         }
 
-        if (nullChunk1 || nullChunk2 || !isZero(chunk1!.compare(chunk2!))) {
+        if (nullChunk1 || nullChunk2 || !isZero(chunk1.compare(chunk2))) {
             compared = false;
             break;
         }
