@@ -78,13 +78,13 @@ const getStdio = (
 ) => {
     const { stdio, isToString = true } = opts;
 
-    const isPipe = (stdio: StdioOptions = 'pipe', fd: number): boolean => {
+    const isPipe = (fd: number, stdio: StdioOptions = 'pipe'): boolean => {
         if (stdio === 'pipe' || stdio === null) {
             return true;
         }
 
         if (isArray(stdio)) {
-            return isPipe(stdio[fd] as StdioOptions, fd);
+            return isPipe(fd, stdio[fd] as StdioOptions);
         }
 
         return false;
@@ -96,8 +96,8 @@ const getStdio = (
     };
 
     return {
-        stdout: isPipe(stdio, 1) ? buf(stdout, isToString) : null,
-        stderr: isPipe(stdio, 2) ? buf(stderr, isToString) : null
+        stdout: isPipe(1, stdio) ? buf(stdout, isToString) : null,
+        stderr: isPipe(2, stdio) ? buf(stderr, isToString) : null
     };
 };
 
@@ -182,8 +182,8 @@ export default function spawn(
                     [command],
                     {
                         env: {
-                            PATH: (env && env.PATH) || PATH,
-                            PATHEXT: (env && env.PATHEXT) || PATHEXT
+                            PATH: env?.PATH ?? PATH,
+                            PATHEXT: env?.PATHEXT ?? PATHEXT
                         },
                         shell: true,
                         encoding: 'utf8'
