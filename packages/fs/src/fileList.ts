@@ -16,7 +16,7 @@ import type { FileListOptions } from './types';
  *  - `depthOnce` 是否只获取一层深度的数据，默认为 `false`
  * @return 返回一个包含文件名的列表
  * @throws 如果读取文件夹失败，则会抛出异常
- * @todos 将参数变为一个 `options`： { ignored = '', depth = 0 }
+ * @todo 将参数变为一个 `options`： { ignored = '', depth = 0 }
  */
 export default async function fileList(
     dirName: string,
@@ -38,7 +38,9 @@ export default async function fileList(
             });
         });
 
-    if (!dirents || !dirents.length) return files;
+    if (!dirents?.length) {
+        return files;
+    }
 
     for (let i = 0, len = dirents.length; i < len; i++) {
         const dirent: Dirent = dirents[i];
