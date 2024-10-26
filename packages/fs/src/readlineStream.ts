@@ -1,4 +1,4 @@
-import { createReadStream } from 'fs';
+import { createReadStream, type PathLike } from 'fs';
 import { createInterface } from 'readline';
 
 import { format } from '@curong/term';
@@ -10,7 +10,7 @@ import type { ReadlineStreamCallback } from './types';
 /**
  * 基于流的形式一行一行的读取文件的内容
  *
- * @param pathString 文件的路径
+ * @param path 文件的路径字符串、URL、Buffer
  * @param encoding 文件编码，默认为 `utf8`
  * @param callback 回调函数
  *
@@ -24,18 +24,18 @@ import type { ReadlineStreamCallback } from './types';
  *
  * @throws
  *
- * - 如果 `pathString` 不是文件路径，则会抛出异常
+ * - 如果 `path` 不是文件路径，则会抛出异常
  */
 export default async function readlineStream(
-    pathString: string,
+    path: PathLike,
     encoding?: BufferEncoding | ReadlineStreamCallback,
     callback?: ReadlineStreamCallback
 ): Promise<string[] | boolean> {
-    if (!(await isFile(pathString))) {
+    if (!(await isFile(path))) {
         throw format({
             name: 'readlineStream',
-            message: 'pathString不是一个文件的路径，该文件不存在',
-            data: { pathString }
+            message: 'path 不是一个文件的路径，该文件不存在',
+            data: { path }
         });
     }
 
@@ -53,7 +53,7 @@ export default async function readlineStream(
 
     return new Promise(resolve => {
         const stream = createInterface({
-            input: createReadStream(pathString, {
+            input: createReadStream(path, {
                 encoding: encoding as BufferEncoding,
                 flags: 'r+',
                 mode: 0o755,
