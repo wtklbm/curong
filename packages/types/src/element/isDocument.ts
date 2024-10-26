@@ -33,5 +33,5 @@ export default function isDocument(
     value: unknown,
     evaluator?: (value: unknown) => value is Document
 ): value is Document {
-    return (evaluator ? evaluator : defaultIsDocument)(value);
+    return (evaluator ?? defaultIsDocument)(value);
 }
