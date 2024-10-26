@@ -19,7 +19,7 @@ import { ObjectType } from '../types';
  */
 export default function isValuesIncludes(
     object: ObjectType<unknown> | ArrayLike<unknown>,
-    value: unknown | unknown[],
+    value: unknown,
     useAny: boolean = false
 ): boolean {
     const values = new Set(Object.values(object));
