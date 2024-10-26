@@ -36,9 +36,8 @@ export default function derive<T extends ObjectType>(
         if (!keysSet.has(key)) {
             Object.defineProperty(
                 ret,
-                key!,
-                // @ts-ignore
-                Object.getOwnPropertyDescriptor(obj, key)
+                key,
+                Object.getOwnPropertyDescriptor(obj, key)!
             );
         }
     }
