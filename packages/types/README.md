@@ -357,3 +357,31 @@
 #### `variable`
 
 - `isVarName`: 是不是可以把值当做 `JavaScript` 的变量名
+
+### 包含以下 `TypeScript` 类型
+
+#### `exclude`
+
+- `ExcludeNull`: 从类型 `T` 中排除 `null`
+- `ExcludeNullOrUndefined`: 从类型 `T` 中排除 `null` 和 `undefined`
+- `ExcludeUndefined`: 从类型 `T` 中排除 `undefined`
+
+#### `include`
+
+- `IncludeNull`: 包含指定类型 `T` 或 `null` 的类型
+- `IncludeNullOrUndefined`: 包含指定类型 `T`、`null` 或 `undefined` 的类型
+- `IncludeUndefined`: 包含指定类型 `T` 或 `undefined` 的类型
+
+#### `keyof`
+
+- `KeyOfContainsValue`: 获取 `T` 类型中包含特定 `V` 类型的键
+- `KeyOfNonContainsValue`: 获取 `T` 类型中不包含特定 `V` 的键
+- `KeyOfNonValue`: 获取 `T` 类型中不等于特定 `V` 的键
+- `KeyOfValue`: 获取 `T` 类型中包含特定 `V` 的键
+
+#### `replace`
+
+- `replace/Replace`: 在 `T` 类型中匹配 `M` 类型的部分并将其替换为 `N`
+- `replace/ReplaceNull`: 将 `T` 类型中的 `null` 替换为 `N`
+- `replace/ReplaceNullOrUndefined`: 将 `T` 类型中的 `null` 和 `undefined` 替换为 `N`
+- `replace/ReplaceUndefined`: 将 `T` 类型中的 `undefined` 替换为 `N`
