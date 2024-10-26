@@ -10,7 +10,7 @@ import type { RegExpExecOrigin } from './types';
  * `0` 表示的是捕获到的值，而大于 `0` 的整数表示的是捕获到的小分组。
  * 虽然小分组可以写无数个，但是一般在定义小分组时，小分组的个数不会超过 100 个。
  */
-const matchKeysReg = /^([0-9]{1,2}|index|input|groups|length)$/;
+const matchKeysReg = /^(\d{1,2}|index|input|groups|length)$/;
 
 /**
  * 循环遍历 `RegExp.exec` 方法捕获到的内容
