@@ -1,4 +1,4 @@
-import isFunction from '../function/isFunction';
+import isFunction from '../function/function/isFunction';
 import isNullOrUndefined from '../nullable/isNullOrUndefined';
 import isTypeofObject from '../object/isTypeofObject';
 import getTagEqual from '../type/getTagEqual';

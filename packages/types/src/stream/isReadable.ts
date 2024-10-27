@@ -1,7 +1,7 @@
 import type { Readable } from 'stream';
 
 import isTrue from '../boolean/isTrue';
-import isFunction from '../function/isFunction';
+import isFunction from '../function/function/isFunction';
 import isObject from '../object/isObject';
 
 import isStream from './isStream';

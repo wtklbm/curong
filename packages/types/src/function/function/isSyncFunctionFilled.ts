@@ -1,5 +1,6 @@
+import type { Function } from '../types';
+
 import isSyncFunction from './isSyncFunction';
-import type { Function } from './types';
 
 /**
  * 是不是一个参数个数大于 `0` 的同步函数

@@ -1,5 +1,6 @@
+import type { Function } from '../types';
+
 import isFunction from './isFunction';
-import type { Function } from './types';
 
 /**
  * 是不是一个参数个数大于 `0` 的函数

@@ -1,5 +1,5 @@
-import isFunction from '../function/isFunction';
-import isFunctionFilled from '../function/isFunctionFilled';
+import isFunction from '../function/function/isFunction';
+import isFunctionFilled from '../function/function/isFunctionFilled';
 import isNullOrUndefined from '../nullable/isNullOrUndefined';
 
 /**

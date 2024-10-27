@@ -1,5 +1,5 @@
 import { functionToString } from './constants';
-import isFunction from './isFunction';
+import isFunction from './function/isFunction';
 import type { Class } from './types';
 
 /**

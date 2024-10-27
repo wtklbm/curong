@@ -1,8 +1,9 @@
-import hasOwnProperty from '../property/hasOwnProperty';
+import hasOwnProperty from '../../property/hasOwnProperty';
 
-import { functionToString } from './constants';
+import { functionToString } from '../constants';
+import type { Function } from '../types';
+
 import isFunction from './isFunction';
-import type { Function } from './types';
 
 /**
  * 是不是一个经过 `.bind()` 所绑定过的函数
@@ -11,6 +12,7 @@ import type { Function } from './types';
  * @returns 是则返回 `true`，否则为 `false`
  * @note
  * - `.name` 的值的开头为 `bound `
+ *   箭头函数没有自己的 `this`，但箭头函数调用 `bind` 方法时，也会在方法名之前增加 `bound` 前缀
  * - `.toString()` 的结果为 `'function () { [native code] }'`
  * - 没有 `prototype` 属性
  */

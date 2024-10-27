@@ -1,8 +1,9 @@
-import { getTag } from '../type';
+import { getTag } from '../../type';
 
-import { asyncPattern } from './constants';
+import { asyncPattern } from '../constants';
+import type { AsyncFunction } from '../types';
+
 import isFunction from './isFunction';
-import type { AsyncFunction } from './types';
 
 /**
  * 是不是一个异步函数

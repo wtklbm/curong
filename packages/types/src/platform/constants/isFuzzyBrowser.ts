@@ -1,5 +1,5 @@
 import isWindow from '../../element/isWindow';
-import isFunction from '../../function/isFunction';
+import isFunction from '../../function/function/isFunction';
 import getTagEqual from '../../type/getTagEqual';
 
 export default function isFuzzyBrowser(): boolean {

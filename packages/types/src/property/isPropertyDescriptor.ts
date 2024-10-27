@@ -1,5 +1,5 @@
 import isBoolean from '../boolean/isBoolean';
-import isFunction from '../function/isFunction';
+import isFunction from '../function/function/isFunction';
 import isObject from '../object/isObject';
 
 import hasOwnProperty from './hasOwnProperty';

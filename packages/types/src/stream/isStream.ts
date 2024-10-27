@@ -1,6 +1,6 @@
 import { Stream } from 'stream';
 
-import isFunction from '../function/isFunction';
+import isFunction from '../function/function/isFunction';
 import isObject from '../object/isObject';
 
 /**

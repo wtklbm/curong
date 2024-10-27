@@ -66,4 +66,15 @@ describe('@curong/types/isFunctionBound', () => {
         const boundGreet = greet.bind(null, 'Alice');
         expect(isFunctionBound(boundGreet)).toBe(true);
     });
+
+    test('测试7', () => {
+        const s = {
+            name: 's'
+        };
+        // @ts-ignore
+        const f = () => console.log(this.name);
+        const n = f.bind(s);
+        expect(isFunctionBound(n)).toBe(true);
+        expect(n()).toBe(undefined);
+    });
 });

@@ -1,4 +1,4 @@
-import isFunction from '../function/isFunction';
+import isFunction from '../function/function/isFunction';
 
 import type { AsyncIterable } from './types';
 

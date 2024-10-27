@@ -1,4 +1,4 @@
-import isFunction from '../function/isFunction';
+import isFunction from '../function/function/isFunction';
 import isNull from '../nullable/isNull';
 import typeofEqual from '../type/typeofEqual';
 

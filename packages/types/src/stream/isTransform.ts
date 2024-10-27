@@ -1,6 +1,6 @@
 import type { Transform } from 'stream';
 
-import isFunctionFilled from '../function/isFunctionFilled';
+import isFunctionFilled from '../function/function/isFunctionFilled';
 
 import isDuplex from './isDuplex';
 

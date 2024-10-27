@@ -1,4 +1,4 @@
-import isFunction from '../function/isFunction';
+import isFunction from '../function/function/isFunction';
 import isTypeofObject from '../object/isTypeofObject';
 
 /**

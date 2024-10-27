@@ -1,6 +1,7 @@
-import { functionToString, isNativeFunctionToString } from './constants';
+import { functionToString, isNativeFunctionToString } from '../constants';
+import type { Function } from '../types';
+
 import isFunction from './isFunction';
-import type { Function } from './types';
 
 /**
  * 是不是一个 `JavaScript` 内置函数
