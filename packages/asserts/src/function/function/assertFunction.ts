@@ -1,6 +1,6 @@
 import { isFunction, type Function } from '@curong/types';
 
-import typeGuard from '../constants/typeGuard';
+import typeGuard from '../../constants/typeGuard';
 
 /**
  * 是不是一个函数 (包含同步函数、异步函数、`Generator` 函数 ...)

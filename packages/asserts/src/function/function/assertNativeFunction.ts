@@ -1,6 +1,6 @@
 import { isNativeFunction, type Function } from '@curong/types';
 
-import typeGuard from '../constants/typeGuard';
+import typeGuard from '../../constants/typeGuard';
 
 /**
  * 是不是一个 `JavaScript` 内置函数

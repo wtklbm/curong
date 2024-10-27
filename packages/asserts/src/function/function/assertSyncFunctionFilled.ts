@@ -1,6 +1,6 @@
 import { isSyncFunctionFilled, type Function } from '@curong/types';
 
-import typeGuard from '../constants/typeGuard';
+import typeGuard from '../../constants/typeGuard';
 
 /**
  * 是不是一个参数个数大于 `0` 的同步函数

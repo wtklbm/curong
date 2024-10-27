@@ -1,6 +1,6 @@
 import { isAsyncFunction, type AsyncFunction } from '@curong/types';
 
-import typeGuard from '../constants/typeGuard';
+import typeGuard from '../../constants/typeGuard';
 
 /**
  * 是不是一个异步函数

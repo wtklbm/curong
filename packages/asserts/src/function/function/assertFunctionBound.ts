@@ -1,6 +1,6 @@
 import { isFunctionBound, type Function } from '@curong/types';
 
-import typeGuard from '../constants/typeGuard';
+import typeGuard from '../../constants/typeGuard';
 
 /**
  * 是不是一个经过 `.bind()` 所绑定过的函数
