@@ -12,4 +12,5 @@
 - `maxArgsLength`: 获取函数的最大参数的长度
 - `maxCallStackSiz`: 获取执行调用栈的最大大小
 - `stringify`: 将运行时代码转换为代码字符串
+- `stringifyAsync`: 将运行时代码转换为代码字符串
 
