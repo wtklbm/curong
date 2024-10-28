@@ -120,9 +120,23 @@
 #### `function`
 
 - `assertArguments`: 是不是函数的形参
+- `assertClass`: 是不是一个类
+
+##### `arrow-function`
+
+- `assertArrowFunction`: 是不是一个箭头函数 (包含同步箭头函数、异步箭头函数)
+- `assertArrowFunctionArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是箭头函数
+- `assertArrowFunctionFilled`: 是不是一个参数个数大于 `0` 的箭头函数 (包含同步箭头函数、异步箭头函数)
+- `assertAsyncArrowFunction`: 是不是一个异步箭头函数
+- `assertAsyncArrowFunctionFilled`: 是不是一个参数个数大于 `0` 的异步箭头函数
+- `assertSyncArrowFunction`: 是不是一个同步箭头函数
+- `assertSyncArrowFunctionFilled`: 是不是一个参数个数大于 `0` 的同步箭头函数
+
+
+##### `function`
+
 - `assertAsyncFunction`: 是不是一个异步函数
 - `assertAsyncFunctionFilled`: 是不是一个参数个数大于 `0` 的异步函数
-- `assertClass`: 是不是一个类
 - `assertFunction`: 是不是一个函数 (包含同步函数、异步函数、`Generator` 函数 ...)
 - `assertFunctionArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是函数
 - `assertFunctionBound`: 是不是一个经过 `.bind()` 所绑定过的函数
