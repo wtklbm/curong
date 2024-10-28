@@ -370,7 +370,7 @@ export function stringifyInternal(
 }
 
 /**
- * stringify 和 asyncStringify 之间的中间点
+ * stringify 和 stringifyAsync 之间的中间点
  *
  * 如果该值可以以同步方式字符串化，那么它将返回一个字符串。
  * 否则，它会尝试进一步调查并返回 Promise<string>。
@@ -552,7 +552,7 @@ export function stringify<T>(value: T, options?: StringifyOptions): string {
  * - `Event`
  * - `CustomEvent`
  */
-export async function asyncStringify<T>(
+export async function stringifyAsync<T>(
     value: T,
     options?: StringifyOptions
 ): Promise<string> {
