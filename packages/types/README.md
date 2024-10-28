@@ -125,9 +125,23 @@
 #### `function`
 
 - `isArguments`: 是不是函数的形参
+- `isClass`: 是不是一个类
+
+##### `arrow-function`
+
+- `isArrowFunction`: 是不是一个箭头函数 (包含同步箭头函数、异步箭头函数)
+- `isArrowFunctionArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是箭头函数
+- `isArrowFunctionFilled`: 是不是一个参数个数大于 `0` 的箭头函数 (包含同步箭头函数、异步箭头函数)
+- `isAsyncArrowFunction`: 是不是一个异步箭头函数
+- `isAsyncArrowFunctionFilled`: 是不是一个参数个数大于 `0` 的异步箭头函数
+- `isSyncArrowFunction`: 是不是一个同步箭头函数
+- `isSyncArrowFunctionFilled`: 是不是一个参数个数大于 `0` 的同步箭头函数
+
+
+##### `function`
+
 - `isAsyncFunction`: 是不是一个异步函数
 - `isAsyncFunctionFilled`: 是不是一个参数个数大于 `0` 的异步函数
-- `isClass`: 是不是一个类
 - `isFunction`: 是不是一个函数 (包含同步函数、异步函数、`Generator` 函数 ...)
 - `isFunctionArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是函数
 - `isFunctionBound`: 是不是一个经过 `.bind()` 所绑定过的函数
