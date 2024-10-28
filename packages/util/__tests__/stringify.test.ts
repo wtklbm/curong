@@ -5,7 +5,7 @@
 import { Buffer as NodeBuffer } from 'buffer';
 
 import {
-    asyncStringify,
+    stringifyAsync,
     asyncToStringMethod,
     stringify,
     toStringMethod
@@ -747,36 +747,36 @@ describe('@curong/util/stringify', () => {
 
     test('测试', async () => {
         const p = Promise.resolve(1);
-        expect(await asyncStringify(p)).toEqual('Promise.resolve(1)');
+        expect(await stringifyAsync(p)).toEqual('Promise.resolve(1)');
     });
 
     test('测试', async () => {
         const p = Promise.reject(1);
-        expect(await asyncStringify(p)).toEqual('Promise.reject(1)');
+        expect(await stringifyAsync(p)).toEqual('Promise.reject(1)');
         p.catch(() => {});
     });
 
     test('测试', async () => {
         const p = Promise.reject(new Error('message'));
-        expect(await asyncStringify(p)).toEqual(
+        expect(await stringifyAsync(p)).toEqual(
             'Promise.reject(new Error("message"))'
         );
         p.catch(() => {});
     });
     test('测试', async () => {
         const p = new Promise(() => {});
-        expect(await asyncStringify(p)).toEqual(
+        expect(await stringifyAsync(p)).toEqual(
             'new Promise(() => { /* pending */ })'
         );
     });
 
     test('测试', async () => {
         const p1 = Promise.resolve(1);
-        expect(await asyncStringify([p1])).toEqual('[Promise.resolve(1)]');
-        expect(await asyncStringify(new Set([p1]))).toEqual(
+        expect(await stringifyAsync([p1])).toEqual('[Promise.resolve(1)]');
+        expect(await stringifyAsync(new Set([p1]))).toEqual(
             'new Set([Promise.resolve(1)])'
         );
-        expect(await asyncStringify({ p1 })).toEqual(
+        expect(await stringifyAsync({ p1 })).toEqual(
             '{"p1":Promise.resolve(1)}'
         );
     });
@@ -787,7 +787,7 @@ describe('@curong/util/stringify', () => {
                 lvl2: Promise.resolve(2)
             })
         });
-        expect(await asyncStringify(nestedPromises)).toEqual(
+        expect(await stringifyAsync(nestedPromises)).toEqual(
             'Promise.resolve({"lvl1":Promise.resolve({"lvl2":Promise.resolve(2)})})'
         );
     });
@@ -802,14 +802,14 @@ describe('@curong/util/stringify', () => {
         };
         const nestedPromises = Promise.resolve(resolvedValue);
         resolvedValueChildLvl1.a1 = nestedPromises;
-        expect(await asyncStringify(nestedPromises)).toEqual(
+        expect(await stringifyAsync(nestedPromises)).toEqual(
             'Promise.resolve({"a":Promise.resolve({"a1":[Circular]}),"b":{"b1":Promise.resolve({"a1":[Circular]})}})'
         );
     });
 
     test('测试', async () => {
         const instance1 = { [asyncToStringMethod]: async () => 'hello1' };
-        expect(await asyncStringify(instance1)).toEqual('hello1');
+        expect(await stringifyAsync(instance1)).toEqual('hello1');
 
         const instance2 = Object.create(null);
         Object.defineProperty(instance2, asyncToStringMethod, {
@@ -818,20 +818,20 @@ describe('@curong/util/stringify', () => {
             enumerable: false,
             writable: false
         });
-        expect(await asyncStringify(instance2)).toEqual('hello2');
+        expect(await stringifyAsync(instance2)).toEqual('hello2');
 
         const instance3 = {
             [asyncToStringMethod]: async () => 'hello3',
             [toStringMethod]: () => 'world'
         };
-        expect(await asyncStringify(instance3)).toEqual('hello3');
+        expect(await stringifyAsync(instance3)).toEqual('hello3');
 
         const instance4 = {
             [asyncToStringMethod]: async () => {
                 throw new Error('hello4');
             }
         };
-        const stringified4 = await asyncStringify(instance4);
+        const stringified4 = await stringifyAsync(instance4);
         expect(stringified4.replace(/[\s\n]+/g, ' ')).toEqual(
             '{[Symbol.for("__ASYNC_TO_STRING_METHOD__")]:async () => { throw new Error(\'hello4\'); }}'
         );
@@ -842,14 +842,14 @@ describe('@curong/util/stringify', () => {
             },
             [toStringMethod]: () => 'world'
         };
-        expect(await asyncStringify(instance5)).toEqual('world');
+        expect(await stringifyAsync(instance5)).toEqual('world');
 
         const instance6 = {
             [asyncToStringMethod]: () => {
                 throw new Error('hello6');
             }
         };
-        const stringified6 = await asyncStringify(instance6);
+        const stringified6 = await stringifyAsync(instance6);
         expect(stringified6.replace(/[\s\n]+/g, ' ')).toEqual(
             '{[Symbol.for("__ASYNC_TO_STRING_METHOD__")]:() => { throw new Error(\'hello6\'); }}'
         );
@@ -860,21 +860,21 @@ describe('@curong/util/stringify', () => {
             }
         }
         const instance7 = new InProto();
-        expect(await asyncStringify(instance7)).toEqual('hello7');
+        expect(await stringifyAsync(instance7)).toEqual('hello7');
 
         const instance8 = { [asyncToStringMethod]: 1 };
-        expect(await asyncStringify(instance8)).toEqual(
+        expect(await stringifyAsync(instance8)).toEqual(
             '{[Symbol.for("__ASYNC_TO_STRING_METHOD__")]:1}'
         );
 
         const instance9 = {
             [asyncToStringMethod]: async () => {
-                const s1 = await asyncStringify(Promise.resolve('hello9'));
-                const s2 = await asyncStringify(Promise.resolve('world9'));
+                const s1 = await stringifyAsync(Promise.resolve('hello9'));
+                const s2 = await stringifyAsync(Promise.resolve('world9'));
                 return `${s1} ${s2}`;
             }
         };
-        expect(await asyncStringify(instance9)).toEqual(
+        expect(await stringifyAsync(instance9)).toEqual(
             'Promise.resolve("hello9") Promise.resolve("world9")'
         );
 
@@ -882,6 +882,6 @@ describe('@curong/util/stringify', () => {
         const instance10 = {
             [asyncToStringMethod]: () => p10.then(v => `got: ${v}`)
         };
-        expect(await asyncStringify(instance10)).toEqual('got: hello10');
+        expect(await stringifyAsync(instance10)).toEqual('got: hello10');
     });
 });
