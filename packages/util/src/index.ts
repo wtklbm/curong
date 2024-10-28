@@ -4,3 +4,5 @@ export { default as copyAttrs } from './copyAttrs';
 export { default as lackAttrs } from './lackAttrs';
 export { default as maxArgsLength } from './maxArgsLength';
 export { default as maxCallStackSize } from './maxCallStackSize';
+
+export * from './stringify';
