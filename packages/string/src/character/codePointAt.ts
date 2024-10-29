@@ -1,7 +1,7 @@
 import { isUint } from '@curong/types';
 
 /**
- * 计算 `UTF-8`、`UTF16` 的代码点
+ * 计算 `UTF-8`、`UTF-16` 的代码点
  *
  * 该方法与 `String.codePointAt` 方法的作用相同，只是做了兼容性处理而已。
  *
