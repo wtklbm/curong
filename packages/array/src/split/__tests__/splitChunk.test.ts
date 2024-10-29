@@ -1,4 +1,4 @@
-import { splitChunk } from '../src';
+import { splitChunk } from '..';
 
 describe('@curong/array/splitChunk', () => {
     test('测试1', () => {

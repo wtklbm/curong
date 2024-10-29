@@ -1,4 +1,4 @@
-import { splitByStep } from '../src';
+import { splitByStep } from '..';
 
 describe('@curong/array/splitByStep', () => {
     test('测试1', () => {
