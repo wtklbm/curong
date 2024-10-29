@@ -8,11 +8,13 @@ import toRegExpSource from './toRegExpSource';
  * @param flags 给字符串传递的 `flags`，默认为 `g`
  *
  * `flag` 包含下列值：
- * - `g` 全局
- * - `i` 大小写
- * - `m` 多行
- * - `u` Unicode
- * - `y` 粘性
+ * - `g`: 全局
+ * - `i`: 大小写
+ * - `m`: 多行
+ * - `u`: Unicode
+ * - `y`: 粘性
+ * - `s`: [让 `.` 可以多行匹配](https://github.com/tc39/proposal-regexp-dotall-flag)
+ * - `v`: [带有集合符号 + 字符串属性的](https://github.com/tc39/proposal-regexp-v-flag)
  *
  * @return 返回该字符串生成的正则表达式
  *
@@ -35,7 +37,7 @@ export default function toRegExp(
     str: string,
     flags: RegExp['flags'] = 'g'
 ): RegExp {
-    if (!/^[yumig]{0,5}$/.test(flags)) {
+    if (!/^[yumigsv]{0,7}$/.test(flags)) {
         throw new TypeError(`[toRegExp]: flags不是预期的值, "${flags}"`);
     }
 
