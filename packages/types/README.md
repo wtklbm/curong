@@ -410,7 +410,7 @@
 
 #### `replace`
 
-- `replace/Replace`: 在 `T` 类型中匹配 `M` 类型的部分并将其替换为 `N`
-- `replace/ReplaceNull`: 将 `T` 类型中的 `null` 替换为 `N`
-- `replace/ReplaceNullOrUndefined`: 将 `T` 类型中的 `null` 和 `undefined` 替换为 `N`
-- `replace/ReplaceUndefined`: 将 `T` 类型中的 `undefined` 替换为 `N`
+- `Replace`: 在 `T` 类型中匹配 `M` 类型的部分并将其替换为 `N`
+- `ReplaceNull`: 将 `T` 类型中的 `null` 替换为 `N`
+- `ReplaceNullOrUndefined`: 将 `T` 类型中的 `null` 和 `undefined` 替换为 `N`
+- `ReplaceUndefined`: 将 `T` 类型中的 `undefined` 替换为 `N`
