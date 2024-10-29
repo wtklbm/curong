@@ -7,6 +7,7 @@ export { default as move } from './move';
 export { default as random } from './random';
 export { default as range } from './range';
 export { default as shuffle } from './shuffle';
+export { default as swap } from './swap';
 
 export * from './convert';
 export * from './dimension';
