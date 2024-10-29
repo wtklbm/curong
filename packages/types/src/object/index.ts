@@ -6,3 +6,5 @@ export { default as isPlainObjectFilled } from './isPlainObjectFilled';
 export { default as isPureObject } from './isPureObject';
 export { default as isTypeofObject } from './isTypeofObject';
 export { default as isTypeofObjectArray } from './isTypeofObjectArray';
+
+export * from './types';
