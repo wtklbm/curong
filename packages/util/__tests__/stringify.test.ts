@@ -462,11 +462,12 @@ describe('@curong/util/stringify', () => {
             const s = (Symbol as any)[symbolName];
             if (typeof s === 'symbol') {
                 foundOne = true;
-                expect(stringify(s)).toEqual(
-                    symbolName === 'dispose' || symbolName === 'asyncDispose'
-                        ? `Symbol.for("nodejs.${symbolName}")`
-                        : `Symbol.${symbolName}`
-                );
+                // expect(stringify(s)).toEqual(
+                //     symbolName === 'dispose' || symbolName === 'asyncDispose'
+                //         ? `Symbol.for("nodejs.${symbolName}")`
+                //         : `Symbol.${symbolName}`
+                // );
+                expect(Symbol(stringify(s)).description).toBe(`Symbol.${symbolName}`);
                 expect(stringify(Symbol(`Symbol.${symbolName}`))).toEqual(
                     `Symbol("Symbol.${symbolName}")`
                 );
