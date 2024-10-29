@@ -51,3 +51,8 @@
 
 - `splitByStep`: 将一个数组按照指定的步长拆分为二维数组
 - `splitChunk`: 将一个数组按照指定的长度拆分为二维数组
+
+## `unique`
+
+- `isUnique`: 判断数组中的所有元素是否都是唯一的
+- `uniqueFromPrimitive`: 对相同类型的基本类型的值或包含相同类型基本类型值的数组去重
