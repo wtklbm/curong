@@ -14,8 +14,8 @@ import type { NonEmptyArray } from './NonEmptyArray';
  * type Result5 = IsEmptyArray<NonEmptyArray<number>>; // false
  * ```
  */
-export type IsEmptyArray<T> = T extends any[]
-    ? T extends NonEmptyArray<any>
+export type IsEmptyArray<T> = T extends unknown[]
+    ? T extends NonEmptyArray<unknown>
         ? false
         : true
     : false;
