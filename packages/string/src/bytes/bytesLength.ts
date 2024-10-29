@@ -6,7 +6,7 @@ import codePointAt from '../character/codePointAt';
  * 计算 `UTF-8`、`UTF-16` 的字符串编码长度，计算的长度值与 `Buffer.from(str).length` 等同
  *
  * @param value 要计算编码长度的字符串
- * @returns 如果该字符串符合 `UTF16` 编码的代码点的计算规则，
+ * @returns 如果该字符串符合 `UTF-16` 编码的代码点的计算规则，
  *   则返回计算好的编码长度，否则返回 `null`。
  *
  * @example
