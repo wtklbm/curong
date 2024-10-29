@@ -14,6 +14,11 @@
 - `isArraySparse`: 是不是一个稀疏数组 (不包含稀疏的类数组)
 - `isArrayTwoDimensional`: 是不是一个长度大于 `0` 的数组，且每一项的值都是数组 (二维数组)
 
+包含以下类型:
+
+- `IsEmptyArray`: 检查数组是否为空的条件类型
+- `NonEmptyArray`: 非空数组类型的条件类型，确保数组至少包含一个元素
+
 #### `bigint`
 
 - `isBigInt`: 是不是一个 `bigInt` (大数) 或被包装后的 `BigInt` 对象
@@ -251,6 +256,10 @@
 - `isPureObject`: 是不是一个纯对象，即通过 `Object.create(null)` 创建的对象，该对象的原型就是 `null`
 - `isTypeofObject`: 使用 `typeof` 判断是不是一个不是 `null` 的任意对象
 - `isTypeofObjectArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是对象 (通过 `typeof` 判断且不为 `null`)
+
+包含以下类型:
+
+- `IsEmptyObject`: 检查对象是否为空的条件类型
 
 #### `platform`
 
