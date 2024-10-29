@@ -53,7 +53,10 @@ export default async function padding<R, A extends unknown[], E>(
     ...args: A
 ): Promise<[E | null, R | null]> {
     try {
-        return [null, await executeToPromise(task, args)];
+        return await executeToPromise(task, args).then(
+            result => [null, result],
+            error => [error, null]
+        );
     } catch (error: any) {
         return [error, null];
     }
