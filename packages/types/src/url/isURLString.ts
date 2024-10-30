@@ -14,6 +14,9 @@ import isString from '../string/isString';
  * console.log(isURLString('file:///path/to/file')); // true
  * console.log(isURLString('mailto:example@example.com')); // true
  * ```
+ *
+ * @note
+ *  - 在 `URI` 中，除字母、数字和字符 `$-_.+!*'()` 外的其它字符应优先使用字符的编码(`%0X`)
  */
 export default function isURLString(value: unknown): value is string {
     if (!isString(value)) {

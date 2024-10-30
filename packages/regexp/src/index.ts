@@ -7,7 +7,6 @@ export { default as inJapanese } from './inJapanese';
 export { default as isChinaPhoneNumber } from './isChinaPhoneNumber';
 export { default as isEmail } from './isEmail';
 export { default as isIp } from './isIp';
-export { default as isURI } from './isURI';
 export { default as mapReplace } from './mapReplace';
 export { default as matchNextIndex } from './matchNextIndex';
 export { default as testEvery } from './testEvery';
