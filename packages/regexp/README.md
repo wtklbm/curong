@@ -30,4 +30,5 @@
 - `katakana`: 验证片假名的正则字符串
 - `korean`: 验证韩文的正则字符串
 - `punctuation`: 验证所有的标点符号的正则字符串
+- `symbol`: 验证所有符号的正则字符串
 - `unifiedIdeograph`: 验证中文汉字的正则字符串
