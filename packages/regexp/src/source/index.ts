@@ -5,6 +5,7 @@ export { default as control } from './control';
 export { default as email } from './email';
 export { default as han } from './han';
 export { default as hiragana } from './hiragana';
+export { default as ideographic } from './ideographic';
 export { default as japanese } from './japanese';
 export { default as katakana } from './katakana';
 export { default as korean } from './korean';
