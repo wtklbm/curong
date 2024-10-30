@@ -15,4 +15,16 @@ describe('@curong/types/isURLString', () => {
         expect(isURLString('mailto:example@example.com')).toBe(true);
         expect(isURLString('file:///path/to/file')).toBe(true);
     });
+
+    it('测试3', () => {
+        expect(isURLString('https://xxx.com')).toBe(true);
+        expect(isURLString('https://xxx.com ')).toBe(true);
+        expect(isURLString(' https://xxx.com ')).toBe(true);
+        expect(isURLString('xxx https://xxx.com')).toBe(false);
+        expect(isURLString('https://xxx.com xxx')).toBe(false);
+        expect(isURLString('//xxx.com')).toBe(false);
+        expect(isURLString('localhost')).toBe(false);
+        expect(isURLString('192.168.0.1')).toBe(false);
+        expect(isURLString('www.example.com')).toBe(false);
+    });
 });
