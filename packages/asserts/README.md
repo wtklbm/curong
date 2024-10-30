@@ -331,6 +331,7 @@
 
 #### `url`
 
+- `assertLocalURLString`: 是不是一个 `localhost` URL 字符串
 - `assertURL`: 是不是一个 `URL` 对象
 - `assertURLSearchParams`: 是不是一个 `URLSearchParams`
 - `assertURLString`: 是不是一个可以转换为 `URL` 对象的的字符串
