@@ -380,6 +380,7 @@
 #### `url`
 
 - `isLocalURLString`: 是不是一个 `localhost` URL 字符串
+- `isSafeURLString`: 是不是一个安全的 `URL` 字符串，即长度小于或等于 `2000`
 - `isURL`: 是不是一个 `URL` 对象
 - `isURLSearchParams`: 是不是一个 `URLSearchParams`
 - `isURLString`: 是不是一个可以转换为 `URL` 对象的的字符串
