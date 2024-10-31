@@ -1,5 +1,7 @@
 import { email as sourceEmail } from './source';
 
+let _: RegExp;
+
 /**
  * 是否为合法的邮箱地址
  *
@@ -13,9 +15,10 @@ import { email as sourceEmail } from './source';
  * ```
  */
 export default function isEmail(email: string): boolean {
-    const emailReg = new RegExp(`^${sourceEmail}$`);
-
-    if (email.length > 320 || !emailReg.test(email)) {
+    if (
+        email.length > 320 ||
+        !(_ ?? (_ = new RegExp(`^(?:${sourceEmail})$`))).test(email)
+    ) {
         return false;
     }
 
