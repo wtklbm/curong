@@ -10,5 +10,4 @@ export { default as japanese } from './japanese';
 export { default as katakana } from './katakana';
 export { default as korean } from './korean';
 export { default as punctuation } from './punctuation';
-export { default as symbol } from './symbol';
 export { default as unifiedIdeograph } from './unifiedIdeograph';
