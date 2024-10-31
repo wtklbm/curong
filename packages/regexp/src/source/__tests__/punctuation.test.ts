@@ -5,6 +5,7 @@ describe('@curong/regexp/punctuation', () => {
         const r = new RegExp(punctuation);
 
         // https://en.wikipedia.org/wiki/Punctuation
+        // https://en.wikipedia.org/wiki/English_punctuation
         /* prettier-ignore */
         const enPunChars = [
             "-", "–", "_", "\\", "/", "|",
@@ -21,6 +22,7 @@ describe('@curong/regexp/punctuation', () => {
         const r = new RegExp(punctuation);
 
         // https://zh.wikipedia.org/zh-cn/标点符号#常用標點符號
+        // https://en.wikipedia.org/wiki/Chinese_punctuation
         /* prettier-ignore */
         const cnPunChars = [
             '。', '？', '！', '，', '、', '；', '：', '‘', '’', '“', '”',
