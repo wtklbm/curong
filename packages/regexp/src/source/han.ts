@@ -12,6 +12,7 @@
  *  - [注音符号（闽南语、客家语扩展）](http://www.unicode.org/charts/PDF/U31A0.pdf)
  *  - [CJK字母及月份](http://www.unicode.org/charts/PDF/U3200.pdf)
  *  - [CJK特殊符号（日期合并）](http://www.unicode.org/charts/PDF/U3300.pdf)
+ *  - [CJK统一表意文字](http://www.unicode.org/charts/PDF/U4E00.pdf)
  *
  * @example
  *
