@@ -1,5 +1,7 @@
 import { japanese } from './source';
 
+let _: RegExp;
+
 /**
  * 是否包含日文
  *
@@ -14,5 +16,5 @@ import { japanese } from './source';
  * ```
  */
 export default function inJapanese(str: string) {
-    return new RegExp(`${japanese}+`).test(str);
+    return (_ ?? (_ = new RegExp(japanese))).test(str);
 }
