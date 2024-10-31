@@ -1,5 +1,7 @@
 import { chkPunctuation } from './source';
 
+let _: RegExp;
+
 /**
  * 是否包含中日韩标点符号
  *
@@ -13,5 +15,5 @@ import { chkPunctuation } from './source';
  * ```
  */
 export default function inChkPunctuation(str: string): boolean {
-    return new RegExp(chkPunctuation).test(str);
+    return (_ ?? (_ = new RegExp(chkPunctuation))).test(str);
 }
