@@ -4,6 +4,8 @@
  * @note
  *  - 该正则是自动生成的。原始代码: [`/\p{Script_Extensions=Han}/u`](https://mothereff.in/regexpu#input=/\p{Script_Extensions=Han}/u)
  *  - 该正则字符串匹配了除了汉字以外的其他一些字符，如果只需要验证汉字，请使用 [`/\p{Unified_Ideograph}/u`](https://mothereff.in/regexpu#input=/\p{Unified_Ideograph}/u)
+ *  - 在验证中文时，在汉字的后面有可能需要验证变体字符: [`/\p{Variation_Selector}/u`](https://mothereff.in/regexpu#input=/\p{Variation_Selector}/u)
+ *  - 在验证繁体中文时，有可能需要验证注音符: [`/\p{Script_Extensions=Bopomofo}/u`](https://mothereff.in/regexpu#input=/\p{Script_Extensions=Bopomofo}/u)
  * @see
  *  - [CJK部首补充](http://www.unicode.org/charts/PDF/U2E80.pdf)
  *  - [CJK笔划](http://www.unicode.org/charts/PDF/U31C0.pdf)
