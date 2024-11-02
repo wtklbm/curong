@@ -1,6 +1,9 @@
 /**
  * 验证日文的正则字符串
  *
+ * - 日文中包含片假名，中文中没有
+ * - 因为日文中包含汉字，所以在检测日文时需要排除仅仅是中文的可能性。避免检测错误
+ *
  * 相关内容:
  *
  * - `\u3000-\u303F` Punctuation 日式标点符号
@@ -10,12 +13,12 @@
  * - `\u4E00-\u9FAF` CJK (Common & Uncommon) 中日韩统一表意文字 常见和罕见的汉字
  * - `\u3400-\u4DBF` CJK Ext. A (Rare) 中日韩统一表意文字扩展A 稀有汉字
  *
- * @warn 因为日文中包含汉字，所以在检测日文时需要排除仅仅是中文的可能性。避免检测错误。
- *
- * 参考：
- *
- * - 日文中包含片假名，中文中没有
- * - 同时捕获中文和日文，看日文正则和中文正则哪个捕获的内容最长
+ * @note
+ *  - 该正则是自动生成的。原始代码:
+ *    - [`/\p{Script_Extensions=Han}/u`](https://mothereff.in/regexpu#input=/\p{Script_Extensions=Han}/u)
+ *    - [`/\p{Script_Extensions=Hiragana}/u`](https://mothereff.in/regexpu#input=/\p{Script_Extensions=Hiragana}/u)
+ *    - [`/\p{Script_Extensions=Katakana}/u`](https://mothereff.in/regexpu#input=/\p{Script_Extensions=Katakana}/u)
+ *    - `\u3000\uFF00-\uFFEF`
  *
  * @example ```` 验证日文的 `ES` 写法
  *
