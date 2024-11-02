@@ -4,6 +4,8 @@
  * @note
  *  - 该正则是自动生成的。原始代码: [`/\p{Unified_Ideograph}/u`](https://mothereff.in/regexpu#input=/\p{Unified_Ideograph}/u)
  *  - 该正则只会匹配汉字，如果还需要多匹配一些字符，请使用 [`/\p{Script_Extensions=Han}/u`](https://mothereff.in/regexpu#input=/\p{Script_Extensions=Han}/u)
+ *  - 在验证中文时，在汉字的后面有可能需要验证变体字符: [`/\p{Variation_Selector}/u`](https://mothereff.in/regexpu#input=/\p{Variation_Selector}/u)
+ *  - 在验证繁体中文时，有可能需要验证注音符: [`/\p{Script_Extensions=Bopomofo}/u`](https://mothereff.in/regexpu#input=/\p{Script_Extensions=Bopomofo}/u)
  * @see http://unicode.org/reports/tr44/#Unified_Ideograph
  */
 const unifiedIdeograph =
