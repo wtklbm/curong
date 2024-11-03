@@ -6,6 +6,7 @@
 - `execAll`: 循环遍历 `RegExp.exec` 方法捕获到的内容
 - `inChinese`: 是否包含中文汉字
 - `inChkPunctuation`: 是否包含中日韩标点符号
+- `inEmoji`: 是否包含表情符号
 - `inJapanese`: 是否包含日文
 - `isChinaPhoneNumber`: 是不是一个中国的手机号码
 - `isEmail`: 是否为合法的邮箱地址
@@ -23,6 +24,7 @@
 - `chkPunctuation`: 验证中日韩的标点符号的正则字符串
 - `control`: 验证所有的控制字符的正则字符串，包含 `\r`、`\n`、`\t` 等等
 - `email`: 验证邮箱的正则字符串
+- `emoji`: 验证 `Emoji` 的正则表达式字符串
 - `han`: 验证汉文的正则字符串 (包含特殊字符)
 - `hiragana`: 验证平假名的正则字符串
 - `ideographic`: 验证与汉语书写相关的其他表意文字
