@@ -3,6 +3,7 @@ import * as _source from './source';
 export { default as execAll } from './execAll';
 export { default as inChinese } from './inChinese';
 export { default as inChkPunctuation } from './inChkPunctuation';
+export { default as inEmoji } from './inEmoji';
 export { default as inJapanese } from './inJapanese';
 export { default as isChinaPhoneNumber } from './isChinaPhoneNumber';
 export { default as isEmail } from './isEmail';
