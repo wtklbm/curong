@@ -24,5 +24,9 @@ export default function isEmail(email: string): boolean {
 
     const [username, domains] = email.split('@');
 
-    return username.length <= 64 && domains.length <= 255;
+    return (
+        username.length <= 64 &&
+        domains.length <= 255 &&
+        domains.split('.').every(v => v.length <= 64)
+    );
 }
