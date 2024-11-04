@@ -52,4 +52,59 @@ describe('@curong/number/withDelimiter', () => {
         expect(withDelimiter('')).toBe('');
         expect(withDelimiter(-1234567)).toBe('-1,234,567');
     });
+
+    test('测试10', () => {
+        expect(withDelimiter(-0.123456789)).toBe('-0.123456789');
+        expect(withDelimiter(0.123456789)).toBe('0.123456789');
+        expect(withDelimiter(1.23456789)).toBe('1.23456789');
+        expect(withDelimiter(12.3456789)).toBe('12.3456789');
+        expect(withDelimiter(123.456789)).toBe('123.456789');
+        expect(withDelimiter(1234.56789)).toBe('1,234.56789');
+        expect(withDelimiter(12345.6789)).toBe('12,345.6789');
+        expect(withDelimiter(123456.789)).toBe('123,456.789');
+        expect(withDelimiter(1234567.89)).toBe('1,234,567.89');
+        expect(withDelimiter(12345678.9)).toBe('12,345,678.9');
+        expect(withDelimiter(123456789)).toBe('123,456,789');
+        expect(withDelimiter(-123456789)).toBe('-123,456,789');
+        expect(withDelimiter(1234567890)).toBe('1,234,567,890');
+        expect(withDelimiter(-0.123456789, { delimiter: ' ' })).toBe(
+            '-0.123456789'
+        );
+        expect(withDelimiter(0.123456789, { delimiter: ' ' })).toBe(
+            '0.123456789'
+        );
+        expect(withDelimiter(1.23456789, { delimiter: ' ' })).toBe(
+            '1.23456789'
+        );
+        expect(withDelimiter(12.3456789, { delimiter: ' ' })).toBe(
+            '12.3456789'
+        );
+        expect(withDelimiter(123.456789, { delimiter: ' ' })).toBe(
+            '123.456789'
+        );
+        expect(withDelimiter(1234.56789, { delimiter: ' ' })).toBe(
+            '1 234.56789'
+        );
+        expect(withDelimiter(12345.6789, { delimiter: ' ' })).toBe(
+            '12 345.6789'
+        );
+        expect(withDelimiter(123456.789, { delimiter: ' ' })).toBe(
+            '123 456.789'
+        );
+        expect(withDelimiter(1234567.89, { delimiter: ' ' })).toBe(
+            '1 234 567.89'
+        );
+        expect(withDelimiter(12345678.9, { delimiter: ' ' })).toBe(
+            '12 345 678.9'
+        );
+        expect(withDelimiter(123456789, { delimiter: ' ' })).toBe(
+            '123 456 789'
+        );
+        expect(withDelimiter(-123456789, { delimiter: ' ' })).toBe(
+            '-123 456 789'
+        );
+        expect(withDelimiter(1234567890, { delimiter: ' ' })).toBe(
+            '1 234 567 890'
+        );
+    });
 });
