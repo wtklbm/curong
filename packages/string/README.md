@@ -22,13 +22,6 @@
 - `encodeEntityToName`: 将字符串中的特殊字符编码为 `HTML` 实体名称 (`&name;`)
 - `encodeEntityToPoint`: 将字符串中的特殊字符编码为 `HTML` 实体编号 (`&#point;`)
 
-包含以下属性:
-
-- `zeroWidthChars`: 零宽字符对象
-- `likeSpaceChars`: 看起来像空格的字符对象
-- `controlChars`: 控制符对象(包含换行、回车、制表符等)
-- `specialChars`: 特殊字符集对象，包含零宽字符、像空格的字符、控制符
-
 ## `chars`
 
 - `chars`: 将字符串转换为字符数组
