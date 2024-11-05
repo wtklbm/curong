@@ -5,6 +5,7 @@ export { default as inChinese } from './inChinese';
 export { default as inChkPunctuation } from './inChkPunctuation';
 export { default as inEmoji } from './inEmoji';
 export { default as inJapanese } from './inJapanese';
+export { default as isChinaIdCard } from './isChinaIdCard';
 export { default as isChinaMobilePhone } from './isChinaMobilePhone';
 export { default as isEmail } from './isEmail';
 export { default as isIp } from './isIp';
