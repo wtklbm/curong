@@ -11,11 +11,17 @@ import { isUint } from '@curong/types';
  * @example
  *
  * ```typescript
- * const result = move([1, 2, 3, 4], 1, 3);
- * console.log(result); // [1, 3, 4, 2]
+ * const arr = [1, 2, 3, 4, 5];
+ * const result = move(arr, 1, 3);
+ * console.log(result); // [1, 3, 4, 2, 5]
+ *
+ * const arr2 = [1, 2, 3, 4, 5];
+ * const result2 = move(arr2, -4, -1);
+ * console.log(result2); // [1, 3, 4, 5, 2]
  * ```
  */
 export default function move<T>(value: T[], from: number, to: number): T[] {
+    value = value.slice();
     const len = value.length;
 
     if (len === 0) {
@@ -31,25 +37,14 @@ export default function move<T>(value: T[], from: number, to: number): T[] {
     const endIndex = to < 0 ? len + to : to;
 
     if (!isUint(endIndex) || endIndex < 0 || endIndex >= len) {
-        throw new RangeError(`[move] to 不是一个合法的索引，${endIndex}`);
+        throw new RangeError(`[move] to 不是一个合法的索引，${to}`);
     }
 
     if (startIndex === endIndex) {
         return value;
     }
 
-    const item = value[startIndex];
-    const before = value.slice(0, startIndex);
-    const after = value.slice(startIndex + 1);
+    value.splice(endIndex, 0, value.splice(startIndex, 1)[0]);
 
-    if (endIndex === len - 1) {
-        return [...before, ...after, item];
-    }
-
-    return [
-        ...before,
-        ...after.slice(0, endIndex),
-        item,
-        ...after.slice(endIndex)
-    ];
+    return value;
 }
