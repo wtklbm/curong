@@ -4,8 +4,8 @@ import { isUint } from '@curong/types';
  * 将数组中的元素从一个位置移动到另一个位置
  *
  * @param value 目标数组，包含要操作的元素
- * @param from 要移动的元素的起始索引 (从 `0` 开始)
- * @param to 元素要移动到的目标位置 (从 `0` 开始)
+ * @param from 要移动的元素的起始索引 (从 `0` 开始，可以为负整数)
+ * @param to 元素要移动到的目标位置 (从 `0` 开始，可以为负整数)
  * @returns 返回一个新的数组，元素已按照给定的起始位置和目标位置进行移动
  * @throws 如果 `from` 或 `to` 的范围不在 `value` 的索引范围内，则会抛出异常
  * @example
