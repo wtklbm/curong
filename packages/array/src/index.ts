@@ -13,6 +13,7 @@ export * from './convert';
 export * from './dimension';
 export * from './each';
 export * from './map';
+export * from './move';
 export * from './sort';
 export * from './split';
 export * from './unique';
