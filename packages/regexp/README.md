@@ -8,6 +8,7 @@
 - `inChkPunctuation`: 是否包含中日韩标点符号
 - `inEmoji`: 是否包含表情符号
 - `inJapanese`: 是否包含日文
+- `isChinaIdCard`: 是不是一个中国的 `18` 位身份证号码
 - `isChinaMobilePhone`: 是不是一个中国的手机号码
 - `isEmail`: 是否为合法的邮箱地址
 - `isIp`: 是不是一个 `IP` 地址
