@@ -21,7 +21,7 @@ const phoneRegexps = [lowReg, mediumReg, highReg];
  * - `2`: 更严格的判断
  * @returns 是则返回 `true`，否则为 `false`
  */
-export default function isChinaPhoneNumber(
+export default function isChinaMobilePhone(
     value: number | string,
     strictLevel: 0 | 1 | 2 = 1
 ): boolean {
