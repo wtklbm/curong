@@ -4,7 +4,7 @@ import { isInt, isZero } from '@curong/types';
  * 将数组中的元素移动到数组的结尾
  *
  * @param value 目标数组，包含要操作的元素
- * @param from 要移动的元素的起始索引 (从 `0` 开始)
+ * @param from 要移动的元素的起始索引 (从 `0` 开始，可以为负整数)
  * @returns 返回一个新的数组，元素已按照给定的起始位置移动到数组的结尾
  * @throws 如果 `from` 不在 `value` 的索引范围内，则会抛出异常
  * @example
