@@ -290,6 +290,7 @@
 - `isAndroid`: 当前的执行环境是不是 `Android`
 - `isIOS`: 当前的执行环境是不是 `iOS`
 - `isReactNative`: 当前的执行环境是不是 `React Native`
+- `isTaro`: 当前的执行环境是不是 `Taro`
 
 ##### `webWorker`
 
