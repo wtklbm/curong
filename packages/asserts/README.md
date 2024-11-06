@@ -257,6 +257,7 @@
 - `assertAndroid`: 当前的执行环境是不是 `Android`
 - `assertIOS`: 当前的执行环境是不是 `iOS`
 - `assertReactNative`: 当前的执行环境是不是 `React Native`
+- `assertTaro`: 当前的执行环境是不是 `Taro`
 
 ##### `webWorker`
 
