@@ -9,6 +9,10 @@
 - `testEvery`: 使用一组正则来验证一个字符串是否符合预期
 - `testSome`: 使用一组正则来验证一个字符串是否符合预期
 
+## `crypto`
+
+- `isBase64`: 是不是一个 `base64`
+
 ## `account`
 
 - `isChinaIdCard`: 是不是一个中国的 `18` 位身份证号码
