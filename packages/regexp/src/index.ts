@@ -5,10 +5,10 @@ export { default as source } from './source';
 export { default as testEvery } from './testEvery';
 export { default as testSome } from './testSome';
 
-export * from './crypto';
 export * from './account';
+export * from './crypto';
 export * from './id';
-export * from './ip';
+export * from './net';
 export * from './unicode';
 
 export * from './types';
