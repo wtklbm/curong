@@ -1,4 +1,4 @@
-import { chkPunctuation, han, punctuation } from '../src/source';
+import { chkPunctuation, han, punctuation } from '..';
 
 describe('@curong/regexp/source/han', () => {
     test('测试带标点的中文字符1', () => {

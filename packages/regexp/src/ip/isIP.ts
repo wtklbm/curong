@@ -10,13 +10,13 @@ const ipReg =
  * @example
  *
  * ```typescript
- * console.log(isIp('2409:8054:48::1006')); // true
- * console.log(isIp('[240e:e0::abcd]:65533')); // true
- * console.log(isIp('[240e:e0::abcd]:65560')); // false
- * console.log(isIp('[240e:e0::abcd]:655601')); // false
- * console.log(isIp('[240e:g0::abcd]:65530')); // false
+ * console.log(isIP('2409:8054:48::1006')); // true
+ * console.log(isIP('[240e:e0::abcd]:65533')); // true
+ * console.log(isIP('[240e:e0::abcd]:65560')); // false
+ * console.log(isIP('[240e:e0::abcd]:655601')); // false
+ * console.log(isIP('[240e:g0::abcd]:65530')); // false
  * ```
  */
-export default function isIp(value: string): boolean {
+export default function isIP(value: string): boolean {
     return ipReg.test(value);
 }

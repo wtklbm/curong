@@ -1,4 +1,4 @@
-import { isChinaMobilePhone } from '../src';
+import { isChinaMobilePhone } from '..';
 
 describe('@curong/regexp/isChinaMobilePhone', () => {
     test('测试1', () => {

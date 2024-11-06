@@ -1,4 +1,4 @@
-import { inChinese } from '../src';
+import { inChinese } from '..';
 
 describe('@curong/regexp/inChinese', () => {
     test('测试1', () => {

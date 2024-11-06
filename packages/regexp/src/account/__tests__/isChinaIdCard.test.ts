@@ -1,4 +1,4 @@
-import { isChinaIdCard } from '../src';
+import { isChinaIdCard } from '..';
 
 describe('@curong/regexp/isChinaIdCard', () => {
     test('测试1', () => {

@@ -2,7 +2,6 @@ export { default as ascii } from './ascii';
 export { default as blank } from './blank';
 export { default as chkPunctuation } from './chkPunctuation';
 export { default as control } from './control';
-export { default as email } from './email';
 export { default as emoji } from './emoji';
 export { default as han } from './han';
 export { default as hiragana } from './hiragana';

@@ -1,4 +1,4 @@
-import { inChkPunctuation } from '../src';
+import { inChkPunctuation } from '..';
 
 describe('@curong/regexp/inChkPunctuation', () => {
     test('测试1', () => {

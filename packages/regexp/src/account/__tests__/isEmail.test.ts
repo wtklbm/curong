@@ -1,4 +1,4 @@
-import { isEmail } from '../src';
+import { isEmail } from '..';
 
 describe('@curong/regexp/isEmail', () => {
     test('测试1', () => {
