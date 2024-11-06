@@ -23,6 +23,22 @@
 
 - `email`: 验证邮箱的正则字符串
 
+## `id`
+
+- `isCUID`: 是不是一个 `cuid`
+- `isCUID2`: 是不是一个 `cuid2`
+- `isNanoID`: 是不是一个 `nanoid`
+- `isULID`: 是不是一个 `ulid`
+- `isUUID`: 是不是一个 `uuid`
+
+包含以下属性:
+
+- `cuid`: 验证 `cuid` 的正则字符串
+- `cuid2`: 验证 `cuid2` 的正则字符串
+- `nanoid`: 验证 `nanoid` 的正则字符串
+- `ulid`: 验证 `ulid` 的正则字符串
+- `uuid`: 验证 `uuid` 的正则字符串
+
 ## `ip`
 
 - `isIP`: 是不是一个 `IP` 地址

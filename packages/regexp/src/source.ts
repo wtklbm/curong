@@ -1,5 +1,6 @@
 import * as crypto from './crypto/source';
 import * as account from './account/source';
+import * as id from './id/source';
 import * as ip from './ip/source';
 import * as unicode from './unicode/source';
 
@@ -37,6 +38,7 @@ import * as unicode from './unicode/source';
 const source = {
     ...crypto,
     ...account,
+    ...id,
     ...ip,
     ...unicode,
 }

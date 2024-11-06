@@ -7,6 +7,7 @@ export { default as testSome } from './testSome';
 
 export * from './crypto';
 export * from './account';
+export * from './id';
 export * from './ip';
 export * from './unicode';
 
