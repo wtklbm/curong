@@ -6,6 +6,8 @@ import isNavigator from '../constants/isNavigator';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isIOS(): boolean {
+    // 在小程序中，可以通过 `globalThis.mp.getSystemInfoSync()` 获取系统信息
+    // 判断 `platform` 是不是 `ios`，`system` 是不是 `iOS`
     return (
         isNavigator() && // @ts-ignore
         (globalThis.navigator.userAgentData?.platform === 'iOS' ||
