@@ -5,6 +5,26 @@ describe('@curong/regexp/isEmail', () => {
         expect(isEmail('xx@xx@xx.com')).toBe(false);
         expect(isEmail('xx.\\xx@xx.com')).toBe(false);
         expect(isEmail('xx. \\xx@xx.com')).toBe(false);
+        expect(isEmail('   ')).toBe(false);
+        expect(isEmail('value')).toBe(false);
+        expect(isEmail('value.fr')).toBe(false);
+        expect(isEmail('Hello')).toBe(false);
+        expect(isEmail('test.test.com')).toBe(false);
+        expect(isEmail('ccc.com')).toBe(false);
+        expect(isEmail('xxx')).toBe(false);
+        expect(isEmail('invalid email address')).toBe(false);
+        expect(isEmail('#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})')).toBe(false);
+        expect(isEmail('email@domain')).toBe(false);
+        expect(isEmail('x-@-x.co')).toBe(false);
+        expect(isEmail('test.test@com')).toBe(false);
+    });
+
+    test('测试2', () => {
+        // https://zh.wikipedia.org/zh-cn/電子郵件地址#域名
+        expect(isEmail('xx@[0.0.0.0]')).toBe(true);
+    });
+
+    test('测试3', () => {
         expect(isEmail('xx./xx@xx.com')).toBe(true);
         expect(isEmail('x212$x./xx@xx.com')).toBe(true);
         expect(isEmail('!xxx!xxx%x@xx.com')).toBe(true);
@@ -13,17 +33,30 @@ describe('@curong/regexp/isEmail', () => {
         expect(isEmail('xx.100@xx.com')).toBe(true);
         expect(isEmail('xx-33@xx.com')).toBe(true);
         expect(isEmail('__p/gbhn21.xxx@xxx.co')).toBe(true);
-    });
 
-    test('测试2', () => {
+        expect(isEmail('wangdaoo@yeah.net')).toBe(true);
+        expect(isEmail('ff@gmail.com')).toBe(true);
+        expect(isEmail('https://sss.cc')).toBe(false);
+
+        expect(isEmail('email@domain.fr')).toBe(true);
+        expect(isEmail('test@test.com')).toBe(true);
+        expect(isEmail('test@test.co.com')).toBe(true);
+
+        expect(isEmail('john@google.com')).toBe(true);
+        expect(isEmail('alex@bloomberg.uk')).toBe(true);
+        expect(isEmail('anna@coop.ch')).toBe(true);
+        expect(isEmail('lakera@ai.org')).toBe(true);
+        expect(isEmail('dev@oneuptime.com')).toBe(true);
+        expect(isEmail('dev@yahoo.co.uk')).toBe(true);
+        expect(isEmail('test@test.com')).toBe(true);
+        expect(isEmail('hello@oneuptime.com')).toBe(true);
+
         expect(isEmail('xx@xx.co')).toBe(true);
         expect(isEmail('x@x.xx')).toBe(true);
         expect(isEmail('z@xx.co')).toBe(true);
         expect(isEmail('xx@x.cc')).toBe(true);
         expect(isEmail('xx@xx.xx')).toBe(true);
-        expect(isEmail('xx@[0.0.0.0]')).toBe(false);
         expect(isEmail('a@xxxxxxx.cxo')).toBe(true);
-        expect(isEmail('x-@-x.co')).toBe(false);
     });
 
     test('测试3', () => {
