@@ -256,8 +256,11 @@
 
 - `assertAndroid`: 当前的执行环境是不是 `Android`
 - `assertIOS`: 当前的执行环境是不是 `iOS`
+- `assertMiniProgram`: 当前的执行环境是不是小程序
+- `assertMiniProgramWebView`: 是不是在小程序的 `WebView` 中
 - `assertReactNative`: 当前的执行环境是不是 `React Native`
 - `assertTaro`: 当前的执行环境是不是 `Taro`
+- `assertWechatBrowser`: 当前的执行环境是不是微信的内置浏览器
 
 ##### `webWorker`
 
