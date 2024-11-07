@@ -289,8 +289,11 @@
 
 - `isAndroid`: 当前的执行环境是不是 `Android`
 - `isIOS`: 当前的执行环境是不是 `iOS`
+- `isMiniProgram`: 当前的执行环境是不是小程序
+- `isMiniProgramWebView`: 是不是在小程序的 `WebView` 中
 - `isReactNative`: 当前的执行环境是不是 `React Native`
 - `isTaro`: 当前的执行环境是不是 `Taro`
+- `isWechatBrowser`: 当前的执行环境是不是微信的内置浏览器
 
 ##### `webWorker`
 
