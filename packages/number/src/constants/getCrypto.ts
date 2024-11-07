@@ -12,7 +12,7 @@ export default function getCrypto(): Crypto {
             (window as any).oCrypto ??
             (window as any).msCrypto;
     } else if (isNodejs()) {
-        crypto = globalThis.crypto ?? require('crypto').webcrypto;
+        crypto = require('crypto').webcrypto;
     } else {
         throw new ReferenceError(
             '[getCrypto] 在浏览器或 Node.js 环境下没有检测到 crypto 对象'
