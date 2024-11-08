@@ -1,10 +1,12 @@
+import isNavigator from '../constants/isNavigator';
+
 /**
  * 是不是在小程序的 `WebView` 中
  *
  * @returns 是则返回 `true`，否则为 `false`
  * @note
- *
- * 该方法仅通过 `userAgent` 来验证，如需更严格的验证请提交 PR。
+ *  - 该方法仅通过 `userAgent` 来验证，如需更严格的验证请提交 PR
+ *  - 该方法使用了 `globalThis`，有关更多信息，请参见 `isGlobalThis` 方法
  *
  * 支持以下平台:
  *  - [微信](https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html#相关接口-5): `userAgent` 中包含 `miniProgram`，`window.__wxjs_environment` 的值是 `miniprogram`
@@ -16,7 +18,10 @@
  *  - [钉钉](https://open.dingtalk.com/document/orgapp/web-view): `userAgent` 中包含 `dingtalk`
  */
 export default function isMiniProgramWebView(): boolean {
-    return /miniProgram|ToutiaoMicroApp|swan\/|jdmp|dingtalk/i.test(
-        globalThis.navigator?.userAgent
+    return (
+        isNavigator() &&
+        /miniProgram|ToutiaoMicroApp|swan\/|jdmp|dingtalk/i.test(
+            globalThis.navigator.userAgent
+        )
     );
 }
