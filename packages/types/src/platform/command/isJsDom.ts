@@ -6,12 +6,16 @@ import isFuzzyJsDom from '../constants/isFuzzyJsDom';
  *
  * @param window `jsdom` 中的 `Window` 对象，默认为 `globalThis.window` (即当前执行环境的全局根属性)
  * @returns 是则返回 `true`，否则为 `false`
+ * @note 该方法使用了 `globalThis`，有关更多信息，请参见 `isGlobalThis` 方法
  * @example
  *
  * ```typescript
  * import { JSDOM } from 'jsdom';
  *
- * const { window } = new JSDOM(`<!DOCTYPE html><html><body><p>Hello, World!</p></body></html>`);
+ * const { window } = new JSDOM(
+ *     `<!DOCTYPE html><html><body><p>Hello, World!</p></body></html>`,
+ *     { runScripts: 'dangerously', resources: 'usable' }
+ * );
  * console.log(isJsDom(window)); // true
  * ```
  */
