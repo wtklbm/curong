@@ -7,6 +7,7 @@ const replace = require('@rollup/plugin-replace');
 const resolve = require('@rollup/plugin-node-resolve').default;
 const terser = require('@rollup/plugin-terser');
 const typescript = require('rollup-plugin-typescript2');
+const esmShim = require('@rollup/plugin-esm-shim');
 
 const { version } = require('../../lerna.json');
 const banner = require('./banner');
@@ -55,7 +56,9 @@ function config(options = {}) {
         }),
 
         // 处理 `json` 格式的模块
-        json
+        json,
+
+        esmShim()
     ];
 
     useTerser && plugins.push(terser());
