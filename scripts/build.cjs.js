@@ -26,6 +26,7 @@ const genRollupConfig = (dirname, env = 'dev') => ({
         file: `./packages/${dirname}/dist/index.${env}.js`,
         exports: 'named',
         format: 'cjs',
+        interop: 'auto',
         banner
     },
 
