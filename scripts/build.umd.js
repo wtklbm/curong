@@ -18,7 +18,13 @@ const banner = require('./build/banner');
 function create(name, input, output, options = {}) {
     build({
         input,
-        output: { name, file: output, format: 'umd', banner },
+        output: {
+            name,
+            file: output,
+            format: 'umd',
+            interop: 'auto',
+            banner
+        },
         useTerser: !!compress,
         external(id) {
             return ['tslib'].includes(id) || /^@curong-/i.test(id);
