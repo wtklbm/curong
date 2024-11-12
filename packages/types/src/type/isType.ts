@@ -6,13 +6,16 @@
  * @example
  *
  * ```typescript
- * const v: unknown = undefined;
+ * function test(value: unknown) {
+ *     // 点不出东西
+ *     //value.
  *
- * // 在这里点不出来东西
- * //v != null && v.
+ *     // 可以点出东西
+ *     isType<string>(value) && value.
  *
- * // 可以点出东西
- * v != null && isType<string>(v) && v.
+ *     // 又不能点出东西了
+ *     //value.
+ * }
  * ```
  */
 export default function isType<T>(value: any): value is T {
