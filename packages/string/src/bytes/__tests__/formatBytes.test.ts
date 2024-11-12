@@ -39,4 +39,18 @@ describe('@curong/string/formatBytes', () => {
         expect(formatBytes(123456789, false, 1)).toBe('117.7 MiB');
         expect(formatBytes(123456789, false, 2)).toBe('117.74 MiB');
     });
+
+    test('随机测试', () => {
+        expect(formatBytes(0)).toBe('0 B');
+        expect(formatBytes(4)).toBe('4 B');
+        expect(formatBytes(10)).toBe('10 B');
+        expect(formatBytes(10.1)).toBe('10.1 B');
+        expect(formatBytes(999)).toBe('999 B');
+        expect(formatBytes(1001, false)).toBe('1001 B');
+        expect(formatBytes(1024)).toBe('1.0 KB');
+        expect(formatBytes(1025)).toBe('1.0 KB');
+        expect(formatBytes(2411724.8, false)).toBe('2.3 MiB');
+        expect(formatBytes(1e16, false, 2)).toBe('8.88 PiB');
+        expect(formatBytes(1e30, false, 2)).toBe('827180.61 YiB');
+    });
 });
