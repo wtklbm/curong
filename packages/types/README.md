@@ -182,6 +182,9 @@
 - `AsyncIterable`: 异步可迭代的类型
 - `SyncIterable`: 同步可迭代的类型
 
+#### `json`
+
+- `isJsonString`: 是不是一个 JSON 字符串
 
 #### `nullable`
 
