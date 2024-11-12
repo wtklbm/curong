@@ -13,9 +13,5 @@ import constructor from './constructor';
  * ```
  */
 export default function constructorName(value: unknown): string | null {
-    try {
-        return constructor(value)!.name;
-    } catch {}
-
-    return null;
+    return constructor(value)?.name ?? null;
 }
