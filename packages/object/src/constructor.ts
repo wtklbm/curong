@@ -1,3 +1,5 @@
+import { isNullOrUndefined } from '@curong/types';
+
 import type { Constructor } from './types';
 
 /**
@@ -20,9 +22,7 @@ import type { Constructor } from './types';
 export default function constructor<T extends {}>(
     value: unknown
 ): Constructor<T> | null {
-    try {
-        return Object.getPrototypeOf(value).constructor ?? null;
-    } catch {}
-
-    return null;
+    return isNullOrUndefined(value)
+        ? null
+        : Object.getPrototypeOf(value)?.constructor ?? null;
 }
