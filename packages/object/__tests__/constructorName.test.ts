@@ -37,4 +37,12 @@ describe('@curong/object/constructorName', () => {
         expect(constructorName({ hey: 'hello' })).toEqual('Object');
         expect(constructorName({ hey: ['hello'] })).toEqual('Object');
     });
+
+    test('测试3', () => {
+        expect(constructorName(Object.freeze({}))).toEqual('Object');
+        expect(constructorName(Object.create(null))).toEqual(null);
+        const anotherObj = {};
+        Object.setPrototypeOf(anotherObj, null);
+        expect(constructorName(anotherObj)).toEqual(null);
+    });
 });
