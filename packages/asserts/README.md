@@ -161,6 +161,10 @@
 - `assertIterator`: 是不是一个 `Iterator`
 - `assertSyncIterable`: 是不是一个同步可迭代的对象
 
+#### `json`
+
+- `assertJsonString`: 是不是一个 JSON 字符串
+
 #### `nullable`
 
 - `assertNull`: 是不是 `null`
