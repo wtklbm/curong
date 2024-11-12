@@ -13,6 +13,7 @@ export * from './form';
 export * from './function';
 export * from './generator';
 export * from './iterator';
+export * from './json';
 export * from './nullable';
 export * from './number';
 export * from './object';
