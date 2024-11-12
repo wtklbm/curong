@@ -21,7 +21,7 @@ export default function isNativeFunction<
         isNativeFunctionToString &&
         // 结果只能是特定的字符串
         new RegExp(
-            `^function ${(value as any).name}\\(\\) \\{ \\[native code\\] \\}$`
+            `^function ${value.name}\\(\\) \\{ \\[native code\\] \\}$`
         ).test(functionToString.call(value))
     );
 }
