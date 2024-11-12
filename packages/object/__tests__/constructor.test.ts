@@ -37,4 +37,12 @@ describe('@curong/object/createWithNull', () => {
         expect(constructor({ hey: 'hello' })).toEqual(Object);
         expect(constructor({ hey: ['hello'] })).toEqual(Object);
     });
+
+    test('测试3', () => {
+        expect(constructor(Object.freeze({}))).toEqual(Object);
+        expect(constructor(Object.create(null))).toEqual(null);
+        const anotherObj = {};
+        Object.setPrototypeOf(anotherObj, null);
+        expect(constructor(anotherObj)).toEqual(null);
+    });
 });
