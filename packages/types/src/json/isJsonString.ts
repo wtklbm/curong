@@ -6,7 +6,7 @@ import isStringFilled from '../string/isStringFilled';
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`。空字符串为 `false`
  */
-export default function isJsonString(value: unknown): boolean {
+export default function isJsonString(value: unknown): value is string {
     if (!isStringFilled(value)) {
         return false;
     }
