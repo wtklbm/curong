@@ -38,4 +38,12 @@ describe('@curong/object/isInstanceOf', () => {
         expect(isInstanceOf(Symbol('测试'), MyClass)).toBe(false);
         expect(isInstanceOf(() => {}, MyClass)).toBe(false);
     });
+
+    test('测试7', () => {
+        expect(isInstanceOf(Object.freeze({}), Object)).toEqual(true);
+        expect(isInstanceOf(Object.create(null), null)).toEqual(true);
+        const anotherObj = {};
+        Object.setPrototypeOf(anotherObj, null);
+        expect(isInstanceOf(anotherObj, null)).toEqual(true);
+    });
 });
