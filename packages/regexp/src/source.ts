@@ -1,5 +1,4 @@
 import * as account from './account/source';
-import * as crypto from './crypto/source';
 import * as id from './id/source';
 import * as net from './net/source';
 import * as unicode from './unicode/source';
@@ -36,7 +35,6 @@ import * as unicode from './unicode/source';
 * ```
 */
 const source = {
-    ...crypto,
     ...account,
     ...id,
     ...net,
