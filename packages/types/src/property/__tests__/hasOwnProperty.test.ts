@@ -6,6 +6,8 @@ describe('@curong/types/hasOwnProperty', () => {
     test('测试1', () => {
         expect(hasOwnProperty(null, 'a')).toBe(false);
         expect(hasOwnProperty(undefined, 'a')).toBe(false);
+        expect(hasOwnProperty('', null)).toBe(false);
+        expect(hasOwnProperty('', undefined)).toBe(false);
     });
 
     test('测试2', () => {
