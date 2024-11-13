@@ -1,4 +1,6 @@
 import isFunction from '../function/function/isFunction';
+import isNullOrUndefined from '../nullable/isNullOrUndefined';
+import { isSymbol } from '../symbol';
 
 import type { SyncIterable } from './types';
 
@@ -12,9 +14,11 @@ import type { SyncIterable } from './types';
 export default function isSyncIterable<T = unknown>(
     value: unknown
 ): value is SyncIterable<T> {
-    try {
-        return isFunction((value as SyncIterable<T>)[Symbol.iterator]);
-    } catch {}
+    const iterator = Symbol?.iterator;
 
-    return false;
+    return (
+        isSymbol(iterator) &&
+        !isNullOrUndefined(value) &&
+        isFunction((value as any)[iterator])
+    );
 }
