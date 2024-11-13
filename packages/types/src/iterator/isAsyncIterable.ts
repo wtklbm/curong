@@ -1,4 +1,6 @@
 import isFunction from '../function/function/isFunction';
+import isNullOrUndefined from '../nullable/isNullOrUndefined';
+import isSymbol from '../symbol/isSymbol';
 
 import type { AsyncIterable } from './types';
 
@@ -12,9 +14,11 @@ import type { AsyncIterable } from './types';
 export default function isAsyncIterable<T = unknown>(
     value: unknown
 ): value is AsyncIterable<T> {
-    try {
-        return isFunction((value as AsyncIterable<T>)[Symbol.asyncIterator]);
-    } catch {}
+    const asyncIterator = Symbol?.asyncIterator;
 
-    return false;
+    return (
+        isSymbol(asyncIterator) &&
+        !isNullOrUndefined(value) &&
+        isFunction((value as any)[asyncIterator])
+    );
 }
