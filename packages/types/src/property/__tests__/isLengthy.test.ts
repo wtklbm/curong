@@ -5,6 +5,8 @@ describe('@curong/types/isLengthy', () => {
         expect(isLengthy(new Map())).toBe(false);
         expect(isLengthy(new Set())).toBe(false);
         expect(isLengthy({})).toBe(false);
+        expect(isLengthy(null)).toBe(false);
+        expect(isLengthy(undefined)).toBe(false);
     });
 
     test('测试2', () => {
