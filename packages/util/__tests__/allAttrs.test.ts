@@ -13,4 +13,16 @@ describe('@curong/util/allAttrs', () => {
     test('测试2', () => {
         expect(allAttrs({ a: 1, s: 'str', [Symbol('x')]: 'x' }).length).toBe(3);
     });
+
+    test('测试3', () => {
+        const target = {};
+        const handler = {
+            ownKeys: () => {
+                throw new Error('Error in ownKeys handler');
+            }
+        };
+
+        const proxy = new Proxy(target, handler);
+        expect(allAttrs(proxy)).toEqual([]);
+    });
 });
