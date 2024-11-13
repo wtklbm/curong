@@ -1,3 +1,4 @@
+import isNullOrUndefined from '../nullable/isNullOrUndefined';
 import isUintSafe from '../number/int/isUintSafe';
 
 import type { Lengthy } from './types';
@@ -9,9 +10,5 @@ import type { Lengthy } from './types';
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isLengthy(value: unknown): value is Lengthy {
-    try {
-        return isUintSafe((value as Lengthy).length);
-    } catch {}
-
-    return false;
+    return !isNullOrUndefined(value) && isUintSafe((value as Lengthy).length);
 }
