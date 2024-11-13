@@ -46,15 +46,13 @@ export default async function parallel<T>(
     let index = 0;
 
     const runTask = async (task: unknown, i: number) => {
-        try {
-            return await toPromise(task);
-        } catch (e: any) {
+        return await toPromise(task).catch(e => {
             if (isAnyError(e)) {
                 e.message = `[parallel] 执行第 ${i} 个任务时出错: ${e.message}`;
                 e.cause = { index: i, tasks, options };
             }
             throw e;
-        }
+        });
     };
 
     async function worker() {
@@ -66,23 +64,20 @@ export default async function parallel<T>(
                 onStart(i, task);
             }
 
-            try {
-                ret[i] = await retry(maxRetry, () => runTask(task, i), {
-                    retryWait,
-                    onError: isFunction(onError)
-                        ? e => onError(i, e)
-                        : undefined,
-                    onRetry: isFunction(onRetry)
-                        ? (e, a) => onRetry(i, e, a)
-                        : undefined
-                });
-            } catch (e: any) {
+            ret[i] = await retry(maxRetry, () => runTask(task, i), {
+                retryWait,
+                onError: isFunction(onError) ? e => onError(i, e) : undefined,
+                onRetry: isFunction(onRetry)
+                    ? (e, a) => onRetry(i, e, a)
+                    : undefined
+            }).catch(e => {
                 if (isAnyError(e)) {
                     // @ts-ignore
                     (e.cause ?? (e.cause = {})).index = i;
                 }
+
                 throw e;
-            }
+            });
 
             if (isFunction(onData)) {
                 onData(i, ret[i]);
