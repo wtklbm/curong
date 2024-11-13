@@ -20,7 +20,7 @@
 export default function allAttrs(value: any): PropertyKey[] {
     try {
         return Reflect.ownKeys(value);
-    } catch {}
-
-    return [];
+    } catch {
+        return [];
+    }
 }
