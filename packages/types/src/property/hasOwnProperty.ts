@@ -1,3 +1,5 @@
+import { isNullOrUndefined } from '../nullable';
+
 /**
  * 确定一个值上是否具有指定名称的私有属性
  *
@@ -9,9 +11,8 @@ export default function hasOwnProperty(
     value: unknown,
     key: PropertyKey
 ): boolean {
-    try {
-        return Object.prototype.hasOwnProperty.call(value, key);
-    } catch {}
-
-    return false;
+    return (
+        !isNullOrUndefined(value) &&
+        Object.prototype.hasOwnProperty.call(value, key)
+    );
 }
