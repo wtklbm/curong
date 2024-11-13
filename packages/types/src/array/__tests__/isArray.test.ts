@@ -17,4 +17,9 @@ describe('@curong/types/isArray', () => {
         const fn = () => 1;
         expect(isArray(fn)).toBe(false);
     });
+    test('测试5', () => {
+        // @ts-ignore
+        Array.isArray = undefined;
+        expect(isArray([])).toBe(true);
+    });
 });
