@@ -1,7 +1,7 @@
 /**
  * 将字节数格式化为更易读的字符串表示形式，支持 `SI` 或 `IEC` 单位制，并允许指定小数位数
  *
- * `formatBytes` 函数用于将字节数转换为更具可读性的字符串表示形式。用户可以选择使用 `SI`（千进制）或 `IEC`（二进制）单位，并通过 `dp` 参数指定小数点后保留的位数
+ * `formatBytesSize` 函数用于将字节数转换为更具可读性的字符串表示形式。用户可以选择使用 `SI`（千进制）或 `IEC`（二进制）单位，并通过 `dp` 参数指定小数点后保留的位数
  *
  * @param bytes 需要格式化的字节数
  * @param si 是否使用 `SI` 单位（千进制）。默认为 `true`
@@ -10,13 +10,13 @@
  *
  * @example
  * ```typescript
- * console.log(formatBytes(1024)); // 1.0 KiB
- * console.log(formatBytes(1024, true)); // 1.0 KB
- * console.log(formatBytes(1048576)); // 1.0 MiB
- * console.log(formatBytes(1048576, false, 2)); // 1.00 MiB
+ * console.log(formatBytesSize(1024)); // 1.0 KiB
+ * console.log(formatBytesSize(1024, true)); // 1.0 KB
+ * console.log(formatBytesSize(1048576)); // 1.0 MiB
+ * console.log(formatBytesSize(1048576, false, 2)); // 1.00 MiB
  * ```
  */
-export default function formatBytes(bytes: number, si = true, dp = 1) {
+export default function formatBytesSize(bytes: number, si = true, dp = 1) {
     const thresh = si ? 1000 : 1024;
 
     if (Math.abs(bytes) < thresh) {
