@@ -13,6 +13,7 @@ export * from './random';
 export * from './regexp';
 export * from './sentences';
 export * from './spaces';
+export * from './split';
 export * from './starts';
 export * from './trim';
 export * from './words';
