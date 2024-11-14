@@ -110,7 +110,7 @@ export default function readlineFromCode(
         const byte: string | number = chunk[i];
 
         switch (byte) {
-            // '\r'
+            // 回车 (Carriage Return)，即 `\r`
             case '\u000D':
                 callback(toString(buffer), false);
                 const next = chunk[i + 1];
@@ -118,14 +118,18 @@ export default function readlineFromCode(
                 buffer.length = 0;
                 break;
 
-            // '\n'
+            // 行结束 (End of Line)，即 `\n`
             case '\u000A':
-            // LINE SEPARATOR (LS)
-            case '\u2028':
-            // PARAGRAPH SEPARATOR (PS)
-            case '\u2029':
-            // NEXT LINE (NEL)
+            // 垂直制表符，将光标移到下一个垂直制表符对齐处位置
+            case '\u000B':
+            // 换页符，将光标移到下一页开头
+            case '\u000C':
+            // 下一行 (Next Line)，用于表示文本流中的下一行
             case '\u0085':
+            // 行分隔符，用于分隔文本行而不引入换行符
+            case '\u2028':
+            // 段落分隔符，用于指示段落的结束
+            case '\u2029':
                 callback(toString(buffer), false);
                 buffer.length = 0;
                 break;
@@ -144,3 +148,5 @@ export default function readlineFromCode(
 
     return null;
 }
+
+const reg = /[\u000A\u000D\u0085\u2028\u2029\u000C\u000B]/;
