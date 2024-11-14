@@ -11,6 +11,7 @@
 - `bytesArray`: 将 `UTF-8` 字符串转换为字节数组
 - `bytesLength`: 计算 `UTF-8`、`UTF-16` 的字符串编码长度，计算的长度值与 `Buffer.from(str).length` 等同
 - `formatBytesSize`: 将字节数格式化为更易读的字符串表示形式，支持 `SI` 或 `IEC` 单位制，并允许指定小数位数
+- `parseBytesSize`: 解析字节字符串并将其转换为数字表示的字节数
 - `splitByBytes`: 将一个字符串根据字节拆分为一个字符串数组
 
 ## `character`
