@@ -74,6 +74,7 @@ const ZERO_WIDTH_CHARS = {
  * 看起来像空格的字符
  *
  * @note
+ *  - `\s`: 等价于 `[\f\n\r\t\v\u0020\u00A0\u1680\u180E\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\uFEFF]`
  *  - [`/\p{White_Space}/u`](https://mothereff.in/regexpu#input=/\p{White_Space}/u)
  *    - `\t-\r`、`\u0085`、`\u00A0`、`\u1680`、`\u2000-\u200A`、`\u2028`、`\u2029`、`\u202F`、`\u205F`、`\u3000`
  *  - [`/\p{Space_Separator}/u`](https://mothereff.in/regexpu#input=/\p{Space_Separator}/u)
@@ -86,7 +87,7 @@ const LIKE_SPACE_CHARS = {
     /** 不换行空格(无中断空格) */
     NBSP: '\u00A0',
     // /** [欧甘语空格标记](https://en.wikipedia.org/wiki/Ogham_(Unicode_block))空格 */
-    // OSM: '\u1680',
+    OSM: '\u1680',
     /** 窄的无中断空格 */
     NNBSP: '\u202F',
     /** 中型数学空间 */
