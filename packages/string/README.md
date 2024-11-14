@@ -85,6 +85,10 @@
 - `startTabsLength`: 获取字符串开头所包含的 `Tab` 的数量
 - `subSpaces`: 基于正则所匹配到的结果添加适当的空格
 
+## `split`
+
+- `splitLine`: 将文本以换行符拆分为多行
+
 ## `starts`
 
 - `notStarts`: 判断一个字符串是否不是以某些字符串开头
