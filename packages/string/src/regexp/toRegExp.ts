@@ -8,13 +8,14 @@ import toRegExpSource from './toRegExpSource';
  * @param flags 给字符串传递的 `flags`，默认为 `g`
  *
  * `flag` 包含下列值：
- * - `g`: 全局
- * - `i`: 大小写
- * - `m`: 多行
- * - `u`: Unicode
- * - `y`: 粘性
- * - `s`: [让 `.` 可以多行匹配](https://github.com/tc39/proposal-regexp-dotall-flag)
- * - `v`: [带有集合符号 + 字符串属性的](https://github.com/tc39/proposal-regexp-v-flag)
+ * - `d`: [包含每个捕获组子字符串开始和结束的索引 (hasIndices)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/hasIndices)
+ * - `g`: [全局 (global)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/global)
+ * - `i`: [忽略大小写 (ignoreCase)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/ignoreCase)
+ * - `m`: [多行匹配 (multiline)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/multiline)
+ * - `s`: [让 `.` 可以多行匹配 (dotAll)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/dotAll)，也可以看看 [proposal-regexp-dotall-flag](https://github.com/tc39/proposal-regexp-dotall-flag)
+ * - `u`: [Unicode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicode)
+ * - `v`: [带有集合符号 + 字符串属性的 (unicodeSets)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicodeSets)，也可以看看 [proposal-regexp-v-flag](https://github.com/tc39/proposal-regexp-v-flag)
+ * - `y`: [粘性 (sticky)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/sticky)
  *
  * @return 返回该字符串生成的正则表达式
  *
@@ -37,7 +38,7 @@ export default function toRegExp(
     str: string,
     flags: RegExp['flags'] = 'g'
 ): RegExp {
-    if (!/^[yumigsv]{0,7}$/.test(flags)) {
+    if (!/^[dgimsuvy]{0,7}$/.test(flags)) {
         throw new TypeError(`[toRegExp]: flags不是预期的值, "${flags}"`);
     }
 
