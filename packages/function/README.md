@@ -15,6 +15,7 @@
 - `ifThrow`: 执行一个任务，并在任务失败时执行后备任务或返回后备值
 - `noCatch`: 获取函数返回的值，并忽略抛出的错误
 - `retry`: 当执行失败后进行重试
+- `retryWithCondition`: 执行一个任务，直到条件满足或达到最大重试次数
 - `tryCatch`: `try...catch...` 语法的 `Promise` 包装
 
 ### `chain`
