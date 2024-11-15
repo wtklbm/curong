@@ -41,7 +41,7 @@ export default async function retryWithCondition<T>(
 
     if (retryWait) {
         if (!isUintSafeFilled(retryWait)) {
-            throw new Error(
+            throw new TypeError(
                 `[retryWithCondition] retryWait 必须是安全的无符号整数: ${retryWait}`
             );
         }
@@ -51,7 +51,7 @@ export default async function retryWithCondition<T>(
 
     if (maxRetries) {
         if (!isUintSafeFilled(maxRetries)) {
-            throw new Error(
+            throw new TypeError(
                 `[retryWithCondition] maxRetries 必须是安全的无符号整数: ${maxRetries}`
             );
         }
