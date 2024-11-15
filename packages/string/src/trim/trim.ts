@@ -33,5 +33,5 @@ export default function trim(
 
     const source = trimRegSource(options, extras);
 
-    return value.replace(new RegExp(`(?:^${source}|${source}$)`, 'g'), '');
+    return value.replace(new RegExp(`(?:^${source}+|${source}+$)`, 'g'), '');
 }

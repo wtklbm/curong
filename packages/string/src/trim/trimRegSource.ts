@@ -17,7 +17,7 @@ import type { TrimOptions } from './types';
  *  - `likeSpace`: 是否删除像空格的字符，默认为 `true`
  *  - `control`: 是否删除控制字符(回车、换行、制表符等)，默认为 `true`
  * @param extras 要验证的额外的自定义字符
- * @returns 返回处理好的正则表达式字符串
+ * @returns 返回处理好的正则表达式字符串，该字符串只是字符集合，需要自行添加正则标记 (例如 `g`)
  */
 export const trimRegSource = (
     options: TrimOptions = {},
@@ -37,12 +37,12 @@ export const trimRegSource = (
         { is: () => isTrue(control), ret: () => controlRegSource },
         {
             is: () => isStringFilled(extras) || isStringArray(extras),
-            ret: () => `[${[extras].flat().join('')}]`
+            ret: () => `${[extras].flat().join('')}`
         }
     ];
 
-    return `(?:${conditions
+    return `[${conditions
         .filter(v => v.is())
         .map(v => v.ret())
-        .join('|')})+`;
+        .join('')}]`;
 };

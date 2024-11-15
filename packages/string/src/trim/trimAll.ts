@@ -30,5 +30,8 @@ export default function trimAll(
         return value;
     }
 
-    return value.replace(new RegExp(trimRegSource(options, extras), 'g'), '');
+    return value.replace(
+        new RegExp(`${trimRegSource(options, extras)}+`, 'g'),
+        ''
+    );
 }

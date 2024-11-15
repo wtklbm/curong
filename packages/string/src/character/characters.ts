@@ -156,18 +156,18 @@ const CONTROL_CHARS = {
     PSEP: '\u2029'
 } as const;
 
-export const controlRegSource = `[${Object.values(CONTROL_CHARS).join('')}]`;
-export const zeroWidthRegSource = `[${Object.values(ZERO_WIDTH_CHARS).join('')}]`;
-export const likeSpaceRegSource = `[${Object.values(LIKE_SPACE_CHARS).join('')}]`;
+export const controlRegSource = Object.values(CONTROL_CHARS).join('');
+export const zeroWidthRegSource = Object.values(ZERO_WIDTH_CHARS).join('');
+export const likeSpaceRegSource = Object.values(LIKE_SPACE_CHARS).join('');
 
-export const controlReg = new RegExp(controlRegSource, 'g');
-export const zeroWidthReg = new RegExp(zeroWidthRegSource, 'g');
-export const likeSpaceReg = new RegExp(likeSpaceRegSource, 'g');
+export const controlReg = new RegExp(`[${controlRegSource}]`, 'g');
+export const zeroWidthReg = new RegExp(`[${zeroWidthRegSource}]`, 'g');
+export const likeSpaceReg = new RegExp(`[${likeSpaceRegSource}]`, 'g');
 
-export const controlStartReg = new RegExp(`^${controlRegSource}+`);
-export const zeroWidthStartReg = new RegExp(`^${zeroWidthRegSource}+`);
-export const likeSpaceStartReg = new RegExp(`^${likeSpaceRegSource}+`);
+export const controlStartReg = new RegExp(`^[${controlRegSource}]+`);
+export const zeroWidthStartReg = new RegExp(`^[${zeroWidthRegSource}]+`);
+export const likeSpaceStartReg = new RegExp(`^[${likeSpaceRegSource}]+`);
 
-export const controlEndReg = new RegExp(`${controlRegSource}+$`);
-export const zeroWidthEndReg = new RegExp(`${zeroWidthRegSource}+$`);
-export const likeSpaceEndReg = new RegExp(`${likeSpaceRegSource}+$`);
+export const controlEndReg = new RegExp(`[${controlRegSource}]+$`);
+export const zeroWidthEndReg = new RegExp(`[${zeroWidthRegSource}]+$`);
+export const likeSpaceEndReg = new RegExp(`[${likeSpaceRegSource}]+$`);

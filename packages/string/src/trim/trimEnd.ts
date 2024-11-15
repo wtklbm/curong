@@ -30,5 +30,5 @@ export default function trimEnd(
         return value;
     }
 
-    return value.replace(new RegExp(`${trimRegSource(options, extras)}$`), '');
+    return value.replace(new RegExp(`${trimRegSource(options, extras)}+$`), '');
 }

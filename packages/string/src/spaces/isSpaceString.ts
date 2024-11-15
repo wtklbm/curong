@@ -24,5 +24,5 @@ export default function isSpaceString(
     options?: TrimOptions,
     extras?: string | string[]
 ): boolean {
-    return new RegExp(`^${trimRegSource(options, extras)}$`).test(value);
+    return new RegExp(`^${trimRegSource(options, extras)}+$`).test(value);
 }
