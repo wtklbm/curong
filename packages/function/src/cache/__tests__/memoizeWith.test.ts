@@ -98,7 +98,7 @@ describe('@curong/function/memoizeWith', () => {
         expect(memoizedFunc.cache.size).toBe(1);
     });
 
-    test('基本缓存功能', () => {
+    test('测试7', () => {
         const func = jest.fn((x: number) => x * 2);
         const harsher = (x: number) => x;
         const memoizedFunc = memoizeWith(func, harsher);
@@ -108,7 +108,7 @@ describe('@curong/function/memoizeWith', () => {
         expect(func).toHaveBeenCalledTimes(1); // 确保函数只调用了一次，第二次返回缓存值
     });
 
-    test('缓存超时机制', async () => {
+    test('测试8', async () => {
         jest.useFakeTimers();
         const func = jest.fn((x: number) => x * 2);
         const harsher = (x: number) => x;
@@ -123,7 +123,7 @@ describe('@curong/function/memoizeWith', () => {
         jest.useRealTimers();
     });
 
-    test('缓存清除功能', () => {
+    test('测试9', () => {
         const func = jest.fn((x: number) => x * 2);
         const harsher = (x: number) => x;
         const memoizedFunc = memoizeWith(func, harsher);
@@ -134,7 +134,7 @@ describe('@curong/function/memoizeWith', () => {
         expect(func).toHaveBeenCalledTimes(2); // 缓存被清除，函数重新调用
     });
 
-    test('缓存删除功能', () => {
+    test('测试10', () => {
         const func = jest.fn((x: number) => x * 2);
         const harsher = (x: number) => x;
         const memoizedFunc = memoizeWith(func, harsher);
@@ -145,7 +145,7 @@ describe('@curong/function/memoizeWith', () => {
         expect(func).toHaveBeenCalledTimes(2); // 删除指定缓存项后，函数重新调用
     });
 
-    test('无超时参数的缓存功能', () => {
+    test('测试11', () => {
         const func = jest.fn((x: number) => x * 2);
         const harsher = (x: number) => x;
         const memoizedFunc = memoizeWith(func, harsher);
@@ -153,5 +153,101 @@ describe('@curong/function/memoizeWith', () => {
         expect(memoizedFunc(2)).toBe(4);
         expect(memoizedFunc(2)).toBe(4);
         expect(func).toHaveBeenCalledTimes(1); // 没有超时参数，缓存一直有效
+    });
+
+    test('测试12', async () => {
+        const func = jest.fn((x: number) => x * 2);
+        const harsher = (x: number) => x;
+        const memoizedFunc = memoizeWith(func, harsher, 250);
+
+        expect(memoizedFunc(2)).toBe(4);
+
+        setTimeout(() => {
+            expect(memoizedFunc(2)).toBe(4);
+            expect(func).toHaveBeenCalledTimes(2);
+        }, 3000);
+    });
+
+    test('测试13', async () => {
+        let i = 0;
+        const fn = async (id: number) => {
+            i++;
+            return id;
+        };
+        const fnMemoized = memoizeWith(fn, x => x);
+
+        expect(await fnMemoized(2)).toBe(2);
+        expect(i).toBe(1);
+
+        expect(await fnMemoized(2)).toBe(2);
+        expect(i).toBe(1);
+
+        expect(await fnMemoized(3)).toBe(3);
+        expect(i).toBe(2);
+
+        expect(await fnMemoized(3)).toBe(3);
+        expect(i).toBe(2);
+
+        expect(await fnMemoized(3)).toBe(3);
+        expect(i).toBe(2);
+
+        expect(await fnMemoized(4)).toBe(4);
+        expect(i).toBe(3);
+    });
+
+    test('测试14', async () => {
+        let i = 0;
+        const fn = async (id: number) => {
+            i++;
+            throw new Error(`${id}`);
+        };
+        const fnMemoized = memoizeWith(fn, x => x);
+
+        await expect(fnMemoized(2)).rejects.toThrowError('2');
+        expect(i).toBe(1);
+
+        await expect(fnMemoized(2)).rejects.toThrowError('2');
+        expect(i).toBe(1);
+    });
+
+    test('测试15', async () => {
+        let i = 0;
+        const fn = async (id: number) => {
+            i++;
+            return id;
+        };
+        const fnMemoized = memoizeWith(fn, id => (id <= 3 ? 2 : id));
+
+        expect(await fnMemoized(2)).toBe(2);
+        expect(i).toBe(1);
+
+        expect(await fnMemoized(3)).toBe(2);
+        expect(i).toBe(1);
+
+        expect(await fnMemoized(4)).toBe(4);
+        expect(i).toBe(2);
+
+        expect(await fnMemoized(5)).toBe(5);
+        expect(i).toBe(3);
+    });
+
+    test('测试16', async () => {
+        let i = 0;
+        const fn = async (id: number) => {
+            i++;
+            return id;
+        };
+        const fnMemoized = memoizeWith(fn, x => x, 30);
+
+        expect(await fnMemoized(2)).toBe(2);
+        expect(i).toBe(1);
+
+        expect(await fnMemoized(2)).toBe(2);
+        expect(i).toBe(1);
+
+        setTimeout(async () => {
+            expect(await fnMemoized(2)).toBe(2);
+            expect(i).toBe(2);
+        }, 50);
     });
 });
