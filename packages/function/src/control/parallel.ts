@@ -19,6 +19,7 @@ import type { ParallelOptions } from './types';
  *  - `onRetry`: 当任务执行失败并重试时执行的回调函数
  * @returns 返回一个包含任务结果的数组 (如果有任务执行失败，则可能是**稀疏数组**)
  * @throws 如果任务执行失败且没有提供 `onError` 来处理错误，将通过 `AggregateError` 抛出自第一次执行以来的所有错误
+ * @note 与该方法的调用方式不同，`asyncLimit` 方法可以包装一个函数，并在外部控制它们并行执行
  * @example
  *
  * ```typescript
