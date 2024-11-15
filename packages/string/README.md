@@ -41,6 +41,7 @@
 
 - `findMinIndent`: 查找字符串每一行开头的公共前导空格数
 - `padIndent`: 对字符串的每一行进行缩进
+- `trimIndent`: 删除字符串每一行开头的公共前导空格
 
 ## `inside`
 
