@@ -40,6 +40,7 @@
 ## `indent`
 
 - `findMinIndent`: 查找字符串每一行开头的公共前导空格数
+- `padIndent`: 对字符串的每一行进行缩进
 
 ## `inside`
 
