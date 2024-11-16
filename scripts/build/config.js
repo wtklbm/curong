@@ -56,7 +56,9 @@ function config(options = {}) {
         }),
 
         // 处理 `json` 格式的模块
-        json,
+        json({
+            compact: true
+        }),
 
         esmShim()
     ];
