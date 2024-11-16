@@ -1,4 +1,4 @@
-import { isArrayFilled, isNumber } from '@curong/types';
+import { isArrayFilled, isNumber, isZero } from '@curong/types';
 
 import type { FromCascadeKeysOptions } from './types';
 
@@ -63,8 +63,8 @@ export default function fromCascadeKeys(
         first = first.slice(1);
     }
 
-    // 如果属性数组中只有一项，则直接返回
-    if (keys.length === 1) {
+    // 如果属性数组为空，则直接返回 `first`
+    if (isZero(keys.length)) {
         return first;
     }
 
