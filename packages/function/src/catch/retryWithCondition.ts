@@ -36,7 +36,7 @@ export default async function retryWithCondition<T>(
     options?: RetryWithConditionOptions
 ): Promise<T> {
     const { retryWait, maxRetries } = { ...options };
-    let retryWaitFn = () => {};
+    let retryWaitFn = async () => {};
     let maxRetriesFn = () => {};
 
     if (retryWait) {
