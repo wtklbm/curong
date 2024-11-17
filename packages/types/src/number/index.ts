@@ -15,6 +15,8 @@ export { default as isNumberValid } from './isNumberValid';
 export { default as isPrimeNumber } from './isPrimeNumber';
 export { default as isZero } from './isZero';
 
+export * from './isNumberValid';
+
+export * from './bases';
 export * from './float';
 export * from './int';
-export * from './isNumberValid';
