@@ -5,6 +5,11 @@ import isFinite from '../isFinite';
  *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
+ * @example
+ * ```typescript
+ * const ret = isFloat(parseFloat('-1e4.234232232332332'));
+ * console.log(ret); // true
+ * ```
  * @note
  *
  * `JavaScript` 的 `Number` 类型是一个基于 `IEEE 754` 的 [双精度 64 位二进制格式](https://zh.wikipedia.org/wiki/雙精度浮點數) 值，类似于 `Java` 或者 `C#` 中的 `double`。
