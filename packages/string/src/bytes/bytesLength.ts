@@ -8,9 +8,8 @@ import codePointAt from '../character/codePointAt';
  * @param value 要计算编码长度的字符串
  * @returns 如果该字符串符合 `UTF-16` 编码的代码点的计算规则，
  *   则返回计算好的编码长度，否则返回 `null`。
- *
+ * @note 更简便的写法为: `new TextEncoder().encode(value).byteLength`
  * @example
- *
  * ```typescript
  * const ret = bytesLength('中国');
  * console.log(ret); // 6
