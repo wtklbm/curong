@@ -15,5 +15,6 @@ export { default as assertNumberValid } from './assertNumberValid';
 export { default as assertPrimeNumber } from './assertPrimeNumber';
 export { default as assertZero } from './assertZero';
 
+export * from './bases';
 export * from './float';
 export * from './int';
