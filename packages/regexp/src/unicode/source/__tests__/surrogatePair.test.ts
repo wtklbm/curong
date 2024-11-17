@@ -16,6 +16,9 @@ describe('@curong/regexp/surrogatePair', () => {
 
     test('测试2', () => {
         expect(isSurrogatePair('😊')).toBe(true);
+        expect(isSurrogatePair('𠮷')).toBe(true);
+        expect(isSurrogatePair('𩸽')).toBe(true);
+        expect(isSurrogatePair('𥧄')).toBe(true);
         expect(isSurrogatePair('\uD834\uDD1E')).toBe(true);
         expect(isSurrogatePair('\uD83D\uDE00')).toBe(true); // (😃)
         expect(isSurrogatePair('\uD83D\uDE03')).toBe(true); // (😃)
