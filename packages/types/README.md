@@ -221,6 +221,12 @@
 - `isPrimeNumber`: 是不是一个质数 (素数)
 - `isZero`: 是不是 `0`
 
+##### `bases`
+
+- `isBinaryString`: 是不是一个二进制表示形式的数字字符串，例如 `0b1010`
+- `isHexString`: 是不是一个十六进制表示形式的数字字符串，例如 `0xA`
+- `isOctalString`: 是不是一个八进制表示形式的数字字符串，例如 `0o12`
+
 ##### `float`
 
 - `isFloat`: 是不是一个浮点数，即不是整数的数
