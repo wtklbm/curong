@@ -3,8 +3,13 @@
  *
  * @param value 要验证的值。包含正整数和负整数，也包括安全的整数和不安全的整数。但不包含 {@link NaN} 和正负 {@link Infinity}
  * @returns 是则返回 `true`，否则为 `false`。
+ * @example
+ * ```typescript
+ * const ret = isInt(parseInt('000012'));
+ * console.log(ret); // true
+ * ```
+ * @note
  * @polyfill
- *
  * ``` javascript
  * Number.isInteger = Number.isInteger || function(value) {
  *     return typeof value === 'number' &&
@@ -12,7 +17,6 @@
  *       Math.floor(value) === value;
  * };
  * ```
- *
  * @note
  *
  * 该方法是 {@link Number.isInteger} 的别名。
