@@ -60,12 +60,12 @@ describe('@curong/function/asyncLimit', () => {
         expect(y).toBe(0);
         expect(z).toBe(0);
 
-        await delay(150);
+        await delay(100);
         expect(x).toBe(1);
         expect(y).toBe(0);
         expect(z).toBe(0);
 
-        await delay(150);
+        await delay(200);
         expect(x).toBe(1);
         expect(y).toBe(2);
         expect(z).toBe(0);
