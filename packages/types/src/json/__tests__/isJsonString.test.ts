@@ -72,4 +72,16 @@ describe('@curong/types/isJsonString', () => {
         expect(isJsonString('{}')).toBe(true);
         expect(isJsonString('{ "": 0 }')).toBe(true);
     });
+
+    test('测试5', () => {
+        expect(isJsonString('null')).toBe(true);
+        expect(isJsonString('false')).toBe(true);
+        expect(isJsonString('true')).toBe(true);
+        expect(isJsonString('1234')).toBe(true);
+        expect(isJsonString('{ "key": "value" }')).toBe(true);
+
+        expect(isJsonString('{ key: "value" }')).toBe(false);
+        expect(isJsonString("{ 'key': 'value' }")).toBe(false);
+        expect(isJsonString('nope')).toBe(false);
+    });
 });
