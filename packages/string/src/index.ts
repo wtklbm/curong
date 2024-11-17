@@ -6,6 +6,7 @@ export * from './character';
 export * from './chars';
 export * from './corrector';
 export * from './find';
+export * from './indent';
 export * from './inside';
 export * from './match';
 export * from './quote';
