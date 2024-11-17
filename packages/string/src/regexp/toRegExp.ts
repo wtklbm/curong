@@ -38,7 +38,7 @@ export default function toRegExp(
     str: string,
     flags: RegExp['flags'] = 'g'
 ): RegExp {
-    if (!/^[dgimsuvy]{0,7}$/.test(flags)) {
+    if (!/^[dgimsuvy]{0,8}$/.test(flags)) {
         throw new TypeError(`[toRegExp]: flags不是预期的值, "${flags}"`);
     }
 
