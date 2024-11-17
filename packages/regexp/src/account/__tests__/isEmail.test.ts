@@ -1,5 +1,15 @@
 import { isEmail } from '..';
 
+const repeat = (str: string, count: number) => {
+    let result = '';
+
+    for (; count; count--) {
+        result += str;
+    }
+
+    return result;
+};
+
 describe('@curong/regexp/isEmail', () => {
     test('测试1', () => {
         expect(isEmail('xx@xx@xx.com')).toBe(false);
@@ -163,5 +173,75 @@ describe('@curong/regexp/isEmail', () => {
         ];
 
         expect(emails.every(isEmail)).toBe(false);
+    });
+
+    test('测试7', () => {
+        expect(isEmail('foo@bar.com')).toBe(true);
+        expect(isEmail('x@x.au')).toBe(true);
+        expect(isEmail('foo@bar.com.au')).toBe(true);
+        expect(isEmail('foo+bar@bar.com')).toBe(true);
+        expect(isEmail('test123+ext@gmail.com')).toBe(true);
+        expect(isEmail('some.name.midd.leNa.me+extension@GoogleMail.com')).toBe(
+            true
+        );
+        expect(isEmail(`${repeat('a', 64)}@${repeat('a', 63)}.com`)).toBe(true);
+        expect(isEmail(`${repeat('a', 64)}@${repeat('a', 63)}.com`)).toBe(true);
+        expect(isEmail(`${repeat('a', 31)}@gmail.com`)).toBe(true);
+        expect(isEmail('test@gmail.com')).toBe(true);
+        expect(isEmail('test.1@gmail.com')).toBe(true);
+        expect(isEmail('z@co.c')).toBe(true);
+        expect(isEmail(`${repeat('a', 64)}@${repeat('a', 64)}.com`)).toBe(true);
+    });
+
+    test('测试8', () => {
+        expect(isEmail('hans.m端ller@test.com')).toBe(false);
+        expect(isEmail('hans@m端ller.com')).toBe(false);
+        expect(isEmail('test|123@m端ller.com')).toBe(false);
+        expect(isEmail('"foobar"@example.com')).toBe(false);
+        expect(isEmail('"  foo  m端ller "@example.com')).toBe(false);
+        expect(isEmail('"foo\\@bar"@example.com')).toBe(false);
+
+        expect(isEmail('invalidemail@')).toBe(false);
+        expect(isEmail('invalid.com')).toBe(false);
+        expect(isEmail('@invalid.com')).toBe(false);
+        expect(isEmail('foo@bar.com.')).toBe(false);
+        expect(isEmail('somename@ｇｍａｉｌ.com')).toBe(false);
+        expect(isEmail('foo@bar.co.uk.')).toBe(false);
+
+        expect(
+            isEmail(
+                'ｇｍａｉｌｇｍａｉｌｇｍａｉｌｇｍａｉｌｇｍａｉｌ@gmail.com'
+            )
+        ).toBe(false);
+        expect(isEmail(`${repeat('a', 64)}@${repeat('a', 251)}.com`)).toBe(
+            false
+        );
+        expect(isEmail(`${repeat('a', 65)}@${repeat('a', 250)}.com`)).toBe(
+            false
+        );
+        expect(isEmail('a')).toBe(false);
+        expect(isEmail(`)}.${repeat('a', 58)}.com`)).toBe(false);
+        expect(isEmail('test1@invalid.co m')).toBe(false);
+        expect(isEmail('test2@invalid.co m')).toBe(false);
+        expect(isEmail('test3@invalid.co m')).toBe(false);
+        expect(isEmail('test4@invalid.co m')).toBe(false);
+        expect(isEmail('test5@invalid.co m')).toBe(false);
+        expect(isEmail('test6@invalid.co m')).toBe(false);
+        expect(isEmail('test7@invalid.co m')).toBe(false);
+        expect(isEmail('test8@invalid.co m')).toBe(false);
+        expect(isEmail('test9@invalid.co m')).toBe(false);
+        expect(isEmail('test10@invalid.co m')).toBe(false);
+        expect(isEmail('test11@invalid.co m')).toBe(false);
+        expect(isEmail('test12@invalid.co　m')).toBe(false);
+        expect(isEmail('test13@invalid.co　m')).toBe(false);
+        expect(isEmail('multiple..dots@stillinvalid.com')).toBe(false);
+        expect(isEmail('test123+invalid! sub_address@gmail.com')).toBe(false);
+        expect(isEmail('gmail...ignores...dots...@gmail.com')).toBe(false);
+        expect(isEmail('ends.with.dot.@gmail.com')).toBe(false);
+        expect(isEmail('multiple..dots@gmail.com')).toBe(false);
+        expect(isEmail('wrong()[]",:;<>@@gmail.com')).toBe(false);
+        expect(isEmail('"wrong()[]",:;<>@@gmail.com')).toBe(false);
+        expect(isEmail('username@domain.com�')).toBe(false);
+        expect(isEmail('username@domain.com©')).toBe(false);
     });
 });
