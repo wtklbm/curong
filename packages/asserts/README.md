@@ -193,6 +193,12 @@
 - `assertPrimeNumber`: 是不是一个质数 (素数)
 - `assertZero`: 是不是 `0`
 
+##### `bases`
+
+- `assertBinaryString`: 是不是一个二进制表示形式的数字字符串，例如 `0b1010`
+- `assertHexString`: 是不是一个十六进制表示形式的数字字符串，例如 `0xA`
+- `assertOctalString`: 是不是一个八进制表示形式的数字字符串，例如 `0o12`
+
 ##### `float`
 
 - `assertFloat`: 是不是一个浮点数，即不是整数的数
