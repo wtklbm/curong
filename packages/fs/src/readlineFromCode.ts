@@ -148,5 +148,3 @@ export default function readlineFromCode(
 
     return null;
 }
-
-const reg = /[\u000A\u000D\u0085\u2028\u2029\u000C\u000B]/;
