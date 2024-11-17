@@ -18,8 +18,13 @@ export default async function windowsLocal(): Promise<string | null> {
         return null;
     }
 
-    const command = 'powershell.exe Get-UICulture';
-    const { stdout } = await exec(command, { encoding: 'utf8' });
+    const { stdout } = await exec(
+        'powershell.exe -Command "[System.Globalization.CultureInfo]::CurrentCulture.Name"',
+        {
+            encoding: 'utf8',
+            env: process.env
+        }
+    );
 
-    return (stdout as string).split('\n')[3].split(/ +/)[1];
+    return stdout as string;
 }
