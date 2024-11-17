@@ -4,8 +4,18 @@ describe('@curong/regexp/ascii', () => {
     const regex = new RegExp(ascii);
 
     test('粗略测试', () => {
-        const s: string[] = ['\u0000', '\u007F'];
-        expect(s.every(v => regex.test(v))).toBe(true);
+        const ok: string[] = [
+            '\u0000',
+            '\u007F',
+            'foobar',
+            '0987654321',
+            'test@example.com',
+            '1234abcDEF'
+        ];
+        expect(ok.every(v => regex.test(v))).toBe(true);
+
+        const err = ['ｆｏｏBar', 'ｘｙｚ０９８', '１２３456', 'ｶﾀｶﾅ'];
+        expect(err.every(v => regex.test(v))).toBe(false);
     });
 
     test('匹配范围 \\u0000 的起始字符', () => {
