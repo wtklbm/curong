@@ -12,6 +12,7 @@
  *  - [兼容 IE8 及以上版本的 polyfill](https://github.com/ungap/global-this)
  *  - [一个小实现](https://github.com/sagi/globalThis/blob/master/index.js)
  *  - [一个小实现的 TS 版本](https://github.com/jasmith79/global-this/blob/master/src/global-this.ts)
+ *  - [只需导入即可的 polyfill 库](https://github.com/atypiape/polyfill-global-this)
  *  - [Babel 插件中的实现](https://github.com/niksy/babel-plugin-transform-globalthis/blob/master/index.js)
  *  - [ECMAScript 提案中的实现](https://github.com/tc39/proposal-global/blob/master/polyfill.js)
  *  - [更多 Github 搜索](https://github.com/search?q=globalThis&type=repositories)
