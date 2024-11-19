@@ -4,7 +4,7 @@ import { extname, join } from 'path';
 import { format } from '@curong/term';
 import { isArrayFilled, isStringFilled } from '@curong/types';
 
-import readLnk from './readLnk';
+import readLnk from '../read/readLnk';
 
 /**
  * 从一个文件夹中查找指定的文件夹

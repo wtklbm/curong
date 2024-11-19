@@ -4,7 +4,8 @@ import { dirname } from 'path';
 import { format } from '@curong/term';
 import { isArray, isObject } from '@curong/types';
 
-import mkdir from './mkdir';
+import mkdir from '../create/mkdir';
+
 import type { WriteFileOptions } from './types';
 
 /**

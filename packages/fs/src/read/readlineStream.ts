@@ -4,7 +4,8 @@ import { createInterface } from 'readline';
 import { format } from '@curong/term';
 import { isFunctionFilled } from '@curong/types';
 
-import isFile from './isFile';
+import isFile from '../is/isFile';
+
 import type { ReadlineStreamCallback } from './types';
 
 /**

@@ -4,9 +4,10 @@ import { dirname, isAbsolute, join, normalize, relative } from 'path';
 import { format } from '@curong/term';
 import { isStringFilled } from '@curong/types';
 
-import isDir from './isDir';
-import mkdir from './mkdir';
-import readLnk from './readLnk';
+import mkdir from '../create/mkdir';
+import isDir from '../is/isDir';
+import readLnk from '../read/readLnk';
+
 import type { DestPathOptions } from './types';
 
 /**

@@ -2,9 +2,10 @@ import { join } from 'path';
 
 import { format } from '@curong/term';
 
-import deleteOne from './deleteOne';
-import fileList from './fileList';
-import isDir from './isDir';
+import isDir from '../is/isDir';
+import fileList from '../read/fileList';
+
+import rm from './rm';
 
 /**
  * 清空一个文件夹
@@ -27,6 +28,6 @@ export default async function clearDir(pathString: string): Promise<void> {
     let item;
 
     while ((item = files.shift())) {
-        await deleteOne(join(pathString, item));
+        await rm(join(pathString, item));
     }
 }

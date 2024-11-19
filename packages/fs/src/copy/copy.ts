@@ -3,11 +3,12 @@ import { dirname, join } from 'path';
 
 import { format } from '@curong/term';
 
+import mkdir from '../create/mkdir';
+import isDir from '../is/isDir';
+import isFile from '../is/isFile';
+import readSymbolicLink from '../read/readSymbolicLink';
+
 import copySymbolicLink from './copySymbolicLink';
-import isDir from './isDir';
-import isFile from './isFile';
-import mkdir from './mkdir';
-import symbolicLink from './symbolicLink';
 import type { CopyFileOptions } from './types';
 
 const _copyFile = async (from: string, to: string, forcibly = false) => {
@@ -59,7 +60,7 @@ export default async function copy(
     let link: string | null;
 
     // 如果源是符号链接
-    if ((link = await symbolicLink(fromPath))) {
+    if ((link = await readSymbolicLink(fromPath))) {
         return await copySymbolicLink(link, toPath);
     }
 
@@ -112,7 +113,7 @@ export default async function copy(
         from = join(fromPath, path);
         to = join(toPath, path);
 
-        if ((link = await symbolicLink(fromPath))) {
+        if ((link = await readSymbolicLink(fromPath))) {
             await copySymbolicLink(link, to);
         } else if (await isFile(from)) {
             await _copyFile(from, to, forcibly);

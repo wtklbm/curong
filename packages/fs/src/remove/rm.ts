@@ -3,8 +3,8 @@ import { rmdir, unlink } from 'fs/promises';
 
 import { format } from '@curong/term';
 
-import isDir from './isDir';
-import isFile from './isFile';
+import isDir from '../is/isDir';
+import isFile from '../is/isFile';
 
 /**
  * 删除一个文件或一个文件夹
@@ -14,7 +14,7 @@ import isFile from './isFile';
  *
  * - 如果 `path` 不是一个有效路径，则会抛出异常
  */
-export default async function deleteOne(path: PathLike): Promise<void> {
+export default async function rm(path: PathLike): Promise<void> {
     if (await isDir(path)) {
         return await rmdir(path, { recursive: true });
     }
@@ -24,8 +24,8 @@ export default async function deleteOne(path: PathLike): Promise<void> {
     }
 
     throw format({
-        name: 'deleteOne',
-        message: 'path 不是一个有效路径',
+        name: 'rm',
+        message: 'path 不是一个文件或文件夹',
         data: { path }
     });
 }

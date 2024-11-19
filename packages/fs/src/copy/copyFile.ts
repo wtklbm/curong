@@ -3,9 +3,10 @@ import { promises } from 'fs';
 import { format } from '@curong/term';
 import { isTrue } from '@curong/types';
 
-import deleteOne from './deleteOne';
-import destPath from './destPath';
-import diffFile from './diffFile';
+import diffFile from '../diff/diffFile';
+import destPath from '../move/destPath';
+import rm from '../remove/rm';
+
 import type { CopyFileOptions } from './types';
 
 /**
@@ -49,7 +50,7 @@ export default async function copyFile(
             await promises.copyFile(filePath, destString);
         } catch (error) {
             if (isTrue(options.forcibly)) {
-                await deleteOne(filePath);
+                await rm(filePath);
 
                 return await copyFile(filePath, srcDir, desDir, {
                     forcibly: false

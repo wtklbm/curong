@@ -3,10 +3,10 @@ import { dirname } from 'path';
 
 import { format } from '@curong/term';
 
-import isDir from './isDir';
-import isFile from './isFile';
-import isSymbolicLink from './isSymbolicLink';
-import mkdir from './mkdir';
+import mkdir from '../create/mkdir';
+import isDir from '../is/isDir';
+import isFile from '../is/isFile';
+import isSymbolicLink from '../is/isSymbolicLink';
 
 const name = 'copySymbolicLink';
 
