@@ -3,7 +3,7 @@
  *
  * @param a 第一个数组
  * @param b 第二个数组
- * @returns 返回一个去重后的新数组，包含所有来自 `a` 和 `b` 的元素，并去除重复项
+ * @returns 返回一个去重后的新数组，包含所有来自 `a` 和 `b` 的元素
  * @example
  * ```typescript
  * console.log(union([1, 2, 3], [3, 4, 5])); // [1, 2, 3, 4, 5]
