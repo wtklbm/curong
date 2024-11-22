@@ -116,12 +116,7 @@ export default function readlineFromCode(
         };
     } else {
         throw new TypeError('chunk 必须是 Buffer 或 string', {
-            cause: {
-                function: 'readlineFromCode',
-                chunk,
-                encoding,
-                callback: callback.toString()
-            }
+            cause: { function: 'readlineFromCode', chunk, encoding, callback }
         });
     }
 
