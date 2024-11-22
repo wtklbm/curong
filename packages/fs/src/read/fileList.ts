@@ -1,8 +1,6 @@
 import { Dirent, promises } from 'fs';
 import { extname, join } from 'path';
 
-import { format } from '@curong/term';
-
 import readLnk from './readLnk';
 import type { FileListOptions } from './types';
 
@@ -11,11 +9,15 @@ import type { FileListOptions } from './types';
  *
  * 支持从 Windows 快捷方式(`lnk`) 中读取目录或文件
  *
- * @param {string} dirName 文件夹目录
+ * @param dirName 文件夹目录
  * @param options 配置选项
  *  - `depthOnce` 是否只获取一层深度的数据，默认为 `false`
  * @return 返回一个包含文件名的列表
  * @throws 如果读取文件夹失败，则会抛出异常
+ * @note
+ *  - 在调用 `fileList()` 之前，请勿使用 `access()` 检查文件的可访问性。
+ *   这样做会引入竞态条件，因为其他进程可能会在两次调用之间更改文件的状态。
+ *   相反，用户代码应该直接 `read` 文件并处理文件不可访问时引发的错误。
  * @todo 将参数变为一个 `options`： { ignored = '', depth = 0 }
  */
 export default async function fileList(
@@ -31,10 +33,8 @@ export default async function fileList(
             withFileTypes: true
         })
         .catch(error => {
-            throw format({
-                name: 'readdir',
-                message: '读取文件夹失败',
-                data: { dirName, options, error }
+            throw new Error('读取文件夹失败', {
+                cause: { function: 'fileList', dirName, options, error }
             });
         });
 
