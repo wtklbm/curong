@@ -53,7 +53,7 @@ export default async function readlineStream(
         }
     }
 
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
         const stream = createInterface({
             input: createReadStream(path, {
                 encoding: encoding as BufferEncoding,
@@ -66,7 +66,7 @@ export default async function readlineStream(
 
         stream.on('line', callback as ReadlineStreamCallback);
         stream.on('error', error => {
-            const e = new Error('文件读取失败', {
+            throw new Error('文件读取失败', {
                 cause: {
                     function: 'readlineStream',
                     error,
@@ -75,7 +75,6 @@ export default async function readlineStream(
                     callback
                 }
             });
-            reject(e);
         });
         stream.once('close', () => {
             stream.removeAllListeners();
