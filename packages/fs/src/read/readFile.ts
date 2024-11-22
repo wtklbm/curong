@@ -25,12 +25,7 @@ export default async function readFile(
 
     return promises.readFile(filePath, options).catch(error => {
         throw new Error('文件读取失败', {
-            cause: {
-                function: 'readFile',
-                filePath,
-                options,
-                error,
-            }
+            cause: { function: 'readFile', filePath, options, error }
         });
     }) as unknown as string;
 }
