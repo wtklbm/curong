@@ -72,7 +72,7 @@ export default async function readlineStream(
                     error,
                     path,
                     encoding,
-                    callback: callback.toString()
+                    callback
                 }
             });
             reject(e);
