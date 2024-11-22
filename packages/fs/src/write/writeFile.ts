@@ -1,7 +1,6 @@
 import { promises } from 'fs';
 import { dirname } from 'path';
 
-import { format } from '@curong/term';
 import { isArray, isObject } from '@curong/types';
 
 import mkdir from '../create/mkdir';
@@ -23,7 +22,11 @@ import type { WriteFileOptions } from './types';
  *  - 如果将 `data` 转换为 `JSON` 时失败，则会抛出异常
  *  - 如果创建文件夹失败，则会抛出异常
  *  - 如果写入文件失败，则会抛出异常
- * @note 如果要频繁的操作同一个文件，请使用 `Writer` 类
+ * @note
+ * - 如果要频繁的操作同一个文件，请使用 `Writer` 类
+ * - 在调用 `writeFile()` 之前，请勿使用 `access()` 检查文件的可访问性。
+ *   这样做会引入竞态条件，因为其他进程可能会在两次调用之间更改文件的状态。
+ *   相反，用户代码应该直接 `write` 文件并处理文件不可访问时引发的错误。
  */
 export default async function writeFile(
     filePath: string,
@@ -43,33 +46,24 @@ export default async function writeFile(
         try {
             data = JSON.stringify(data);
         } catch (error) {
-            throw format({
-                name: 'writeFile',
-                message: '数据序列化失败，无法转换为 `JSON` 格式',
-                data: { data, error }
+            throw new Error('数据序列化失败，无法转换为 JSON 格式', {
+                cause: { function: 'writeFile', data, error }
             });
         }
     }
 
     // 如果是自动创建目录
     if (options.isMkdir) {
-        await mkdir(dirname(filePath)).catch((error: Error) => {
-            throw format({
-                name: 'writeFile',
-                message: '创建目录失败',
-                data: { filePath, error }
+        await mkdir(dirname(filePath)).catch(error => {
+            throw new Error('创建目录失败', {
+                cause: { function: 'writeFile', filePath, error }
             });
         });
     }
 
-    return await promises.writeFile(filePath, data, options).then(
-        data => data,
-        error => {
-            throw format({
-                name: 'writeFile',
-                message: '写文件失败',
-                data: { filePath, data, options, error }
-            });
-        }
-    );
+    return await promises.writeFile(filePath, data, options).catch(error => {
+        throw new Error('写文件失败', {
+            cause: { function: 'writeFile', filePath, data, options, error }
+        });
+    });
 }
