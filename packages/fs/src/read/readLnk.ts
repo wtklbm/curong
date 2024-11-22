@@ -3,7 +3,6 @@ import { normalize } from 'path';
 import { platform } from 'process';
 import { promisify } from 'util';
 
-import { format } from '@curong/term';
 import { isNull } from '@curong/types';
 
 /**
@@ -21,18 +20,18 @@ function getCommand(pathString: string): string {
  *
  * @param pathString 路径字符串
  * @returns 返回解析好的原始地址字符串
- * @throws
- *
- * - 如果解析文件失败，则会抛出异常
+ * @throws 如果解析文件失败，则会抛出异常
+ * @note
+ *  - 在调用 `readLnk()` 之前，请勿使用 `access()` 检查文件的可访问性。
+ *   这样做会引入竞态条件，因为其他进程可能会在两次调用之间更改文件的状态。
+ *   相反，用户代码应该直接 `read` 文件并处理文件不可访问时引发的错误。
  */
 export default async function readLnk(pathString: string): Promise<string> {
     pathString = normalize(pathString);
 
     if (platform !== 'win32') {
-        return format({
-            name: 'readLnk',
-            message: '无法解析不是 ".lnk" 后缀的文件',
-            data: { pathString }
+        throw new TypeError('无法解析不是 ".lnk" 后缀的文件', {
+            cause: { function: 'readLnk', pathString }
         });
     }
 
@@ -42,10 +41,8 @@ export default async function readLnk(pathString: string): Promise<string> {
     });
 
     if (!isNull(stderr)) {
-        throw format({
-            name: 'readLnk',
-            message: '"lnk" 文件解析失败',
-            data: { pathString, stderr }
+        throw new Error('解析 ".lnk" 文件时失败', {
+            cause: { function: 'readLnk', pathString, stderr, stdout }
         });
     }
 
