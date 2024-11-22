@@ -36,7 +36,7 @@
 - `readFile`: 将文件的内容读取为指定格式的字符串
 - `readFragment`: 从一个文件中读取一段长度的内容
 - `readline`: 一行一行地读取文本中的内容
-- `readlineFromCode`: 一行一行地读取编程语言文件中的文本内容
+- `readlineFromCode`: 一行一行地读取源代码中的文本内容
 - `readlineStream`: 基于流的形式一行一行的读取文件的内容
 - `readLnk`: 解析 `lnk` 文件的原始地址
 - `readSymbolicLink`: 读取符号链接所指向的原始路径
