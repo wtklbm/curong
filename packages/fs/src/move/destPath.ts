@@ -1,7 +1,6 @@
 import { promises } from 'fs';
 import { dirname, isAbsolute, join, normalize, relative } from 'path';
 
-import { format } from '@curong/term';
 import { isStringFilled } from '@curong/types';
 
 import mkdir from '../create/mkdir';
@@ -38,11 +37,12 @@ export default async function destPath(
         !isStringFilled(srcDir) ||
         !isStringFilled(desDir)
     ) {
-        throw format({
-            name: 'destPath',
-            message: '参数错误',
-            data: { filePath, srcDir, desDir, options }
-        });
+        throw new TypeError(
+            '[destPath] filePath、srcDir 或者 desDir 必须为非空字符串',
+            {
+                cause: { filePath, srcDir, desDir, options }
+            }
+        );
     }
 
     // 进行路径格式化操作
