@@ -5,8 +5,10 @@ import { isElectron } from '@curong/types';
  *
  * @throws 如果不是则会抛出类型异常
  */
-export default function assertElectron() {
+export default function assertElectron(this: any) {
     if (!isElectron()) {
-        throw new TypeError('[assertElectron] 当前的执行环境不是 Electron');
+        throw new TypeError('[assertElectron] 当前的执行环境不是 Electron', {
+            cause: { this: this }
+        });
     }
 }

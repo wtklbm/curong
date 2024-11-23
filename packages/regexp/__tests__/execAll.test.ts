@@ -29,7 +29,7 @@ describe('@curong/regexp/execAll', () => {
     test('测试3', () => {
         // @ts-ignore
         expect(() => execAll(/\d+/g, 'wo', 'xxx')).toThrow(
-            '[execAll]: id不是预期的值, "xxx"'
+            '[execAll]: id 不是预期的值'
         );
     });
 

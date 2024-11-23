@@ -5,8 +5,10 @@ import { isAndroid } from '@curong/types';
  *
  * @throws 如果不是则会抛出类型异常
  */
-export default function assertAndroid() {
+export default function assertAndroid(this: any) {
     if (!isAndroid()) {
-        throw new TypeError('[assertAndroid] 当前的执行环境不是 Android');
+        throw new TypeError('[assertAndroid] 当前的执行环境不是 Android', {
+            cause: { this: this }
+        });
     }
 }

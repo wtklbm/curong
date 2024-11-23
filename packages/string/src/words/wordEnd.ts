@@ -23,7 +23,9 @@ export default function wordEnd(
     position: number = 0
 ): number | null {
     if (!isUint(position)) {
-        throw new TypeError(`[wordEnd]: position不是索引, "${position}"`);
+        throw new TypeError('[wordEnd] position 不是有效的索引', {
+            cause: { str, position }
+        });
     }
 
     /** 验证右侧的空字符的正则表达式 */

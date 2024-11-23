@@ -12,8 +12,8 @@ export default function assertSome<V, P extends (value: V) => boolean>(
     predicate: P | P[]
 ): asserts value is V {
     if (!isSome(value, predicate)) {
-        throw new TypeError(
-            `[assertSome] ${value} 不满足给定的条件: ${predicate}`
-        );
+        throw new TypeError('[assertSome] value 不满足给定的条件', {
+            cause: { value, predicate }
+        });
     }
 }

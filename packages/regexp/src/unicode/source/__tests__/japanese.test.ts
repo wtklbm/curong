@@ -48,7 +48,7 @@ describe('@curong/regexp/japanese', () => {
             '가', // 韩文字符
             'A', // 拉丁字母
             '!', // 感叹号
-            '@', // ＠符
+            '@' // ＠符
         ];
 
         invalidCharacters.forEach(char => {

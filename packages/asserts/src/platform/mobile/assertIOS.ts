@@ -5,8 +5,10 @@ import { isIOS } from '@curong/types';
  *
  * @throws 如果不是则会抛出类型异常
  */
-export default function assertIOS() {
+export default function assertIOS(this: any) {
     if (!isIOS()) {
-        throw new TypeError('[assertIOS] 当前的执行环境不是 iOS');
+        throw new TypeError('[assertIOS] 当前的执行环境不是 iOS', {
+            cause: { this: this }
+        });
     }
 }

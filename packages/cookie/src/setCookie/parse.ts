@@ -56,8 +56,11 @@ function parseChunk(cookie: string, isDecode: boolean = true) {
     const parts = cookie.split(semicolonReg).filter(isStringFilled);
 
     if (parts.length <= 1) {
-        throw new EvalError(
-            `[parseChunk]: cookie使用分号拆分却只拆分出来一个值出来，"${cookie}"`
+        throw new Error(
+            '[parseChunk] cookie 使用分号拆分却只拆分出来一个值出来',
+            {
+                cause: { cookie, isDecode }
+            }
         );
     }
 
@@ -81,8 +84,11 @@ function parseChunk(cookie: string, isDecode: boolean = true) {
         const sides = part.split(equalReg);
 
         if (sides.length <= 1) {
-            throw new EvalError(
-                `[parseChunk]: part使用等号拆分却只拆分出来一个值出来，"${part}"`
+            throw new Error(
+                '[parseChunk] part 使用等号拆分却只拆分出来一个值出来',
+                {
+                    cause: { cookie, part }
+                }
             );
         }
 

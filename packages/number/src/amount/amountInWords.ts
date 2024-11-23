@@ -20,7 +20,10 @@ const convertInteger = (amount: string): string => {
 
     if (integerNumbers.length > MAX_INT_LENGTH) {
         throw new TypeError(
-            `[amountInWords] 最大数额只支持到兆，既小数点前最多${MAX_INT_LENGTH}位`
+            `[convertInteger] 最大数额只支持到兆，既小数点前最多${MAX_INT_LENGTH}位`,
+            {
+                cause: { amount }
+            }
         );
     }
 
@@ -72,7 +75,10 @@ const convertDecimal = (amount: string): string => {
 
     if (decimalNumbers.length > MAX_DECIMAL_LENGTH) {
         throw new TypeError(
-            `[amountInWords] 最小数额只支持到毫，既小数点后最多${MAX_DECIMAL_LENGTH}位`
+            `[convertDecimal] 最小数额只支持到毫，既小数点后最多${MAX_DECIMAL_LENGTH}位`,
+            {
+                cause: { amount }
+            }
         );
     }
 
@@ -144,7 +150,10 @@ export default function amountInWords(
 
     if (!isFinite(+amount)) {
         throw new TypeError(
-            `[amountInWords] amount 必须为有效的金额数字或字符串: ${amount}`
+            '[amountInWords] amount 必须为有效的金额数字或字符串',
+            {
+                cause: { amount, options }
+            }
         );
     }
 

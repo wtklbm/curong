@@ -23,8 +23,8 @@ import { commonHeaders } from './headers';
 const validationParameters = (args: Record<PropertyKey, any>) => {
     for (const [k, v] of Object.entries(args)) {
         if (isNullOrUndefined(v)) {
-            throw new TypeError(`[validationParameters] 参数 ${k} 不能为空`, {
-                cause: { args }
+            throw new TypeError('[validationParameters] args 中的某个参数的 key 不能为空', {
+                cause: { args, key: k, value: v }
             });
         }
     }
@@ -150,9 +150,9 @@ const urlToParams = (baseUrl: string, options: RequestOptions) => {
     try {
         urlParams = new URL(baseUrl);
     } catch {
-        throw new TypeError(
-            `[urlToParams] baseUrl 不是一个合法链接: ${baseUrl}`
-        );
+        throw new TypeError('[urlToParams] baseUrl 不是一个合法链接', {
+            cause: { baseUrl, options }
+        });
     }
 
     const {

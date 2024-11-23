@@ -31,9 +31,9 @@ export default function splitChunk<T>(
     padPosition?: 'start' | 'end'
 ): T[][] {
     if (!isUintFilled(length)) {
-        throw new TypeError(
-            `[splitChunk] length 不是一个大于 0 的整数: "${length}"`
-        );
+        throw new TypeError('[splitChunk] length 不是一个大于 0 的整数', {
+            cause: { value, length, padPosition }
+        });
     }
 
     if (length >= value.length) {
@@ -64,7 +64,7 @@ export default function splitChunk<T>(
         return a.concat(b);
     }
 
-    throw new TypeError(
-        `[splitChunk] padPosition 的值必须是 start 或 end: ${padPosition}`
-    );
+    throw new TypeError('[splitChunk] padPosition 的值必须是 start 或 end', {
+        cause: { value, length, padPosition }
+    });
 }

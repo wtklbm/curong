@@ -5,8 +5,10 @@ import { isBun } from '@curong/types';
  *
  * @throws 如果不是则会抛出类型异常
  */
-export default function assertBun() {
+export default function assertBun(this: any) {
     if (!isBun()) {
-        throw new TypeError('[assertBun] 当前的执行环境不是 Bun');
+        throw new TypeError('[assertBun] 当前的执行环境不是 Bun', {
+            cause: { this: this }
+        });
     }
 }

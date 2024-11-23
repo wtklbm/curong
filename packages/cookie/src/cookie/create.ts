@@ -50,19 +50,25 @@ export default function createCookie(
     const verifyReg = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
 
     if (!isString(name) || !verifyReg.test(name)) {
-        throw new TypeError(`[create]: name的值不是预期的: "${name}"`);
+        throw new TypeError('[createCookie] name 的值不是预期的', {
+            cause: { name, value, options }
+        });
     }
 
     const { encode = encodeURIComponent } = options ?? {};
 
     if (!isFunctionFilled(encode)) {
-        throw new TypeError(`[create]: encode不是一个带参的函数: "${encode}"`);
+        throw new TypeError('[createCookie] encode 不是一个带参的函数', {
+            cause: { name, value, options, encode }
+        });
     }
 
     value = encode(value);
 
     if (!isString(value) || !verifyReg.test(value)) {
-        throw new TypeError(`[create]: value的值不是预期的: "${value}"`);
+        throw new TypeError('[createCookie] value 的值不是预期的', {
+            cause: { name, value, options, encode }
+        });
     }
 
     const compiler: {

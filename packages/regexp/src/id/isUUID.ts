@@ -10,10 +10,10 @@ let _: RegExp;
  * @example
  *
  * ```typescript
-* const ret = isUUID('123e4567-e89b-12d3-a456-426614174000');
-* console.log(ret); // true
-* ```
-*/
+ * const ret = isUUID('123e4567-e89b-12d3-a456-426614174000');
+ * console.log(ret); // true
+ * ```
+ */
 export default function isUUID(value: string): boolean {
     return (_ ?? (_ = new RegExp(`^${uuid}$`))).test(value);
 }

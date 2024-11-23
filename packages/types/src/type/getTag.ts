@@ -6,14 +6,11 @@ export default (() => {
     const tagExtractReg = /^\[object ([^\]]+)\]$/;
 
     if (!isNativeFunction(cachedToString)) {
-        let pack: string = '';
-
-        try {
-            pack = `: ${String(cachedToString)}`;
-        } catch {}
-
         throw new TypeError(
-            `[getTag] Object.prototype.toString 不是一个 JavaScript 原生方法${pack}`
+            '[getTag] Object.prototype.toString 不是一个 JavaScript 原生方法',
+            {
+                cause: { toString: cachedToString }
+            }
         );
     }
 

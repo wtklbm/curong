@@ -17,10 +17,7 @@ let $: RegExp;
  * ```
  */
 export default function inChinese(str: string, vhk: boolean = false): boolean {
-    if (
-        vhk &&
-        (_ ?? (_ = new RegExp(`${hiragana}|${katakana}`))).test(str)
-    ) {
+    if (vhk && (_ ?? (_ = new RegExp(`${hiragana}|${katakana}`))).test(str)) {
         return false;
     }
 

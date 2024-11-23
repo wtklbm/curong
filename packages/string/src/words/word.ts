@@ -30,7 +30,9 @@ export default function word(
     position: number = 0
 ): WordResult | null {
     if (!isUint(position)) {
-        throw new TypeError(`[word]: position不是索引, "${position}"`);
+        throw new TypeError('[word] position 不是有效的索引', {
+            cause: { str, position }
+        });
     }
 
     const ret: WordResult = { left: null, right: null };

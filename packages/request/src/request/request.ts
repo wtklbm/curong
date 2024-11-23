@@ -323,7 +323,11 @@ export default async function request(
             serialStream.on('error', error => {
                 reject(
                     new Error('[request] 套接字错误', {
-                        cause: { request: req, config, error }
+                        cause: {
+                            request: req,
+                            config,
+                            error
+                        }
                     })
                 );
             });

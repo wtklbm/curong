@@ -17,8 +17,13 @@ import { isMiniProgramWebView } from '@curong/types';
  *  - [京东](https://mp-docs.jd.com/doc/dev/guide/2124): `userAgent` 中包含 `jdmp`
  *  - [钉钉](https://open.dingtalk.com/document/orgapp/web-view): `userAgent` 中包含 `dingtalk`
  */
-export default function assertMiniProgramWebView() {
+export default function assertMiniProgramWebView(this: any) {
     if (!isMiniProgramWebView()) {
-        throw new TypeError('[assertMiniProgramWebView] 当前的执行环境不是小程序的 WebView');
+        throw new TypeError(
+            '[assertMiniProgramWebView] 当前的执行环境不是小程序的 WebView',
+            {
+                cause: { this: this }
+            }
+        );
     }
 }

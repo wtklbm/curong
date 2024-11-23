@@ -1,5 +1,6 @@
-import { asyncLimit } from '..';
 import { delay } from '../../delay';
+
+import { asyncLimit } from '..';
 
 describe('@curong/function/asyncLimit', () => {
     test('测试1', async () => {

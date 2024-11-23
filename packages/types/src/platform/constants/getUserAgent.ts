@@ -8,5 +8,5 @@ import isNavigator from './isNavigator';
  * @note 该方法使用了 `globalThis`，有关更多信息，请参见 `isGlobalThis` 方法
  */
 export default function getUserAgent(ua: string = '') {
-    return isNavigator() ? ( globalThis.navigator.userAgent ?? ua) : ua;
+    return isNavigator() ? (globalThis.navigator.userAgent ?? ua) : ua;
 }

@@ -22,23 +22,23 @@ import * as unicode from './unicode/source';
  * - `regexpu-core`
  *
  * ``` javascript
-*  // 获取支持中文的正则表达式
-*  const rewritePattern = require("regexpu-core");
-*  const _regexpu = rewritePattern('\\p{Unified_Ideograph}', 'u', {
-*      unicodePropertyEscape: true,
-*      useUnicodeFlag: false
-*  });
-*
-*  // 得到正则表达式
-*  const regexp = new RegExp(_regexpu, 'u');
-*  console.log(regexp);
-* ```
-*/
+ *  // 获取支持中文的正则表达式
+ *  const rewritePattern = require("regexpu-core");
+ *  const _regexpu = rewritePattern('\\p{Unified_Ideograph}', 'u', {
+ *      unicodePropertyEscape: true,
+ *      useUnicodeFlag: false
+ *  });
+ *
+ *  // 得到正则表达式
+ *  const regexp = new RegExp(_regexpu, 'u');
+ *  console.log(regexp);
+ * ```
+ */
 const source = {
     ...account,
     ...id,
     ...net,
-    ...unicode,
-}
+    ...unicode
+};
 
 export default source;

@@ -71,9 +71,9 @@ export default function colorNameCode3bit(
     }
 
     if (isNull(resultColor)) {
-        throw new TypeError(
-            `[colorNameCode3bit]: colorName不是有效颜色值, "${colorName}"`
-        );
+        throw new TypeError('[colorNameCode3bit] colorName 不是有效颜色值', {
+            cause: { colorName }
+        });
     }
 
     return {

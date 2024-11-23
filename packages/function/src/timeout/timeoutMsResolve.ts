@@ -32,7 +32,10 @@ export default function timeoutMsResolve(
     // 当使用大于 `2147483647` 毫秒（约 `24.8` 天）的延迟时，这会导致整数溢出
     if (!isTimeoutMs(timeout)) {
         throw new TypeError(
-            `[timeoutMsResolve] 超时时间应大于等于 0 且不超过 2147483647 毫秒 (约 24.8 天)`
+            '[timeoutMsResolve] 超时时间应大于等于 0 且不超过 2147483647 毫秒 (约 24.8 天)',
+            {
+                cause: { duration }
+            }
         );
     }
 

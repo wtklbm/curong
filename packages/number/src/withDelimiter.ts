@@ -25,9 +25,9 @@ export default function withDelimiter(
     options?: WithDelimiterOptions
 ): string {
     if (!isFinite(+value)) {
-        throw new TypeError(
-            `[withDelimiter] value 必须是一个有效的数字: ${value}`
-        );
+        throw new TypeError('[withDelimiter] value 必须是一个有效的数字', {
+            cause: { value, options }
+        });
     }
 
     const numStr = value.toString();
@@ -35,7 +35,10 @@ export default function withDelimiter(
 
     if (!isUintFilled(capacity)) {
         throw new TypeError(
-            `[withDelimiter] capacity 必须是一个大于 0 的整数: ${capacity}`
+            '[withDelimiter] capacity 必须是一个大于 0 的整数',
+            {
+                cause: { value, options, capacity }
+            }
         );
     }
 

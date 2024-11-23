@@ -10,10 +10,10 @@ let _: RegExp;
  * @example
  *
  * ```typescript
-* const ret = isULID('01ARZ3NDEKTSV4RRFFQ69G5FAV');
-* console.log(ret); // true
-* ```
-*/
+ * const ret = isULID('01ARZ3NDEKTSV4RRFFQ69G5FAV');
+ * console.log(ret); // true
+ * ```
+ */
 export default function isULID(value: string): boolean {
     return (_ ?? (_ = new RegExp(`^${ulid}$`))).test(value);
 }

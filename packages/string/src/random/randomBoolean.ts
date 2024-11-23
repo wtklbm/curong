@@ -13,6 +13,7 @@ import randomUint8 from './constants/randomUint8';
  * ```
  */
 export default function randomBoolean(isSafe: boolean = false) {
-    return (isSafe ? randomUint8()[0] : Math.floor(Math.random() * 10)) % 2 === 0;
+    return (
+        (isSafe ? randomUint8()[0] : Math.floor(Math.random() * 10)) % 2 === 0
+    );
 }
-

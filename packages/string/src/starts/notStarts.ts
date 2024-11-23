@@ -38,10 +38,21 @@ export default function notStarts(
         return true;
     }
 
-    const { position: pos = 0, caseSensitivity = true } = options ?? {};
+    const { position: pos, caseSensitivity } = {
+        position: 0,
+        caseSensitivity: true,
+        ...options
+    };
 
     if (!isUint(pos) || str.length < pos) {
-        throw new TypeError(`[notStarts]: position不是有效索引, "${pos}"`);
+        throw new TypeError('[notStarts] position 不是有效索引', {
+            cause: {
+                position: pos,
+                str,
+                chunks,
+                options
+            }
+        });
     }
 
     let fn = (str: string, chunk: string) => str.startsWith(chunk, pos);

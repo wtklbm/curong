@@ -14,6 +14,8 @@ export default function assertNotEqual<T extends unknown[]>(
     ...args: T
 ) {
     if (!isNotEqual(value, args)) {
-        throw new TypeError(`[assertEqual] ${value} 与 ${args} 中的某些值相等`);
+        throw new TypeError('[assertNotEqual] value 与 args 中的某些值相等', {
+            cause: { value, ...args }
+        });
     }
 }

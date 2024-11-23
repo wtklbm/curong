@@ -69,9 +69,9 @@ export default function colorNameCode24bit(
         isUndefined(terminalColor) ||
         isUndefined(terminalColor[index])
     ) {
-        throw new TypeError(
-            `[colorNameCode24bit]: colorName不是有效颜色值, "${colorName}"`
-        );
+        throw new TypeError('[colorNameCode24bit] colorName 不是有效颜色值', {
+            cause: { colorName, terminalType }
+        });
     }
 
     const code = terminalColor[index].join(';');

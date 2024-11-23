@@ -10,10 +10,10 @@ let _: RegExp;
  * @example
  *
  * ```typescript
-* const ret = isCUID2('pj17j4wheabtydu00x2yuo8s');
-* console.log(ret); // true
-* ```
-*/
+ * const ret = isCUID2('pj17j4wheabtydu00x2yuo8s');
+ * console.log(ret); // true
+ * ```
+ */
 export default function isCUID2(value: string): boolean {
     return (_ ?? (_ = new RegExp(`^${cuid2}$`))).test(value);
 }

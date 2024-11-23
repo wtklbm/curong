@@ -31,13 +31,17 @@ export default function move<T>(value: T[], from: number, to: number): T[] {
     const startIndex = from < 0 ? len + from : from;
 
     if (!isUint(startIndex) || startIndex < 0 || startIndex >= len) {
-        throw new RangeError(`[move] form 不是一个合法的索引，${from}`);
+        throw new TypeError('[move] form 不是一个合法的索引', {
+            cause: { value, from, to }
+        });
     }
 
     const endIndex = to < 0 ? len + to : to;
 
     if (!isUint(endIndex) || endIndex < 0 || endIndex >= len) {
-        throw new RangeError(`[move] to 不是一个合法的索引，${to}`);
+        throw new TypeError('[move] to 不是一个合法的索引', {
+            cause: { value, from, to }
+        });
     }
 
     if (startIndex === endIndex) {

@@ -195,7 +195,10 @@ const copyByTag = <T extends object>(value: any, weak: WeakMap<T, T>) => {
 
         default:
             throw new EvalError(
-                `[copy]: 无法进行深度拷贝，${typeTag} 为不支持的类型`
+                '[copy] 无法进行深度拷贝，typeTag 为不支持的类型',
+                {
+                    cause: { value, typeTag }
+                }
             );
     }
 };

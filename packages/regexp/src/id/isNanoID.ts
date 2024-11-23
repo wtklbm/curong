@@ -10,10 +10,10 @@ let _: RegExp;
  * @example
  *
  * ```typescript
-* const ret = isNanoID('V1StGXR8_Z5jadHi6B5c8');
-* console.log(ret); // true
-* ```
-*/
+ * const ret = isNanoID('V1StGXR8_Z5jadHi6B5c8');
+ * console.log(ret); // true
+ * ```
+ */
 export default function isNanoID(value: string): boolean {
     return (_ ?? (_ = new RegExp(`^${nanoid}$`))).test(value);
 }

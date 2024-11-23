@@ -25,22 +25,22 @@ describe('@curong/number/toInt', () => {
 
     test('非数字字符串输入', () => {
         expect(() => toInt('abc')).toThrow(
-            '[toInt] value 转换为数字后不能为 NaN 或正负 Infinity: abc'
+            '[toInt] value 转换为数字后不能为 NaN 或正负 Infinity'
         );
     });
 
     test('NaN 输入', () => {
         expect(() => toInt(NaN)).toThrow(
-            '[toInt] value 转换为数字后不能为 NaN 或正负 Infinity: NaN'
+            '[toInt] value 转换为数字后不能为 NaN 或正负 Infinity'
         );
     });
 
     test('Infinity 输入', () => {
         expect(() => toInt(Infinity)).toThrow(
-            '[toInt] value 转换为数字后不能为 NaN 或正负 Infinity: Infinity'
+            '[toInt] value 转换为数字后不能为 NaN 或正负 Infinity'
         );
         expect(() => toInt(-Infinity)).toThrow(
-            '[toInt] value 转换为数字后不能为 NaN 或正负 Infinity: -Infinity'
+            '[toInt] value 转换为数字后不能为 NaN 或正负 Infinity'
         );
     });
 

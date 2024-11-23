@@ -198,7 +198,9 @@ const nextTick = (() => {
         };
     }
 
-    throw new Error(`[nextTick] 当前环境不支持 nextTick`);
+    throw new Error('[nextTick] 当前环境不支持 nextTick', {
+        cause: { this: this }
+    });
 })();
 
 export default nextTick;

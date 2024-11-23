@@ -167,7 +167,9 @@ export default function execAll(
             const id = keyOrCallback.toString();
 
             if (!matchKeysReg.test(id)) {
-                throw new TypeError(`[execAll]: id不是预期的值, "${id}"`);
+                throw new TypeError('[execAll] keyOrCallback 不是预期的值', {
+                    cause: { reg, str, keyOrCallback }
+                });
             }
 
             keyOrCallback = (match: RegExpExecOrigin) => match[id as any];

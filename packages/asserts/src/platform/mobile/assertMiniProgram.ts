@@ -7,9 +7,12 @@ import { isMiniProgram, type MiniProgramBrand } from '@curong/types';
  * @throws 如果不是则会抛出类型异常
  */
 export default function assertMiniProgram(
+    this: any,
     brand?: MiniProgramBrand | MiniProgramBrand[]
 ) {
     if (!isMiniProgram(brand)) {
-        throw new TypeError('[assertMiniProgram] 当前的执行环境是不是小程序');
+        throw new TypeError('[assertMiniProgram] 当前的执行环境是不是小程序', {
+            cause: { brand, this: this }
+        });
     }
 }

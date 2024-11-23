@@ -175,12 +175,17 @@ function runOnlyNTimes<R, A extends unknown[]>(
 ): (...params: any[]) => any {
     if (!isUintSafe(count)) {
         throw new TypeError(
-            '[runOnlyNTimes]: count 不是大于或等于 0 的安全整数'
+            '[runOnlyNTimes] count 不是大于或等于 0 的安全整数',
+            {
+                cause: { count, callback, ...args }
+            }
         );
     }
 
     if (!isSyncFunction(callback)) {
-        throw new TypeError('[runOnlyNTimes]: callback 必须是一个同步函数');
+        throw new TypeError('[runOnlyNTimes] callback 必须是一个同步函数', {
+            cause: { count, callback, ...args }
+        });
     }
 
     return (...params: A) => {

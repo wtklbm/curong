@@ -66,7 +66,15 @@ export default async function toRedirects(
         }
     } catch {
         throw new TypeError(
-            `[request] 重定向请求中给出的链接不是一个合法链接: ${locationUrl}`
+            '[request] 重定向请求中给出的链接不是一个合法链接',
+            {
+                cause: {
+                    locationUrl,
+                    options,
+                    config,
+                    response
+                }
+            }
         );
     }
 

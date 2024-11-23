@@ -28,7 +28,13 @@ function getDecode(
         const newValue = decode(value);
 
         if (!isString(newValue)) {
-            throw new TypeError(`[getDecode]: 返回值不是字符串, "${newValue}"`);
+            throw new TypeError('[getDecode] decode 的返回值不是字符串', {
+                cause: {
+                    value,
+                    decode,
+                    result: newValue
+                }
+            });
         }
 
         return newValue;
@@ -70,7 +76,9 @@ export default function parseCookie(
     const result: { [key: string]: string } = {};
 
     if (!isStringFilled(cookie) || !cookie.includes('=')) {
-        throw new TypeError(`[parse]: cookie不是一个字符串, "${cookie}"`);
+        throw new TypeError('[parseCookie] cookie 不是一个字符串', {
+            cause: { cookie, decode }
+        });
     }
 
     for (

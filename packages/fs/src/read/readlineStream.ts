@@ -66,13 +66,12 @@ export default async function readlineStream(
 
         stream.on('line', callback as ReadlineStreamCallback);
         stream.on('error', error => {
-            throw new Error('文件读取失败', {
+            throw new Error('[readlineStream] 文件读取失败', {
                 cause: {
-                    function: 'readlineStream',
-                    error,
                     path,
                     encoding,
-                    callback
+                    callback,
+                    error
                 }
             });
         });

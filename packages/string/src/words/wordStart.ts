@@ -22,7 +22,9 @@ export default function wordStart(
     position: number = 0
 ): number | null {
     if (!isUint(position)) {
-        throw new TypeError(`[wordStart]: position不是索引，"${position}"`);
+        throw new TypeError('[wordStart] position 不是有效的索引', {
+            cause: { str, position }
+        });
     }
 
     let ret = null;

@@ -18,9 +18,9 @@ import { isUintFilled } from '@curong/types';
  */
 export default function splitByStep<T>(value: T[], step: number): T[][] {
     if (!isUintFilled(step)) {
-        throw new TypeError(
-            `[splitByStep] step 不是一个大于 0 的整数: ${step}`
-        );
+        throw new TypeError('[splitByStep] step 不是一个大于 0 的整数', {
+            cause: { value, step }
+        });
     }
 
     if (step >= value.length) {

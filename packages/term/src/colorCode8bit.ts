@@ -25,9 +25,9 @@ import type { ColorCodeResult } from './types';
  */
 export default function colorCode8bit(colorCode: number): ColorCodeResult {
     if (!isUintSafe(colorCode) || colorCode < 0 || colorCode > 255) {
-        throw new TypeError(
-            `[colorCode8bit]: colorCode不是一个有效数字, "${colorCode}"`
-        );
+        throw new TypeError('[colorCode8bit] colorCode 不是一个有效数字', {
+            cause: { colorCode }
+        });
     }
 
     return {

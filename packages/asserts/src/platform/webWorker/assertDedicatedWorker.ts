@@ -5,8 +5,13 @@ import { isDedicatedWorker } from '@curong/types';
  *
  * @throws 如果不是则会抛出类型异常
  */
-export default function assertDedicatedWorker() {
+export default function assertDedicatedWorker(this: any) {
     if (!isDedicatedWorker()) {
-        throw new TypeError('[assertDedicatedWorker] 当前的执行环境不是 DedicatedWorker');
+        throw new TypeError(
+            '[assertDedicatedWorker] 当前的执行环境不是 DedicatedWorker',
+            {
+                cause: { this: this }
+            }
+        );
     }
 }

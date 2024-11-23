@@ -40,7 +40,14 @@ export default function isMultiDimensional<T extends unknown[][]>(
 
     if (dimension && (!isUint(dimension) || dimension < 2)) {
         throw new TypeError(
-            `[isMultiDimensional] level 不是一个有效的大于 1 的正整数: ${dimension}`
+            '[isMultiDimensional] level 不是一个有效的大于 1 的正整数',
+            {
+                cause: {
+                    value,
+                    dimension,
+                    strictly
+                }
+            }
         );
     }
 

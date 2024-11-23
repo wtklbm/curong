@@ -94,7 +94,9 @@ export default function parseBytesSize(
         const match = value.match(regex);
 
         if (!match) {
-            throw new Error(`[parseBytesSize] value 不是预期的类型，${value}`);
+            throw new Error('[parseBytesSize] value 不是预期的类型', {
+                cause: { value, unit }
+            });
         }
 
         value = match[1];

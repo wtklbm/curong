@@ -50,8 +50,13 @@ export default async function retry<T>(
                     return newValue;
                 }
             } else {
-                throw new Error('当前任务执行失败了', {
-                    cause: { task, error: e }
+                throw new Error('[retry] 当前任务执行失败了', {
+                    cause: {
+                        maxRetry,
+                        task,
+                        options,
+                        error: e
+                    }
                 });
             }
         }
@@ -99,8 +104,15 @@ export default async function retry<T>(
                     } else {
                         throw new AggregateError(
                             errors,
-                            `当前任务经过 ${attempts} 次重试后失败了`,
-                            { cause: { task, attempts } }
+                            `[retry] 当前任务经过 ${attempts} 次重试后失败了`,
+                            {
+                                cause: {
+                                    maxRetry,
+                                    task,
+                                    options,
+                                    attempts
+                                }
+                            }
                         );
                     }
                 } else {

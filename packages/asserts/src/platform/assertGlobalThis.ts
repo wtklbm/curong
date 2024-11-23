@@ -5,8 +5,13 @@ import { isGlobalThis } from '@curong/types';
  *
  * @throws 如果不是则会抛出类型异常
  */
-export default function assertGlobalThis() {
+export default function assertGlobalThis(this: any) {
     if (!isGlobalThis()) {
-        throw new TypeError('[assertGlobalThis] 当前的执行环境不包含 globalThis');
+        throw new TypeError(
+            '[assertGlobalThis] 当前的执行环境不包含 globalThis',
+            {
+                cause: { this: this }
+            }
+        );
     }
 }

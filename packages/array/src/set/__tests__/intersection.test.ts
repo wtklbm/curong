@@ -60,9 +60,7 @@ describe('@curong/array/set/intersection', () => {
         const b = Array.from({ length: 500 }, (_, i) => i * 2);
         const result = intersection(a, b);
         expect(result.length).toBe(500); // 0到998中的偶数
-        expect(result).toEqual(
-            Array.from({ length: 500 }, (_, i) => i * 2)
-        );
+        expect(result).toEqual(Array.from({ length: 500 }, (_, i) => i * 2));
     });
 
     test('测试11: 重复元素', () => {

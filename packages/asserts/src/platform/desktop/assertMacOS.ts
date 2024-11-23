@@ -5,8 +5,10 @@ import { isMacOS } from '@curong/types';
  *
  * @throws 如果不是则会抛出类型异常
  */
-export default function assertMacOS() {
+export default function assertMacOS(this: any) {
     if (!isMacOS()) {
-        throw new TypeError('[assertMacOS] 当前的执行环境不是 macOS');
+        throw new TypeError('[assertMacOS] 当前的执行环境不是 macOS', {
+            cause: { this: this }
+        });
     }
 }

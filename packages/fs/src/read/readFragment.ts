@@ -31,9 +31,12 @@ export default function readFragment(
 
     return new Promise(resolve => {
         if (!isUintSafe(start) || !isUintSafe(end)) {
-            throw new Error('start 或 end 必须为无符号的安全的整数', {
-                cause: { function: 'readFragment', path, options }
-            });
+            throw new TypeError(
+                '[readFragment] start 或 end 必须为无符号的安全的整数',
+                {
+                    cause: { start, end, path, options }
+                }
+            );
         }
 
         // 如果不需要读取内容，则直接返回空字符串

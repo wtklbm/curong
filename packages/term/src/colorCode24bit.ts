@@ -27,15 +27,18 @@ import type { ColorCodeResult } from './types';
 export default function colorCode24bit(colorCodes: number[]): ColorCodeResult {
     if (!isArray(colorCodes) || colorCodes.length !== 3) {
         throw new TypeError(
-            `[colorCode24bit]: colorCodes不是一个有效RGB数组, "${colorCodes}"`
+            '[colorCode24bit] colorCodes 不是一个有效 RGB 数组',
+            {
+                cause: { colorCodes }
+            }
         );
     }
 
     colorCodes.forEach(colorCode => {
         if (!isUintSafe(colorCode) || colorCode < 0 || colorCode > 255) {
-            throw new TypeError(
-                `[colorCode24bit]: colorCode不是一个有效数字, "${colorCode}"`
-            );
+            throw new TypeError('[colorCode24bit] colorCode 不是一个有效数字', {
+                cause: { colorCode }
+            });
         }
     });
 

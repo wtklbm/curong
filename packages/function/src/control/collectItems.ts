@@ -61,14 +61,18 @@ export default function collectItems<T = unknown>(
 ): CollectItemsResult<T>;
 
 export default function collectItems(options?: any) {
-    const { total, isRestart = false, isAccumulate = false } = options ?? {};
+    const { total, isRestart, isAccumulate } = {
+        isRestart: false,
+        isAccumulate: false,
+        ...options
+    };
     const promises: Promise<any>[] = [];
     let isOverOnce = false;
 
     if (total && !isUint(total)) {
-        throw new TypeError(
-            `[collectItems]: total不是一个有效的正整数，"${total}"`
-        );
+        throw new TypeError('[collectItems] total 不是一个有效的正整数', {
+            cause: { total, options }
+        });
     }
 
     return async <T = unknown>(

@@ -9,6 +9,11 @@ import { isNodejsProcess } from '@curong/types';
  */
 export default function assertNodejsProcess(process = globalThis.process) {
     if (!isNodejsProcess(process)) {
-        throw new TypeError('[assertNodejsProcess] 当前的执行环境不是 Node.js 的 process 模块');
+        throw new TypeError(
+            '[assertNodejsProcess] 当前的执行环境不是 Node.js 的 process 模块',
+            {
+                cause: { process }
+            }
+        );
     }
 }

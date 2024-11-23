@@ -9,6 +9,8 @@ import { isJsDom } from '@curong/types';
  */
 export default function assertJsDom(window = globalThis.window) {
     if (!isJsDom(window)) {
-        throw new TypeError('[assertJsDom] 当前的执行环境不是 JsDom');
+        throw new TypeError('[assertJsDom] 当前的执行环境不是 JsDom', {
+            cause: { window }
+        });
     }
 }

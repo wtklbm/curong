@@ -32,9 +32,9 @@ export default function evaluateInt(value: EvaluableIntValue): number {
     switch (typeof value) {
         case 'number':
             if (!isIntSafe(value)) {
-                throw new TypeError(
-                    `[evaluateInt] 传递的参数不是一个安全的整数: ${value}`
-                );
+                throw new TypeError('[evaluateInt] value 不是一个安全的整数', {
+                    cause: { value }
+                });
             }
             return value;
 
@@ -60,7 +60,10 @@ export default function evaluateInt(value: EvaluableIntValue): number {
 
                 if (!isIntSafe(ret)) {
                     throw new TypeError(
-                        `[evaluateInt] 计算的结果不是一个安全的整数: ${ret}`
+                        '[evaluateInt] 计算的结果不是一个安全的整数',
+                        {
+                            cause: { value, result: ret }
+                        }
                     );
                 }
 
@@ -72,5 +75,7 @@ export default function evaluateInt(value: EvaluableIntValue): number {
             break;
     }
 
-    throw new TypeError(`[evaluateInt] 传递的参数不是预期的类型: ${value}`);
+    throw new TypeError('[evaluateInt] 传递的参数不是预期的类型', {
+        cause: { value }
+    });
 }

@@ -17,8 +17,8 @@ export default function sortKeys(
     options: SortOptions = {}
 ): Record<PropertyKey, any> | any[] {
     if (!isPlainObject(value) && !isArray(value)) {
-        throw new TypeError(`[sortKeys] value 必须是一个数组或普通对象`, {
-            cause: { value }
+        throw new TypeError('[sortKeys] value 必须是一个数组或普通对象', {
+            cause: { value, options }
         });
     }
 

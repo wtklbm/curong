@@ -24,7 +24,9 @@ const findMatchingParenthesis = (value: string): number => {
         }
     }
 
-    throw new Error(`[findMatchingParenthesis] 内部错误，无法继续执行`);
+    throw new Error('[findMatchingParenthesis] 内部错误，无法继续执行', {
+        cause: { value }
+    });
 };
 
 /**

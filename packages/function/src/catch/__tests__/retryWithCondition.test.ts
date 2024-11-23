@@ -62,7 +62,7 @@ describe('@curong/function/retryWithCondition', () => {
                 () => getNumberAsync(),
                 num => num === 10,
                 {
-                    retryWait: -1,
+                    retryWait: -1
                 }
             )
         ).rejects.toBeDefined();

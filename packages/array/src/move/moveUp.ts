@@ -28,11 +28,15 @@ export default function moveUp<T>(value: T[], from: number, step = 1): T[] {
     from = from < 0 ? len + from : from;
 
     if (!isInt(from) || from < -len || from < 0 || from >= len) {
-        throw new RangeError(`[moveUp] from 不是 value 的索引，${from}`);
+        throw new TypeError('[moveUp] from 不是 value 的索引', {
+            cause: { value, from, step }
+        });
     }
 
     if (!isUint(step)) {
-        throw new TypeError(`[moveUp] step 必须为无符号整数，${step}`);
+        throw new TypeError('[moveUp] step 必须为无符号整数', {
+            cause: { value, from, step }
+        });
     }
 
     const indexToMove = Math.max(0, from - step);

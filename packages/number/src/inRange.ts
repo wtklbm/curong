@@ -27,11 +27,15 @@ export default function inRange(
     end?: number
 ): value is number {
     if (!isNumber(value)) {
-        throw new TypeError(`[inRange] value 必须是有效的数字，不能为 NaN`);
+        throw new TypeError('[inRange] value 必须是有效的数字，不能为 NaN', {
+            cause: { value, start, end }
+        });
     }
 
     if (!isNumber(start)) {
-        throw new TypeError(`[inRange] start 必须是有效的数字: ${start}`);
+        throw new TypeError('[inRange] start 必须是有效的数字', {
+            cause: { value, start, end }
+        });
     }
 
     if (!isNumber(end)) {
@@ -39,7 +43,9 @@ export default function inRange(
             end = start;
             start = 0;
         } else {
-            throw new TypeError(`[inRange] end 必须是有效的数字: ${end}`);
+            throw new TypeError('[inRange] end 必须是有效的数字', {
+                cause: { value, start, end }
+            });
         }
     }
 

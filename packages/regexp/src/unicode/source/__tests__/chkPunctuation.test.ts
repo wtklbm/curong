@@ -73,12 +73,10 @@ describe('@curong/regexp/chkPunctuation', () => {
         expect(regex.test('\u206F')).toBe(true);
     });
 
-
     test('匹配范围 \\u2E00 的起始字符', () => {
         expect(regex.test('\u2E00')).toBe(true);
         expect(regex.test('\u2E7F')).toBe(true);
     });
-
 
     test('匹配范围 \\u3000 的起始字符', () => {
         expect(regex.test('\u3000')).toBe(true);

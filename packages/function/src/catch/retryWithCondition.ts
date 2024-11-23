@@ -42,7 +42,15 @@ export default async function retryWithCondition<T>(
     if (retryWait) {
         if (!isUintSafeFilled(retryWait)) {
             throw new TypeError(
-                `[retryWithCondition] retryWait 必须是安全的无符号整数: ${retryWait}`
+                '[retryWithCondition] retryWait 必须是安全的无符号整数',
+                {
+                    cause: {
+                        retryWait,
+                        task,
+                        condition,
+                        options
+                    }
+                }
             );
         }
 
@@ -52,13 +60,29 @@ export default async function retryWithCondition<T>(
     if (maxRetries) {
         if (!isUintSafeFilled(maxRetries)) {
             throw new TypeError(
-                `[retryWithCondition] maxRetries 必须是安全的无符号整数: ${maxRetries}`
+                '[retryWithCondition] maxRetries 必须是安全的无符号整数',
+                {
+                    cause: {
+                        maxRetries,
+                        task,
+                        condition,
+                        options
+                    }
+                }
             );
         }
 
         maxRetriesFn = () => {
             if (retryCount >= maxRetries) {
-                throw new Error(`[retryWithCondition] 已达到最大重试次数`);
+                throw new Error('[retryWithCondition] 已达到最大重试次数', {
+                    cause: {
+                        retryCount,
+                        maxRetries,
+                        task,
+                        condition,
+                        options
+                    }
+                });
             }
         };
     }

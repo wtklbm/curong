@@ -5,8 +5,10 @@ import { isWindows } from '@curong/types';
  *
  * @throws 如果不是则会抛出类型异常
  */
-export default function assertWindows() {
+export default function assertWindows(this: any) {
     if (!isWindows()) {
-        throw new TypeError('[assertWindows] 当前的执行环境不是 Windows');
+        throw new TypeError('[assertWindows] 当前的执行环境不是 Windows', {
+            cause: { this: this }
+        });
     }
 }

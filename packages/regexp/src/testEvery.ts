@@ -28,7 +28,9 @@ export default function testEvery(
     str: string
 ): boolean {
     if (str.length === 0 && regexps.length === 0) {
-        throw new TypeError('[testEvery]: str和regexps不能同时为空');
+        throw new TypeError('[testEvery] str 和 regexps 不能同时为空', {
+            cause: { regexps, str }
+        });
     }
 
     for (let i = 0, len = regexps.length; i < len; i++) {

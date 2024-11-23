@@ -5,8 +5,10 @@ import { isDeno } from '@curong/types';
  *
  * @throws 如果不是则会抛出类型异常
  */
-export default function assertDeno() {
+export default function assertDeno(this: any) {
     if (!isDeno()) {
-        throw new TypeError('[assertDeno] 当前的执行环境不是 Deno');
+        throw new TypeError('[assertDeno] 当前的执行环境不是 Deno', {
+            cause: { this: this }
+        });
     }
 }

@@ -38,13 +38,25 @@ export default function startsSlice(
     options?: StartsSlice
 ): string {
     const {
-        position: pos = 0,
-        preserve = false,
-        caseSensitivity = true
-    } = options ?? {};
+        position: pos,
+        preserve,
+        caseSensitivity
+    } = {
+        position: 0,
+        preserve: false,
+        caseSensitivity: true,
+        ...options
+    };
 
     if (!isUint(pos) || str.length < pos) {
-        throw new TypeError(`[startsSlice]: position不是有效索引, "${pos}"`);
+        throw new TypeError('[startsSlice] position 不是有效索引', {
+            cause: {
+                position: pos,
+                str,
+                chunk,
+                options
+            }
+        });
     }
 
     let fn = (str: string, chunk: string) => str.startsWith(chunk, pos);

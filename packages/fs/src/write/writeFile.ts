@@ -46,24 +46,27 @@ export default async function writeFile(
         try {
             data = JSON.stringify(data);
         } catch (error) {
-            throw new Error('数据序列化失败，无法转换为 JSON 格式', {
-                cause: { function: 'writeFile', data, error }
-            });
+            throw new Error(
+                '[writeFile] 数据序列化失败，无法转换为 JSON 格式',
+                {
+                    cause: { filePath, data, options, error }
+                }
+            );
         }
     }
 
     // 如果是自动创建目录
     if (options.isMkdir) {
         await mkdir(dirname(filePath)).catch(error => {
-            throw new Error('创建目录失败', {
-                cause: { function: 'writeFile', filePath, error }
+            throw new Error('[writeFile] 创建父级目录失败', {
+                cause: { filePath, data, options, error }
             });
         });
     }
 
     return await promises.writeFile(filePath, data, options).catch(error => {
-        throw new Error('写文件失败', {
-            cause: { function: 'writeFile', filePath, data, options, error }
+        throw new Error('[writeFile] 写入文件失败', {
+            cause: { filePath, data, options, error }
         });
     });
 }

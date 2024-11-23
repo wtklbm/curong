@@ -38,7 +38,7 @@ export default function keys<K extends PropertyKey, V>(
         return fns[methodLevel](object) as K[];
     }
 
-    throw new TypeError(
-        `[keys] methodLevel 的值只能是 0 到 3，当前为 ${methodLevel}`
-    );
+    throw new TypeError('[keys] methodLevel 的值只能是 0 到 3', {
+        cause: { object, methodLevel }
+    });
 }

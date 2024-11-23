@@ -22,4 +22,3 @@ describe('@curong/regexp/isIPv4', () => {
         expect(isIPv4('0.0.0.0')).toBe(true);
     });
 });
-

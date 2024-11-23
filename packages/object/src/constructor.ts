@@ -24,5 +24,5 @@ export default function constructor<T extends {}>(
 ): Constructor<T> | null {
     return isNullOrUndefined(value)
         ? null
-        : Object.getPrototypeOf(value)?.constructor ?? null;
+        : (Object.getPrototypeOf(value)?.constructor ?? null);
 }

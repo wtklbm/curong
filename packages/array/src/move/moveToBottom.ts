@@ -25,7 +25,9 @@ export default function moveToBottom<T>(value: T[], from: number): T[] {
     from = from < 0 ? len + from : from;
 
     if (!isInt(from) || from < -len || from < 0 || from >= len) {
-        throw new RangeError(`[moveToBottom] from 不是 value 的索引，${from}`);
+        throw new TypeError('[moveToBottom] from 不是 value 的索引', {
+            cause: { value, from }
+        });
     }
 
     value.push(value.splice(from, 1)[0]);

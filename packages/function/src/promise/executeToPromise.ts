@@ -14,8 +14,8 @@ export default function executeToPromise<A extends unknown[], R = any>(
     return new Promise<R>((resolve, reject) => {
         try {
             resolve(isFunction(value) ? value.apply(value, args ?? []) : value);
-        } catch (e) {
-            reject(e);
+        } catch (error) {
+            reject(error);
         }
     });
 }

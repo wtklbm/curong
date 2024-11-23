@@ -16,12 +16,10 @@ import randomSafe from './randomSafe';
  * ```
  */
 export default function rangeSafe(start: number, end: number): number {
-    if (!isIntSafe(start)) {
-        throw new TypeError(`[range] start 必须是一个安全的整数: ${start}`);
-    }
-
-    if (!isIntSafe(end)) {
-        throw new TypeError(`[range] end 必须是一个安全的整数: ${end}`);
+    if (!isIntSafe(start) || !isIntSafe(end)) {
+        throw new TypeError('[rangeSafe] start 或 end 必须是一个安全的整数', {
+            cause: { start, end }
+        });
     }
 
     return Math.floor(randomSafe() * (end - start + 1)) + start;

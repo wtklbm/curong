@@ -12,8 +12,8 @@ export default function assertEvery<V, P extends (value: V) => boolean>(
     predicate: P | P[]
 ): asserts value is V {
     if (!isEvery(value, predicate)) {
-        throw new TypeError(
-            `[assertEvery] ${value} 不满足给定的条件: ${predicate}`
-        );
+        throw new TypeError('[assertEvery] value 不满足给定的条件', {
+            cause: { value, predicate }
+        });
     }
 }

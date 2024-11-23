@@ -5,8 +5,10 @@ import { isLinux } from '@curong/types';
  *
  * @throws 如果不是则会抛出类型异常
  */
-export default function assertLinux() {
+export default function assertLinux(this: any) {
     if (!isLinux()) {
-        throw new TypeError('[assertLinux] 当前的执行环境不是 Linux');
+        throw new TypeError('[assertLinux] 当前的执行环境不是 Linux', {
+            cause: { this: this }
+        });
     }
 }

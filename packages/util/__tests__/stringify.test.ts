@@ -5,9 +5,9 @@
 import { Buffer as NodeBuffer } from 'buffer';
 
 import {
-    stringifyAsync,
     asyncToStringMethod,
     stringify,
+    stringifyAsync,
     toStringMethod
 } from '../src/stringify';
 
@@ -467,7 +467,9 @@ describe('@curong/util/stringify', () => {
                 //         ? `Symbol.for("nodejs.${symbolName}")`
                 //         : `Symbol.${symbolName}`
                 // );
-                expect(Symbol(stringify(s)).description).toBe(`Symbol.${symbolName}`);
+                expect(Symbol(stringify(s)).description).toBe(
+                    `Symbol.${symbolName}`
+                );
                 expect(stringify(Symbol(`Symbol.${symbolName}`))).toEqual(
                     `Symbol("Symbol.${symbolName}")`
                 );

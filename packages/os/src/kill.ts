@@ -166,7 +166,9 @@ function kill(
             break;
 
         default:
-            throw new EvalError(`[kill] 暂不支持该 ${platform} 操作系统`);
+            throw new EvalError(`[kill] 暂不支持该 ${platform} 操作系统`, {
+                cause: { platform }
+            });
     }
 }
 

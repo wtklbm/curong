@@ -26,7 +26,10 @@ const buildArgs = (pathString: string, options?: ShortcutOptions): string[] => {
 
     if (!force && !existsSync(pathString)) {
         throw new TypeError(
-            `[buildArgs]: 快捷方式的源 "${pathString}" 不是有效的路径`
+            `[buildArgs] 快捷方式的源 "${pathString}" 不是有效的路径`,
+            {
+                cause: { pathString, options }
+            }
         );
     }
 
@@ -36,7 +39,10 @@ const buildArgs = (pathString: string, options?: ShortcutOptions): string[] => {
         (!existsSync(dirPath) || !lstatSync(dirPath).isDirectory())
     ) {
         throw new TypeError(
-            `[buildArgs]: "${dirPath}" 不是有效的存放链接的有效目录`
+            '[buildArgs] dirPath 不是有效的存放链接的有效目录',
+            {
+                cause: { pathString, options, dirPath }
+            }
         );
     }
 
@@ -84,7 +90,10 @@ export default async function windowsMakeShortcut(
 ) {
     if (!isWindows) {
         return new Error(
-            '[windowsMakeShortcut]: 当前不是 Windows 系统，无法执行操作'
+            '[windowsMakeShortcut] 当前不是 Windows 系统，无法执行操作',
+            {
+                cause: { pathString, options }
+            }
         );
     }
 

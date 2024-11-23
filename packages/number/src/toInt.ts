@@ -17,14 +17,19 @@ import { isString, isZero } from '@curong/types';
  */
 export default function toInt(value: number | string): number {
     if (isString(value) && isZero(value.trim().length)) {
-        throw new TypeError(`[toInt] value 不能为空字符串`);
+        throw new TypeError('[toInt] value 不能为空字符串', {
+            cause: { value }
+        });
     }
 
     const n = +value;
 
     if (!Number.isFinite(n)) {
         throw new TypeError(
-            `[toInt] value 转换为数字后不能为 NaN 或正负 Infinity: ${value}`
+            '[toInt] value 转换为数字后不能为 NaN 或正负 Infinity',
+            {
+                cause: { value }
+            }
         );
     }
 

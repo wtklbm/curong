@@ -16,7 +16,7 @@
  */
 export default function swap<T>(value: T[], i: number, j: number): T[] {
     if (i < 0 || i >= value.length || j < 0 || j >= value.length) {
-        throw new RangeError('[swap] 索引超出数组范围', {
+        throw new RangeError('[swap] 索引已超出数组范围', {
             cause: { value, i, j }
         });
     }

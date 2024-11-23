@@ -1,4 +1,3 @@
-import { format } from '@curong/term';
 import {
     isArray,
     isFunction,
@@ -28,7 +27,17 @@ const safeStringifyReplacer = (
             if (cycles) {
                 return `[Circular *${path}]`;
             } else {
-                throw new EvalError(`[stringify] 在 ${path} 出现了循环引用`);
+                throw new Error(
+                    '[safeStringifyReplacer] 在 path 中出现了循环引用',
+                    {
+                        cause: {
+                            path,
+                            object,
+                            compare,
+                            cycles
+                        }
+                    }
+                );
             }
         }
 
@@ -146,10 +155,8 @@ export default function stringify(
         try {
             resolve(JSON.stringify(value, handler, space));
         } catch (error) {
-            throw format({
-                name: 'stringify',
-                message: '转换字符串失败',
-                data: { value, error }
+            throw new Error('[stringify] 转换 JSON 字符串失败', {
+                cause: { value, options, error }
             });
         }
     });

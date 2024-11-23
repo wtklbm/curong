@@ -50,12 +50,17 @@ export default function runAfterTimes<R, A extends unknown[]>(
 ): () => any {
     if (!isUintSafe(count)) {
         throw new TypeError(
-            '[runAfterTimes]: count 不是大于或等于 0 的安全整数'
+            '[runAfterTimes] count 不是大于或等于 0 的安全整数',
+            {
+                cause: { count, callback, ...args }
+            }
         );
     }
 
     if (!isSyncFunction(callback)) {
-        throw new TypeError('[runAfterTimes]: callback 必须是一个同步函数');
+        throw new TypeError('[runAfterTimes] callback 必须是一个同步函数', {
+            cause: { count, callback, ...args }
+        });
     }
 
     const reachCall = () =>

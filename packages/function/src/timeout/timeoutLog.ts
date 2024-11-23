@@ -17,7 +17,10 @@ export default function timeoutLog(
     // 当使用大于 `2147483647` 毫秒（约 `24.8` 天）的延迟时，这会导致整数溢出
     if (!isUint(duration) || duration > 2147483647) {
         throw new TypeError(
-            `[timeoutLog] 超时时间应大于或等于 0 且不要超过 2147483647 毫秒 (约 24.8 天)`
+            '[timeoutLog] 超时时间应大于或等于 0 且不要超过 2147483647 毫秒 (约 24.8 天)',
+            {
+                cause: { duration, presetTemplate }
+            }
         );
     }
 

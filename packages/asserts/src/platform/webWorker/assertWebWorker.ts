@@ -5,8 +5,10 @@ import { isWebWorker } from '@curong/types';
  *
  * @throws 如果不是则会抛出类型异常
  */
-export default function assertWebWorker() {
+export default function assertWebWorker(this: any) {
     if (!isWebWorker()) {
-        throw new TypeError('[assertWebWorker] 当前的执行环境不是 Web Worker');
+        throw new TypeError('[assertWebWorker] 当前的执行环境不是 Web Worker', {
+            cause: { this: this }
+        });
     }
 }
