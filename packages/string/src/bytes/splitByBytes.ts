@@ -1,5 +1,4 @@
-import { format } from '@curong/term';
-import { isNull, isUint } from '@curong/types';
+import { isNull, isUintFilled } from '@curong/types';
 
 import chars from '../chars/chars';
 import fromChars from '../chars/fromChars';
@@ -26,12 +25,13 @@ import bytesLength from './bytesLength';
  * ```
  */
 export default function splitByBytes(value: string, highWaterMark = 4096) {
-    if (!isUint(highWaterMark) || highWaterMark === 0) {
-        throw format({
-            name: 'splitByBytes',
-            message: 'highWaterMark不是有效的值',
-            data: { highWaterMark }
-        });
+    if (!isUintFilled(highWaterMark)) {
+        throw new TypeError(
+            '[splitByBytes] highWaterMark 必须为大于 0 的无符号整数',
+            {
+                cause: { value, highWaterMark }
+            }
+        );
     }
 
     const ret: string[][] = [];
@@ -48,10 +48,8 @@ export default function splitByBytes(value: string, highWaterMark = 4096) {
         byte = bytesLength(char);
 
         if (isNull(byte)) {
-            throw format({
-                name: 'splitByBytes',
-                message: '转换字节失败',
-                data: { value, char }
+            throw new Error('[splitByBytes] 转换字节失败, byte 不能为 null', {
+                cause: { value, highWaterMark, char, byte }
             });
         }
 
