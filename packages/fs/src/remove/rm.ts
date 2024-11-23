@@ -1,8 +1,6 @@
 import type { PathLike } from 'fs';
 import { rmdir, unlink } from 'fs/promises';
 
-import { format } from '@curong/term';
-
 import isDir from '../is/isDir';
 import isFile from '../is/isFile';
 
@@ -23,9 +21,7 @@ export default async function rm(path: PathLike): Promise<void> {
         return await unlink(path);
     }
 
-    throw format({
-        name: 'rm',
-        message: 'path 不是一个文件或文件夹',
-        data: { path }
+    throw new TypeError('[rm] path 不是一个文件或文件夹', {
+        cause: { path }
     });
 }
