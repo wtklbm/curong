@@ -30,8 +30,8 @@ export default async function readLnk(pathString: string): Promise<string> {
     pathString = normalize(pathString);
 
     if (platform !== 'win32') {
-        throw new TypeError('无法解析不是 ".lnk" 后缀的文件', {
-            cause: { function: 'readLnk', pathString }
+        throw new TypeError('[readLnk] 无法解析不是 ".lnk" 后缀的文件', {
+            cause: { pathString }
         });
     }
 
@@ -41,8 +41,8 @@ export default async function readLnk(pathString: string): Promise<string> {
     });
 
     if (!isNull(stderr)) {
-        throw new Error('解析 ".lnk" 文件时失败', {
-            cause: { function: 'readLnk', pathString, stderr, stdout }
+        throw new Error('[readLnk] 解析 ".lnk" 文件时失败', {
+            cause: { pathString, stderr, stdout }
         });
     }
 
