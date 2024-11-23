@@ -25,6 +25,7 @@
 - `exists`: 指定路径的文件是不是存在
 - `isDir`: 是不是一个文件夹
 - `isFile`: 是不是一个文件
+- `isFileOrDir`: 是不是一个文件或目录
 - `isSymbolicLink`: 是不是一个符号链接
 
 ## `move`
