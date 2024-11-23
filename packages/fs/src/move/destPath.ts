@@ -88,9 +88,8 @@ export default async function destPath(
     destPath = join(desDir, resolvePath);
 
     if (isMakeDir) {
-        const destDir = dirname(destPath);
         // 如果目录不存在则创建目录
-        await mkdir(destDir).catch(() => {});
+        await mkdir(dirname(destPath)).catch(() => {});
     }
 
     return destPath;
