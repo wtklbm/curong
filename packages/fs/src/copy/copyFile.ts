@@ -16,22 +16,19 @@ import type { CopyFileOptions } from './types';
  * @param srcDir 源文件夹，为了实现多级复制，所以传递了来源(不包含文件名和后缀)
  * @param desDir 目标文件夹(不包含文件名和后缀)
  * @param options
- *
- * - `forcibly` 是否强制写入，默认为 `true`
- *
+ *  - `forcibly` 是否强制写入，默认为 `true`
  * @return 如果出错，则控制台返回一个错误消息，否则返回复制好后的该文件的绝对路径
  * @throws
- *
- * - 如果没有找到当前路径所对应的绝对路径，则会抛出异常
- * - 如果拷贝文件失败，则会抛出异常
+ *  - 如果没有找到当前路径所对应的绝对路径，则会抛出异常
+ *  - 如果拷贝文件失败，则会抛出异常
  */
 export default async function copyFile(
     filePath: string,
     srcDir: string,
     desDir: string,
-    options?: CopyFileOptions
+    options: CopyFileOptions = {}
 ): Promise<string> {
-    options = { forcibly: true, ...options };
+    const { forcibly = true } = options;
 
     const name = 'copyFile';
     const destString: string = await destPath(filePath, srcDir, desDir, {
@@ -49,7 +46,7 @@ export default async function copyFile(
         try {
             await promises.copyFile(filePath, destString);
         } catch (error) {
-            if (isTrue(options.forcibly)) {
+            if (isTrue(forcibly)) {
                 await rm(filePath);
 
                 return await copyFile(filePath, srcDir, desDir, {
