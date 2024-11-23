@@ -1,8 +1,6 @@
 import { copyFile, lstat, readdir } from 'fs/promises';
 import { dirname, join } from 'path';
 
-import { format } from '@curong/term';
-
 import mkdir from '../create/mkdir';
 import isDir from '../is/isDir';
 import isFile from '../is/isFile';
@@ -25,10 +23,8 @@ const _copyFile = async (from: string, to: string, forcibly = false) => {
     }
 
     return await copyFile(from, to).catch(error => {
-        throw format({
-            name: '_copyFile',
-            message: '拷贝文件失败，无法将from拷贝到to',
-            data: { from, to, error }
+        throw new Error('[copy] 拷贝文件失败，无法将 from 拷贝到 to', {
+            cause: { from, to, forcibly, error }
         });
     });
 };
@@ -52,7 +48,6 @@ export default async function copy(
     toPath: string,
     options: CopyFileOptions = {}
 ): Promise<void> {
-    const name = 'copy';
     const { forcibly = true } = options;
     let link: string | null;
 
@@ -68,10 +63,8 @@ export default async function copy(
 
     // 如果源不是一个文件夹
     if (!(await isDir(fromPath))) {
-        throw format({
-            name,
-            message: `fromPath不是一个文件或文件夹`,
-            data: { fromPath, toPath }
+        throw new TypeError('[copy] fromPath 不是一个文件或文件夹', {
+            cause: { fromPath, toPath, options }
         });
     }
 
@@ -79,10 +72,8 @@ export default async function copy(
 
     // 如果目标名已经被占用并且目标不是一个文件夹
     if (toPathStat && !toPathStat.isDirectory()) {
-        throw format({
-            name,
-            message: `toPath已经存在，并且不是一个目录，toPath: "${toPath}}"`,
-            data: { fromPath, toPath }
+        throw new TypeError('[copy] toPath 已经存在，并且不是一个目录', {
+            cause: { fromPath, toPath, options }
         });
     }
 
@@ -94,10 +85,8 @@ export default async function copy(
     //# 如果是文件夹
 
     const paths = await readdir(fromPath).catch(error => {
-        throw format({
-            name,
-            message: '读取fromPath文件夹失败',
-            data: { fromPath, toPath, error }
+        throw new Error('[copy] 读取 fromPath 文件夹失败', {
+            cause: { fromPath, toPath, options, error }
         });
     });
 
@@ -117,12 +106,12 @@ export default async function copy(
         } else if (await isDir(from)) {
             await copy(from, to);
         } else {
-            throw format({
-                name,
-                message:
-                    '无法将from拷贝到to，from不是一个文件、文件夹或符号链接',
-                data: { fromPath, toPath, from, to }
-            });
+            throw new Error(
+                '[copy] 无法将 from 拷贝到 to，from 不是一个文件、文件夹或符号链接',
+                {
+                    cause: { fromPath, toPath, options, from, to }
+                }
+            );
         }
     }
 }
