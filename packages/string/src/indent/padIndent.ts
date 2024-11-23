@@ -19,13 +19,11 @@ import type { PadIndentOptions } from './types';
  * console.log(ret); //  '    description.\n\n    this is a test.'
  * ```
  */
-export default function padIndent(value: string, options?: PadIndentOptions) {
-    const { indent, count, emptyLines } = {
-        indent: ' ',
-        count: 1,
-        emptyLines: true,
-        ...options
-    };
+export default function padIndent(
+    value: string,
+    options: PadIndentOptions = {}
+) {
+    const { indent = ' ', count = 1, emptyLines = true } = options;
 
     return value.replace(
         emptyLines ? /^/gm : /^(?!^$)/gm,
