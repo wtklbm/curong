@@ -33,8 +33,8 @@ export default async function fileList(
             withFileTypes: true
         })
         .catch(error => {
-            throw new Error('读取文件夹失败', {
-                cause: { function: 'fileList', dirName, options, error }
+            throw new Error('[fileList] 读取文件夹失败', {
+                cause: { dirName, options, error }
             });
         });
 
