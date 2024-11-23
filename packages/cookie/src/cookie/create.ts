@@ -55,7 +55,7 @@ export default function createCookie(
         });
     }
 
-    const { encode = encodeURIComponent } = options ?? {};
+    const { encode = encodeURIComponent } = options;
 
     if (!isFunctionFilled(encode)) {
         throw new TypeError('[createCookie] encode 不是一个带参的函数', {
