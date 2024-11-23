@@ -39,24 +39,21 @@ const _copyFile = async (from: string, to: string, forcibly = false) => {
  * @param fromPath 可能是文件、文件夹或符号链接
  * @param toPath 可能是文件、文件夹或符号链接
  * @param options 配置选项
- *
  *  - `forcibly`: 如果文件已存在时是否强制覆盖，默认为 `true`
- *
  * @throws
- *
- * - 如果 `fromPath` 不是文件、文件夹、符号链接则会抛出异常
- * - 如果 `toPath` 名被占用且 `toPath` 不是文件夹则会抛出异常
- * - 如果读取文件夹失败则会抛出异常
- * - 如果拷贝文件失败则会抛出异常
- * - 如果拷贝符号链接失败则会抛出异常
+ *  - 如果 `fromPath` 不是文件、文件夹、符号链接则会抛出异常
+ *  - 如果 `toPath` 名被占用且 `toPath` 不是文件夹则会抛出异常
+ *  - 如果读取文件夹失败则会抛出异常
+ *  - 如果拷贝文件失败则会抛出异常
+ *  - 如果拷贝符号链接失败则会抛出异常
  */
 export default async function copy(
     fromPath: string,
     toPath: string,
-    options?: CopyFileOptions
+    options: CopyFileOptions = {}
 ): Promise<void> {
     const name = 'copy';
-    const { forcibly = true } = options ?? {};
+    const { forcibly = true } = options;
     let link: string | null;
 
     // 如果源是符号链接
