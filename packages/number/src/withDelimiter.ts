@@ -22,7 +22,7 @@ import type { WithDelimiterOptions } from './types';
  */
 export default function withDelimiter(
     value: number | string,
-    options?: WithDelimiterOptions
+    options: WithDelimiterOptions = {}
 ): string {
     if (!isFinite(+value)) {
         throw new TypeError('[withDelimiter] value 必须是一个有效的数字', {
@@ -31,7 +31,7 @@ export default function withDelimiter(
     }
 
     const numStr = value.toString();
-    const { delimiter, capacity } = { delimiter: ',', capacity: 3, ...options };
+    const { delimiter = ',', capacity = 3 } = options;
 
     if (!isUintFilled(capacity)) {
         throw new TypeError(
