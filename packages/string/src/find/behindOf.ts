@@ -30,13 +30,13 @@ import type { GenericOptions } from '../types';
 export default function behindOf(
     str: string,
     chunks: string[],
-    options?: GenericOptions
+    options: GenericOptions = {}
 ): boolean {
     if (isZero(str.length) || isZero(chunks.length)) {
         return false;
     }
 
-    const { position: pos, caseSensitivity = true } = options ?? {};
+    const { position: pos, caseSensitivity = true } = options;
 
     let fn = (str: string, chunk: string) => str.includes(chunk, pos);
 
