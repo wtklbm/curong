@@ -1,14 +1,10 @@
 import { symlink } from 'fs/promises';
 import { dirname } from 'path';
 
-import { format } from '@curong/term';
-
 import mkdir from '../create/mkdir';
 import isDir from '../is/isDir';
 import isFile from '../is/isFile';
 import isSymbolicLink from '../is/isSymbolicLink';
-
-const name = 'copySymbolicLink';
 
 /**
  * 将一个符号链接拷贝到另一个路径
@@ -26,10 +22,8 @@ export default async function copySymbolicLink(
 ): Promise<void> {
     // 如果要拷贝的内容不是符号链接
     if (!(await isSymbolicLink(fromPath))) {
-        throw format({
-            name,
-            message: 'fromPath不是一个符号链接',
-            data: { fromPath, toPath }
+        throw new TypeError('[copySymbolicLink] fromPath 不是一个符号链接', {
+            cause: { fromPath, toPath }
         });
     }
 
@@ -52,10 +46,11 @@ export default async function copySymbolicLink(
 
     // 创建符号链接
     await symlink(fromPath, toPath, type).catch(error => {
-        throw format({
-            name,
-            message: '拷贝符号链接失败，无法将fromPath拷贝到toPath',
-            data: { fromPath, toPath, error }
-        });
+        throw new Error(
+            '[copySymbolicLink] 拷贝符号链接失败，无法将 fromPath 拷贝到 toPath',
+            {
+                cause: { fromPath, toPath, error }
+            }
+        );
     });
 }
