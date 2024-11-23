@@ -1,7 +1,6 @@
 import { Dirent, promises } from 'fs';
 import { extname, join } from 'path';
 
-import { format } from '@curong/term';
 import { isArrayFilled, isStringFilled } from '@curong/types';
 
 import readLnk from '../read/readLnk';
@@ -81,10 +80,8 @@ export default async function findDir(
     const pathStrings: string[] = [];
 
     if (!isStringFilled(pathString)) {
-        throw format({
-            name: 'findDir',
-            message: 'pathString不是一个包含内容的字符串',
-            data: { pathString }
+        throw new TypeError('[findDir] pathString 不是一个包含内容的字符串', {
+            cause: { pathString, folders }
         });
     }
 
