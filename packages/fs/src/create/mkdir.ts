@@ -1,7 +1,5 @@
 import { MakeDirectoryOptions, promises } from 'fs';
 
-import { format } from '@curong/term';
-
 /**
  * 创建一个文件夹
  *
@@ -28,10 +26,8 @@ export default async function mkdir(
     };
 
     return await promises.mkdir(dirPath, options).catch(error => {
-        throw format({
-            name: 'mkdir',
-            message: '创建目录失败',
-            data: { dirPath, options, error }
+        throw new Error('[mkdir] 创建目录失败', {
+            cause: { dirPath, options, error }
         });
     });
 }
