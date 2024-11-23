@@ -1,5 +1,3 @@
-import { format } from '@curong/term';
-
 /**
  * 将 `JSON` 格式的字符串转换为一个 `JavaScript` 对象
  *
@@ -24,10 +22,8 @@ export default function parseJson<T = unknown>(
         try {
             resolve(JSON.parse(value, reviver));
         } catch (error) {
-            throw format({
-                name: 'parseJson',
-                message: '解析JSON对象失败',
-                data: { value, error }
+            throw new Error('[parseJson] 解析 JSON 对象失败', {
+                cause: { value, reviver, error }
             });
         }
     });
