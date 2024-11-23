@@ -76,9 +76,9 @@ const zhReg = /[\u4e00-\u9fff]/;
  */
 export default function toSentences(
     value: string,
-    options?: ToSentencesOptions
+    options: ToSentencesOptions = {}
 ): string[] {
-    const { ellipsis = true } = options ?? {};
+    const { ellipsis = true } = options;
 
     return bindOutside(
         value,
