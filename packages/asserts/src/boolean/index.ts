@@ -2,5 +2,8 @@ export { default as assertBoolean } from './assertBoolean';
 export { default as assertBooleanArray } from './assertBooleanArray';
 export { default as assertBooleanObject } from './assertBooleanObject';
 export { default as assertBooleanPrimitive } from './assertBooleanPrimitive';
+export { default as assertBooleanString } from './assertBooleanString';
 export { default as assertFalse } from './assertFalse';
+export { default as assertFalseString } from './assertFalseString';
 export { default as assertTrue } from './assertTrue';
+export { default as assertTrueString } from './assertTrueString';
