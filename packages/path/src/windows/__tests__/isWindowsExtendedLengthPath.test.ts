@@ -1,4 +1,4 @@
-import { isWindowsExtendedLengthPath } from '../src';
+import { isWindowsExtendedLengthPath } from '..';
 
 describe('@curong/path/isWindowsExtendedLengthPath', () => {
     test('测试1', () => {

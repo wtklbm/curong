@@ -1,4 +1,4 @@
-import { isWindowsPath } from '../src';
+import { isWindowsPath } from '..';
 
 describe('@curong/path/isWindowsPath', () => {
     test('测试1', () => {

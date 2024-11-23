@@ -1,4 +1,4 @@
-import isWindowsExtendedLengthPath from './isWindowsExtendedLengthPath';
+import isWindowsExtendedLengthPath from './windows/isWindowsExtendedLengthPath';
 
 /**
  * 统一路径分隔符，将所有的分隔符转换为 `/`
