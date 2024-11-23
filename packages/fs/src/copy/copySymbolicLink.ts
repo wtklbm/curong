@@ -31,9 +31,7 @@ export default async function copySymbolicLink(
     let type: string | null;
 
     // 先判断目标文件夹存不存在
-    if (!(await isDir(toDir))) {
-        await mkdir(toDir);
-    }
+    await mkdir(toDir).catch(() => {});
 
     // 判断符号链接的类型
     if (await isFile(fromPath)) {
