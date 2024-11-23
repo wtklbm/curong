@@ -1,7 +1,5 @@
 import { join } from 'path';
 
-import { format } from '@curong/term';
-
 import isDir from '../is/isDir';
 import fileList from '../read/fileList';
 
@@ -17,10 +15,8 @@ import rm from './rm';
  */
 export default async function clearDir(pathString: string): Promise<void> {
     if (!(await isDir(pathString))) {
-        throw format({
-            name: 'clearDir',
-            message: 'pathString不是一个有效的文件夹路径',
-            data: { pathString }
+        throw new TypeError('[clearDir] pathString 不是一个有效的文件夹路径', {
+            cause: { pathString }
         });
     }
 
