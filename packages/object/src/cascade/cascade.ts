@@ -1,4 +1,3 @@
-import { format } from '@curong/term';
 import { isStringFilled } from '@curong/types';
 
 import type { ObjectType } from '../types';
@@ -34,11 +33,12 @@ export default function cascade<T = unknown>(
     isThrow: boolean = true
 ): T | undefined {
     if (!isStringFilled(cascadeKey)) {
-        throw format({
-            name: 'cascade',
-            message: 'cascadeKey不是一个有效的级联属性字符串',
-            data: { cascadeKey }
-        });
+        throw new TypeError(
+            '[cascade] cascadeKey 不是一个有效的级联属性字符串',
+            {
+                cause: { obj, cascadeKey, dependencies, isThrow }
+            }
+        );
     }
 
     const keys = toCascadeKeys(cascadeKey, dependencies);
