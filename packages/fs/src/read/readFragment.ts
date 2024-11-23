@@ -54,8 +54,8 @@ export default function readFragment(
         });
 
         stream.on('error', error => {
-            throw new Error('文件读取失败', {
-                cause: { function: 'readFragment', path, options, error }
+            throw new Error('[readFragment] 文件读取失败', {
+                cause: { path, options, error }
             });
         });
 
