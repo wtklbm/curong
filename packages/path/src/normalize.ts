@@ -17,5 +17,5 @@ const homeDirectory = homedir();
  * @throw 如果 pathString 不是有效的路径字符串，则会抛出异常
  */
 export default function normalize(pathString: string): string {
-    return _normalize(pathString).replace(/^~(?=$|\/|\\)/, homeDirectory);
+    return _normalize(pathString.replace(/^~(?=$|\/|\\)/, homeDirectory));
 }
