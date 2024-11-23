@@ -33,8 +33,11 @@
 - `isBooleanArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是布尔值或被包装后的布尔值对象
 - `isBooleanObject`: 是不是一个被包装后的布尔值对象，即 `new Boolean`
 - `isBooleanPrimitive`: 是不是一个基本的布尔值，即 `boolean`
+- `isBooleanString`: 是不是一个布尔值字符串，即字符串 `true` 或 `false`
 - `isFalse`: 是不是 `false`
+- `isFalseString`: 是不是 `false` 字符串
 - `isTrue`: 是不是 `true`
+- `isTrueString`: 是不是 `true` 字符串
 
 #### `buffer`
 
