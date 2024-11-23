@@ -41,9 +41,9 @@ const addPack = (
  */
 export default function fromCascadeKeys(
     keys: Array<string | number>,
-    options?: FromCascadeKeysOptions
+    options: FromCascadeKeysOptions = {}
 ): string {
-    const { optional = false, startDot = false } = options ?? {};
+    const { optional = false, startDot = false } = options;
     let oc = '';
 
     if (optional) {
