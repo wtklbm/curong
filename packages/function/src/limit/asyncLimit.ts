@@ -25,9 +25,9 @@ import type { AsyncLimitOptions } from './types';
  */
 export default function asyncLimit<R, A extends unknown[]>(
     task: (...args: A) => R,
-    options?: AsyncLimitOptions
+    options: AsyncLimitOptions = {}
 ) {
-    const { concurrency } = { concurrency: 1, ...options };
+    const { concurrency = 1 } = options;
     const queue: Array<[args: A, resolve: (res: any) => any]> = [];
     let activeCount = 0;
 
