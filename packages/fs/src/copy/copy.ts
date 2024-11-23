@@ -15,12 +15,8 @@ const _copyFile = async (from: string, to: string, forcibly = false) => {
         return;
     }
 
-    const toDir = dirname(to);
-
     // 在拷贝文件之前，先判断父文件夹存不存在
-    if (!(await isDir(toDir))) {
-        await mkdir(toDir);
-    }
+    await mkdir(dirname(to)).catch(() => {});
 
     return await copyFile(from, to).catch(error => {
         throw new Error('[copy] 拷贝文件失败，无法将 from 拷贝到 to', {
@@ -78,9 +74,7 @@ export default async function copy(
     }
 
     // 先判断目标文件夹存不存在
-    if (!(await isDir(toPath))) {
-        await mkdir(toPath);
-    }
+    await mkdir(toPath).catch(() => {});
 
     //# 如果是文件夹
 
