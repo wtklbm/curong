@@ -23,9 +23,12 @@ import { commonHeaders } from './headers';
 const validationParameters = (args: Record<PropertyKey, any>) => {
     for (const [k, v] of Object.entries(args)) {
         if (isNullOrUndefined(v)) {
-            throw new TypeError('[validationParameters] args 中的某个参数的 key 不能为空', {
-                cause: { args, key: k, value: v }
-            });
+            throw new TypeError(
+                '[validationParameters] args 中的某个参数的 key 不能为空',
+                {
+                    cause: { args, key: k, value: v }
+                }
+            );
         }
     }
 };
