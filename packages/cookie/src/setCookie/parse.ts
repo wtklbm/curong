@@ -171,9 +171,9 @@ function parseChunk(cookie: string, isDecode: boolean = true) {
  */
 export default function parseSetCookie(
     cookies: string[],
-    options?: ParseSetCookieOptions
+    options: ParseSetCookieOptions = {}
 ): SetCookieParseResult {
-    const { decode = true, map = false } = options ?? {};
+    const { decode = true, map = false } = options;
 
     if (!map) {
         return cookies.map((str: string) => parseChunk(str, decode));
