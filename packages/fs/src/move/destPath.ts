@@ -4,7 +4,6 @@ import { dirname, isAbsolute, join, normalize, relative } from 'path';
 import { isStringFilled } from '@curong/types';
 
 import mkdir from '../create/mkdir';
-import isDir from '../is/isDir';
 import readLnk from '../read/readLnk';
 
 import type { DestPathOptions } from './types';
@@ -91,7 +90,7 @@ export default async function destPath(
     if (isMakeDir) {
         const destDir = dirname(destPath);
         // 如果目录不存在则创建目录
-        (await isDir(destDir)) || (await mkdir(destDir));
+        await mkdir(destDir).catch(() => {});
     }
 
     return destPath;
