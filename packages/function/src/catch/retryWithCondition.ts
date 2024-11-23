@@ -33,9 +33,9 @@ import type { RetryWithConditionOptions } from './types';
 export default async function retryWithCondition<T>(
     task: (...args: any[]) => Promise<T> | T,
     condition: (result: T) => Promise<boolean> | boolean,
-    options?: RetryWithConditionOptions
+    options: RetryWithConditionOptions = {}
 ): Promise<T> {
-    const { retryWait, maxRetries } = { ...options };
+    const { retryWait, maxRetries } = options;
     let retryWaitFn = async () => {};
     let maxRetriesFn = () => {};
 
