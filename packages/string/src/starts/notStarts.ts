@@ -32,17 +32,13 @@ import type { GenericOptions } from '../types';
 export default function notStarts(
     str: string,
     chunks: string[],
-    options?: GenericOptions
+    options: GenericOptions = {}
 ) {
     if (isZero(str.length) || isZero(chunks.length)) {
         return true;
     }
 
-    const { position: pos, caseSensitivity } = {
-        position: 0,
-        caseSensitivity: true,
-        ...options
-    };
+    const { position: pos = 0, caseSensitivity = true } = options;
 
     if (!isUint(pos) || str.length < pos) {
         throw new TypeError('[notStarts] position 不是有效索引', {
