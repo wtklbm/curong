@@ -1,6 +1,5 @@
 import { TextDecoder } from 'util';
 
-import { format } from '@curong/term';
 import { isNotEqual, isNull } from '@curong/types';
 
 import { request } from '../request';
@@ -30,21 +29,20 @@ export default async function publicIP(): Promise<publicIpResult> {
     const ret = await request({ hostname, path });
 
     if (!isNull(ret.error) || isNotEqual(ret.response.statusCode, 200)) {
-        throw format({
-            name: 'publicIP',
-            message: '请求公共的IP地址失败',
-            code: ret.response.statusCode,
-            data: ret
+        throw new Error('[publicIP] 请求公共的 IP 地址失败', {
+            cause: {
+                result: ret,
+                statusCode: ret.response.statusCode,
+                error: ret.error
+            }
         });
     }
 
     const data = new TextDecoder('gbk').decode(ret.data);
 
     if (!data.startsWith('var returnCitySN = {')) {
-        throw format({
-            name: 'publicIP',
-            message: '从远程获取到的数据的格式不正确',
-            data: ret.data
+        throw new Error('[publicIP] 从远程获取到的数据的格式不正确', {
+            cause: { result: ret, data, error: ret.error }
         });
     }
 
