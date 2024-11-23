@@ -35,18 +35,13 @@ import type { StartsSlice } from './types';
 export default function startsSlice(
     str: string,
     chunk: string,
-    options?: StartsSlice
+    options: StartsSlice = {}
 ): string {
     const {
-        position: pos,
-        preserve,
-        caseSensitivity
-    } = {
-        position: 0,
-        preserve: false,
-        caseSensitivity: true,
-        ...options
-    };
+        position: pos = 0,
+        preserve = false,
+        caseSensitivity = true
+    } = options;
 
     if (!isUint(pos) || str.length < pos) {
         throw new TypeError('[startsSlice] position 不是有效索引', {
