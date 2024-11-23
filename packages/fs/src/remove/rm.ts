@@ -14,14 +14,16 @@ import isFile from '../is/isFile';
  */
 export default async function rm(path: PathLike): Promise<void> {
     if (await isFile(path)) {
-        return await unlink(path);
+        return await unlink(path).catch(error => {
+            throw new Error('[rm] 删除文件失败', { cause: { path, error } });
+        });
     }
 
     if (await isDir(path)) {
-        return await rmdir(path, { recursive: true });
+        return await rmdir(path, { recursive: true }).catch(error => {
+            throw new Error('[rm] 删除文件夹失败', { cause: { path, error } });
+        });
     }
 
-    throw new TypeError('[rm] path 不是一个文件或文件夹', {
-        cause: { path }
-    });
+    throw new TypeError('[rm] path 不是一个文件或文件夹', { cause: { path } });
 }
