@@ -1,6 +1,5 @@
 import { promises } from 'fs';
 
-import { format } from '@curong/term';
 import { isTrue } from '@curong/types';
 
 import diffFile from '../diff/diffFile';
@@ -30,14 +29,11 @@ export default async function copyFile(
 ): Promise<string> {
     const { forcibly = true } = options;
 
-    const name = 'copyFile';
     const destString: string = await destPath(filePath, srcDir, desDir, {
         isMakeDir: true
     }).catch((error: Error) => {
-        throw format({
-            name,
-            message: '获取路径失败',
-            data: { filePath, srcDir, desDir, error }
+        throw new Error('[copyFile] 获取目标路径失败', {
+            cause: { filePath, srcDir, desDir, options, error }
         });
     });
 
@@ -54,10 +50,15 @@ export default async function copyFile(
                 });
             }
 
-            throw format({
-                name,
-                message: '拷贝文件失败',
-                data: { filePath, destPath: destString, srcDir, desDir, error }
+            throw new Error('[copyFile] 拷贝文件失败', {
+                cause: {
+                    filePath,
+                    srcDir,
+                    desDir,
+                    destPath: destString,
+                    options,
+                    error
+                }
             });
         }
     }
