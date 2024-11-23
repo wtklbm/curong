@@ -1,5 +1,4 @@
 import { chars } from '@curong/string';
-import { format } from '@curong/term';
 import { isArrayIndex } from '@curong/types';
 
 import type { ObjectType } from '../types';
@@ -35,16 +34,13 @@ export default function toCascadeKeys(
     const ret = [];
     let tmpKey = '';
 
-    const name = 'toCascadeKeys';
     const charsArray = chars(value);
     const pushK = (key: string) => (key = key.trimEnd()) && ret.push(key);
 
     const vKey = (key: string) => {
         if (!key) {
-            throw format({
-                name,
-                message: '参数 value 中出现了为空的属性名',
-                data: { value, key }
+            throw new Error('[toCascadeKeys] 参数 value 中出现了为空的属性名', {
+                cause: { value, dependencies, key }
             });
         }
     };
@@ -69,11 +65,12 @@ export default function toCascadeKeys(
         const v = dependencies[key];
 
         if (!v) {
-            throw format({
-                name,
-                message: `"${key}" 属性并未在 dependencies 参数中定义`,
-                data: { value, key, dependencies }
-            });
+            throw new Error(
+                '[toCascadeKeys] key 属性并未在 dependencies 参数中定义',
+                {
+                    cause: { value, dependencies, key }
+                }
+            );
         }
 
         return v;
@@ -97,20 +94,16 @@ export default function toCascadeKeys(
                     ret.push(removeWarp(value.slice(i + 1, m).trim()));
                     i = m;
                 } else {
-                    throw format({
-                        name,
-                        message: '找到了 "[" 但是后面没有找到 "]"',
-                        data: { value }
+                    throw new Error('找到了 "[" 但是后面没有找到 "]"', {
+                        cause: { value, dependencies }
                     });
                 }
 
                 break;
 
             case ']':
-                throw format({
-                    name,
-                    message: '找到了 "]" 但是之前没有找到 "["',
-                    data: { value }
+                throw new Error('找到了 "]" 但是之前没有找到 "["', {
+                    cause: { value, dependencies }
                 });
 
             default:
