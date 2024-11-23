@@ -19,9 +19,9 @@ import type { MinIndentOptions } from './types';
  */
 export default function findMinIndent(
     value: string,
-    options?: MinIndentOptions
+    options: MinIndentOptions = {}
 ) {
-    const { emptyLines } = { emptyLines: true, ...options };
+    const { emptyLines = true } = options;
     const regex = new RegExp(
         `^${trimRegSource(
             {
