@@ -28,8 +28,11 @@
 - `assertBooleanArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是布尔值或被包装后的布尔值对象
 - `assertBooleanObject`: 是不是一个被包装后的布尔值对象，即 `new Boolean`
 - `assertBooleanPrimitive`: 是不是一个基本的布尔值，即 `boolean`
+- `assertBooleanString`: 是不是一个布尔值字符串，即字符串 `true` 或 `false`
 - `assertFalse`: 是不是 `false`
+- `assertFalseString`: 是不是 `false` 字符串
 - `assertTrue`: 是不是 `true`
+- `assertTrueString`: 是不是 `true` 字符串
 
 #### `buffer`
 
