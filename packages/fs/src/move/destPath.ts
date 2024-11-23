@@ -14,27 +14,24 @@ import type { DestPathOptions } from './types';
  * 获取目标路径和目标文件夹
  *
  * @bug 此方法目前还不支持 `macOS` 和 `Linux`
- * @param {string} filePath 当前文件的路径，这个是绝对路径(有文件名和后缀)
- * @param {string} srcDir 源文件夹，为了实现多级复制，所以传递了来源(不包含文件名和后缀)
- * @param {string} desDir 目标文件夹(不包含文件名和后缀)
+ * @param filePath 当前文件的路径，这个是绝对路径(有文件名和后缀)
+ * @param srcDir 源文件夹，为了实现多级复制，所以传递了来源(不包含文件名和后缀)
+ * @param desDir 目标文件夹(不包含文件名和后缀)
  * @param options  配置参数
- *
  *  - `isMakeDir` 是否自动创建目标文件夹，默认为 `false`
- *
  * @return 返回该文件的相当于目标文件夹的路径
  * @throws
- *
- * - 如果 `filePath` 为空字符串，则会抛出异常
- * - 如果 `srcDir` 为空字符串，则会抛出异常
- * - 如果 `desDir` 为空字符串，则会抛出异常
+ *  - 如果 `filePath` 为空字符串，则会抛出异常
+ *  - 如果 `srcDir` 为空字符串，则会抛出异常
+ *  - 如果 `desDir` 为空字符串，则会抛出异常
  */
 export default async function destPath(
     filePath: string,
     srcDir: string,
     desDir: string,
-    options?: DestPathOptions
+    options: DestPathOptions = {}
 ): Promise<string> {
-    const { isMakeDir = false } = options ?? {};
+    const { isMakeDir = false } = options;
 
     if (
         !isStringFilled(filePath) ||
