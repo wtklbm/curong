@@ -2,5 +2,8 @@ export { default as isBoolean } from './isBoolean';
 export { default as isBooleanArray } from './isBooleanArray';
 export { default as isBooleanObject } from './isBooleanObject';
 export { default as isBooleanPrimitive } from './isBooleanPrimitive';
+export { default as isBooleanString } from './isBooleanString';
 export { default as isFalse } from './isFalse';
+export { default as isFalseString } from './isFalseString';
 export { default as isTrue } from './isTrue';
+export { default as isTrueString } from './isTrueString';
