@@ -30,13 +30,13 @@ import type { GenericOptions } from '../types';
 export default function frontOf(
     str: string,
     chunks: string[],
-    options?: GenericOptions
+    options: GenericOptions = {}
 ): boolean {
     if (isZero(str.length) || isZero(chunks.length)) {
         return false;
     }
 
-    const { position: pos, caseSensitivity = true } = options ?? {};
+    const { position: pos, caseSensitivity = true } = options;
 
     const l = str.length;
     str = str.slice(0, isUint(pos) && pos < l ? pos + 1 : l);
