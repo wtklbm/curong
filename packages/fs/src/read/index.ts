@@ -1,4 +1,4 @@
-export { default as fileList } from './fileList';
+export { default as readDir } from './readDir';
 export { default as readFile } from './readFile';
 export { default as readFragment } from './readFragment';
 export { default as readline } from './readline';

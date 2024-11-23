@@ -1,7 +1,7 @@
 import { join } from 'path';
 
 import isDir from '../is/isDir';
-import fileList from '../read/fileList';
+import readDir from '../read/readDir';
 
 import rm from './rm';
 
@@ -20,7 +20,7 @@ export default async function clearDir(pathString: string): Promise<void> {
         });
     }
 
-    const files = await fileList(pathString, { depthOnce: true });
+    const files = await readDir(pathString, { depthOnce: true });
     let item;
 
     while ((item = files.shift())) {

@@ -15,12 +15,12 @@ import type { FileListOptions } from './types';
  * @return 返回一个包含文件名的列表
  * @throws 如果读取文件夹失败，则会抛出异常
  * @note
- *  - 在调用 `fileList()` 之前，请勿使用 `access()` 检查文件的可访问性。
+ *  - 在调用 `readDir()` 之前，请勿使用 `access()` 检查文件的可访问性。
  *   这样做会引入竞态条件，因为其他进程可能会在两次调用之间更改文件的状态。
  *   相反，用户代码应该直接 `read` 文件并处理文件不可访问时引发的错误。
  * @todo 将参数变为一个 `options`： { ignored = '', depth = 0 }
  */
-export default async function fileList(
+export default async function readDir(
     dirName: string,
     options: FileListOptions = {}
 ): Promise<Array<string>> {
@@ -33,7 +33,7 @@ export default async function fileList(
             withFileTypes: true
         })
         .catch(error => {
-            throw new Error('[fileList] 读取文件夹失败', {
+            throw new Error('[readDir] 读取文件夹失败', {
                 cause: { dirName, options, error }
             });
         });
@@ -60,7 +60,7 @@ export default async function fileList(
 
             if (extname(targetPath) === '') {
                 // 如果是文件夹
-                files.push(...(await fileList(targetPath)));
+                files.push(...(await readDir(targetPath)));
             } else {
                 // 不是文件夹，那么就是文件了
                 files.push(targetPath);
@@ -71,7 +71,7 @@ export default async function fileList(
 
         // 是文件夹
         if (dirent.isDirectory()) {
-            files.push(...(await fileList(absolutePath)));
+            files.push(...(await readDir(absolutePath)));
         } else {
             files.push(absolutePath);
         }
