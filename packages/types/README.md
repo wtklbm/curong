@@ -382,6 +382,11 @@
 - `isStringObject`: 是不是一个被包装后的字符串对象，即 `new String()`
 - `isStringPrimitive`: 是不是一个基本的字符串，即 `string`
 - `isStringTrim`: 是不是一个经过 `trim` 后长度大于指定长度的字符串
+- `isToStringAble`: 是不是一个拥有 `.toString` 方法的类型
+
+包括以下类型:
+
+- `ToStringAble`: 具有 `toString` 方法的值的类型定义
 
 #### `symbol`
 
