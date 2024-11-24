@@ -62,6 +62,7 @@
 ### `select`
 
 - `select`: 根据条件来返回相应的结果
+- `selectSync`: 根据条件来返回相应的结果
 - `toggle`: 创建一个用于在两个值之间切换的工具
 
 ### `timeout`
