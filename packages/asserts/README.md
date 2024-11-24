@@ -329,6 +329,7 @@
 - `assertStringObject`: 是不是一个被包装后的字符串对象，即 `new String()`
 - `assertStringPrimitive`: 是不是一个基本的字符串，即 `string`
 - `assertStringTrim`: 是不是一个经过 `trim` 后长度大于指定长度的字符串
+- `assertToStringAble`: 是不是一个拥有 `.toString` 方法的类型
 
 #### `symbol`
 
