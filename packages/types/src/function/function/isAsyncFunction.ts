@@ -8,6 +8,9 @@ import isFunction from './isFunction';
 /**
  * 是不是一个异步函数
  *
+ * 只有使用了 `async` 关键字的函数才能被称为异步函数。
+ * 如果函数没有使用 `async` 但是返回了一个 `Promise` 或异步函数，那么它也不能称之为异步函数。
+ *
  * @param value 要验证的值
  * @returns 是则返回 `true`，否则为 `false`
  */
