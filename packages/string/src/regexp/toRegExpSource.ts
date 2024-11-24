@@ -11,5 +11,6 @@
  * ```
  */
 export default function toRegExpSource(str: string): string {
+    // https://262.ecma-international.org/7.0/#sec-patterns
     return str.replace(/(?=[[\](){}^$.?*+|\\/-])/g, '\\');
 }
