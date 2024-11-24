@@ -14,6 +14,7 @@ import isNullOrUndefined from '../isNullOrUndefined';
  * console.log(result); // "default"
  * ```
  * @note
+ *  - 如果您不想使用该方法，则可以使用 ES 的 `??` 语法
  *  - 该方法仅检查 `null` 或 `undefined`，对于其他值 (如 `false`、`0`、`''`) 会直接返回原值
  *  - 返回的类型与 `value` 类型一致，保证了类型安全
  */
