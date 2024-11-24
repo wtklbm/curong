@@ -5,4 +5,6 @@ export { default as isNullOrUndefinedArray } from './isNullOrUndefinedArray';
 export { default as isUndefined } from './isUndefined';
 export { default as isUndefinedArray } from './isUndefinedArray';
 
+export * from './function';
+
 export * from './types';
