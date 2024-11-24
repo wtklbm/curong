@@ -16,6 +16,7 @@ export * from './sentences';
 export * from './spaces';
 export * from './split';
 export * from './starts';
+export * from './template';
 export * from './trim';
 export * from './words';
 
