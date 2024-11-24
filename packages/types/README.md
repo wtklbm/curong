@@ -198,6 +198,13 @@
 - `isUndefined`: 是不是 `undefined`
 - `isUndefinedArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `undefined`
 
+包含以下赋值方法:
+
+- `falsyOr`: 如果值为 `falsy`，则返回默认值，否则返回原值
+- `nullableOr`: 如果值为 `null` 或 `undefined`，则返回默认值，否则返回原值
+- `nullOr`: 如果值为 `null`，则返回默认值，否则返回原值
+- `undefinedOr`: 如果值为 `undefined`，则返回默认值，否则返回原值
+
 包含以下类型:
 
 - `IsNullable`: 是不是一个 `null` 或 `undefined` 类型的值
