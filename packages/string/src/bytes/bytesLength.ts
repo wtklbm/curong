@@ -1,6 +1,6 @@
 import { isZero } from '@curong/types';
 
-import codePointAt from '../character/codePointAt';
+import codePointAt from '../entity-code/codePointAt';
 
 /**
  * 计算 `UTF-8`、`UTF-16` 的字符串编码长度，计算的长度值与 `Buffer.from(str).length` 等同

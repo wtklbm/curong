@@ -1,4 +1,4 @@
-import { likeSpaceEndReg } from '../character/characters';
+import { likeSpaceEndReg } from '../entity-code/characters';
 
 /**
  * 删除字符串结尾像空格的字符

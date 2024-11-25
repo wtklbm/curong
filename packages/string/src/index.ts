@@ -2,9 +2,9 @@ export { default as multiReplace } from './multiReplace';
 export { default as parseJson } from './parseJson';
 
 export * from './bytes';
-export * from './character';
 export * from './chars';
 export * from './corrector';
+export * from './entity-code';
 export * from './find';
 export * from './indent';
 export * from './inside';

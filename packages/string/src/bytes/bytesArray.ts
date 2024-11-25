@@ -1,4 +1,4 @@
-import codePointAt from '../character/codePointAt';
+import codePointAt from '../entity-code/codePointAt';
 
 /**
  * 将 `UTF-8` 字符串转换为字节数组

@@ -14,15 +14,6 @@
 - `parseBytesSize`: 解析字节字符串并将其转换为数字表示的字节数
 - `splitByBytes`: 将一个字符串根据字节拆分为一个字符串数组
 
-## `character`
-
-- `codePointAt`: 计算 `UTF-8`、`UTF-16` 的代码点
-- `decodeEntity`: 解码包含 `HTML` 实体名称 (`&name;`) 和实体编号 (`&#point;`) 的字符串
-- `decodeEntityByName`: 解码包含 `HTML` 实体名称 (`&name;`) 的字符串
-- `decodeEntityByPoint`: 解码包含 `HTML` 实体编号 (`&#point;`) 的字符串
-- `encodeEntityToName`: 将字符串中的特殊字符编码为 `HTML` 实体名称 (`&name;`)
-- `encodeEntityToPoint`: 将字符串中的特殊字符编码为 `HTML` 实体编号 (`&#point;`)
-
 ## `chars`
 
 - `chars`: 将字符串转换为字符数组
@@ -31,6 +22,15 @@
 ## `corrector`
 
 - `corrector`: 在指定的位置处来添加一些空格，美化中文语句的排版
+
+## `entity-code`
+
+- `codePointAt`: 计算 `UTF-8`、`UTF-16` 的代码点
+- `decodeEntity`: 解码包含 `HTML` 实体名称 (`&name;`) 和实体编号 (`&#point;`) 的字符串
+- `decodeEntityByName`: 解码包含 `HTML` 实体名称 (`&name;`) 的字符串
+- `decodeEntityByPoint`: 解码包含 `HTML` 实体编号 (`&#point;`) 的字符串
+- `encodeEntityToName`: 将字符串中的特殊字符编码为 `HTML` 实体名称 (`&name;`)
+- `encodeEntityToPoint`: 将字符串中的特殊字符编码为 `HTML` 实体编号 (`&#point;`)
 
 ## `find`
 

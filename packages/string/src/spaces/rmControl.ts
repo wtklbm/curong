@@ -1,4 +1,4 @@
-import { controlReg } from '../character/characters';
+import { controlReg } from '../entity-code/characters';
 
 /**
  * 删除字符串中所有的控制字符(包含回车、换行、制表符等)

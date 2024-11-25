@@ -1,4 +1,4 @@
-import { zeroWidthReg } from '../character/characters';
+import { zeroWidthReg } from '../entity-code/characters';
 
 /**
  * 删除字符串中所有的零宽字符

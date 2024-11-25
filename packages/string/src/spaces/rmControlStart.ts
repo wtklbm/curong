@@ -1,4 +1,4 @@
-import { controlStartReg } from '../character/characters';
+import { controlStartReg } from '../entity-code/characters';
 
 /**
  * 删除字符串开头的控制字符(包含回车、换行、制表符等)

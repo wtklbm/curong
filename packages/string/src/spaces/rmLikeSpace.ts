@@ -1,4 +1,4 @@
-import { likeSpaceReg } from '../character/characters';
+import { likeSpaceReg } from '../entity-code/characters';
 
 import rmLikeSpaceEnd from './rmLikeSpaceEnd';
 import rmLikeSpaceStart from './rmLikeSpaceStart';

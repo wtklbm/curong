@@ -4,7 +4,7 @@ import {
     controlRegSource,
     likeSpaceRegSource,
     zeroWidthRegSource
-} from '../character/characters';
+} from '../entity-code/characters';
 
 import type { TrimOptions } from './types';
 

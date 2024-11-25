@@ -1,4 +1,4 @@
-import { likeSpaceStartReg } from '../character/characters';
+import { likeSpaceStartReg } from '../entity-code/characters';
 
 /**
  * 删除字符串开头像空格的字符
