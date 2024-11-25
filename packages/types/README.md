@@ -202,8 +202,12 @@
 
 - `falsyOr`: 如果值为 `falsy`，则返回默认值，否则返回原值
 - `nullableOr`: 如果值为 `null` 或 `undefined`，则返回默认值，否则返回原值
+- `nullableToNull`: 如果值为 `null` 或 `undefined`，则返回 `null`，否则返回原值
+- `nullableToUndefined`: 如果值为 `null` 或 `undefined`，则返回 `undefined`，否则返回原值
 - `nullOr`: 如果值为 `null`，则返回默认值，否则返回原值
+- `nullToUndefined`: 如果值为 `null`，则返回 `undefined`，否则返回原值
 - `undefinedOr`: 如果值为 `undefined`，则返回默认值，否则返回原值
+- `undefinedToNull`: 如果值为 `undefined`，则返回 `null`，否则返回原值
 
 包含以下类型:
 
