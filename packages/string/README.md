@@ -94,6 +94,7 @@
 ## `split`
 
 - `splitLine`: 将文本以换行符拆分为多行
+- `splitOnFirst`: 在字符串中查找并分割第一个出现的分隔符，将字符串分割成两部分
 
 ## `starts`
 
