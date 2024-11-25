@@ -6,6 +6,7 @@ export { default as testEvery } from './testEvery';
 export { default as testSome } from './testSome';
 
 export * from './account';
+export * from './character';
 export * from './crypto';
 export * from './id';
 export * from './net';
