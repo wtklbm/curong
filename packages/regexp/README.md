@@ -9,10 +9,6 @@
 - `testEvery`: 使用一组正则来验证一个字符串是否符合预期
 - `testSome`: 使用一组正则来验证一个字符串是否符合预期
 
-## `crypto`
-
-- `isBase64`: 是不是一个 `base64`
-
 ## `account`
 
 - `isChinaIdCard`: 是不是一个中国的 `18` 位身份证号码
@@ -22,6 +18,17 @@
 包含以下属性:
 
 - `email`: 验证邮箱的正则字符串
+
+## `character`
+
+- `isCharacter`: 是不是一个字母字符串 (包括小写字母 `a-z` 和大写字母 `A-Z`)
+- `isDigit`: 是不是一个由 `0-9` 组成的数字或数字字符串
+- `isLowerCase`: 是不是一个由 `a-z` 组成的小写字母字符串
+- `isUpperCase`: 是不是一个由 `A-Z` 组成的大写字母字符串
+
+## `crypto`
+
+- `isBase64`: 是不是一个 `base64`
 
 ## `id`
 
