@@ -1,7 +1,7 @@
 import { isNull, isUintFilled } from '@curong/types';
 
-import chars from '../chars/chars';
 import fromChars from '../chars/fromChars';
+import toChars from '../chars/toChars';
 
 import bytesLength from './bytesLength';
 
@@ -35,7 +35,7 @@ export default function splitByBytes(value: string, highWaterMark = 4096) {
     }
 
     const ret: string[][] = [];
-    const charArray = chars(value);
+    const charArray = toChars(value);
     const push = (value: string) => (ret[idx] = (ret[idx] ?? []).concat(value));
 
     let tmp = 0;

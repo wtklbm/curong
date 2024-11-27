@@ -1,4 +1,4 @@
-import { chars } from '@curong/string';
+import { toChars } from '@curong/string';
 import { isArrayIndex } from '@curong/types';
 
 import type { ObjectType } from '../types';
@@ -34,7 +34,7 @@ export default function toCascadeKeys(
     const ret = [];
     let tmpKey = '';
 
-    const charsArray = chars(value);
+    const charsArray = toChars(value);
     const pushK = (key: string) => (key = key.trimEnd()) && ret.push(key);
 
     const vKey = (key: string) => {

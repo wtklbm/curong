@@ -16,8 +16,8 @@
 
 ## `chars`
 
-- `chars`: 将字符串转换为字符数组
 - `fromChars`: 将字符数组转换为字符串
+- `toChars`: 将字符串转换为字符数组
 
 ## `corrector`
 

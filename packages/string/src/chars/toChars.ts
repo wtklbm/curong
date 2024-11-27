@@ -8,10 +8,10 @@
  * @example
  *
  * ```typescript
- * const ret = chars('中国');
+ * const ret = toChars('中国');
  * console.log(ret); // [ '中', '国' ]
  * ```
  */
-export default function chars(value: string): string[] {
+export default function toChars(value: string): string[] {
     return Array.from(value);
 }
