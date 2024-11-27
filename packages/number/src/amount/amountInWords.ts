@@ -150,7 +150,7 @@ export default function amountInWords(
 
     if (!isFinite(+amount)) {
         throw new TypeError(
-            '[amountInWords] amount 必须为有效的金额数字或字符串',
+            '[amountInWords] amount 必须为有效的金额数字或数字字符串',
             {
                 cause: { amount, options }
             }
