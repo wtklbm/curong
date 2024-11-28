@@ -48,4 +48,14 @@ describe('@curong/types/isHexString', () => {
     test('测试12: 输入为包含空格的无效十六进制字符串', () => {
         expect(isHexString('0x123 456')).toBe(false);
     });
+
+    test('测试13: 测试不同模式下的结果', () => {
+        expect(isHexString('1a2b3c', 0)).toBe(false);
+        expect(isHexString('1a2b3c', 1)).toBe(true);
+        expect(isHexString('1a2b3c', 2)).toBe(true);
+
+        expect(isHexString('0x1a2b3c', 0)).toBe(true);
+        expect(isHexString('0x1a2b3c', 1)).toBe(true);
+        expect(isHexString('0x1a2b3c', 2)).toBe(false);
+    });
 });
