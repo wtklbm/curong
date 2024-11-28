@@ -21,6 +21,7 @@
 
 ## `character`
 
+- `isASCII`: 是不是一个 ASCII 字符串
 - `isCharacter`: 是不是一个字母字符串 (包括小写字母 `a-z` 和大写字母 `A-Z`)
 - `isDigit`: 是不是一个由 `0-9` 组成的数字或数字字符串
 - `isLowerCase`: 是不是一个由 `a-z` 组成的小写字母字符串
