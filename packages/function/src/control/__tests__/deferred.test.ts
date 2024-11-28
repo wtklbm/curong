@@ -16,4 +16,31 @@ describe('@curong/function/deferred', () => {
             expect(error.message).toBe('报错了');
         });
     });
+
+    test('测试3', async () => {
+        const { promise, resolve } = deferred();
+        resolve();
+        expect(await promise).toBeUndefined();
+    });
+
+    test('测试4', async () => {
+        const { promise, resolve } = deferred<number>();
+        resolve(10);
+        expect(await promise).toBe(10);
+    });
+
+    test('测试5', async () => {
+        const { promise, reject } = deferred();
+        const mockError = new Error('test error');
+        reject(mockError);
+        await expect(promise).rejects.toThrow('test error');
+    });
+
+    test('测试6', async () => {
+        const { promise, reject, resolve } = deferred();
+        resolve();
+        await promise;
+        expect(() => reject(new Error('test error'))).not.toThrow();
+        expect(() => resolve()).not.toThrow();
+    });
 });
