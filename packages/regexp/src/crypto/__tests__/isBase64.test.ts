@@ -46,7 +46,8 @@ describe('@curong/regexp/isBase64', () => {
                 'FTgB66Xmp4EtVyhpQV+t02g6NzK72oZI0vnAvqhpkxLeLiMCyrI416wHm5Tkukhx' +
                 'QmcL2a6hNOyu0ixX/x2kSFXApEnVrJ+/IxGyfyw8kf4N2IZpW5nEP847lpfj0SZZ' +
                 'Fwrd1mnfnDbYohX2zRptLy2ZUn06Qo9pkG5ntvFEPo9bfZeULtjYzIl6K8gJ2uGZ' +
-                'HQIDAQAB'
+                'HQIDAQAB',
+            'abcdefghijklmnopqrstuvwxyzABCDEFGHJIKLMNOPQRSTUVXYZ01234567890+/'
         ]) {
             expect(isBase64(value)).toBe(true);
         }
@@ -56,7 +57,8 @@ describe('@curong/regexp/isBase64', () => {
             '1234',
             'bXVtLW5ldmVyLXByb3Vk',
             'PDw_Pz8-Pg',
-            'VGhpcyBpcyBhbiBlbmNvZGVkIHN0cmluZw'
+            'VGhpcyBpcyBhbiBlbmNvZGVkIHN0cmluZw',
+            'abcdefghijklmnopqrstuvwxyzABCDEFGHJIKLMNOPQRSTUVXYZ01234567890-_'
         ]) {
             expect(isBase64(value, true)).toBe(true);
         }
