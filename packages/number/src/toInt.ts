@@ -1,4 +1,4 @@
-import { isStringTrim } from '@curong/types';
+import { isString, isZero } from '@curong/types';
 
 /**
  * 将给定的值转换为整数
@@ -16,7 +16,7 @@ import { isStringTrim } from '@curong/types';
  * ```
  */
 export default function toInt(value: number | string): number {
-    if (!isStringTrim(value)) {
+    if (isString(value) && isZero(value.trim().length)) {
         throw new TypeError('[toInt] value 不能为空字符串', {
             cause: { value }
         });
