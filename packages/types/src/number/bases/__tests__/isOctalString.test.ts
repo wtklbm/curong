@@ -48,4 +48,14 @@ describe('@curong/types/isOctalString', () => {
     test('测试12: 输入为包含空格的无效八进制字符串', () => {
         expect(isOctalString('0o123 456')).toBe(false);
     });
+
+    test('测试13: 测试不同模式下的结果', () => {
+        expect(isOctalString('702134', 0)).toBe(false);
+        expect(isOctalString('702134', 1)).toBe(true);
+        expect(isOctalString('702134', 2)).toBe(true);
+
+        expect(isOctalString('0o702134', 0)).toBe(true);
+        expect(isOctalString('0o702134', 1)).toBe(true);
+        expect(isOctalString('0o702134', 2)).toBe(false);
+    });
 });
