@@ -10,6 +10,7 @@
 - `colorNameCode24bit`: 通过颜色名生成24位的终端颜色代码
 - `fontColor`: 创建一个在终端使用的带有样式的字符串
 - `format`: 根据传递的内容来格式化用于终端调试的文本信息
+- `formatFromError`: 将 `Error` 对象格式为用于终端调试的文本信息
 - `printError`: 在终端打印一段错误消息
 - `printInfo`: 在终端打印一段文本消息
 - `printWarn`: 在终端打印一段警告消息
