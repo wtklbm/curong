@@ -5,6 +5,7 @@ import {
     isNumber,
     isObjectFilled,
     isStringFilled,
+    isUndefined,
     isZero
 } from '@curong/types';
 
@@ -72,7 +73,7 @@ function makeInfo(info: ForMatInfo) {
         message,
         data,
         date = true,
-        stack = false
+        stack
     } = info;
 
     /** 小标题的名字 */
@@ -134,17 +135,14 @@ function makeInfo(info: ForMatInfo) {
         );
     }
 
-    if (stack || (isEqual(type, 'error') && messages.length > 0)) {
-        const stack: string | undefined = new Error().stack;
+    if (stack || (isUndefined(stack) && isEqual(type, 'error'))) {
+        const newStack = isStringFilled(stack)
+            ? LF + stack.split(LF).slice(1).join(LF)
+            : LF + new Error().stack?.split(LF).slice(3).join(LF);
 
-        if (isStringFilled(stack)) {
-            const newStack = LF + stack.split(LF).slice(3).join(LF);
-            const styleText = fontColor(newStack, {
-                foreground: 'red'
-            });
+        const styleText = fontColor(newStack, { foreground: 'red' });
 
-            pushLittleTitle(styleText, INFO_NAME.STACK);
-        }
+        pushLittleTitle(styleText, INFO_NAME.STACK);
     }
 
     return messages;
