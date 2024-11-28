@@ -48,4 +48,14 @@ describe('@curong/types/isBinaryString', () => {
     test('测试12: 输入为包含空格的无效二进制字符串', () => {
         expect(isBinaryString('0b 1010 1010')).toBe(false);
     });
+
+    test('测试13: 测试不同模式下的结果', () => {
+        expect(isBinaryString('101010', 0)).toBe(false);
+        expect(isBinaryString('101010', 1)).toBe(true);
+        expect(isBinaryString('101010', 2)).toBe(true);
+
+        expect(isBinaryString('0b101010', 0)).toBe(true);
+        expect(isBinaryString('0b101010', 1)).toBe(true);
+        expect(isBinaryString('0b101010', 2)).toBe(false);
+    });
 });
