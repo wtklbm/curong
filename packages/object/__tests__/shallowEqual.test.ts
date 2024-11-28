@@ -82,10 +82,28 @@ describe('@curong/object/shallowEqual', () => {
     });
 
     test('如果值不是原始值但 === 相等，则返回 true', () => {
+        expect(
+            shallowEqual({ a: 1, b: 2, c: 3 }, { a: 1, b: 2, c: 3 })
+        ).toEqual(true);
+
+        expect(
+            shallowEqual({ a: 1, b: 2, c: 3 }, { e: 1, b: 2, c: 3 })
+        ).toEqual(false);
+
+        expect(
+            shallowEqual({ a: 1, b: 2, c: 3 }, { a: 1, b: 2, c: 3, e: 4 })
+        ).toEqual(false);
+    });
+
+    test('如果值不是原始值但 === 相等，则返回 true', () => {
         let obj = {};
         expect(
             shallowEqual({ a: 1, b: 2, c: obj }, { a: 1, b: 2, c: obj })
         ).toEqual(true);
+
+        expect(
+            shallowEqual({ a: 1, b: 2, c: obj }, { a: 1, b: 2, c: obj, e: 4 })
+        ).toEqual(false);
     });
 
     // 后续测试用例复制自 lodash 测试
