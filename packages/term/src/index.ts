@@ -6,6 +6,7 @@ export { default as colorNameCode8bit } from './colorNameCode8bit';
 export { default as colorNameCode24bit } from './colorNameCode24bit';
 export { default as fontColor } from './fontColor';
 export { default as format } from './format';
+export { default as formatFromError } from './formatFromError';
 export { default as printError } from './printError';
 export { default as printInfo } from './printInfo';
 export { default as printWarn } from './printWarn';
