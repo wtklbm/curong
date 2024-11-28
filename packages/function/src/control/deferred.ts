@@ -3,7 +3,7 @@ export interface Deferred<T> {
     promise: Promise<T>;
 
     /** 解析 `Promise` 的函数 */
-    resolve(value: T | PromiseLike<T>): void;
+    resolve(value?: T | PromiseLike<T>): void;
 
     /** 拒绝 `Promise` 的函数 */
     reject(reason?: any): void;
