@@ -1,3 +1,9 @@
+/** 任何与 JSON 兼容的值 */
+/* prettier-ignore */
+type Json =
+    | null | boolean | number | string | Json[]
+    | { [prop: string]: Json; };
+
 /**
  * 将 `JSON` 格式的字符串转换为一个 `JavaScript` 对象
  *
@@ -14,7 +20,7 @@
  * console.log(ret); // { value: '', number: 0, bool: false }
  * ```
  */
-export default function parseJson<T = unknown>(
+export default function parseJson<T = Json>(
     value: string,
     reviver?: (this: any, key: string, value: any) => any
 ): Promise<T> {
