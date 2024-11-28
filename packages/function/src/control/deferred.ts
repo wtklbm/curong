@@ -1,6 +1,11 @@
 export interface Deferred<T> {
+    /** 已推迟的 `Promise` */
     promise: Promise<T>;
+
+    /** 解析 `Promise` 的函数 */
     resolve(value: T | PromiseLike<T>): void;
+
+    /** 拒绝 `Promise` 的函数 */
     reject(reason?: any): void;
 }
 
@@ -16,7 +21,8 @@ export interface Deferred<T> {
  * ```typescript
  * const p1 = deferred<number>();
  * p1.resolve(42);
- * p1.promise.then(value => console.log(value)); // 42
+ * //p1.promise.then(value => console.log(value)); // 42
+ * console.log(await p1.promise); // 42
  *
  * const p2 = deferred<string>();
  * p2.reject(new Error('报错了'));
@@ -32,6 +38,6 @@ export default function deferred<T>(): Deferred<T> {
         reject = _reject;
     });
 
-    // @ts-ignore
+    // @ts-expect-error 我们知道这些已分配，但 `TypeScript` 不知道
     return { promise, resolve, reject };
 }
