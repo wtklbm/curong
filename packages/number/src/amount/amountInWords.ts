@@ -16,7 +16,9 @@ const isNilNumber = (value: number) => isZero(value) || isNaN(value);
 const convertInteger = (amount: string): string => {
     const parts = amount.split('.');
     const integer = parts[0].replace('-', '');
-    const integerNumbers = parseInt(integer) ? integer.split('').reverse() : [];
+    const integerNumbers = parseInt(integer)
+        ? Array.from(integer).reverse()
+        : [];
 
     if (integerNumbers.length > MAX_INT_LENGTH) {
         throw new TypeError(
@@ -71,7 +73,7 @@ const convertDecimal = (amount: string): string => {
         decimal = '';
     }
 
-    const decimalNumbers = decimal.split('');
+    const decimalNumbers = Array.from(decimal);
 
     if (decimalNumbers.length > MAX_DECIMAL_LENGTH) {
         throw new TypeError(
