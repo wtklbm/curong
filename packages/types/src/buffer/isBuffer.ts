@@ -9,8 +9,8 @@
  *  在进行类型判断时，应该始终使用 `isBuffer` 方法。而不是使用 `isUint8Array`。
  */
 export default function isBuffer(value: unknown): value is Buffer {
-    // 在判断时，也可以调用 `value.constructor.isBuffer(value)`
-    // 也可以调用 `value.constructor.isBuffer(value.subarray(0, 1))`
+    // 在判断时，也可以调用 `Object.getPrototypeOf(value).constructor.isBuffer(value)`
+    // 也可以调用 `Object.getPrototypeOf(value).constructor.isBuffer(value.subarray(0, 1))`
     // 如果写简单点，就是调用 `Buffer.isBuffer` 方法
     return (
         typeof Buffer === 'function' &&
