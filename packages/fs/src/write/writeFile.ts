@@ -1,8 +1,6 @@
 import { promises } from 'fs';
 import { dirname } from 'path';
 
-import { isArray, isObject } from '@curong/types';
-
 import mkdir from '../create/mkdir';
 
 import type { WriteFileOptions } from './types';
@@ -15,7 +13,6 @@ import type { WriteFileOptions } from './types';
  * @param options 配置选项
  *  - `encoding` 文件的编码，默认为 `utf8`
  *  - `flag` 读写文件标识符，默认为 `w+`
- *  - `isFormat` 是否把对象和数组进行序列化，序列化之后会将数据转换为 `JSON` 格式，默认为 `true`
  *  - `isMkdir` 当目录不存在时，是否自动创建目录，然后在从该目录下写文件, 默认为 `true`
  *  - `mode` 权限，默认为 `0o755`
  * @throws
@@ -38,22 +35,8 @@ export default async function writeFile(
         flag: 'w+',
         mode: 0o755,
         isMkdir: false,
-        isFormat: true,
         ...options
     };
-
-    if (options.isFormat && (isObject(data) || isArray(data))) {
-        try {
-            data = JSON.stringify(data);
-        } catch (error) {
-            throw new Error(
-                '[writeFile] 数据序列化失败，无法转换为 JSON 格式',
-                {
-                    cause: { filePath, data, options, error }
-                }
-            );
-        }
-    }
 
     // 如果是自动创建目录
     if (options.isMkdir) {
