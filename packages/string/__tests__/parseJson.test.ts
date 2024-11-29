@@ -13,4 +13,15 @@ describe('@curong/string/parseJson', () => {
         const ret = await parseJson(s);
         expect(ret).toEqual({ value: '', number: 0, bool: false });
     });
+
+    test('测试3', async () => {
+        const s = '{"value":"","number":0,"bool":false}';
+        const ret = await parseJson(s, (k, v) => v);
+        expect(ret).toEqual({ value: '', number: 0, bool: false });
+    });
+
+    test('测试4', async () => {
+        expect(parseJson('{"__proto__":""}')).rejects.toThrow();
+        expect(parseJson('{"constructor":""}')).rejects.toThrow();
+    });
 });
