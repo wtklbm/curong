@@ -166,6 +166,7 @@
 
 #### `json`
 
+- `assertJsonObject`: 是不是一个符合 JSON 要求的有效的 JSON 对象
 - `assertJsonString`: 是不是一个 JSON 字符串
 
 #### `nullable`
