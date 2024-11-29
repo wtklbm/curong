@@ -45,8 +45,7 @@ export default function isChinaIdCard(value: string): boolean {
     }
 
     // 校验码
-    const sum = value
-        .split('')
+    const sum = Array.from(value)
         .slice(0, 17)
         .reduce((s, num, index) => {
             s += +num * weightMap[index];
