@@ -1,8 +1,4 @@
-/** 任何与 JSON 兼容的值 */
-/* prettier-ignore */
-type Json =
-    | null | boolean | number | string | Json[]
-    | { [prop: string]: Json; };
+import type { Json } from '@curong/types';
 
 /**
  * 将 `JSON` 格式的字符串转换为一个 `JavaScript` 对象
