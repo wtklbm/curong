@@ -45,4 +45,13 @@ describe('@curong/object/createWithNull', () => {
         Object.setPrototypeOf(anotherObj, null);
         expect(constructor(anotherObj)).toEqual(null);
     });
+
+    test('测试4', () => {
+        const o = {
+            constructor: 'xxx'
+        };
+        expect(constructor(o)).toEqual(Object);
+        expect(o.constructor).toEqual('xxx');
+        expect(Object.getPrototypeOf(o).constructor).toEqual(Object);
+    });
 });
