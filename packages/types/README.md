@@ -444,6 +444,18 @@
 - `KeyOfNonValue`: 获取 `T` 类型中不等于特定 `V` 的键
 - `KeyOfValue`: 获取 `T` 类型中包含特定 `V` 的键
 
+#### `mutable`
+
+- `Mutable`: 将 `T` 中的所有属性设为可变（去掉只读属性）
+- `MutableKey`: 将类型 `T` 中指定的某个属性 `K` 设为可变（去掉只读属性），而保留其他属性的只读状态
+
+#### `partial`
+
+- `OptionalKey`: 将类型 `T` 中指定的某个属性 `K` 设置为可选，而保持其他属性不变
+- `PartialOrNull`: 将类型 `T` 中的所有属性变为可选，并允许值为 `null`
+- `PartialOrNullable`: 将类型 `T` 中的所有属性变为可选，并允许值为 `null` 或 `undefined`
+- `PartialOrUndefined`: 将类型 `T` 中的所有属性变为可选，并允许值为 `undefined`
+
 #### `replace`
 
 - `Replace`: 在 `T` 类型中匹配 `M` 类型的部分并将其替换为 `N`
