@@ -187,7 +187,12 @@
 
 #### `json`
 
+- `isJsonObject`: 是不是一个符合 JSON 要求的有效的 JSON 对象
 - `isJsonString`: 是不是一个 JSON 字符串
+
+包含以下类型:
+
+- `Json`: JSON 的类型
 
 #### `nullable`
 
