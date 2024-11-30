@@ -23,8 +23,15 @@ describe('@curong/types/isPlainObject', () => {
         expect(isPlainObject(new Fn())).toBe(false);
     });
 
-    test('测试2', () => {
+    test('测试3', () => {
         const obj = {};
+        expect(isPlainObject(obj)).toBe(true);
+    });
+
+    test('测试4', () => {
+        const obj = {
+            constructor: 'xxx'
+        };
         expect(isPlainObject(obj)).toBe(true);
     });
 });
