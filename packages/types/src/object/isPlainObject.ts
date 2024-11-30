@@ -1,5 +1,7 @@
 import isObject from './isObject';
 
+let proto;
+
 /**
  * 是不是一个普通对象，即 `{}`，该对象的原型指向 `Object.prototype`
  *
@@ -16,7 +18,7 @@ export default function isPlainObject<K extends PropertyKey, V = unknown>(
 ): value is Record<K, V> {
     return (
         isObject(value) &&
-        value.constructor === Object &&
-        Object.getPrototypeOf(value) === Object.prototype
+        (proto = Object.getPrototypeOf(value)) === Object.prototype &&
+        proto.constructor === Object
     );
 }
