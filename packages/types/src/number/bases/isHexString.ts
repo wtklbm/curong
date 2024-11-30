@@ -1,7 +1,5 @@
 import isStringFilled from '../../string/isStringFilled';
 
-import type { Hex } from './types';
-
 const modes = ['0x', '(?:0x)?', ''];
 
 /**
@@ -20,7 +18,7 @@ const modes = ['0x', '(?:0x)?', ''];
 export default function isHexString(
     value: unknown,
     mode: 0 | 1 | 2 = 0
-): value is Hex {
+): value is string {
     return (
         isStringFilled(value) &&
         new RegExp(`^${modes[mode]}[0-9a-fA-F]+$`).test(value)
