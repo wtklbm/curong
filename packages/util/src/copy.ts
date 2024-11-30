@@ -20,7 +20,7 @@ const copyBaseType = (value: any) => {
 
 /** 拷贝 `ArrayBuffer` */
 const copyArrayBuffer = (value: any) => {
-    const newArrayBuffer = new value.constructor(value.byteLength);
+    const newArrayBuffer = new (Object.getPrototypeOf(value).constructor)(value.byteLength);
     new Uint8Array(newArrayBuffer).set(new Uint8Array(value));
 
     return newArrayBuffer;
@@ -109,7 +109,7 @@ const copyByTag = <T extends object>(value: any, weak: WeakMap<T, T>) => {
 
         case 'BigInt64Array':
         case 'BigUint64Array':
-            return new value.constructor(value);
+            return new (Object.getPrototypeOf(value).constructor)(value);
 
         case 'DataView': {
             const buffer = copyArrayBuffer(value.buffer);
@@ -126,7 +126,7 @@ const copyByTag = <T extends object>(value: any, weak: WeakMap<T, T>) => {
         }
 
         case 'FormData': {
-            const formData = new value.constructor();
+            const formData = new (Object.getPrototypeOf(value).constructor)();
             for (const [k, v] of value) {
                 formData.append(k, v);
             }
