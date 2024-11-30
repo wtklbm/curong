@@ -21,7 +21,20 @@ describe('@curong/string/parseJson', () => {
     });
 
     test('测试4', async () => {
-        expect(parseJson('{"__proto__":""}')).rejects.toThrow();
-        expect(parseJson('{"constructor":""}')).rejects.toThrow();
+        const data = await parseJson('{"__proto__":"xxx"}');
+        expect(Object.keys(data!)).toEqual(['__proto__']);
+        // @ts-ignore
+        expect(data.__proto__).toBe('xxx');
+        expect(Object.getPrototypeOf(data)).toBe(Object.prototype);
+        expect(Object.getPrototypeOf(data).constructor).toBe(Object);
+    });
+
+    test('测试5', async () => {
+        const data = await parseJson('{"constructor":"xxx"}');
+        expect(Object.keys(data!)).toEqual(['constructor']);
+        // @ts-ignore
+        expect(data.constructor).toBe('xxx');
+        expect(Object.getPrototypeOf(data)).toBe(Object.prototype);
+        expect(Object.getPrototypeOf(data).constructor).toBe(Object);
     });
 });
