@@ -24,4 +24,10 @@ describe('@curong/types/isPureObject', () => {
         // `constructor` 是 `Fn`
         expect(isPureObject(new Fn())).toBe(false);
     });
+
+    test('测试3', () => {
+        const obj = Object.create(null);
+        obj.constructor = 'xxx'; // 这里的是私有的，不是原型上的
+        expect(isPureObject(obj)).toBe(true);
+    });
 });
