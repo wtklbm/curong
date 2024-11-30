@@ -1,7 +1,5 @@
 import isStringFilled from '../../string/isStringFilled';
 
-import type { Binary } from './types';
-
 const modes = ['0b', '(?:0b)?', ''];
 
 /**
@@ -20,7 +18,7 @@ const modes = ['0b', '(?:0b)?', ''];
 export default function isBinaryString(
     value: unknown,
     mode: 0 | 1 | 2 = 0
-): value is Binary {
+): value is string {
     return (
         isStringFilled(value) && new RegExp(`^${modes[mode]}[10]+$`).test(value)
     );
