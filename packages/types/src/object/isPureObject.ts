@@ -16,7 +16,6 @@ export default function isPureObject<K extends PropertyKey, V = unknown>(
 ): value is Record<K, V> {
     return (
         isObject(value) &&
-        value.constructor === undefined &&
         Object.getPrototypeOf(value) === null &&
         !(Symbol.toStringTag in value) &&
         !(Symbol.iterator in value)
