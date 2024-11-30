@@ -1,7 +1,5 @@
 import isStringFilled from '../../string/isStringFilled';
 
-import type { Octal } from './types';
-
 const modes = ['0o', '(?:0o)?', ''];
 
 /**
@@ -20,7 +18,7 @@ const modes = ['0o', '(?:0o)?', ''];
 export default function isOctalString(
     value: unknown,
     mode: 0 | 1 | 2 = 0
-): value is Octal {
+): value is string {
     return (
         isStringFilled(value) &&
         new RegExp(`^${modes[mode]}[0-7]+$`).test(value)
