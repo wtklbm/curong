@@ -13,5 +13,9 @@ export default function assertFloat32SafeInt(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isFloat32SafeInt);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个可以被单精度浮点数所能存储的整数，即 `2^24-1`，取值范围为 `-16777215 - 16777215`',
+        isFloat32SafeInt
+    );
 }

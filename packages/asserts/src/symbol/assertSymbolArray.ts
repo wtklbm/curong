@@ -13,5 +13,9 @@ export default function assertSymbolArray(
     value: unknown,
     variableName: string
 ): asserts value is symbol[] {
-    return typeGuard(value, variableName, isSymbolArray);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个长度大于 0 的数组，且每一项的值都是 symbol 或被包装后的 Symbol 对象',
+        isSymbolArray
+    );
 }

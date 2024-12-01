@@ -13,5 +13,9 @@ export default function assertBigIntObject(
     value: unknown,
     variableName: string
 ): asserts value is BigInt {
-    return typeGuard(value, variableName, isBigIntObject);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个被包装后的 BigInt 对象，即 Object()',
+        isBigIntObject
+    );
 }

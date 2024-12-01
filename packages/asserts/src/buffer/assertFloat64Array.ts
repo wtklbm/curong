@@ -18,5 +18,9 @@ export default function assertFloat64Array(
     value: unknown,
     variableName: string
 ): asserts value is Float64Array {
-    return typeGuard(value, variableName, isFloat64Array);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 `Float64Array`，每一项占八个字节，值为 `-1.7976931348623157e308 - 1.7976931348623157e308`，并且 `5e-324` 是最小的正数',
+        isFloat64Array
+    );
 }

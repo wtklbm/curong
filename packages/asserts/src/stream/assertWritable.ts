@@ -16,5 +16,5 @@ export default function assertWritable(
     value: unknown,
     variableName: string
 ): asserts value is Writable {
-    return typeGuard(value, variableName, isWritable);
+    return typeGuard({ [variableName]: value }, '不是一个可写流', isWritable);
 }

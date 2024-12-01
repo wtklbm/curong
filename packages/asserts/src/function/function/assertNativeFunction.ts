@@ -15,5 +15,9 @@ export default function assertNativeFunction<
     R = unknown,
     A extends unknown[] = unknown[]
 >(value: unknown, variableName: string): asserts value is Function<R, A> {
-    return typeGuard(value, variableName, isNativeFunction);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 JavaScript 内置函数',
+        isNativeFunction
+    );
 }

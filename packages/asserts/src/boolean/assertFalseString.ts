@@ -13,5 +13,9 @@ export default function assertFalseString(
     value: unknown,
     variableName: string
 ): asserts value is 'false' {
-    return typeGuard(value, variableName, isFalseString);
+    return typeGuard(
+        { [variableName]: value },
+        '不是 false 字符串',
+        isFalseString
+    );
 }

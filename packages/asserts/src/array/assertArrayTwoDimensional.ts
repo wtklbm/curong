@@ -18,5 +18,9 @@ export default function assertArrayTwoDimensional<T extends unknown[][]>(
     value: unknown,
     variableName: string
 ): asserts value is T {
-    return typeGuard(value, variableName, isArrayTwoDimensional);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个长度大于 0 的数组，且每一项的值都是数组 (二维数组)',
+        isArrayTwoDimensional
+    );
 }

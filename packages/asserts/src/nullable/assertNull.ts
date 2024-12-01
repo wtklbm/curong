@@ -13,5 +13,5 @@ export default function assertNull(
     value: unknown,
     variableName: string
 ): asserts value is null {
-    return typeGuard(value, variableName, isNull);
+    return typeGuard({ [variableName]: value }, '不是 null', isNull);
 }

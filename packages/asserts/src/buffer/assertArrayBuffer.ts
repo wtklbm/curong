@@ -18,5 +18,9 @@ export default function assertArrayBuffer(
     value: unknown,
     variableName: string
 ): asserts value is ArrayBuffer {
-    return typeGuard(value, variableName, isArrayBuffer);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 ArrayBuffer',
+        isArrayBuffer
+    );
 }

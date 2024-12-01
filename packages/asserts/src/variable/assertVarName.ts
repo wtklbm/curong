@@ -13,5 +13,9 @@ export default function assertVarName(
     value: unknown,
     variableName: string
 ): asserts value is string {
-    return typeGuard(value, variableName, isVarName);
+    return typeGuard(
+        { [variableName]: value },
+        '不是可以把值当做 JavaScript 的变量名',
+        isVarName
+    );
 }

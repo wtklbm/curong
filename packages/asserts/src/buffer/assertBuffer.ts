@@ -18,5 +18,5 @@ export default function assertBuffer(
     value: unknown,
     variableName: string
 ): asserts value is Buffer {
-    return typeGuard(value, variableName, isBuffer);
+    return typeGuard({ [variableName]: value }, '不是一个 Buffer', isBuffer);
 }

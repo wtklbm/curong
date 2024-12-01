@@ -13,5 +13,9 @@ export default function assertUintSafeFilled(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isUintSafeFilled);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个大于 0 的安全的无符号整数',
+        isUintSafeFilled
+    );
 }

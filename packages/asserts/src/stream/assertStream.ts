@@ -17,5 +17,5 @@ export default function assertStream(
     value: unknown,
     variableName: string
 ): asserts value is Stream {
-    return typeGuard(value, variableName, isStream);
+    return typeGuard({ [variableName]: value }, '不是一个流', isStream);
 }

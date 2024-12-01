@@ -13,5 +13,9 @@ export default function assertSafeURLString(
     value: unknown,
     variableName: string
 ): asserts value is string {
-    return typeGuard(value, variableName, isSafeURLString);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个安全的 URL 字符串，即长度小于或等于 2000',
+        isSafeURLString
+    );
 }

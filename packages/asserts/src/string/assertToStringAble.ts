@@ -13,5 +13,9 @@ export default function assertToStringAble(
     value: unknown,
     variableName: string
 ): asserts value is ToStringAble {
-    return typeGuard(value, variableName, isToStringAble);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个拥有 .toString 方法的类型',
+        isToStringAble
+    );
 }

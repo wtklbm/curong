@@ -15,5 +15,10 @@ export default function assertFinite<T = number>(
     variableName: string,
     isImplicit: boolean = false
 ): asserts value is T {
-    return typeGuard(value, variableName, isFinite, isImplicit);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个不是 Infinity、-Infinity 或 NaN 的有限数',
+        isFinite,
+        isImplicit
+    );
 }

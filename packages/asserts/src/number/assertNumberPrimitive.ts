@@ -15,5 +15,10 @@ export default function assertNumberPrimitive(
     variableName: string,
     isAllowNaN: boolean = false
 ): asserts value is number {
-    return typeGuard(value, variableName, isNumberPrimitive, isAllowNaN);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个基本的数字，即 number || Number()',
+        isNumberPrimitive,
+        isAllowNaN
+    );
 }

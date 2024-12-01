@@ -13,5 +13,9 @@ export default function assertStringPrimitive(
     value: unknown,
     variableName: string
 ): asserts value is string {
-    return typeGuard(value, variableName, isStringPrimitive);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个基本的字符串，即 string || String()',
+        isStringPrimitive
+    );
 }

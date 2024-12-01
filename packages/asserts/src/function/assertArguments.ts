@@ -13,5 +13,5 @@ export default function assertArguments(
     value: unknown,
     variableName: string
 ): asserts value is IArguments {
-    return typeGuard(value, variableName, isArguments);
+    return typeGuard({ [variableName]: value }, '不是函数的形参', isArguments);
 }

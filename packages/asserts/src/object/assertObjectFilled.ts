@@ -19,5 +19,10 @@ export default function assertObjectFilled<K extends PropertyKey, V = unknown>(
     variableName: string,
     methodLevel: 0 | 1 | 2 | 3 = 0
 ): asserts value is Record<K, V> {
-    return typeGuard(value, variableName, isObjectFilled, methodLevel);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个属性个数大于 0 的对象',
+        isObjectFilled,
+        methodLevel
+    );
 }

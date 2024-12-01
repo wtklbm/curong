@@ -20,5 +20,9 @@ export default function assertHTMLElement(
     value: unknown,
     variableName: string
 ): asserts value is HTMLElement {
-    return typeGuard(value, variableName, isHTMLElement);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 HTMLElement',
+        isHTMLElement
+    );
 }

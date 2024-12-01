@@ -13,5 +13,9 @@ export default function assertAsyncArrowFunction<
     R = unknown,
     A extends unknown[] = unknown[]
 >(value: unknown, variableName: string): asserts value is AsyncFunction<R, A> {
-    return typeGuard(value, variableName, isAsyncArrowFunction);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个异步箭头函数',
+        isAsyncArrowFunction
+    );
 }

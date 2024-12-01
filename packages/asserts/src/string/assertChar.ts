@@ -13,5 +13,5 @@ export default function assertChar(
     value: unknown,
     variableName: string
 ): asserts value is string {
-    return typeGuard(value, variableName, isChar);
+    return typeGuard({ [variableName]: value }, '不是单个字符', isChar);
 }

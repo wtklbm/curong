@@ -15,5 +15,9 @@ export default function assertFunction<
     R = unknown,
     A extends unknown[] = unknown[]
 >(value: unknown, variableName: string): asserts value is Function<R, A> {
-    return typeGuard(value, variableName, isFunction);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个函数 (包含同步函数、异步函数、Generator 函数 ...)',
+        isFunction
+    );
 }

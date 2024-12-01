@@ -13,5 +13,5 @@ export default function assertURL(
     value: unknown,
     variableName: string
 ): asserts value is URL {
-    return typeGuard(value, variableName, isURL);
+    return typeGuard({ [variableName]: value }, '不是一个 URL 对象', isURL);
 }

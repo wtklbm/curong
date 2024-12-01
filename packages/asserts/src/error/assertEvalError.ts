@@ -13,5 +13,9 @@ export default function assertEvalError(
     value: unknown,
     variableName: string
 ): asserts value is EvalError {
-    return typeGuard(value, variableName, isEvalError);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 EvalError 对象',
+        isEvalError
+    );
 }

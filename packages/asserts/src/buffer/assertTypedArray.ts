@@ -24,5 +24,9 @@ export default function assertTypedArray(
     value: unknown,
     variableName: string
 ): asserts value is TypedArray {
-    return typeGuard(value, variableName, isTypedArray);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个类型化数组 (TypedArray)',
+        isTypedArray
+    );
 }

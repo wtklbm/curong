@@ -13,5 +13,9 @@ export default function assertInt32(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isInt32);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 int32，取值范围为 `-2^31 - 2^31-1` 的整数，即 `-2147483648 - 2147483647`',
+        isInt32
+    );
 }

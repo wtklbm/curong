@@ -17,5 +17,9 @@ export default function assertUint8Array(
     value: unknown,
     variableName: string
 ): asserts value is Uint8Array {
-    return typeGuard(value, variableName, isUint8Array);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 Uint8Array，每一项占一个字节，值为 `0 - 2^8-1`，即 `0 - 255`',
+        isUint8Array
+    );
 }

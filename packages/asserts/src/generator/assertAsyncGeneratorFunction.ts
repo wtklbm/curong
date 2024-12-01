@@ -13,5 +13,9 @@ export default function assertAsyncGeneratorFunction(
     value: unknown,
     variableName: string
 ): asserts value is AsyncGeneratorFunction {
-    return typeGuard(value, variableName, isAsyncGeneratorFunction);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个异步的 Generator 函数',
+        isAsyncGeneratorFunction
+    );
 }

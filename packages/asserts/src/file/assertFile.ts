@@ -13,5 +13,5 @@ export default function assertFile(
     value: unknown,
     variableName: string
 ): asserts value is File {
-    return typeGuard(value, variableName, isFile);
+    return typeGuard({ [variableName]: value }, '不是一个 File 对象', isFile);
 }

@@ -13,5 +13,9 @@ export default function assertPureObject<K extends PropertyKey, V = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is Record<K, V> {
-    return typeGuard(value, variableName, isPureObject);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个纯对象，即通过 Object.create(null) 创建的对象，该对象的原型就是 null',
+        isPureObject
+    );
 }

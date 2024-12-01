@@ -15,5 +15,9 @@ export default function assertBigInt(
     value: unknown,
     variableName: string
 ): asserts value is bigint {
-    return typeGuard(value, variableName, isBigInt);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 bigint (大数) 或被包装后的 BigInt 对象',
+        isBigInt
+    );
 }

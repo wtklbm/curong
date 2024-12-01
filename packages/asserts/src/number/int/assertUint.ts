@@ -13,5 +13,9 @@ export default function assertUint(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isUint);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个无符号整数，即大于或等于 0 的整数',
+        isUint
+    );
 }

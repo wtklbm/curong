@@ -13,5 +13,9 @@ export default function assertBigIntPrimitive(
     value: unknown,
     variableName: string
 ): asserts value is bigint {
-    return typeGuard(value, variableName, isBigIntPrimitive);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个基本的大数，即 bigint || BigInt()',
+        isBigIntPrimitive
+    );
 }

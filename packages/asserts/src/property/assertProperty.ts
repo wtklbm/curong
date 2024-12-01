@@ -15,5 +15,10 @@ export default function assertProperty(
     variableName: string,
     key: PropertyKey
 ) {
-    return typeGuard(value, variableName, isProperty, key);
+    return typeGuard(
+        { [variableName]: value },
+        `上不具有 ${key.toString()} 的属性，该属性可以是私有属性，也可以是原型上的属性`,
+        isProperty,
+        key
+    );
 }

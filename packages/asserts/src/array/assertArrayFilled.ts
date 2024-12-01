@@ -13,5 +13,9 @@ export default function assertArrayFilled<T extends unknown[]>(
     value: unknown,
     variableName: string
 ): asserts value is T {
-    return typeGuard(value, variableName, isArrayFilled);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个长度大于 0 的数组',
+        isArrayFilled
+    );
 }

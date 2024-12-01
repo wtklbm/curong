@@ -13,5 +13,9 @@ export default function assertOctalString(
     value: unknown,
     variableName: string
 ): asserts value is string {
-    return typeGuard(value, variableName, isOctalString);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个八进制表示形式的数字字符串，例如 0o12',
+        isOctalString
+    );
 }

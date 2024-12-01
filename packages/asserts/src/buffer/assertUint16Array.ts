@@ -13,5 +13,9 @@ export default function assertUint16Array(
     value: unknown,
     variableName: string
 ): asserts value is Uint16Array {
-    return typeGuard(value, variableName, isUint16Array);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 Uint16Array，每一项占两个字节，值为 `0 - 2^16-1`，即 `0 - 65535`',
+        isUint16Array
+    );
 }

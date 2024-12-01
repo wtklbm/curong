@@ -15,5 +15,10 @@ export default function assertTagEqual<T = unknown>(
     variableName: string,
     tag: string
 ): asserts value is T {
-    return typeGuard(value, variableName, getTagEqual, tag);
+    return typeGuard(
+        { [variableName]: value },
+        '原型上的类型标记不等于某个值',
+        getTagEqual,
+        tag
+    );
 }

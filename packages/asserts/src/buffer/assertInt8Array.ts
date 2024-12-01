@@ -13,5 +13,9 @@ export default function assertInt8Array(
     value: unknown,
     variableName: string
 ): asserts value is Int8Array {
-    return typeGuard(value, variableName, isInt8Array);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 Int8Array，每一项占一个字节，值为 `-2^7 - 2^7-1` ，即 `-128 - 127`',
+        isInt8Array
+    );
 }

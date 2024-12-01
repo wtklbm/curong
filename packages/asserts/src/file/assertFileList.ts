@@ -13,5 +13,9 @@ export default function assertFileList(
     value: unknown,
     variableName: string
 ): asserts value is FileList {
-    return typeGuard(value, variableName, isFileList);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 FileList 对象',
+        isFileList
+    );
 }

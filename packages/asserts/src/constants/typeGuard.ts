@@ -1,19 +1,20 @@
 export default function typeGuard(
-    value: unknown,
-    variableName: string,
+    value: Record<PropertyKey, unknown>,
+    message: string,
     isType: (value: any, ...args: any[]) => boolean,
     ...args: unknown[]
 ) {
-    if (!isType(value, ...args)) {
-        throw new TypeError(
-            `[assert${isType.name.replace(/^is/, '')}] 类型断言失败，"${variableName}" 的类型与该函数所指定的类型不匹配`,
-            {
-                cause: {
-                    value,
-                    isType,
-                    ...args
-                }
-            }
-        );
-    }
+    Object.entries(value).forEach(([key, value]) => {
+        if (isType(value, ...args)) {
+            return;
+        }
+
+        const error = new TypeError('', {
+            cause: { [key]: value, ...args }
+        });
+
+        error.stack = `[TypeError] "${key}" ${message}\n${error.stack?.replace(/([^\n]+\n)(?:[^\n]+\n){4}/, '')}`;
+
+        throw error;
+    });
 }

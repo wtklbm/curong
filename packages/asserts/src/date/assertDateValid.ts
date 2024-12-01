@@ -13,5 +13,9 @@ export default function assertDateValid<T = number | string | unknown[] | Date>(
     value: unknown,
     variableName: string
 ): asserts value is T {
-    return typeGuard(value, variableName, isDateValid);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个有效的 Date 数字 (格林威治时间戳) 、字符串 (日期字符串)、数组 (包含年、月、日、时、分、秒、毫秒的数组)、对象 (Date)',
+        isDateValid
+    );
 }

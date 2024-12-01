@@ -13,5 +13,9 @@ export default function assertSyncFunction<
     R = unknown,
     A extends unknown[] = unknown[]
 >(value: unknown, variableName: string): asserts value is Function<R, A> {
-    return typeGuard(value, variableName, isSyncFunction);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个同步函数',
+        isSyncFunction
+    );
 }

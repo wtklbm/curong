@@ -14,5 +14,9 @@ export default function assertSyncGenerator<
     R = unknown,
     N = unknown
 >(value: unknown, variableName: string): asserts value is Generator<T, R, N> {
-    return typeGuard(value, variableName, isSyncGenerator);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个同步的 Generator',
+        isSyncGenerator
+    );
 }

@@ -14,5 +14,9 @@ export default function assertSizeyFilled(
     value: unknown,
     variableName: string
 ): asserts value is Sizey {
-    return typeGuard(value, variableName, isSizeyFilled);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个具有 size 属性的类型，其 size 的值是一个大于 0 的安全的无符号整数',
+        isSizeyFilled
+    );
 }

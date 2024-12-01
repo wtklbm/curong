@@ -13,5 +13,9 @@ export default function assertBigInt64Array(
     value: unknown,
     variableName: string
 ): asserts value is BigInt64Array {
-    return typeGuard(value, variableName, isBigInt64Array);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 BigInt64Array，每一项占八个字节，值为 `-2^63 - 2^63-1`',
+        isBigInt64Array
+    );
 }

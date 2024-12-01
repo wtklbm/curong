@@ -13,5 +13,9 @@ export default function assertWeakMap<K extends object, V = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is WeakMap<K, V> {
-    return typeGuard(value, variableName, isWeakMap);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 WeakMap',
+        isWeakMap
+    );
 }

@@ -13,5 +13,9 @@ export default function assertPrototype<T = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is T {
-    return typeGuard(value, variableName, isPrototype);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个构造函数的原型对象',
+        isPrototype
+    );
 }

@@ -17,5 +17,5 @@ export default function assertBlob(
     value: unknown,
     variableName: string
 ): asserts value is Blob {
-    return typeGuard(value, variableName, isBlob);
+    return typeGuard({ [variableName]: value }, '不是一个 Blob', isBlob);
 }

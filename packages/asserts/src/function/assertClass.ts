@@ -17,5 +17,5 @@ export default function assertClass<
     R = unknown,
     A extends unknown[] = unknown[]
 >(value: unknown, variableName: string): asserts value is Class<R, A> {
-    return typeGuard(value, variableName, isClass);
+    return typeGuard({ [variableName]: value }, '不是一个类', isClass);
 }

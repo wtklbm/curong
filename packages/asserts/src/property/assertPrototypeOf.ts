@@ -13,5 +13,9 @@ export default function assertPrototypeOf<T = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is T {
-    return typeGuard(value, variableName, isPrototypeOf);
+    return typeGuard(
+        { [variableName]: value },
+        '当前对象不在另一个对象的原型链中',
+        isPrototypeOf
+    );
 }

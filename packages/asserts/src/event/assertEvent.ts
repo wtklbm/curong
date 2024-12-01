@@ -13,5 +13,9 @@ export default function assertEvent(
     value: unknown,
     variableName: string
 ): asserts value is Event {
-    return typeGuard(value, variableName, isEvent);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 Event 事件',
+        isEvent
+    );
 }

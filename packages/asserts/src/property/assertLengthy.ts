@@ -13,5 +13,9 @@ export default function assertLengthy(
     value: unknown,
     variableName: string
 ): asserts value is Lengthy {
-    return typeGuard(value, variableName, isLengthy);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个具有 length 属性的类型，其 length 的值是一个大于或等于 0 的安全的无符号整数',
+        isLengthy
+    );
 }

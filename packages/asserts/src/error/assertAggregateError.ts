@@ -17,5 +17,9 @@ export default function assertAggregateError(
     value: unknown,
     variableName: string
 ): asserts value is TypeError {
-    return typeGuard(value, variableName, isAggregateError);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 AggregateError 对象',
+        isAggregateError
+    );
 }

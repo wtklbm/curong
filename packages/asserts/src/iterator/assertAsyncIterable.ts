@@ -13,5 +13,9 @@ export default function assertAsyncIterable<T = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is AsyncIterable<T> {
-    return typeGuard(value, variableName, isAsyncIterable);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个异步可迭代的对象',
+        isAsyncIterable
+    );
 }

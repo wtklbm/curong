@@ -15,5 +15,10 @@ export default function assertOwnProperty(
     variableName: string,
     key: PropertyKey
 ) {
-    return typeGuard(value, variableName, hasOwnProperty, key);
+    return typeGuard(
+        { [variableName]: value },
+        `上不具有 "${key.toString()}" 名称的私有属性`,
+        hasOwnProperty,
+        key
+    );
 }

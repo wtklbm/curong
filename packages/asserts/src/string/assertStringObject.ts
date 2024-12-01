@@ -13,5 +13,9 @@ export default function assertStringObject(
     value: unknown,
     variableName: string
 ): asserts value is String {
-    return typeGuard(value, variableName, isStringObject);
+    return typeGuard(
+        { [variableName]: value },
+        "不是一个被包装后的字符串对象，即 new String() || Object('')",
+        isStringObject
+    );
 }

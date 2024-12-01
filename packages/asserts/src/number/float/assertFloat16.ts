@@ -13,5 +13,9 @@ export default function assertFloat16(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isFloat16);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个半精度浮点数，取值在 `-65504 - 65504` 之间的浮点数',
+        isFloat16
+    );
 }

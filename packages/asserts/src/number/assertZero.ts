@@ -13,5 +13,5 @@ export default function assertZero(
     value: unknown,
     variableName: string
 ): asserts value is 0 {
-    return typeGuard(value, variableName, isZero);
+    return typeGuard({ [variableName]: value }, '不是 0', isZero);
 }

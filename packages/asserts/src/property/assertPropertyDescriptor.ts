@@ -16,8 +16,8 @@ export default function assertPropertyDescriptor(
     allowExtraProperties: boolean = true
 ): asserts value is PropertyDescriptor {
     return typeGuard(
-        value,
-        variableName,
+        { [variableName]: value },
+        '不是一个属性描述器',
         isPropertyDescriptor,
         allowExtraProperties
     );

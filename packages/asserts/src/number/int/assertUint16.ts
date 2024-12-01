@@ -13,5 +13,9 @@ export default function assertUint16(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isUint16);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 uint16，取值范围为 `0 - 2^16-1` 的正整数，即 `0 - 65535`',
+        isUint16
+    );
 }

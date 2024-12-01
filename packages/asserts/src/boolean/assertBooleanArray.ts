@@ -13,5 +13,9 @@ export default function assertBooleanArray(
     value: unknown,
     variableName: string
 ): asserts value is boolean[] {
-    return typeGuard(value, variableName, isBooleanArray);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个长度大于 0 的数组，且每一项的值都是布尔值或被包装后的布尔值对象',
+        isBooleanArray
+    );
 }

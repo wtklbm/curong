@@ -16,5 +16,5 @@ export default function assertArray<T extends unknown[]>(
     value: unknown,
     variableName: string
 ): asserts value is T {
-    return typeGuard(value, variableName, isArray);
+    return typeGuard({ [variableName]: value }, '不是一个数组', isArray);
 }

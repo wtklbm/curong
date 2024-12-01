@@ -13,5 +13,5 @@ export default function assertRegExp(
     value: unknown,
     variableName: string
 ): asserts value is RegExp {
-    return typeGuard(value, variableName, isRegExp);
+    return typeGuard({ [variableName]: value }, '不是一个正则表达式', isRegExp);
 }

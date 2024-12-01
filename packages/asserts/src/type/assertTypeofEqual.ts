@@ -15,5 +15,10 @@ export default function assertTypeofEqual<T = unknown>(
     variableName: string,
     typeString: string
 ): asserts value is T {
-    return typeGuard(value, variableName, typeofEqual, typeString);
+    return typeGuard(
+        { [variableName]: value },
+        '一个值的类型不与指定的类型字符串相等',
+        typeofEqual,
+        typeString
+    );
 }

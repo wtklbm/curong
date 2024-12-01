@@ -16,5 +16,5 @@ export default function assertReadable(
     value: unknown,
     variableName: string
 ): asserts value is Readable {
-    return typeGuard(value, variableName, isReadable);
+    return typeGuard({ [variableName]: value }, '不是一个可读流', isReadable);
 }

@@ -18,5 +18,9 @@ export default function assertNumberPositive(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isNumberPositive);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个大于 0 且不是 Infinity 或 NaN 的正数',
+        isNumberPositive
+    );
 }

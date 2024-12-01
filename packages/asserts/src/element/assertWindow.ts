@@ -18,5 +18,10 @@ export default function assertWindow(
     variableName: string,
     evaluator?: (value: unknown) => asserts value is Window
 ): asserts value is Window {
-    return typeGuard(value, variableName, isWindow, evaluator);
+    return typeGuard(
+        { [variableName]: value },
+        '不是 Window 对象',
+        isWindow,
+        evaluator
+    );
 }

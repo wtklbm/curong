@@ -26,5 +26,9 @@ export default function assertFalsy(
     value: unknown,
     variableName: string
 ): asserts value is Falsy {
-    return typeGuard(value, variableName, isFalsy);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个虚值 (强制转换为 Boolean 后为 false 的值)',
+        isFalsy
+    );
 }

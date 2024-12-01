@@ -13,5 +13,9 @@ export default function assertNumberFilled(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isNumberFilled);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个不是 0、Infinity、-Infinity 或 NaN 的数字',
+        isNumberFilled
+    );
 }

@@ -13,5 +13,9 @@ export default function assertFunctionBound<
     R = unknown,
     A extends unknown[] = unknown[]
 >(value: unknown, variableName: string): asserts value is Function<R, A> {
-    return typeGuard(value, variableName, isFunctionBound);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个经过 .bind() 所绑定过的函数',
+        isFunctionBound
+    );
 }

@@ -13,5 +13,9 @@ export default function assertFloat(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isFloat);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个浮点数，即不是整数的数',
+        isFloat
+    );
 }

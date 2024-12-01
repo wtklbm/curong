@@ -13,5 +13,9 @@ export default function assertSymbol(
     value: unknown,
     variableName: string
 ): asserts value is symbol {
-    return typeGuard(value, variableName, isSymbol);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 symbol 或被包装后的 Symbol 对象',
+        isSymbol
+    );
 }

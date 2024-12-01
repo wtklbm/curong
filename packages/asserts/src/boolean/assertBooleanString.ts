@@ -13,5 +13,9 @@ export default function assertBooleanString(
     value: unknown,
     variableName: string
 ): asserts value is 'true' | 'false' {
-    return typeGuard(value, variableName, isBooleanString);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个布尔值字符串，即字符串 true 或 false',
+        isBooleanString
+    );
 }

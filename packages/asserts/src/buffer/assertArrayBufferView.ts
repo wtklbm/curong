@@ -25,5 +25,9 @@ export default function assertArrayBufferView(
     value: unknown,
     variableName: string
 ): asserts value is ArrayBufferView {
-    return typeGuard(value, variableName, isArrayBufferView);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 ArrayBufferView',
+        isArrayBufferView
+    );
 }

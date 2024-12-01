@@ -13,5 +13,5 @@ export default function assertSet<T = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is Set<T> {
-    return typeGuard(value, variableName, isSet);
+    return typeGuard({ [variableName]: value }, '不是一个 Set', isSet);
 }

@@ -13,5 +13,9 @@ export default function assertInt8(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isInt8);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 int8，取值范围为 `-2^7 - 2^7-1` 的整数，即 `-128 - 127`',
+        isInt8
+    );
 }

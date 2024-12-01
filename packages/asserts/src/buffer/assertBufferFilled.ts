@@ -3,7 +3,7 @@ import { isBufferFilled } from '@curong/types';
 import typeGuard from '../constants/typeGuard';
 
 /**
- * 是不是一个长度大于 `0` 的  `Buffer`
+ * 是不是一个长度大于 `0` 的 `Buffer`
  *
  * @param value 要验证的值
  * @param variableName 该值的变量名
@@ -13,5 +13,9 @@ export default function assertBufferFilled(
     value: unknown,
     variableName: string
 ): asserts value is Buffer {
-    return typeGuard(value, variableName, isBufferFilled);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个长度大于 0 的 Buffer',
+        isBufferFilled
+    );
 }

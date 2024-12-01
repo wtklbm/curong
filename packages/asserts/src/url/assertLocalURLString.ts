@@ -13,5 +13,9 @@ export default function assertLocalURLString(
     value: unknown,
     variableName: string
 ): asserts value is string {
-    return typeGuard(value, variableName, isLocalURLString);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 localhost URL 字符串',
+        isLocalURLString
+    );
 }

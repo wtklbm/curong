@@ -13,5 +13,5 @@ export default function assertDate(
     value: unknown,
     variableName: string
 ): asserts value is Date {
-    return typeGuard(value, variableName, isDate);
+    return typeGuard({ [variableName]: value }, '不是一个 Date', isDate);
 }

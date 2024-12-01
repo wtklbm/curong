@@ -13,5 +13,9 @@ export default function assertFileReader(
     value: unknown,
     variableName: string
 ): asserts value is FileReader {
-    return typeGuard(value, variableName, isFileReader);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 FileReader 对象',
+        isFileReader
+    );
 }

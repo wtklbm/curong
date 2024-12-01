@@ -17,5 +17,9 @@ export default function assertUint8ClampedArray(
     value: unknown,
     variableName: string
 ): asserts value is Uint8ClampedArray {
-    return typeGuard(value, variableName, isUint8ClampedArray);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 Uint8ClampedArray，每一项占一个字节，值为 `0 - 2^8-1`，即 `0 - 255` (一定在 `0` 到 `255` 之间)',
+        isUint8ClampedArray
+    );
 }

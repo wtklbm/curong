@@ -16,5 +16,9 @@ export default function assertTimeoutMs(
     value: unknown,
     variableName: string
 ): asserts value is symbol {
-    return typeGuard(value, variableName, isTimeoutMs);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个超时时间毫秒数',
+        isTimeoutMs
+    );
 }

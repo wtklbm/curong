@@ -13,5 +13,9 @@ export default function assertBooleanPrimitive(
     value: unknown,
     variableName: string
 ): asserts value is boolean {
-    return typeGuard(value, variableName, isBooleanPrimitive);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个基本的布尔值，即 boolean || Boolean()',
+        isBooleanPrimitive
+    );
 }

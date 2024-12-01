@@ -13,5 +13,9 @@ export default function assertPromiseLike<T = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is Promise<T> {
-    return typeGuard(value, variableName, isPromiseLike);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个有 then 方法的像 Promise 的对象或函数',
+        isPromiseLike
+    );
 }

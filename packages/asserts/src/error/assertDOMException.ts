@@ -15,5 +15,10 @@ export default function assertDOMException(
     variableName: string,
     name?: string
 ): asserts value is Error {
-    return typeGuard(value, variableName, isDOMException, name);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 DOMException 对象',
+        isDOMException,
+        name
+    );
 }

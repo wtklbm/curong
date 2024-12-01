@@ -13,5 +13,9 @@ export default function assertIntEven(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isIntEven);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个偶数，即取模后等于 0 的整数',
+        isIntEven
+    );
 }

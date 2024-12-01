@@ -17,5 +17,9 @@ export default function assertFloat32Array(
     value: unknown,
     variableName: string
 ): asserts value is Float32Array {
-    return typeGuard(value, variableName, isFloat32Array);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 Float32Array，每一项占四个字节，值为 `-3.4028234663852886e38 - 3.4028234663852886e38`，并且 `1.2e-38` 是最小的正数',
+        isFloat32Array
+    );
 }

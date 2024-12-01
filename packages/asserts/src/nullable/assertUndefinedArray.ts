@@ -13,5 +13,9 @@ export default function assertUndefinedArray(
     value: unknown,
     variableName: string
 ): asserts value is undefined[] {
-    return typeGuard(value, variableName, isUndefinedArray);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个长度大于 0 的数组，且每一项的值都是 undefined',
+        isUndefinedArray
+    );
 }

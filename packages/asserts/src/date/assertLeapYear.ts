@@ -15,5 +15,5 @@ export default function assertLeapYear(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isLeapYear);
+    return typeGuard({ [variableName]: value }, '不是一个闰年年份', isLeapYear);
 }

@@ -13,5 +13,9 @@ export default function assertRangeError(
     value: unknown,
     variableName: string
 ): asserts value is RangeError {
-    return typeGuard(value, variableName, isRangeError);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 RangeError 对象',
+        isRangeError
+    );
 }

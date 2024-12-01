@@ -13,5 +13,9 @@ export default function assertSyntaxError(
     value: unknown,
     variableName: string
 ): asserts value is SyntaxError {
-    return typeGuard(value, variableName, isSyntaxError);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 SyntaxError 对象',
+        isSyntaxError
+    );
 }

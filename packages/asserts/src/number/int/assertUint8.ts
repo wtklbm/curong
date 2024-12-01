@@ -13,5 +13,9 @@ export default function assertUint8(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isUint8);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 uint8，取值范围为 `0 - 2^8-1` 的正整数，即 `0 - 255`',
+        isUint8
+    );
 }

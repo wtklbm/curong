@@ -22,5 +22,9 @@ export default function assertPrimeNumber(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isPrimeNumber);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个质数 (素数)',
+        isPrimeNumber
+    );
 }

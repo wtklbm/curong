@@ -13,5 +13,9 @@ export default function assertFloat64(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isFloat64);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个双精度浮点数，取值在 `-1.7976931348623157e308 - 1.7976931348623157e308` 之间的浮点数',
+        isFloat64
+    );
 }

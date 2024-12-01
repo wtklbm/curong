@@ -13,5 +13,9 @@ export default function assertSharedArrayBuffer(
     value: unknown,
     variableName: string
 ): asserts value is SharedArrayBuffer {
-    return typeGuard(value, variableName, isSharedArrayBuffer);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 SharedArrayBuffer',
+        isSharedArrayBuffer
+    );
 }

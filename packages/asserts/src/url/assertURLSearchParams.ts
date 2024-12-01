@@ -13,5 +13,9 @@ export default function assertURLSearchParams(
     value: unknown,
     variableName: string
 ): asserts value is URLSearchParams {
-    return typeGuard(value, variableName, isURLSearchParams);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 URLSearchParams',
+        isURLSearchParams
+    );
 }

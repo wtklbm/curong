@@ -15,5 +15,10 @@ export default function assertNumberObject(
     variableName: string,
     isAllowNaN: boolean = false
 ): asserts value is Number {
-    return typeGuard(value, variableName, isNumberObject, isAllowNaN);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个被包装后的数字对象，即 new Number() || Object(0)',
+        isNumberObject,
+        isAllowNaN
+    );
 }

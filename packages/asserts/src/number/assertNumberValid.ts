@@ -22,5 +22,10 @@ export default function assertNumberValid(
     variableName: string,
     options: IsNumberValidOptions
 ) {
-    return typeGuard(value, variableName, isNumberValid, options);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个可以转换为有效的数字的值',
+        isNumberValid,
+        options
+    );
 }

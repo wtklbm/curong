@@ -26,5 +26,9 @@ export default function assertTruthy<T>(
     value: T,
     variableName: string
 ): asserts value is Truthy<T> {
-    return typeGuard(value, variableName, isTruthy);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个真值 (强制转换为 Boolean 后为 true 的值)',
+        isTruthy
+    );
 }

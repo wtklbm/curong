@@ -13,5 +13,5 @@ export default function assertInt(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isInt);
+    return typeGuard({ [variableName]: value }, '不是一个整数', isInt);
 }

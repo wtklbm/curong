@@ -13,5 +13,9 @@ export default function assertStringArray(
     value: unknown,
     variableName: string
 ): asserts value is string[] {
-    return typeGuard(value, variableName, isStringArray);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个长度大于 0 的数组，且每一项的值都是字符串或被包装后的字符串对象',
+        isStringArray
+    );
 }

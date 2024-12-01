@@ -13,5 +13,9 @@ export default function assertSetFilled<T = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is Set<T> {
-    return typeGuard(value, variableName, isSetFilled);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个长度大于 0 的 Set',
+        isSetFilled
+    );
 }

@@ -13,5 +13,9 @@ export default function assertSymbolPrimitive(
     value: unknown,
     variableName: string
 ): asserts value is symbol {
-    return typeGuard(value, variableName, isSymbolPrimitive);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个基本的 symbol || Symbol()',
+        isSymbolPrimitive
+    );
 }

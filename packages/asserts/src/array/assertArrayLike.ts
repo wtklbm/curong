@@ -20,5 +20,10 @@ export default function assertArrayLike<T = unknown>(
     variableName: string,
     similarity: 0 | 1 | 2 = 0
 ): asserts value is ArrayLike<T> {
-    return typeGuard(value, variableName, isArrayLike, similarity);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个类数组 (包括稀疏的类数组，不包含数组和稀疏数组)',
+        isArrayLike,
+        similarity
+    );
 }

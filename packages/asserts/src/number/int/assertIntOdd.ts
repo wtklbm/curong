@@ -13,5 +13,9 @@ export default function assertIntOdd(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isIntOdd);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个奇数，即取模后等于 1 的整数',
+        isIntOdd
+    );
 }

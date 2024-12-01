@@ -14,5 +14,9 @@ export default function assertIterator<T = unknown, R = unknown, N = undefined>(
     value: unknown,
     variableName: string
 ): asserts value is Iterator<T, R, N> {
-    return typeGuard(value, variableName, isIterator);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 Iterator',
+        isIterator
+    );
 }

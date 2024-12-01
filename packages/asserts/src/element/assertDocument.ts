@@ -18,5 +18,10 @@ export default function assertDocument(
     variableName: string,
     evaluator?: (value: unknown) => asserts value is Document
 ): asserts value is Document {
-    return typeGuard(value, variableName, isDocument, evaluator);
+    return typeGuard(
+        { [variableName]: value },
+        '不是 Document 对象',
+        isDocument,
+        evaluator
+    );
 }

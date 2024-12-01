@@ -13,5 +13,9 @@ export default function assertJsonString(
     value: unknown,
     variableName: string
 ): asserts value is string {
-    return typeGuard(value, variableName, isJsonString);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 JSON 字符串',
+        isJsonString
+    );
 }

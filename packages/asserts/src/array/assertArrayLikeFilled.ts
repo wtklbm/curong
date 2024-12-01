@@ -13,5 +13,9 @@ export default function assertArrayLikeFilled<T = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is ArrayLike<T> {
-    return typeGuard(value, variableName, isArrayLikeFilled);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个长度大于 0 的类数组 (不包含数组)',
+        isArrayLikeFilled
+    );
 }

@@ -13,5 +13,9 @@ export default function assertArraySparse<T = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is Array<T> {
-    return typeGuard(value, variableName, isArraySparse);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个稀疏数组 (不包含稀疏的类数组)',
+        isArraySparse
+    );
 }

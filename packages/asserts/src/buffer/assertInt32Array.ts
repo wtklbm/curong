@@ -13,5 +13,9 @@ export default function assertInt32Array(
     value: unknown,
     variableName: string
 ): asserts value is Int32Array {
-    return typeGuard(value, variableName, isInt32Array);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 Int32Array，每一项占四个字节，值为 `-2^31 - 2^31-1`，即 `-2147483648 - 2147483647`',
+        isInt32Array
+    );
 }

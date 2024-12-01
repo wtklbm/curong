@@ -16,5 +16,9 @@ export default function assertJsonObject(
     value: unknown,
     variableName: string
 ): asserts value is Json {
-    return typeGuard(value, variableName, isJsonObject);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个符合 JSON 要求的有效的 JSON 对象',
+        isJsonObject
+    );
 }

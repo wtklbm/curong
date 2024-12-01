@@ -17,5 +17,9 @@ export default function assertDataView(
     value: unknown,
     variableName: string
 ): asserts value is DataView {
-    return typeGuard(value, variableName, isDataView);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 DataView',
+        isDataView
+    );
 }

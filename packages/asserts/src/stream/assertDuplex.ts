@@ -16,5 +16,5 @@ export default function assertDuplex(
     value: unknown,
     variableName: string
 ): asserts value is Duplex {
-    return typeGuard(value, variableName, isDuplex);
+    return typeGuard({ [variableName]: value }, '不是一个双工流', isDuplex);
 }

@@ -18,5 +18,9 @@ export default function assertNumberNegative(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isNumberNegative);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个小于 0 且不是 -Infinity 或 NaN 的负数',
+        isNumberNegative
+    );
 }

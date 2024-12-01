@@ -13,5 +13,9 @@ export default function assertMapFilled<K = unknown, V = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is Map<K, V> {
-    return typeGuard(value, variableName, isMapFilled);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个长度大于 0 的 Map',
+        isMapFilled
+    );
 }

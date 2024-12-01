@@ -17,5 +17,9 @@ export default function assertInfinity(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isInfinity);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个无穷大的数',
+        isInfinity
+    );
 }

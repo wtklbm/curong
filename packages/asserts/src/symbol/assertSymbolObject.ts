@@ -13,5 +13,9 @@ export default function assertSymbolObject(
     value: unknown,
     variableName: string
 ): asserts value is Symbol {
-    return typeGuard(value, variableName, isSymbolObject);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个被包装后的 Symbol 对象，即 Object(Symbol())',
+        isSymbolObject
+    );
 }

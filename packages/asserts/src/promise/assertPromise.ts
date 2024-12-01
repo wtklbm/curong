@@ -15,5 +15,9 @@ export default function assertPromise<T = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is Promise<T> {
-    return typeGuard(value, variableName, isPromise);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 Promise',
+        isPromise
+    );
 }

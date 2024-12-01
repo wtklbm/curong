@@ -15,5 +15,9 @@ export default function assertPropertyKey(
     value: unknown,
     variableName: string
 ): asserts value is PropertyKey {
-    return typeGuard(value, variableName, isPropertyKey);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个可以作为属性的值',
+        isPropertyKey
+    );
 }

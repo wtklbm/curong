@@ -24,5 +24,9 @@ export default function assertAnyError<T extends Error = Error>(
     value: unknown,
     variableName: string
 ): asserts value is T {
-    return typeGuard(value, variableName, isAnyError);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个任意的 Error 对象',
+        isAnyError
+    );
 }

@@ -13,5 +13,9 @@ export default function assertHexString(
     value: unknown,
     variableName: string
 ): asserts value is string {
-    return typeGuard(value, variableName, isHexString);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个十六进制表示形式的数字字符串，例如 0xA',
+        isHexString
+    );
 }

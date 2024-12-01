@@ -13,5 +13,9 @@ export default function assertTrueString(
     value: unknown,
     variableName: string
 ): asserts value is 'true' {
-    return typeGuard(value, variableName, isTrueString);
+    return typeGuard(
+        { [variableName]: value },
+        '不是 true 字符串',
+        isTrueString
+    );
 }

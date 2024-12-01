@@ -13,5 +13,9 @@ export default function assertSyncGeneratorFunction(
     value: unknown,
     variableName: string
 ): asserts value is GeneratorFunction {
-    return typeGuard(value, variableName, isSyncGeneratorFunction);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个同步的 Generator 函数',
+        isSyncGeneratorFunction
+    );
 }

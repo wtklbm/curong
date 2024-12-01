@@ -21,5 +21,10 @@ export default function assertNaN<T = number>(
     variableName: string,
     isImplicit: boolean = false
 ): asserts value is T {
-    return typeGuard(value, variableName, isNaN, isImplicit);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 NaN',
+        isNaN,
+        isImplicit
+    );
 }

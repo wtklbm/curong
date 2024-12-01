@@ -16,5 +16,9 @@ export default function assertErrorLike(
     value: unknown,
     variableName: string
 ): asserts value is Error {
-    return typeGuard(value, variableName, isErrorLike);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个类错误对象',
+        isErrorLike
+    );
 }

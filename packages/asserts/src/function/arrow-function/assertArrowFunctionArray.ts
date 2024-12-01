@@ -13,5 +13,9 @@ export default function assertArrowFunctionArray<
     R = unknown,
     A extends unknown[] = unknown[]
 >(value: unknown, variableName: string): asserts value is Function<R, A> {
-    return typeGuard(value, variableName, isArrowFunctionArray);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个长度大于 0 的数组，且每一项的值都是箭头函数',
+        isArrowFunctionArray
+    );
 }

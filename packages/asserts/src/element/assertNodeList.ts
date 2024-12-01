@@ -13,5 +13,9 @@ export default function assertNodeList(
     value: unknown,
     variableName: string
 ): asserts value is NodeList {
-    return typeGuard(value, variableName, isNodeList);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 NodeList',
+        isNodeList
+    );
 }

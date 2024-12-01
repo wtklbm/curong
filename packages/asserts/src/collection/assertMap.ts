@@ -13,5 +13,5 @@ export default function assertMap<K = unknown, V = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is Map<K, V> {
-    return typeGuard(value, variableName, isMap);
+    return typeGuard({ [variableName]: value }, '不是一个 Map', isMap);
 }

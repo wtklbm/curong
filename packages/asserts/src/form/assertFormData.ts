@@ -13,5 +13,9 @@ export default function assertFormData(
     value: unknown,
     variableName: string
 ): asserts value is FormData {
-    return typeGuard(value, variableName, isFormData);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 FormData',
+        isFormData
+    );
 }

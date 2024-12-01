@@ -13,5 +13,9 @@ export default function assertNumberSafe(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isNumberSafe);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个可以安全计算的数字',
+        isNumberSafe
+    );
 }

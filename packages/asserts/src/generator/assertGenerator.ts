@@ -16,5 +16,9 @@ export default function assertGenerator<T = unknown, R = unknown, N = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is Generator<T, R, N> | AsyncGenerator<T, R, N> {
-    return typeGuard(value, variableName, isGenerator);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个同步或异步的 Generator',
+        isGenerator
+    );
 }

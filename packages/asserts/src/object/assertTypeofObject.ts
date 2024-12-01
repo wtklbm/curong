@@ -13,5 +13,9 @@ export default function assertTypeofObject<K extends PropertyKey, V = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is Record<K, V> {
-    return typeGuard(value, variableName, isTypeofObject);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个非 null 的任意对象',
+        isTypeofObject
+    );
 }

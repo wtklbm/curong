@@ -15,5 +15,10 @@ export default function assertStringTrim(
     variableName: string,
     length: number = 0
 ): asserts value is string {
-    return typeGuard(value, variableName, isStringTrim, length);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个经过 trim 后长度大于指定长度的字符串',
+        isStringTrim,
+        length
+    );
 }

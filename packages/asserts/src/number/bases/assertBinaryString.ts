@@ -13,5 +13,9 @@ export default function assertBinaryString(
     value: unknown,
     variableName: string
 ): asserts value is string {
-    return typeGuard(value, variableName, isBinaryString);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个二进制表示形式的数字字符串，例如 0b1010',
+        isBinaryString
+    );
 }

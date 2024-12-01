@@ -13,5 +13,9 @@ export default function assertArrowFunctionFilled<
     R = unknown,
     A extends unknown[] = unknown[]
 >(value: unknown, variableName: string): asserts value is Function<R, A> {
-    return typeGuard(value, variableName, isArrowFunctionFilled);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个参数个数大于 0 的箭头函数 (包含同步箭头函数、异步箭头函数)',
+        isArrowFunctionFilled
+    );
 }

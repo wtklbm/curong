@@ -13,5 +13,9 @@ export default function assertSyncArrowFunctionFilled<
     R = unknown,
     A extends unknown[] = unknown[]
 >(value: unknown, variableName: string): asserts value is Function<R, A> {
-    return typeGuard(value, variableName, isSyncArrowFunctionFilled);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个参数个数大于 0 的同步箭头函数',
+        isSyncArrowFunctionFilled
+    );
 }

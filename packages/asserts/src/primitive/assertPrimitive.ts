@@ -18,5 +18,9 @@ export default function assertPrimitive(
     value: unknown,
     variableName: string
 ): asserts value is Primitive {
-    return typeGuard(value, variableName, isPrimitive);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个基本类型的值',
+        isPrimitive
+    );
 }

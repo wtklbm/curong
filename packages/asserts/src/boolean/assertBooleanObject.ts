@@ -13,5 +13,9 @@ export default function assertBooleanObject(
     value: unknown,
     variableName: string
 ): asserts value is Boolean {
-    return typeGuard(value, variableName, isBooleanObject);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个被包装后的布尔值对象，即 new Boolean || Object(true)',
+        isBooleanObject
+    );
 }

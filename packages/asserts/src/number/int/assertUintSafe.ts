@@ -16,5 +16,9 @@ export default function assertUintSafe(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isUintSafe);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个安全的无符号整数',
+        isUintSafe
+    );
 }

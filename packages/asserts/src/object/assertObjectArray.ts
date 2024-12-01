@@ -13,5 +13,9 @@ export default function assertObjectArray<K extends PropertyKey, V = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is Record<K, V>[] {
-    return typeGuard(value, variableName, isObjectArray);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个长度大于 0 的数组，且每一项的值都是标记为 [object Object] 的对象',
+        isObjectArray
+    );
 }

@@ -13,5 +13,9 @@ export default function assertURLString(
     value: unknown,
     variableName: string
 ): asserts value is string {
-    return typeGuard(value, variableName, isURLString);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个可以转换为 URL 对象的的字符串',
+        isURLString
+    );
 }

@@ -13,5 +13,9 @@ export default function assertSyncIterable<T = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is SyncIterable<T> {
-    return typeGuard(value, variableName, isSyncIterable);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个同步可迭代的对象',
+        isSyncIterable
+    );
 }

@@ -13,5 +13,9 @@ export default function assertReactElement(
     value: unknown,
     variableName: string
 ) {
-    return typeGuard(value, variableName, isReactElement);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 React 元素',
+        isReactElement
+    );
 }

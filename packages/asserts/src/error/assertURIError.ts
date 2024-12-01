@@ -17,5 +17,9 @@ export default function assertURIError(
     value: unknown,
     variableName: string
 ): asserts value is TypeError {
-    return typeGuard(value, variableName, isURIError);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 URIError 对象',
+        isURIError
+    );
 }

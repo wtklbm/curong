@@ -13,5 +13,9 @@ export default function assertTextNode(
     value: unknown,
     variableName: string
 ): asserts value is Text {
-    return typeGuard(value, variableName, isTextNode);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 TextNode',
+        isTextNode
+    );
 }

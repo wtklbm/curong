@@ -17,5 +17,11 @@ export default function assertSameError<T extends Error = Error>(
     name: string,
     message: string
 ): asserts value is T {
-    return typeGuard(value, variableName, isSameError, name, message);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 name 和 message 相同的 Error 对象',
+        isSameError,
+        name,
+        message
+    );
 }

@@ -13,5 +13,9 @@ export default function assertNullOrUndefined(
     value: unknown,
     variableName: string
 ): asserts value is null | undefined {
-    return typeGuard(value, variableName, isNullOrUndefined);
+    return typeGuard(
+        { [variableName]: value },
+        '不是 undefined 或者 null',
+        isNullOrUndefined
+    );
 }

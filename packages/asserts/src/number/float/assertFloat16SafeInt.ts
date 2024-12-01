@@ -13,5 +13,9 @@ export default function assertFloat16SafeInt(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isFloat16SafeInt);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个可以被半精度浮点数所能存储的整数，即 `2^11-1`，取值范围为 `-2047 - 2047`',
+        isFloat16SafeInt
+    );
 }

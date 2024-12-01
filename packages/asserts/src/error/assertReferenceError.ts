@@ -13,5 +13,9 @@ export default function assertReferenceError(
     value: unknown,
     variableName: string
 ): asserts value is ReferenceError {
-    return typeGuard(value, variableName, isReferenceError);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 ReferenceError 对象',
+        isReferenceError
+    );
 }

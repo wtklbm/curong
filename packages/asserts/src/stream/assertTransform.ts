@@ -15,5 +15,5 @@ export default function assertTransform(
     value: unknown,
     variableName: string
 ): asserts value is Transform {
-    return typeGuard(value, variableName, isTransform);
+    return typeGuard({ [variableName]: value }, '不是一个转换流', isTransform);
 }

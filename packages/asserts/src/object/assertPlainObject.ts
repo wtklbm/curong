@@ -13,5 +13,9 @@ export default function assertPlainObject<K extends PropertyKey, V = unknown>(
     value: unknown,
     variableName: string
 ): asserts value is Record<K, V> {
-    return typeGuard(value, variableName, isPlainObject);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个普通对象，即 {}，该对象的原型指向 Object.prototype',
+        isPlainObject
+    );
 }

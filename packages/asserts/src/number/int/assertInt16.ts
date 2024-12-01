@@ -13,5 +13,9 @@ export default function assertInt16(
     value: unknown,
     variableName: string
 ): asserts value is number {
-    return typeGuard(value, variableName, isInt16);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个 int16，取值范围为 `-2^15 - 2^15-1` 的整数，即 `-32768 - 32767`',
+        isInt16
+    );
 }

@@ -13,5 +13,9 @@ export default function assertStringFilled(
     value: unknown,
     variableName: string
 ): asserts value is string {
-    return typeGuard(value, variableName, isStringFilled);
+    return typeGuard(
+        { [variableName]: value },
+        '不是一个长度大于 0 的字符串',
+        isStringFilled
+    );
 }
