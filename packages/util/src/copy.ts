@@ -20,7 +20,9 @@ const copyBaseType = (value: any) => {
 
 /** 拷贝 `ArrayBuffer` */
 const copyArrayBuffer = (value: any) => {
-    const newArrayBuffer = new (Object.getPrototypeOf(value).constructor)(value.byteLength);
+    const newArrayBuffer = new (Object.getPrototypeOf(value).constructor)(
+        value.byteLength
+    );
     new Uint8Array(newArrayBuffer).set(new Uint8Array(value));
 
     return newArrayBuffer;
