@@ -12,7 +12,7 @@ export default function isNotEqual<T extends unknown[]>(
     value: unknown,
     ...args: T
 ): boolean {
-    const handle =  Number.isNaN(value)
+    const handle = Number.isNaN(value)
         ? (v: unknown) => !Number.isNaN(v)
         : (v: unknown) => value !== v;
 
