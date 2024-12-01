@@ -27,7 +27,7 @@ describe('@curong/types/isJsonObject', () => {
 
     test('测试6: 输入为数组，且每个元素都是有效的 JSON 对象，返回 true', () => {
         expect(isJsonObject([1, 'string', true])).toBe(true);
-        expect(isJsonObject([{'key': 'value'}, [1, 2], true])).toBe(true);
+        expect(isJsonObject([{ key: 'value' }, [1, 2], true])).toBe(true);
     });
 
     test('测试7: 输入为数组，且包含无效的元素，返回 false', () => {
@@ -42,7 +42,9 @@ describe('@curong/types/isJsonObject', () => {
 
     test('测试9: 输入为复杂的嵌套 JSON 对象，返回 true', () => {
         expect(isJsonObject({ a: { b: { c: 123 } } })).toBe(true);
-        expect(isJsonObject({ key: ['val1', 'val2'], obj: { nested: true } })).toBe(true);
+        expect(
+            isJsonObject({ key: ['val1', 'val2'], obj: { nested: true } })
+        ).toBe(true);
     });
 
     test('测试10: 输入为 JSON 对象，键名都会转换为字符串，返回 true', () => {
