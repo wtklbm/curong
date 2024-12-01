@@ -115,9 +115,12 @@ export default function readlineFromCode(
             return Buffer.from(data).toString(encoding as BufferEncoding);
         };
     } else {
-        throw new TypeError('[readlineFromCode] chunk 必须是 Buffer 或 string', {
-            cause: { chunk, encoding, callback }
-        });
+        throw new TypeError(
+            '[readlineFromCode] chunk 必须是 Buffer 或 string',
+            {
+                cause: { chunk, encoding, callback }
+            }
+        );
     }
 
     for (let i = 0, len = chunk.length; i < len; i++) {
