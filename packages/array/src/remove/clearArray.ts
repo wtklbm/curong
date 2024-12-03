@@ -23,6 +23,7 @@
 * @note
 *  - 使用此方法时，如果不需要保留移除的元素，可以忽略返回值
 *  - 时间复杂度为 `O(n)`，其中 `n` 为数组的长度，因此在处理大数组时需注意性能
+*  - 也可以直接调用 `value.length = 0` 来清空当前数组
 */
 export default function clearArray<T>(value: T[]): T[] {
     return value.splice(0, value.length);
