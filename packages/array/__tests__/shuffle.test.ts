@@ -9,5 +9,20 @@ describe('@curong/array/shuffle', () => {
         const arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
         const ret = shuffle(arr);
         expect(ret.length).toBe(10);
+        expect(ret.every(Boolean)).toBe(true);
+    });
+
+    test('测试3', () => {
+        const arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        const ret = shuffle(arr, true);
+        expect(ret.length).toBe(10);
+        expect(ret.every(Boolean)).toBe(true);
+    });
+
+    test('测试4', () => {
+        const arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        const ret = shuffle(arr, false);
+        expect(ret.length).toBe(10);
+        expect(ret.every(Boolean)).toBe(true);
     });
 });
