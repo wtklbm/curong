@@ -13,6 +13,7 @@ export * from './dimension';
 export * from './each';
 export * from './map';
 export * from './move';
+export * from './remove';
 export * from './set';
 export * from './sort';
 export * from './split';
