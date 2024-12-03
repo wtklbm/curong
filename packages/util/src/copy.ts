@@ -1,6 +1,7 @@
 import {
     getTag,
     hasOwnProperty,
+    isAggregateError,
     isBigIntPrimitive,
     isBuffer,
     isFunction,
@@ -184,10 +185,9 @@ const copyByTag = <T extends object>(value: any, weak: WeakMap<T, T>) => {
         case 'SyntaxError':
         case 'TypeError':
         case 'URIError': {
-            const ins =
-                value instanceof AggregateError
-                    ? new AggregateError(value.errors.map(copy), value.message)
-                    : new (Object.getPrototypeOf(value).constructor)();
+            const ins = isAggregateError(value)
+                ? new AggregateError(value.errors.map(copy), value.message)
+                : new (Object.getPrototypeOf(value).constructor)();
 
             weak.set(value, ins);
             const o = copyAttrs(value, ins, weak);
