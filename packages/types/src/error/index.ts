@@ -10,3 +10,5 @@ export { default as isSameError } from './isSameError';
 export { default as isSyntaxError } from './isSyntaxError';
 export { default as isTypeError } from './isTypeError';
 export { default as isURIError } from './isURIError';
+
+export * from './types';
