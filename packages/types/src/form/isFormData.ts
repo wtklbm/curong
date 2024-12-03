@@ -11,7 +11,7 @@ import getTagEqual from '../type/getTagEqual';
  */
 export default function isFormData(value: unknown): value is FormData {
     return (
-        (isFunction(FormData) && value instanceof FormData) ||
+        (typeof FormData === 'function' && value instanceof FormData) ||
         (!isNullOrUndefined(value) &&
             isFunction((value as FormData).append) &&
             (getTagEqual<FormData>(value, 'FormData') ||
