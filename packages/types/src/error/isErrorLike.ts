@@ -2,11 +2,7 @@ import isTypeofObject from '../object/isTypeofObject';
 import isString from '../string/isString';
 import isStringFilled from '../string/isStringFilled';
 
-type ErrorLike = {
-    name: string;
-    message: string;
-    stack: string;
-};
+import type { ErrorLike } from './types';
 
 /**
  * 是不是一个类错误对象
