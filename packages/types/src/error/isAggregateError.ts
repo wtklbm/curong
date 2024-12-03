@@ -10,7 +10,9 @@ import isAnyError from './isAnyError';
  * - `AggregateError` 对象代表了包装了多个错误对象的单个错误对象
  * - `AggregateError` 是 `Error` 的子类
  */
-export default function isAggregateError(value: unknown): value is EvalError {
+export default function isAggregateError(
+    value: unknown
+): value is AggregateError {
     return (
         isAnyError(value) &&
         Object.getPrototypeOf(value).name === 'AggregateError'
