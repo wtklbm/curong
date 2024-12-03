@@ -4,8 +4,9 @@ import randomUint8 from './constants/randomUint8';
  * 生成一个随机的大写字母
  *
  * @param isSafe 是否生成安全的大写字母，默认为 `false`
+ *  - `true`: 使用 `crypto.getRandomValues` 方法来生成随机数，运行速度慢，安全
+ *  - `false`: 使用 `Math.random` 方法来生成随机数，运行速度快，不安全
  * @returns 返回一个随机的大写字母 (`A` 到 `Z`)
- *
  * @example
  * ```typescript
  * console.log(randomUpper()); // M
