@@ -1,4 +1,4 @@
-import getTagEqual from '../type/getTagEqual';
+import isAnyError from './isAnyError';
 
 /**
  * 是不是一个 `Error` 对象
@@ -8,8 +8,5 @@ import getTagEqual from '../type/getTagEqual';
  * @note 如果想验证任意的错误对象，请使用 `isAnyError` 方法
  */
 export default function isError(value: unknown): value is Error {
-    return (
-        getTagEqual(value, 'Error') &&
-        Object.getPrototypeOf(value).name === 'Error'
-    );
+    return isAnyError(value) && Object.getPrototypeOf(value).name === 'Error';
 }
