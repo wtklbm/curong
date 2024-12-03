@@ -16,7 +16,7 @@ import typeGuard from '../constants/typeGuard';
 export default function assertAggregateError(
     value: unknown,
     variableName: string
-): asserts value is TypeError {
+): asserts value is AggregateError {
     return typeGuard(
         { [variableName]: value },
         '不是一个 AggregateError 对象',
