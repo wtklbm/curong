@@ -1,4 +1,3 @@
-export { default as bind } from './bind';
 export { default as currying } from './currying';
 
 export * from './cache';
