@@ -32,5 +32,6 @@ import getTagEqual from '../type/getTagEqual';
 export default function isAnyError<T extends Error = Error>(
     value: unknown
 ): value is T {
-    return getTagEqual<Error>(value, 'Error') || value instanceof Error;
+    // 还可以判断 `value instanceof Error`
+    return getTagEqual<Error>(value, 'Error');
 }
