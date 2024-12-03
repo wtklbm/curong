@@ -115,6 +115,10 @@
 - `isTypeError`: 是不是一个 `TypeError` 对象
 - `isURIError`: 是不是一个 `isURIError` 对象
 
+包含以下类型:
+
+- `ErrorLike`: 类错误对象的类型
+
 #### `event`
 
 - `isEvent`: 是不是一个 `Event` 事件
