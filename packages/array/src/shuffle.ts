@@ -1,9 +1,14 @@
 import { isZero } from '@curong/types';
 
+import randomUint8 from '../../string/src/random/constants/randomUint8';
+
 /**
  * 将一个数组随机打乱
  *
  * @param value 要打乱的数组
+ * @param isSafe 是否使用安全的 `random` 方法进行排序，默认为 `false`。
+ *  - `true`: 使用 `crypto.getRandomValues` 方法来生成随机数，运行速度慢，安全
+ *  - `false`: 使用 `Math.random` 方法来生成随机数，运行速度快，不安全
  * @returns 返回被打乱的新数组
  * @example
  *
@@ -26,7 +31,10 @@ import { isZero } from '@curong/types';
  *
  * `Fisher-Yates` 算法满足随机数的要求，它可以保证每个元素在数组中出现的概率是等同的。
  */
-export default function shuffle<T extends unknown[]>(value: T): T {
+export default function shuffle<T extends unknown[]>(
+    value: T,
+    isSafe: boolean = false
+): T {
     if (isZero(value.length)) {
         return value;
     }
@@ -36,8 +44,8 @@ export default function shuffle<T extends unknown[]>(value: T): T {
     let current;
 
     while (m) {
-        const i = Math.floor(Math.random() * m--);
-        current = v[m];
+        const i = Math.floor(isSafe ? randomUint8()[0] % m : Math.random() * m);
+        current = v[--m];
         v[m] = v[i];
         v[i] = current;
     }
