@@ -5,5 +5,5 @@
  * @returns 是则返回 `true`，否则为 `false`
  */
 export default function isEvent(value: unknown): value is Event {
-    return value instanceof Event;
+    return typeof Event === 'function' && value instanceof Event;
 }
