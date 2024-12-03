@@ -10,5 +10,5 @@
  *
  */
 export default function isElement(value: unknown): value is Element {
-    return value instanceof Element;
+    return typeof Element === 'function' && value instanceof Element;
 }
