@@ -11,5 +11,6 @@ export { default as toArray } from './toArray';
 export * from './cascade';
 export * from './keys';
 export * from './property';
+export * from './remove';
 export * from './types';
 export * from './values';
