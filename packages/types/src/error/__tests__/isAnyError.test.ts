@@ -14,4 +14,9 @@ describe('@curong/types/isAnyError', () => {
         expect(isAnyError(new ReferenceError())).toBe(true);
         expect(isAnyError(new RangeError())).toBe(true);
     });
+
+    test('测试3', () => {
+        class MyError extends Error {}
+        expect(isAnyError(new MyError())).toBe(true);
+    });
 });
