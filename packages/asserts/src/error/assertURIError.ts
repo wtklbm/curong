@@ -16,7 +16,7 @@ import typeGuard from '../constants/typeGuard';
 export default function assertURIError(
     value: unknown,
     variableName: string
-): asserts value is TypeError {
+): asserts value is URIError {
     return typeGuard(
         { [variableName]: value },
         '不是一个 URIError 对象',
