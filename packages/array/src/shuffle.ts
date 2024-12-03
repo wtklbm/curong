@@ -11,13 +11,11 @@ import randomUint8 from '../../string/src/random/constants/randomUint8';
  *  - `false`: 使用 `Math.random` 方法来生成随机数，运行速度快，不安全
  * @returns 返回被打乱的新数组
  * @example
- *
  * ```typescript
  * const arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
  * const ret = shuffle(arr);
  * console.log(ret); // ['b', 'a', 'd', 'f', 'g', 'e', 'c'];
  * ```
- *
  * @note
  *
  * ### 使用 `Fisher-Yates` 算法生成随机数
