@@ -1,4 +1,4 @@
-import { isErrorLike } from '@curong/types';
+import { isErrorLike, type ErrorLike } from '@curong/types';
 
 import typeGuard from '../constants/typeGuard';
 
@@ -15,7 +15,7 @@ import typeGuard from '../constants/typeGuard';
 export default function assertErrorLike(
     value: unknown,
     variableName: string
-): asserts value is Error {
+): asserts value is ErrorLike {
     return typeGuard(
         { [variableName]: value },
         '不是一个类错误对象',
