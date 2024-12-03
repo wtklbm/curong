@@ -32,6 +32,10 @@
 - `getPropertyGetter`: 传递一个属性名，并返回一个新的函数，该函数可用于从对象中提取该属性的值
 - `isPrototypeProperty`: 是不是当前对象的原型上的属性
 
+## `remove`
+
+- `clearObject`: 清空对象的所有属性并返回操作结果
+
 ##  `values`
 
 - `isValuesIncludes`: 检查指定的值是否存在于给定的对象或类数组对象中
