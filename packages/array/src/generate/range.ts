@@ -1,5 +1,7 @@
 import { isNumberFilled } from '@curong/types';
 
+import mapToArray from './mapToArray';
+
 /**
  * 生成一个指定范围的数字数组
  *
@@ -47,8 +49,8 @@ export default function range(from: number, to: number, step: number = 1) {
         );
     }
 
-    return Array.from(
-        { length: Math.floor((to - from) / step) + 1 },
-        (_, k) => from + k * step
+    return mapToArray(
+        Math.floor((to - from) / step) + 1,
+        index => from + index * step
     );
 }
