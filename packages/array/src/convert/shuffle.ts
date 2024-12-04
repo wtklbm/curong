@@ -38,11 +38,12 @@ export default function shuffle<T extends unknown[]>(
     }
 
     const v = value.slice() as T;
+    const gen = isSafe ? () => randomUint8()[0] % m : () => Math.random() * m;
     let m = v.length;
     let current;
 
     while (m) {
-        const i = Math.floor(isSafe ? randomUint8()[0] % m : Math.random() * m);
+        const i = Math.floor(gen());
         current = v[--m];
         v[m] = v[i];
         v[i] = current;
