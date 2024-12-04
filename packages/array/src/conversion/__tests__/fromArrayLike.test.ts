@@ -1,4 +1,4 @@
-import { fromArrayLike } from '../src';
+import { fromArrayLike } from '..';
 
 describe('@curong/array/fromArrayLike', () => {
     test('测试1', () => {

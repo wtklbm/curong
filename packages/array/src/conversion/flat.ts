@@ -6,7 +6,6 @@ import { isArray } from '@curong/types';
  * @param value 多维数组
  * @returns 返回一个一位数组
  * @example
- *
  * ```typescript
  * const ret = flat([1, [[2], 3], 4]);
  * console.log(ret); // [ 1, 2, 3, 4 ]

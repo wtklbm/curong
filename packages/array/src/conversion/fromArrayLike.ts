@@ -4,7 +4,6 @@
  * @param value 类数组
  * @returns 返回转换后的数组
  * @example
- *
  * ```js
  * const print = function () {
  *     const args = fromArrayLike(arguments);

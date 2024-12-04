@@ -1,6 +1,6 @@
 import { isZero } from '@curong/types';
 
-import randomUint8 from '../../string/src/random/constants/randomUint8';
+import randomUint8 from '../../../string/src/random/constants/randomUint8';
 
 /**
  * 将一个数组随机打乱

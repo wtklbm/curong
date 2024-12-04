@@ -1,4 +1,4 @@
-import { shuffle } from '../src';
+import { shuffle } from '..';
 
 describe('@curong/array/shuffle', () => {
     test('测试1', () => {

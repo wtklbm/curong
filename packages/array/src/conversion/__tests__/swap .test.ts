@@ -1,4 +1,4 @@
-import { swap } from '../src';
+import { swap } from '..';
 
 describe('@curong/array/swap', () => {
     test('成功交换数组中两个元素的位置', () => {

@@ -1,4 +1,4 @@
-import { flat } from '../src';
+import { flat } from '..';
 
 describe('@curong/array/flat', () => {
     test('测试1', () => {

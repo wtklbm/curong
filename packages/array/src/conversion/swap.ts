@@ -7,7 +7,6 @@
  * @returns 返回修改后的数组
  * @throws 当索引 `i` 或 `j` 超出数组的边界时抛出错误
  * @example
- *
  * ```typescript
  * const arr = [1, 2, 3, 4];
  * const swapped = swap(arr, 0, 2);

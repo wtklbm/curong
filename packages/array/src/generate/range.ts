@@ -14,7 +14,6 @@ import { isNumberFilled } from '@curong/types';
  *  - 如果 `from` 大于 `to` 且 step 是大于 0 的整数，则会抛出异常
  *  - 如果 `from` 小于 `to` 且 step 是小于 0 的整数，则会抛出异常
  * @example
- *
  * ```typescript
  * // 生成从 0 到 5 的数字数组，步长为 1
  * range(0, 5); // [0, 1, 2, 3, 4, 5]

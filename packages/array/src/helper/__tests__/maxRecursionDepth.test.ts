@@ -1,4 +1,4 @@
-import { maxRecursionDepth } from '../src';
+import { maxRecursionDepth } from '..';
 
 describe('maxRecursionDepth', () => {
     test('should return 1 for empty array', () => {

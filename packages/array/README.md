@@ -2,13 +2,10 @@
 
 `@curong/array` 包含以下的方法:
 
+## `conversion`
+
 - `flat`: 展平一个多维数组
 - `fromArrayLike`: 将一个类数组转换为数组
-- `maxLengthIndex`: 获取字符串数组中最大长度的项的索引位置
-- `maxRecursionDepth`: 计算数组的最大递归深度 (即数组中包含数组)
-- `minLengthIndex`: 获取字符串数组中最小长度的项的索引位置
-- `random`: 从数组中随机挑选一个元素
-- `range`: 生成一个指定范围的数字数组
 - `shuffle`: 将一个数组随机打乱
 - `swap`: 交换数组中两个指定索引的元素
 
@@ -31,6 +28,17 @@
 - `eachRight`: 从右到左遍历数组并对每个元素依次执行回调函数
 - `eachRightAsync`: 从右到左异步串行遍历数组并对每个元素依次执行异步回调函数
 - `eachRightParallel`: 从右到左异步并行遍历数组并对每个元素执行异步回调函数
+
+## `generate`
+
+- `random`: 从数组中随机挑选一个元素
+- `range`: 生成一个指定范围的数字数组
+
+## `helper`
+
+- `maxLengthIndex`: 获取字符串数组中最大长度的项的索引位置
+- `maxRecursionDepth`: 计算数组的最大递归深度 (即数组中包含数组)
+- `minLengthIndex`: 获取字符串数组中最小长度的项的索引位置
 
 ## `map`
 
