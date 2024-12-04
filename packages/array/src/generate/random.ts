@@ -2,8 +2,9 @@ import { isArrayIndex, isZero } from '@curong/types';
 
 import randomUint8 from '../../../string/src/random/constants/randomUint8';
 
-import shuffle from '../conversion/shuffle';
+import shuffle from '../convert/shuffle';
 
+import mapToArray from './mapToArray';
 import type { RandomOptions } from './types';
 
 /**
@@ -49,10 +50,7 @@ export default function random<T>(
             return randomUint8(maxLen).map(n => value[n % len]);
         }
 
-        return Array.from(
-            { length: maxLen },
-            () => value[Math.floor(Math.random() * len)]
-        );
+        return mapToArray(maxLen, () => value[Math.floor(Math.random() * len)]);
     }
 
     return shuffle(value, isSafe).slice(0, maxLen);
