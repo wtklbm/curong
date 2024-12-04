@@ -63,6 +63,7 @@ const buildProcessTree = (
     let allData: string;
 
     ps.stdout.on('data', data => {
+        // @ts-expect-error
         allData += data.toString('ascii');
     });
 
@@ -77,6 +78,7 @@ const buildProcessTree = (
             return;
         }
 
+        // @ts-expect-error
         (allData.match(/\d+/g) ?? []).forEach(pid => {
             const p = +pid;
             tree[parentPid].push(p);
