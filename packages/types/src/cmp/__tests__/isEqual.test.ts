@@ -24,4 +24,10 @@ describe('@curong/types/isEqual', () => {
         expect(isEqual(/\d+/, /\d+/)).toBe(false);
         expect(isEqual('xxx', 'xxx', 'xxx')).toBe(true);
     });
+
+    test('测试4', () => {
+        expect(isEqual(Symbol('x'), Symbol('x'), Symbol('x'))).toBe(false);
+        const s = Symbol.for('xxx');
+        expect(isEqual(s, s, s)).toBe(true);
+    });
 });
