@@ -1,5 +1,7 @@
 import { isUintFilled } from '@curong/types';
 
+import { mapToArray } from '../generate';
+
 /**
  * 将一个数组按照指定的步长拆分为二维数组
  *
@@ -27,16 +29,7 @@ export default function splitByStep<T>(value: T[], step: number): T[][] {
         return [value];
     }
 
-    // 可以简写成下面这样，但是运行速度有点慢：
-    //return Array.from({ length: Math.ceil(value.length / step) }, (_, i) =>
-    //    value.slice(i * step, i * step + step)
-    //);
-
-    const result = [];
-
-    for (let i = 0; i < value.length; i += step) {
-        result.push(value.slice(i, i + step));
-    }
-
-    return result;
+    return mapToArray(Math.ceil(value.length / step), i =>
+        value.slice(i * step, i * step + step)
+    );
 }
