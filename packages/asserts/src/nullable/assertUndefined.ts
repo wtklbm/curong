@@ -13,9 +13,5 @@ export default function assertUndefined(
     value: unknown,
     variableName: string
 ): asserts value is undefined {
-    return typeGuard(
-        { [variableName]: value },
-        '不是 undefined',
-        isUndefined
-    );
+    return typeGuard({ [variableName]: value }, '不是 undefined', isUndefined);
 }
