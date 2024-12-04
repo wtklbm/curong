@@ -8,6 +8,7 @@
  * @param length 生成的数组的长度
  * @param mapFn 根据索引生成数组元素的映射函数，接受一个索引 `index` 并返回类型为 `T` 的值。默认为 `(index) => index`，即返回索引本身
  * @returns 返回生成的数组，包含根据索引生成的元素
+ * @note 该方法相当于 `Array.from({ length: maxLen }, (index) => index)` 但速度更快
  * @example
  * ```typescript
  * const numbers = mapToArray(5, (index) => index * 2);
