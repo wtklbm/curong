@@ -14,9 +14,5 @@ export default function assertError(
     value: unknown,
     variableName: string
 ): asserts value is Error {
-    return typeGuard(
-        { [variableName]: value },
-        '不是一个 Error 对象',
-        isError
-    );
+    return typeGuard({ [variableName]: value }, '不是一个 Error 对象', isError);
 }
