@@ -1,6 +1,6 @@
 import { isUintFilled } from '@curong/types';
 
-import { mapToArray } from '../generate';
+import { createArray } from '../generate';
 
 /**
  * 将一个数组按照指定的步长拆分为二维数组
@@ -29,7 +29,7 @@ export default function splitByStep<T>(value: T[], step: number): T[][] {
         return [value];
     }
 
-    return mapToArray(Math.ceil(value.length / step), i =>
+    return createArray(Math.ceil(value.length / step), i =>
         value.slice(i * step, i * step + step)
     );
 }

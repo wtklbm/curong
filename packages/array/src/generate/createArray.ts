@@ -11,20 +11,20 @@
  * @note 该方法相当于 `Array.from({ length: maxLen }, (index) => index)` 但速度更快
  * @example
  * ```typescript
- * const numbers = mapToArray(5, (index) => index * 2);
+ * const numbers = createArray(5, (index) => index * 2);
  * console.log(numbers); // [0, 2, 4, 6, 8]
  *
- * const strings = mapToArray(3, (index) => `Item ${index + 1}`);
+ * const strings = createArray(3, (index) => `Item ${index + 1}`);
  * console.log(strings); // ['Item 1', 'Item 2', 'Item 3']
  *
- * const defaultArray = mapToArray(4); // 使用默认映射函数
+ * const defaultArray = createArray(4); // 使用默认映射函数
  * console.log(defaultArray); // [0, 1, 2, 3]
  *
- * const booleans = mapToArray(4, (index) => index % 2 === 0);
+ * const booleans = createArray(4, (index) => index % 2 === 0);
  * console.log(booleans); // [true, false, true, false]
  * ```
  */
-export default function mapToArray<T>(
+export default function createArray<T>(
     length: number,
     mapFn: (index: number) => T = (index: number) => index as T
 ): T[] {
