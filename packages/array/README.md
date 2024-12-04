@@ -79,6 +79,7 @@
 ## `remove`
 
 - `clearArray`: 清空数组并返回清空后的数组
+- `removeAll`: 从数组中移除所有匹配的元素
 
 ## `set`
 
