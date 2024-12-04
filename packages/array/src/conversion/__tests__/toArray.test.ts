@@ -1,13 +1,13 @@
-import { fromArrayLike } from '..';
+import { toArray } from '..';
 
-describe('@curong/array/fromArrayLike', () => {
+describe('@curong/array/toArray', () => {
     test('测试1', () => {
-        expect(fromArrayLike([])).toEqual([]);
-        expect(fromArrayLike([1, 2, 3])).toEqual([1, 2, 3]);
+        expect(toArray([])).toEqual([]);
+        expect(toArray([1, 2, 3])).toEqual([1, 2, 3]);
     });
     test('测试2', () => {
         const print = function () {
-            const args = fromArrayLike(arguments);
+            const args = toArray(arguments);
             expect(args).toEqual([1, 32, 43, 54, 2, 32]);
         };
 
@@ -15,7 +15,7 @@ describe('@curong/array/fromArrayLike', () => {
         print(1, 32, 43, 54, 2, 32);
 
         expect(
-            fromArrayLike({
+            toArray({
                 0: 't',
                 1: 'o',
                 length: 2

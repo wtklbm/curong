@@ -5,9 +5,9 @@
 ## `conversion`
 
 - `flat`: 展平一个多维数组
-- `fromArrayLike`: 将一个类数组转换为数组
 - `shuffle`: 将一个数组随机打乱
 - `swap`: 交换数组中两个指定索引的元素
+- `toArray`: 将一个类数组转换为数组
 
 ## `convert`
 
