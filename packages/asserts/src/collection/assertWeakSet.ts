@@ -13,9 +13,5 @@ export default function assertWeakSet<T extends object = object>(
     value: unknown,
     variableName: string
 ): asserts value is WeakSet<T> {
-    return typeGuard(
-        { [variableName]: value },
-        '不是一个 WeakSet',
-        isWeakSet
-    );
+    return typeGuard({ [variableName]: value }, '不是一个 WeakSet', isWeakSet);
 }
