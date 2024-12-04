@@ -7,6 +7,7 @@
  * @param args 要跟当前值比较的多个值
  * @returns 相等返回 `true`，否则为 `false`
  *  - 如果 `args` 为空数组，则返回 `false`
+ *  - 在进行 `Symbol` 比对时，每一项的 `Symbol` 都是唯一值，所以会返回 `false`
  */
 export default function isEqual<T extends unknown[]>(
     value: unknown,
