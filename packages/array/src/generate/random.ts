@@ -8,7 +8,7 @@ import createArray from './createArray';
 import type { RandomOptions } from './types';
 
 /**
- * 从数组中随机挑选一个元素
+ * 从数组中随机挑选一个元素或多个元素
  *
  * @param value 要使用的数组
  * @param options 配置选项
