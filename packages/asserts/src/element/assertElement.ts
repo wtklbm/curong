@@ -17,9 +17,5 @@ export default function assertElement(
     value: unknown,
     variableName: string
 ): asserts value is Element {
-    return typeGuard(
-        { [variableName]: value },
-        '不是一个 Element',
-        isElement
-    );
+    return typeGuard({ [variableName]: value }, '不是一个 Element', isElement);
 }
