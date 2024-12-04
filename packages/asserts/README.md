@@ -1,10 +1,27 @@
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![bundle][bundle-src]][bundle-href]
+[![JSDocs][jsdocs-src]][jsdocs-href]
+[![License][license-src]][license-href]
+
+[npm-version-src]: https://img.shields.io/npm/v/@curong/assert?style=flat&colorA=080f12&colorB=1fa669
+[npm-version-href]: https://npmjs.com/package/@curong/assert
+[npm-downloads-src]: https://img.shields.io/npm/dm/@curong/assert?style=flat&colorA=080f12&colorB=1fa669
+[npm-downloads-href]: https://npmjs.com/package/@curong/assert
+[bundle-src]: https://img.shields.io/bundlephobia/minzip/@curong/assert?style=flat&colorA=080f12&colorB=1fa669&label=minzip
+[bundle-href]: https://bundlephobia.com/result?p=@curong/assert
+[license-src]: https://img.shields.io/github/license/wtklbm/curong.svg?style=flat&colorA=080f12&colorB=1fa669
+[license-href]: https://github.com/wtklbm/curong/blob/main/LICENSE
+[jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=080f12&colorB=1fa669
+[jsdocs-href]: https://www.jsdocs.io/package/@curong/assert
+
 # `@curong/asserts`
 
 `@curong/asserts` 是一个功能全面的检测 `JavaScript` 类型的依赖，可以很方便的检测变量的类型。它们会接收一个参数并返回一个 `boolean` 值。有关详细的用法，请查看 `文档注释`。
 
-### `@curong/asserts` 主要包含以下的方法:
+`@curong/asserts` 主要包含以下的方法:
 
-#### `array`
+## `array`
 
 - `assertArray`: 是不是一个数组
 - `assertArrayFilled`: 是不是一个长度大于 `0` 的数组
@@ -14,7 +31,7 @@
 - `assertArraySparse`: 是不是一个稀疏数组 (不包含稀疏的类数组)
 - `assertArrayTwoDimensional`: 是不是一个长度大于 `0` 的数组，且每一项的值都是数组 (二维数组)
 
-#### `bigint`
+## `bigint`
 
 - `assertBigInt`: 是不是一个 `bigInt` (大数) 或被包装后的 `BigInt` 对象
 - `assertBigIntArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `bigInt` (大数) 或被包装后的 `BigInt` 对象
@@ -22,7 +39,7 @@
 - `assertBigIntObject`: 是不是一个被包装后的 `BigInt` 对象，即 `Object()`
 - `assertBigIntPrimitive`: 是不是一个基本的大数，即 `bigint` || `BigInt()`
 
-#### `boolean`
+## `boolean`
 
 - `assertBoolean`: 是不是一个布尔值或被包装后的布尔值对象
 - `assertBooleanArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是布尔值或被包装后的布尔值对象
@@ -34,7 +51,7 @@
 - `assertTrue`: 是不是 `true`
 - `assertTrueString`: 是不是 `true` 字符串
 
-#### `buffer`
+## `buffer`
 
 - `assertArrayBuffer`: 是不是一个 `ArrayBuffer`
 - `assertArrayBufferView`: 是不是一个 `ArrayBufferView`
@@ -57,14 +74,14 @@
 - `assertUint8ClampedArray`: 是不是一个 `Uint8ClampedArray`，每一项占一个字节，值为 `0 - 2^8-1`，即 `0 - 255` (一定在 `0` 到 `255` 之间)
 
 
-#### `cmp`
+## `cmp`
 
 - `assertEqual`: **简单** 的判断多个的值是否相等
 - `assertEvery`: 检查数组中所有元素是否满足给定条件
 - `assertNotEqual`: **简单** 的判断多个的值是否不相等
 - `assertSome`: 检查数组中是否至少有一个元素满足给定的条件
 
-#### `collection`
+## `collection`
 
 - `assertMap`: 是不是一个 `Map`
 - `assertMapFilled`: 是不是一个长度大于 `0` 的 `Map`
@@ -74,13 +91,13 @@
 - `assertWeakRef`: 是不是一个 `WeakRef`
 - `assertWeakSet`: 是不是一个 `WeakSet`
 
-#### `date`
+## `date`
 
 - `assertDate`: 是不是一个 `Date`
 - `assertDateValid`: 是不是一个有效的 `Date` 数字 (格林威治时间戳) 、字符串 (日期字符串)、数组 (包含年、月、日、时、分、秒、毫秒的数组)、对象 (`Date`)
 - `isLeapYear`: 是不是一个闰年年份
 
-#### `element`
+## `element`
 
 - `assertDocument`: 是不是 `Document` 对象
 - `assertElement`: 是不是一个 `Element`
@@ -90,7 +107,7 @@
 - `assertTextNode`: 是不是一个 `TextNode`
 - `assertWindow`: 是不是 `Window` 对象
 
-#### `error`
+## `error`
 
 - `assertAggregateError`: 是不是一个任意的 `AggregateError` 对象
 - `assertAnyError`: 是不是一个任意的 `Error` 对象
@@ -105,27 +122,27 @@
 - `assertTypeError`: 是不是一个 `TypeError` 对象
 - `assertURIError`: 是不是一个 `URIError` 对象
 
-#### `event`
+## `event`
 
 - `assertEvent`: 是不是一个 `Event` 事件
 
-#### `file`
+## `file`
 
 - `assertBlob`: 是不是一个 `Blob`
 - `assertFile`: 是不是一个 `File` 对象
 - `assertFileList`: 是不是一个 `FileList` 对象
 - `assertFileReader`: 是不是一个 `FileReader` 对象
 
-#### `form`
+## `form`
 
 - `assertFormData`: 是不是一个 `FormData`
 
-#### `function`
+## `function`
 
 - `assertArguments`: 是不是函数的形参
 - `assertClass`: 是不是一个类
 
-##### `arrow-function`
+### `arrow-function`
 
 - `assertArrowFunction`: 是不是一个箭头函数 (包含同步箭头函数、异步箭头函数)
 - `assertArrowFunctionArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是箭头函数
@@ -136,7 +153,7 @@
 - `assertSyncArrowFunctionFilled`: 是不是一个参数个数大于 `0` 的同步箭头函数
 
 
-##### `function`
+### `function`
 
 - `assertAsyncFunction`: 是不是一个异步函数
 - `assertAsyncFunctionFilled`: 是不是一个参数个数大于 `0` 的异步函数
@@ -148,7 +165,7 @@
 - `assertSyncFunction`: 是不是一个同步函数
 - `assertSyncFunctionFilled`: 是不是一个参数个数大于 `0` 的同步函数
 
-#### `generator`
+## `generator`
 
 - `assertAsyncGenerator`: 是不是一个异步的 `Generator`
 - `assertAsyncGeneratorFunction`: 是不是一个异步的 `Generator` 函数
@@ -157,19 +174,19 @@
 - `assertSyncGenerator`: 是不是一个同步的 `Generator`
 - `assertSyncGeneratorFunction`: 是不是一个同步的 `Generator` 函数
 
-#### `iterator`
+## `iterator`
 
 - `assertAsyncIterable`: 是不是一个异步可迭代的对象
 - `assertIterable`: 是不是一个同步或异步的可迭代的对象
 - `assertIterator`: 是不是一个 `Iterator`
 - `assertSyncIterable`: 是不是一个同步可迭代的对象
 
-#### `json`
+## `json`
 
 - `assertJsonObject`: 是不是一个符合 JSON 要求的有效的 JSON 对象
 - `assertJsonString`: 是不是一个 JSON 字符串
 
-#### `nullable`
+## `nullable`
 
 - `assertNull`: 是不是 `null`
 - `assertNullArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `null`
@@ -178,7 +195,7 @@
 - `assertUndefined`: 是不是 `undefined`
 - `assertUndefinedArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `undefined`
 
-#### `number`
+## `number`
 
 - `assertFinite`: 是不是一个不是 `Infinity`、`-Infinity` 或 `NaN` 的有限数
 - `assertInfinity`: 是不是一个无穷大的数
@@ -197,13 +214,13 @@
 - `assertPrimeNumber`: 是不是一个质数 (素数)
 - `assertZero`: 是不是 `0`
 
-##### `bases`
+### `bases`
 
 - `assertBinaryString`: 是不是一个二进制表示形式的数字字符串，例如 `0b1010`
 - `assertHexString`: 是不是一个十六进制表示形式的数字字符串，例如 `0xA`
 - `assertOctalString`: 是不是一个八进制表示形式的数字字符串，例如 `0o12`
 
-##### `float`
+### `float`
 
 - `assertFloat`: 是不是一个浮点数，即不是整数的数
 - `assertFloat16`: 是不是一个半精度浮点数，取值在 `-65504 - 65504` 之间的浮点数
@@ -214,7 +231,7 @@
 - `assertFloat64SafeInt`: 是不是一个可以被双精度浮点数所能存储的整数，即 `2^53-1`，取值范围为 `-9007199254740991 - 9007199254740991`
 - `assertUFloat`: 是不是一个无符号浮点数，即大于 `0` 的浮点数
 
-##### `int`
+### `int`
 
 - `assertInt`: 是不是一个整数
 - `assertInt16`: 是不是一个 `int16`，取值范围为 `-2^15 - 2^15-1` 的整数，即 `-32768 - 32767`
@@ -231,7 +248,7 @@
 - `assertUintSafe`: 是不是一个安全的无符号整数
 - `assertUintSafeFilled`: 是不是一个大于 `0` 的安全的无符号整数
 
-#### `object`
+## `object`
 
 - `assertObject`: 是不是一个 `[object Object]` 的对象
 - `assertObjectArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是标记为 `[object Object]` 的对象
@@ -242,16 +259,16 @@
 - `assertTypeofObject`: 使用 `typeof` 判断是不是一个不是 `null` 的任意对象
 - `assertTypeofObjectArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是对象 (通过 `typeof` 判断且不为 `null`)
 
-#### `platform`
+## `platform`
 
 - `assertGlobalThis`: 当前的执行环境是不是包含 `globalThis`
 
-##### `browser`
+### `browser`
 
 - `assertBrowser`: 当前的执行环境是不是浏览器
 - `assertBrowserExtension`: 当前的执行环境是不是浏览器扩展
 
-##### `command`
+### `command`
 
 - `assertBun`: 当前的执行环境是不是 `Bun`
 - `assertDeno`: 当前的执行环境是不是 `Deno`
@@ -259,14 +276,14 @@
 - `assertNodejs`: 当前的执行环境是不是 `Node.js`
 - `assertNodejsProcess`: 是不是 `Node.js` 的 `process` 模块
 
-##### `desktop`
+### `desktop`
 
 - `assertElectron`: 当前的执行环境是不是 `Electron`
 - `assertLinux`: 当前的执行环境是不是 `Linux`
 - `assertMacOS`: 当前的执行环境是不是 `macOS`
 - `assertWindows`: 当前的执行环境是不是 `Windows`
 
-##### `mobile`
+### `mobile`
 
 - `assertAndroid`: 当前的执行环境是不是 `Android`
 - `assertIOS`: 当前的执行环境是不是 `iOS`
@@ -276,14 +293,14 @@
 - `assertTaro`: 当前的执行环境是不是 `Taro`
 - `assertWechatBrowser`: 当前的执行环境是不是微信的内置浏览器
 
-##### `webWorker`
+### `webWorker`
 
 - `assertDedicatedWorker`: 当前的执行环境是不是 `DedicatedWorker`
 - `assertServiceWorker`: 当前的执行环境是不是 `ServiceWorker`
 - `assertSharedWorker`: 当前的执行环境是不是 `SharedWorker`
 - `assertWebWorker`: 当前的执行环境是不是 `Web Worker`
 
-#### `primitive`
+## `primitive`
 
 - `assertFalsy`: 是不是一个虚值 (强制转换为 `Boolean` 后为 `false` 的值)
 - `assertFalsyArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是虚值 (强制转换为 `Boolean` 后为 `false` 的值)
@@ -291,12 +308,12 @@
 - `assertTruthy`: 是不是一个真值 (强制转换为 `Boolean` 后为 `true` 的值)
 - `assertTruthyArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是真值 (强制转换为 `Boolean` 后为 `true` 的值)
 
-#### `promise`
+## `promise`
 
 - `assertPromise`: 是不是一个 `Promise`
 - `assertPromiseLike`: 是不是一个有 `then` 方法的像 `Promise` 的对象或函数
 
-#### `property`
+## `property`
 
 - `assertLengthy`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于或等于 `0` 的安全的无符号整数
 - `assertLengthyFilled`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于 `0` 的安全的无符号整数
@@ -309,11 +326,11 @@
 - `assertSizey`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于或等于 `0` 的安全的无符号整数
 - `assertSizeyFilled`: 是不是一个具有 `size` 属性的类型，其 `size` 的值是一个大于 `0` 的安全的无符号整数
 
-#### `regexp`
+## `regexp`
 
 - `assertRegExp`: 是不是一个正则表达式
 
-#### `stream`
+## `stream`
 
 - `assertDuplex`: 是不是一个双工流
 - `assertReadable`: 是不是一个可读流
@@ -321,7 +338,7 @@
 - `assertTransform`: 是不是一个转换流
 - `assertWritable`: 是不是一个可写流
 
-#### `string`
+## `string`
 
 - `assertChar`: 是不是单个字符
 - `assertString`: 是不是一个字符串或被包装后的字符串对象
@@ -332,23 +349,23 @@
 - `assertStringTrim`: 是不是一个经过 `trim` 后长度大于指定长度的字符串
 - `assertToStringAble`: 是不是一个拥有 `.toString` 方法的类型
 
-#### `symbol`
+## `symbol`
 
 - `assertSymbol`: 是不是一个 `symbol` 或被包装后的 `Symbol` 对象
 - `assertSymbolArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `symbol` 或被包装后的 `Symbol` 对象
 - `assertSymbolObject`: 是不是一个被包装后的 `Symbol` 对象，即 `Object(Symbol())`
 - `assertSymbolPrimitive`: 是不是一个基本的 `symbol` || `Symbol()`
 
-#### `timeout`
+## `timeout`
 
 - `assertTimeoutMs`: 是不是一个超时时间毫秒数
 
-#### `type`
+## `type`
 
 - `assertTagEqual`: 判断原型上的类型标记是否等于某个值
 - `assertTypeofEqual`: 判断一个值的类型是否与指定的类型字符串相等
 
-#### `url`
+## `url`
 
 - `assertLocalURLString`: 是不是一个 `localhost` URL 字符串
 - `assertSafeURLString`: 是不是一个安全的 `URL` 字符串，即长度小于或等于 `2000`
@@ -356,6 +373,6 @@
 - `assertURLSearchParams`: 是不是一个 `URLSearchParams`
 - `assertURLString`: 是不是一个可以转换为 `URL` 对象的的字符串
 
-#### `variable`
+## `variable`
 
 - `assertVarName`: 是不是可以把值当做 `JavaScript` 的变量名
