@@ -1,4 +1,3 @@
-export * from './conversion';
 export * from './convert';
 export * from './dimension';
 export * from './each';

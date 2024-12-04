@@ -2,16 +2,13 @@
 
 `@curong/array` 包含以下的方法:
 
-## `conversion`
+## `convert`
 
+- `ensureArray`: 将给定的值转换为数组
 - `flat`: 展平一个多维数组
 - `shuffle`: 将一个数组随机打乱
 - `swap`: 交换数组中两个指定索引的元素
 - `toArray`: 将一个类数组转换为数组
-
-## `convert`
-
-- `ensureArray`: 将给定的值转换为数组
 - `toObject`: 将给定的数组转换为一个普通对象
 - `toTree`: 将给定的数组转换为一个树型对象
 
