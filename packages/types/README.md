@@ -1,10 +1,27 @@
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![bundle][bundle-src]][bundle-href]
+[![JSDocs][jsdocs-src]][jsdocs-href]
+[![License][license-src]][license-href]
+
+[npm-version-src]: https://img.shields.io/npm/v/@curong/types?style=flat&colorA=080f12&colorB=1fa669
+[npm-version-href]: https://npmjs.com/package/@curong/types
+[npm-downloads-src]: https://img.shields.io/npm/dm/@curong/types?style=flat&colorA=080f12&colorB=1fa669
+[npm-downloads-href]: https://npmjs.com/package/@curong/types
+[bundle-src]: https://img.shields.io/bundlephobia/minzip/@curong/types?style=flat&colorA=080f12&colorB=1fa669&label=minzip
+[bundle-href]: https://bundlephobia.com/result?p=@curong/types
+[license-src]: https://img.shields.io/github/license/wtklbm/curong.svg?style=flat&colorA=080f12&colorB=1fa669
+[license-href]: https://github.com/wtklbm/curong/blob/main/LICENSE
+[jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=080f12&colorB=1fa669
+[jsdocs-href]: https://www.jsdocs.io/package/@curong/types
+
 # `@curong/types`
 
 `@curong/types` 是一个功能全面的检测 `JavaScript` 类型的依赖，可以很方便的检测变量的类型。它们会接收一个参数并返回一个 `boolean` 值。有关详细的用法，请查看 `文档注释`。
 
 ### `@curong/types` 主要包含以下的方法:
 
-#### `array`
+## `array`
 
 - `isArray`: 是不是一个数组
 - `isArrayFilled`: 是不是一个长度大于 `0` 的数组
@@ -19,7 +36,7 @@
 - `IsEmptyArray`: 检查数组是否为空的条件类型
 - `NonEmptyArray`: 非空数组类型的条件类型，确保数组至少包含一个元素
 
-#### `bigint`
+## `bigint`
 
 - `isBigInt`: 是不是一个 `bigInt` (大数) 或被包装后的 `BigInt` 对象
 - `isBigIntArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `bigInt` (大数) 或被包装后的 `BigInt` 对象
@@ -27,7 +44,7 @@
 - `isBigIntObject`: 是不是一个被包装后的 `BigInt` 对象，即 `Object()`
 - `isBigIntPrimitive`: 是不是一个基本的大数，即 `bigint` || `BigInt()`
 
-#### `boolean`
+## `boolean`
 
 - `isBoolean`: 是不是一个布尔值或被包装后的布尔值对象
 - `isBooleanArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是布尔值或被包装后的布尔值对象
@@ -39,7 +56,7 @@
 - `isTrue`: 是不是 `true`
 - `isTrueString`: 是不是 `true` 字符串
 
-#### `buffer`
+## `buffer`
 
 - `isArrayBuffer`: 是不是一个 `ArrayBuffer`
 - `isArrayBufferView`: 是不是一个 `ArrayBufferView`
@@ -67,14 +84,14 @@
 - `ArrayBufferView`: 一个包含 `DataView` 和任何 `TypedArray` 类型的集合类型
 - `TypedArray`: 底层二进制数据缓冲区的类数组视图
 
-#### `cmp`
+## `cmp`
 
 - `isEqual`: **简单** 的判断多个的值是否相等
 - `isEvery`: 检查数组中所有元素是否满足给定条件
 - `isNotEqual`: **简单** 的判断多个的值是否不相等
 - `isSome`: 检查数组中是否至少有一个元素满足给定的条件
 
-#### `collection`
+## `collection`
 
 - `isMap`: 是不是一个 `Map`
 - `isMapFilled`: 是不是一个长度大于 `0` 的 `Map`
@@ -84,13 +101,13 @@
 - `isWeakRef`: 是不是一个 `WeakRef`
 - `isWeakSet`: 是不是一个 `WeakSet`
 
-#### `date`
+## `date`
 
 - `isDate`: 是不是一个 `Date`
 - `isDateValid`: 是不是一个有效的 `Date` 数字 (格林威治时间戳) 、字符串 (日期字符串)、数组 (包含年、月、日、时、分、秒、毫秒的数组)、对象 (`Date`)
 - `isLeapYear`: 是不是一个闰年年份
 
-#### `element`
+## `element`
 
 - `isDocument`: 是不是 `Document` 对象
 - `isElement`: 是不是一个 `Element`
@@ -100,7 +117,7 @@
 - `isTextNode`: 是不是一个 `TextNode`
 - `isWindow`: 是不是 `Window` 对象
 
-#### `error`
+## `error`
 
 - `isAggregateError`: 是不是一个 `AggregateError` 对象
 - `isAnyError`: 是不是一个任意的 `Error` 对象
@@ -119,27 +136,27 @@
 
 - `ErrorLike`: 类错误对象的类型
 
-#### `event`
+## `event`
 
 - `isEvent`: 是不是一个 `Event` 事件
 
-#### `file`
+## `file`
 
 - `isBlob`: 是不是一个 `Blob`
 - `isFile`: 是不是一个 `File` 对象
 - `isFileList`: 是不是一个 `FileList` 对象
 - `isFileReader`: 是不是一个 `FileReader` 对象
 
-#### `form`
+## `form`
 
 - `isFormData`: 是不是一个 `FormData`
 
-#### `function`
+## `function`
 
 - `isArguments`: 是不是函数的形参
 - `isClass`: 是不是一个类
 
-##### `arrow-function`
+### `arrow-function`
 
 - `isArrowFunction`: 是不是一个箭头函数 (包含同步箭头函数、异步箭头函数)
 - `isArrowFunctionArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是箭头函数
@@ -150,7 +167,7 @@
 - `isSyncArrowFunctionFilled`: 是不是一个参数个数大于 `0` 的同步箭头函数
 
 
-##### `function`
+### `function`
 
 - `isAsyncFunction`: 是不是一个异步函数
 - `isAsyncFunctionFilled`: 是不是一个参数个数大于 `0` 的异步函数
@@ -168,7 +185,7 @@
 - `Class`: 类的类型定义
 - `Function`: 函数的类型定义
 
-#### `generator`
+## `generator`
 
 - `isAsyncGenerator`: 是不是一个异步的 `Generator`
 - `isAsyncGeneratorFunction`: 是不是一个异步的 `Generator` 函数
@@ -177,7 +194,7 @@
 - `isSyncGenerator`: 是不是一个同步的 `Generator`
 - `isSyncGeneratorFunction`: 是不是一个同步的 `Generator` 函数
 
-#### `iterator`
+## `iterator`
 
 - `isAsyncIterable`: 是不是一个异步可迭代的对象
 - `isIterable`: 是不是一个同步或异步的可迭代的对象
@@ -189,7 +206,7 @@
 - `AsyncIterable`: 异步可迭代的类型
 - `SyncIterable`: 同步可迭代的类型
 
-#### `json`
+## `json`
 
 - `isJsonObject`: 是不是一个符合 JSON 要求的有效的 JSON 对象
 - `isJsonString`: 是不是一个 JSON 字符串
@@ -198,7 +215,7 @@
 
 - `Json`: JSON 的类型
 
-#### `nullable`
+## `nullable`
 
 - `isNull`: 是不是 `null`
 - `isNullArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `null`
@@ -225,7 +242,7 @@
 - `NonNullOrUndefined`: 从给定类型中排除 `null` 和 `undefined` 类型 (`NonNullable` 的别名)
 - `NonUndefined`: 从给定类型中排除 `undefined` 类型
 
-#### `number`
+## `number`
 
 - `isFinite`: 是不是一个不是 `Infinity`、`-Infinity` 或 `NaN` 的有限数
 - `isInfinity`: 是不是一个无穷大的数
@@ -244,13 +261,13 @@
 - `isPrimeNumber`: 是不是一个质数 (素数)
 - `isZero`: 是不是 `0`
 
-##### `bases`
+### `bases`
 
 - `isBinaryString`: 是不是一个二进制表示形式的数字字符串，例如 `0b1010`
 - `isHexString`: 是不是一个十六进制表示形式的数字字符串，例如 `0xA`
 - `isOctalString`: 是不是一个八进制表示形式的数字字符串，例如 `0o12`
 
-##### `float`
+### `float`
 
 - `isFloat`: 是不是一个浮点数，即不是整数的数
 - `isFloat16`: 是不是一个半精度浮点数，取值在 `-65504 - 65504` 之间的浮点数
@@ -261,7 +278,7 @@
 - `isFloat64SafeInt`: 是不是一个可以被双精度浮点数所能存储的整数，即 `2^53-1`，取值范围为 `-9007199254740991 - 9007199254740991`
 - `isUFloat`: 是不是一个无符号浮点数，即大于 `0` 的浮点数
 
-##### `int`
+### `int`
 
 - `isInt`: 是不是一个整数
 - `isInt16`: 是不是一个 `int16`，取值范围为 `-2^15 - 2^15-1` 的整数，即 `-32768 - 32767`
@@ -278,7 +295,7 @@
 - `isUintSafe`: 是不是一个安全的无符号整数
 - `isUintSafeFilled`: 是不是一个大于 `0` 的安全的无符号整数
 
-#### `object`
+## `object`
 
 - `isObject`: 是不是一个 `[object Object]` 的对象
 - `isObjectArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是标记为 `[object Object]` 的对象
@@ -293,16 +310,16 @@
 
 - `IsEmptyObject`: 检查对象是否为空的条件类型
 
-#### `platform`
+## `platform`
 
 - `isGlobalThis`: 当前的执行环境是不是包含 `globalThis`
 
-##### `browser`
+### `browser`
 
 - `isBrowser`: 当前的执行环境是不是浏览器
 - `isBrowserExtension`: 当前的执行环境是不是浏览器扩展
 
-##### `command`
+### `command`
 
 - `isBun`: 当前的执行环境是不是 `Bun`
 - `isDeno`: 当前的执行环境是不是 `Deno`
@@ -310,14 +327,14 @@
 - `isNodejs`: 当前的执行环境是不是 `Node.js`
 - `isNodejsProcess`: 是不是 `Node.js` 的 `process` 模块
 
-##### `desktop`
+### `desktop`
 
 - `isElectron`: 当前的执行环境是不是 `Electron`
 - `isLinux`: 当前的执行环境是不是 `Linux`
 - `isMacOS`: 当前的执行环境是不是 `macOS`
 - `isWindows`: 当前的执行环境是不是 `Windows`
 
-##### `mobile`
+### `mobile`
 
 - `isAndroid`: 当前的执行环境是不是 `Android`
 - `isIOS`: 当前的执行环境是不是 `iOS`
@@ -327,14 +344,14 @@
 - `isTaro`: 当前的执行环境是不是 `Taro`
 - `isWechatBrowser`: 当前的执行环境是不是微信的内置浏览器
 
-##### `webWorker`
+### `webWorker`
 
 - `isDedicatedWorker`: 当前的执行环境是不是 `DedicatedWorker`
 - `isServiceWorker`: 当前的执行环境是不是 `ServiceWorker`
 - `isSharedWorker`: 当前的执行环境是不是 `SharedWorker`
 - `isWebWorker`: 当前的执行环境是不是 `Web Worker`
 
-#### `primitive`
+## `primitive`
 
 - `isFalsy`: 是不是一个虚值 (强制转换为 `Boolean` 后为 `false` 的值)
 - `isFalsyArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是虚值 (强制转换为 `Boolean` 后为 `false` 的值)
@@ -351,12 +368,12 @@
 - `Primitive`: 基本类型的类型定义
 - `Truthy`: 一个真值 (强制转换为 `Boolean` 后为 `true` 的值) 的类型
 
-#### `promise`
+## `promise`
 
 - `isPromise`: 是不是一个 `Promise`
 - `isPromiseLike`: 是不是一个有 `then` 方法的像 `Promise` 的对象或函数
 
-#### `property`
+## `property`
 
 - `hasOwnProperty`: 确定一个值上是否具有指定名称的私有属性
 - `isLengthy`: 是不是一个具有 `length` 属性的类型，其 `length` 的值是一个大于或等于 `0` 的安全的无符号整数
@@ -374,11 +391,11 @@
 - `Lengthy`: 具有 `length` 属性的值的类型定义
 - `Sizey`: 具有 `size` 属性的值的类型定义
 
-#### `regexp`
+## `regexp`
 
 - `isRegExp`: 是不是一个正则表达式
 
-#### `stream`
+## `stream`
 
 - `isDuplex`: 是不是一个双工流
 - `isReadable`: 是不是一个可读流
@@ -386,7 +403,7 @@
 - `isTransform`: 是不是一个转换流
 - `isWritable`: 是不是一个可写流
 
-#### `string`
+## `string`
 
 - `isChar`: 是不是单个字符
 - `isString`: 是不是一个字符串或被包装后的字符串对象
@@ -401,18 +418,18 @@
 
 - `ToStringAble`: 具有 `toString` 方法的值的类型定义
 
-#### `symbol`
+## `symbol`
 
 - `isSymbol`: 是不是一个 `symbol` 或被包装后的 `Symbol` 对象
 - `isSymbolArray`: 是不是一个长度大于 `0` 的数组，且每一项的值都是 `symbol` 或被包装后的 `Symbol` 对象
 - `isSymbolObject`: 是不是一个被包装后的 `Symbol` 对象，即 `Object(Symbol())`
 - `isSymbolPrimitive`: 是不是一个基本的 `symbol` || `Symbol()`
 
-#### `timeout`
+## `timeout`
 
 - `isTimeoutMs`: 是不是一个超时时间毫秒数
 
-#### `type`
+## `type`
 
 - `assertType`: 通过泛型声明来判断是不是某一个类型的值
 - `getTag`: 判断原型上的类型标记是否等于某个值
@@ -420,7 +437,7 @@
 - `isType`: 通过泛型声明来判断是不是某一个类型的值
 - `typeofEqual`: 判断一个值的类型是否与指定的类型字符串相等
 
-#### `url`
+## `url`
 
 - `isLocalURLString`: 是不是一个 `localhost` URL 字符串
 - `isSafeURLString`: 是不是一个安全的 `URL` 字符串，即长度小于或等于 `2000`
@@ -428,44 +445,44 @@
 - `isURLSearchParams`: 是不是一个 `URLSearchParams`
 - `isURLString`: 是不是一个可以转换为 `URL` 对象的的字符串
 
-#### `variable`
+## `variable`
 
 - `isVarName`: 是不是可以把值当做 `JavaScript` 的变量名
 
 ### 包含以下 `TypeScript` 类型
 
-#### `exclude`
+## `exclude`
 
 - `ExcludeNull`: 从类型 `T` 中排除 `null`
 - `ExcludeNullOrUndefined`: 从类型 `T` 中排除 `null` 和 `undefined`
 - `ExcludeUndefined`: 从类型 `T` 中排除 `undefined`
 
-#### `include`
+## `include`
 
 - `IncludeNull`: 包含指定类型 `T` 或 `null` 的类型
 - `IncludeNullOrUndefined`: 包含指定类型 `T`、`null` 或 `undefined` 的类型
 - `IncludeUndefined`: 包含指定类型 `T` 或 `undefined` 的类型
 
-#### `keyof`
+## `keyof`
 
 - `KeyOfContainsValue`: 获取 `T` 类型中包含特定 `V` 类型的键
 - `KeyOfNonContainsValue`: 获取 `T` 类型中不包含特定 `V` 的键
 - `KeyOfNonValue`: 获取 `T` 类型中不等于特定 `V` 的键
 - `KeyOfValue`: 获取 `T` 类型中包含特定 `V` 的键
 
-#### `mutable`
+## `mutable`
 
 - `Mutable`: 将 `T` 中的所有属性设为可变（去掉只读属性）
 - `MutableKey`: 将类型 `T` 中指定的某个属性 `K` 设为可变（去掉只读属性），而保留其他属性的只读状态
 
-#### `partial`
+## `partial`
 
 - `OptionalKey`: 将类型 `T` 中指定的某个属性 `K` 设置为可选，而保持其他属性不变
 - `PartialOrNull`: 将类型 `T` 中的所有属性变为可选，并允许值为 `null`
 - `PartialOrNullable`: 将类型 `T` 中的所有属性变为可选，并允许值为 `null` 或 `undefined`
 - `PartialOrUndefined`: 将类型 `T` 中的所有属性变为可选，并允许值为 `undefined`
 
-#### `replace`
+## `replace`
 
 - `Replace`: 在 `T` 类型中匹配 `M` 类型的部分并将其替换为 `N`
 - `ReplaceNull`: 将 `T` 类型中的 `null` 替换为 `N`
