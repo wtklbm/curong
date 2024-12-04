@@ -1,8 +1,7 @@
 /**
- * 获取两个数组的并集，即合并两个数组并去除重复元素
+ * 获取多个数组的并集，即合并多个数组并去除重复元素
  *
- * @param a 第一个数组
- * @param b 第二个数组
+ * @param args 要合并的数组集合
  * @returns 返回一个去重后的新数组，包含所有来自 `a` 和 `b` 的元素
  * @example
  * ```typescript
@@ -16,6 +15,6 @@
  * console.log(union([], [])); // []
  * ```
  */
-export default function union<T>(a: T[], b: T[]): T[] {
-    return [...new Set(a.concat(b))];
+export default function union<T>(...args: T[][]): T[] {
+    return [...new Set(args.flat())];
 }
