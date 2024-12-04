@@ -1,4 +1,4 @@
-import { isZero } from '@curong/types';
+import { isEqual, isZero } from '@curong/types';
 
 /**
  * 查找数组中所有匹配元素的索引
@@ -37,12 +37,8 @@ export default function indexOfAll<T>(array: T[], value: T): number[] {
         return indices;
     }
 
-    const diff = Number.isNaN(value)
-        ? Number.isNaN
-        : (v: unknown) => v === value;
-
     for (let i = 0; i < len; i++) {
-        if (diff(array[i])) {
+        if (isEqual(array[i], value)) {
             indices.push(i);
         }
     }
