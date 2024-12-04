@@ -52,7 +52,7 @@ export default function random<T>(
 
         return createArray(
             maxLen,
-            () => value[Math.floor(Math.random() * len)]
+            () => value[Math.round(Math.random() * (len - 1))]
         );
     }
 
