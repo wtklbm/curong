@@ -13,9 +13,5 @@ export default function assertWeakRef<T extends object = object>(
     value: unknown,
     variableName: string
 ): asserts value is WeakRef<T> {
-    return typeGuard(
-        { [variableName]: value },
-        '不是一个 WeakRef',
-        isWeakRef
-    );
+    return typeGuard({ [variableName]: value }, '不是一个 WeakRef', isWeakRef);
 }
