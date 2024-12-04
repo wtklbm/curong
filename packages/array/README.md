@@ -46,6 +46,7 @@
 ## `find`
 
 - `includesEvery`: 判断一个数组是否包含另一个数组的所有元素
+- `indexOfAll`: 查找数组中所有匹配元素的索引
 
 ## `generate`
 
