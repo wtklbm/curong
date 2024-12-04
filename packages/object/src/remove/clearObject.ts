@@ -49,4 +49,4 @@ const obj = Object.create(null, {
     b: { value: 2, enumerable: true, configurable: false }
 });
 const result = clearObject(obj, 1);
-console.log(result, obj)
+console.log(result, obj);
