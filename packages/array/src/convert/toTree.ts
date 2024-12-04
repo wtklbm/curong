@@ -1,6 +1,5 @@
 import { hasOwnProperty } from '@curong/types';
 
-import toArray from './ensureArray';
 import type { Item, ToTreeOptions, TreeItem } from './types';
 
 /**
@@ -192,7 +191,7 @@ export default function toTree(
 
     if (orphanIds?.size) {
         throw new Error(
-            `items 数组包含指向以下 parentIds 的孤立项: [${toArray(orphanIds)}]\n` +
+            `items 数组包含指向以下 parentIds 的孤立项: [${Array.from(orphanIds)}]\n` +
                 '这些 parentIds 在 items 数组中不存在。提示：通过传递以下选项来防止孤儿节点导致的错误: {throwIfOrphans: false}'
         );
     }
