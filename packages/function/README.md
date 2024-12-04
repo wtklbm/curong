@@ -1,13 +1,30 @@
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![bundle][bundle-src]][bundle-href]
+[![JSDocs][jsdocs-src]][jsdocs-href]
+[![License][license-src]][license-href]
+
+[npm-version-src]: https://img.shields.io/npm/v/@curong/function?style=flat&colorA=080f12&colorB=1fa669
+[npm-version-href]: https://npmjs.com/package/@curong/function
+[npm-downloads-src]: https://img.shields.io/npm/dm/@curong/function?style=flat&colorA=080f12&colorB=1fa669
+[npm-downloads-href]: https://npmjs.com/package/@curong/function
+[bundle-src]: https://img.shields.io/bundlephobia/minzip/@curong/function?style=flat&colorA=080f12&colorB=1fa669&label=minzip
+[bundle-href]: https://bundlephobia.com/result?p=@curong/function
+[license-src]: https://img.shields.io/github/license/wtklbm/curong.svg?style=flat&colorA=080f12&colorB=1fa669
+[license-href]: https://github.com/wtklbm/curong/blob/main/LICENSE
+[jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=080f12&colorB=1fa669
+[jsdocs-href]: https://www.jsdocs.io/package/@curong/function
+
 # `@curong/function`
 
 `@curong/function` 主要包含以下的方法:
 
-### `cache`
+## `cache`
 
 - `memoizeWith`: 返回一个同步函数，并缓存函数的计算结果
 - `memoizeWithAsync`: 返回一个异步函数，并缓存函数的计算结果
 
-### `catch`
+## `catch`
 
 - `ifThrow`: 执行一个任务，并在任务失败时执行后备任务或返回后备值
 - `noCatch`: 获取函数返回的值，并忽略抛出的错误
@@ -15,7 +32,7 @@
 - `retryWithCondition`: 执行一个任务，直到条件满足或达到最大重试次数
 - `tryCatch`: `try...catch...` 语法的 `Promise` 包装
 
-### `chain`
+## `chain`
 
 - `after`: 创建一个新的函数，该函数在调用目标函数后，会在执行一个后置函数，并返回目标函数的结果
 - `applyAfter`: 创建一个新的函数，该函数在调用目标函数后，会将目标函数的返回值作为第一个参数传递给后置函数，并返回后置函数的结果
@@ -25,33 +42,33 @@
 - `withAfter`: 创建一个新的函数，该函数在调用目标函数后，会将目标函数的返回值作为第一个参数传递给后置函数，并返回目标函数的结果
 - `withBefore`: 创建一个新的函数，该函数在调用目标函数前，会先调用指定的前置函数，并将前置函数的返回值作为第一个参数传递给目标函数，并返回前置函数的结果
 
-### `class`
+## `class`
 
 - `singletonClass`: 创建一个类的单例模式代理，确保该类在应用中只能被实例化一次
 
-### `control`
+## `control`
 
 - `cancelExec`: 随时取消对 `Promise`、同步函数或异步函数的执行
 - `collectItems`: 收集 `Promise`，返回收集的 `Promise` 数组的结果
 - `deferred`: 创建一个可以受外部控制的 `Promise`
 - `padding`: 执行任务并等待结果的返回
 
-### `curring`
+## `curring`
 
 - `curring`: 把接受多个参数的函数变成接受任意多个参数的函数，并且返回接受余下的参数的新函数
 
-### `delay`
+## `delay`
 
 - `delay`: 异步阻塞一段时间
 - `delayReturn`: 执行一个函数，并等待一段时间后再返回
 - `delayRun`: 等待一段时间后执行一个同步或异步的函数
 - `delaySync`: 同步阻塞一段时间
 
-### `helper`
+## `helper`
 
 - `noop`: 一个不执行任何操作的空函数
 
-### `limit`
+## `limit`
 
 - `asyncLimit`: 一个异步函数包装器，用于控制并发执行任务
 - `once`: 返回一个函数，确保 `fn` 只能被执行一次，之后的调用将返回第一次执行的结果，而不会重新执行 `fn`
@@ -59,18 +76,18 @@
 - `runAfterTimes`: 返回一个函数，当函数执行到达指定次数后执行回调函数
 - `runOnlyNTimes`: 返回一个函数，当函数执行到达指定次数后就不再执行回调函数
 
-### `promise`
+## `promise`
 
 - `executeToPromise`: 如果传递的是一个函数，就将函数执行，否则返回该值
 - `toPromise`: 判断一个值的类型，如果是 `Promise` 就直接返回，如果是函数，就将函数执行，如果是值就直接返回该值
 
-### `select`
+## `select`
 
 - `select`: 根据条件来返回相应的结果
 - `selectSync`: 根据条件来返回相应的结果
 - `toggle`: 创建一个用于在两个值之间切换的工具
 
-### `timeout`
+## `timeout`
 
 - `clearTimeoutAll`: 清除所有已分配的 `setTimeout` 定时器
 - `nextTick`: `process.nextTick` 的 `polyfill`，用于将 `callback` 添加到 "下一个滴答队列"
