@@ -1,6 +1,7 @@
 export * from './convert';
 export * from './dimension';
 export * from './each';
+export * from './find';
 export * from './generate';
 export * from './helper';
 export * from './map';
