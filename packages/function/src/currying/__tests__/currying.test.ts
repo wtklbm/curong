@@ -1,4 +1,4 @@
-import { currying } from '../src';
+import { currying } from '..';
 
 describe('@curong/function/currying', () => {
     test('测试1', () => {
