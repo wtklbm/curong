@@ -1,24 +1,24 @@
 // @ts-nocheck
 
-import { stringify } from '../src';
+import { toJsonString } from '..';
 
-describe('@curong/string/stringify', () => {
+describe('@curong/string/toJsonString', () => {
     test('测试1', () => {
         const s = { title: '标题' };
         s.content = s;
 
-        stringify(s, { cycles: false }).catch(e => {
+        toJsonString(s, { cycles: false }).catch(e => {
             expect(e).toBeDefined();
         });
 
-        stringify(BigInt(0n)).catch(e => {
+        toJsonString(BigInt(0n)).catch(e => {
             expect(e).toBeDefined();
         });
     });
 
     test('测试2', async () => {
         const s = { value: '', number: 0, bool: false };
-        const ret = await stringify(s);
+        const ret = await toJsonString(s);
         expect(ret).toBe('{"value":"","number":0,"bool":false}');
     });
 
@@ -30,7 +30,7 @@ describe('@curong/string/stringify', () => {
             }
         };
 
-        expect(await stringify(fixture, { space: '\t' })).toEqual(
+        expect(await toJsonString(fixture, { space: '\t' })).toEqual(
             JSON.stringify(fixture, undefined, '\t')
         );
     });
@@ -48,7 +48,7 @@ describe('@curong/string/stringify', () => {
             e: fixture.c
         };
 
-        expect(await stringify(fixture)).toEqual(
+        expect(await toJsonString(fixture)).toEqual(
             '{"a":true,"b":"[Circular *]","c":["[Circular *]","[Circular *]"],"d":{"e":["[Circular *]","[Circular *]"]}}'
         );
     });
@@ -63,7 +63,7 @@ describe('@curong/string/stringify', () => {
             b: fixture2
         };
 
-        expect(await stringify(fixture)).toEqual(
+        expect(await toJsonString(fixture)).toEqual(
             '{"a":{"c":true},"b":{"c":true}}'
         );
     });
@@ -73,7 +73,7 @@ describe('@curong/string/stringify', () => {
 
         fixture.push(fixture, fixture);
 
-        expect(await stringify(fixture)).toEqual(
+        expect(await toJsonString(fixture)).toEqual(
             '[1,"[Circular *]","[Circular *]"]'
         );
     });
@@ -85,7 +85,7 @@ describe('@curong/string/stringify', () => {
 
         fixture.b = fixture;
 
-        expect(await stringify([fixture, fixture])).toEqual(
+        expect(await toJsonString([fixture, fixture])).toEqual(
             '[{"a":true,"b":"[Circular *0]"},{"a":true,"b":"[Circular *1]"}]'
         );
     });
@@ -97,7 +97,7 @@ describe('@curong/string/stringify', () => {
 
         fixture.b = fixture;
 
-        expect(await stringify({ x: fixture, y: fixture })).toEqual(
+        expect(await toJsonString({ x: fixture, y: fixture })).toEqual(
             '{"x":{"a":true,"b":"[Circular *x]"},"y":{"a":true,"b":"[Circular *y]"}}'
         );
     });
@@ -113,7 +113,7 @@ describe('@curong/string/stringify', () => {
             }
         };
 
-        expect(await stringify(fixture)).toEqual(JSON.stringify(fixture));
+        expect(await toJsonString(fixture)).toEqual(JSON.stringify(fixture));
     });
 
     test('测试10', async () => {
@@ -127,7 +127,7 @@ describe('@curong/string/stringify', () => {
 
         fixture.a.b.c.d = fixture.a;
 
-        expect(await stringify(fixture)).toEqual(
+        expect(await toJsonString(fixture)).toEqual(
             '{"a":{"b":{"c":{"d":"[Circular *a]"}}}}'
         );
     });
@@ -146,7 +146,7 @@ describe('@curong/string/stringify', () => {
             e: circular
         };
 
-        expect(await stringify(fixture)).toEqual(
+        expect(await toJsonString(fixture)).toEqual(
             '{"a":{"x":1},"b":{"c":{"x":1},"d":{"y":2,"self":"[Circular *b.d]"}},"e":{"y":2,"self":"[Circular *e]"}}'
         );
     });
@@ -163,7 +163,7 @@ describe('@curong/string/stringify', () => {
         fixture.a.b.c.d = fixture.a;
         fixture.a.b.c.e = fixture.a.b;
 
-        expect(await stringify(fixture)).toEqual(
+        expect(await toJsonString(fixture)).toEqual(
             '{"a":{"b":{"c":{"d":"[Circular *a]","e":"[Circular *a.b]"}}}}'
         );
     });
@@ -176,7 +176,7 @@ describe('@curong/string/stringify', () => {
 
         fixture.self = fixture;
 
-        expect(await stringify(fixture)).toEqual(
+        expect(await toJsonString(fixture)).toEqual(
             '{"a":1,"b":2,"self":"[Circular *]"}'
         );
     });
@@ -184,7 +184,7 @@ describe('@curong/string/stringify', () => {
     test('测试14', async () => {
         const fixture = {};
 
-        expect(await stringify(fixture)).toEqual(JSON.stringify(fixture));
+        expect(await toJsonString(fixture)).toEqual(JSON.stringify(fixture));
     });
 
     test('测试15', async () => {
@@ -192,7 +192,7 @@ describe('@curong/string/stringify', () => {
             a: null
         };
 
-        expect(await stringify(fixture)).toEqual(JSON.stringify(fixture));
+        expect(await toJsonString(fixture)).toEqual(JSON.stringify(fixture));
     });
 
     test('测试16', async () => {
@@ -200,7 +200,7 @@ describe('@curong/string/stringify', () => {
             a: undefined
         };
 
-        expect(await stringify(fixture)).toEqual(JSON.stringify(fixture));
+        expect(await toJsonString(fixture)).toEqual(JSON.stringify(fixture));
     });
 
     test('测试17', async () => {
@@ -216,7 +216,7 @@ describe('@curong/string/stringify', () => {
         fixture.a.b.c.e = fixture.a.b;
         fixture.a.b.c.f = fixture.a.b.c;
 
-        expect(await stringify(fixture)).toEqual(
+        expect(await toJsonString(fixture)).toEqual(
             '{"a":{"b":{"c":{"d":"[Circular *a]","e":"[Circular *a.b]","f":"[Circular *a.b.c]"}}}}'
         );
     });
@@ -226,7 +226,7 @@ describe('@curong/string/stringify', () => {
 
         fixture.push(fixture, [fixture, fixture]);
 
-        expect(await stringify(fixture)).toEqual(
+        expect(await toJsonString(fixture)).toEqual(
             '[[1,2,3],"[Circular *]",["[Circular *]","[Circular *]"]]'
         );
     });
@@ -243,7 +243,7 @@ describe('@curong/string/stringify', () => {
         fixture.a.b.c.parent = fixture.a.b;
         fixture.a.b.c.grandparent = fixture.a;
 
-        expect(await stringify(fixture)).toEqual(
+        expect(await toJsonString(fixture)).toEqual(
             '{"a":{"b":{"c":{"parent":"[Circular *a.b]","grandparent":"[Circular *a]"}}}}'
         );
     });
@@ -257,7 +257,7 @@ describe('@curong/string/stringify', () => {
             { d: 3, e: circular }
         ];
 
-        expect(await stringify(fixture)).toEqual(
+        expect(await toJsonString(fixture)).toEqual(
             '[{"b":2,"c":{"a":1,"self":"[Circular *0.c]"}},{"d":3,"e":{"a":1,"self":"[Circular *1.e]"}}]'
         );
     });
@@ -267,7 +267,7 @@ describe('@curong/string/stringify', () => {
             date: new Date('2024-06-12T16:06:46.442Z')
         };
 
-        expect(await stringify(fixture)).toEqual(JSON.stringify(fixture));
+        expect(await toJsonString(fixture)).toEqual(JSON.stringify(fixture));
     });
 
     test('测试22', async () => {
@@ -278,7 +278,7 @@ describe('@curong/string/stringify', () => {
             }
         };
 
-        expect(await stringify(fixture)).toEqual(JSON.stringify(fixture));
+        expect(await toJsonString(fixture)).toEqual(JSON.stringify(fixture));
     });
 
     test('测试23', async () => {
@@ -291,7 +291,7 @@ describe('@curong/string/stringify', () => {
             }
         };
 
-        expect(await stringify(fixture)).toEqual(JSON.stringify(fixture));
+        expect(await toJsonString(fixture)).toEqual(JSON.stringify(fixture));
     });
 
     test('测试24', async () => {
@@ -305,7 +305,7 @@ describe('@curong/string/stringify', () => {
             date: '2024-06-12T16:06:46.442Z',
             self: '[Circular *]'
         });
-        expect(await stringify(fixture)).toEqual(expected);
+        expect(await toJsonString(fixture)).toEqual(expected);
     });
 
     test('测试25', async () => {
@@ -322,7 +322,7 @@ describe('@curong/string/stringify', () => {
             }
         };
 
-        expect(await stringify(fixture)).toEqual(JSON.stringify(fixture));
+        expect(await toJsonString(fixture)).toEqual(JSON.stringify(fixture));
     });
 
     test('测试26', async () => {
@@ -336,7 +336,7 @@ describe('@curong/string/stringify', () => {
         };
 
         const expected = JSON.stringify({ b: 2, self: '[Circular *]' });
-        expect(await stringify(fixture)).toEqual(expected);
+        expect(await toJsonString(fixture)).toEqual(expected);
     });
 
     test('测试27', async () => {
@@ -353,7 +353,7 @@ describe('@curong/string/stringify', () => {
             }
         ];
 
-        expect(await stringify(fixture)).toEqual(JSON.stringify(fixture));
+        expect(await toJsonString(fixture)).toEqual(JSON.stringify(fixture));
     });
 
     test('测试28', async () => {
@@ -366,7 +366,7 @@ describe('@curong/string/stringify', () => {
             }
         ];
 
-        expect(await stringify(fixture)).toEqual(JSON.stringify(fixture));
+        expect(await toJsonString(fixture)).toEqual(JSON.stringify(fixture));
     });
 
     test('测试29', async () => {
@@ -419,16 +419,16 @@ describe('@curong/string/stringify', () => {
             }
         });
 
-        expect(await stringify(fixture)).toEqual(expected);
+        expect(await toJsonString(fixture)).toEqual(expected);
 
         expect(
-            await stringify(fixture, {
+            await toJsonString(fixture, {
                 replacer: ['a', 'x', 'e', 'y']
             })
         ).toEqual('{"a":{"x":1},"e":{"y":2}}');
 
         expect(
-            await stringify(fixture, {
+            await toJsonString(fixture, {
                 replacer(k, v) {
                     if (['a', 'c', 'y'].includes(k)) {
                         return undefined;
@@ -442,7 +442,7 @@ describe('@curong/string/stringify', () => {
         );
 
         expect(
-            await stringify(fixture, {
+            await toJsonString(fixture, {
                 replacer(k, v) {
                     if (typeof v === 'number') {
                         return undefined;
@@ -458,7 +458,7 @@ describe('@curong/string/stringify', () => {
 
     test('测试30', async () => {
         const obj = { c: 8, b: [{ z: 6, y: 5, x: 4 }, 7], a: 3 };
-        const objSerializer = await stringify(obj, {
+        const objSerializer = await toJsonString(obj, {
             compare(a, b) {
                 return a.key < b.key ? 1 : -1;
             }
@@ -469,7 +469,7 @@ describe('@curong/string/stringify', () => {
 
     test('测试31', async () => {
         const obj = { d: 6, c: 5, b: [{ z: 3, y: 2, x: 1 }, 9], a: 10 };
-        const objSerializer = await stringify(obj, {
+        const objSerializer = await toJsonString(obj, {
             compare(a, b) {
                 return a.value < b.value ? 1 : -1;
             }
@@ -483,11 +483,11 @@ describe('@curong/string/stringify', () => {
     test('测试32', async () => {
         const obj = { c: 8, b: [{ z: 6, y: 5, x: 4 }, 7], a: 3 };
 
-        expect(await stringify(obj)).toBe(
+        expect(await toJsonString(obj)).toBe(
             '{"c":8,"b":[{"z":6,"y":5,"x":4},7],"a":3}'
         );
         expect(
-            await stringify(obj, {
+            await toJsonString(obj, {
                 compare(a, b) {
                     return a.key - b.key ? 1 : -1;
                 }

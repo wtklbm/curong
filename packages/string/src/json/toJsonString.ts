@@ -5,12 +5,12 @@ import {
     isTypeofObject
 } from '@curong/types';
 
-import type { StringifyOptions } from './types';
+import type { ToJsonStringOptions } from './types';
 
 const safeStringifyReplacer = (
     object: any,
-    compare: StringifyOptions['compare'],
-    cycles: StringifyOptions['cycles'] = true
+    compare: ToJsonStringOptions['compare'],
+    cycles: ToJsonStringOptions['cycles'] = true
 ) => {
     const seen: WeakMap<object, string[]> = new WeakMap();
 
@@ -89,7 +89,7 @@ const safeStringifyReplacer = (
  *
  * ```typescript
  * const s = { value: '', number: 0, bool: false };
- * const ret = await stringify(s, {
+ * const ret = await toJsonString(s, {
  *     replacer(key, value) {
  *         if (typeof value === 'string') {
  *             return undefined;
@@ -102,7 +102,7 @@ const safeStringifyReplacer = (
  *
  * ```typescript
  * const s = { value: '', number: 0, bool: false };
- * const ret = await stringify(s, { replacer: ['value', 'bool'] });
+ * const ret = await toJsonString(s, { replacer: ['value', 'bool'] });
  * console.log(ret); // '{"value":"","bool":false}'
  * ```
  *
@@ -123,9 +123,9 @@ const safeStringifyReplacer = (
  *   - `NaN` 和 `Infinity` 格式的数值，以及 `null`，都会被当做 `null`。
  *   - 其他类型的对象，包括 `Map/Set/WeakMap/WeakSet/WeakRef`，仅会序列化可枚举的属性。
  */
-export default function stringify(
+export default function toJsonString(
     value: any,
-    options: StringifyOptions = {}
+    options: ToJsonStringOptions = {}
 ): Promise<string> {
     const { replacer, space, compare, cycles } = options;
     let handler: (k: string, v: any) => any;
@@ -155,7 +155,7 @@ export default function stringify(
         try {
             resolve(JSON.stringify(value, handler, space));
         } catch (error) {
-            throw new Error('[stringify] 转换 JSON 字符串失败', {
+            throw new Error('[toJsonString] 转换 JSON 字符串失败', {
                 cause: { value, options, error }
             });
         }

@@ -5,12 +5,12 @@ export { default as deleteAttrs } from './deleteAttrs';
 export { default as derive } from './derive';
 export { default as isInstanceOf } from './isInstanceOf';
 export { default as shallowEqual } from './shallowEqual';
-export { default as stringify } from './stringify';
 export { default as toArray } from './toArray';
 
 export * from './cascade';
 export * from './keys';
 export * from './property';
 export * from './remove';
-export * from './types';
 export * from './values';
+
+export * from './types';

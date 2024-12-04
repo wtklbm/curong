@@ -1,4 +1,4 @@
-export type StringifyOptions<O = { key: string; value: any }> = {
+export type ToJsonStringOptions<O = { key: string; value: any }> = {
     /**
      * 可以是一个转换结果的函数，也可以是一个字符串或数字数组
      *

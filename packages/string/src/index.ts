@@ -1,5 +1,4 @@
 export { default as multiReplace } from './multiReplace';
-export { default as parseJson } from './parseJson';
 
 export * from './bytes';
 export * from './chars';
@@ -8,6 +7,7 @@ export * from './entity-code';
 export * from './find';
 export * from './indent';
 export * from './inside';
+export * from './json';
 export * from './match';
 export * from './quote';
 export * from './random';

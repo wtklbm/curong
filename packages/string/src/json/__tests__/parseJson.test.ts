@@ -1,4 +1,4 @@
-import { parseJson } from '../src';
+import { parseJson } from '..';
 
 describe('@curong/string/parseJson', () => {
     test('测试1', () => {
