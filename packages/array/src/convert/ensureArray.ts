@@ -1,6 +1,6 @@
 import { isArray, isNull, isUndefined } from '@curong/types';
 
-import type { ToArrayOptions } from './types';
+import type { EnsureArrayOptions } from './types';
 
 /**
  * 将给定的值转换为数组
@@ -13,11 +13,14 @@ import type { ToArrayOptions } from './types';
  * @example
  *
  * ```typescript
- * toArray(1); // [1]
- * toArray(['value']); // ['value']
+ * ensureArray(1); // [1]
+ * ensureArray(['value']); // ['value']
  * ```
  */
-export default function toArray<T>(value: T, options: ToArrayOptions = {}) {
+export default function ensureArray<T>(
+    value: T,
+    options: EnsureArrayOptions = {}
+) {
     const { allowNull = false, allowUndefined = false } = options;
 
     return isArray(value)

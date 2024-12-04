@@ -11,7 +11,7 @@
 
 ## `convert`
 
-- `toArray`: 将给定的值转换为数组
+- `ensureArray`: 将给定的值转换为数组
 - `toObject`: 将给定的数组转换为一个普通对象
 - `toTree`: 将给定的数组转换为一个树型对象
 

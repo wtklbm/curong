@@ -1,2 +1,2 @@
-export * from './toArray';
+export * from './ensureArray';
 export * from './toTree';

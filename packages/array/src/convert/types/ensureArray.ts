@@ -1,4 +1,4 @@
-export type ToArrayOptions = {
+export type EnsureArrayOptions = {
     /** 当值为 `null` 时是否可以转换为 `[null]`。默认为 `false` */
     allowNull?: boolean;
 

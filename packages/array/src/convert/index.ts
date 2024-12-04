@@ -1,4 +1,4 @@
-export { default as toArray } from './toArray';
+export { default as ensureArray } from './ensureArray';
 export { default as toObject } from './toObject';
 export { default as toTree } from './toTree';
 
