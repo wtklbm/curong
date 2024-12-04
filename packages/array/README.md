@@ -26,6 +26,10 @@
 - `eachRightAsync`: 从右到左异步串行遍历数组并对每个元素依次执行异步回调函数
 - `eachRightParallel`: 从右到左异步并行遍历数组并对每个元素执行异步回调函数
 
+## `find`
+
+- `includesEvery`: 判断一个数组是否包含另一个数组的所有元素
+
 ## `generate`
 
 - `createArray`: 生成一个指定长度的数组，并根据索引调用映射函数填充数组元素
