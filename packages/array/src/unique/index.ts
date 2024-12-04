@@ -1,2 +1,2 @@
 export { default as isUnique } from './isUnique';
-export { default as uniqueFromPrimitive } from './uniqueFromPrimitive';
+export { default as uniq } from './uniq';
