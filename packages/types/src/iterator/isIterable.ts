@@ -62,7 +62,7 @@ import isSyncIterable from './isSyncIterable';
  * };
  * ```
  */
-export default function isIterable<T = unknown>(
+export default function isIterable<T>(
     value: unknown
 ): value is Iterable<T> | AsyncIterable<T> {
     return isSyncIterable(value) || isAsyncIterable(value);
