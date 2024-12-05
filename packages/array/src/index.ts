@@ -1,3 +1,4 @@
+export * from './collection';
 export * from './convert';
 export * from './dimension';
 export * from './each';
@@ -7,7 +8,6 @@ export * from './helper';
 export * from './map';
 export * from './move';
 export * from './remove';
-export * from './set';
 export * from './sort';
 export * from './split';
 export * from './unique';

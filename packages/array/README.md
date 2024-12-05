@@ -19,6 +19,14 @@
 
 `@curong/array` 包含以下的方法:
 
+## `collection`
+
+- `complement`: 获取两个数组的补集，即在 `b` 中存在但在 `a` 中不存在的元素
+- `difference`: 获取两个数组的差集，即在 `a` 中存在但在 `b` 中不存在的元素
+- `intersection`: 获取两个数组的交集，即在 `a` 和 `b` 中都存在的元素
+- `symmetricDifference`: 获取两个数组的对称差集，即在 `a` 或 `b` 中存在，但不在两者都有的元素
+- `union`: 获取多个数组的并集，即合并多个数组并去除重复元素
+
 ## `convert`
 
 - `ensureArray`: 将给定的值转换为数组
@@ -80,14 +88,6 @@
 
 - `clearArray`: 清空数组并返回清空后的数组
 - `removeAll`: 从数组中移除所有匹配的元素
-
-## `set`
-
-- `complement`: 获取两个数组的补集，即在 `b` 中存在但在 `a` 中不存在的元素
-- `difference`: 获取两个数组的差集，即在 `a` 中存在但在 `b` 中不存在的元素
-- `intersection`: 获取两个数组的交集，即在 `a` 和 `b` 中都存在的元素
-- `symmetricDifference`: 获取两个数组的对称差集，即在 `a` 或 `b` 中存在，但不在两者都有的元素
-- `union`: 获取多个数组的并集，即合并多个数组并去除重复元素
 
 ## `sort`
 
