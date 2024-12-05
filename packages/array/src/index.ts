@@ -4,6 +4,7 @@ export * from './dimension';
 export * from './each';
 export * from './find';
 export * from './generate';
+export * from './get';
 export * from './helper';
 export * from './map';
 export * from './move';
