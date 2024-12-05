@@ -6,7 +6,7 @@
  * @example
  * ```js
  * const print = function () {
- *     const args = toArray(arguments);
+ *     const args = fromArrayLike(arguments);
  *
  *     console.log(args); // [ 1, 32, 43, 54, 2, 32 ]
  * };
@@ -14,6 +14,6 @@
  * print(1, 32, 43, 54, 2, 32);
  * ```
  */
-export default function toArray<T>(value: ArrayLike<T>): T[] {
+export default function fromArrayLike<T>(value: ArrayLike<T>): T[] {
     return Array.prototype.slice.call(value);
 }
