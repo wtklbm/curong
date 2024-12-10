@@ -17,7 +17,7 @@ export default function isNodejs(): boolean {
         isFunction(globalThis.global.clearImmediate) &&
         isNodejsProcess() &&
         globalThis.process.release?.name === 'node' &&
-        getUserAgent().startsWith('Node.js/') &&
+        // getUserAgent()?.startsWith('Node.js/') && // Node.js v21.1.0
         isFunction(globalThis.Buffer) &&
         isFunction(globalThis.Buffer.isBuffer)
     );
