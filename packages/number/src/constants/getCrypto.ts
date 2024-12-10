@@ -15,7 +15,7 @@ export default function getCrypto(this: any): Crypto {
         crypto = require('crypto').webcrypto;
     } else {
         throw new ReferenceError(
-            '[getCrypto] 在浏览器或 Node.js 环境下没有检测到 crypto 对象',
+            '[getCrypto] 在当前环境下没有检测到 crypto 对象',
             {
                 cause: { this: this }
             }
