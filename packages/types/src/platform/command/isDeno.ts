@@ -22,7 +22,7 @@ declare global {
 export default function isDeno(): boolean {
     return (
         isTypeofObject(globalThis.Deno) &&
-        isString(globalThis.Deno.version?.deno) &&
-        getUserAgent().startsWith('Deno/')
+        isString(globalThis.Deno.version?.deno)
+        // getUserAgent()?.startsWith('Deno/') // Node.js v21.1.0
     );
 }
