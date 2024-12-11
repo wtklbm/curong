@@ -11,9 +11,18 @@ import { isArray } from '@curong/types';
  * console.log(ret); // [ 1, 2, 3, 4 ]
  * ```
  */
-export default function flat<T>(...args: (T | T[])[]): T[] {
-    return args.reduce<T[]>(
-        (a, b) => a.concat(isArray(b) ? flat(...b) : b),
-        []
-    );
+export default function flat<T>(...args: T[] | T[][] | (T | T[])[]): T[] {
+    const result: T[] = [];
+    const stack: (T | T[])[] = [...args];
+
+    while (stack.length > 0) {
+        const current = stack.pop();
+        if (isArray(current)) {
+            stack.push(...current);
+        } else {
+            result.push(current as T);
+        }
+    }
+
+    return result.reverse();
 }
